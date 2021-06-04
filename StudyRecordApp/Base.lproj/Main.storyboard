@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
+        <!--My Tab Bar Controller-->
         <scene sceneID="zLm-Sb-dkR">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="jny-tB-7zy" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="jny-tB-7zy" customClass="MyTabBarController" customModule="StudyRecordApp" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cXQ-Lu-Jfn">
                         <autoresizingMask key="autoresizingMask"/>

@@ -11,19 +11,40 @@ class MyTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        delegate = self
+        
+        setupMiddleButton()
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func setupMiddleButton() {
+        let height: CGFloat = 100
+        let button = UIButton()
+        button.layer.cornerRadius = height / 2
+        button.addTarget(self, action: #selector(middleButtonDidTapped), for: .touchUpInside)
+        button.backgroundColor = .red
+        button.translatesAutoresizingMaskIntoConstraints = false
+        view.insertSubview(button, aboveSubview: tabBar)
+        [button.heightAnchor.constraint(equalToConstant: height),
+         button.widthAnchor.constraint(equalToConstant: height),
+         button.centerXAnchor.constraint(equalTo: tabBar.centerXAnchor),
+         button.centerYAnchor.constraint(equalTo: tabBar.topAnchor),
+        ].forEach { $0.isActive = true }
     }
-    */
+    
+    @objc private func middleButtonDidTapped() {
+        print(#function)
+    }
+    
+}
 
+extension MyTabBarController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        return true
+    }
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        print(#function)
+    }
 }
