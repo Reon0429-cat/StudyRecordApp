@@ -7,23 +7,30 @@
 
 import UIKit
 
-class AdditionalStudyRecordViewController: UIViewController {
-
+final class AdditionalStudyRecordViewController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    static func instantiate() -> UIViewController {
+        let storyboard = UIStoryboard.additionalStudyRecord
+        let additionalStudyRecordVC = storyboard.instantiateViewController(
+            identifier: AdditionalStudyRecordViewController.identifier
+        ) as! AdditionalStudyRecordViewController
+        additionalStudyRecordVC.modalPresentationStyle = .fullScreen
+        return additionalStudyRecordVC
     }
-    */
+    
+}
 
+private extension UIStoryboard {
+    static var additionalStudyRecord: UIStoryboard {
+        return UIStoryboard(name: "AdditionalStudyRecord", bundle: nil)
+    }
+}
+
+private extension AdditionalStudyRecordViewController {
+    static var identifier: String { String(describing: self) }
 }

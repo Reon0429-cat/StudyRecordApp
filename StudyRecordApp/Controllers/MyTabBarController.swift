@@ -13,6 +13,7 @@ final class MyTabBarController: UITabBarController {
     private var middleButtonBackViewHeight: CGFloat { middleButtonHeight + 20 }
     private lazy var middleButtonView: MiddleButtonView = {
         let view = MiddleButtonView()
+        view.onTapEvent = { self.present($0, animated: true, completion: nil) }
         view.layer.cornerRadius = middleButtonHeight / 2
         view.backgroundColor = .red
         view.translatesAutoresizingMaskIntoConstraints = false

@@ -8,6 +8,8 @@
 import UIKit
 
 final class MiddleButtonView: UIView {
+    
+    var onTapEvent: ((UIViewController) -> Void)?
 
     @IBOutlet weak var middleButton: UIButton! {
         didSet {
@@ -41,7 +43,8 @@ final class MiddleButtonView: UIView {
     }
     
     @IBAction private func middleButtonDidTapped(_ sender: Any) {
-        print(#function)
+        let additionalStudyRecordVC = AdditionalStudyRecordViewController.instantiate()
+        onTapEvent?(additionalStudyRecordVC)
     }
     
 }
