@@ -23,6 +23,16 @@ final class AdditionalStudyRecordViewController: UIViewController {
         return additionalStudyRecordVC
     }
     
+    @IBAction private func saveButtonDidTapped(_ sender: Any) {
+        // MARK: - ToDo 保存処理
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction private func backButtonDidTapped(_ sender: Any) {
+        // MARK: - ToDo アラート
+        dismiss(animated: true, completion: nil)
+    }
+    
 }
 
 private extension UIStoryboard {

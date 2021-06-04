@@ -20,6 +20,8 @@
 		AB93C259266A5A0900C3AE8F /* StudyRecordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB93C257266A5A0900C3AE8F /* StudyRecordTableViewCell.xib */; };
 		AB93C260266A66C300C3AE8F /* MiddleButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB93C25F266A66C300C3AE8F /* MiddleButtonView.xib */; };
 		AB93C262266A66D600C3AE8F /* MiddleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C261266A66D600C3AE8F /* MiddleButtonView.swift */; };
+		AB93C266266A7DEB00C3AE8F /* AdditionalStudyRecord.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB93C265266A7DEB00C3AE8F /* AdditionalStudyRecord.storyboard */; };
+		AB93C268266A7DFF00C3AE8F /* AdditionalStudyRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C267266A7DFF00C3AE8F /* AdditionalStudyRecordViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		AB93C257266A5A0900C3AE8F /* StudyRecordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudyRecordTableViewCell.xib; sourceTree = "<group>"; };
 		AB93C25F266A66C300C3AE8F /* MiddleButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MiddleButtonView.xib; sourceTree = "<group>"; };
 		AB93C261266A66D600C3AE8F /* MiddleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiddleButtonView.swift; sourceTree = "<group>"; };
+		AB93C265266A7DEB00C3AE8F /* AdditionalStudyRecord.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AdditionalStudyRecord.storyboard; sourceTree = "<group>"; };
+		AB93C267266A7DFF00C3AE8F /* AdditionalStudyRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalStudyRecordViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,7 @@
 			children = (
 				AB93C252266A2B7B00C3AE8F /* MyTabBarController.swift */,
 				AB93C24E266A271E00C3AE8F /* StudyRecordViewController.swift */,
+				AB93C267266A7DFF00C3AE8F /* AdditionalStudyRecordViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -115,6 +120,7 @@
 			children = (
 				AB93C240266A234800C3AE8F /* Main.storyboard */,
 				AB93C250266A27B900C3AE8F /* StudyRecord.storyboard */,
+				AB93C265266A7DEB00C3AE8F /* AdditionalStudyRecord.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -191,6 +197,7 @@
 				AB93C242266A234800C3AE8F /* Main.storyboard in Resources */,
 				AB93C260266A66C300C3AE8F /* MiddleButtonView.xib in Resources */,
 				AB93C259266A5A0900C3AE8F /* StudyRecordTableViewCell.xib in Resources */,
+				AB93C266266A7DEB00C3AE8F /* AdditionalStudyRecord.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,6 +212,7 @@
 				AB93C262266A66D600C3AE8F /* MiddleButtonView.swift in Sources */,
 				AB93C255266A483E00C3AE8F /* DrawView.swift in Sources */,
 				AB93C253266A2B7B00C3AE8F /* MyTabBarController.swift in Sources */,
+				AB93C268266A7DFF00C3AE8F /* AdditionalStudyRecordViewController.swift in Sources */,
 				AB93C23B266A234800C3AE8F /* AppDelegate.swift in Sources */,
 				AB93C258266A5A0900C3AE8F /* StudyRecordTableViewCell.swift in Sources */,
 				AB93C23D266A234800C3AE8F /* SceneDelegate.swift in Sources */,
