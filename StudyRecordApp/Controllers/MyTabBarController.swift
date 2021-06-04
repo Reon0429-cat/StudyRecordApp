@@ -11,12 +11,13 @@ final class MyTabBarController: UITabBarController {
     
     private let middleButtonHeight: CGFloat = 80
     private var middleButtonBackViewHeight: CGFloat { middleButtonHeight + 20 }
-    private lazy var middleButton: UIButton = {
-        let button = UIButton()
-        button.layer.cornerRadius = middleButtonHeight / 2
-        button.backgroundColor = .red
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
+    private lazy var middleButtonView: MiddleButtonView = {
+        let view = MiddleButtonView()
+        view.layer.cornerRadius = middleButtonHeight / 2
+        view.backgroundColor = .red
+        view.clipsToBounds = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     private lazy var middleButtonBackView: UIView = {
         let view = UIView()
@@ -25,7 +26,7 @@ final class MyTabBarController: UITabBarController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    private lazy var drawView: DrawView = {
+    private var drawView: DrawView = {
         let view = DrawView()
         view.backgroundColor = .white
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -39,18 +40,17 @@ final class MyTabBarController: UITabBarController {
         
         self.view.insertSubview(middleButtonBackView, aboveSubview: tabBar)
         middleButtonBackView.addSubview(drawView)
-        middleButtonBackView.addSubview(middleButton)
-        middleButton.addTarget(self, action: #selector(middleButtonDidTapped), for: .touchUpInside)
+        middleButtonBackView.addSubview(middleButtonView)
         
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        [middleButton.heightAnchor.constraint(equalToConstant: middleButtonHeight),
-         middleButton.widthAnchor.constraint(equalToConstant: middleButtonHeight),
-         middleButton.centerXAnchor.constraint(equalTo: middleButtonBackView.centerXAnchor),
-         middleButton.centerYAnchor.constraint(equalTo: middleButtonBackView.centerYAnchor),
+        [middleButtonView.heightAnchor.constraint(equalToConstant: middleButtonHeight),
+         middleButtonView.widthAnchor.constraint(equalToConstant: middleButtonHeight),
+         middleButtonView.centerXAnchor.constraint(equalTo: middleButtonBackView.centerXAnchor),
+         middleButtonView.centerYAnchor.constraint(equalTo: middleButtonBackView.centerYAnchor),
         ].forEach { $0.isActive = true }
         
         [middleButtonBackView.heightAnchor.constraint(equalToConstant: middleButtonBackViewHeight),

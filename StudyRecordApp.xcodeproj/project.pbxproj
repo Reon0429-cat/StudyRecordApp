@@ -18,6 +18,8 @@
 		AB93C255266A483E00C3AE8F /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C254266A483E00C3AE8F /* DrawView.swift */; };
 		AB93C258266A5A0900C3AE8F /* StudyRecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C256266A5A0900C3AE8F /* StudyRecordTableViewCell.swift */; };
 		AB93C259266A5A0900C3AE8F /* StudyRecordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB93C257266A5A0900C3AE8F /* StudyRecordTableViewCell.xib */; };
+		AB93C260266A66C300C3AE8F /* MiddleButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB93C25F266A66C300C3AE8F /* MiddleButtonView.xib */; };
+		AB93C262266A66D600C3AE8F /* MiddleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C261266A66D600C3AE8F /* MiddleButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		AB93C254266A483E00C3AE8F /* DrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
 		AB93C256266A5A0900C3AE8F /* StudyRecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRecordTableViewCell.swift; sourceTree = "<group>"; };
 		AB93C257266A5A0900C3AE8F /* StudyRecordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudyRecordTableViewCell.xib; sourceTree = "<group>"; };
+		AB93C25F266A66C300C3AE8F /* MiddleButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MiddleButtonView.xib; sourceTree = "<group>"; };
+		AB93C261266A66D600C3AE8F /* MiddleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiddleButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +93,8 @@
 			isa = PBXGroup;
 			children = (
 				AB93C254266A483E00C3AE8F /* DrawView.swift */,
+				AB93C261266A66D600C3AE8F /* MiddleButtonView.swift */,
+				AB93C25F266A66C300C3AE8F /* MiddleButtonView.xib */,
 				AB93C25D266A5A5E00C3AE8F /* Storyboards */,
 				AB93C25E266A5A6600C3AE8F /* Cells */,
 			);
@@ -183,6 +189,7 @@
 				AB93C251266A27B900C3AE8F /* StudyRecord.storyboard in Resources */,
 				AB93C244266A234C00C3AE8F /* Assets.xcassets in Resources */,
 				AB93C242266A234800C3AE8F /* Main.storyboard in Resources */,
+				AB93C260266A66C300C3AE8F /* MiddleButtonView.xib in Resources */,
 				AB93C259266A5A0900C3AE8F /* StudyRecordTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -195,6 +202,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB93C24F266A271E00C3AE8F /* StudyRecordViewController.swift in Sources */,
+				AB93C262266A66D600C3AE8F /* MiddleButtonView.swift in Sources */,
 				AB93C255266A483E00C3AE8F /* DrawView.swift in Sources */,
 				AB93C253266A2B7B00C3AE8F /* MyTabBarController.swift in Sources */,
 				AB93C23B266A234800C3AE8F /* AppDelegate.swift in Sources */,
