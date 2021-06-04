@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		AB93C23B266A234800C3AE8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C23A266A234800C3AE8F /* AppDelegate.swift */; };
 		AB93C23D266A234800C3AE8F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C23C266A234800C3AE8F /* SceneDelegate.swift */; };
-		AB93C23F266A234800C3AE8F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C23E266A234800C3AE8F /* ViewController.swift */; };
 		AB93C242266A234800C3AE8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB93C240266A234800C3AE8F /* Main.storyboard */; };
 		AB93C244266A234C00C3AE8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB93C243266A234C00C3AE8F /* Assets.xcassets */; };
 		AB93C247266A234C00C3AE8F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB93C245266A234C00C3AE8F /* LaunchScreen.storyboard */; };
+		AB93C24F266A271E00C3AE8F /* StudyRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C24E266A271E00C3AE8F /* StudyRecordViewController.swift */; };
+		AB93C251266A27B900C3AE8F /* StudyRecord.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB93C250266A27B900C3AE8F /* StudyRecord.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AB93C237266A234800C3AE8F /* StudyRecordApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyRecordApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB93C23A266A234800C3AE8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB93C23C266A234800C3AE8F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AB93C23E266A234800C3AE8F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AB93C241266A234800C3AE8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AB93C243266A234C00C3AE8F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB93C246266A234C00C3AE8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AB93C248266A234C00C3AE8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB93C24E266A271E00C3AE8F /* StudyRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRecordViewController.swift; sourceTree = "<group>"; };
+		AB93C250266A27B900C3AE8F /* StudyRecord.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StudyRecord.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +60,9 @@
 			children = (
 				AB93C23A266A234800C3AE8F /* AppDelegate.swift */,
 				AB93C23C266A234800C3AE8F /* SceneDelegate.swift */,
-				AB93C23E266A234800C3AE8F /* ViewController.swift */,
 				AB93C240266A234800C3AE8F /* Main.storyboard */,
+				AB93C24E266A271E00C3AE8F /* StudyRecordViewController.swift */,
+				AB93C250266A27B900C3AE8F /* StudyRecord.storyboard */,
 				AB93C243266A234C00C3AE8F /* Assets.xcassets */,
 				AB93C245266A234C00C3AE8F /* LaunchScreen.storyboard */,
 				AB93C248266A234C00C3AE8F /* Info.plist */,
@@ -125,6 +128,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB93C247266A234C00C3AE8F /* LaunchScreen.storyboard in Resources */,
+				AB93C251266A27B900C3AE8F /* StudyRecord.storyboard in Resources */,
 				AB93C244266A234C00C3AE8F /* Assets.xcassets in Resources */,
 				AB93C242266A234800C3AE8F /* Main.storyboard in Resources */,
 			);
@@ -137,7 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB93C23F266A234800C3AE8F /* ViewController.swift in Sources */,
+				AB93C24F266A271E00C3AE8F /* StudyRecordViewController.swift in Sources */,
 				AB93C23B266A234800C3AE8F /* AppDelegate.swift in Sources */,
 				AB93C23D266A234800C3AE8F /* SceneDelegate.swift in Sources */,
 			);
