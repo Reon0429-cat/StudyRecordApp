@@ -16,20 +16,8 @@
                     <view key="view" contentMode="scaleToFill" id="fWS-px-dSh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hvb-eZ-ai2">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="TQ8-8f-sGS"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="hvb-eZ-ai2" firstAttribute="leading" secondItem="TQ8-8f-sGS" secondAttribute="leading" id="2S6-4N-jd9"/>
-                            <constraint firstItem="TQ8-8f-sGS" firstAttribute="bottom" secondItem="hvb-eZ-ai2" secondAttribute="bottom" id="gne-QL-361"/>
-                            <constraint firstItem="TQ8-8f-sGS" firstAttribute="trailing" secondItem="hvb-eZ-ai2" secondAttribute="trailing" id="iW6-vi-5xl"/>
-                            <constraint firstItem="hvb-eZ-ai2" firstAttribute="top" secondItem="TQ8-8f-sGS" secondAttribute="top" id="muO-R8-P1v"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="勉強記録" id="3zd-t5-YFk">
                         <barButtonItem key="rightBarButtonItem" title="編集" id="aEr-Ws-c9C"/>

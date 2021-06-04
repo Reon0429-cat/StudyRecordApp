@@ -7,30 +7,64 @@
 
 import UIKit
 
-class MyTabBarController: UITabBarController {
-
+final class MyTabBarController: UITabBarController {
+    
+    private let middleButtonHeight: CGFloat = 80
+    private var middleButtonBackViewHeight: CGFloat { middleButtonHeight + 20 }
+    private lazy var middleButton: UIButton = {
+        let button = UIButton()
+        button.layer.cornerRadius = middleButtonHeight / 2
+        button.backgroundColor = .red
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    private lazy var middleButtonBackView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = middleButtonBackViewHeight / 2
+        view.backgroundColor = .white
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    private lazy var drawView: DrawView = {
+        let view = DrawView()
+        view.backgroundColor = .white
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         delegate = self
         
-        setupMiddleButton()
+        self.view.insertSubview(middleButtonBackView, aboveSubview: tabBar)
+        middleButtonBackView.addSubview(drawView)
+        middleButtonBackView.addSubview(middleButton)
+        middleButton.addTarget(self, action: #selector(middleButtonDidTapped), for: .touchUpInside)
         
     }
     
-    private func setupMiddleButton() {
-        let height: CGFloat = 100
-        let button = UIButton()
-        button.layer.cornerRadius = height / 2
-        button.addTarget(self, action: #selector(middleButtonDidTapped), for: .touchUpInside)
-        button.backgroundColor = .red
-        button.translatesAutoresizingMaskIntoConstraints = false
-        view.insertSubview(button, aboveSubview: tabBar)
-        [button.heightAnchor.constraint(equalToConstant: height),
-         button.widthAnchor.constraint(equalToConstant: height),
-         button.centerXAnchor.constraint(equalTo: tabBar.centerXAnchor),
-         button.centerYAnchor.constraint(equalTo: tabBar.topAnchor),
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        [middleButton.heightAnchor.constraint(equalToConstant: middleButtonHeight),
+         middleButton.widthAnchor.constraint(equalToConstant: middleButtonHeight),
+         middleButton.centerXAnchor.constraint(equalTo: middleButtonBackView.centerXAnchor),
+         middleButton.centerYAnchor.constraint(equalTo: middleButtonBackView.centerYAnchor),
         ].forEach { $0.isActive = true }
+        
+        [middleButtonBackView.heightAnchor.constraint(equalToConstant: middleButtonBackViewHeight),
+         middleButtonBackView.widthAnchor.constraint(equalToConstant: middleButtonBackViewHeight),
+         middleButtonBackView.centerXAnchor.constraint(equalTo: tabBar.centerXAnchor),
+         middleButtonBackView.centerYAnchor.constraint(equalTo: tabBar.topAnchor),
+        ].forEach { $0.isActive = true }
+        
+        [drawView.heightAnchor.constraint(equalToConstant: middleButtonBackViewHeight),
+         drawView.widthAnchor.constraint(equalToConstant: middleButtonBackViewHeight),
+         drawView.centerXAnchor.constraint(equalTo: tabBar.centerXAnchor),
+         drawView.topAnchor.constraint(equalTo: tabBar.topAnchor)
+        ].forEach { $0.isActive = true }
+        
     }
     
     @objc private func middleButtonDidTapped() {
@@ -40,11 +74,15 @@ class MyTabBarController: UITabBarController {
 }
 
 extension MyTabBarController: UITabBarControllerDelegate {
-    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+    
+    func tabBarController(_ tabBarController: UITabBarController,
+                          shouldSelect viewController: UIViewController) -> Bool {
         return true
     }
     
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+    func tabBarController(_ tabBarController: UITabBarController,
+                          didSelect viewController: UIViewController) {
         print(#function)
     }
+    
 }

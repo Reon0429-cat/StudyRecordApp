@@ -15,6 +15,7 @@
 		AB93C24F266A271E00C3AE8F /* StudyRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C24E266A271E00C3AE8F /* StudyRecordViewController.swift */; };
 		AB93C251266A27B900C3AE8F /* StudyRecord.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB93C250266A27B900C3AE8F /* StudyRecord.storyboard */; };
 		AB93C253266A2B7B00C3AE8F /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C252266A2B7B00C3AE8F /* MyTabBarController.swift */; };
+		AB93C255266A483E00C3AE8F /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C254266A483E00C3AE8F /* DrawView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		AB93C24E266A271E00C3AE8F /* StudyRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRecordViewController.swift; sourceTree = "<group>"; };
 		AB93C250266A27B900C3AE8F /* StudyRecord.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StudyRecord.storyboard; sourceTree = "<group>"; };
 		AB93C252266A2B7B00C3AE8F /* MyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
+		AB93C254266A483E00C3AE8F /* DrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				AB93C23C266A234800C3AE8F /* SceneDelegate.swift */,
 				AB93C240266A234800C3AE8F /* Main.storyboard */,
 				AB93C252266A2B7B00C3AE8F /* MyTabBarController.swift */,
+				AB93C254266A483E00C3AE8F /* DrawView.swift */,
 				AB93C24E266A271E00C3AE8F /* StudyRecordViewController.swift */,
 				AB93C250266A27B900C3AE8F /* StudyRecord.storyboard */,
 				AB93C243266A234C00C3AE8F /* Assets.xcassets */,
@@ -145,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB93C24F266A271E00C3AE8F /* StudyRecordViewController.swift in Sources */,
+				AB93C255266A483E00C3AE8F /* DrawView.swift in Sources */,
 				AB93C253266A2B7B00C3AE8F /* MyTabBarController.swift in Sources */,
 				AB93C23B266A234800C3AE8F /* AppDelegate.swift in Sources */,
 				AB93C23D266A234800C3AE8F /* SceneDelegate.swift in Sources */,
