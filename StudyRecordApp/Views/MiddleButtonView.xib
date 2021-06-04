@@ -23,7 +23,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                     <fontDescription key="fontDescription" type="system" pointSize="26"/>
                     <state key="normal">
-                        <imageReference key="image" image="plus" catalog="system" symbolScale="large" renderingMode="original"/>
+                        <imageReference key="image" image="plus" catalog="system" symbolScale="large"/>
                     </state>
                     <connections>
                         <action selector="middleButtonDidTapped:" destination="-1" eventType="touchUpInside" id="z3g-Vv-jEr"/>

@@ -11,6 +11,7 @@ final class MiddleButtonView: UIView {
 
     @IBOutlet weak var middleButton: UIButton! {
         didSet {
+            middleButton.tintColor = .white
             middleButton.imageView?.contentMode = .scaleAspectFit
             middleButton.contentHorizontalAlignment = .fill
             middleButton.contentVerticalAlignment = .fill
@@ -32,6 +33,10 @@ final class MiddleButtonView: UIView {
         let nib = UINib(nibName: String(describing: type(of: self)), bundle: nil)
         guard let view = nib.instantiate(withOwner: self, options: nil).first as? UIView else { return }
         view.frame = self.bounds
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset = CGSize(width: 3, height: 3)
+        self.layer.shadowRadius = 3
+        self.layer.shadowOpacity = 0.6
         self.addSubview(view)
     }
     

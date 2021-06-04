@@ -15,7 +15,6 @@ final class MyTabBarController: UITabBarController {
         let view = MiddleButtonView()
         view.layer.cornerRadius = middleButtonHeight / 2
         view.backgroundColor = .red
-        view.clipsToBounds = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
