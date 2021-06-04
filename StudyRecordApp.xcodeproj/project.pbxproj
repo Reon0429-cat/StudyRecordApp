@@ -16,6 +16,8 @@
 		AB93C251266A27B900C3AE8F /* StudyRecord.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB93C250266A27B900C3AE8F /* StudyRecord.storyboard */; };
 		AB93C253266A2B7B00C3AE8F /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C252266A2B7B00C3AE8F /* MyTabBarController.swift */; };
 		AB93C255266A483E00C3AE8F /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C254266A483E00C3AE8F /* DrawView.swift */; };
+		AB93C258266A5A0900C3AE8F /* StudyRecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C256266A5A0900C3AE8F /* StudyRecordTableViewCell.swift */; };
+		AB93C259266A5A0900C3AE8F /* StudyRecordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB93C257266A5A0900C3AE8F /* StudyRecordTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		AB93C250266A27B900C3AE8F /* StudyRecord.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StudyRecord.storyboard; sourceTree = "<group>"; };
 		AB93C252266A2B7B00C3AE8F /* MyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
 		AB93C254266A483E00C3AE8F /* DrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
+		AB93C256266A5A0900C3AE8F /* StudyRecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRecordTableViewCell.swift; sourceTree = "<group>"; };
+		AB93C257266A5A0900C3AE8F /* StudyRecordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudyRecordTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,18 +66,60 @@
 		AB93C239266A234800C3AE8F /* StudyRecordApp */ = {
 			isa = PBXGroup;
 			children = (
+				AB93C25A266A5A0D00C3AE8F /* Models */,
+				AB93C25B266A5A2800C3AE8F /* Views */,
+				AB93C25C266A5A2C00C3AE8F /* Controllers */,
 				AB93C23A266A234800C3AE8F /* AppDelegate.swift */,
 				AB93C23C266A234800C3AE8F /* SceneDelegate.swift */,
-				AB93C240266A234800C3AE8F /* Main.storyboard */,
-				AB93C252266A2B7B00C3AE8F /* MyTabBarController.swift */,
-				AB93C254266A483E00C3AE8F /* DrawView.swift */,
-				AB93C24E266A271E00C3AE8F /* StudyRecordViewController.swift */,
-				AB93C250266A27B900C3AE8F /* StudyRecord.storyboard */,
 				AB93C243266A234C00C3AE8F /* Assets.xcassets */,
 				AB93C245266A234C00C3AE8F /* LaunchScreen.storyboard */,
 				AB93C248266A234C00C3AE8F /* Info.plist */,
 			);
 			path = StudyRecordApp;
+			sourceTree = "<group>";
+		};
+		AB93C25A266A5A0D00C3AE8F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AB93C25B266A5A2800C3AE8F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AB93C254266A483E00C3AE8F /* DrawView.swift */,
+				AB93C25D266A5A5E00C3AE8F /* Storyboards */,
+				AB93C25E266A5A6600C3AE8F /* Cells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AB93C25C266A5A2C00C3AE8F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AB93C252266A2B7B00C3AE8F /* MyTabBarController.swift */,
+				AB93C24E266A271E00C3AE8F /* StudyRecordViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		AB93C25D266A5A5E00C3AE8F /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				AB93C240266A234800C3AE8F /* Main.storyboard */,
+				AB93C250266A27B900C3AE8F /* StudyRecord.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		AB93C25E266A5A6600C3AE8F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				AB93C256266A5A0900C3AE8F /* StudyRecordTableViewCell.swift */,
+				AB93C257266A5A0900C3AE8F /* StudyRecordTableViewCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +183,7 @@
 				AB93C251266A27B900C3AE8F /* StudyRecord.storyboard in Resources */,
 				AB93C244266A234C00C3AE8F /* Assets.xcassets in Resources */,
 				AB93C242266A234800C3AE8F /* Main.storyboard in Resources */,
+				AB93C259266A5A0900C3AE8F /* StudyRecordTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +198,7 @@
 				AB93C255266A483E00C3AE8F /* DrawView.swift in Sources */,
 				AB93C253266A2B7B00C3AE8F /* MyTabBarController.swift in Sources */,
 				AB93C23B266A234800C3AE8F /* AppDelegate.swift in Sources */,
+				AB93C258266A5A0900C3AE8F /* StudyRecordTableViewCell.swift in Sources */,
 				AB93C23D266A234800C3AE8F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

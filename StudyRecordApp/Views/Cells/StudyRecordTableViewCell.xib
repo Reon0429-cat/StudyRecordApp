@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="165" id="KGk-i7-Jjw" customClass="StudyRecordTableViewCell" customModule="StudyRecordApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="404" height="165"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="404" height="165"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="プログラミング" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pps-a3-hEX">
+                        <rect key="frame" x="20" y="20" width="156.5" height="26.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="PG4-V6-Cy2">
+                        <rect key="frame" x="312.5" y="10" width="81.5" height="145"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今日: 30分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AGt-co-nMr">
+                                <rect key="frame" x="0.0" y="0.0" width="81.5" height="72.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合計: 50分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xhr-kr-2S7">
+                                <rect key="frame" x="0.0" y="72.5" width="81.5" height="72.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NKZ-E1-9RL">
+                        <rect key="frame" x="20" y="133" width="49" height="32"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <state key="normal" title="▼ メモ">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Pps-a3-hEX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="1d4-TB-eKf"/>
+                    <constraint firstAttribute="trailing" secondItem="PG4-V6-Cy2" secondAttribute="trailing" constant="10" id="29N-im-Fv3"/>
+                    <constraint firstItem="PG4-V6-Cy2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="38Y-7w-Yux"/>
+                    <constraint firstAttribute="bottom" secondItem="PG4-V6-Cy2" secondAttribute="bottom" constant="10" id="6hg-TZ-268"/>
+                    <constraint firstItem="NKZ-E1-9RL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Hxe-4c-2un"/>
+                    <constraint firstAttribute="bottom" secondItem="NKZ-E1-9RL" secondAttribute="bottom" id="dVk-GS-ANF"/>
+                    <constraint firstItem="PG4-V6-Cy2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Pps-a3-hEX" secondAttribute="trailing" constant="10" id="fCZ-Eh-ttx"/>
+                    <constraint firstItem="NKZ-E1-9RL" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Pps-a3-hEX" secondAttribute="bottom" constant="10" id="nva-QK-Bd9"/>
+                    <constraint firstItem="Pps-a3-hEX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="ymZ-Yp-4J1"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <point key="canvasLocation" x="201.44927536231884" y="157.03125"/>
+        </tableViewCell>
+    </objects>
+</document>
