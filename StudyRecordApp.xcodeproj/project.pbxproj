@@ -25,6 +25,8 @@
 		AB93C2BD266BABA900C3AE8F /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C2BC266BABA900C3AE8F /* Record.swift */; };
 		AB93C2BF266BACE100C3AE8F /* RecordSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C2BE266BACE100C3AE8F /* RecordSectionView.swift */; };
 		AB93C2C1266BAD1100C3AE8F /* RecordSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB93C2C0266BAD1100C3AE8F /* RecordSectionView.xib */; };
+		AB93C2C3266BC28E00C3AE8F /* EditStudyRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C2C2266BC28E00C3AE8F /* EditStudyRecordViewController.swift */; };
+		AB93C2C5266BC2D600C3AE8F /* EditStudyRecord.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB93C2C4266BC2D600C3AE8F /* EditStudyRecord.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		AB93C2BC266BABA900C3AE8F /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		AB93C2BE266BACE100C3AE8F /* RecordSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordSectionView.swift; sourceTree = "<group>"; };
 		AB93C2C0266BAD1100C3AE8F /* RecordSectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordSectionView.xib; sourceTree = "<group>"; };
+		AB93C2C2266BC28E00C3AE8F /* EditStudyRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStudyRecordViewController.swift; sourceTree = "<group>"; };
+		AB93C2C4266BC2D600C3AE8F /* EditStudyRecord.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditStudyRecord.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +122,7 @@
 				AB93C252266A2B7B00C3AE8F /* MyTabBarController.swift */,
 				AB93C24E266A271E00C3AE8F /* StudyRecordViewController.swift */,
 				AB93C267266A7DFF00C3AE8F /* AdditionalStudyRecordViewController.swift */,
+				AB93C2C2266BC28E00C3AE8F /* EditStudyRecordViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -128,6 +133,7 @@
 				AB93C240266A234800C3AE8F /* Main.storyboard */,
 				AB93C250266A27B900C3AE8F /* StudyRecord.storyboard */,
 				AB93C265266A7DEB00C3AE8F /* AdditionalStudyRecord.storyboard */,
+				AB93C2C4266BC2D600C3AE8F /* EditStudyRecord.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -204,6 +210,7 @@
 				AB93C251266A27B900C3AE8F /* StudyRecord.storyboard in Resources */,
 				AB93C244266A234C00C3AE8F /* Assets.xcassets in Resources */,
 				AB93C242266A234800C3AE8F /* Main.storyboard in Resources */,
+				AB93C2C5266BC2D600C3AE8F /* EditStudyRecord.storyboard in Resources */,
 				AB93C260266A66C300C3AE8F /* MiddleButtonView.xib in Resources */,
 				AB93C2C1266BAD1100C3AE8F /* RecordSectionView.xib in Resources */,
 				AB93C259266A5A0900C3AE8F /* StudyRecordTableViewCell.xib in Resources */,
@@ -225,6 +232,7 @@
 				AB93C253266A2B7B00C3AE8F /* MyTabBarController.swift in Sources */,
 				AB93C268266A7DFF00C3AE8F /* AdditionalStudyRecordViewController.swift in Sources */,
 				AB93C23B266A234800C3AE8F /* AppDelegate.swift in Sources */,
+				AB93C2C3266BC28E00C3AE8F /* EditStudyRecordViewController.swift in Sources */,
 				AB93C258266A5A0900C3AE8F /* StudyRecordTableViewCell.swift in Sources */,
 				AB93C23D266A234800C3AE8F /* SceneDelegate.swift in Sources */,
 				AB93C2BF266BACE100C3AE8F /* RecordSectionView.swift in Sources */,

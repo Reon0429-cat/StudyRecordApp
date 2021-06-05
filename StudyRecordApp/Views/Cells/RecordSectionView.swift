@@ -13,7 +13,8 @@ protocol RecordSectionViewDelegate: UIViewController {
 
 extension RecordSectionViewDelegate {
     func didTapped() {
-        // MARK: - ToDo 画面遷移
+        let editStudyRecordVC = EditStudyRecordViewController.instantiate()
+        present(editStudyRecordVC, animated: true, completion: nil)
     }
 }
 

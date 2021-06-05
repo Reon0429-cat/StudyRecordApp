@@ -14,7 +14,7 @@ final class AdditionalStudyRecordViewController: UIViewController {
         
     }
     
-    static func instantiate() -> UIViewController {
+    static func instantiate() -> AdditionalStudyRecordViewController {
         let storyboard = UIStoryboard.additionalStudyRecord
         let additionalStudyRecordVC = storyboard.instantiateViewController(
             identifier: String(describing: self)

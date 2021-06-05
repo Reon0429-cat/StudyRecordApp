@@ -7,23 +7,35 @@
 
 import UIKit
 
-class EditStudyRecordViewController: UIViewController {
-
+final class EditStudyRecordViewController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    static func instantiate() -> EditStudyRecordViewController {
+        let storyboard = UIStoryboard.editStudyRecordVC
+        let editStudyRecordVC = storyboard.instantiateViewController(
+            identifier: String(describing: self)
+        ) as! EditStudyRecordViewController
+        editStudyRecordVC.modalPresentationStyle = .fullScreen
+        return editStudyRecordVC
     }
-    */
+    
+    @IBAction private func saveButtonDidTapped(_ sender: Any) {
+        // MARK: - ToDo 保存処理
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction private func backButtonDidTapped(_ sender: Any) {
+        // MARK: - ToDo アラート
+        dismiss(animated: true, completion: nil)
+    }
+}
 
+private extension UIStoryboard {
+    static var editStudyRecordVC: UIStoryboard {
+        return UIStoryboard(name: "EditStudyRecord", bundle: nil)
+    }
 }
