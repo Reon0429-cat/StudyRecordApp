@@ -7,10 +7,21 @@
 
 import UIKit
 
+protocol MiddleButtonViewDelegate: UIViewController {
+    func didTapped()
+}
+
+extension MiddleButtonViewDelegate {
+    func didTapped() {
+        let additionalStudyRecordVC = AdditionalStudyRecordViewController.instantiate()
+        present(additionalStudyRecordVC, animated: true, completion: nil)
+    }
+}
+
 final class MiddleButtonView: UIView {
     
-    var onTapEvent: ((UIViewController) -> Void)?
-
+    var delegate: MiddleButtonViewDelegate?
+    
     @IBOutlet weak var middleButton: UIButton! {
         didSet {
             middleButton.tintColor = .white
@@ -43,8 +54,7 @@ final class MiddleButtonView: UIView {
     }
     
     @IBAction private func middleButtonDidTapped(_ sender: Any) {
-        let additionalStudyRecordVC = AdditionalStudyRecordViewController.instantiate()
-        onTapEvent?(additionalStudyRecordVC)
+        delegate?.didTapped()
     }
     
 }
