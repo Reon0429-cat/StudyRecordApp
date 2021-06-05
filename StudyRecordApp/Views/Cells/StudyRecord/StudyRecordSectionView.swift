@@ -1,5 +1,5 @@
 //
-//  RecordSectionView.swift
+//  StudyRecordSectionView.swift
 //  StudyRecordApp
 //
 //  Created by 大西玲音 on 2021/06/05.
@@ -7,11 +7,11 @@
 
 import UIKit
 
-protocol RecordSectionViewDelegate: UIViewController {
+protocol StudyRecordSectionViewDelegate: UIViewController {
     func didTapped()
 }
 
-extension RecordSectionViewDelegate {
+extension StudyRecordSectionViewDelegate {
     func didTapped() {
         let editStudyRecordVC = EditStudyRecordViewController.instantiate()
         present(editStudyRecordVC, animated: true, completion: nil)
@@ -30,7 +30,7 @@ final class StudyRecordSectionView: UITableViewHeaderFooterView {
     static var nib: UINib { UINib(nibName: String(describing: self), bundle: nil) }
     var didClickedButton: (() -> Void)?
     private var isExpanded = false
-    var delegate: RecordSectionViewDelegate?
+    var delegate: StudyRecordSectionViewDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()

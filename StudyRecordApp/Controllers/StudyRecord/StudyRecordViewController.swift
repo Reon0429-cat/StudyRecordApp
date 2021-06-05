@@ -25,8 +25,8 @@ final class StudyRecordViewController: UIViewController {
         tableView.dataSource = self
         tableView.register(StudyRecordTableViewCell.nib,
                            forCellReuseIdentifier: StudyRecordTableViewCell.identifier)
-        tableView.register(RecordSectionView.nib,
-                           forHeaderFooterViewReuseIdentifier: RecordSectionView.identifier)
+        tableView.register(StudyRecordSectionView.nib,
+                           forHeaderFooterViewReuseIdentifier: StudyRecordSectionView.identifier)
         tableView.tableFooterView = UIView()
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100
@@ -45,11 +45,11 @@ extension StudyRecordViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let recordSectionView = tableView.dequeueReusableHeaderFooterView(
-            withIdentifier: RecordSectionView.identifier
-        ) as! RecordSectionView
+        let studyRecordSectionView = tableView.dequeueReusableHeaderFooterView(
+            withIdentifier: StudyRecordSectionView.identifier
+        ) as! StudyRecordSectionView
         let record = records[section]
-        recordSectionView.configure(record: record) { [weak self] in
+        studyRecordSectionView.configure(record: record) { [weak self] in
             guard let self = self else { return }
             self.records[section].expanded.toggle()
             self.tableView.beginUpdates()
@@ -57,8 +57,8 @@ extension StudyRecordViewController: UITableViewDelegate {
                                       with: .automatic)
             self.tableView.endUpdates()
         }
-        recordSectionView.delegate = self
-        return recordSectionView
+        studyRecordSectionView.delegate = self
+        return studyRecordSectionView
     }
     
 }
@@ -92,4 +92,4 @@ extension StudyRecordViewController: UITableViewDataSource {
     
 }
 
-extension StudyRecordViewController: RecordSectionViewDelegate { }
+extension StudyRecordViewController: StudyRecordSectionViewDelegate { }
