@@ -17,7 +17,7 @@ final class AdditionalStudyRecordViewController: UIViewController {
     static func instantiate() -> UIViewController {
         let storyboard = UIStoryboard.additionalStudyRecord
         let additionalStudyRecordVC = storyboard.instantiateViewController(
-            identifier: AdditionalStudyRecordViewController.identifier
+            identifier: String(describing: self)
         ) as! AdditionalStudyRecordViewController
         additionalStudyRecordVC.modalPresentationStyle = .fullScreen
         return additionalStudyRecordVC
@@ -39,8 +39,4 @@ private extension UIStoryboard {
     static var additionalStudyRecord: UIStoryboard {
         return UIStoryboard(name: "AdditionalStudyRecord", bundle: nil)
     }
-}
-
-private extension AdditionalStudyRecordViewController {
-    static var identifier: String { String(describing: self) }
 }
