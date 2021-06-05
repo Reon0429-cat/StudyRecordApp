@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,51 +18,32 @@
                 <rect key="frame" x="0.0" y="0.0" width="404" height="165"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="プログラミング" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pps-a3-hEX">
-                        <rect key="frame" x="20" y="20" width="156.5" height="26.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="PG4-V6-Cy2">
-                        <rect key="frame" x="312.5" y="10" width="81.5" height="145"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今日: 30分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AGt-co-nMr">
-                                <rect key="frame" x="0.0" y="0.0" width="81.5" height="72.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合計: 50分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xhr-kr-2S7">
-                                <rect key="frame" x="0.0" y="72.5" width="81.5" height="72.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                    </stackView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NKZ-E1-9RL">
-                        <rect key="frame" x="20" y="133" width="49" height="32"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <state key="normal" title="▼ メモ">
-                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </state>
-                    </button>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="n6e-Cy-5jo">
+                        <rect key="frame" x="20" y="0.0" width="364" height="165"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                        <color key="textColor" systemColor="labelColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Pps-a3-hEX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="1d4-TB-eKf"/>
-                    <constraint firstAttribute="trailing" secondItem="PG4-V6-Cy2" secondAttribute="trailing" constant="10" id="29N-im-Fv3"/>
-                    <constraint firstItem="PG4-V6-Cy2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="38Y-7w-Yux"/>
-                    <constraint firstAttribute="bottom" secondItem="PG4-V6-Cy2" secondAttribute="bottom" constant="10" id="6hg-TZ-268"/>
-                    <constraint firstItem="NKZ-E1-9RL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Hxe-4c-2un"/>
-                    <constraint firstAttribute="bottom" secondItem="NKZ-E1-9RL" secondAttribute="bottom" id="dVk-GS-ANF"/>
-                    <constraint firstItem="PG4-V6-Cy2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Pps-a3-hEX" secondAttribute="trailing" constant="10" id="fCZ-Eh-ttx"/>
-                    <constraint firstItem="NKZ-E1-9RL" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Pps-a3-hEX" secondAttribute="bottom" constant="10" id="nva-QK-Bd9"/>
-                    <constraint firstItem="Pps-a3-hEX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="ymZ-Yp-4J1"/>
+                    <constraint firstItem="n6e-Cy-5jo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="NCR-5G-Cbj"/>
+                    <constraint firstItem="n6e-Cy-5jo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="OdN-B8-QTH"/>
+                    <constraint firstItem="n6e-Cy-5jo" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="lzu-mE-otX"/>
+                    <constraint firstItem="n6e-Cy-5jo" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ySn-cN-44l"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="textView" destination="n6e-Cy-5jo" id="VH5-Vg-qpF"/>
+            </connections>
             <point key="canvasLocation" x="201.44927536231884" y="157.03125"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

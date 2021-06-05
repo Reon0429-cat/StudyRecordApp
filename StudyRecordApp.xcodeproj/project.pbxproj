@@ -22,6 +22,9 @@
 		AB93C262266A66D600C3AE8F /* MiddleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C261266A66D600C3AE8F /* MiddleButtonView.swift */; };
 		AB93C266266A7DEB00C3AE8F /* AdditionalStudyRecord.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB93C265266A7DEB00C3AE8F /* AdditionalStudyRecord.storyboard */; };
 		AB93C268266A7DFF00C3AE8F /* AdditionalStudyRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C267266A7DFF00C3AE8F /* AdditionalStudyRecordViewController.swift */; };
+		AB93C2BD266BABA900C3AE8F /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C2BC266BABA900C3AE8F /* Record.swift */; };
+		AB93C2BF266BACE100C3AE8F /* RecordSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C2BE266BACE100C3AE8F /* RecordSectionView.swift */; };
+		AB93C2C1266BAD1100C3AE8F /* RecordSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB93C2C0266BAD1100C3AE8F /* RecordSectionView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +45,9 @@
 		AB93C261266A66D600C3AE8F /* MiddleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiddleButtonView.swift; sourceTree = "<group>"; };
 		AB93C265266A7DEB00C3AE8F /* AdditionalStudyRecord.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AdditionalStudyRecord.storyboard; sourceTree = "<group>"; };
 		AB93C267266A7DFF00C3AE8F /* AdditionalStudyRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalStudyRecordViewController.swift; sourceTree = "<group>"; };
+		AB93C2BC266BABA900C3AE8F /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		AB93C2BE266BACE100C3AE8F /* RecordSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordSectionView.swift; sourceTree = "<group>"; };
+		AB93C2C0266BAD1100C3AE8F /* RecordSectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordSectionView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +95,7 @@
 		AB93C25A266A5A0D00C3AE8F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AB93C2BC266BABA900C3AE8F /* Record.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -130,6 +137,8 @@
 			children = (
 				AB93C256266A5A0900C3AE8F /* StudyRecordTableViewCell.swift */,
 				AB93C257266A5A0900C3AE8F /* StudyRecordTableViewCell.xib */,
+				AB93C2BE266BACE100C3AE8F /* RecordSectionView.swift */,
+				AB93C2C0266BAD1100C3AE8F /* RecordSectionView.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -196,6 +205,7 @@
 				AB93C244266A234C00C3AE8F /* Assets.xcassets in Resources */,
 				AB93C242266A234800C3AE8F /* Main.storyboard in Resources */,
 				AB93C260266A66C300C3AE8F /* MiddleButtonView.xib in Resources */,
+				AB93C2C1266BAD1100C3AE8F /* RecordSectionView.xib in Resources */,
 				AB93C259266A5A0900C3AE8F /* StudyRecordTableViewCell.xib in Resources */,
 				AB93C266266A7DEB00C3AE8F /* AdditionalStudyRecord.storyboard in Resources */,
 			);
@@ -210,12 +220,14 @@
 			files = (
 				AB93C24F266A271E00C3AE8F /* StudyRecordViewController.swift in Sources */,
 				AB93C262266A66D600C3AE8F /* MiddleButtonView.swift in Sources */,
+				AB93C2BD266BABA900C3AE8F /* Record.swift in Sources */,
 				AB93C255266A483E00C3AE8F /* DrawView.swift in Sources */,
 				AB93C253266A2B7B00C3AE8F /* MyTabBarController.swift in Sources */,
 				AB93C268266A7DFF00C3AE8F /* AdditionalStudyRecordViewController.swift in Sources */,
 				AB93C23B266A234800C3AE8F /* AppDelegate.swift in Sources */,
 				AB93C258266A5A0900C3AE8F /* StudyRecordTableViewCell.swift in Sources */,
 				AB93C23D266A234800C3AE8F /* SceneDelegate.swift in Sources */,
+				AB93C2BF266BACE100C3AE8F /* RecordSectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
