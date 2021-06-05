@@ -18,7 +18,7 @@ extension RecordSectionViewDelegate {
     }
 }
 
-final class RecordSectionView: UITableViewHeaderFooterView {
+final class StudyRecordSectionView: UITableViewHeaderFooterView {
     
     @IBOutlet private weak var baseView: UIView!
     @IBOutlet private weak var titleLabel: UILabel!
