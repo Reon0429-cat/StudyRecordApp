@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class StudyRecordViewController: UIViewController {
+final class StudyRecordViewController: MyTabBarController {
     
     @IBOutlet private weak var tableView: UITableView!
     

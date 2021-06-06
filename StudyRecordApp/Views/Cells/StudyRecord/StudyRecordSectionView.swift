@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol StudyRecordSectionViewDelegate: UIViewController {
+protocol StudyRecordSectionViewDelegate: MyTabBarController {
     func didTapped()
 }
 

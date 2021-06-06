@@ -18,8 +18,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3pH-kq-Zvs">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </tableView>
                         </subviews>
@@ -29,7 +29,7 @@
                             <constraint firstItem="3pH-kq-Zvs" firstAttribute="top" secondItem="TQ8-8f-sGS" secondAttribute="top" id="9uH-gI-kE3"/>
                             <constraint firstItem="TQ8-8f-sGS" firstAttribute="trailing" secondItem="3pH-kq-Zvs" secondAttribute="trailing" id="Fu1-dd-Se4"/>
                             <constraint firstItem="3pH-kq-Zvs" firstAttribute="leading" secondItem="TQ8-8f-sGS" secondAttribute="leading" id="Jpv-Q5-neD"/>
-                            <constraint firstItem="TQ8-8f-sGS" firstAttribute="bottom" secondItem="3pH-kq-Zvs" secondAttribute="bottom" id="OfT-gn-Kpf"/>
+                            <constraint firstAttribute="bottom" secondItem="3pH-kq-Zvs" secondAttribute="bottom" id="MBd-9t-5eo"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="勉強記録" id="3zd-t5-YFk">
@@ -41,7 +41,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3V3-ZY-amu" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3887" y="124"/>
+            <point key="canvasLocation" x="3886.9565217391309" y="123.88392857142857"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="E8a-kf-bu5">
