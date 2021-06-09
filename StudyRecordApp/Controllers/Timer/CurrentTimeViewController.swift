@@ -7,15 +7,6 @@
 
 import UIKit
 
-private struct TimeManager {
-    func current() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm:ss"
-        dateFormatter.locale = Locale(identifier: "ja_JP")
-        return dateFormatter.string(from: Date())
-    }
-}
-
 final class CurrentTimeViewController: MyTabBarController {
     
     @IBOutlet private weak var currentTimeLabel: UILabel!
@@ -23,6 +14,7 @@ final class CurrentTimeViewController: MyTabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        currentTimeLabel.font = .monospacedDigitSystemFont(ofSize: 40, weight: .regular)
         currentTimeLabel.text = TimeManager().current()
         scheduledTimer()
         

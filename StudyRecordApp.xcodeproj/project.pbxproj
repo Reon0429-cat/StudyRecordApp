@@ -35,6 +35,7 @@
 		AB93C3472670FD0200C3AE8F /* Alarm.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB93C3462670FD0200C3AE8F /* Alarm.storyboard */; };
 		AB93C3492670FD0B00C3AE8F /* Stopwatch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB93C3482670FD0B00C3AE8F /* Stopwatch.storyboard */; };
 		AB93C34B2670FD1100C3AE8F /* Timer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB93C34A2670FD1100C3AE8F /* Timer.storyboard */; };
+		AB93C34D26711A1000C3AE8F /* TimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C34C26711A1000C3AE8F /* TimeManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		AB93C3462670FD0200C3AE8F /* Alarm.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Alarm.storyboard; sourceTree = "<group>"; };
 		AB93C3482670FD0B00C3AE8F /* Stopwatch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Stopwatch.storyboard; sourceTree = "<group>"; };
 		AB93C34A2670FD1100C3AE8F /* Timer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Timer.storyboard; sourceTree = "<group>"; };
+		AB93C34C26711A1000C3AE8F /* TimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				AB93C2BC266BABA900C3AE8F /* Record.swift */,
+				AB93C34C26711A1000C3AE8F /* TimeManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				AB93C24F266A271E00C3AE8F /* StudyRecordViewController.swift in Sources */,
 				AB93C262266A66D600C3AE8F /* MiddleButtonView.swift in Sources */,
 				AB93C33E2670FC4E00C3AE8F /* AlarmViewController.swift in Sources */,
+				AB93C34D26711A1000C3AE8F /* TimeManager.swift in Sources */,
 				AB93C2BD266BABA900C3AE8F /* Record.swift in Sources */,
 				AB93C3422670FC6C00C3AE8F /* TimerViewController.swift in Sources */,
 				AB93C255266A483E00C3AE8F /* DrawView.swift in Sources */,

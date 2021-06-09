@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+struct TimeManager {
+    func current() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm:ss"
+        dateFormatter.locale = Locale(identifier: "ja_JP")
+        return dateFormatter.string(from: Date())
+    }
+}
