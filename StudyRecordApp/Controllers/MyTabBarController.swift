@@ -7,6 +7,20 @@
 
 import UIKit
 
+private class TabBarView: UIView {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.backgroundColor = .white
+        self.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        self.backgroundColor = .white
+        self.translatesAutoresizingMaskIntoConstraints = false
+    }
+}
+
 class MyTabBarController: UIViewController {
     
     private let middleButtonHeight: CGFloat = 80
@@ -14,28 +28,11 @@ class MyTabBarController: UIViewController {
         let view = MiddleButtonView()
         view.delegate = self
         view.layer.cornerRadius = middleButtonHeight / 2
-        view.backgroundColor = .blue
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    private let middleTabBarBottomView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    private let rightTabBarView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    private let leftTabBarView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    private let middleTabBarBottomView = TabBarView()
+    private let rightTabBarView = TabBarView()
+    private let leftTabBarView = TabBarView()
     private var drawViews = [UIView]()
     
     override func viewDidLoad() {
@@ -93,6 +90,8 @@ class MyTabBarController: UIViewController {
          leftTabBarView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
         ].forEach { $0.isActive = true }
         
+        rightTabBarView.addBorder(width: 0.5, color: .black, position: .top)
+        leftTabBarView.addBorder(width: 0.5, color: .black, position: .top)
     }
     
     override func viewWillLayoutSubviews() {

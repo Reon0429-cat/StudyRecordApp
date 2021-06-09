@@ -50,6 +50,9 @@ final class MiddleButtonView: UIView {
         self.layer.shadowOffset = CGSize(width: 3, height: 3)
         self.layer.shadowRadius = 3
         self.layer.shadowOpacity = 0.6
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.backgroundColor = .blue
+        self.layer.cornerRadius = self.frame.size.width / 2
         self.addSubview(view)
     }
     

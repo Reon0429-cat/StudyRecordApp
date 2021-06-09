@@ -20,13 +20,17 @@ extension UIView {
         let border = CALayer()
         switch position {
             case .top:
-                border.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: width)
+                border.frame = CGRect(x: 0, y: 0,
+                                      width: self.frame.size.width, height: width)
             case .left:
-                border.frame = CGRect(x: 0, y: 0, width: width, height: self.frame.height)
+                border.frame = CGRect(x: 0, y: 0,
+                                      width: width, height: self.frame.size.height)
             case .right:
-                border.frame = CGRect(x: self.frame.width - width, y: 0, width: width, height: self.frame.height)
+                border.frame = CGRect(x: self.frame.size.width - width, y: 0,
+                                      width: width, height: self.frame.height)
             case .bottom:
-                border.frame = CGRect(x: 0, y: self.frame.height - width, width: self.frame.width, height: width)
+                border.frame = CGRect(x: 0, y: self.frame.size.height - width,
+                                      width: self.frame.size.width, height: width)
         }
         border.backgroundColor = color.cgColor
         self.layer.addSublayer(border)
