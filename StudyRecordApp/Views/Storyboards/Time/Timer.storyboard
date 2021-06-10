@@ -12,12 +12,31 @@
         <!--Timer View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="TimerViewController" customModule="StudyRecordApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TimerViewController" id="Y6W-OH-hqX" customClass="TimerViewController" customModule="StudyRecordApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uga-no-fas">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="タイマー" id="LRN-4p-lXt">
+                                        <barButtonItem key="leftBarButtonItem" title="戻る" id="T7d-6l-frj">
+                                            <connections>
+                                                <action selector="backButtonDidTapped:" destination="Y6W-OH-hqX" id="uvZ-tq-tlg"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="uga-no-fas" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="15V-Ga-xru"/>
+                            <constraint firstItem="uga-no-fas" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="ebG-RM-NID"/>
+                            <constraint firstItem="uga-no-fas" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="okd-07-3xU"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

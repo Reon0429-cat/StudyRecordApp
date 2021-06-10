@@ -12,7 +12,7 @@
         <!--タイム-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="CurrentTimeViewController" customModule="StudyRecordApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CurrentTimeViewController" id="Y6W-OH-hqX" customClass="CurrentTimeViewController" customModule="StudyRecordApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -33,14 +33,42 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="8QD-mw-SsG">
+                                <rect key="frame" x="63.5" y="434" width="287" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VCy-zg-Pa1">
+                                        <rect key="frame" x="0.0" y="0.0" width="62" height="30"/>
+                                        <state key="normal" title="アラーム"/>
+                                        <connections>
+                                            <action selector="alarmButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="J8W-ct-3qx"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V9f-Bj-mPp">
+                                        <rect key="frame" x="82" y="0.0" width="123" height="30"/>
+                                        <state key="normal" title="ストップウォッチ"/>
+                                        <connections>
+                                            <action selector="stopwatchButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="HZR-NP-wSc"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w2a-Oc-pQC">
+                                        <rect key="frame" x="225" y="0.0" width="62" height="30"/>
+                                        <state key="normal" title="タイマー"/>
+                                        <connections>
+                                            <action selector="timerButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="d9j-R3-cmr"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="8QD-mw-SsG" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="1VK-0V-rN1"/>
                             <constraint firstItem="pvA-B0-GPB" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="H3X-aK-yH4"/>
                             <constraint firstItem="kkL-R6-ik4" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="VPQ-gb-IgW"/>
                             <constraint firstItem="kkL-R6-ik4" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="100" id="Wjp-ZZ-YAR"/>
                             <constraint firstItem="pvA-B0-GPB" firstAttribute="top" secondItem="kkL-R6-ik4" secondAttribute="bottom" constant="50" id="p7h-dS-SIw"/>
+                            <constraint firstItem="8QD-mw-SsG" firstAttribute="top" secondItem="pvA-B0-GPB" secondAttribute="bottom" constant="100" id="qQ5-FQ-F8T"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="kkL-R6-ik4" secondAttribute="trailing" constant="40" id="zkC-7d-tvX"/>
                         </constraints>
                     </view>

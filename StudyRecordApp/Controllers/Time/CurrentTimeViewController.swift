@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CurrentTimeViewController: UIViewController {
+final class CurrentTimeViewController: MyTabBarController {
     
     @IBOutlet private weak var currentTimeLabel: UILabel!
     
@@ -16,11 +16,26 @@ final class CurrentTimeViewController: UIViewController {
         
         currentTimeLabel.font = .monospacedDigitSystemFont(ofSize: 40, weight: .regular)
         currentTimeLabel.text = TimeManager().current()
-        scheduledTimer()
+        scheduleTimer()
         
     }
     
-    private func scheduledTimer() {
+    @IBAction private func alarmButtonDidTapped(_ sender: Any) {
+        let alarmVC = AlarmViewController.instantiate()
+        present(alarmVC, animated: true, completion: nil)
+    }
+    
+    @IBAction private func stopwatchButtonDidTapped(_ sender: Any) {
+        let stopwatchVC = StopwatchViewController.instantiate()
+        present(stopwatchVC, animated: true, completion: nil)
+    }
+    
+    @IBAction private func timerButtonDidTapped(_ sender: Any) {
+        let timerVC = TimerViewController.instantiate()
+        present(timerVC, animated: true, completion: nil)
+    }
+    
+    private func scheduleTimer() {
         Timer.scheduledTimer(timeInterval: 1,
                              target: self,
                              selector: #selector(updateTimer),

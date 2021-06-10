@@ -52,6 +52,14 @@ final class StopwatchViewController: MyTabBarController {
         
     }
     
+    static func instantiate() -> StopwatchViewController {
+        let stopwatchVC = UIStoryboard.stopwatch.instantiateViewController(
+            identifier: String(describing: self)
+        ) as! StopwatchViewController
+        stopwatchVC.modalPresentationStyle = .fullScreen
+        return stopwatchVC
+    }
+    
     @IBAction private func controlTimeButtonDidTapped(_ sender: Any) {
         switch state {
             case .started:
@@ -77,6 +85,10 @@ final class StopwatchViewController: MyTabBarController {
         updateUI()
     }
     
+    @IBAction private func backButtonDidTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     private func hideControlTimeButton(_ isHidden: Bool) {
         stackView.arrangedSubviews[0].isHidden = isHidden
     }
@@ -92,6 +104,12 @@ final class StopwatchViewController: MyTabBarController {
         )
     }
     
+}
+
+private extension UIStoryboard {
+    static var stopwatch: UIStoryboard {
+        return UIStoryboard(name: "Stopwatch", bundle: nil)
+    }
 }
 
 

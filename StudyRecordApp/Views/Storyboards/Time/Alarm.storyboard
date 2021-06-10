@@ -12,12 +12,31 @@
         <!--Alarm View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="AlarmViewController" customModule="StudyRecordApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AlarmViewController" id="Y6W-OH-hqX" customClass="AlarmViewController" customModule="StudyRecordApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RST-sA-5dG">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="アラーム" id="72h-1T-Z0F">
+                                        <barButtonItem key="leftBarButtonItem" title="戻る" id="6qW-1k-BIL">
+                                            <connections>
+                                                <action selector="backButtonDidTapped:" destination="Y6W-OH-hqX" id="B4c-z2-onN"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="RST-sA-5dG" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="0Qp-Vc-dCv"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="RST-sA-5dG" secondAttribute="trailing" id="AuS-5G-lyI"/>
+                            <constraint firstItem="RST-sA-5dG" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="L8V-zb-Aj4"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

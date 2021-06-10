@@ -7,23 +7,29 @@
 
 import UIKit
 
-class AlarmViewController: UIViewController {
-
+final class AlarmViewController: MyTabBarController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    static func instantiate() -> AlarmViewController {
+        let alarmVC = UIStoryboard.alarm.instantiateViewController(
+            identifier: String(describing: self)
+        ) as! AlarmViewController
+        alarmVC.modalPresentationStyle = .fullScreen
+        return alarmVC
     }
-    */
+    
+    @IBAction private func backButtonDidTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+}
 
+private extension UIStoryboard {
+    static var alarm: UIStoryboard {
+        return UIStoryboard(name: "Alarm", bundle: nil)
+    }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Meb-b2-ZnE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -12,13 +12,13 @@
         <!--ストップウォッチ-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="StopwatchViewController" customModule="StudyRecordApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StopwatchViewController" id="Y6W-OH-hqX" customClass="StopwatchViewController" customModule="StudyRecordApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="bz3-WH-wI5">
-                                <rect key="frame" x="100" y="266" width="214" height="145"/>
+                                <rect key="frame" x="100" y="236" width="214" height="145"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IHh-nx-TLJ">
                                         <rect key="frame" x="0.0" y="0.0" width="214" height="60"/>
@@ -48,23 +48,44 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yd1-ax-ifx">
-                                <rect key="frame" x="124.5" y="168" width="165" height="48"/>
+                                <rect key="frame" x="124.5" y="138" width="165" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SU7-yr-9wd">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="ストップウォッチ" id="FUZ-QO-IRE">
+                                        <barButtonItem key="leftBarButtonItem" title="戻る" id="VhA-EZ-Jep">
+                                            <connections>
+                                                <action selector="backButtonDidTapped:" destination="Y6W-OH-hqX" id="VnY-hP-Ikj"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="bz3-WH-wI5" firstAttribute="top" secondItem="yd1-ax-ifx" secondAttribute="bottom" constant="50" id="0wI-d3-yHG"/>
-                            <constraint firstItem="yd1-ax-ifx" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="80" id="ATL-sH-3lx"/>
+                            <constraint firstItem="SU7-yr-9wd" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="8pJ-eM-BwP"/>
+                            <constraint firstItem="SU7-yr-9wd" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="CWD-Ql-NSe"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="bz3-WH-wI5" secondAttribute="trailing" constant="100" id="J20-q8-NgC"/>
                             <constraint firstItem="bz3-WH-wI5" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Kx5-2e-Z5c"/>
                             <constraint firstItem="yd1-ax-ifx" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Kzh-Th-qRj"/>
+                            <constraint firstItem="SU7-yr-9wd" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="UUs-cT-HvI"/>
+                            <constraint firstItem="yd1-ax-ifx" firstAttribute="top" secondItem="SU7-yr-9wd" secondAttribute="bottom" constant="50" id="XXZ-Tx-frC"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="ストップウォッチ" id="ryJ-L5-Nta"/>
+                    <navigationItem key="navigationItem" title="ストップウォッチ" id="ryJ-L5-Nta">
+                        <barButtonItem key="leftBarButtonItem" title="戻る" id="0qg-Fl-FHj">
+                            <connections>
+                                <action selector="backButtonDidTapped:" destination="Y6W-OH-hqX" id="hP3-ct-Qh4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="controlTimeButton" destination="IHh-nx-TLJ" id="Iif-Do-cck"/>
                         <outlet property="stackView" destination="bz3-WH-wI5" id="G0z-53-wDd"/>
@@ -74,24 +95,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1687" y="98"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Rct-Oe-QSN">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Meb-b2-ZnE" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bVs-TB-n3B">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="0ex-Wz-jAH"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dnh-JT-nSk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="908.69565217391312" y="97.767857142857139"/>
         </scene>
     </scenes>
     <resources>
