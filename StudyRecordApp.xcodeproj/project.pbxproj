@@ -141,7 +141,7 @@
 			children = (
 				AB93C252266A2B7B00C3AE8F /* MyTabBarController.swift */,
 				AB93C2C6266BC4B000C3AE8F /* StudyRecord */,
-				AB93C33A2670FBA700C3AE8F /* Timer */,
+				AB93C33A2670FBA700C3AE8F /* Time */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -202,7 +202,7 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		AB93C33A2670FBA700C3AE8F /* Timer */ = {
+		AB93C33A2670FBA700C3AE8F /* Time */ = {
 			isa = PBXGroup;
 			children = (
 				AB93C33B2670FC2C00C3AE8F /* CurrentTimeViewController.swift */,
@@ -210,7 +210,7 @@
 				AB93C33F2670FC6400C3AE8F /* StopwatchViewController.swift */,
 				AB93C3412670FC6C00C3AE8F /* TimerViewController.swift */,
 			);
-			path = Timer;
+			path = Time;
 			sourceTree = "<group>";
 		};
 		AB93C3452670FCD600C3AE8F /* Time */ = {

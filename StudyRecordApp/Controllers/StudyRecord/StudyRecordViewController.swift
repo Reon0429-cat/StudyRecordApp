@@ -92,4 +92,4 @@ extension StudyRecordViewController: UITableViewDataSource {
     
 }
 
-extension StudyRecordViewController: StudyRecordSectionViewDelegate { }
+extension StudyRecordViewController: StudyRecordSectionViewDelegate { } 

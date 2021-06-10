@@ -90,8 +90,6 @@ class MyTabBarController: UIViewController {
          leftTabBarView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
         ].forEach { $0.isActive = true }
         
-        rightTabBarView.addBorder(width: 0.5, color: .black, position: .top)
-        leftTabBarView.addBorder(width: 0.5, color: .black, position: .top)
     }
     
     override func viewWillLayoutSubviews() {
