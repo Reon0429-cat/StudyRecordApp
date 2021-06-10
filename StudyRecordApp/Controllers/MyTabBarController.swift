@@ -38,24 +38,27 @@ class MyTabBarController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupViews()
+        setupLayout()
+        
+    }
+    
+    private func setupViews() {
         for i in 0..<50 {
             var drawView = UIView()
             drawView = (i == 0) ? DrawView() : SubDrawView()
             drawView.backgroundColor = .clear
             drawView.translatesAutoresizingMaskIntoConstraints = false
-            self.view.insertSubview(drawView, aboveSubview: self.view)
+            self.view.addSubview(drawView)
             drawViews.append(drawView)
         }
         self.view.addSubview(middleButtonView)
         self.view.addSubview(middleTabBarBottomView)
         self.view.addSubview(rightTabBarView)
         self.view.addSubview(leftTabBarView)
-        
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
+    private func setupLayout() {
         let middleButtonBackViewHeight = middleButtonHeight + 20
         
         drawViews.enumerated().forEach { i, drawView in
@@ -66,42 +69,42 @@ class MyTabBarController: UIViewController {
             ].forEach { $0.isActive = true }
         }
         
-        [middleButtonView.widthAnchor.constraint(equalToConstant: middleButtonHeight),
-         middleButtonView.heightAnchor.constraint(equalToConstant: middleButtonHeight),
-         middleButtonView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-         middleButtonView.centerYAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -middleButtonHeight),
-        ].forEach { $0.isActive = true }
+        NSLayoutConstraint.activate([
+            middleButtonView.widthAnchor.constraint(equalToConstant: middleButtonHeight),
+            middleButtonView.heightAnchor.constraint(equalToConstant: middleButtonHeight),
+            middleButtonView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            middleButtonView.centerYAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -middleButtonHeight),
+        ])
         
-        [middleTabBarBottomView.widthAnchor.constraint(equalToConstant: middleButtonBackViewHeight),
-         middleTabBarBottomView.heightAnchor.constraint(equalToConstant: middleButtonHeight - middleButtonBackViewHeight / 2 - 2),
-         middleTabBarBottomView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-         middleTabBarBottomView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-        ].forEach { $0.isActive = true }
+        NSLayoutConstraint.activate([
+            middleTabBarBottomView.widthAnchor.constraint(equalToConstant: middleButtonBackViewHeight),
+            middleTabBarBottomView.heightAnchor.constraint(equalToConstant: middleButtonHeight - middleButtonBackViewHeight / 2 - 2),
+            middleTabBarBottomView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            middleTabBarBottomView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+        ])
         
-        [rightTabBarView.widthAnchor.constraint(equalToConstant: (self.view.frame.size.width - middleButtonBackViewHeight) / 2),
-         rightTabBarView.heightAnchor.constraint(equalToConstant: middleButtonHeight),
-         rightTabBarView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-         rightTabBarView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-        ].forEach { $0.isActive = true }
+        NSLayoutConstraint.activate([
+            rightTabBarView.widthAnchor.constraint(equalToConstant: (self.view.frame.size.width - middleButtonBackViewHeight) / 2),
+            rightTabBarView.heightAnchor.constraint(equalToConstant: middleButtonHeight),
+            rightTabBarView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+            rightTabBarView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+        ])
         
-        [leftTabBarView.widthAnchor.constraint(equalToConstant: (self.view.frame.size.width - middleButtonBackViewHeight) / 2),
-         leftTabBarView.heightAnchor.constraint(equalToConstant: middleButtonHeight),
-         leftTabBarView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-         leftTabBarView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-        ].forEach { $0.isActive = true }
+        NSLayoutConstraint.activate([
+            leftTabBarView.widthAnchor.constraint(equalToConstant: (self.view.frame.size.width - middleButtonBackViewHeight) / 2),
+            leftTabBarView.heightAnchor.constraint(equalToConstant: middleButtonHeight),
+            leftTabBarView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+            leftTabBarView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+        ])
         
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         rightTabBarView.addBorder(width: 0.5, color: .black, position: .top)
         leftTabBarView.addBorder(width: 0.5, color: .black, position: .top)
         
-    }
-    
-    @objc private func middleButtonDidTapped() {
-        print(#function)
     }
     
 }
