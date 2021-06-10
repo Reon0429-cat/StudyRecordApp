@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CurrentTimeViewController: MyTabBarController {
+final class CurrentTimeViewController: UIViewController {
     
     @IBOutlet private weak var currentTimeLabel: UILabel!
     
