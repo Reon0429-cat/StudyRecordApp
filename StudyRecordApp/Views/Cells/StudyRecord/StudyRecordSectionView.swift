@@ -42,10 +42,7 @@ final class StudyRecordSectionView: UITableViewHeaderFooterView {
     }
     
     @IBAction private func memoButtonDidTapped(_ sender: Any) {
-        UIView.setAnimationsEnabled(false)
-        memoButton.setTitle("\(isExpanded ? "▼" : "▲") メモ", for: .normal)
-        memoButton.layoutIfNeeded()
-        UIView.setAnimationsEnabled(true)
+        memoButton.setTitle("\(isExpanded ? "▼" : "▲") メモ")
         isExpanded.toggle()
         didClickedButton?()
     }
