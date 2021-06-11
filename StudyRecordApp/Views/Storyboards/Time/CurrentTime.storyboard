@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rjb-Od-NjE">
-    <device id="retina6_7" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ngl-Hy-Abi">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -10,105 +10,105 @@
     </dependencies>
     <scenes>
         <!--タイム-->
-        <scene sceneID="s0d-6b-0kx">
+        <scene sceneID="t2N-gh-tYd">
             <objects>
-                <viewController storyboardIdentifier="CurrentTimeViewController" id="Y6W-OH-hqX" customClass="CurrentTimeViewController" customModule="StudyRecordApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                <viewController storyboardIdentifier="CurrentTimeViewController" id="gp3-Ee-EEc" customClass="CurrentTimeViewController" customModule="StudyRecordApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IuD-1M-N8e">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="現在時刻" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kkL-R6-ik4">
-                                <rect key="frame" x="153.33333333333334" y="188" width="121.33333333333334" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="現在時刻" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yeO-GK-uEZ">
+                                <rect key="frame" x="146.5" y="188" width="121.5" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pvA-B0-GPB">
-                                <rect key="frame" x="114" y="274" width="200" height="60"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="05w-5j-IVF">
+                                <rect key="frame" x="107" y="274" width="200" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="6Qc-Po-Hye"/>
-                                    <constraint firstAttribute="width" constant="200" id="gKL-6m-cO1"/>
+                                    <constraint firstAttribute="height" constant="60" id="Xka-L0-KCe"/>
+                                    <constraint firstAttribute="width" constant="200" id="vd1-9s-tHt"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="8QD-mw-SsG">
-                                <rect key="frame" x="70.666666666666686" y="434" width="287" height="30"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="wxt-9s-IJG">
+                                <rect key="frame" x="63.5" y="434" width="287" height="30"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VCy-zg-Pa1">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vc5-Xu-xqk">
                                         <rect key="frame" x="0.0" y="0.0" width="62" height="30"/>
                                         <state key="normal" title="アラーム"/>
                                         <connections>
-                                            <action selector="alarmButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="J8W-ct-3qx"/>
+                                            <action selector="alarmButtonDidTapped:" destination="gp3-Ee-EEc" eventType="touchUpInside" id="x3W-Wk-PUP"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V9f-Bj-mPp">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qAH-qx-jIp">
                                         <rect key="frame" x="82" y="0.0" width="123" height="30"/>
                                         <state key="normal" title="ストップウォッチ"/>
                                         <connections>
-                                            <action selector="stopwatchButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="HZR-NP-wSc"/>
+                                            <action selector="stopwatchButtonDidTapped:" destination="gp3-Ee-EEc" eventType="touchUpInside" id="9YU-Sn-aqt"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w2a-Oc-pQC">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mHu-GT-AN3">
                                         <rect key="frame" x="225" y="0.0" width="62" height="30"/>
                                         <state key="normal" title="タイマー"/>
                                         <connections>
-                                            <action selector="timerButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="d9j-R3-cmr"/>
+                                            <action selector="timerButtonDidTapped:" destination="gp3-Ee-EEc" eventType="touchUpInside" id="Sfd-ew-OHT"/>
                                         </connections>
                                     </button>
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <viewLayoutGuide key="safeArea" id="XEi-X5-V8m"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="8QD-mw-SsG" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="1VK-0V-rN1"/>
-                            <constraint firstItem="pvA-B0-GPB" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="H3X-aK-yH4"/>
-                            <constraint firstItem="kkL-R6-ik4" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="VPQ-gb-IgW"/>
-                            <constraint firstItem="kkL-R6-ik4" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="100" id="Wjp-ZZ-YAR"/>
-                            <constraint firstItem="pvA-B0-GPB" firstAttribute="top" secondItem="kkL-R6-ik4" secondAttribute="bottom" constant="50" id="p7h-dS-SIw"/>
-                            <constraint firstItem="8QD-mw-SsG" firstAttribute="top" secondItem="pvA-B0-GPB" secondAttribute="bottom" constant="100" id="qQ5-FQ-F8T"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="kkL-R6-ik4" secondAttribute="trailing" constant="40" id="zkC-7d-tvX"/>
+                            <constraint firstItem="05w-5j-IVF" firstAttribute="top" secondItem="yeO-GK-uEZ" secondAttribute="bottom" constant="50" id="1st-H0-vMa"/>
+                            <constraint firstItem="XEi-X5-V8m" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="yeO-GK-uEZ" secondAttribute="trailing" constant="40" id="5ox-P9-gJX"/>
+                            <constraint firstItem="05w-5j-IVF" firstAttribute="centerX" secondItem="IuD-1M-N8e" secondAttribute="centerX" id="Lf3-JE-Fzp"/>
+                            <constraint firstItem="yeO-GK-uEZ" firstAttribute="top" secondItem="XEi-X5-V8m" secondAttribute="top" constant="100" id="QFk-2x-sTR"/>
+                            <constraint firstItem="wxt-9s-IJG" firstAttribute="centerX" secondItem="IuD-1M-N8e" secondAttribute="centerX" id="XTq-61-vLV"/>
+                            <constraint firstItem="wxt-9s-IJG" firstAttribute="top" secondItem="05w-5j-IVF" secondAttribute="bottom" constant="100" id="ivQ-zx-j3l"/>
+                            <constraint firstItem="yeO-GK-uEZ" firstAttribute="centerX" secondItem="IuD-1M-N8e" secondAttribute="centerX" id="x9U-Va-EjL"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="タイム" id="8Us-yz-cKh"/>
+                    <navigationItem key="navigationItem" title="タイム" id="s5m-re-7Ac"/>
                     <connections>
-                        <outlet property="currentTimeLabel" destination="pvA-B0-GPB" id="guV-x2-PqB"/>
-                        <segue destination="13W-xe-nvW" kind="show" id="KXx-aw-THy"/>
+                        <outlet property="currentTimeLabel" destination="05w-5j-IVF" id="dxu-aP-CDN"/>
+                        <segue destination="hqC-ed-t3C" kind="show" id="mqg-g3-n02"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w5T-Sb-klC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="916" y="98"/>
+            <point key="canvasLocation" x="1349" y="98"/>
         </scene>
         <!--TimeContainer-->
-        <scene sceneID="gzY-DI-mzy">
+        <scene sceneID="cHH-jC-MdR">
             <objects>
-                <viewControllerPlaceholder storyboardName="TimeContainer" id="13W-xe-nvW" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="Uun-bo-tMd"/>
+                <viewControllerPlaceholder storyboardName="TimeContainer" id="hqC-ed-t3C" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="aAW-CR-5UG"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3nE-8v-IsB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hBy-Xy-Y4M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1519" y="97"/>
+            <point key="canvasLocation" x="1911" y="98"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="QsO-cK-qAX">
+        <scene sceneID="2PA-Bn-yW4">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rjb-Od-NjE" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ngl-Hy-Abi" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hl2-iY-fmN">
-                        <rect key="frame" x="0.0" y="44" width="428" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pRH-by-NzL">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="cW7-8u-Dq5"/>
+                        <segue destination="gp3-Ee-EEc" kind="relationship" relationship="rootViewController" id="KJ4-5I-Yjm"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2jp-lt-ME5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BWG-Kr-lt2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="97.767857142857139"/>
+            <point key="canvasLocation" x="626" y="98"/>
         </scene>
     </scenes>
     <resources>

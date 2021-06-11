@@ -55,7 +55,7 @@ final class CurrentTimeViewController: MyTabBarController {
     
     private func pushTimeContainerVC(_ timeType: TimeType) {
         let timeContainerVC = TimeContainerViewController.instantiate(timeType: timeType)
-        self.navigationController?.pushViewController(timeContainerVC, animated: true)
+        self.navigationController?.pushViewController(timeContainerVC, animated: false)
     }
     
     @objc private func updateTimer() {

@@ -41,7 +41,7 @@ final class TimeContainerViewController: MyTabBarController {
     }
     
     @IBAction private func backButtonDidTapped(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: false)
     }
     
     @IBAction private func segmentedControlDidTapped(_ sender: UISegmentedControl) {
