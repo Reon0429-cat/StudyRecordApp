@@ -7,6 +7,19 @@
 
 import UIKit
 
+enum TimeType: Int {
+    case alarm
+    case stopwatch
+    case timer
+    var title: String {
+        switch self {
+            case .alarm: return "アラーム"
+            case .stopwatch: return "ストップウォッチ"
+            case .timer: return "タイマー"
+        }
+    }
+}
+
 final class CurrentTimeViewController: MyTabBarController {
     
     @IBOutlet private weak var currentTimeLabel: UILabel!
@@ -21,18 +34,15 @@ final class CurrentTimeViewController: MyTabBarController {
     }
     
     @IBAction private func alarmButtonDidTapped(_ sender: Any) {
-        let alarmVC = AlarmViewController.instantiate()
-        present(alarmVC, animated: true, completion: nil)
+        pushTimeContainerVC(.alarm)
     }
     
     @IBAction private func stopwatchButtonDidTapped(_ sender: Any) {
-        let stopwatchVC = StopwatchViewController.instantiate()
-        present(stopwatchVC, animated: true, completion: nil)
+        pushTimeContainerVC(.stopwatch)
     }
     
     @IBAction private func timerButtonDidTapped(_ sender: Any) {
-        let timerVC = TimerViewController.instantiate()
-        present(timerVC, animated: true, completion: nil)
+        pushTimeContainerVC(.timer)
     }
     
     private func scheduleTimer() {
@@ -41,6 +51,11 @@ final class CurrentTimeViewController: MyTabBarController {
                              selector: #selector(updateTimer),
                              userInfo: nil,
                              repeats: true)
+    }
+    
+    private func pushTimeContainerVC(_ timeType: TimeType) {
+        let timeContainerVC = TimeContainerViewController.instantiate(timeType: timeType)
+        self.navigationController?.pushViewController(timeContainerVC, animated: true)
     }
     
     @objc private func updateTimer() {

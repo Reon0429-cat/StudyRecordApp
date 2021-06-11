@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rjb-Od-NjE">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -14,17 +14,17 @@
             <objects>
                 <viewController storyboardIdentifier="CurrentTimeViewController" id="Y6W-OH-hqX" customClass="CurrentTimeViewController" customModule="StudyRecordApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="現在時刻" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kkL-R6-ik4">
-                                <rect key="frame" x="146.5" y="188" width="121.5" height="36"/>
+                                <rect key="frame" x="153.33333333333334" y="188" width="121.33333333333334" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pvA-B0-GPB">
-                                <rect key="frame" x="107" y="274" width="200" height="60"/>
+                                <rect key="frame" x="114" y="274" width="200" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="6Qc-Po-Hye"/>
                                     <constraint firstAttribute="width" constant="200" id="gKL-6m-cO1"/>
@@ -34,7 +34,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="8QD-mw-SsG">
-                                <rect key="frame" x="63.5" y="434" width="287" height="30"/>
+                                <rect key="frame" x="70.666666666666686" y="434" width="287" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VCy-zg-Pa1">
                                         <rect key="frame" x="0.0" y="0.0" width="62" height="30"/>
@@ -75,11 +75,22 @@
                     <navigationItem key="navigationItem" title="タイム" id="8Us-yz-cKh"/>
                     <connections>
                         <outlet property="currentTimeLabel" destination="pvA-B0-GPB" id="guV-x2-PqB"/>
+                        <segue destination="13W-xe-nvW" kind="show" id="KXx-aw-THy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="916" y="98"/>
+        </scene>
+        <!--TimeContainer-->
+        <scene sceneID="gzY-DI-mzy">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TimeContainer" id="13W-xe-nvW" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Uun-bo-tMd"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3nE-8v-IsB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1519" y="97"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QsO-cK-qAX">
@@ -87,7 +98,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rjb-Od-NjE" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hl2-iY-fmN">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="428" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
