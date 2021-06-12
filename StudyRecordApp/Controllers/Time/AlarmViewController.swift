@@ -9,11 +9,41 @@ import UIKit
 
 final class AlarmViewController: UIViewController {
     
+    @IBOutlet private weak var tableView: UITableView!
+    private let alarms = Alarm.data
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = .red
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(AlarmTableViewCell.nib,
+                           forCellReuseIdentifier: AlarmTableViewCell.identifier)
         
+    }
+    
+}
+
+extension AlarmViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
+    
+}
+
+extension AlarmViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return alarms.count
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: AlarmTableViewCell.identifier) as! AlarmTableViewCell
+        let alarm = alarms[indexPath.row]
+        cell.configure(alarm: alarm)
+        return cell
     }
     
 }

@@ -175,9 +175,24 @@
                     <view key="view" contentMode="scaleToFill" id="N9S-DJ-58h">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="767"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LRf-nb-4NU">
+                                <rect key="frame" x="0.0" y="44" width="414" height="723"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="nup-E7-UCA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="LRf-nb-4NU" firstAttribute="top" secondItem="nup-E7-UCA" secondAttribute="top" id="7H9-Zi-u9l"/>
+                            <constraint firstItem="LRf-nb-4NU" firstAttribute="leading" secondItem="nup-E7-UCA" secondAttribute="leading" id="K3V-SF-lYQ"/>
+                            <constraint firstItem="nup-E7-UCA" firstAttribute="trailing" secondItem="LRf-nb-4NU" secondAttribute="trailing" id="aWF-SB-6Tv"/>
+                            <constraint firstItem="nup-E7-UCA" firstAttribute="bottom" secondItem="LRf-nb-4NU" secondAttribute="bottom" id="o2E-Vb-cLp"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="LRf-nb-4NU" id="5uz-7c-rQm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qDm-3e-w4n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -201,7 +216,6 @@
         <!--Navigation Controller-->
         <scene sceneID="qn6-cu-DZ2">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1S7-5z-U2v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ibn-BT-2cY" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fzE-HF-u0W">
@@ -213,6 +227,7 @@
                         <segue destination="md8-7t-8hM" kind="relationship" relationship="rootViewController" id="S9g-Ic-F80"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1S7-5z-U2v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2117" y="83"/>
         </scene>

@@ -36,6 +36,9 @@
 		ABAFB57026735A670095415F /* TimeContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAFB56F26735A670095415F /* TimeContainerViewController.swift */; };
 		ABAFB57226735E120095415F /* CurrentTime.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABAFB57126735E120095415F /* CurrentTime.storyboard */; };
 		ABAFB57426737EDB0095415F /* TimeContainer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABAFB57326737EDB0095415F /* TimeContainer.storyboard */; };
+		ABAFB6282674D4FC0095415F /* AlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAFB6262674D4FC0095415F /* AlarmTableViewCell.swift */; };
+		ABAFB6292674D4FC0095415F /* AlarmTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABAFB6272674D4FC0095415F /* AlarmTableViewCell.xib */; };
+		ABAFB62D2674D7750095415F /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAFB62C2674D7750095415F /* Alarm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +73,9 @@
 		ABAFB56F26735A670095415F /* TimeContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeContainerViewController.swift; sourceTree = "<group>"; };
 		ABAFB57126735E120095415F /* CurrentTime.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CurrentTime.storyboard; sourceTree = "<group>"; };
 		ABAFB57326737EDB0095415F /* TimeContainer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TimeContainer.storyboard; sourceTree = "<group>"; };
+		ABAFB6262674D4FC0095415F /* AlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableViewCell.swift; sourceTree = "<group>"; };
+		ABAFB6272674D4FC0095415F /* AlarmTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlarmTableViewCell.xib; sourceTree = "<group>"; };
+		ABAFB62C2674D7750095415F /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +126,7 @@
 			children = (
 				AB93C2BC266BABA900C3AE8F /* Record.swift */,
 				AB93C34C26711A1000C3AE8F /* TimeManager.swift */,
+				ABAFB62C2674D7750095415F /* Alarm.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -159,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				AB93C2C8266BC50600C3AE8F /* StudyRecord */,
+				ABAFB62A2674D5120095415F /* Time */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -220,6 +228,15 @@
 			children = (
 				ABAFB57126735E120095415F /* CurrentTime.storyboard */,
 				ABAFB57326737EDB0095415F /* TimeContainer.storyboard */,
+			);
+			path = Time;
+			sourceTree = "<group>";
+		};
+		ABAFB62A2674D5120095415F /* Time */ = {
+			isa = PBXGroup;
+			children = (
+				ABAFB6262674D4FC0095415F /* AlarmTableViewCell.swift */,
+				ABAFB6272674D4FC0095415F /* AlarmTableViewCell.xib */,
 			);
 			path = Time;
 			sourceTree = "<group>";
@@ -286,6 +303,7 @@
 				AB93C244266A234C00C3AE8F /* Assets.xcassets in Resources */,
 				AB93C2C5266BC2D600C3AE8F /* EditStudyRecord.storyboard in Resources */,
 				AB93C260266A66C300C3AE8F /* MiddleButtonView.xib in Resources */,
+				ABAFB6292674D4FC0095415F /* AlarmTableViewCell.xib in Resources */,
 				AB93C2C1266BAD1100C3AE8F /* StudyRecordSectionView.xib in Resources */,
 				AB93C259266A5A0900C3AE8F /* StudyRecordTableViewCell.xib in Resources */,
 				AB93C266266A7DEB00C3AE8F /* AdditionalStudyRecord.storyboard in Resources */,
@@ -306,6 +324,7 @@
 				AB93C33E2670FC4E00C3AE8F /* AlarmViewController.swift in Sources */,
 				AB93C34D26711A1000C3AE8F /* TimeManager.swift in Sources */,
 				AB93C2BD266BABA900C3AE8F /* Record.swift in Sources */,
+				ABAFB62D2674D7750095415F /* Alarm.swift in Sources */,
 				AB4D6BBE2672099C00E5286E /* UIButton+Extension.swift in Sources */,
 				AB93C3422670FC6C00C3AE8F /* TimerViewController.swift in Sources */,
 				ABAFB57026735A670095415F /* TimeContainerViewController.swift in Sources */,
@@ -316,6 +335,7 @@
 				AB93C2CA266C846400C3AE8F /* UIView+Extension.swift in Sources */,
 				AB93C23B266A234800C3AE8F /* AppDelegate.swift in Sources */,
 				AB93C2C3266BC28E00C3AE8F /* EditStudyRecordViewController.swift in Sources */,
+				ABAFB6282674D4FC0095415F /* AlarmTableViewCell.swift in Sources */,
 				AB93C258266A5A0900C3AE8F /* StudyRecordTableViewCell.swift in Sources */,
 				AB93C3402670FC6400C3AE8F /* StopwatchViewController.swift in Sources */,
 				AB93C23D266A234800C3AE8F /* SceneDelegate.swift in Sources */,
