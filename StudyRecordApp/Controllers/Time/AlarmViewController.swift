@@ -17,8 +17,7 @@ final class AlarmViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(AlarmTableViewCell.nib,
-                           forCellReuseIdentifier: AlarmTableViewCell.identifier)
+        tableView.registerCustomCell(AlarmTableViewCell.self)
         tableView.tableFooterView = UIView()
         
     }
@@ -43,9 +42,8 @@ extension AlarmViewController: UITableViewDataSource {
         return alarms.count
     }
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: AlarmTableViewCell.identifier) as! AlarmTableViewCell
+        let cell = tableView.dequeueReusableCustomCell(with: AlarmTableViewCell.self)
         let alarm = alarms[indexPath.row]
         cell.configure(alarm: alarm)
         return cell
