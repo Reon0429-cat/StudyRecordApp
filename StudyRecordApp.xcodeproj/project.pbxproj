@@ -42,6 +42,8 @@
 		AB2B5BC826A2D36F009BD3C7 /* ColorConceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5BC226A2D36F009BD3C7 /* ColorConceptViewController.swift */; };
 		AB2B5BC926A2D36F009BD3C7 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5BC326A2D36F009BD3C7 /* SettingViewController.swift */; };
 		AB2B5BCA26A2D36F009BD3C7 /* ThemeColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5BC426A2D36F009BD3C7 /* ThemeColorViewController.swift */; };
+		AB2B5BCD26A2DC1E009BD3C7 /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB2B5BCC26A2DC1E009BD3C7 /* TabBar.storyboard */; };
+		AB2B5BD226A2DCD4009BD3C7 /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5BD126A2DCD4009BD3C7 /* MyTabBarController.swift */; };
 		AB4D6BBE2672099C00E5286E /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4D6BBD2672099C00E5286E /* UIButton+Extension.swift */; };
 		AB93C23B266A234800C3AE8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C23A266A234800C3AE8F /* AppDelegate.swift */; };
 		AB93C23D266A234800C3AE8F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C23C266A234800C3AE8F /* SceneDelegate.swift */; };
@@ -49,12 +51,8 @@
 		AB93C247266A234C00C3AE8F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB93C245266A234C00C3AE8F /* LaunchScreen.storyboard */; };
 		AB93C24F266A271E00C3AE8F /* StudyRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C24E266A271E00C3AE8F /* StudyRecordViewController.swift */; };
 		AB93C251266A27B900C3AE8F /* StudyRecord.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB93C250266A27B900C3AE8F /* StudyRecord.storyboard */; };
-		AB93C253266A2B7B00C3AE8F /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C252266A2B7B00C3AE8F /* MyTabBarController.swift */; };
-		AB93C255266A483E00C3AE8F /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C254266A483E00C3AE8F /* DrawView.swift */; };
 		AB93C258266A5A0900C3AE8F /* StudyRecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C256266A5A0900C3AE8F /* StudyRecordTableViewCell.swift */; };
 		AB93C259266A5A0900C3AE8F /* StudyRecordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB93C257266A5A0900C3AE8F /* StudyRecordTableViewCell.xib */; };
-		AB93C260266A66C300C3AE8F /* MiddleButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB93C25F266A66C300C3AE8F /* MiddleButtonView.xib */; };
-		AB93C262266A66D600C3AE8F /* MiddleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C261266A66D600C3AE8F /* MiddleButtonView.swift */; };
 		AB93C266266A7DEB00C3AE8F /* AdditionalStudyRecord.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB93C265266A7DEB00C3AE8F /* AdditionalStudyRecord.storyboard */; };
 		AB93C268266A7DFF00C3AE8F /* AdditionalStudyRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C267266A7DFF00C3AE8F /* AdditionalStudyRecordViewController.swift */; };
 		AB93C2BD266BABA900C3AE8F /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C2BC266BABA900C3AE8F /* Record.swift */; };
@@ -112,6 +110,8 @@
 		AB2B5BC226A2D36F009BD3C7 /* ColorConceptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorConceptViewController.swift; sourceTree = "<group>"; };
 		AB2B5BC326A2D36F009BD3C7 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		AB2B5BC426A2D36F009BD3C7 /* ThemeColorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeColorViewController.swift; sourceTree = "<group>"; };
+		AB2B5BCC26A2DC1E009BD3C7 /* TabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TabBar.storyboard; sourceTree = "<group>"; };
+		AB2B5BD126A2DCD4009BD3C7 /* MyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
 		AB4D6BBD2672099C00E5286E /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		AB93C237266A234800C3AE8F /* StudyRecordApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyRecordApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB93C23A266A234800C3AE8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -121,12 +121,8 @@
 		AB93C248266A234C00C3AE8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB93C24E266A271E00C3AE8F /* StudyRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRecordViewController.swift; sourceTree = "<group>"; };
 		AB93C250266A27B900C3AE8F /* StudyRecord.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StudyRecord.storyboard; sourceTree = "<group>"; };
-		AB93C252266A2B7B00C3AE8F /* MyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
-		AB93C254266A483E00C3AE8F /* DrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
 		AB93C256266A5A0900C3AE8F /* StudyRecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRecordTableViewCell.swift; sourceTree = "<group>"; };
 		AB93C257266A5A0900C3AE8F /* StudyRecordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudyRecordTableViewCell.xib; sourceTree = "<group>"; };
-		AB93C25F266A66C300C3AE8F /* MiddleButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MiddleButtonView.xib; sourceTree = "<group>"; };
-		AB93C261266A66D600C3AE8F /* MiddleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiddleButtonView.swift; sourceTree = "<group>"; };
 		AB93C265266A7DEB00C3AE8F /* AdditionalStudyRecord.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AdditionalStudyRecord.storyboard; sourceTree = "<group>"; };
 		AB93C267266A7DFF00C3AE8F /* AdditionalStudyRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalStudyRecordViewController.swift; sourceTree = "<group>"; };
 		AB93C2BC266BABA900C3AE8F /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
@@ -227,6 +223,22 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
+		AB2B5BCB26A2DC11009BD3C7 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				AB2B5BCC26A2DC1E009BD3C7 /* TabBar.storyboard */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		AB2B5BD026A2DC3E009BD3C7 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				AB2B5BD126A2DCD4009BD3C7 /* MyTabBarController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
 		AB93C22E266A234800C3AE8F = {
 			isa = PBXGroup;
 			children = (
@@ -275,9 +287,6 @@
 		AB93C25B266A5A2800C3AE8F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				AB93C254266A483E00C3AE8F /* DrawView.swift */,
-				AB93C261266A66D600C3AE8F /* MiddleButtonView.swift */,
-				AB93C25F266A66C300C3AE8F /* MiddleButtonView.xib */,
 				AB93C25D266A5A5E00C3AE8F /* Storyboards */,
 				AB93C25E266A5A6600C3AE8F /* Cells */,
 			);
@@ -287,7 +296,7 @@
 		AB93C25C266A5A2C00C3AE8F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				AB93C252266A2B7B00C3AE8F /* MyTabBarController.swift */,
+				AB2B5BD026A2DC3E009BD3C7 /* TabBar */,
 				AB93C2C6266BC4B000C3AE8F /* StudyRecord */,
 				AB93C33A2670FBA700C3AE8F /* Time */,
 				AB2B5BBE26A2D352009BD3C7 /* Setting */,
@@ -298,6 +307,7 @@
 		AB93C25D266A5A5E00C3AE8F /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				AB2B5BCB26A2DC11009BD3C7 /* TabBar */,
 				AB93C2C7266BC4F000C3AE8F /* StudyRecord */,
 				AB93C3452670FCD600C3AE8F /* Time */,
 				AB2B5BA626A2D232009BD3C7 /* Setting */,
@@ -450,7 +460,6 @@
 				AB93C244266A234C00C3AE8F /* Assets.xcassets in Resources */,
 				AB2B5BB826A2D2C2009BD3C7 /* AccordionColorTableViewCell.xib in Resources */,
 				AB93C2C5266BC2D600C3AE8F /* EditStudyRecord.storyboard in Resources */,
-				AB93C260266A66C300C3AE8F /* MiddleButtonView.xib in Resources */,
 				ABAFB6292674D4FC0095415F /* AlarmTableViewCell.xib in Resources */,
 				AB2B5BB626A2D2C2009BD3C7 /* SectionHeaderView.xib in Resources */,
 				AB2B5BBD26A2D2C2009BD3C7 /* AccordionTableViewCell.xib in Resources */,
@@ -459,6 +468,7 @@
 				AB93C259266A5A0900C3AE8F /* StudyRecordTableViewCell.xib in Resources */,
 				AB93C266266A7DEB00C3AE8F /* AdditionalStudyRecord.storyboard in Resources */,
 				ABAFB57226735E120095415F /* CurrentTime.storyboard in Resources */,
+				AB2B5BCD26A2DC1E009BD3C7 /* TabBar.storyboard in Resources */,
 				ABAFB57426737EDB0095415F /* TimeContainer.storyboard in Resources */,
 				AB2B5BAA26A2D244009BD3C7 /* Setting.storyboard in Resources */,
 			);
@@ -474,9 +484,9 @@
 				AB2B5B9F26A2D1B7009BD3C7 /* OverseasConcept.swift in Sources */,
 				AB2B5BC526A2D36F009BD3C7 /* ColorChoicesTileViewController.swift in Sources */,
 				AB93C24F266A271E00C3AE8F /* StudyRecordViewController.swift in Sources */,
-				AB93C262266A66D600C3AE8F /* MiddleButtonView.swift in Sources */,
 				AB93C33E2670FC4E00C3AE8F /* AlarmViewController.swift in Sources */,
 				AB93C34D26711A1000C3AE8F /* TimeManager.swift in Sources */,
+				AB2B5BD226A2DCD4009BD3C7 /* MyTabBarController.swift in Sources */,
 				AB2B5BCA26A2D36F009BD3C7 /* ThemeColorViewController.swift in Sources */,
 				AB2B5B8C26A2D106009BD3C7 /* UITableViewHeaderFooterView+Extension.swift in Sources */,
 				AB2B5B8426A2D0FD009BD3C7 /* NotificationName+Extension.swift in Sources */,
@@ -490,10 +500,8 @@
 				AB2B5BBC26A2D2C2009BD3C7 /* AccordionTableViewCell.swift in Sources */,
 				AB2B5BC726A2D36F009BD3C7 /* ColorChoicesConceptViewController.swift in Sources */,
 				ABAFB57026735A670095415F /* TimeContainerViewController.swift in Sources */,
-				AB93C255266A483E00C3AE8F /* DrawView.swift in Sources */,
 				AB2B5BB726A2D2C2009BD3C7 /* ColorConceptTableViewCell.swift in Sources */,
 				AB2B5B8326A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift in Sources */,
-				AB93C253266A2B7B00C3AE8F /* MyTabBarController.swift in Sources */,
 				AB93C268266A7DFF00C3AE8F /* AdditionalStudyRecordViewController.swift in Sources */,
 				AB2B5B9E26A2D1B7009BD3C7 /* NaturalConcept.swift in Sources */,
 				AB2B5BA326A2D1B7009BD3C7 /* JapanConcept.swift in Sources */,

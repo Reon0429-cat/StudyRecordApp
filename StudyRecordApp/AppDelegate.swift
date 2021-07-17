@@ -10,13 +10,9 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         UINavigationBar.appearance().isTranslucent = false
         UITabBar.appearance().isTranslucent = false
-        UITabBar.appearance().shadowImage = UIImage()
-        UITabBar.appearance().clipsToBounds = true
         return true
     }
     
