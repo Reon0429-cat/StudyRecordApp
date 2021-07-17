@@ -10,7 +10,6 @@ import UIKit
 extension UIButton {
     
     func setTitle(_ title: String) {
-        self.setTitle(title, for: .normal)
         UIView.setAnimationsEnabled(false)
         self.setTitle(title, for: .normal)
         self.layoutIfNeeded()

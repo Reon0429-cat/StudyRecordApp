@@ -19,6 +19,7 @@ final class AlarmViewController: UIViewController {
         tableView.dataSource = self
         tableView.register(AlarmTableViewCell.nib,
                            forCellReuseIdentifier: AlarmTableViewCell.identifier)
+        tableView.tableFooterView = UIView()
         
     }
     
@@ -28,6 +29,10 @@ extension AlarmViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }
