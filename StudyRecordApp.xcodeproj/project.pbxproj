@@ -25,6 +25,23 @@
 		AB2B5BA226A2D1B7009BD3C7 /* ElegantConcept.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B9B26A2D1B7009BD3C7 /* ElegantConcept.swift */; };
 		AB2B5BA326A2D1B7009BD3C7 /* JapanConcept.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B9C26A2D1B7009BD3C7 /* JapanConcept.swift */; };
 		AB2B5BA426A2D1B7009BD3C7 /* PopConcept.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B9D26A2D1B7009BD3C7 /* PopConcept.swift */; };
+		AB2B5BAA26A2D244009BD3C7 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB2B5BA726A2D244009BD3C7 /* Setting.storyboard */; };
+		AB2B5BAB26A2D244009BD3C7 /* ColorConcept.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB2B5BA826A2D244009BD3C7 /* ColorConcept.storyboard */; };
+		AB2B5BAC26A2D244009BD3C7 /* ThemeColor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB2B5BA926A2D244009BD3C7 /* ThemeColor.storyboard */; };
+		AB2B5BB626A2D2C2009BD3C7 /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB2B5BAE26A2D2C1009BD3C7 /* SectionHeaderView.xib */; };
+		AB2B5BB726A2D2C2009BD3C7 /* ColorConceptTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5BAF26A2D2C1009BD3C7 /* ColorConceptTableViewCell.swift */; };
+		AB2B5BB826A2D2C2009BD3C7 /* AccordionColorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB2B5BB026A2D2C1009BD3C7 /* AccordionColorTableViewCell.xib */; };
+		AB2B5BB926A2D2C2009BD3C7 /* AccordionColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5BB126A2D2C2009BD3C7 /* AccordionColorTableViewCell.swift */; };
+		AB2B5BBA26A2D2C2009BD3C7 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5BB226A2D2C2009BD3C7 /* SectionHeaderView.swift */; };
+		AB2B5BBB26A2D2C2009BD3C7 /* ColorConceptTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB2B5BB326A2D2C2009BD3C7 /* ColorConceptTableViewCell.xib */; };
+		AB2B5BBC26A2D2C2009BD3C7 /* AccordionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5BB426A2D2C2009BD3C7 /* AccordionTableViewCell.swift */; };
+		AB2B5BBD26A2D2C2009BD3C7 /* AccordionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB2B5BB526A2D2C2009BD3C7 /* AccordionTableViewCell.xib */; };
+		AB2B5BC526A2D36F009BD3C7 /* ColorChoicesTileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5BBF26A2D36F009BD3C7 /* ColorChoicesTileViewController.swift */; };
+		AB2B5BC626A2D36F009BD3C7 /* ColorChoicesSliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5BC026A2D36F009BD3C7 /* ColorChoicesSliderViewController.swift */; };
+		AB2B5BC726A2D36F009BD3C7 /* ColorChoicesConceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5BC126A2D36F009BD3C7 /* ColorChoicesConceptViewController.swift */; };
+		AB2B5BC826A2D36F009BD3C7 /* ColorConceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5BC226A2D36F009BD3C7 /* ColorConceptViewController.swift */; };
+		AB2B5BC926A2D36F009BD3C7 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5BC326A2D36F009BD3C7 /* SettingViewController.swift */; };
+		AB2B5BCA26A2D36F009BD3C7 /* ThemeColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5BC426A2D36F009BD3C7 /* ThemeColorViewController.swift */; };
 		AB4D6BBE2672099C00E5286E /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4D6BBD2672099C00E5286E /* UIButton+Extension.swift */; };
 		AB93C23B266A234800C3AE8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C23A266A234800C3AE8F /* AppDelegate.swift */; };
 		AB93C23D266A234800C3AE8F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C23C266A234800C3AE8F /* SceneDelegate.swift */; };
@@ -78,6 +95,23 @@
 		AB2B5B9B26A2D1B7009BD3C7 /* ElegantConcept.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElegantConcept.swift; sourceTree = "<group>"; };
 		AB2B5B9C26A2D1B7009BD3C7 /* JapanConcept.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JapanConcept.swift; sourceTree = "<group>"; };
 		AB2B5B9D26A2D1B7009BD3C7 /* PopConcept.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopConcept.swift; sourceTree = "<group>"; };
+		AB2B5BA726A2D244009BD3C7 /* Setting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
+		AB2B5BA826A2D244009BD3C7 /* ColorConcept.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ColorConcept.storyboard; sourceTree = "<group>"; };
+		AB2B5BA926A2D244009BD3C7 /* ThemeColor.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ThemeColor.storyboard; sourceTree = "<group>"; };
+		AB2B5BAE26A2D2C1009BD3C7 /* SectionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
+		AB2B5BAF26A2D2C1009BD3C7 /* ColorConceptTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorConceptTableViewCell.swift; sourceTree = "<group>"; };
+		AB2B5BB026A2D2C1009BD3C7 /* AccordionColorTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccordionColorTableViewCell.xib; sourceTree = "<group>"; };
+		AB2B5BB126A2D2C2009BD3C7 /* AccordionColorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccordionColorTableViewCell.swift; sourceTree = "<group>"; };
+		AB2B5BB226A2D2C2009BD3C7 /* SectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
+		AB2B5BB326A2D2C2009BD3C7 /* ColorConceptTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorConceptTableViewCell.xib; sourceTree = "<group>"; };
+		AB2B5BB426A2D2C2009BD3C7 /* AccordionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccordionTableViewCell.swift; sourceTree = "<group>"; };
+		AB2B5BB526A2D2C2009BD3C7 /* AccordionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccordionTableViewCell.xib; sourceTree = "<group>"; };
+		AB2B5BBF26A2D36F009BD3C7 /* ColorChoicesTileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorChoicesTileViewController.swift; sourceTree = "<group>"; };
+		AB2B5BC026A2D36F009BD3C7 /* ColorChoicesSliderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorChoicesSliderViewController.swift; sourceTree = "<group>"; };
+		AB2B5BC126A2D36F009BD3C7 /* ColorChoicesConceptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorChoicesConceptViewController.swift; sourceTree = "<group>"; };
+		AB2B5BC226A2D36F009BD3C7 /* ColorConceptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorConceptViewController.swift; sourceTree = "<group>"; };
+		AB2B5BC326A2D36F009BD3C7 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		AB2B5BC426A2D36F009BD3C7 /* ThemeColorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeColorViewController.swift; sourceTree = "<group>"; };
 		AB4D6BBD2672099C00E5286E /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		AB93C237266A234800C3AE8F /* StudyRecordApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyRecordApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB93C23A266A234800C3AE8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -155,6 +189,44 @@
 			path = SubConcepts;
 			sourceTree = "<group>";
 		};
+		AB2B5BA626A2D232009BD3C7 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				AB2B5BA726A2D244009BD3C7 /* Setting.storyboard */,
+				AB2B5BA826A2D244009BD3C7 /* ColorConcept.storyboard */,
+				AB2B5BA926A2D244009BD3C7 /* ThemeColor.storyboard */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		AB2B5BAD26A2D2A8009BD3C7 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				AB2B5BB226A2D2C2009BD3C7 /* SectionHeaderView.swift */,
+				AB2B5BAE26A2D2C1009BD3C7 /* SectionHeaderView.xib */,
+				AB2B5BB426A2D2C2009BD3C7 /* AccordionTableViewCell.swift */,
+				AB2B5BB526A2D2C2009BD3C7 /* AccordionTableViewCell.xib */,
+				AB2B5BB126A2D2C2009BD3C7 /* AccordionColorTableViewCell.swift */,
+				AB2B5BB026A2D2C1009BD3C7 /* AccordionColorTableViewCell.xib */,
+				AB2B5BAF26A2D2C1009BD3C7 /* ColorConceptTableViewCell.swift */,
+				AB2B5BB326A2D2C2009BD3C7 /* ColorConceptTableViewCell.xib */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		AB2B5BBE26A2D352009BD3C7 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				AB2B5BC326A2D36F009BD3C7 /* SettingViewController.swift */,
+				AB2B5BC426A2D36F009BD3C7 /* ThemeColorViewController.swift */,
+				AB2B5BC226A2D36F009BD3C7 /* ColorConceptViewController.swift */,
+				AB2B5BC126A2D36F009BD3C7 /* ColorChoicesConceptViewController.swift */,
+				AB2B5BBF26A2D36F009BD3C7 /* ColorChoicesTileViewController.swift */,
+				AB2B5BC026A2D36F009BD3C7 /* ColorChoicesSliderViewController.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		AB93C22E266A234800C3AE8F = {
 			isa = PBXGroup;
 			children = (
@@ -218,6 +290,7 @@
 				AB93C252266A2B7B00C3AE8F /* MyTabBarController.swift */,
 				AB93C2C6266BC4B000C3AE8F /* StudyRecord */,
 				AB93C33A2670FBA700C3AE8F /* Time */,
+				AB2B5BBE26A2D352009BD3C7 /* Setting */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -227,6 +300,7 @@
 			children = (
 				AB93C2C7266BC4F000C3AE8F /* StudyRecord */,
 				AB93C3452670FCD600C3AE8F /* Time */,
+				AB2B5BA626A2D232009BD3C7 /* Setting */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -236,6 +310,7 @@
 			children = (
 				AB93C2C8266BC50600C3AE8F /* StudyRecord */,
 				ABAFB62A2674D5120095415F /* Time */,
+				AB2B5BAD26A2D2A8009BD3C7 /* Setting */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -369,16 +444,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB93C247266A234C00C3AE8F /* LaunchScreen.storyboard in Resources */,
+				AB2B5BBB26A2D2C2009BD3C7 /* ColorConceptTableViewCell.xib in Resources */,
 				AB93C251266A27B900C3AE8F /* StudyRecord.storyboard in Resources */,
+				AB2B5BAB26A2D244009BD3C7 /* ColorConcept.storyboard in Resources */,
 				AB93C244266A234C00C3AE8F /* Assets.xcassets in Resources */,
+				AB2B5BB826A2D2C2009BD3C7 /* AccordionColorTableViewCell.xib in Resources */,
 				AB93C2C5266BC2D600C3AE8F /* EditStudyRecord.storyboard in Resources */,
 				AB93C260266A66C300C3AE8F /* MiddleButtonView.xib in Resources */,
 				ABAFB6292674D4FC0095415F /* AlarmTableViewCell.xib in Resources */,
+				AB2B5BB626A2D2C2009BD3C7 /* SectionHeaderView.xib in Resources */,
+				AB2B5BBD26A2D2C2009BD3C7 /* AccordionTableViewCell.xib in Resources */,
 				AB93C2C1266BAD1100C3AE8F /* StudyRecordSectionView.xib in Resources */,
+				AB2B5BAC26A2D244009BD3C7 /* ThemeColor.storyboard in Resources */,
 				AB93C259266A5A0900C3AE8F /* StudyRecordTableViewCell.xib in Resources */,
 				AB93C266266A7DEB00C3AE8F /* AdditionalStudyRecord.storyboard in Resources */,
 				ABAFB57226735E120095415F /* CurrentTime.storyboard in Resources */,
 				ABAFB57426737EDB0095415F /* TimeContainer.storyboard in Resources */,
+				AB2B5BAA26A2D244009BD3C7 /* Setting.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,10 +472,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB2B5B9F26A2D1B7009BD3C7 /* OverseasConcept.swift in Sources */,
+				AB2B5BC526A2D36F009BD3C7 /* ColorChoicesTileViewController.swift in Sources */,
 				AB93C24F266A271E00C3AE8F /* StudyRecordViewController.swift in Sources */,
 				AB93C262266A66D600C3AE8F /* MiddleButtonView.swift in Sources */,
 				AB93C33E2670FC4E00C3AE8F /* AlarmViewController.swift in Sources */,
 				AB93C34D26711A1000C3AE8F /* TimeManager.swift in Sources */,
+				AB2B5BCA26A2D36F009BD3C7 /* ThemeColorViewController.swift in Sources */,
 				AB2B5B8C26A2D106009BD3C7 /* UITableViewHeaderFooterView+Extension.swift in Sources */,
 				AB2B5B8426A2D0FD009BD3C7 /* NotificationName+Extension.swift in Sources */,
 				AB93C2BD266BABA900C3AE8F /* Record.swift in Sources */,
@@ -403,8 +487,11 @@
 				AB4D6BBE2672099C00E5286E /* UIButton+Extension.swift in Sources */,
 				AB93C3422670FC6C00C3AE8F /* TimerViewController.swift in Sources */,
 				AB2B5BA426A2D1B7009BD3C7 /* PopConcept.swift in Sources */,
+				AB2B5BBC26A2D2C2009BD3C7 /* AccordionTableViewCell.swift in Sources */,
+				AB2B5BC726A2D36F009BD3C7 /* ColorChoicesConceptViewController.swift in Sources */,
 				ABAFB57026735A670095415F /* TimeContainerViewController.swift in Sources */,
 				AB93C255266A483E00C3AE8F /* DrawView.swift in Sources */,
+				AB2B5BB726A2D2C2009BD3C7 /* ColorConceptTableViewCell.swift in Sources */,
 				AB2B5B8326A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift in Sources */,
 				AB93C253266A2B7B00C3AE8F /* MyTabBarController.swift in Sources */,
 				AB93C268266A7DFF00C3AE8F /* AdditionalStudyRecordViewController.swift in Sources */,
@@ -413,11 +500,15 @@
 				AB2B5BA126A2D1B7009BD3C7 /* SeasonConcept.swift in Sources */,
 				AB93C33C2670FC2C00C3AE8F /* CurrentTimeViewController.swift in Sources */,
 				AB2B5B8526A2D0FD009BD3C7 /* UIColor+Extension.swift in Sources */,
+				AB2B5BBA26A2D2C2009BD3C7 /* SectionHeaderView.swift in Sources */,
 				AB2B5B8F26A2D106009BD3C7 /* UIViewController+Extension.swift in Sources */,
 				AB2B5B8E26A2D106009BD3C7 /* UITableViewCell+Extension.swift in Sources */,
 				AB93C2CA266C846400C3AE8F /* UIView+Extension.swift in Sources */,
 				AB2B5B8626A2D0FD009BD3C7 /* NSObjectProtocol+Extension.swift in Sources */,
+				AB2B5BC626A2D36F009BD3C7 /* ColorChoicesSliderViewController.swift in Sources */,
 				AB93C23B266A234800C3AE8F /* AppDelegate.swift in Sources */,
+				AB2B5BC926A2D36F009BD3C7 /* SettingViewController.swift in Sources */,
+				AB2B5BB926A2D2C2009BD3C7 /* AccordionColorTableViewCell.swift in Sources */,
 				AB93C2C3266BC28E00C3AE8F /* EditStudyRecordViewController.swift in Sources */,
 				ABAFB6282674D4FC0095415F /* AlarmTableViewCell.swift in Sources */,
 				AB2B5B8D26A2D106009BD3C7 /* UITableView+Extension.swift in Sources */,
@@ -428,6 +519,7 @@
 				AB2B5B9626A2D19E009BD3C7 /* ThemeColor.swift in Sources */,
 				AB93C2BF266BACE100C3AE8F /* StudyRecordSectionView.swift in Sources */,
 				AB2B5B9526A2D19E009BD3C7 /* ColorConcept.swift in Sources */,
+				AB2B5BC826A2D36F009BD3C7 /* ColorConceptViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
