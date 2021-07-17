@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB2B5B8326A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B7E26A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift */; };
+		AB2B5B8426A2D0FD009BD3C7 /* NotificationName+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B7F26A2D0FD009BD3C7 /* NotificationName+Extension.swift */; };
+		AB2B5B8526A2D0FD009BD3C7 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B8026A2D0FD009BD3C7 /* UIColor+Extension.swift */; };
+		AB2B5B8626A2D0FD009BD3C7 /* NSObjectProtocol+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B8126A2D0FD009BD3C7 /* NSObjectProtocol+Extension.swift */; };
+		AB2B5B8726A2D0FD009BD3C7 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B8226A2D0FD009BD3C7 /* UICollectionView+Extension.swift */; };
+		AB2B5B8C26A2D106009BD3C7 /* UITableViewHeaderFooterView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B8826A2D106009BD3C7 /* UITableViewHeaderFooterView+Extension.swift */; };
+		AB2B5B8D26A2D106009BD3C7 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B8926A2D106009BD3C7 /* UITableView+Extension.swift */; };
+		AB2B5B8E26A2D106009BD3C7 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B8A26A2D106009BD3C7 /* UITableViewCell+Extension.swift */; };
+		AB2B5B8F26A2D106009BD3C7 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B8B26A2D106009BD3C7 /* UIViewController+Extension.swift */; };
 		AB4D6BBE2672099C00E5286E /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4D6BBD2672099C00E5286E /* UIButton+Extension.swift */; };
 		AB93C23B266A234800C3AE8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C23A266A234800C3AE8F /* AppDelegate.swift */; };
 		AB93C23D266A234800C3AE8F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C23C266A234800C3AE8F /* SceneDelegate.swift */; };
@@ -42,6 +51,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AB2B5B7E26A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
+		AB2B5B7F26A2D0FD009BD3C7 /* NotificationName+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotificationName+Extension.swift"; sourceTree = "<group>"; };
+		AB2B5B8026A2D0FD009BD3C7 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		AB2B5B8126A2D0FD009BD3C7 /* NSObjectProtocol+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObjectProtocol+Extension.swift"; sourceTree = "<group>"; };
+		AB2B5B8226A2D0FD009BD3C7 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
+		AB2B5B8826A2D106009BD3C7 /* UITableViewHeaderFooterView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableViewHeaderFooterView+Extension.swift"; sourceTree = "<group>"; };
+		AB2B5B8926A2D106009BD3C7 /* UITableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		AB2B5B8A26A2D106009BD3C7 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
+		AB2B5B8B26A2D106009BD3C7 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		AB4D6BBD2672099C00E5286E /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		AB93C237266A234800C3AE8F /* StudyRecordApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyRecordApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB93C23A266A234800C3AE8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -205,8 +223,17 @@
 		AB93C2CB266C84CA00C3AE8F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				AB2B5B7F26A2D0FD009BD3C7 /* NotificationName+Extension.swift */,
+				AB2B5B8126A2D0FD009BD3C7 /* NSObjectProtocol+Extension.swift */,
 				AB93C2C9266C846400C3AE8F /* UIView+Extension.swift */,
 				AB4D6BBD2672099C00E5286E /* UIButton+Extension.swift */,
+				AB2B5B8226A2D0FD009BD3C7 /* UICollectionView+Extension.swift */,
+				AB2B5B7E26A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift */,
+				AB2B5B8026A2D0FD009BD3C7 /* UIColor+Extension.swift */,
+				AB2B5B8926A2D106009BD3C7 /* UITableView+Extension.swift */,
+				AB2B5B8A26A2D106009BD3C7 /* UITableViewCell+Extension.swift */,
+				AB2B5B8826A2D106009BD3C7 /* UITableViewHeaderFooterView+Extension.swift */,
+				AB2B5B8B26A2D106009BD3C7 /* UIViewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -323,19 +350,28 @@
 				AB93C262266A66D600C3AE8F /* MiddleButtonView.swift in Sources */,
 				AB93C33E2670FC4E00C3AE8F /* AlarmViewController.swift in Sources */,
 				AB93C34D26711A1000C3AE8F /* TimeManager.swift in Sources */,
+				AB2B5B8C26A2D106009BD3C7 /* UITableViewHeaderFooterView+Extension.swift in Sources */,
+				AB2B5B8426A2D0FD009BD3C7 /* NotificationName+Extension.swift in Sources */,
 				AB93C2BD266BABA900C3AE8F /* Record.swift in Sources */,
+				AB2B5B8726A2D0FD009BD3C7 /* UICollectionView+Extension.swift in Sources */,
 				ABAFB62D2674D7750095415F /* Alarm.swift in Sources */,
 				AB4D6BBE2672099C00E5286E /* UIButton+Extension.swift in Sources */,
 				AB93C3422670FC6C00C3AE8F /* TimerViewController.swift in Sources */,
 				ABAFB57026735A670095415F /* TimeContainerViewController.swift in Sources */,
 				AB93C255266A483E00C3AE8F /* DrawView.swift in Sources */,
+				AB2B5B8326A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift in Sources */,
 				AB93C253266A2B7B00C3AE8F /* MyTabBarController.swift in Sources */,
 				AB93C268266A7DFF00C3AE8F /* AdditionalStudyRecordViewController.swift in Sources */,
 				AB93C33C2670FC2C00C3AE8F /* CurrentTimeViewController.swift in Sources */,
+				AB2B5B8526A2D0FD009BD3C7 /* UIColor+Extension.swift in Sources */,
+				AB2B5B8F26A2D106009BD3C7 /* UIViewController+Extension.swift in Sources */,
+				AB2B5B8E26A2D106009BD3C7 /* UITableViewCell+Extension.swift in Sources */,
 				AB93C2CA266C846400C3AE8F /* UIView+Extension.swift in Sources */,
+				AB2B5B8626A2D0FD009BD3C7 /* NSObjectProtocol+Extension.swift in Sources */,
 				AB93C23B266A234800C3AE8F /* AppDelegate.swift in Sources */,
 				AB93C2C3266BC28E00C3AE8F /* EditStudyRecordViewController.swift in Sources */,
 				ABAFB6282674D4FC0095415F /* AlarmTableViewCell.swift in Sources */,
+				AB2B5B8D26A2D106009BD3C7 /* UITableView+Extension.swift in Sources */,
 				AB93C258266A5A0900C3AE8F /* StudyRecordTableViewCell.swift in Sources */,
 				AB93C3402670FC6400C3AE8F /* StopwatchViewController.swift in Sources */,
 				AB93C23D266A234800C3AE8F /* SceneDelegate.swift in Sources */,
