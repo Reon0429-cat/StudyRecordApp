@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--勉強記録-->
+        <!--記録-->
         <scene sceneID="R2w-MH-Cwh">
             <objects>
                 <viewController id="TGE-gS-zNx" customClass="StudyRecordViewController" customModule="StudyRecordApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -32,22 +32,25 @@
                             <constraint firstAttribute="bottom" secondItem="3pH-kq-Zvs" secondAttribute="bottom" id="MBd-9t-5eo"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="勉強記録" id="3zd-t5-YFk">
+                    <tabBarItem key="tabBarItem" title="記録" image="square.and.pencil" catalog="system" id="55T-Qi-axi"/>
+                    <navigationItem key="navigationItem" title="記録" id="3zd-t5-YFk">
                         <barButtonItem key="rightBarButtonItem" title="編集" id="aEr-Ws-c9C"/>
                     </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="3pH-kq-Zvs" id="64T-QH-dME"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3V3-ZY-amu" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3886.9565217391309" y="123.88392857142857"/>
+            <point key="canvasLocation" x="4645" y="124"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="E8a-kf-bu5">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nRg-be-P3o" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pQ1-zM-1Ay">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -59,10 +62,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YMz-YJ-u5Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3105.7971014492755" y="123.88392857142857"/>
+            <point key="canvasLocation" x="3894" y="124"/>
         </scene>
     </scenes>
     <resources>
+        <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -18,11 +18,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9mX-as-Ot5">
-                                <rect key="frame" x="0.0" y="88" width="414" height="624"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="575"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="egv-F8-Uco">
-                                <rect key="frame" x="0.0" y="712" width="414" height="150"/>
+                                <rect key="frame" x="0.0" y="663" width="414" height="150"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BYu-Do-OlH">
                                         <rect key="frame" x="0.0" y="0.0" width="138" height="150"/>
@@ -52,9 +52,11 @@
                             <constraint firstItem="9mX-as-Ot5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="wpJ-vZ-9qe"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="設定" image="gearshape" catalog="system" id="wTh-MF-B2V"/>
                     <navigationItem key="navigationItem" title="設定" id="4lr-yd-duF">
                         <barButtonItem key="leftBarButtonItem" title="戻る" id="ctP-ms-pHE"/>
                     </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="accentView" destination="p9H-ce-I3d" id="KRK-7l-BWV"/>
                         <outlet property="mainView" destination="BYu-Do-OlH" id="RiX-bw-Qy9"/>
@@ -71,6 +73,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FO9-gG-fRi" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GAv-b5-CFm">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -86,6 +89,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="gearshape" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

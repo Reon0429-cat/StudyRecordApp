@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--タイム-->
+        <!--時間-->
         <scene sceneID="t2N-gh-tYd">
             <objects>
                 <viewController storyboardIdentifier="CurrentTimeViewController" id="gp3-Ee-EEc" customClass="CurrentTimeViewController" customModule="StudyRecordApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -72,7 +72,9 @@
                             <constraint firstItem="yeO-GK-uEZ" firstAttribute="centerX" secondItem="IuD-1M-N8e" secondAttribute="centerX" id="x9U-Va-EjL"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="タイム" id="s5m-re-7Ac"/>
+                    <tabBarItem key="tabBarItem" title="時間" image="clock" catalog="system" id="xl9-Kk-3ma"/>
+                    <navigationItem key="navigationItem" title="時間" id="s5m-re-7Ac"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="currentTimeLabel" destination="05w-5j-IVF" id="dxu-aP-CDN"/>
                         <segue destination="hqC-ed-t3C" kind="show" id="mqg-g3-n02"/>
@@ -97,6 +99,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ngl-Hy-Abi" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pRH-by-NzL">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -112,6 +115,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="clock" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
