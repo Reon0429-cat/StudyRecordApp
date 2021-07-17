@@ -7,15 +7,8 @@
 
 import UIKit
 
-protocol StudyRecordSectionViewDelegate: MyTabBarController {
+protocol StudyRecordSectionViewDelegate: AnyObject {
     func didTapped()
-}
-
-extension StudyRecordSectionViewDelegate {
-    func didTapped() {
-        let editStudyRecordVC = EditStudyRecordViewController.instantiate()
-        present(editStudyRecordVC, animated: true, completion: nil)
-    }
 }
 
 final class StudyRecordSectionView: UITableViewHeaderFooterView {
@@ -26,8 +19,6 @@ final class StudyRecordSectionView: UITableViewHeaderFooterView {
     @IBOutlet private weak var todayStudyTimeLabel: UILabel!
     @IBOutlet private weak var totalStudyTimeLabel: UILabel!
     
-    static var identifier: String { String(describing: self) }
-    static var nib: UINib { UINib(nibName: String(describing: self), bundle: nil) }
     var didClickedButton: (() -> Void)?
     private var isExpanded = false
     var delegate: StudyRecordSectionViewDelegate?

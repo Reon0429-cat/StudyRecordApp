@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TimeContainerViewController: MyTabBarController {
+final class TimeContainerViewController: UIViewController {
     
     @IBOutlet private weak var segmentedControl: UISegmentedControl!
     @IBOutlet private weak var containerView: UIView!

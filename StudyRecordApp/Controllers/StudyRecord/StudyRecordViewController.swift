@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class StudyRecordViewController: MyTabBarController {
+final class StudyRecordViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
     
@@ -23,10 +23,8 @@ final class StudyRecordViewController: MyTabBarController {
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(StudyRecordTableViewCell.nib,
-                           forCellReuseIdentifier: StudyRecordTableViewCell.identifier)
-        tableView.register(StudyRecordSectionView.nib,
-                           forHeaderFooterViewReuseIdentifier: StudyRecordSectionView.identifier)
+        tableView.registerCustomCell(StudyRecordTableViewCell.self)
+        tableView.registerCustomCell(StudyRecordSectionView.self)
         tableView.tableFooterView = UIView()
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100
@@ -45,9 +43,7 @@ extension StudyRecordViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let studyRecordSectionView = tableView.dequeueReusableHeaderFooterView(
-            withIdentifier: StudyRecordSectionView.identifier
-        ) as! StudyRecordSectionView
+        let studyRecordSectionView = tableView.dequeueReusableCustomHeaderFooterView(with: StudyRecordSectionView.self)
         let record = records[section]
         studyRecordSectionView.configure(record: record) { [weak self] in
             guard let self = self else { return }
@@ -92,4 +88,11 @@ extension StudyRecordViewController: UITableViewDataSource {
     
 }
 
-extension StudyRecordViewController: StudyRecordSectionViewDelegate { } 
+extension StudyRecordViewController: StudyRecordSectionViewDelegate {
+    
+    func didTapped() {
+        let editStudyRecordVC = EditStudyRecordViewController.instantiate()
+        present(editStudyRecordVC, animated: true, completion: nil)
+    }
+    
+}
