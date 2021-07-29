@@ -16,4 +16,11 @@ extension UIButton {
         UIView.setAnimationsEnabled(true)
     }
     
+    func setImage(_ image: UIImage) {
+        UIView.setAnimationsEnabled(false)
+        self.setImage(image, for: .normal)
+        self.layoutIfNeeded()
+        UIView.setAnimationsEnabled(true)
+    }
+    
 }
