@@ -10,6 +10,7 @@ import UIKit
 final class StudyRecordViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var addRecordButton: UIButton!
     
     private var records = Record.data
     
@@ -17,7 +18,7 @@ final class StudyRecordViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
-        
+        addRecordButton.layer.cornerRadius = addRecordButton.frame.height / 2
     }
     
     private func setupTableView() {
@@ -28,6 +29,11 @@ final class StudyRecordViewController: UIViewController {
         tableView.tableFooterView = UIView()
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100
+    }
+    
+    @IBAction private func addRecordButtonDidTapped(_ sender: Any) {
+        let additionalStudyRecordVC = AdditionalStudyRecordViewController.instantiate()
+        present(additionalStudyRecordVC, animated: true, completion: nil)
     }
     
 }
