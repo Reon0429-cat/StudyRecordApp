@@ -9,6 +9,8 @@ import UIKit
 
 final class StudyRecordTitleTableViewCell: UITableViewCell {
     
+    @IBOutlet private weak var titleLabel: UILabel!
+    
     var onTapEvent: (() -> Void)?
     
     func configure(onTapEvent: @escaping () -> Void) {

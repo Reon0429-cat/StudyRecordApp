@@ -11,7 +11,7 @@ final class AdditionalStudyRecordViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
     
-    enum CellType: Int, CaseIterable {
+    private enum CellType: Int, CaseIterable {
         case title
         case graphColor
         case memo
@@ -47,7 +47,6 @@ final class AdditionalStudyRecordViewController: UIViewController {
         let additionalStudyRecordVC = storyboard.instantiateViewController(
             identifier: String(describing: self)
         ) as! AdditionalStudyRecordViewController
-        additionalStudyRecordVC.modalPresentationStyle = .fullScreen
         return additionalStudyRecordVC
     }
     
@@ -64,6 +63,10 @@ final class AdditionalStudyRecordViewController: UIViewController {
 }
 
 extension AdditionalStudyRecordViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
