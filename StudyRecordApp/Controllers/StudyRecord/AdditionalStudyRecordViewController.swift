@@ -43,7 +43,7 @@ final class AdditionalStudyRecordViewController: UIViewController {
     }
     
     static func instantiate() -> AdditionalStudyRecordViewController {
-        let storyboard = UIStoryboard.additionalStudyRecord
+        let storyboard = UIStoryboard(name: "AdditionalStudyRecord", bundle: nil)
         let additionalStudyRecordVC = storyboard.instantiateViewController(
             identifier: String(describing: self)
         ) as! AdditionalStudyRecordViewController
@@ -64,11 +64,25 @@ final class AdditionalStudyRecordViewController: UIViewController {
 
 extension AdditionalStudyRecordViewController: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView,
+                   didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let cellType = CellType(rawValue: indexPath.row)!
+        switch cellType {
+            case .title:
+                let alert = UIAlertController.withTextField(title: "タイトル", message: nil)
+                present(alert, animated: true, completion: nil)
+            case .graphColor:
+                let studyRecordGraphColorVC = StudyRecordGraphColorViewController.instantiate()
+                studyRecordGraphColorVC.modalPresentationStyle = .overCurrentContext
+                present(studyRecordGraphColorVC, animated: true, completion: nil)
+            case .memo:
+                break
+        }
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView,
+                   heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
     
@@ -98,10 +112,3 @@ extension AdditionalStudyRecordViewController: UITableViewDataSource {
     }
     
 }
-
-private extension UIStoryboard {
-    static var additionalStudyRecord: UIStoryboard {
-        return UIStoryboard(name: "AdditionalStudyRecord", bundle: nil)
-    }
-}
-
