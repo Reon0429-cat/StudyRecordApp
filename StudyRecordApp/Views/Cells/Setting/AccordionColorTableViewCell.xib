@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -21,18 +19,18 @@
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="f4P-ci-qA1">
                         <rect key="frame" x="47.5" y="5" width="238" height="66"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dsq-FT-tZC" customClass="ThemeColorTileView" customModule="ThemeColor_Sample" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dsq-FT-tZC" customClass="TileView" customModule="ThemeColor_Sample" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="66" height="66"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="dsq-FT-tZC" secondAttribute="height" id="WVI-95-WMz"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VMm-Dc-hYr" customClass="ThemeColorTileView" customModule="ThemeColor_Sample" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VMm-Dc-hYr" customClass="TileView" customModule="ThemeColor_Sample" customModuleProvider="target">
                                 <rect key="frame" x="86" y="0.0" width="66" height="66"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kKF-Us-RJN" customClass="ThemeColorTileView" customModule="ThemeColor_Sample" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kKF-Us-RJN" customClass="TileView" customModule="ThemeColor_Sample" customModuleProvider="target">
                                 <rect key="frame" x="172" y="0.0" width="66" height="66"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
                             </view>
