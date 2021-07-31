@@ -33,7 +33,9 @@ final class StudyRecordViewController: UIViewController {
     
     @IBAction private func addRecordButtonDidTapped(_ sender: Any) {
         let additionalStudyRecordVC = AdditionalStudyRecordViewController.instantiate()
-        present(additionalStudyRecordVC, animated: true, completion: nil)
+        let nav = UINavigationController(rootViewController: additionalStudyRecordVC)
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: true, completion: nil)
     }
     
 }
