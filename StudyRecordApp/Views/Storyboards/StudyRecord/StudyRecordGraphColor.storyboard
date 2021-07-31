@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Study Record Graph Color View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="StudyRecordGraphColorViewController" id="Y6W-OH-hqX" customClass="StudyRecordGraphColorViewController" customModule="StudyRecordApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cr2-82-OhB">
+                                <rect key="frame" x="20" y="168.66666666666666" width="350" height="506.66666666666674"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6mD-gX-e3L">
+                                        <rect key="frame" x="285" y="10" width="35" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="決定"/>
+                                        <connections>
+                                            <action selector="saveButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ywb-U1-fAr"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2oh-FR-9Cx">
+                                        <rect key="frame" x="30" y="10" width="52" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="閉じる"/>
+                                        <connections>
+                                            <action selector="dismissButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="WKL-li-07d"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HfY-uk-yVf" customClass="GraphColorTileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="53.000000000000028" width="310" height="433.66666666666674"/>
+                                        <color key="backgroundColor" systemColor="systemTealColor"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="HfY-uk-yVf" firstAttribute="top" secondItem="6mD-gX-e3L" secondAttribute="bottom" constant="10" id="5RP-jA-eBJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="HfY-uk-yVf" secondAttribute="trailing" constant="20" id="CGT-yj-8BB"/>
+                                    <constraint firstItem="6mD-gX-e3L" firstAttribute="top" secondItem="cr2-82-OhB" secondAttribute="top" constant="10" id="Dzz-Rm-no4"/>
+                                    <constraint firstAttribute="trailing" secondItem="6mD-gX-e3L" secondAttribute="trailing" constant="30" id="KnW-I7-an0"/>
+                                    <constraint firstAttribute="bottom" secondItem="HfY-uk-yVf" secondAttribute="bottom" constant="20" id="Twh-Xc-N3k"/>
+                                    <constraint firstItem="2oh-FR-9Cx" firstAttribute="leading" secondItem="cr2-82-OhB" secondAttribute="leading" constant="30" id="XFR-tl-aJx"/>
+                                    <constraint firstItem="HfY-uk-yVf" firstAttribute="centerX" secondItem="cr2-82-OhB" secondAttribute="centerX" id="piD-lo-FBV"/>
+                                    <constraint firstItem="2oh-FR-9Cx" firstAttribute="top" secondItem="cr2-82-OhB" secondAttribute="top" constant="10" id="xCE-Ba-fec"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="cr2-82-OhB" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="KDC-xZ-syA"/>
+                            <constraint firstItem="cr2-82-OhB" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="WFa-Ju-gmp"/>
+                            <constraint firstItem="cr2-82-OhB" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="cJQ-Km-0QB"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="cr2-82-OhB" secondAttribute="trailing" constant="20" id="vge-zg-uPJ"/>
+                            <constraint firstItem="cr2-82-OhB" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.6" id="wDc-h3-1K2"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="graphColorTileView" destination="HfY-uk-yVf" id="Pmz-te-UaI"/>
+                        <outlet property="graphColorView" destination="cr2-82-OhB" id="clc-Wj-5Pc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="37.681159420289859" y="97.767857142857139"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

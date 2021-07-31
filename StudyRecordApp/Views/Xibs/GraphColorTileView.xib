@@ -1,0 +1,604 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GraphColorTileView" customModule="StudyRecordApp" customModuleProvider="target">
+            <connections>
+                <outlet property="tileStackView" destination="8BZ-qe-6rz" id="n3O-AB-X7B"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="628" height="867"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1nw-mo-wA0">
+                    <rect key="frame" x="0.0" y="44" width="628" height="789"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="8BZ-qe-6rz">
+                            <rect key="frame" x="0.0" y="0.0" width="628" height="786.66666666666663"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Xzk-G3-u57">
+                                    <rect key="frame" x="0.0" y="0.0" width="628" height="62.666666666666664"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3J5-EY-9Wh" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="62.666666666666664" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="3J5-EY-9Wh" secondAttribute="height" id="bRi-81-DaI"/>
+                                            </constraints>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lc2-GD-V7t" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="62.666666666666657" y="0.0" width="63" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Msf-7B-eLg" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="125.66666666666667" y="0.0" width="62.666666666666671" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DGB-Bh-TvN" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="188.33333333333334" y="0.0" width="63" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fZp-9f-rMe" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="251.33333333333334" y="0.0" width="62.666666666666657" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xgh-pb-Yfq" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="314" y="0.0" width="62.666666666666686" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ks4-Bw-vJi" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="376.66666666666669" y="0.0" width="63" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E66-af-o6y" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="439.66666666666669" y="0.0" width="62.666666666666686" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g4j-dQ-02j" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="502.33333333333326" y="0.0" width="63" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7gh-4F-gkF" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="565.33333333333337" y="0.0" width="62.666666666666629" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Uet-U7-7Pi">
+                                    <rect key="frame" x="0.0" y="65.666666666666671" width="628" height="63.000000000000014"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YFW-UC-zqh" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="62.666666666666664" height="63"/>
+                                            <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RAS-rW-ZBa" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="62.666666666666657" y="0.0" width="63" height="63"/>
+                                            <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nzH-0W-cyP" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="125.66666666666667" y="0.0" width="62.666666666666671" height="63"/>
+                                            <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yYL-3B-5kz" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="188.33333333333334" y="0.0" width="63" height="63"/>
+                                            <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gf0-6o-MTh" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="251.33333333333334" y="0.0" width="62.666666666666657" height="63"/>
+                                            <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jna-ZC-m8a" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="314" y="0.0" width="62.666666666666686" height="63"/>
+                                            <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mbS-vp-Vhn" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="376.66666666666669" y="0.0" width="63" height="63"/>
+                                            <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zls-Zi-rKx" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="439.66666666666669" y="0.0" width="62.666666666666686" height="63"/>
+                                            <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QDa-OQ-rUC" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="502.33333333333326" y="0.0" width="63" height="63"/>
+                                            <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2JP-sM-ceo" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="565.33333333333337" y="0.0" width="62.666666666666629" height="63"/>
+                                            <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="dA4-Ms-hPf">
+                                    <rect key="frame" x="0.0" y="131.66666666666666" width="628" height="62.666666666666657"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZBs-qg-CKo" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="62.666666666666664" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0cN-mb-RtE" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="62.666666666666657" y="0.0" width="63" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VJT-QO-nhD" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="125.66666666666667" y="0.0" width="62.666666666666671" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p11-EA-6k3" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="188.33333333333334" y="0.0" width="63" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dla-FY-0Kb" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="251.33333333333334" y="0.0" width="62.666666666666657" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZb-tu-gW5" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="314" y="0.0" width="62.666666666666686" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GQH-87-4P6" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="376.66666666666669" y="0.0" width="63" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h4u-lY-seP" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="439.66666666666669" y="0.0" width="62.666666666666686" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HRO-qx-ZZA" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="502.33333333333326" y="0.0" width="63" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ENR-6M-c5Q" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="565.33333333333337" y="0.0" width="62.666666666666629" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="7lp-Sl-Nq8">
+                                    <rect key="frame" x="0.0" y="197.33333333333334" width="628" height="63.000000000000028"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eQa-XV-HAj" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="62.666666666666664" height="63"/>
+                                            <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZMd-dS-Zm1" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="62.666666666666657" y="0.0" width="63" height="63"/>
+                                            <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YG1-c8-jGg" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="125.66666666666667" y="0.0" width="62.666666666666671" height="63"/>
+                                            <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yve-AT-T2d" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="188.33333333333334" y="0.0" width="63" height="63"/>
+                                            <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zpn-XI-w4W" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="251.33333333333334" y="0.0" width="62.666666666666657" height="63"/>
+                                            <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dns-7G-xy2" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="314" y="0.0" width="62.666666666666686" height="63"/>
+                                            <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pHE-Qf-nR3" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="376.66666666666669" y="0.0" width="63" height="63"/>
+                                            <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aMH-E9-bC9" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="439.66666666666669" y="0.0" width="62.666666666666686" height="63"/>
+                                            <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9I3-bo-HJk" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="502.33333333333326" y="0.0" width="63" height="63"/>
+                                            <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ahe-FQ-MNN" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="565.33333333333337" y="0.0" width="62.666666666666629" height="63"/>
+                                            <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="sls-9d-j3n">
+                                    <rect key="frame" x="0.0" y="263.33333333333331" width="628" height="62.666666666666686"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e1c-Dh-9jm" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="62.666666666666664" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FRh-uj-szt" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="62.666666666666657" y="0.0" width="63" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dVC-vW-jrk" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="125.66666666666667" y="0.0" width="62.666666666666671" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="izX-EO-2QV" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="188.33333333333334" y="0.0" width="63" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GIN-e2-3lU" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="251.33333333333334" y="0.0" width="62.666666666666657" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vCt-cK-Inc" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="314" y="0.0" width="62.666666666666686" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i4u-ja-YPZ" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="376.66666666666669" y="0.0" width="63" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4T2-TR-N44" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="439.66666666666669" y="0.0" width="62.666666666666686" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vMa-e5-5TQ" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="502.33333333333326" y="0.0" width="63" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CsH-1d-No0" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="565.33333333333337" y="0.0" width="62.666666666666629" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="WVh-QC-8qd">
+                                    <rect key="frame" x="0.0" y="329" width="628" height="62.666666666666686"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qtL-tn-vQu" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="62.666666666666664" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.0" green="0.98106676339999999" blue="0.57369142770000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SQ2-Sx-lXM" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="62.666666666666657" y="0.0" width="63" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.0" green="0.98106676339999999" blue="0.57369142770000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bf1-HA-tHv" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="125.66666666666667" y="0.0" width="62.666666666666671" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.0" green="0.98106676339999999" blue="0.57369142770000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jM6-YD-iLB" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="188.33333333333334" y="0.0" width="63" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.0" green="0.98106676339999999" blue="0.57369142770000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J2Z-PE-Lt6" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="251.33333333333334" y="0.0" width="62.666666666666657" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.0" green="0.98106676339999999" blue="0.57369142770000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Kh-AT-43m" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="314" y="0.0" width="62.666666666666686" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.0" green="0.98106676339999999" blue="0.57369142770000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lG8-4S-I7L" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="376.66666666666669" y="0.0" width="63" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.0" green="0.98106676339999999" blue="0.57369142770000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nEo-rK-tc1" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="439.66666666666669" y="0.0" width="62.666666666666686" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.0" green="0.98106676339999999" blue="0.57369142770000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Ef-x6-a0d" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="502.33333333333326" y="0.0" width="63" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.0" green="0.98106676339999999" blue="0.57369142770000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0g8-qt-wcZ" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="565.33333333333337" y="0.0" width="62.666666666666629" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.0" green="0.98106676339999999" blue="0.57369142770000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="yak-jS-JIK">
+                                    <rect key="frame" x="0.0" y="394.66666666666669" width="628" height="63"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iPI-lR-Qom" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="62.666666666666664" height="63"/>
+                                            <color key="backgroundColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gmd-Wh-FJ8" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="62.666666666666657" y="0.0" width="63" height="63"/>
+                                            <color key="backgroundColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Be0-MX-LeV" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="125.66666666666667" y="0.0" width="62.666666666666671" height="63"/>
+                                            <color key="backgroundColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gci-Ol-hAa" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="188.33333333333334" y="0.0" width="63" height="63"/>
+                                            <color key="backgroundColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6jj-ZF-wMW" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="251.33333333333334" y="0.0" width="62.666666666666657" height="63"/>
+                                            <color key="backgroundColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MYI-ud-iY6" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="314" y="0.0" width="62.666666666666686" height="63"/>
+                                            <color key="backgroundColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LYu-sg-aDg" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="376.66666666666669" y="0.0" width="63" height="63"/>
+                                            <color key="backgroundColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ssP-SV-Hmd" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="439.66666666666669" y="0.0" width="62.666666666666686" height="63"/>
+                                            <color key="backgroundColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9E2-g8-p6R" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="502.33333333333326" y="0.0" width="63" height="63"/>
+                                            <color key="backgroundColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ShN-Xc-mUX" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="565.33333333333337" y="0.0" width="62.666666666666629" height="63"/>
+                                            <color key="backgroundColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="fap-yE-3uv">
+                                    <rect key="frame" x="0.0" y="460.66666666666669" width="628" height="62.666666666666686"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kpf-Fn-eSn" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="62.666666666666664" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="58H-Mz-OZv" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="62.666666666666657" y="0.0" width="63" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dd8-km-WRh" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="125.66666666666667" y="0.0" width="62.666666666666671" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y1q-DZ-UGF" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="188.33333333333334" y="0.0" width="63" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xin-o0-QUi" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="251.33333333333334" y="0.0" width="62.666666666666657" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cFh-QV-RNo" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="314" y="0.0" width="62.666666666666686" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uce-Fb-xuR" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="376.66666666666669" y="0.0" width="63" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6dm-JG-Qcs" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="439.66666666666669" y="0.0" width="62.666666666666686" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F1P-iZ-5Fp" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="502.33333333333326" y="0.0" width="63" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wsg-3O-QiK" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="565.33333333333337" y="0.0" width="62.666666666666629" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="pOf-XM-q49">
+                                    <rect key="frame" x="0.0" y="526.33333333333337" width="628" height="63"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NLB-il-kRV" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="62.666666666666664" height="63"/>
+                                            <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ui2-oB-ygh" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="62.666666666666657" y="0.0" width="63" height="63"/>
+                                            <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vPY-Gf-vEg" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="125.66666666666667" y="0.0" width="62.666666666666671" height="63"/>
+                                            <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yMg-h3-9Qg" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="188.33333333333334" y="0.0" width="63" height="63"/>
+                                            <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vBI-xt-Axy" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="251.33333333333334" y="0.0" width="62.666666666666657" height="63"/>
+                                            <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ALG-v0-oRd" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="314" y="0.0" width="62.666666666666686" height="63"/>
+                                            <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C4P-f5-Rb4" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="376.66666666666669" y="0.0" width="63" height="63"/>
+                                            <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n6j-d1-Ylm" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="439.66666666666669" y="0.0" width="62.666666666666686" height="63"/>
+                                            <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gCy-JU-GEL" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="502.33333333333326" y="0.0" width="63" height="63"/>
+                                            <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e05-ma-o6n" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="565.33333333333337" y="0.0" width="62.666666666666629" height="63"/>
+                                            <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="mWe-a5-k4g">
+                                    <rect key="frame" x="0.0" y="592.33333333333337" width="628" height="62.666666666666629"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4py-ZE-pRg" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="62.666666666666664" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zjk-O6-z4T" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="62.666666666666657" y="0.0" width="63" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EAY-Pz-rt9" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="125.66666666666667" y="0.0" width="62.666666666666671" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LCU-mI-RPX" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="188.33333333333334" y="0.0" width="63" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8nq-4F-E0g" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="251.33333333333334" y="0.0" width="62.666666666666657" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JRX-kb-bCs" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="314" y="0.0" width="62.666666666666686" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OAM-Gu-JdU" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="376.66666666666669" y="0.0" width="63" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dys-hb-C0g" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="439.66666666666669" y="0.0" width="62.666666666666686" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tqs-Ro-vDk" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="502.33333333333326" y="0.0" width="63" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z1t-D9-fBR" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="565.33333333333337" y="0.0" width="62.666666666666629" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="VSf-It-jNF">
+                                    <rect key="frame" x="0.0" y="658" width="628" height="62.666666666666629"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y8W-Zs-Y4I" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="62.666666666666664" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y1I-e3-bg8" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="62.666666666666657" y="0.0" width="63" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1rt-6c-kHO" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="125.66666666666667" y="0.0" width="62.666666666666671" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wwL-ws-bUp" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="188.33333333333334" y="0.0" width="63" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZy-9D-T3u" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="251.33333333333334" y="0.0" width="62.666666666666657" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P8u-el-XW7" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="314" y="0.0" width="62.666666666666686" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ps6-I7-zq8" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="376.66666666666669" y="0.0" width="63" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H4S-qU-gQe" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="439.66666666666669" y="0.0" width="62.666666666666686" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eOI-Db-xvV" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="502.33333333333326" y="0.0" width="63" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q0S-3U-CUD" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="565.33333333333337" y="0.0" width="62.666666666666629" height="62.666666666666664"/>
+                                            <color key="backgroundColor" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Acx-ZS-Mzd">
+                                    <rect key="frame" x="0.0" y="723.66666666666663" width="628" height="63"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q1Z-Fx-uTM" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="62.666666666666664" height="63"/>
+                                            <color key="backgroundColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R4M-Uh-8rE" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="62.666666666666657" y="0.0" width="63" height="63"/>
+                                            <color key="backgroundColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tUu-lZ-db9" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="125.66666666666667" y="0.0" width="62.666666666666671" height="63"/>
+                                            <color key="backgroundColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mTu-T6-OPD" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="188.33333333333334" y="0.0" width="63" height="63"/>
+                                            <color key="backgroundColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="igk-Jq-vSZ" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="251.33333333333334" y="0.0" width="62.666666666666657" height="63"/>
+                                            <color key="backgroundColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="USa-ZO-kpl" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="314" y="0.0" width="62.666666666666686" height="63"/>
+                                            <color key="backgroundColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mo2-pj-6dx" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="376.66666666666669" y="0.0" width="63" height="63"/>
+                                            <color key="backgroundColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rEl-J9-IJQ" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="439.66666666666669" y="0.0" width="62.666666666666686" height="63"/>
+                                            <color key="backgroundColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zPV-Xl-CL5" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="502.33333333333326" y="0.0" width="63" height="63"/>
+                                            <color key="backgroundColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xLN-NZ-CtI" customClass="TileView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <rect key="frame" x="565.33333333333337" y="0.0" width="62.666666666666629" height="63"/>
+                                            <color key="backgroundColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="8BZ-qe-6rz" firstAttribute="leading" secondItem="vnK-iR-iQs" secondAttribute="leading" id="8Nn-nf-xfx"/>
+                        <constraint firstItem="8BZ-qe-6rz" firstAttribute="width" secondItem="ufU-vb-EGd" secondAttribute="width" id="Ju4-8r-hWd"/>
+                        <constraint firstItem="8BZ-qe-6rz" firstAttribute="trailing" secondItem="vnK-iR-iQs" secondAttribute="trailing" id="SdI-1Z-az9"/>
+                        <constraint firstItem="8BZ-qe-6rz" firstAttribute="bottom" secondItem="vnK-iR-iQs" secondAttribute="bottom" id="TJe-PH-tq1"/>
+                        <constraint firstItem="8BZ-qe-6rz" firstAttribute="top" secondItem="vnK-iR-iQs" secondAttribute="top" id="kD0-DG-QUj"/>
+                    </constraints>
+                    <viewLayoutGuide key="contentLayoutGuide" id="vnK-iR-iQs"/>
+                    <viewLayoutGuide key="frameLayoutGuide" id="ufU-vb-EGd"/>
+                </scrollView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="1nw-mo-wA0" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="0ZV-D7-Hf3"/>
+                <constraint firstItem="1nw-mo-wA0" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="ixk-Vt-qId"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="1nw-mo-wA0" secondAttribute="trailing" id="tTU-Yc-hCS"/>
+                <constraint firstItem="1nw-mo-wA0" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="wxD-d7-lFt"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="292.30769230769232" y="103.43601895734596"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
