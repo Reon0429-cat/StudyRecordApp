@@ -72,6 +72,11 @@
 		ABA056F726B4C7D800E3DF01 /* StudyRecordGraphColorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABA056F526B4C7D800E3DF01 /* StudyRecordGraphColorTableViewCell.xib */; };
 		ABA056FA26B5025C00E3DF01 /* StudyRecordMemoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA056F826B5025C00E3DF01 /* StudyRecordMemoTableViewCell.swift */; };
 		ABA056FB26B5025C00E3DF01 /* StudyRecordMemoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABA056F926B5025C00E3DF01 /* StudyRecordMemoTableViewCell.xib */; };
+		ABA056FD26B5083F00E3DF01 /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA056FC26B5083F00E3DF01 /* UIAlertController+Extension.swift */; };
+		ABA056FF26B50CC700E3DF01 /* GraphColorTileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABA056FE26B50CC700E3DF01 /* GraphColorTileView.xib */; };
+		ABA0570126B50D1900E3DF01 /* GraphColorTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA0570026B50D1900E3DF01 /* GraphColorTileView.swift */; };
+		ABA0570326B50F7100E3DF01 /* StudyRecordGraphColor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABA0570226B50F7100E3DF01 /* StudyRecordGraphColor.storyboard */; };
+		ABA0570526B50F8100E3DF01 /* StudyRecordGraphColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA0570426B50F8100E3DF01 /* StudyRecordGraphColorViewController.swift */; };
 		ABAFB57026735A670095415F /* TimeContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAFB56F26735A670095415F /* TimeContainerViewController.swift */; };
 		ABAFB57226735E120095415F /* CurrentTime.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABAFB57126735E120095415F /* CurrentTime.storyboard */; };
 		ABAFB57426737EDB0095415F /* TimeContainer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABAFB57326737EDB0095415F /* TimeContainer.storyboard */; };
@@ -148,6 +153,11 @@
 		ABA056F526B4C7D800E3DF01 /* StudyRecordGraphColorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudyRecordGraphColorTableViewCell.xib; sourceTree = "<group>"; };
 		ABA056F826B5025C00E3DF01 /* StudyRecordMemoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRecordMemoTableViewCell.swift; sourceTree = "<group>"; };
 		ABA056F926B5025C00E3DF01 /* StudyRecordMemoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudyRecordMemoTableViewCell.xib; sourceTree = "<group>"; };
+		ABA056FC26B5083F00E3DF01 /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
+		ABA056FE26B50CC700E3DF01 /* GraphColorTileView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GraphColorTileView.xib; sourceTree = "<group>"; };
+		ABA0570026B50D1900E3DF01 /* GraphColorTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphColorTileView.swift; sourceTree = "<group>"; };
+		ABA0570226B50F7100E3DF01 /* StudyRecordGraphColor.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StudyRecordGraphColor.storyboard; sourceTree = "<group>"; };
+		ABA0570426B50F8100E3DF01 /* StudyRecordGraphColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRecordGraphColorViewController.swift; sourceTree = "<group>"; };
 		ABAFB56F26735A670095415F /* TimeContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeContainerViewController.swift; sourceTree = "<group>"; };
 		ABAFB57126735E120095415F /* CurrentTime.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CurrentTime.storyboard; sourceTree = "<group>"; };
 		ABAFB57326737EDB0095415F /* TimeContainer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TimeContainer.storyboard; sourceTree = "<group>"; };
@@ -167,6 +177,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB13ECD126B601F8002F56FF /* Xibs */ = {
+			isa = PBXGroup;
+			children = (
+				ABA056FE26B50CC700E3DF01 /* GraphColorTileView.xib */,
+				ABA0570026B50D1900E3DF01 /* GraphColorTileView.swift */,
+			);
+			path = Xibs;
+			sourceTree = "<group>";
+		};
 		AB2B5B9026A2D13C009BD3C7 /* UIKit+Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +193,7 @@
 				AB4D6BBD2672099C00E5286E /* UIButton+Extension.swift */,
 				AB93C2C9266C846400C3AE8F /* UIView+Extension.swift */,
 				AB2B5B8B26A2D106009BD3C7 /* UIViewController+Extension.swift */,
+				ABA056FC26B5083F00E3DF01 /* UIAlertController+Extension.swift */,
 				AB2B5B8926A2D106009BD3C7 /* UITableView+Extension.swift */,
 				AB2B5B8A26A2D106009BD3C7 /* UITableViewCell+Extension.swift */,
 				AB2B5B8826A2D106009BD3C7 /* UITableViewHeaderFooterView+Extension.swift */,
@@ -300,6 +320,7 @@
 			isa = PBXGroup;
 			children = (
 				AB93C25D266A5A5E00C3AE8F /* Storyboards */,
+				AB13ECD126B601F8002F56FF /* Xibs */,
 				AB93C25E266A5A6600C3AE8F /* Cells */,
 			);
 			path = Views;
@@ -343,6 +364,7 @@
 				AB93C24E266A271E00C3AE8F /* StudyRecordViewController.swift */,
 				AB93C267266A7DFF00C3AE8F /* AdditionalStudyRecordViewController.swift */,
 				AB93C2C2266BC28E00C3AE8F /* EditStudyRecordViewController.swift */,
+				ABA0570426B50F8100E3DF01 /* StudyRecordGraphColorViewController.swift */,
 			);
 			path = StudyRecord;
 			sourceTree = "<group>";
@@ -353,6 +375,7 @@
 				AB93C250266A27B900C3AE8F /* StudyRecord.storyboard */,
 				AB93C265266A7DEB00C3AE8F /* AdditionalStudyRecord.storyboard */,
 				AB93C2C4266BC2D600C3AE8F /* EditStudyRecord.storyboard */,
+				ABA0570226B50F7100E3DF01 /* StudyRecordGraphColor.storyboard */,
 			);
 			path = StudyRecord;
 			sourceTree = "<group>";
@@ -478,6 +501,8 @@
 				AB2B5BAB26A2D244009BD3C7 /* ColorConcept.storyboard in Resources */,
 				AB93C244266A234C00C3AE8F /* Assets.xcassets in Resources */,
 				AB2B5BB826A2D2C2009BD3C7 /* AccordionColorTableViewCell.xib in Resources */,
+				ABA0570326B50F7100E3DF01 /* StudyRecordGraphColor.storyboard in Resources */,
+				ABA056FF26B50CC700E3DF01 /* GraphColorTileView.xib in Resources */,
 				ABA056F726B4C7D800E3DF01 /* StudyRecordGraphColorTableViewCell.xib in Resources */,
 				AB93C2C5266BC2D600C3AE8F /* EditStudyRecord.storyboard in Resources */,
 				ABAFB6292674D4FC0095415F /* AlarmTableViewCell.xib in Resources */,
@@ -511,6 +536,7 @@
 				ABA056FA26B5025C00E3DF01 /* StudyRecordMemoTableViewCell.swift in Sources */,
 				AB2B5BCA26A2D36F009BD3C7 /* ThemeColorViewController.swift in Sources */,
 				AB2B5B8C26A2D106009BD3C7 /* UITableViewHeaderFooterView+Extension.swift in Sources */,
+				ABA0570526B50F8100E3DF01 /* StudyRecordGraphColorViewController.swift in Sources */,
 				AB2B5B8426A2D0FD009BD3C7 /* NotificationName+Extension.swift in Sources */,
 				AB93C2BD266BABA900C3AE8F /* Record.swift in Sources */,
 				AB2B5BA026A2D1B7009BD3C7 /* ServiceConcept.swift in Sources */,
@@ -527,11 +553,13 @@
 				AB2B5B8326A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift in Sources */,
 				AB93C268266A7DFF00C3AE8F /* AdditionalStudyRecordViewController.swift in Sources */,
 				AB2B5B9E26A2D1B7009BD3C7 /* NaturalConcept.swift in Sources */,
+				ABA0570126B50D1900E3DF01 /* GraphColorTileView.swift in Sources */,
 				AB2B5BA326A2D1B7009BD3C7 /* JapanConcept.swift in Sources */,
 				AB2B5BA126A2D1B7009BD3C7 /* SeasonConcept.swift in Sources */,
 				AB93C33C2670FC2C00C3AE8F /* CurrentTimeViewController.swift in Sources */,
 				AB2B5B8526A2D0FD009BD3C7 /* UIColor+Extension.swift in Sources */,
 				AB2B5BBA26A2D2C2009BD3C7 /* SectionHeaderView.swift in Sources */,
+				ABA056FD26B5083F00E3DF01 /* UIAlertController+Extension.swift in Sources */,
 				AB2B5B8F26A2D106009BD3C7 /* UIViewController+Extension.swift in Sources */,
 				AB2B5B8E26A2D106009BD3C7 /* UITableViewCell+Extension.swift in Sources */,
 				AB93C2CA266C846400C3AE8F /* UIView+Extension.swift in Sources */,

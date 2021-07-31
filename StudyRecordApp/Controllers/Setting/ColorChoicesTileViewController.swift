@@ -51,13 +51,13 @@ enum TileColorType: Int, CaseIterable {
     }
 }
 
-protocol ThemeColorTileViewDelegate: AnyObject {
+protocol TileViewDelegate: AnyObject {
     func tileViewDidTapped(selectedView: UIView)
 }
 
-final class ThemeColorTileView: UIView {
+final class TileView: UIView {
     
-    weak var delegate: ThemeColorTileViewDelegate?
+    weak var delegate: TileViewDelegate?
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         UIView.animate(withDuration: 0, animations: {
@@ -107,7 +107,7 @@ final class ColorChoicesTileViewController: UIViewController {
             .enumerated()
             .forEach { verticalCount, stackView in
                 stackView.arrangedSubviews
-                    .map { $0 as! ThemeColorTileView }
+                    .map { $0 as! TileView }
                     .enumerated()
                     .forEach { horizontalCount, tileView in
                         tileView.delegate = self
@@ -123,7 +123,7 @@ final class ColorChoicesTileViewController: UIViewController {
         selectedTileView?.layer.cornerRadius = 0
         tileStackViews.forEach { stackView in
             stackView.arrangedSubviews
-                .map { $0 as! ThemeColorTileView }
+                .map { $0 as! TileView }
                 .forEach { tileView in 
                     let sameColor = (tileView.backgroundColor == nextSelectedView.backgroundColor)
                     let sameAlpha = (tileView.alpha == nextSelectedView.alpha)
@@ -141,7 +141,7 @@ final class ColorChoicesTileViewController: UIViewController {
     
 }
 
-extension ColorChoicesTileViewController: ThemeColorTileViewDelegate {
+extension ColorChoicesTileViewController: TileViewDelegate {
     
     func tileViewDidTapped(selectedView: UIView) {
         delegate?.tileViewDidTapped(selectedView: selectedView)
