@@ -34,19 +34,30 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="e7D-xS-FoF">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="e7D-xS-FoF" firstAttribute="top" secondItem="ihJ-kf-xOT" secondAttribute="bottom" id="1eB-SF-u20"/>
                             <constraint firstItem="ihJ-kf-xOT" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="1pN-TV-t4J"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="e7D-xS-FoF" secondAttribute="trailing" id="9CA-dR-toE"/>
                             <constraint firstItem="ihJ-kf-xOT" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="bia-iC-zKi"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ihJ-kf-xOT" secondAttribute="trailing" id="sRb-8L-nBe"/>
+                            <constraint firstItem="e7D-xS-FoF" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="uQ0-7d-qQp"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="e7D-xS-FoF" secondAttribute="bottom" id="vY1-E2-a3t"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="追加" id="5nr-dQ-S8A">
                         <barButtonItem key="leftBarButtonItem" title="戻る" id="fCD-L2-W6h"/>
                         <barButtonItem key="rightBarButtonItem" title="保存" id="LQi-Gg-QBw"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="e7D-xS-FoF" id="R0q-td-QiJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
