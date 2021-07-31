@@ -9,9 +9,9 @@ import UIKit
 
 final class AccordionColorTableViewCell: UITableViewCell {
     
-    @IBOutlet private weak var leftTileView: ThemeColorTileView!
-    @IBOutlet private weak var centerTileView: ThemeColorTileView!
-    @IBOutlet private weak var rightTileView: ThemeColorTileView!
+    @IBOutlet private weak var leftTileView: TileView!
+    @IBOutlet private weak var centerTileView: TileView!
+    @IBOutlet private weak var rightTileView: TileView!
     
     var onTapEvent: ((UIView) -> Void)?
     
@@ -43,7 +43,7 @@ final class AccordionColorTableViewCell: UITableViewCell {
     
 }
 
-extension AccordionColorTableViewCell: ThemeColorTileViewDelegate {
+extension AccordionColorTableViewCell: TileViewDelegate {
     
     func tileViewDidTapped(selectedView: UIView) {
         onTapEvent?(selectedView)
