@@ -7,6 +7,43 @@
 
 import UIKit
 
+private enum SectionType: CaseIterable {
+    case a
+    case themeColor
+    case b
+    case c
+    
+    var title: String {
+        switch self {
+            case .a: return "サンプルA"
+            case .themeColor: return "テーマカラー"
+            case .b: return "サンプルB"
+            case .c: return "サンプルC"
+        }
+    }
+    var rows: [RowType] {
+        switch self {
+            case .a: return []
+            case .themeColor: return RowType.allCases
+            case .b: return []
+            case .c: return []
+        }
+    }
+    enum RowType: CaseIterable {
+        case standard
+        case custom
+        case recommend
+        
+        var title: String {
+            switch self {
+                case .standard: return "スタンダード"
+                case .custom: return "カスタム"
+                case .recommend: return "オススメ"
+            }
+        }
+    }
+}
+
 final class SettingViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
@@ -14,27 +51,19 @@ final class SettingViewController: UIViewController {
     @IBOutlet private weak var subView: UIView!
     @IBOutlet private weak var accentView: UIView!
     
-    private struct Section {
-        var title: String
-        var expanded: Bool
-        static let data = [Section(title: "A", expanded: false),
-                          Section(title: "テーマカラー", expanded: false),
-                          Section(title: "B", expanded: false),
-                          Section(title: "C", expanded: false)]
-    }
-    private struct Row {
-        let title: String
-        static let data = [Row(title: "デフォルト"),
-                           Row(title: "セルフ"),
-                           Row(title: "オススメ")]
-    }
-    private var sections = Section.data
-    private let rows = Row.data
+    private var sections: [(sectionType: SectionType, isExpanded: Bool)] = {
+        var sections = [(sectionType: SectionType, isExpanded: Bool)]()
+        SectionType.allCases.forEach { sectionType in
+            sections.append((sectionType: sectionType, isExpanded: false))
+        }
+        return sections
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTableView()
+        
         
     }
     
@@ -65,8 +94,8 @@ extension SettingViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
-        switch rows[indexPath.row].title {
-            case "デフォルト":
+        switch sections[indexPath.section].sectionType.rows[indexPath.row] {
+            case .standard:
                 let alert = UIAlertController(title: "デフォルトカラーにしますか？", message: nil, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "閉じる", style: .destructive, handler: nil))
                 alert.addAction(UIAlertAction(title: "する", style: .default) { _ in
@@ -76,15 +105,12 @@ extension SettingViewController: UITableViewDelegate {
                     self.expand(section: indexPath.section)
                 })
                 present(alert, animated: true, completion: nil)
-            case "セルフ":
-                let themeColorVC = ThemeColorViewController.instantiate(containerType: .tile,
-                                                                        colorConcept: nil)
+            case .custom:
+                let themeColorVC = ThemeColorViewController.instantiate(containerType: .tile, colorConcept: nil)
                 navigationController?.pushViewController(themeColorVC, animated: true)
-            case "オススメ":
+            case .recommend:
                 let colorConceptVC = ColorConceptViewController.instantiate()
                 navigationController?.pushViewController(colorConceptVC, animated: true)
-            default:
-                fatalError("予期せぬタイトルがあります。")
         }
     }
     
@@ -95,22 +121,23 @@ extension SettingViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return sections[indexPath.section].expanded ? 60 : 0
+        return sections[indexPath.section].isExpanded ? 60 : 0
     }
     
     func tableView(_ tableView: UITableView,
                    viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableCustomHeaderFooterView(with: SectionHeaderView.self)
-        headerView.configure(title: sections[section].title) { [weak self] in
-            if self?.sections[section].title == "テーマカラー" {
-                self?.expand(section: section)
+        headerView.configure(title: sections[section].sectionType.title) { [weak self] in
+            guard let self = self else { return }
+            if self.sections[section].sectionType == .themeColor {
+                self.expand(section: section)
             }
         }
         return headerView
     }
     
     private func expand(section: Int) {
-        sections[section].expanded.toggle()
+        sections[section].isExpanded.toggle()
         tableView.beginUpdates()
         tableView.reloadRows(at: [IndexPath(row: 0, section: section)],
                              with: .automatic)
@@ -123,14 +150,7 @@ extension SettingViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        switch sections[section].title {
-            case "テーマカラー":
-                return rows.count
-            case "A", "B", "C":
-                return 0
-            default:
-                fatalError("予期せぬタイトルがあります。")
-        }
+        return sections[section].sectionType.rows.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -140,7 +160,7 @@ extension SettingViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCustomCell(with: AccordionTableViewCell.self)
-        let title = rows[indexPath.row].title
+        let title = sections[indexPath.section].sectionType.rows[indexPath.row].title
         cell.configure(title: title)
         return cell
     }
