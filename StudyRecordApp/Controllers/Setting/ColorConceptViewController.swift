@@ -42,6 +42,7 @@ final class ColorConceptViewController: UIViewController {
 extension ColorConceptViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         let themeColorVC = ThemeColorViewController.instantiate(containerType: .concept,
                                                                 colorConcept: colorConcepts[indexPath.row])
         self.navigationController?.pushViewController(themeColorVC, animated: true)
@@ -63,7 +64,6 @@ extension ColorConceptViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCustomCell(with: ColorConceptTableViewCell.self)
         let title = colorConcepts[indexPath.row].title
         cell.configure(title: title)
-        cell.selectionStyle = .none
         return cell
     }
     
