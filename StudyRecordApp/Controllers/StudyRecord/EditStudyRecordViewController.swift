@@ -15,7 +15,7 @@ final class EditStudyRecordViewController: UIViewController {
     }
     
     static func instantiate() -> EditStudyRecordViewController {
-        let storyboard = UIStoryboard.editStudyRecordVC
+        let storyboard = UIStoryboard(name: "EditStudyRecord", bundle: nil)
         let editStudyRecordVC = storyboard.instantiateViewController(
             identifier: String(describing: self)
         ) as! EditStudyRecordViewController
@@ -30,11 +30,5 @@ final class EditStudyRecordViewController: UIViewController {
     @IBAction private func backButtonDidTapped(_ sender: Any) {
         // MARK: - ToDo アラート
         self.navigationController?.popViewController(animated: true)
-    }
-}
-
-private extension UIStoryboard {
-    static var editStudyRecordVC: UIStoryboard {
-        return UIStoryboard(name: "EditStudyRecord", bundle: nil)
     }
 }

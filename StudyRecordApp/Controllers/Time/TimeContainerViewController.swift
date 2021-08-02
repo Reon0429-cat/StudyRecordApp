@@ -32,7 +32,8 @@ final class TimeContainerViewController: UIViewController {
     }
     
     static func instantiate(timeType: TimeType) -> TimeContainerViewController {
-        let timeContainerVC = UIStoryboard.timeContainer.instantiateViewController(
+        let storyboard = UIStoryboard(name: "TimeContainer", bundle: nil)
+        let timeContainerVC = storyboard.instantiateViewController(
             withIdentifier: String(describing: self)
         ) as! TimeContainerViewController
         timeContainerVC.modalPresentationStyle = .fullScreen
@@ -51,10 +52,4 @@ final class TimeContainerViewController: UIViewController {
         self.navigationItem.title = timeType.title
     }
     
-}
-
-private extension UIStoryboard {
-    static var timeContainer: UIStoryboard {
-        return UIStoryboard(name: "TimeContainer", bundle: nil)
-    }
 }

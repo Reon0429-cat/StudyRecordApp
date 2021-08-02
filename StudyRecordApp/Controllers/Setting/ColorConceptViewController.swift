@@ -32,7 +32,7 @@ final class ColorConceptViewController: UIViewController {
             name: "ColorConcept",
             bundle: nil
         ).instantiateViewController(
-            withIdentifier: ColorConceptViewController.identifier
+            withIdentifier: String(describing: self)
         ) as! ColorConceptViewController
         return colorConceptVC
     }

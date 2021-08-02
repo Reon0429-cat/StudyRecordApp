@@ -18,7 +18,6 @@
 		AB2B5B8C26A2D106009BD3C7 /* UITableViewHeaderFooterView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B8826A2D106009BD3C7 /* UITableViewHeaderFooterView+Extension.swift */; };
 		AB2B5B8D26A2D106009BD3C7 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B8926A2D106009BD3C7 /* UITableView+Extension.swift */; };
 		AB2B5B8E26A2D106009BD3C7 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B8A26A2D106009BD3C7 /* UITableViewCell+Extension.swift */; };
-		AB2B5B8F26A2D106009BD3C7 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B8B26A2D106009BD3C7 /* UIViewController+Extension.swift */; };
 		AB2B5B9526A2D19E009BD3C7 /* ColorConcept.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B9226A2D19E009BD3C7 /* ColorConcept.swift */; };
 		AB2B5B9626A2D19E009BD3C7 /* ThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B9326A2D19E009BD3C7 /* ThemeColor.swift */; };
 		AB2B5B9E26A2D1B7009BD3C7 /* NaturalConcept.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B9826A2D1B7009BD3C7 /* NaturalConcept.swift */; };
@@ -99,7 +98,6 @@
 		AB2B5B8826A2D106009BD3C7 /* UITableViewHeaderFooterView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableViewHeaderFooterView+Extension.swift"; sourceTree = "<group>"; };
 		AB2B5B8926A2D106009BD3C7 /* UITableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		AB2B5B8A26A2D106009BD3C7 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
-		AB2B5B8B26A2D106009BD3C7 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		AB2B5B9226A2D19E009BD3C7 /* ColorConcept.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorConcept.swift; sourceTree = "<group>"; };
 		AB2B5B9326A2D19E009BD3C7 /* ThemeColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeColor.swift; sourceTree = "<group>"; };
 		AB2B5B9726A2D1B7009BD3C7 /* ServiceConcept.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceConcept.swift; sourceTree = "<group>"; };
@@ -196,7 +194,6 @@
 				AB2B5B8026A2D0FD009BD3C7 /* UIColor+Extension.swift */,
 				AB4D6BBD2672099C00E5286E /* UIButton+Extension.swift */,
 				AB93C2C9266C846400C3AE8F /* UIView+Extension.swift */,
-				AB2B5B8B26A2D106009BD3C7 /* UIViewController+Extension.swift */,
 				ABA056FC26B5083F00E3DF01 /* UIAlertController+Extension.swift */,
 				AB2B5B8926A2D106009BD3C7 /* UITableView+Extension.swift */,
 				AB2B5B8A26A2D106009BD3C7 /* UITableViewCell+Extension.swift */,
@@ -560,7 +557,6 @@
 				AB2B5B8526A2D0FD009BD3C7 /* UIColor+Extension.swift in Sources */,
 				AB2B5BBA26A2D2C2009BD3C7 /* SectionHeaderView.swift in Sources */,
 				ABA056FD26B5083F00E3DF01 /* UIAlertController+Extension.swift in Sources */,
-				AB2B5B8F26A2D106009BD3C7 /* UIViewController+Extension.swift in Sources */,
 				AB2B5B8E26A2D106009BD3C7 /* UITableViewCell+Extension.swift in Sources */,
 				AB93C2CA266C846400C3AE8F /* UIView+Extension.swift in Sources */,
 				AB2B5B8626A2D0FD009BD3C7 /* NSObjectProtocol+Extension.swift in Sources */,

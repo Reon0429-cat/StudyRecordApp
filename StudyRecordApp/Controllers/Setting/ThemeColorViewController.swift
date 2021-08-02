@@ -184,7 +184,7 @@ final class ThemeColorViewController: UIViewController {
             name: "ThemeColor",
             bundle: nil
         ).instantiateViewController(
-            withIdentifier: ThemeColorViewController.identifier
+            withIdentifier: String(describing: self)
         ) as! ThemeColorViewController
         themeColorVC.containerType = containerType
         let navTitle = colorConcept?.title ?? "セルフ"
