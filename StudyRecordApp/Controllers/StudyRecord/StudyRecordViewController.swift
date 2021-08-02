@@ -100,7 +100,7 @@ extension StudyRecordViewController: StudyRecordSectionViewDelegate {
     
     func didTapped() {
         let editStudyRecordVC = EditStudyRecordViewController.instantiate()
-        present(editStudyRecordVC, animated: true, completion: nil)
+        self.navigationController?.pushViewController(editStudyRecordVC, animated: true)
     }
     
 }

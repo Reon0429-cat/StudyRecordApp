@@ -19,18 +19,17 @@ final class EditStudyRecordViewController: UIViewController {
         let editStudyRecordVC = storyboard.instantiateViewController(
             identifier: String(describing: self)
         ) as! EditStudyRecordViewController
-        editStudyRecordVC.modalPresentationStyle = .fullScreen
         return editStudyRecordVC
     }
     
     @IBAction private func saveButtonDidTapped(_ sender: Any) {
         // MARK: - ToDo 保存処理
-        dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction private func backButtonDidTapped(_ sender: Any) {
         // MARK: - ToDo アラート
-        dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
 }
 
