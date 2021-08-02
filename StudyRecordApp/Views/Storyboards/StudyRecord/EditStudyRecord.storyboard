@@ -9,40 +9,31 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Edit Study Record View Controller-->
+        <!--編集-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="EditStudyRecordViewController" id="Y6W-OH-hqX" customClass="EditStudyRecordViewController" customModule="StudyRecordApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3YM-8B-tfJ">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <items>
-                                    <navigationItem title="編集" id="Drt-36-Kfh">
-                                        <barButtonItem key="leftBarButtonItem" title="戻る" id="h44-sa-Fi5">
-                                            <connections>
-                                                <action selector="backButtonDidTapped:" destination="Y6W-OH-hqX" id="Nnk-nP-Xb0"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="保存" id="se3-Ff-wYB">
-                                            <connections>
-                                                <action selector="saveButtonDidTapped:" destination="Y6W-OH-hqX" id="QHn-Xk-bZJ"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="3YM-8B-tfJ" secondAttribute="trailing" id="N2M-l8-rv6"/>
-                            <constraint firstItem="3YM-8B-tfJ" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="XqR-zq-Poa"/>
-                            <constraint firstItem="3YM-8B-tfJ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="jut-dH-CRW"/>
-                        </constraints>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="編集" id="5zf-kk-frX">
+                        <barButtonItem key="leftBarButtonItem" title="戻る" id="rzz-yS-Ix1">
+                            <connections>
+                                <action selector="backButtonDidTapped:" destination="Y6W-OH-hqX" id="s9v-OT-fSd"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="保存" id="Xyp-Ax-bOS">
+                            <connections>
+                                <action selector="saveButtonDidTapped:" destination="Y6W-OH-hqX" id="XiJ-WX-hTk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
