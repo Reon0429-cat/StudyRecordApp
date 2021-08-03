@@ -25,10 +25,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yBE-kM-0ed">
-                        <rect key="frame" x="264.5" y="20" width="100" height="39"/>
+                        <rect key="frame" x="284.5" y="20" width="80" height="39"/>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="100" id="y68-jN-Yk0"/>
+                            <constraint firstAttribute="width" constant="80" id="y68-jN-Yk0"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hxd-d3-3iV">
@@ -49,6 +49,9 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="graphColorView" destination="yBE-kM-0ed" id="mod-0Z-hR9"/>
+            </connections>
             <point key="canvasLocation" x="200.72463768115944" y="125.55803571428571"/>
         </tableViewCell>
     </objects>

@@ -34,6 +34,8 @@ final class StudyRecordGraphColorViewController: UIViewController {
         let studyRecordGraphColorVC = storyboard.instantiateViewController(
             identifier: String(describing: self)
         ) as! StudyRecordGraphColorViewController
+        studyRecordGraphColorVC.modalPresentationStyle = .overCurrentContext
+        studyRecordGraphColorVC.modalTransitionStyle = .crossDissolve
         return studyRecordGraphColorVC
     }
     

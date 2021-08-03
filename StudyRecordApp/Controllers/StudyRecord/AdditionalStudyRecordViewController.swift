@@ -74,10 +74,10 @@ extension AdditionalStudyRecordViewController: UITableViewDelegate {
                 present(alert, animated: true, completion: nil)
             case .graphColor:
                 let studyRecordGraphColorVC = StudyRecordGraphColorViewController.instantiate()
-                studyRecordGraphColorVC.modalPresentationStyle = .overCurrentContext
                 present(studyRecordGraphColorVC, animated: true, completion: nil)
             case .memo:
-                break
+                let studyRecordMemoVC = StudyRecordMemoViewController.instantiate()
+                present(studyRecordMemoVC, animated: true, completion: nil)
         }
     }
     

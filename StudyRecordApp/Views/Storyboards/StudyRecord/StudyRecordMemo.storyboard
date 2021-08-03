@@ -1,28 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17150" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17122"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Study Record Memo View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StudyRecordMemoViewController" id="Y6W-OH-hqX" customClass="StudyRecordMemoViewController" customModule="StudyRecordApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Shj-RL-QBm">
+                                <rect key="frame" x="20" y="124" width="374" height="358.5"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="K2K-9p-S3w">
+                                        <rect key="frame" x="20" y="53" width="334" height="285.5"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W1R-OW-vqt">
+                                        <rect key="frame" x="30" y="10" width="52" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="閉じる"/>
+                                        <connections>
+                                            <action selector="dismissButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="0up-a2-Nfk"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gvh-Br-hui">
+                                        <rect key="frame" x="309" y="10" width="35" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="保存"/>
+                                        <connections>
+                                            <action selector="saveButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Lb8-lg-IBO"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="K2K-9p-S3w" firstAttribute="top" secondItem="W1R-OW-vqt" secondAttribute="bottom" constant="10" id="FgK-aU-E99"/>
+                                    <constraint firstAttribute="bottom" secondItem="K2K-9p-S3w" secondAttribute="bottom" constant="20" id="Wyc-QV-9Ry"/>
+                                    <constraint firstItem="Gvh-Br-hui" firstAttribute="top" secondItem="W1R-OW-vqt" secondAttribute="top" id="adU-g6-wun"/>
+                                    <constraint firstItem="W1R-OW-vqt" firstAttribute="leading" secondItem="Shj-RL-QBm" secondAttribute="leading" constant="30" id="d8j-40-gVC"/>
+                                    <constraint firstItem="K2K-9p-S3w" firstAttribute="centerX" secondItem="Shj-RL-QBm" secondAttribute="centerX" id="e4i-X9-2qg"/>
+                                    <constraint firstAttribute="trailing" secondItem="K2K-9p-S3w" secondAttribute="trailing" constant="20" id="lnW-aQ-nPm"/>
+                                    <constraint firstItem="W1R-OW-vqt" firstAttribute="top" secondItem="Shj-RL-QBm" secondAttribute="top" constant="10" id="t7m-W4-pX4"/>
+                                    <constraint firstAttribute="trailing" secondItem="Gvh-Br-hui" secondAttribute="trailing" constant="30" id="w32-Cy-pDL"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="Shj-RL-QBm" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="80" id="LDJ-6K-ivB"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Shj-RL-QBm" secondAttribute="trailing" constant="20" id="gR4-yO-JGp"/>
+                            <constraint firstItem="Shj-RL-QBm" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="jqH-Dg-Mjq"/>
+                            <constraint firstItem="Shj-RL-QBm" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.4" id="v3R-ge-Qtq"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="baseView" destination="Shj-RL-QBm" id="1FY-wZ-Kah"/>
+                        <outlet property="textView" destination="K2K-9p-S3w" id="5eu-fX-1mK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="73.913043478260875" y="71.651785714285708"/>
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

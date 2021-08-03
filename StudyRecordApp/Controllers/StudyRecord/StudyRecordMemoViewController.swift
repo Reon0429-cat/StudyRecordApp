@@ -7,23 +7,57 @@
 
 import UIKit
 
-class StudyRecordMemoViewController: UIViewController {
-
+final class StudyRecordMemoViewController: UIViewController {
+    
+    @IBOutlet private weak var baseView: UIView! {
+        didSet { baseView.layer.cornerRadius = 10 }
+    }
+    @IBOutlet private weak var textView: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        setupTextView()
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func setupTextView() {
+        textView.delegate = self
+        textView.layer.cornerRadius = 10
+        textView.becomeFirstResponder()
     }
-    */
-
+    
+    static func instantiate() -> StudyRecordMemoViewController {
+        let storyboard = UIStoryboard(name: "StudyRecordMemo", bundle: nil)
+        let studyRecordMemoVC = storyboard.instantiateViewController(
+            identifier: String(describing: self)
+        ) as! StudyRecordMemoViewController
+        studyRecordMemoVC.modalPresentationStyle = .overCurrentContext
+        studyRecordMemoVC.modalTransitionStyle = .crossDissolve
+        return studyRecordMemoVC
+    }
+    
+    @IBAction private func dismissButtonDidTapped(_ sender: Any) {
+        let alert = UIAlertController(title: "保存せずにメモを閉じます", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "閉じる", style: .default, handler: { _ in
+            self.dismiss(animated: true, completion: nil)
+        }))
+        alert.addAction(UIAlertAction(title: "保存する", style: .default, handler: { _ in
+            // MARK: - ToDo 保存処理
+            self.dismiss(animated: true, completion: nil)
+        }))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction private func saveButtonDidTapped(_ sender: Any) {
+        // MARK: - ToDo 保存処理
+        dismiss(animated: true, completion: nil)
+    }
+    
 }
+
+extension StudyRecordMemoViewController: UITextViewDelegate {
+    
+}
+
+
