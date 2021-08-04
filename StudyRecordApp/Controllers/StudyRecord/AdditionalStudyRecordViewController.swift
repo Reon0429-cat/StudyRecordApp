@@ -98,17 +98,18 @@ extension AdditionalStudyRecordViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellType = CellType(rawValue: indexPath.row)!
-        let cell: UITableViewCell = {
-            switch cellType {
-                case .title:
-                    return tableView.dequeueReusableCustomCell(with: StudyRecordTitleTableViewCell.self)
-                case .graphColor:
-                    return tableView.dequeueReusableCustomCell(with: StudyRecordGraphColorTableViewCell.self)
-                case .memo:
-                    return tableView.dequeueReusableCustomCell(with: StudyRecordMemoTableViewCell.self)
-            }
-        }()
-        return cell
+        switch cellType {
+            case .title:
+                let cell = tableView.dequeueReusableCustomCell(with: StudyRecordTitleTableViewCell.self)
+                return cell
+            case .graphColor:
+                let cell = tableView.dequeueReusableCustomCell(with: StudyRecordGraphColorTableViewCell.self)
+                cell.configure()
+                return cell
+            case .memo:
+                let cell = tableView.dequeueReusableCustomCell(with: StudyRecordMemoTableViewCell.self)
+                return cell
+        }
     }
     
 }

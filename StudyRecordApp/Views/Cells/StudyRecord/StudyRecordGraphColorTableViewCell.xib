@@ -26,8 +26,22 @@
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yBE-kM-0ed">
                         <rect key="frame" x="284.5" y="20" width="80" height="39"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未選択" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jW5-PK-wbL">
+                                <rect key="frame" x="0.0" y="0.0" width="80" height="39"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="jW5-PK-wbL" secondAttribute="bottom" id="8jI-CQ-PAg"/>
+                            <constraint firstAttribute="trailing" secondItem="jW5-PK-wbL" secondAttribute="trailing" id="A1m-6L-BOl"/>
+                            <constraint firstItem="jW5-PK-wbL" firstAttribute="centerY" secondItem="yBE-kM-0ed" secondAttribute="centerY" id="BGZ-tg-DSb"/>
+                            <constraint firstItem="jW5-PK-wbL" firstAttribute="centerX" secondItem="yBE-kM-0ed" secondAttribute="centerX" id="Jcr-Xt-3cs"/>
+                            <constraint firstItem="jW5-PK-wbL" firstAttribute="leading" secondItem="yBE-kM-0ed" secondAttribute="leading" id="Ppt-Kz-IHN"/>
+                            <constraint firstItem="jW5-PK-wbL" firstAttribute="top" secondItem="yBE-kM-0ed" secondAttribute="top" id="n99-8W-vhh"/>
                             <constraint firstAttribute="width" constant="80" id="y68-jN-Yk0"/>
                         </constraints>
                     </view>
@@ -51,6 +65,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="graphColorView" destination="yBE-kM-0ed" id="mod-0Z-hR9"/>
+                <outlet property="unselectedLabel" destination="jW5-PK-wbL" id="MvV-rh-az8"/>
             </connections>
             <point key="canvasLocation" x="200.72463768115944" y="125.55803571428571"/>
         </tableViewCell>
