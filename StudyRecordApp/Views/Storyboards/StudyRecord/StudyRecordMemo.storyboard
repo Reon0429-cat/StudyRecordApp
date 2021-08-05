@@ -29,6 +29,9 @@
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W1R-OW-vqt">
                                         <rect key="frame" x="30" y="10" width="52" height="33"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="52" id="sr2-Dd-Gwc"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="閉じる"/>
                                         <connections>
@@ -37,20 +40,32 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gvh-Br-hui">
                                         <rect key="frame" x="309" y="10" width="35" height="33"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="35" id="r5N-mK-h1l"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="保存"/>
                                         <connections>
                                             <action selector="saveButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Lb8-lg-IBO"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="メモ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WKY-Pj-XCM">
+                                        <rect key="frame" x="169.5" y="0.0" width="35" height="53"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="WKY-Pj-XCM" firstAttribute="centerX" secondItem="Shj-RL-QBm" secondAttribute="centerX" id="7uz-Iw-Haw"/>
+                                    <constraint firstItem="WKY-Pj-XCM" firstAttribute="top" secondItem="Shj-RL-QBm" secondAttribute="top" id="By1-xL-say"/>
                                     <constraint firstItem="K2K-9p-S3w" firstAttribute="top" secondItem="W1R-OW-vqt" secondAttribute="bottom" constant="10" id="FgK-aU-E99"/>
                                     <constraint firstAttribute="bottom" secondItem="K2K-9p-S3w" secondAttribute="bottom" constant="20" id="Wyc-QV-9Ry"/>
                                     <constraint firstItem="Gvh-Br-hui" firstAttribute="top" secondItem="W1R-OW-vqt" secondAttribute="top" id="adU-g6-wun"/>
                                     <constraint firstItem="W1R-OW-vqt" firstAttribute="leading" secondItem="Shj-RL-QBm" secondAttribute="leading" constant="30" id="d8j-40-gVC"/>
                                     <constraint firstItem="K2K-9p-S3w" firstAttribute="centerX" secondItem="Shj-RL-QBm" secondAttribute="centerX" id="e4i-X9-2qg"/>
+                                    <constraint firstItem="K2K-9p-S3w" firstAttribute="top" secondItem="WKY-Pj-XCM" secondAttribute="bottom" id="kNv-bu-gqU"/>
                                     <constraint firstAttribute="trailing" secondItem="K2K-9p-S3w" secondAttribute="trailing" constant="20" id="lnW-aQ-nPm"/>
                                     <constraint firstItem="W1R-OW-vqt" firstAttribute="top" secondItem="Shj-RL-QBm" secondAttribute="top" constant="10" id="t7m-W4-pX4"/>
                                     <constraint firstAttribute="trailing" secondItem="Gvh-Br-hui" secondAttribute="trailing" constant="30" id="w32-Cy-pDL"/>
