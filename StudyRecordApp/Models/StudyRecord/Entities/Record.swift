@@ -7,6 +7,8 @@
 
 import RealmSwift
 
+
+
 final class Record: Object {
     @objc dynamic var title: String = ""
     @objc dynamic var time: Time? = Time()
