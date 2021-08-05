@@ -14,6 +14,8 @@ final class StudyRecordGraphColorViewController: UIViewController {
     }
     @IBOutlet private weak var graphColorTileView: GraphColorTileView!
     
+    private var selectedTileView: UIView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,7 +46,12 @@ final class StudyRecordGraphColorViewController: UIViewController {
 extension StudyRecordGraphColorViewController: GraphColorTileViewDelegate {
     
     func tileViewDidTapped(selectedView: UIView) {
-        print(#function)
+        if self.selectedTileView != selectedView {
+            UIView.animate(withDuration: 0.1) {
+                self.selectedTileView?.layer.cornerRadius = 0
+            }
+        }
+        self.selectedTileView = selectedView
     }
     
 }
