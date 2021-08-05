@@ -7,16 +7,28 @@
 
 import RealmSwift
 
+// 共通の型
+struct Record {
+    var title: String
+    var time: Time
+    var isExpanded: Bool
+    var memo: String
+}
 
+struct Time {
+    var today: Int
+    var total: Int
+}
 
-final class Record: Object {
+// Realmに依存した型
+final class RecordRealm: Object {
     @objc dynamic var title: String = ""
-    @objc dynamic var time: Time? = Time()
-    @objc dynamic var expanded: Bool = false
+    @objc dynamic var time: TimeRealm? = TimeRealm()
+    @objc dynamic var isExpanded: Bool = false
     @objc dynamic var memo: String = ""
 }
 
-final class Time: Object {
+final class TimeRealm: Object {
     @objc dynamic var today: Int = 0
     @objc dynamic var total: Int = 0
 }
