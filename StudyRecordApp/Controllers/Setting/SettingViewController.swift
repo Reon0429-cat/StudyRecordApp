@@ -11,38 +11,47 @@ private enum SectionType: CaseIterable {
     case a
     case themeColor
     case b
-    case c
     
     var title: String {
         switch self {
             case .a: return "サンプルA"
             case .themeColor: return "テーマカラー"
             case .b: return "サンプルB"
-            case .c: return "サンプルC"
         }
     }
     var rowTypes: [RowType] {
         switch self {
-            case .a: return []
-            case .themeColor: return RowType.allCases
-            case .b: return []
-            case .c: return []
-        }
-    }
-    enum RowType: CaseIterable {
-        case `default`
-        case custom
-        case recommend
-        
-        var title: String {
-            switch self {
-                case .default: return "デフォルト"
-                case .custom: return "カスタム"
-                case .recommend: return "オススメ"
-            }
+            case .a: return [.sample1, .sample2]
+            case .themeColor: return [.default, .custom, .recommend]
+            case .b: return [.sample100]
         }
     }
 }
+
+private enum RowType {
+    case sample1
+    case sample2
+    
+    case `default`
+    case custom
+    case recommend
+    
+    case sample100
+    
+    var title: String {
+        switch self {
+            case .sample1: return "サンプル１"
+            case .sample2: return "サンプル２"
+                
+            case .default: return "デフォルト"
+            case .custom: return "カスタム"
+            case .recommend: return "オススメ"
+                
+            case .sample100: return "サンプル100"
+        }
+    }
+}
+
 
 final class SettingViewController: UIViewController {
     
@@ -51,19 +60,18 @@ final class SettingViewController: UIViewController {
     @IBOutlet private weak var subView: UIView!
     @IBOutlet private weak var accentView: UIView!
     
-    private var sections: [(sectionType: SectionType, isExpanded: Bool)] = {
-        var sections = [(sectionType: SectionType, isExpanded: Bool)]()
+    private var tables: [(sectionType: SectionType, isExpanded: Bool)] = {
+        var tables = [(sectionType: SectionType, isExpanded: Bool)]()
         SectionType.allCases.forEach { sectionType in
-            sections.append((sectionType: sectionType, isExpanded: false))
+            tables.append((sectionType: sectionType, isExpanded: false))
         }
-        return sections
+        return tables
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTableView()
-        
         
     }
     
@@ -94,24 +102,22 @@ extension SettingViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
-        let rowType = sections[indexPath.section].sectionType.rowTypes[indexPath.row]
+        let rowType = tables[indexPath.section].sectionType.rowTypes[indexPath.row]
         switch rowType {
+            case .sample1:
+                break
+            case .sample2:
+                break
             case .default:
-                let alert = UIAlertController(title: "\(rowType.title)カラーにしますか？", message: nil, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "いいえ", style: .default, handler: nil))
-                alert.addAction(UIAlertAction(title: "はい", style: .default) { _ in
-                    UserDefaults.standard.save(color: nil, .main)
-                    UserDefaults.standard.save(color: nil, .sub)
-                    UserDefaults.standard.save(color: nil, .accent)
-                    self.expand(section: indexPath.section)
-                })
-                present(alert, animated: true, completion: nil)
+                showAlert(section: indexPath.section)
             case .custom:
                 let themeColorVC = ThemeColorViewController.instantiate(containerType: .tile, colorConcept: nil)
                 navigationController?.pushViewController(themeColorVC, animated: true)
             case .recommend:
                 let colorConceptVC = ColorConceptViewController.instantiate()
                 navigationController?.pushViewController(colorConceptVC, animated: true)
+            case .sample100:
+                break
         }
     }
     
@@ -122,23 +128,42 @@ extension SettingViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return sections[indexPath.section].isExpanded ? 60 : 0
+        return tables[indexPath.section].isExpanded ? 60 : 0
     }
     
     func tableView(_ tableView: UITableView,
                    viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableCustomHeaderFooterView(with: SectionHeaderView.self)
-        headerView.configure(title: sections[section].sectionType.title) { [weak self] in
+        headerView.configure(title: tables[section].sectionType.title) { [weak self] in
             guard let self = self else { return }
-            if self.sections[section].sectionType == .themeColor {
-                self.expand(section: section)
+            switch self.tables[section].sectionType {
+                case .a:
+                    break
+                case .themeColor:
+                    self.expand(section: section)
+                case .b:
+                    break
             }
         }
         return headerView
     }
     
+    private func showAlert(section: Int) {
+        let alert = UIAlertController(title: "デフォルトカラーにしますか？",
+                                      message: nil,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "いいえ", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "はい", style: .default) { _ in
+            UserDefaults.standard.save(color: nil, .main)
+            UserDefaults.standard.save(color: nil, .sub)
+            UserDefaults.standard.save(color: nil, .accent)
+            self.expand(section: section)
+        })
+        present(alert, animated: true, completion: nil)
+    }
+    
     private func expand(section: Int) {
-        sections[section].isExpanded.toggle()
+        tables[section].isExpanded.toggle()
         tableView.beginUpdates()
         tableView.reloadRows(at: [IndexPath(row: 0, section: section)],
                              with: .automatic)
@@ -151,17 +176,17 @@ extension SettingViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        return sections[section].sectionType.rowTypes.count
+        return tables[section].sectionType.rowTypes.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
+        return tables.count
     }
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCustomCell(with: AccordionTableViewCell.self)
-        let title = sections[indexPath.section].sectionType.rowTypes[indexPath.row].title
+        let title = tables[indexPath.section].sectionType.rowTypes[indexPath.row].title
         cell.configure(title: title)
         return cell
     }

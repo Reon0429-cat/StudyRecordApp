@@ -53,9 +53,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="設定" image="gearshape" catalog="system" id="wTh-MF-B2V"/>
-                    <navigationItem key="navigationItem" title="設定" id="4lr-yd-duF">
-                        <barButtonItem key="leftBarButtonItem" title="戻る" id="ctP-ms-pHE"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="設定" id="4lr-yd-duF"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
