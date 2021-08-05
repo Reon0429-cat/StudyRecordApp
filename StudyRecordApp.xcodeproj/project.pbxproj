@@ -12,6 +12,9 @@
 		AB13ECDA26B7AF6F002F56FF /* ColorChoicesSlider.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13ECD926B7AF6F002F56FF /* ColorChoicesSlider.storyboard */; };
 		AB13ED1626B8F5D0002F56FF /* StudyRecordMemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13ED1526B8F5D0002F56FF /* StudyRecordMemo.storyboard */; };
 		AB13ED1826B8F5EA002F56FF /* StudyRecordMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13ED1726B8F5EA002F56FF /* StudyRecordMemoViewController.swift */; };
+		AB13ED4926BB8128002F56FF /* RealmRecordDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13ED4826BB8128002F56FF /* RealmRecordDataStore.swift */; };
+		AB13ED4B26BB9155002F56FF /* RecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13ED4A26BB9155002F56FF /* RecordRepository.swift */; };
+		AB13ED4D26BB9241002F56FF /* RecordUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13ED4C26BB9241002F56FF /* RecordUseCase.swift */; };
 		AB2B5B8326A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B7E26A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift */; };
 		AB2B5B8426A2D0FD009BD3C7 /* NotificationName+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B7F26A2D0FD009BD3C7 /* NotificationName+Extension.swift */; };
 		AB2B5B8526A2D0FD009BD3C7 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B8026A2D0FD009BD3C7 /* UIColor+Extension.swift */; };
@@ -86,6 +89,7 @@
 		ABAFB6282674D4FC0095415F /* AlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAFB6262674D4FC0095415F /* AlarmTableViewCell.swift */; };
 		ABAFB6292674D4FC0095415F /* AlarmTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABAFB6272674D4FC0095415F /* AlarmTableViewCell.xib */; };
 		ABAFB62D2674D7750095415F /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAFB62C2674D7750095415F /* Alarm.swift */; };
+		D14EABCB62E5596481983E6D /* Pods_StudyRecordApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7ADEAD2199951B48FEFB0D8 /* Pods_StudyRecordApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +98,9 @@
 		AB13ECD926B7AF6F002F56FF /* ColorChoicesSlider.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ColorChoicesSlider.storyboard; sourceTree = "<group>"; };
 		AB13ED1526B8F5D0002F56FF /* StudyRecordMemo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StudyRecordMemo.storyboard; sourceTree = "<group>"; };
 		AB13ED1726B8F5EA002F56FF /* StudyRecordMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRecordMemoViewController.swift; sourceTree = "<group>"; };
+		AB13ED4826BB8128002F56FF /* RealmRecordDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRecordDataStore.swift; sourceTree = "<group>"; };
+		AB13ED4A26BB9155002F56FF /* RecordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRepository.swift; sourceTree = "<group>"; };
+		AB13ED4C26BB9241002F56FF /* RecordUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordUseCase.swift; sourceTree = "<group>"; };
 		AB2B5B7E26A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
 		AB2B5B7F26A2D0FD009BD3C7 /* NotificationName+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotificationName+Extension.swift"; sourceTree = "<group>"; };
 		AB2B5B8026A2D0FD009BD3C7 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -170,6 +177,9 @@
 		ABAFB6262674D4FC0095415F /* AlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableViewCell.swift; sourceTree = "<group>"; };
 		ABAFB6272674D4FC0095415F /* AlarmTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlarmTableViewCell.xib; sourceTree = "<group>"; };
 		ABAFB62C2674D7750095415F /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
+		B7ADEAD2199951B48FEFB0D8 /* Pods_StudyRecordApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudyRecordApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F080AD4E0F25E92F286ED79A /* Pods-StudyRecordApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyRecordApp.debug.xcconfig"; path = "Target Support Files/Pods-StudyRecordApp/Pods-StudyRecordApp.debug.xcconfig"; sourceTree = "<group>"; };
+		F4A1350DA353A8FEAF4BEEB3 /* Pods-StudyRecordApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyRecordApp.release.xcconfig"; path = "Target Support Files/Pods-StudyRecordApp/Pods-StudyRecordApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,12 +187,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D14EABCB62E5596481983E6D /* Pods_StudyRecordApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		635B9A72C0918FAFFC219E8A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B7ADEAD2199951B48FEFB0D8 /* Pods_StudyRecordApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6ED773C562BE78F875EC7183 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F080AD4E0F25E92F286ED79A /* Pods-StudyRecordApp.debug.xcconfig */,
+				F4A1350DA353A8FEAF4BEEB3 /* Pods-StudyRecordApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		AB13ECD126B601F8002F56FF /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +218,49 @@
 				ABA0570026B50D1900E3DF01 /* GraphColorTileView.swift */,
 			);
 			path = Xibs;
+			sourceTree = "<group>";
+		};
+		AB13ED4226BB7F9D002F56FF /* StudyRecord */ = {
+			isa = PBXGroup;
+			children = (
+				AB13ED4326BB7FF1002F56FF /* Entities */,
+				AB13ED4426BB8008002F56FF /* DataStores */,
+				AB13ED4626BB8014002F56FF /* Repositories */,
+				AB13ED4726BB801B002F56FF /* UseCases */,
+			);
+			path = StudyRecord;
+			sourceTree = "<group>";
+		};
+		AB13ED4326BB7FF1002F56FF /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				AB93C2BC266BABA900C3AE8F /* Record.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		AB13ED4426BB8008002F56FF /* DataStores */ = {
+			isa = PBXGroup;
+			children = (
+				AB13ED4826BB8128002F56FF /* RealmRecordDataStore.swift */,
+			);
+			path = DataStores;
+			sourceTree = "<group>";
+		};
+		AB13ED4626BB8014002F56FF /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				AB13ED4A26BB9155002F56FF /* RecordRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		AB13ED4726BB801B002F56FF /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				AB13ED4C26BB9241002F56FF /* RecordUseCase.swift */,
+			);
+			path = UseCases;
 			sourceTree = "<group>";
 		};
 		AB2B5B9026A2D13C009BD3C7 /* UIKit+Extension */ = {
@@ -276,6 +347,8 @@
 			children = (
 				AB93C239266A234800C3AE8F /* StudyRecordApp */,
 				AB93C238266A234800C3AE8F /* Products */,
+				6ED773C562BE78F875EC7183 /* Pods */,
+				635B9A72C0918FAFFC219E8A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -306,7 +379,7 @@
 		AB93C25A266A5A0D00C3AE8F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				AB93C2BC266BABA900C3AE8F /* Record.swift */,
+				AB13ED4226BB7F9D002F56FF /* StudyRecord */,
 				AB93C34C26711A1000C3AE8F /* TimeManager.swift */,
 				ABAFB62C2674D7750095415F /* Alarm.swift */,
 				AB2B5B9326A2D19E009BD3C7 /* ThemeColor.swift */,
@@ -445,9 +518,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AB93C24B266A234C00C3AE8F /* Build configuration list for PBXNativeTarget "StudyRecordApp" */;
 			buildPhases = (
+				7616A704FDEEDB2CAF614F89 /* [CP] Check Pods Manifest.lock */,
 				AB93C233266A234800C3AE8F /* Sources */,
 				AB93C234266A234800C3AE8F /* Frameworks */,
 				AB93C235266A234800C3AE8F /* Resources */,
+				BD252AE23EFE1E4B85C48A76 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -527,6 +602,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7616A704FDEEDB2CAF614F89 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StudyRecordApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BD252AE23EFE1E4B85C48A76 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StudyRecordApp/Pods-StudyRecordApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StudyRecordApp/Pods-StudyRecordApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StudyRecordApp/Pods-StudyRecordApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AB93C233266A234800C3AE8F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -544,6 +661,7 @@
 				AB2B5B8426A2D0FD009BD3C7 /* NotificationName+Extension.swift in Sources */,
 				AB93C2BD266BABA900C3AE8F /* Record.swift in Sources */,
 				AB2B5BA026A2D1B7009BD3C7 /* ServiceConcept.swift in Sources */,
+				AB13ED4D26BB9241002F56FF /* RecordUseCase.swift in Sources */,
 				AB2B5B8726A2D0FD009BD3C7 /* UICollectionView+Extension.swift in Sources */,
 				ABAFB62D2674D7750095415F /* Alarm.swift in Sources */,
 				AB4D6BBE2672099C00E5286E /* UIButton+Extension.swift in Sources */,
@@ -565,6 +683,7 @@
 				AB2B5BBA26A2D2C2009BD3C7 /* SectionHeaderView.swift in Sources */,
 				ABA056FD26B5083F00E3DF01 /* UIAlertController+Extension.swift in Sources */,
 				AB2B5B8E26A2D106009BD3C7 /* UITableViewCell+Extension.swift in Sources */,
+				AB13ED4926BB8128002F56FF /* RealmRecordDataStore.swift in Sources */,
 				AB93C2CA266C846400C3AE8F /* UIView+Extension.swift in Sources */,
 				AB2B5B8626A2D0FD009BD3C7 /* NSObjectProtocol+Extension.swift in Sources */,
 				AB2B5BC626A2D36F009BD3C7 /* ColorChoicesSliderViewController.swift in Sources */,
@@ -575,6 +694,7 @@
 				AB93C2C3266BC28E00C3AE8F /* EditStudyRecordViewController.swift in Sources */,
 				ABA056F626B4C7D800E3DF01 /* StudyRecordGraphColorTableViewCell.swift in Sources */,
 				ABAFB6282674D4FC0095415F /* AlarmTableViewCell.swift in Sources */,
+				AB13ED4B26BB9155002F56FF /* RecordRepository.swift in Sources */,
 				AB2B5B8D26A2D106009BD3C7 /* UITableView+Extension.swift in Sources */,
 				AB93C258266A5A0900C3AE8F /* StudyRecordTableViewCell.swift in Sources */,
 				AB93C3402670FC6400C3AE8F /* StopwatchViewController.swift in Sources */,
@@ -719,6 +839,7 @@
 		};
 		AB93C24C266A234C00C3AE8F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F080AD4E0F25E92F286ED79A /* Pods-StudyRecordApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -739,6 +860,7 @@
 		};
 		AB93C24D266A234C00C3AE8F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F4A1350DA353A8FEAF4BEEB3 /* Pods-StudyRecordApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

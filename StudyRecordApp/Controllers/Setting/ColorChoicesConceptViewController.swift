@@ -25,7 +25,7 @@ final class ColorChoicesConceptViewController: UIViewController {
     }
     private struct Section {
         var title: String
-        var expanded: Bool
+        var isExpanded: Bool
     }
     private var sections = [Section]()
     private var lastTappedSection: Int? = nil
@@ -55,7 +55,7 @@ final class ColorChoicesConceptViewController: UIViewController {
     
     private func setupTableViewData() {
         titles.forEach { title in
-            sections.append(Section(title: title, expanded: false))
+            sections.append(Section(title: title, isExpanded: false))
         }
     }
     
@@ -65,7 +65,7 @@ extension ColorChoicesConceptViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return sections[indexPath.section].expanded ? 60 : 0
+        return sections[indexPath.section].isExpanded ? 60 : 0
     }
     
     func tableView(_ tableView: UITableView,
@@ -81,16 +81,16 @@ extension ColorChoicesConceptViewController: UITableViewDelegate {
             guard let self = self else { return }
             self.tableView.beginUpdates()
             var indexPaths = [IndexPath(row: 0, section: section)]
-            self.sections[section].expanded.toggle()
+            self.sections[section].isExpanded.toggle()
             if let beforeSection = self.lastTappedSection,
                beforeSection != section {
-                self.sections[beforeSection].expanded = false
+                self.sections[beforeSection].isExpanded = false
                 indexPaths.append(IndexPath(row: 0, section: beforeSection))
             }
             self.tableView.reloadRows(at: indexPaths, with: .automatic)
             self.tableView.endUpdates()
             self.lastTappedSection = section
-            let isExpanded = self.sections[section].expanded
+            let isExpanded = self.sections[section].isExpanded
             self.delegate?.subConceptTitleDidTapped(isExpanded: isExpanded)
         }
         return headerView
