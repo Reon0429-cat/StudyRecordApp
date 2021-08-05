@@ -39,6 +39,11 @@ final class RecordDataStore: RecordDataStoreProtocol {
     
     func update(record: Record, at index: Int) {
         let object = objects[index]
+        // Recordのプロパティが増えたときにコンパイルで漏れを防ぐためにインスタンスを再生成している。
+        let record = Record(title: record.title,
+                            time: record.time,
+                            isExpanded: record.isExpanded,
+                            memo: record.memo)
         try! realm.write {
             object.title = record.title
             object.time?.today = record.time.today
@@ -61,6 +66,11 @@ private extension RecordRealm {
     
     convenience init(record: Record) {
         self.init()
+        // Recordのプロパティが増えたときにコンパイルで漏れを防ぐためにインスタンスを再生成している。
+        let record = Record(title: record.title,
+                            time: record.time,
+                            isExpanded: record.isExpanded,
+                            memo: record.memo)
         self.title = record.title
         self.time?.today = record.time.today
         self.time?.total = record.time.total
@@ -73,10 +83,14 @@ private extension RecordRealm {
 private extension Record {
     
     init(record: RecordRealm) {
+        // Recordのプロパティが増えたときにコンパイルで漏れを防ぐためにインスタンスを再生成している。
+        let record = Record(title: record.title,
+                            time: Time(today: record.time?.today ?? 0,
+                                       total: record.time?.total ?? 0),
+                            isExpanded: record.isExpanded,
+                            memo: record.memo)
         self.title = record.title
-        self.time = Time(today: 0, total: 0)
-        self.time.today = record.time?.today ?? 0
-        self.time.total = record.time?.total ?? 0
+        self.time = record.time
         self.isExpanded = record.isExpanded
         self.memo = record.memo
     }
