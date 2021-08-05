@@ -30,13 +30,13 @@ private enum SectionType: CaseIterable {
         }
     }
     enum RowType: CaseIterable {
-        case standard
+        case `default`
         case custom
         case recommend
         
         var title: String {
             switch self {
-                case .standard: return "スタンダード"
+                case .default: return "デフォルト"
                 case .custom: return "カスタム"
                 case .recommend: return "オススメ"
             }
@@ -94,11 +94,12 @@ extension SettingViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
-        switch sections[indexPath.section].sectionType.rows[indexPath.row] {
-            case .standard:
-                let alert = UIAlertController(title: "デフォルトカラーにしますか？", message: nil, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "閉じる", style: .destructive, handler: nil))
-                alert.addAction(UIAlertAction(title: "する", style: .default) { _ in
+        let row = sections[indexPath.section].sectionType.rows[indexPath.row]
+        switch row {
+            case .default:
+                let alert = UIAlertController(title: "\(row.title)カラーにしますか？", message: nil, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "いいえ", style: .default, handler: nil))
+                alert.addAction(UIAlertAction(title: "はい", style: .default) { _ in
                     UserDefaults.standard.save(color: nil, .main)
                     UserDefaults.standard.save(color: nil, .sub)
                     UserDefaults.standard.save(color: nil, .accent)
