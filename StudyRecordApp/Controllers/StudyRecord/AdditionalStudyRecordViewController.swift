@@ -17,6 +17,11 @@ final class AdditionalStudyRecordViewController: UIViewController {
         case memo
     }
     private let cellType = CellType.allCases
+    private let recordUseCase = RecordUseCase(
+        repository: RecordRepository(
+            dataStore: RecordDataStore()
+        )
+    )
     
     override func viewDidLoad() {
         super.viewDidLoad()

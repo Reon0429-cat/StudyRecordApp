@@ -12,13 +12,25 @@ final class StudyRecordViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var addRecordButton: UIButton!
     
-    private var records = Record.data
+    private let recordUseCase = RecordUseCase(
+        repository: RecordRepository(
+            dataStore: RecordDataStore()
+        )
+    )
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTableView()
         addRecordButton.layer.cornerRadius = addRecordButton.frame.height / 2
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.reloadData()
+        
     }
     
     private func setupTableView() {
@@ -47,15 +59,15 @@ extension StudyRecordViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return records[indexPath.section].expanded ? tableView.rowHeight : 0
+        return recordUseCase.records[indexPath.section].isExpanded ? tableView.rowHeight : 0
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let studyRecordSectionView = tableView.dequeueReusableCustomHeaderFooterView(with: StudyRecordSectionView.self)
-        let record = records[section]
+        let record = recordUseCase.records[section]
         studyRecordSectionView.configure(record: record) { [weak self] in
             guard let self = self else { return }
-            self.records[section].expanded.toggle()
+            self.recordUseCase.changeOpeningAndClosing(at: section)
             self.tableView.beginUpdates()
             self.tableView.reloadRows(at: [IndexPath(row: 0, section: section)],
                                       with: .automatic)
@@ -70,7 +82,7 @@ extension StudyRecordViewController: UITableViewDelegate {
 extension StudyRecordViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return records.count
+        return recordUseCase.records.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -80,7 +92,7 @@ extension StudyRecordViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: StudyRecordTableViewCell.identifier,
                                                  for: indexPath) as! StudyRecordTableViewCell
-        let record = records[indexPath.section]
+        let record = recordUseCase.records[indexPath.section]
         cell.configure(record: record)
         cell.didChangedText = { [weak self] in
             guard let self = self else { return }
