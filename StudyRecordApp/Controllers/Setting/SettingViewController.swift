@@ -21,7 +21,7 @@ private enum SectionType: CaseIterable {
             case .c: return "サンプルC"
         }
     }
-    var rows: [RowType] {
+    var rowTypes: [RowType] {
         switch self {
             case .a: return []
             case .themeColor: return RowType.allCases
@@ -94,10 +94,10 @@ extension SettingViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
-        let row = sections[indexPath.section].sectionType.rows[indexPath.row]
-        switch row {
+        let rowType = sections[indexPath.section].sectionType.rowTypes[indexPath.row]
+        switch rowType {
             case .default:
-                let alert = UIAlertController(title: "\(row.title)カラーにしますか？", message: nil, preferredStyle: .alert)
+                let alert = UIAlertController(title: "\(rowType.title)カラーにしますか？", message: nil, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "いいえ", style: .default, handler: nil))
                 alert.addAction(UIAlertAction(title: "はい", style: .default) { _ in
                     UserDefaults.standard.save(color: nil, .main)
@@ -151,7 +151,7 @@ extension SettingViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        return sections[section].sectionType.rows.count
+        return sections[section].sectionType.rowTypes.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -161,7 +161,7 @@ extension SettingViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCustomCell(with: AccordionTableViewCell.self)
-        let title = sections[indexPath.section].sectionType.rows[indexPath.row].title
+        let title = sections[indexPath.section].sectionType.rowTypes[indexPath.row].title
         cell.configure(title: title)
         return cell
     }
