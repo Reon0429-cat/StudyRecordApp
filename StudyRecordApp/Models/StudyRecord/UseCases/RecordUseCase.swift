@@ -23,6 +23,7 @@ final class RecordUseCase {
         let newRecord = Record(title: record.title,
                                time: record.time,
                                isExpanded: !record.isExpanded,
+                               graphColor: record.graphColor,
                                memo: record.memo)
         repository.update(record: newRecord, at: index)
     }

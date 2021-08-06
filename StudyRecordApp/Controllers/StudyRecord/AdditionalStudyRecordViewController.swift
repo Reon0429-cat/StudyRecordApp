@@ -63,7 +63,15 @@ final class AdditionalStudyRecordViewController: UIViewController {
     }
     
     @IBAction private func saveButtonDidTapped(_ sender: Any) {
-        // MARK: - ToDo 保存処理
+        let record = Record(title: inputtedTitle,
+                            time: Time(today: 0, total: 0),
+                            isExpanded: false,
+                            graphColor: GraphColor(redValue: selectedGraphColor.redValue,
+                                                   greenValue: selectedGraphColor.greenValue,
+                                                   blueValue: selectedGraphColor.blueValue,
+                                                   alphaValue: selectedGraphColor.alphaValue),
+                            memo: inputtedMemo)
+        recordUseCase.save(record: record)
         dismiss(animated: true, completion: nil)
     }
     
