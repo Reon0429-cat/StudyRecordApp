@@ -10,11 +10,10 @@ import UIKit
 final class StudyRecordTitleTableViewCell: UITableViewCell {
     
     @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var inputtedTitleLabel: UILabel!
     
-    var onTapEvent: (() -> Void)?
-    
-    func configure(onTapEvent: @escaping () -> Void) {
-        self.onTapEvent = onTapEvent
+    func configure(title: String) {
+        inputtedTitleLabel.text = title
     }
     
 }

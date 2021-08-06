@@ -22,15 +22,22 @@ final class AdditionalStudyRecordViewController: UIViewController {
             dataStore: RecordDataStore()
         )
     )
+    private var inputtedTitle = ""
+    private var oldInputtedTitle = ""
+    private var selectedGraphColor: UIColor = .white
+    private var inputtedMemo = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTableView()
+        
         let tapGR = UITapGestureRecognizer(target: self,
                                            action: #selector(dismissKeyboard))
         tapGR.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tapGR)
+        
+        UserDefaults.standard.set(-1, forKey: "findSameColorKey")
         
     }
     
@@ -57,6 +64,9 @@ final class AdditionalStudyRecordViewController: UIViewController {
     
     @IBAction private func saveButtonDidTapped(_ sender: Any) {
         // MARK: - ToDo 保存処理
+//        if タイトルが保存されていないまたはグラフカラーが未選択 {
+//            // アラートを表示して入力するように促す。
+//        }
         dismiss(animated: true, completion: nil)
     }
     
@@ -75,13 +85,27 @@ extension AdditionalStudyRecordViewController: UITableViewDelegate {
         let cellType = CellType(rawValue: indexPath.row)!
         switch cellType {
             case .title:
-                let alert = UIAlertController.withTextField(title: "タイトル", message: nil)
+                let alert = UIAlertController(title: "タイトル", message: nil, preferredStyle: .alert)
+                alert.addTextField { textField in
+                    textField.text = self.inputtedTitle
+                    textField.delegate = self
+                }
+                alert.addAction(UIAlertAction(title: "追加", style: .default) { _ in
+                    self.oldInputtedTitle = self.inputtedTitle
+                    self.tableView.reloadData()
+                })
+                alert.addAction(UIAlertAction(title: "閉じる", style: .cancel) { _ in
+                    self.inputtedTitle = self.oldInputtedTitle
+                })
                 present(alert, animated: true, completion: nil)
             case .graphColor:
                 let studyRecordGraphColorVC = StudyRecordGraphColorViewController.instantiate()
+                studyRecordGraphColorVC.delegate = self
                 present(studyRecordGraphColorVC, animated: true, completion: nil)
             case .memo:
                 let studyRecordMemoVC = StudyRecordMemoViewController.instantiate()
+                studyRecordMemoVC.inputtedMemo = inputtedMemo
+                studyRecordMemoVC.delegate = self
                 present(studyRecordMemoVC, animated: true, completion: nil)
         }
     }
@@ -106,15 +130,43 @@ extension AdditionalStudyRecordViewController: UITableViewDataSource {
         switch cellType {
             case .title:
                 let cell = tableView.dequeueReusableCustomCell(with: StudyRecordTitleTableViewCell.self)
+                cell.configure(title: inputtedTitle)
                 return cell
             case .graphColor:
                 let cell = tableView.dequeueReusableCustomCell(with: StudyRecordGraphColorTableViewCell.self)
-                cell.configure()
+                cell.configure(color: selectedGraphColor)
                 return cell
             case .memo:
                 let cell = tableView.dequeueReusableCustomCell(with: StudyRecordMemoTableViewCell.self)
+                cell.configure(memo: inputtedMemo)
                 return cell
         }
+    }
+    
+}
+
+extension AdditionalStudyRecordViewController: StudyRecordGraphColorVCDelegate {
+    
+    func graphColorDidSelected(color: UIColor) {
+        selectedGraphColor = color
+        tableView.reloadData()
+    }
+    
+}
+
+extension AdditionalStudyRecordViewController: StudyRecordMemoVCDelegate {
+    
+    func savedMemo(memo: String) {
+        inputtedMemo = memo
+        tableView.reloadData()
+    }
+    
+}
+
+extension AdditionalStudyRecordViewController: UITextFieldDelegate {
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        inputtedTitle = textField.text ?? ""
     }
     
 }

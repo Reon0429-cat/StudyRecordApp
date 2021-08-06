@@ -78,7 +78,6 @@
 		ABA056F726B4C7D800E3DF01 /* StudyRecordGraphColorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABA056F526B4C7D800E3DF01 /* StudyRecordGraphColorTableViewCell.xib */; };
 		ABA056FA26B5025C00E3DF01 /* StudyRecordMemoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA056F826B5025C00E3DF01 /* StudyRecordMemoTableViewCell.swift */; };
 		ABA056FB26B5025C00E3DF01 /* StudyRecordMemoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABA056F926B5025C00E3DF01 /* StudyRecordMemoTableViewCell.xib */; };
-		ABA056FD26B5083F00E3DF01 /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA056FC26B5083F00E3DF01 /* UIAlertController+Extension.swift */; };
 		ABA056FF26B50CC700E3DF01 /* GraphColorTileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABA056FE26B50CC700E3DF01 /* GraphColorTileView.xib */; };
 		ABA0570126B50D1900E3DF01 /* GraphColorTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA0570026B50D1900E3DF01 /* GraphColorTileView.swift */; };
 		ABA0570326B50F7100E3DF01 /* StudyRecordGraphColor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABA0570226B50F7100E3DF01 /* StudyRecordGraphColor.storyboard */; };
@@ -166,7 +165,6 @@
 		ABA056F526B4C7D800E3DF01 /* StudyRecordGraphColorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudyRecordGraphColorTableViewCell.xib; sourceTree = "<group>"; };
 		ABA056F826B5025C00E3DF01 /* StudyRecordMemoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRecordMemoTableViewCell.swift; sourceTree = "<group>"; };
 		ABA056F926B5025C00E3DF01 /* StudyRecordMemoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudyRecordMemoTableViewCell.xib; sourceTree = "<group>"; };
-		ABA056FC26B5083F00E3DF01 /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
 		ABA056FE26B50CC700E3DF01 /* GraphColorTileView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GraphColorTileView.xib; sourceTree = "<group>"; };
 		ABA0570026B50D1900E3DF01 /* GraphColorTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphColorTileView.swift; sourceTree = "<group>"; };
 		ABA0570226B50F7100E3DF01 /* StudyRecordGraphColor.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StudyRecordGraphColor.storyboard; sourceTree = "<group>"; };
@@ -269,7 +267,6 @@
 				AB2B5B8026A2D0FD009BD3C7 /* UIColor+Extension.swift */,
 				AB4D6BBD2672099C00E5286E /* UIButton+Extension.swift */,
 				AB93C2C9266C846400C3AE8F /* UIView+Extension.swift */,
-				ABA056FC26B5083F00E3DF01 /* UIAlertController+Extension.swift */,
 				AB2B5B8926A2D106009BD3C7 /* UITableView+Extension.swift */,
 				AB2B5B8A26A2D106009BD3C7 /* UITableViewCell+Extension.swift */,
 				AB2B5B8826A2D106009BD3C7 /* UITableViewHeaderFooterView+Extension.swift */,
@@ -681,7 +678,6 @@
 				AB93C33C2670FC2C00C3AE8F /* CurrentTimeViewController.swift in Sources */,
 				AB2B5B8526A2D0FD009BD3C7 /* UIColor+Extension.swift in Sources */,
 				AB2B5BBA26A2D2C2009BD3C7 /* SectionHeaderView.swift in Sources */,
-				ABA056FD26B5083F00E3DF01 /* UIAlertController+Extension.swift in Sources */,
 				AB2B5B8E26A2D106009BD3C7 /* UITableViewCell+Extension.swift in Sources */,
 				AB13ED4926BB8128002F56FF /* RealmRecordDataStore.swift in Sources */,
 				AB93C2CA266C846400C3AE8F /* UIView+Extension.swift in Sources */,
