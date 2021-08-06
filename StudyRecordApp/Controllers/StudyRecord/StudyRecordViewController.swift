@@ -22,7 +22,6 @@ final class StudyRecordViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
-        addRecordButton.layer.cornerRadius = addRecordButton.frame.height / 2
         
     }
     
@@ -30,6 +29,13 @@ final class StudyRecordViewController: UIViewController {
         super.viewWillAppear(animated)
         
         tableView.reloadData()
+        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        addRecordButton.layer.cornerRadius = addRecordButton.frame.height / 2
         
     }
     
