@@ -12,15 +12,17 @@ final class StudyRecordGraphColorTableViewCell: UITableViewCell {
     @IBOutlet private weak var graphColorView: UIView!
     @IBOutlet private weak var unselectedLabel: UILabel!
     
-    func configure() {
-        setupGraphColorView()
-    }
-    
-    private func setupGraphColorView() {
+    func configure(color: UIColor) {
+        graphColorView.backgroundColor = color
         graphColorView.layer.cornerRadius = 10
-        graphColorView.backgroundColor = .white
         graphColorView.layer.borderWidth = 0.5
         graphColorView.layer.borderColor = UIColor.gray.cgColor
+        
+        if color == .white {
+            unselectedLabel.isHidden = false
+        } else {
+            unselectedLabel.isHidden = true
+        }
     }
     
 }
