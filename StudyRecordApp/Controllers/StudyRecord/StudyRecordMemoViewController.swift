@@ -7,16 +7,23 @@
 
 import UIKit
 
+protocol StudyRecordMemoVCDelegate: AnyObject {
+    func savedMemo(memo: String)
+}
+
 final class StudyRecordMemoViewController: UIViewController {
     
     @IBOutlet private weak var baseView: UIView! {
         didSet { baseView.layer.cornerRadius = 10 }
     }
     @IBOutlet private weak var textView: UITextView!
+    weak var delegate: StudyRecordMemoVCDelegate?
+    var inputtedMemo = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        textView.text = inputtedMemo
         setupTextView()
         
     }
@@ -38,25 +45,29 @@ final class StudyRecordMemoViewController: UIViewController {
     }
     
     @IBAction private func dismissButtonDidTapped(_ sender: Any) {
-        let alert = UIAlertController(title: "保存せずにメモを閉じます", message: nil, preferredStyle: .alert)
+        let alert = UIAlertController(title: "保存せずにメモを閉じますか", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "閉じる", style: .default, handler: { _ in
             self.dismiss(animated: true, completion: nil)
         }))
         alert.addAction(UIAlertAction(title: "保存する", style: .default, handler: { _ in
-            // MARK: - ToDo 保存処理
+            self.delegate?.savedMemo(memo: self.inputtedMemo)
             self.dismiss(animated: true, completion: nil)
         }))
         present(alert, animated: true, completion: nil)
     }
     
     @IBAction private func saveButtonDidTapped(_ sender: Any) {
-        // MARK: - ToDo 保存処理
+        self.delegate?.savedMemo(memo: self.inputtedMemo)
         dismiss(animated: true, completion: nil)
     }
     
 }
 
 extension StudyRecordMemoViewController: UITextViewDelegate {
+    
+    func textViewDidChange(_ textView: UITextView) {
+        inputtedMemo = textView.text
+    }
     
 }
 

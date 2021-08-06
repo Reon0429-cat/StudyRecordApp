@@ -9,6 +9,10 @@ import UIKit
 
 final class StudyRecordMemoTableViewCell: UITableViewCell {
 
+    @IBOutlet private weak var inputtedMemoLabel: UILabel!
     
+    func configure(memo: String) {
+        inputtedMemoLabel.text = memo
+    }
     
 }

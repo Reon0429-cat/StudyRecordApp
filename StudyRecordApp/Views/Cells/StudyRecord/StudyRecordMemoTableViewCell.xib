@@ -19,25 +19,44 @@
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MMB-0A-UKN">
                         <rect key="frame" x="287.5" y="10" width="12.5" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="12.5" id="afj-2z-tKw"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="メモ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mA4-7B-r02">
                         <rect key="frame" x="20" y="11.5" width="35" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="35" id="OuT-32-VwM"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="入力されたメモが入る" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZMV-WV-Kzx">
+                        <rect key="frame" x="75" y="0.0" width="202.5" height="44"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="ZMV-WV-Kzx" firstAttribute="leading" secondItem="mA4-7B-r02" secondAttribute="trailing" constant="20" id="1re-Rc-8CE"/>
+                    <constraint firstItem="MMB-0A-UKN" firstAttribute="leading" secondItem="ZMV-WV-Kzx" secondAttribute="trailing" constant="10" id="AnD-Ms-E7y"/>
                     <constraint firstItem="mA4-7B-r02" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="HoH-pP-5xr"/>
                     <constraint firstAttribute="trailing" secondItem="MMB-0A-UKN" secondAttribute="trailing" constant="20" id="Hvp-Za-Mr1"/>
                     <constraint firstItem="MMB-0A-UKN" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="RHz-Xx-Boh"/>
+                    <constraint firstAttribute="bottom" secondItem="ZMV-WV-Kzx" secondAttribute="bottom" id="RO1-kk-zxR"/>
                     <constraint firstItem="mA4-7B-r02" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="jsS-fo-esh"/>
+                    <constraint firstItem="ZMV-WV-Kzx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="s0H-lt-IF2"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="inputtedMemoLabel" destination="ZMV-WV-Kzx" id="Fdx-3O-oJK"/>
+            </connections>
             <point key="canvasLocation" x="139" y="114"/>
         </tableViewCell>
     </objects>
