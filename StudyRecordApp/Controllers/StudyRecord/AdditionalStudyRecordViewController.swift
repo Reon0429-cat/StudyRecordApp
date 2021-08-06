@@ -10,6 +10,7 @@ import UIKit
 final class AdditionalStudyRecordViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var saveButton: UIBarButtonItem!
     
     private enum CellType: Int, CaseIterable {
         case title
@@ -31,13 +32,12 @@ final class AdditionalStudyRecordViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
-        
+        UserDefaults.standard.set(-1, forKey: "findSameColorKey")
+        saveButton.isEnabled = false
         let tapGR = UITapGestureRecognizer(target: self,
                                            action: #selector(dismissKeyboard))
         tapGR.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tapGR)
-        
-        UserDefaults.standard.set(-1, forKey: "findSameColorKey")
         
     }
     
@@ -64,15 +64,28 @@ final class AdditionalStudyRecordViewController: UIViewController {
     
     @IBAction private func saveButtonDidTapped(_ sender: Any) {
         // MARK: - ToDo 保存処理
-//        if タイトルが保存されていないまたはグラフカラーが未選択 {
-//            // アラートを表示して入力するように促す。
-//        }
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction private func backButtonDidTapped(_ sender: Any) {
         // MARK: - ToDo アラート
         dismiss(animated: true, completion: nil)
+    }
+    
+    private func showAlert(title: String) {
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
+        present(alert, animated: true, completion: nil)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            alert.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    private func controlSaveButton() {
+        if inputtedTitle != "" && selectedGraphColor != .white {
+            saveButton.isEnabled = true
+        } else {
+            saveButton.isEnabled = false
+        }
     }
     
 }
@@ -90,12 +103,12 @@ extension AdditionalStudyRecordViewController: UITableViewDelegate {
                     textField.text = self.inputtedTitle
                     textField.delegate = self
                 }
+                alert.addAction(UIAlertAction(title: "閉じる", style: .default) { _ in
+                    self.inputtedTitle = self.oldInputtedTitle
+                })
                 alert.addAction(UIAlertAction(title: "追加", style: .default) { _ in
                     self.oldInputtedTitle = self.inputtedTitle
                     self.tableView.reloadData()
-                })
-                alert.addAction(UIAlertAction(title: "閉じる", style: .cancel) { _ in
-                    self.inputtedTitle = self.oldInputtedTitle
                 })
                 present(alert, animated: true, completion: nil)
             case .graphColor:
@@ -150,6 +163,7 @@ extension AdditionalStudyRecordViewController: StudyRecordGraphColorVCDelegate {
     func graphColorDidSelected(color: UIColor) {
         selectedGraphColor = color
         tableView.reloadData()
+        controlSaveButton()
     }
     
 }
@@ -167,6 +181,7 @@ extension AdditionalStudyRecordViewController: UITextFieldDelegate {
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
         inputtedTitle = textField.text ?? ""
+        controlSaveButton()
     }
     
 }
