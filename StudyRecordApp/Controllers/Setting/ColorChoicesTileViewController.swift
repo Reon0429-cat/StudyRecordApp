@@ -58,6 +58,11 @@ protocol TileViewDelegate: AnyObject {
 final class TileView: UIView {
     
     weak var delegate: TileViewDelegate?
+    enum State {
+        case circle
+        case square
+    }
+    var state: State = .square
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         UIView.animate(withDuration: 0, animations: {
@@ -65,7 +70,14 @@ final class TileView: UIView {
         }, completion: { _ in
             UIView.animate(withDuration: 0.1) {
                 self.transform = .identity
-                self.layer.cornerRadius = self.frame.size.width / 2
+                switch self.state {
+                    case .circle:
+                        self.layer.cornerRadius = 0
+                        self.state = .square
+                    case .square:
+                        self.layer.cornerRadius = self.frame.size.width / 2
+                        self.state = .circle
+                }
             }
         })
         delegate?.tileViewDidTapped(selectedView: self)
