@@ -7,6 +7,10 @@
 
 import UIKit
 
+// MARK: - ToDo メモボタンがスクロールするとバグ
+// MARK: - ToDo 下の方でメモをタップしたときにキーボードで隠れてしまう
+// MARK: - ToDo cellのレイアウトを修正する
+
 final class StudyRecordViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
@@ -60,15 +64,18 @@ final class StudyRecordViewController: UIViewController {
 
 extension StudyRecordViewController: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView,
+                   heightForHeaderInSection section: Int) -> CGFloat {
         return 100
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView,
+                   heightForRowAt indexPath: IndexPath) -> CGFloat {
         return recordUseCase.records[indexPath.section].isExpanded ? tableView.rowHeight : 0
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView,
+                   viewForHeaderInSection section: Int) -> UIView? {
         let studyRecordSectionView = tableView.dequeueReusableCustomHeaderFooterView(with: StudyRecordSectionView.self)
         let record = recordUseCase.records[section]
         studyRecordSectionView.configure(record: record) { [weak self] in
@@ -91,13 +98,14 @@ extension StudyRecordViewController: UITableViewDataSource {
         return recordUseCase.records.count
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: StudyRecordTableViewCell.identifier,
-                                                 for: indexPath) as! StudyRecordTableViewCell
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCustomCell(with: StudyRecordTableViewCell.self)
         let record = recordUseCase.records[indexPath.section]
         cell.configure(record: record)
         cell.didChangedText = { [weak self] in
@@ -108,7 +116,9 @@ extension StudyRecordViewController: UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+    func tableView(_ tableView: UITableView,
+                   willDisplayHeaderView view: UIView,
+                   forSection section: Int) {
         view.tintColor = .white
     }
     
