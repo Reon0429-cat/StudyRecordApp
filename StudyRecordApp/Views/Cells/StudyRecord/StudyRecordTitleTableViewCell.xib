@@ -19,29 +19,46 @@
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タイトル" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4U-pB-hK3">
                         <rect key="frame" x="20" y="11.5" width="70" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="70" id="uEe-7l-Vrm"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C18-xN-Fw1">
                         <rect key="frame" x="287.5" y="10" width="12.5" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="12.5" id="efm-zc-EJh"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="入力されたタイトルが入る" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oFp-8F-ayZ">
+                        <rect key="frame" x="110" y="0.0" width="167.5" height="44"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="oFp-8F-ayZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="5oZ-s2-cAy"/>
+                    <constraint firstAttribute="bottom" secondItem="oFp-8F-ayZ" secondAttribute="bottom" id="9WE-ig-qzw"/>
                     <constraint firstAttribute="trailing" secondItem="C18-xN-Fw1" secondAttribute="trailing" constant="20" id="A0z-PY-Wsb"/>
                     <constraint firstItem="c4U-pB-hK3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="D92-zB-kTX"/>
                     <constraint firstItem="c4U-pB-hK3" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="O4g-GH-YCe"/>
+                    <constraint firstItem="oFp-8F-ayZ" firstAttribute="leading" secondItem="c4U-pB-hK3" secondAttribute="trailing" constant="20" id="da9-X9-fCR"/>
+                    <constraint firstItem="C18-xN-Fw1" firstAttribute="leading" secondItem="oFp-8F-ayZ" secondAttribute="trailing" constant="10" id="uP6-Zc-uvF"/>
                     <constraint firstItem="C18-xN-Fw1" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="vnl-iZ-F7I"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="inputtedTitleLabel" destination="oFp-8F-ayZ" id="euz-nh-ues"/>
                 <outlet property="titleLabel" destination="c4U-pB-hK3" id="LYL-Sp-9KX"/>
             </connections>
-            <point key="canvasLocation" x="139" y="114"/>
+            <point key="canvasLocation" x="137.68115942028987" y="113.83928571428571"/>
         </tableViewCell>
     </objects>
 </document>
