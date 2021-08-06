@@ -7,7 +7,6 @@
 
 import UIKit
 
-// MARK: - ToDo メモボタンがスクロールするとバグ
 // MARK: - ToDo 下の方でメモをタップしたときにキーボードで隠れてしまう
 // MARK: - ToDo cellのレイアウトを修正する
 
@@ -126,7 +125,7 @@ extension StudyRecordViewController: UITableViewDataSource {
 
 extension StudyRecordViewController: StudyRecordSectionViewDelegate {
     
-    func didTapped() {
+    func baseViewDidTapped() {
         let editStudyRecordVC = EditStudyRecordViewController.instantiate()
         self.navigationController?.pushViewController(editStudyRecordVC, animated: true)
     }

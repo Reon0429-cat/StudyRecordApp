@@ -8,7 +8,7 @@
 import UIKit
 
 protocol StudyRecordSectionViewDelegate: AnyObject {
-    func didTapped()
+    func baseViewDidTapped()
 }
 
 final class StudyRecordSectionView: UITableViewHeaderFooterView {
@@ -27,26 +27,30 @@ final class StudyRecordSectionView: UITableViewHeaderFooterView {
         super.awakeFromNib()
         
         baseView.layer.cornerRadius = 10
-        let tapGR = UITapGestureRecognizer(target: self, action: #selector(didTapped))
+        let tapGR = UITapGestureRecognizer(target: self,
+                                           action: #selector(baseViewDidTapped))
         baseView.addGestureRecognizer(tapGR)
         
     }
     
     @IBAction private func memoButtonDidTapped(_ sender: Any) {
-        memoButton.setTitle("\(isExpanded ? "▼" : "▲") メモ")
         isExpanded.toggle()
+        memoButton.setTitle("\(isExpanded ? "▼" : "▲") メモ")
         didClickedButton?()
     }
     
-    func configure(record: Record, didClickedButton: @escaping () -> Void) {
+    func configure(record: Record,
+                   didClickedButton: @escaping () -> Void) {
         self.didClickedButton = didClickedButton
         titleLabel.text = record.title
         todayStudyTimeLabel.text = "今日: \(record.time.today)分"
         totalStudyTimeLabel.text = "合計: \(record.time.total)分"
+        isExpanded = record.isExpanded
+        memoButton.setTitle("\(isExpanded ? "▼" : "▲") メモ")
     }
     
-    @objc private func didTapped() {
-        delegate?.didTapped()
+    @objc private func baseViewDidTapped() {
+        delegate?.baseViewDidTapped()
     }
     
 }
