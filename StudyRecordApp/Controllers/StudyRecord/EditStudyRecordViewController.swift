@@ -9,11 +9,6 @@ import UIKit
 
 final class EditStudyRecordViewController: UIViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-    
     static func instantiate() -> EditStudyRecordViewController {
         let storyboard = UIStoryboard(name: "EditStudyRecord", bundle: nil)
         let editStudyRecordVC = storyboard.instantiateViewController(
@@ -27,8 +22,4 @@ final class EditStudyRecordViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction private func backButtonDidTapped(_ sender: Any) {
-        // MARK: - ToDo アラート
-        self.navigationController?.popViewController(animated: true)
-    }
 }
