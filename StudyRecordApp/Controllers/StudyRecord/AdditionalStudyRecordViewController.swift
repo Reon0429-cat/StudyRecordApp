@@ -54,15 +54,27 @@ final class AdditionalStudyRecordViewController: UIViewController {
         tableView.tableFooterView = UIView()
     }
     
-    static func instantiate() -> AdditionalStudyRecordViewController {
-        let storyboard = UIStoryboard(name: "AdditionalStudyRecord", bundle: nil)
-        let additionalStudyRecordVC = storyboard.instantiateViewController(
-            identifier: String(describing: self)
-        ) as! AdditionalStudyRecordViewController
-        return additionalStudyRecordVC
+    private func showAlert() {
+        let alert = UIAlertController(title: "保存せずに閉じますか", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "閉じる", style: .default) { _ in
+            self.dismiss(animated: true, completion: nil)
+        })
+        alert.addAction(UIAlertAction(title: "保存する", style: .default) { _ in
+            self.saveRecord()
+            self.dismiss(animated: true, completion: nil)
+        })
+        present(alert, animated: true, completion: nil)
     }
     
-    @IBAction private func saveButtonDidTapped(_ sender: Any) {
+    private func controlSaveButton() {
+        if !inputtedTitle.isEmpty && selectedGraphColor != .white {
+            saveButton.isEnabled = true
+        } else {
+            saveButton.isEnabled = false
+        }
+    }
+    
+    private func saveRecord() {
         let record = Record(title: inputtedTitle,
                             time: Time(today: 0, total: 0),
                             isExpanded: false,
@@ -72,27 +84,26 @@ final class AdditionalStudyRecordViewController: UIViewController {
                                                    alphaValue: selectedGraphColor.alphaValue),
                             memo: inputtedMemo)
         recordUseCase.save(record: record)
+    }
+    
+    static func instantiate() -> AdditionalStudyRecordViewController {
+        let storyboard = UIStoryboard(name: "AdditionalStudyRecord", bundle: nil)
+        let additionalStudyRecordVC = storyboard.instantiateViewController(
+            identifier: String(describing: self)
+        ) as! AdditionalStudyRecordViewController
+        return additionalStudyRecordVC
+    }
+    
+    @IBAction private func saveButtonDidTapped(_ sender: Any) {
+        saveRecord()
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction private func backButtonDidTapped(_ sender: Any) {
-        // MARK: - ToDo アラート
-        dismiss(animated: true, completion: nil)
-    }
-    
-    private func showAlert(title: String) {
-        let alert = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
-        present(alert, animated: true, completion: nil)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            alert.dismiss(animated: true, completion: nil)
-        }
-    }
-    
-    private func controlSaveButton() {
-        if inputtedTitle != "" && selectedGraphColor != .white {
-            saveButton.isEnabled = true
+        if !inputtedTitle.isEmpty && selectedGraphColor != .white {
+            showAlert()
         } else {
-            saveButton.isEnabled = false
+            dismiss(animated: true, completion: nil)
         }
     }
     
@@ -114,7 +125,7 @@ extension AdditionalStudyRecordViewController: UITableViewDelegate {
                 alert.addAction(UIAlertAction(title: "閉じる", style: .default) { _ in
                     self.inputtedTitle = self.oldInputtedTitle
                 })
-                alert.addAction(UIAlertAction(title: "追加", style: .default) { _ in
+                alert.addAction(UIAlertAction(title: "追加する", style: .default) { _ in
                     self.oldInputtedTitle = self.inputtedTitle
                     self.tableView.reloadData()
                 })
