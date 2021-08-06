@@ -21,7 +21,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="編集" id="5zf-kk-frX">
-                        <barButtonItem key="leftBarButtonItem" title="戻る" id="rzz-yS-Ix1">
+                        <barButtonItem key="leftBarButtonItem" title="閉じる" id="rzz-yS-Ix1">
                             <connections>
                                 <action selector="backButtonDidTapped:" destination="Y6W-OH-hqX" id="s9v-OT-fSd"/>
                             </connections>

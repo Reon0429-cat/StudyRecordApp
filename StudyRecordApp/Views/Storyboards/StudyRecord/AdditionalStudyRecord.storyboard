@@ -32,7 +32,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="追加" id="5nr-dQ-S8A">
-                        <barButtonItem key="leftBarButtonItem" title="戻る" id="fCD-L2-W6h">
+                        <barButtonItem key="leftBarButtonItem" title="閉じる" id="fCD-L2-W6h">
                             <connections>
                                 <action selector="backButtonDidTapped:" destination="Y6W-OH-hqX" id="vOG-hY-rJY"/>
                             </connections>
@@ -45,6 +45,7 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="saveButton" destination="LQi-Gg-QBw" id="GBN-Ff-gES"/>
                         <outlet property="tableView" destination="e7D-xS-FoF" id="R0q-td-QiJ"/>
                     </connections>
                 </viewController>
