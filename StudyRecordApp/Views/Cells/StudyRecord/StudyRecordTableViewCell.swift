@@ -11,13 +11,11 @@ final class StudyRecordTableViewCell: UITableViewCell {
     
     @IBOutlet private weak var textView: UITextView!
     
-    var didChangedText: (() -> Void)?
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        textView.delegate = self
         textView.layer.cornerRadius = 10
+        textView.isEditable = false
         
     }
     
@@ -25,10 +23,4 @@ final class StudyRecordTableViewCell: UITableViewCell {
         textView.text = record.memo
     }
     
-}
-
-extension StudyRecordTableViewCell: UITextViewDelegate {
-    func textViewDidChange(_ textView: UITextView) {
-        didChangedText?()
-    }
 }

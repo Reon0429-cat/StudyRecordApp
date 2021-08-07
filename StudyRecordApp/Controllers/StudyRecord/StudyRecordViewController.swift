@@ -7,7 +7,7 @@
 
 import UIKit
 
-// MARK: - ToDo 下の方でメモをタップしたときにキーボードで隠れてしまう
+// MARK: - ToDo cellがふるえる
 // MARK: - ToDo cellのレイアウトを修正する
 
 final class StudyRecordViewController: UIViewController {
@@ -107,11 +107,6 @@ extension StudyRecordViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCustomCell(with: StudyRecordTableViewCell.self)
         let record = recordUseCase.records[indexPath.section]
         cell.configure(record: record)
-        cell.didChangedText = { [weak self] in
-            guard let self = self else { return }
-            self.tableView.beginUpdates()
-            self.tableView.endUpdates()
-        }
         return cell
     }
     
