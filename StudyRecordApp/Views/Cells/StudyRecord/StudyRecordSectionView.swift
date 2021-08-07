@@ -24,10 +24,6 @@ private enum MemoState {
     }
 }
 
-protocol StudyRecordSectionViewDelegate: AnyObject {
-    func baseViewDidTapped()
-}
-
 final class StudyRecordSectionView: UITableViewHeaderFooterView {
     
     @IBOutlet private weak var baseView: UIView!
@@ -36,8 +32,8 @@ final class StudyRecordSectionView: UITableViewHeaderFooterView {
     @IBOutlet private weak var todayStudyTimeLabel: UILabel!
     @IBOutlet private weak var totalStudyTimeLabel: UILabel!
     
-    var didClickedButton: (() -> Void)?
-    var delegate: StudyRecordSectionViewDelegate?
+    var memoButtonDidClicked: (() -> Void)?
+    var baseViewDidTapped: (() -> Void)?
     private var memoState: MemoState = .shrinked
     
     override func awakeFromNib() {
@@ -50,19 +46,21 @@ final class StudyRecordSectionView: UITableViewHeaderFooterView {
     @IBAction private func memoButtonDidTapped(_ sender: Any) {
         memoState.toggle()
         memoButton.setTitle(memoState.title)
-        didClickedButton?()
+        memoButtonDidClicked?()
     }
     
     func configure(record: Record,
-                   didClickedButton: @escaping () -> Void) {
-        self.didClickedButton = didClickedButton
+                   memoButtonDidClicked: @escaping () -> Void,
+                   baseViewDidTapped: @escaping () -> Void) {
+        self.memoButtonDidClicked = memoButtonDidClicked
+        self.baseViewDidTapped = baseViewDidTapped
         setupTitleLabel(record: record)
         setupTimeLabel(record: record)
         setupMemoButton(record: record)
     }
     
-    @objc private func baseViewDidTapped() {
-        delegate?.baseViewDidTapped()
+    @objc private func baseViewAction() {
+        baseViewDidTapped?()
     }
     
 }
@@ -73,7 +71,7 @@ private extension StudyRecordSectionView {
     func setupBaseView() {
         baseView.layer.cornerRadius = 10
         let tapGR = UITapGestureRecognizer(target: self,
-                                           action: #selector(baseViewDidTapped))
+                                           action: #selector(baseViewAction))
         baseView.addGestureRecognizer(tapGR)
     }
     

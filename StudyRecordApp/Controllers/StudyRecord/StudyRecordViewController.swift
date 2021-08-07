@@ -77,18 +77,31 @@ extension StudyRecordViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
                    viewForHeaderInSection section: Int) -> UIView? {
-        let studyRecordSectionView = tableView.dequeueReusableCustomHeaderFooterView(with: StudyRecordSectionView.self)
+        let sectionView = tableView.dequeueReusableCustomHeaderFooterView(with: StudyRecordSectionView.self)
         let record = recordUseCase.records[section]
-        studyRecordSectionView.configure(record: record) { [weak self] in
-            guard let self = self else { return }
-            self.recordUseCase.changeOpeningAndClosing(at: section)
-            self.tableView.beginUpdates()
-            self.tableView.reloadRows(at: [IndexPath(row: 0, section: section)],
-                                      with: .automatic)
-            self.tableView.endUpdates()
-        }
-        studyRecordSectionView.delegate = self
-        return studyRecordSectionView
+        sectionView.configure(record: record,
+                              memoButtonDidClicked: { [weak self] in
+                                guard let self = self else { return }
+                                self.recordUseCase.changeOpeningAndClosing(at: section)
+                                self.tableView.beginUpdates()
+                                self.tableView.reloadRows(at: [IndexPath(row: 0, section: section)],
+                                                          with: .automatic)
+                                self.tableView.endUpdates()
+                              },
+                              baseViewDidTapped: {
+                                let editStudyRecordVC = EditStudyRecordViewController.instantiate()
+                                editStudyRecordVC.tappedSection = section
+                                editStudyRecordVC.inputtedTitle = record.title
+                                editStudyRecordVC.oldInputtedTitle = record.title
+                                let color = UIColor(red: record.graphColor.redValue,
+                                                    green: record.graphColor.greenValue,
+                                                    blue: record.graphColor.blueValue,
+                                                    alpha: record.graphColor.alphaValue)
+                                editStudyRecordVC.selectedGraphColor = color
+                                editStudyRecordVC.inputtedMemo = record.memo
+                                self.navigationController?.pushViewController(editStudyRecordVC, animated: true)
+                              })
+        return sectionView
     }
     
 }
@@ -116,15 +129,6 @@ extension StudyRecordViewController: UITableViewDataSource {
                    willDisplayHeaderView view: UIView,
                    forSection section: Int) {
         view.tintColor = .white
-    }
-    
-}
-
-extension StudyRecordViewController: StudyRecordSectionViewDelegate {
-    
-    func baseViewDidTapped() {
-        let editStudyRecordVC = EditStudyRecordViewController.instantiate()
-        self.navigationController?.pushViewController(editStudyRecordVC, animated: true)
     }
     
 }

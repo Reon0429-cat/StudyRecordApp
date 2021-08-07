@@ -15,11 +15,26 @@ private enum CellType: Int, CaseIterable {
     case history
 }
 
+// MARK: - ToDo グラフカラーのセルをタップした時に想定外のタイルが丸くなってしまうバグを修正する
+
 final class EditStudyRecordViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
     
     private var cellType = CellType.allCases
+    private var recordUseCase = RecordUseCase(
+        repository: RecordRepository(
+            dataStore: RealmRecordDataStore()
+        )
+    )
+    private var record: Record {
+        recordUseCase.records[tappedSection]
+    }
+    var tappedSection: Int!
+    var inputtedTitle = ""
+    var oldInputtedTitle = ""
+    var selectedGraphColor: UIColor = .white
+    var inputtedMemo = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +72,41 @@ final class EditStudyRecordViewController: UIViewController {
 extension EditStudyRecordViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
+                   didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let cellType = CellType(rawValue: indexPath.row)!
+        switch cellType {
+            case .title:
+                let alert = UIAlertController(title: "タイトル", message: nil, preferredStyle: .alert)
+                alert.addTextField { textField in
+                    textField.text = self.inputtedTitle
+                    textField.delegate = self
+                }
+                alert.addAction(UIAlertAction(title: "閉じる", style: .default) { _ in
+                    self.inputtedTitle = self.oldInputtedTitle
+                })
+                alert.addAction(UIAlertAction(title: "追加する", style: .default) { _ in
+                    self.oldInputtedTitle = self.inputtedTitle
+                    self.tableView.reloadData()
+                })
+                present(alert, animated: true, completion: nil)
+            case .graphColor:
+                let studyRecordGraphColorVC = StudyRecordGraphColorViewController.instantiate()
+                studyRecordGraphColorVC.delegate = self
+                present(studyRecordGraphColorVC, animated: true, completion: nil)
+            case .memo:
+                let studyRecordMemoVC = StudyRecordMemoViewController.instantiate()
+                studyRecordMemoVC.inputtedMemo = inputtedMemo
+                studyRecordMemoVC.delegate = self
+                present(studyRecordMemoVC, animated: true, completion: nil)
+            case .timeRecord:
+                break
+            case .history:
+                break
+        }
+    }
+    
+    func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
@@ -76,15 +126,15 @@ extension EditStudyRecordViewController: UITableViewDataSource {
         switch cellType {
             case .title:
                 let cell = tableView.dequeueReusableCustomCell(with: StudyRecordTitleTableViewCell.self)
-                cell.configure(title: "", mandatoryLabelIsHidden: true)
+                cell.configure(title: inputtedTitle, mandatoryLabelIsHidden: true)
                 return cell
             case .graphColor:
                 let cell = tableView.dequeueReusableCustomCell(with: StudyRecordGraphColorTableViewCell.self)
-                cell.configure(color: .white, mandatoryLabelIsHidden: true)
+                cell.configure(color: selectedGraphColor, mandatoryLabelIsHidden: true)
                 return cell
             case .memo:
                 let cell = tableView.dequeueReusableCustomCell(with: StudyRecordMemoTableViewCell.self)
-                cell.configure(memo: "")
+                cell.configure(memo: inputtedMemo)
                 return cell
             case .timeRecord:
                 let cell = tableView.dequeueReusableCustomCell(with: StudyRecordTimeRecordTableViewCell.self)
@@ -96,3 +146,30 @@ extension EditStudyRecordViewController: UITableViewDataSource {
     }
     
 }
+
+extension EditStudyRecordViewController: StudyRecordGraphColorVCDelegate {
+    
+    func graphColorDidSelected(color: UIColor) {
+        selectedGraphColor = color
+        tableView.reloadData()
+    }
+    
+}
+
+extension EditStudyRecordViewController: StudyRecordMemoVCDelegate {
+    
+    func savedMemo(memo: String) {
+        inputtedMemo = memo
+        tableView.reloadData()
+    }
+    
+}
+
+extension EditStudyRecordViewController: UITextFieldDelegate {
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        inputtedTitle = textField.text ?? ""
+    }
+    
+}
+
