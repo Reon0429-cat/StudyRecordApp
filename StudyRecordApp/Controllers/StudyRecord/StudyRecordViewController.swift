@@ -62,7 +62,7 @@ extension StudyRecordViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
                    heightForHeaderInSection section: Int) -> CGFloat {
-        return 100
+        return 120
     }
     
     func tableView(_ tableView: UITableView,
