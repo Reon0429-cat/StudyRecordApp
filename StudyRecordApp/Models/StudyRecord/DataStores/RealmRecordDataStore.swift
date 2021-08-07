@@ -15,7 +15,7 @@ protocol RecordDataStoreProtocol {
     func delete(at index: Int)
 }
 
-final class RecordDataStore: RecordDataStoreProtocol {
+final class RealmRecordDataStore: RecordDataStoreProtocol {
     
     private let realm = try! Realm()
     private var objects: Results<RecordRealm> {

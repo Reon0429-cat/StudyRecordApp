@@ -20,7 +20,7 @@ final class AdditionalStudyRecordViewController: UIViewController {
     private let cellType = CellType.allCases
     private let recordUseCase = RecordUseCase(
         repository: RecordRepository(
-            dataStore: RecordDataStore()
+            dataStore: RealmRecordDataStore()
         )
     )
     private var inputtedTitle = ""

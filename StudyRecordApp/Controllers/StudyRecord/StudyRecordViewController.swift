@@ -16,7 +16,7 @@ final class StudyRecordViewController: UIViewController {
     
     private let recordUseCase = RecordUseCase(
         repository: RecordRepository(
-            dataStore: RecordDataStore()
+            dataStore: RealmRecordDataStore()
         )
     )
     
