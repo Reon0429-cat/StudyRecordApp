@@ -97,6 +97,7 @@ extension EditStudyRecordViewController: UITableViewDelegate {
             case .memo:
                 let studyRecordMemoVC = StudyRecordMemoViewController.instantiate()
                 studyRecordMemoVC.inputtedMemo = inputtedMemo
+                studyRecordMemoVC.oldInputtedMemo = inputtedMemo
                 studyRecordMemoVC.delegate = self
                 present(studyRecordMemoVC, animated: true, completion: nil)
             case .timeRecord:

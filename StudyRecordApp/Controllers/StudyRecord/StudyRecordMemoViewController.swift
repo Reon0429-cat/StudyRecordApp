@@ -19,16 +19,17 @@ final class StudyRecordMemoViewController: UIViewController {
     @IBOutlet private weak var textView: UITextView!
     weak var delegate: StudyRecordMemoVCDelegate?
     var inputtedMemo = ""
+    var oldInputtedMemo = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        textView.text = inputtedMemo
         setupTextView()
         
     }
     
     private func setupTextView() {
+        textView.text = inputtedMemo
         textView.delegate = self
         textView.layer.cornerRadius = 10
         textView.becomeFirstResponder()
@@ -45,15 +46,19 @@ final class StudyRecordMemoViewController: UIViewController {
     }
     
     @IBAction private func dismissButtonDidTapped(_ sender: Any) {
-        let alert = UIAlertController(title: "保存せずにメモを閉じますか", message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "閉じる", style: .default, handler: { _ in
-            self.dismiss(animated: true, completion: nil)
-        }))
-        alert.addAction(UIAlertAction(title: "保存する", style: .default, handler: { _ in
-            self.delegate?.savedMemo(memo: self.inputtedMemo)
-            self.dismiss(animated: true, completion: nil)
-        }))
-        present(alert, animated: true, completion: nil)
+        if inputtedMemo == oldInputtedMemo {
+            dismiss(animated: true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "保存せずにメモを閉じますか", message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "閉じる", style: .default, handler: { _ in
+                self.dismiss(animated: true, completion: nil)
+            }))
+            alert.addAction(UIAlertAction(title: "保存する", style: .default, handler: { _ in
+                self.delegate?.savedMemo(memo: self.inputtedMemo)
+                self.dismiss(animated: true, completion: nil)
+            }))
+            present(alert, animated: true, completion: nil)
+        }
     }
     
     @IBAction private func saveButtonDidTapped(_ sender: Any) {
