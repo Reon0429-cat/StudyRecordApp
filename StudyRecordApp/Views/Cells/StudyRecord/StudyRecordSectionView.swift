@@ -47,6 +47,11 @@ final class StudyRecordSectionView: UITableViewHeaderFooterView {
         totalStudyTimeLabel.text = "合計: \(record.time.total)分"
         isExpanded = record.isExpanded
         memoButton.setTitle("\(isExpanded ? "▼" : "▲") メモ")
+        if record.memo.isEmpty {
+            memoButton.isHidden = true
+        } else {
+            memoButton.isHidden = false
+        }
     }
     
     @objc private func baseViewDidTapped() {
