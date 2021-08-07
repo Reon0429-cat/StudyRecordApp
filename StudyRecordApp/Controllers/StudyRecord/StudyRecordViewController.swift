@@ -7,8 +7,6 @@
 
 import UIKit
 
-// MARK: - ToDo cellがふるえる
-
 final class StudyRecordViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
@@ -48,7 +46,7 @@ final class StudyRecordViewController: UIViewController {
         tableView.registerCustomCell(StudyRecordSectionView.self)
         tableView.tableFooterView = UIView()
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 100
+
     }
     
     @IBAction private func addRecordButtonDidTapped(_ sender: Any) {
@@ -67,6 +65,11 @@ extension StudyRecordViewController: UITableViewDelegate {
         return 100
     }
     
+    func tableView(_ tableView: UITableView,
+                   estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return recordUseCase.records[indexPath.section].isExpanded ? tableView.rowHeight : 0
+    }
+
     func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
         return recordUseCase.records[indexPath.section].isExpanded ? tableView.rowHeight : 0
