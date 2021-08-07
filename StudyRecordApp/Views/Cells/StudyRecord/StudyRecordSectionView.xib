@@ -12,14 +12,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="StudyRecordSectionView" customModule="StudyRecordApp" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="572" height="100"/>
+            <rect key="frame" x="0.0" y="0.0" width="455" height="100"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IE8-iR-sRG">
-                    <rect key="frame" x="15" y="10" width="542" height="80"/>
+                    <rect key="frame" x="15" y="10" width="425" height="80"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="プログラミングを勉強する" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="UCy-gw-FOf">
-                            <rect key="frame" x="10" y="5" width="232.5" height="23"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="プログラミングを勉強するプログラミングを勉強するプログラミングを勉強するプログラミングを勉強するプログラミングを勉強するプログラミングを勉強するプログラミングを勉強するプログラミングを勉強するプログラミングを勉強するプログラミングを勉強する" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="UCy-gw-FOf">
+                            <rect key="frame" x="10" y="5" width="329.5" height="45"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -37,17 +37,17 @@
                             </connections>
                         </button>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="GcP-Kn-Pjq">
-                            <rect key="frame" x="440" y="10" width="97" height="60"/>
+                            <rect key="frame" x="339.5" y="10" width="80.5" height="60"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今日: 30分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UJ4-ti-qyc">
-                                    <rect key="frame" x="0.0" y="0.0" width="97" height="30"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今日: 30分" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="UJ4-ti-qyc">
+                                    <rect key="frame" x="0.0" y="0.0" width="80.5" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合計: 200分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mMI-2J-opJ">
-                                    <rect key="frame" x="0.0" y="30" width="97" height="30"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合計: 200分" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="mMI-2J-opJ">
+                                    <rect key="frame" x="0.0" y="30" width="80.5" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -56,7 +56,7 @@
                     </subviews>
                     <color key="backgroundColor" systemColor="systemPinkColor"/>
                     <constraints>
-                        <constraint firstItem="GcP-Kn-Pjq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="UCy-gw-FOf" secondAttribute="trailing" constant="10" id="3wr-0Y-Q5C"/>
+                        <constraint firstItem="GcP-Kn-Pjq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="UCy-gw-FOf" secondAttribute="trailing" id="3wr-0Y-Q5C"/>
                         <constraint firstItem="UCy-gw-FOf" firstAttribute="leading" secondItem="IE8-iR-sRG" secondAttribute="leading" constant="10" id="CV2-RY-nqj"/>
                         <constraint firstItem="UCy-gw-FOf" firstAttribute="top" secondItem="IE8-iR-sRG" secondAttribute="top" constant="5" id="K7b-tU-3A8"/>
                         <constraint firstAttribute="trailing" secondItem="GcP-Kn-Pjq" secondAttribute="trailing" constant="5" id="Pre-3V-Ihc"/>
@@ -86,7 +86,7 @@
                 <outlet property="todayStudyTimeLabel" destination="UJ4-ti-qyc" id="AdB-0G-Qi8"/>
                 <outlet property="totalStudyTimeLabel" destination="mMI-2J-opJ" id="VHM-Cd-7hT"/>
             </connections>
-            <point key="canvasLocation" x="150.72463768115944" y="-146.65178571428569"/>
+            <point key="canvasLocation" x="65.94202898550725" y="-146.65178571428569"/>
         </view>
     </objects>
     <resources>

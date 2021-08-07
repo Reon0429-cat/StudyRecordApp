@@ -8,7 +8,6 @@
 import UIKit
 
 // MARK: - ToDo cellがふるえる
-// MARK: - ToDo cellのレイアウトを修正する
 
 final class StudyRecordViewController: UIViewController {
     
