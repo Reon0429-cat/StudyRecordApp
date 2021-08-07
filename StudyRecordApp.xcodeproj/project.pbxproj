@@ -15,6 +15,10 @@
 		AB13ED4926BB8128002F56FF /* RealmRecordDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13ED4826BB8128002F56FF /* RealmRecordDataStore.swift */; };
 		AB13ED4B26BB9155002F56FF /* RecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13ED4A26BB9155002F56FF /* RecordRepository.swift */; };
 		AB13ED4D26BB9241002F56FF /* RecordUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13ED4C26BB9241002F56FF /* RecordUseCase.swift */; };
+		AB13ED7926BE7053002F56FF /* StudyRecordTimeRecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13ED7726BE7053002F56FF /* StudyRecordTimeRecordTableViewCell.swift */; };
+		AB13ED7A26BE7053002F56FF /* StudyRecordTimeRecordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB13ED7826BE7053002F56FF /* StudyRecordTimeRecordTableViewCell.xib */; };
+		AB13ED7D26BE7061002F56FF /* StudyRecordHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13ED7B26BE7061002F56FF /* StudyRecordHistoryTableViewCell.swift */; };
+		AB13ED7E26BE7061002F56FF /* StudyRecordHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB13ED7C26BE7061002F56FF /* StudyRecordHistoryTableViewCell.xib */; };
 		AB2B5B8326A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B7E26A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift */; };
 		AB2B5B8426A2D0FD009BD3C7 /* NotificationName+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B7F26A2D0FD009BD3C7 /* NotificationName+Extension.swift */; };
 		AB2B5B8526A2D0FD009BD3C7 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B8026A2D0FD009BD3C7 /* UIColor+Extension.swift */; };
@@ -100,6 +104,10 @@
 		AB13ED4826BB8128002F56FF /* RealmRecordDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRecordDataStore.swift; sourceTree = "<group>"; };
 		AB13ED4A26BB9155002F56FF /* RecordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRepository.swift; sourceTree = "<group>"; };
 		AB13ED4C26BB9241002F56FF /* RecordUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordUseCase.swift; sourceTree = "<group>"; };
+		AB13ED7726BE7053002F56FF /* StudyRecordTimeRecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRecordTimeRecordTableViewCell.swift; sourceTree = "<group>"; };
+		AB13ED7826BE7053002F56FF /* StudyRecordTimeRecordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudyRecordTimeRecordTableViewCell.xib; sourceTree = "<group>"; };
+		AB13ED7B26BE7061002F56FF /* StudyRecordHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRecordHistoryTableViewCell.swift; sourceTree = "<group>"; };
+		AB13ED7C26BE7061002F56FF /* StudyRecordHistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudyRecordHistoryTableViewCell.xib; sourceTree = "<group>"; };
 		AB2B5B7E26A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
 		AB2B5B7F26A2D0FD009BD3C7 /* NotificationName+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotificationName+Extension.swift"; sourceTree = "<group>"; };
 		AB2B5B8026A2D0FD009BD3C7 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -464,6 +472,10 @@
 				ABA056F526B4C7D800E3DF01 /* StudyRecordGraphColorTableViewCell.xib */,
 				ABA056F826B5025C00E3DF01 /* StudyRecordMemoTableViewCell.swift */,
 				ABA056F926B5025C00E3DF01 /* StudyRecordMemoTableViewCell.xib */,
+				AB13ED7726BE7053002F56FF /* StudyRecordTimeRecordTableViewCell.swift */,
+				AB13ED7826BE7053002F56FF /* StudyRecordTimeRecordTableViewCell.xib */,
+				AB13ED7B26BE7061002F56FF /* StudyRecordHistoryTableViewCell.swift */,
+				AB13ED7C26BE7061002F56FF /* StudyRecordHistoryTableViewCell.xib */,
 			);
 			path = StudyRecord;
 			sourceTree = "<group>";
@@ -571,9 +583,11 @@
 				AB2B5BBB26A2D2C2009BD3C7 /* ColorConceptTableViewCell.xib in Resources */,
 				AB13ECDA26B7AF6F002F56FF /* ColorChoicesSlider.storyboard in Resources */,
 				ABA056F326B4C67800E3DF01 /* StudyRecordTitleTableViewCell.xib in Resources */,
+				AB13ED7A26BE7053002F56FF /* StudyRecordTimeRecordTableViewCell.xib in Resources */,
 				AB93C251266A27B900C3AE8F /* StudyRecord.storyboard in Resources */,
 				AB2B5BAB26A2D244009BD3C7 /* ColorConcept.storyboard in Resources */,
 				AB93C244266A234C00C3AE8F /* Assets.xcassets in Resources */,
+				AB13ED7E26BE7061002F56FF /* StudyRecordHistoryTableViewCell.xib in Resources */,
 				AB2B5BB826A2D2C2009BD3C7 /* AccordionColorTableViewCell.xib in Resources */,
 				ABA0570326B50F7100E3DF01 /* StudyRecordGraphColor.storyboard in Resources */,
 				ABA056FF26B50CC700E3DF01 /* GraphColorTileView.xib in Resources */,
@@ -683,6 +697,7 @@
 				AB93C2CA266C846400C3AE8F /* UIView+Extension.swift in Sources */,
 				AB2B5B8626A2D0FD009BD3C7 /* NSObjectProtocol+Extension.swift in Sources */,
 				AB2B5BC626A2D36F009BD3C7 /* ColorChoicesSliderViewController.swift in Sources */,
+				AB13ED7D26BE7061002F56FF /* StudyRecordHistoryTableViewCell.swift in Sources */,
 				AB93C23B266A234800C3AE8F /* AppDelegate.swift in Sources */,
 				AB2B5BC926A2D36F009BD3C7 /* SettingViewController.swift in Sources */,
 				AB2B5BB926A2D2C2009BD3C7 /* AccordionColorTableViewCell.swift in Sources */,
@@ -696,6 +711,7 @@
 				AB93C3402670FC6400C3AE8F /* StopwatchViewController.swift in Sources */,
 				AB2B5BA226A2D1B7009BD3C7 /* ElegantConcept.swift in Sources */,
 				AB93C23D266A234800C3AE8F /* SceneDelegate.swift in Sources */,
+				AB13ED7926BE7053002F56FF /* StudyRecordTimeRecordTableViewCell.swift in Sources */,
 				AB2B5B9626A2D19E009BD3C7 /* ThemeColor.swift in Sources */,
 				AB93C2BF266BACE100C3AE8F /* StudyRecordSectionView.swift in Sources */,
 				AB2B5B9526A2D19E009BD3C7 /* ColorConcept.swift in Sources */,

@@ -66,6 +66,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="inputtedTitleLabel" destination="oFp-8F-ayZ" id="euz-nh-ues"/>
+                <outlet property="mandatoryLabel" destination="HQt-2V-VYI" id="ErE-aV-cV5"/>
                 <outlet property="titleLabel" destination="c4U-pB-hK3" id="LYL-Sp-9KX"/>
             </connections>
             <point key="canvasLocation" x="129.71014492753625" y="138.28125"/>

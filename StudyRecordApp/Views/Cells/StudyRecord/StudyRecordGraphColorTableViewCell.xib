@@ -74,6 +74,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="graphColorView" destination="yBE-kM-0ed" id="mod-0Z-hR9"/>
+                <outlet property="mandatoryLabel" destination="2F9-ws-4Iv" id="pTx-AQ-gcI"/>
                 <outlet property="unselectedLabel" destination="jW5-PK-wbL" id="MvV-rh-az8"/>
             </connections>
             <point key="canvasLocation" x="200.72463768115944" y="141.96428571428569"/>
