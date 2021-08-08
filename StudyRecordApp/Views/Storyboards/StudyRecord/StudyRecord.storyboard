@@ -53,12 +53,17 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="記録" image="square.and.pencil" catalog="system" id="55T-Qi-axi"/>
                     <navigationItem key="navigationItem" title="記録" id="3zd-t5-YFk">
-                        <barButtonItem key="rightBarButtonItem" title="編集" id="aEr-Ws-c9C"/>
+                        <barButtonItem key="rightBarButtonItem" title="編集" id="aEr-Ws-c9C">
+                            <connections>
+                                <action selector="editButtonDidTapped:" destination="TGE-gS-zNx" id="yO9-xm-3kR"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addRecordButton" destination="l7w-wf-9MX" id="WOl-OD-eV5"/>
+                        <outlet property="editRecordButton" destination="aEr-Ws-c9C" id="yRO-xZ-Qho"/>
                         <outlet property="tableView" destination="3pH-kq-Zvs" id="64T-QH-dME"/>
                     </connections>
                 </viewController>

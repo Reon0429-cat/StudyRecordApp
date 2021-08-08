@@ -32,4 +32,8 @@ final class RecordUseCase {
         repository.create(record: record)
     }
     
+    func delete(at index: Int) {
+        repository.delete(at: index)
+    }
+    
 }

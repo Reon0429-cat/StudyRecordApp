@@ -11,12 +11,21 @@ final class StudyRecordViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var addRecordButton: UIButton!
+    @IBOutlet private weak var editRecordButton: UIBarButtonItem!
     
     private let recordUseCase = RecordUseCase(
         repository: RecordRepository(
             dataStore: RealmRecordDataStore()
         )
     )
+    private var records: [Record] {
+        recordUseCase.records
+    }
+    private enum TableState {
+        case normal
+        case editing
+    }
+    private var tableState: TableState = .normal
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +55,6 @@ final class StudyRecordViewController: UIViewController {
         tableView.registerCustomCell(StudyRecordSectionView.self)
         tableView.tableFooterView = UIView()
         tableView.rowHeight = UITableView.automaticDimension
-
     }
     
     @IBAction private func addRecordButtonDidTapped(_ sender: Any) {
@@ -54,6 +62,18 @@ final class StudyRecordViewController: UIViewController {
         let nav = UINavigationController(rootViewController: additionalStudyRecordVC)
         nav.modalPresentationStyle = .fullScreen
         present(nav, animated: true, completion: nil)
+    }
+    
+    @IBAction private func editButtonDidTapped(_ sender: Any) {
+        switch tableState {
+            case .normal:
+                editRecordButton.title = "完了"
+                tableState = .editing
+            case .editing:
+                editRecordButton.title = "編集"
+                tableState = .normal
+        }
+        tableView.reloadData()
     }
     
 }
@@ -67,40 +87,23 @@ extension StudyRecordViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
                    estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return recordUseCase.records[indexPath.section].isExpanded ? tableView.rowHeight : 0
+        return records[indexPath.section].isExpanded ? tableView.rowHeight : 0
     }
-
+    
     func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return recordUseCase.records[indexPath.section].isExpanded ? tableView.rowHeight : 0
+        return records[indexPath.section].isExpanded ? tableView.rowHeight : 0
     }
     
     func tableView(_ tableView: UITableView,
                    viewForHeaderInSection section: Int) -> UIView? {
         let sectionView = tableView.dequeueReusableCustomHeaderFooterView(with: StudyRecordSectionView.self)
-        let record = recordUseCase.records[section]
-        sectionView.configure(record: record,
-                              memoButtonDidClicked: { [weak self] in
-                                guard let self = self else { return }
-                                self.recordUseCase.changeOpeningAndClosing(at: section)
-                                self.tableView.beginUpdates()
-                                self.tableView.reloadRows(at: [IndexPath(row: 0, section: section)],
-                                                          with: .automatic)
-                                self.tableView.endUpdates()
-                              },
-                              baseViewDidTapped: {
-                                let editStudyRecordVC = EditStudyRecordViewController.instantiate()
-                                editStudyRecordVC.tappedSection = section
-                                editStudyRecordVC.inputtedTitle = record.title
-                                editStudyRecordVC.oldInputtedTitle = record.title
-                                let color = UIColor(red: record.graphColor.redValue,
-                                                    green: record.graphColor.greenValue,
-                                                    blue: record.graphColor.blueValue,
-                                                    alpha: record.graphColor.alphaValue)
-                                editStudyRecordVC.selectedGraphColor = color
-                                editStudyRecordVC.inputtedMemo = record.memo
-                                self.navigationController?.pushViewController(editStudyRecordVC, animated: true)
-                              })
+        let record = records[section]
+        sectionView.configure(record: record)
+        let isEditing = tableState == .editing
+        sectionView.changeMode(isEditing: isEditing)
+        sectionView.tag = section
+        sectionView.delegate = self
         return sectionView
     }
     
@@ -109,7 +112,7 @@ extension StudyRecordViewController: UITableViewDelegate {
 extension StudyRecordViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return recordUseCase.records.count
+        return records.count
     }
     
     func tableView(_ tableView: UITableView,
@@ -120,7 +123,7 @@ extension StudyRecordViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCustomCell(with: StudyRecordTableViewCell.self)
-        let record = recordUseCase.records[indexPath.section]
+        let record = records[indexPath.section]
         cell.configure(record: record)
         return cell
     }
@@ -129,6 +132,49 @@ extension StudyRecordViewController: UITableViewDataSource {
                    willDisplayHeaderView view: UIView,
                    forSection section: Int) {
         view.tintColor = .white
+    }
+    
+}
+
+extension StudyRecordViewController: StudyRecordSectionViewDelegate {
+    
+    func baseViewDidTapped(section: Int) {
+        let editStudyRecordVC = EditStudyRecordViewController.instantiate()
+        let record = records[section]
+        editStudyRecordVC.tappedSection = section
+        editStudyRecordVC.inputtedTitle = record.title
+        editStudyRecordVC.oldInputtedTitle = record.title
+        editStudyRecordVC.selectedGraphColor = UIColor(record: record)
+        editStudyRecordVC.inputtedMemo = record.memo
+        self.navigationController?.pushViewController(editStudyRecordVC, animated: true)
+    }
+    
+    func memoButtonDidTapped(section: Int) {
+        recordUseCase.changeOpeningAndClosing(at: section)
+        tableView.beginUpdates()
+        tableView.reloadRows(at: [IndexPath(row: 0, section: section)],
+                             with: .automatic)
+        tableView.endUpdates()
+    }
+    
+    func deleteButtonDidTappped(section: Int) {
+        recordUseCase.delete(at: section)
+        tableView.reloadData()
+    }
+    
+    func sortButtonDidTapped(section: Int) {
+        print(#function)
+    }
+    
+}
+
+private extension UIColor {
+    
+    convenience init(record: Record) {
+        self.init(red: record.graphColor.redValue,
+                  green: record.graphColor.greenValue,
+                  blue: record.graphColor.blueValue,
+                  alpha: record.graphColor.alphaValue)
     }
     
 }
