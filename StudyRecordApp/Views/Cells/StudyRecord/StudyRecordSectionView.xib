@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,46 +13,65 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="StudyRecordSectionView" customModule="StudyRecordApp" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="460" height="101"/>
+            <rect key="frame" x="0.0" y="0.0" width="518" height="178"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IE8-iR-sRG">
-                    <rect key="frame" x="15" y="10" width="430" height="81"/>
+                    <rect key="frame" x="15" y="10" width="488" height="158"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="プログラミングを勉強するプログラミングを勉強するプログラミングを勉強するプログラミングを勉強するプログラミングを勉強するプログラミングを勉強するプログラミングを勉強するプログラミングを勉強するプログラミングを勉強するプログラミングを勉強する" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="UCy-gw-FOf">
-                            <rect key="frame" x="10" y="5" width="329.5" height="41"/>
+                            <rect key="frame" x="10" y="5" width="387.5" height="118"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Izn-Pd-Be1">
-                            <rect key="frame" x="0.0" y="46" width="70" height="35"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Izn-Pd-Be1">
+                            <rect key="frame" x="0.0" y="123" width="70" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="E2B-Ec-ris"/>
                                 <constraint firstAttribute="width" constant="70" id="xpN-VE-A3T"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <state key="normal" title="▼ メモ"/>
+                            <state key="normal" title="▼ メモ">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
                             <connections>
                                 <action selector="memoButtonDidTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="3Bj-em-iIE"/>
                             </connections>
                         </button>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="GcP-Kn-Pjq">
-                            <rect key="frame" x="339.5" y="10" width="85.5" height="61"/>
+                            <rect key="frame" x="397.5" y="10" width="85.5" height="138"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今日: 30分" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="UJ4-ti-qyc">
-                                    <rect key="frame" x="0.0" y="0.0" width="85.5" height="30.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="85.5" height="34.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合計: 200分" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="mMI-2J-opJ">
-                                    <rect key="frame" x="0.0" y="30.5" width="85.5" height="30.5"/>
+                                    <rect key="frame" x="0.0" y="34.5" width="85.5" height="34.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zsy-gk-ztN">
+                                    <rect key="frame" x="0.0" y="69" width="85.5" height="34.5"/>
+                                    <state key="normal">
+                                        <imageReference key="image" image="minus.circle" catalog="system" symbolScale="large" renderingMode="original"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="deleteButtonDidTappped:" destination="iN0-l3-epB" eventType="touchUpInside" id="DNM-JO-T36"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zAt-x2-DIx">
+                                    <rect key="frame" x="0.0" y="103.5" width="85.5" height="34.5"/>
+                                    <state key="normal">
+                                        <imageReference key="image" image="list.bullet" catalog="system" symbolScale="large" renderingMode="original"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="sortButtonDidTappped:" destination="iN0-l3-epB" eventType="touchUpInside" id="uHU-tR-29i"/>
+                                    </connections>
+                                </button>
                             </subviews>
                         </stackView>
                     </subviews>
@@ -83,15 +103,20 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="baseView" destination="IE8-iR-sRG" id="Erx-nm-1L4"/>
+                <outlet property="deleteButton" destination="Zsy-gk-ztN" id="ll8-Vo-qaN"/>
                 <outlet property="memoButton" destination="Izn-Pd-Be1" id="j83-PP-jWo"/>
+                <outlet property="sortButton" destination="zAt-x2-DIx" id="DYX-gL-YOs"/>
+                <outlet property="stackView" destination="GcP-Kn-Pjq" id="dfN-aI-Aay"/>
                 <outlet property="titleLabel" destination="UCy-gw-FOf" id="onO-Sg-6bM"/>
                 <outlet property="todayStudyTimeLabel" destination="UJ4-ti-qyc" id="AdB-0G-Qi8"/>
                 <outlet property="totalStudyTimeLabel" destination="mMI-2J-opJ" id="VHM-Cd-7hT"/>
             </connections>
-            <point key="canvasLocation" x="69.565217391304358" y="-146.31696428571428"/>
+            <point key="canvasLocation" x="111.59420289855073" y="-120.53571428571428"/>
         </view>
     </objects>
     <resources>
+        <image name="list.bullet" catalog="system" width="128" height="88"/>
+        <image name="minus.circle" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

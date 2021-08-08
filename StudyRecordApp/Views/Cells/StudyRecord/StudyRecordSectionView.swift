@@ -24,43 +24,72 @@ private enum MemoState {
     }
 }
 
+protocol StudyRecordSectionViewDelegate: AnyObject {
+    func baseViewDidTapped(section: Int)
+    func memoButtonDidTapped(section: Int)
+    func deleteButtonDidTappped(section: Int)
+    func sortButtonDidTapped(section: Int)
+}
+
 final class StudyRecordSectionView: UITableViewHeaderFooterView {
     
     @IBOutlet private weak var baseView: UIView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var memoButton: UIButton!
+    @IBOutlet private weak var stackView: UIStackView!
     @IBOutlet private weak var todayStudyTimeLabel: UILabel!
     @IBOutlet private weak var totalStudyTimeLabel: UILabel!
+    @IBOutlet private weak var deleteButton: UIButton!
+    @IBOutlet private weak var sortButton: UIButton!
     
-    var memoButtonDidClicked: (() -> Void)?
-    var baseViewDidTapped: (() -> Void)?
     private var memoState: MemoState = .shrinked
+    weak var delegate: StudyRecordSectionViewDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         setupBaseView()
+        deleteButton.isHidden = true
+        sortButton.isHidden = true
         
     }
     
     @IBAction private func memoButtonDidTapped(_ sender: Any) {
         memoState.toggle()
         memoButton.setTitle(memoState.title)
-        memoButtonDidClicked?()
+        delegate?.memoButtonDidTapped(section: self.tag)
     }
     
-    func configure(record: Record,
-                   memoButtonDidClicked: @escaping () -> Void,
-                   baseViewDidTapped: @escaping () -> Void) {
-        self.memoButtonDidClicked = memoButtonDidClicked
-        self.baseViewDidTapped = baseViewDidTapped
+    func configure(record: Record) {
         setupTitleLabel(record: record)
         setupTimeLabel(record: record)
         setupMemoButton(record: record)
     }
     
-    @objc private func baseViewAction() {
-        baseViewDidTapped?()
+    func changeMode(isEditing: Bool) {
+        if isEditing {
+            todayStudyTimeLabel.isHidden = true
+            totalStudyTimeLabel.isHidden = true
+            deleteButton.isHidden = false
+            sortButton.isHidden = false
+        } else {
+            todayStudyTimeLabel.isHidden = false
+            totalStudyTimeLabel.isHidden = false
+            deleteButton.isHidden = true
+            sortButton.isHidden = true
+        }
+    }
+    
+    @objc private func baseViewEvent() {
+        delegate?.baseViewDidTapped(section: self.tag)
+    }
+    
+    @IBAction private func deleteButtonDidTappped(_ sender: Any) {
+        delegate?.deleteButtonDidTappped(section: self.tag)
+    }
+
+    @IBAction private func sortButtonDidTappped(_ sender: Any) {
+        delegate?.sortButtonDidTapped(section: self.tag)
     }
     
 }
@@ -71,7 +100,7 @@ private extension StudyRecordSectionView {
     func setupBaseView() {
         baseView.layer.cornerRadius = 10
         let tapGR = UITapGestureRecognizer(target: self,
-                                           action: #selector(baseViewAction))
+                                           action: #selector(baseViewEvent))
         baseView.addGestureRecognizer(tapGR)
     }
     
