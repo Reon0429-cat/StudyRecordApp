@@ -7,17 +7,12 @@
 
 import UIKit
 
-class StudyRecordSortTableViewCell: UITableViewCell {
+final class StudyRecordSortTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    func configure(title: String) {
+        titleLabel.text = title
     }
     
 }

@@ -59,9 +59,9 @@ final class StudyRecordViewController: UIViewController {
     
     @IBAction private func addRecordButtonDidTapped(_ sender: Any) {
         let additionalStudyRecordVC = AdditionalStudyRecordViewController.instantiate()
-        let nav = UINavigationController(rootViewController: additionalStudyRecordVC)
-        nav.modalPresentationStyle = .fullScreen
-        present(nav, animated: true, completion: nil)
+        let navigationController = UINavigationController(rootViewController: additionalStudyRecordVC)
+        navigationController.modalPresentationStyle = .fullScreen
+        present(navigationController, animated: true, completion: nil)
     }
     
     @IBAction private func editButtonDidTapped(_ sender: Any) {
@@ -162,8 +162,11 @@ extension StudyRecordViewController: StudyRecordSectionViewDelegate {
         tableView.reloadData()
     }
     
-    func sortButtonDidTapped(section: Int) {
-        print(#function)
+    func sortButtonDidTapped() {
+        let studyRecordSortVC = StudyRecordSortViewController.instantiate()
+        let navigationController = UINavigationController(rootViewController: studyRecordSortVC)
+        navigationController.modalPresentationStyle = .fullScreen
+        present(navigationController, animated: true, completion: nil)
     }
     
 }

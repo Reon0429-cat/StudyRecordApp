@@ -28,7 +28,7 @@ protocol StudyRecordSectionViewDelegate: AnyObject {
     func baseViewDidTapped(section: Int)
     func memoButtonDidTapped(section: Int)
     func deleteButtonDidTappped(section: Int)
-    func sortButtonDidTapped(section: Int)
+    func sortButtonDidTapped()
 }
 
 final class StudyRecordSectionView: UITableViewHeaderFooterView {
@@ -89,7 +89,7 @@ final class StudyRecordSectionView: UITableViewHeaderFooterView {
     }
 
     @IBAction private func sortButtonDidTappped(_ sender: Any) {
-        delegate?.sortButtonDidTapped(section: self.tag)
+        delegate?.sortButtonDidTapped()
     }
     
 }
