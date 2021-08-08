@@ -37,6 +37,8 @@ final class StudyRecordViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        tableState = .normal
+        editRecordButton.title = "編集"
         tableView.reloadData()
         
     }
@@ -158,8 +160,16 @@ extension StudyRecordViewController: StudyRecordSectionViewDelegate {
     }
     
     func deleteButtonDidTappped(section: Int) {
-        recordUseCase.delete(at: section)
-        tableView.reloadData()
+        let alert = UIAlertController(title: "本当に削除しますか", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "削除", style: .destructive) { _ in
+            self.recordUseCase.delete(at: section)
+            self.tableView.reloadData()
+            self.dismiss(animated: true, completion: nil)
+        })
+        alert.addAction(UIAlertAction(title: "閉じる", style: .default) { _ in
+            self.dismiss(animated: true, completion: nil)
+        })
+        present(alert, animated: true, completion: nil)
     }
     
     func sortButtonDidTapped() {
