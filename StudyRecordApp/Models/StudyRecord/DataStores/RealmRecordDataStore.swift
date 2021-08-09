@@ -13,13 +13,15 @@ protocol RecordDataStoreProtocol {
     func readAll() -> [Record]
     func update(record: Record, at index: Int)
     func delete(at index: Int)
+    func sort(from sourceIndexPath: IndexPath,
+              to destinationIndexPath: IndexPath)
 }
 
 final class RealmRecordDataStore: RecordDataStoreProtocol {
     
     private let realm = try! Realm()
     private var objects: Results<RecordRealm> {
-        realm.objects(RecordRealm.self)
+        realm.objects(RecordRealm.self).sorted(byKeyPath: "order", ascending: true)
     }
     
     func create(record: Record) {
@@ -44,7 +46,8 @@ final class RealmRecordDataStore: RecordDataStoreProtocol {
                             time: record.time,
                             isExpanded: record.isExpanded,
                             graphColor: record.graphColor,
-                            memo: record.memo)
+                            memo: record.memo,
+                            order: record.order)
         try! realm.write {
             object.title = record.title
             object.time?.today = record.time.today
@@ -55,6 +58,7 @@ final class RealmRecordDataStore: RecordDataStoreProtocol {
             object.graphColor?.blueValue = Float(record.graphColor.blueValue)
             object.graphColor?.alphaValue = Float(record.graphColor.alphaValue)
             object.memo = record.memo
+            object.order = record.order
         }
     }
     
@@ -62,6 +66,29 @@ final class RealmRecordDataStore: RecordDataStoreProtocol {
         let object = objects[index]
         try! realm.write {
             realm.delete(object)
+            // オブジェクトを消去するとorderに抜けが生じるため、その分詰める
+            for i in index..<objects.count {
+                objects[i].order -= 1
+            }
+        }
+    }
+    
+    func sort(from sourceIndexPath: IndexPath,
+              to destinationIndexPath: IndexPath) {
+        let sourceObject = objects[sourceIndexPath.row]
+        let destinationObject = objects[destinationIndexPath.row]
+        let destinationObjectOrder = destinationObject.order
+        try! realm.write {
+            if sourceIndexPath.row < destinationIndexPath.row {
+                for index in sourceIndexPath.row...destinationIndexPath.row {
+                    objects[index].order -= 1
+                }
+            } else {
+                for index in destinationIndexPath.row...sourceIndexPath.row {
+                    objects[index].order += 1
+                }
+            }
+            sourceObject.order = destinationObjectOrder
         }
     }
     
@@ -76,7 +103,8 @@ private extension RecordRealm {
                             time: record.time,
                             isExpanded: record.isExpanded,
                             graphColor: record.graphColor,
-                            memo: record.memo)
+                            memo: record.memo,
+                            order: record.order)
         self.title = record.title
         self.time?.today = record.time.today
         self.time?.total = record.time.total
@@ -86,6 +114,7 @@ private extension RecordRealm {
         self.graphColor?.blueValue = Float(record.graphColor.blueValue)
         self.graphColor?.alphaValue = Float(record.graphColor.alphaValue)
         self.memo = record.memo
+        self.order = record.order
     }
     
 }
@@ -98,16 +127,26 @@ private extension Record {
                             time: Time(today: record.time?.today ?? 0,
                                        total: record.time?.total ?? 0),
                             isExpanded: record.isExpanded,
-                            graphColor: GraphColor(redValue: CGFloat(record.graphColor?.redValue ?? 0.0),
-                                                   greenValue: CGFloat(record.graphColor?.greenValue ?? 0.0),
-                                                   blueValue: CGFloat(record.graphColor?.blueValue ?? 0.0),
-                                                   alphaValue: CGFloat(record.graphColor?.alphaValue ?? 0.0)),
-                            memo: record.memo)
+                            graphColor: GraphColor(record: record),
+                            memo: record.memo,
+                            order: record.order)
         self.title = record.title
         self.time = record.time
         self.isExpanded = record.isExpanded
         self.graphColor = record.graphColor
         self.memo = record.memo
+        self.order = record.order
+    }
+    
+}
+
+private extension GraphColor {
+    
+    init(record: RecordRealm) {
+        self.init(redValue: CGFloat(record.graphColor?.redValue ?? 0.0),
+                  greenValue: CGFloat(record.graphColor?.greenValue ?? 0.0),
+                  blueValue: CGFloat(record.graphColor?.blueValue ?? 0.0),
+                  alphaValue: CGFloat(record.graphColor?.alphaValue ?? 0.0))
     }
     
 }

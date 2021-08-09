@@ -13,6 +13,8 @@ protocol RecordRepositoryProtocol {
     func readAll() -> [Record]
     func update(record: Record, at index: Int)
     func delete(at index: Int)
+    func sort(from sourceIndexPath: IndexPath,
+              to destinationIndexPath: IndexPath)
 }
 
 final class RecordRepository: RecordRepositoryProtocol {
@@ -40,6 +42,12 @@ final class RecordRepository: RecordRepositoryProtocol {
     
     func delete(at index: Int) {
         dataStore.delete(at: index)
+    }
+    
+    func sort(from sourceIndexPath: IndexPath,
+              to destinationIndexPath: IndexPath) {
+        dataStore.sort(from: sourceIndexPath,
+                       to: destinationIndexPath)
     }
     
 }

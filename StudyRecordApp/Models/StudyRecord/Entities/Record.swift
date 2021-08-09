@@ -14,6 +14,7 @@ struct Record {
     var isExpanded: Bool
     var graphColor: GraphColor
     var memo: String
+    var order: Int
 }
 
 struct Time {
@@ -35,6 +36,7 @@ final class RecordRealm: Object {
     @objc dynamic var isExpanded: Bool = false
     @objc dynamic var graphColor: GraphColorRealm? = GraphColorRealm()
     @objc dynamic var memo: String = ""
+    @objc dynamic var order: Int = 0
 }
 
 final class TimeRealm: Object {

@@ -38,11 +38,6 @@
                                 <action selector="dismissButtonDidTapped:" destination="Y6W-OH-hqX" id="LYN-nv-vHF"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="保存" id="wKA-Lt-r7k">
-                            <connections>
-                                <action selector="saveButtonDidTapped:" destination="Y6W-OH-hqX" id="zg3-Bx-Ojz"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>

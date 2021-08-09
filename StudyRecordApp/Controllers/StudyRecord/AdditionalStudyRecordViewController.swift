@@ -82,7 +82,8 @@ final class AdditionalStudyRecordViewController: UIViewController {
                                                    greenValue: selectedGraphColor.greenValue,
                                                    blueValue: selectedGraphColor.blueValue,
                                                    alphaValue: selectedGraphColor.alphaValue),
-                            memo: inputtedMemo)
+                            memo: inputtedMemo,
+                            order: recordUseCase.records.count)
         recordUseCase.save(record: record)
     }
     

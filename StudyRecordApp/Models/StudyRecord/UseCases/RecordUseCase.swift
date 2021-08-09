@@ -13,9 +13,8 @@ final class RecordUseCase {
     init(repository: RecordRepositoryProtocol) {
         self.repository = repository
     }
-    
     var records: [Record] {
-        return repository.readAll()
+        repository.readAll()
     }
     
     func changeOpeningAndClosing(at index: Int) {
@@ -24,7 +23,8 @@ final class RecordUseCase {
                                time: record.time,
                                isExpanded: !record.isExpanded,
                                graphColor: record.graphColor,
-                               memo: record.memo)
+                               memo: record.memo,
+                               order: record.order)
         repository.update(record: newRecord, at: index)
     }
     
@@ -34,6 +34,12 @@ final class RecordUseCase {
     
     func delete(at index: Int) {
         repository.delete(at: index)
+    }
+    
+    func sort(from sourceIndexPath: IndexPath,
+              to destinationIndexPath: IndexPath) {
+        repository.sort(from: sourceIndexPath,
+                        to: destinationIndexPath)
     }
     
 }
