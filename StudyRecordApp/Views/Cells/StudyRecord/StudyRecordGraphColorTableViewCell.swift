@@ -28,7 +28,11 @@ final class StudyRecordGraphColorTableViewCell: UITableViewCell {
     
     func configure(color: UIColor) {
         graphColorView.backgroundColor = color
-        if color == .white {
+        let isWhite = color.redValue == 1.0
+            && color.greenValue == 1.0
+            && color.blueValue == 1.0
+            && color.alphaValue == 1.0
+        if isWhite {
             unselectedLabel.isHidden = false
         } else {
             unselectedLabel.isHidden = true

@@ -41,6 +41,7 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="saveButton" destination="Xyp-Ax-bOS" id="ACE-vN-T1P"/>
                         <outlet property="tableView" destination="oWx-kP-IUO" id="rgL-dN-baW"/>
                     </connections>
                 </viewController>

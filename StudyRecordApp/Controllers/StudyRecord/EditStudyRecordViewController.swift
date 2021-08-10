@@ -21,6 +21,7 @@ private enum CellType: Int, CaseIterable {
 final class EditStudyRecordViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var saveButton: UIBarButtonItem!
     
     private var cellType = CellType.allCases
     private var recordUseCase = RecordUseCase(
@@ -85,6 +86,11 @@ extension EditStudyRecordViewController: UITableViewDelegate {
                 })
                 alert.addAction(UIAlertAction(title: "編集する", style: .default) { _ in
                     oldInputtedTitle = self.selectedRecord.title
+                    if oldInputtedTitle.isEmpty {
+                        self.saveButton.isEnabled = false
+                    } else {
+                        self.saveButton.isEnabled = true
+                    }
                     self.tableView.reloadData()
                 })
                 present(alert, animated: true, completion: nil)
@@ -128,7 +134,8 @@ extension EditStudyRecordViewController: UITableViewDataSource {
                 return cell
             case .graphColor:
                 let cell = tableView.dequeueReusableCustomCell(with: StudyRecordGraphColorTableViewCell.self)
-                cell.configure(color: UIColor(record: selectedRecord))
+                let color = UIColor(record: selectedRecord)
+                cell.configure(color: color)
                 return cell
             case .memo:
                 let cell = tableView.dequeueReusableCustomCell(with: StudyRecordMemoTableViewCell.self)
@@ -149,6 +156,11 @@ extension EditStudyRecordViewController: StudyRecordGraphColorVCDelegate {
     
     func graphColorDidSelected(color: UIColor) {
         selectedRecord.graphColor = GraphColor(color: color)
+        if color == .white {
+            saveButton.isEnabled = false
+        } else {
+            saveButton.isEnabled = true
+        }
         tableView.reloadData()
     }
     
@@ -164,10 +176,10 @@ extension EditStudyRecordViewController: StudyRecordMemoVCDelegate {
 }
 
 extension EditStudyRecordViewController: UITextFieldDelegate {
-
+    
     func textFieldDidChangeSelection(_ textField: UITextField) {
         selectedRecord.title = textField.text ?? ""
     }
-
+    
 }
 
