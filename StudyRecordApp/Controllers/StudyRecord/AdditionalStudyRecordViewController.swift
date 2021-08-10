@@ -75,7 +75,8 @@ final class AdditionalStudyRecordViewController: UIViewController {
     
     private func saveRecord() {
         let record = Record(title: inputtedTitle,
-                            time: Time(today: 0, total: 0),
+                            today: 0,
+                            histories: nil,
                             isExpanded: false,
                             graphColor: GraphColor(redValue: selectedGraphColor.redValue,
                                                    greenValue: selectedGraphColor.greenValue,

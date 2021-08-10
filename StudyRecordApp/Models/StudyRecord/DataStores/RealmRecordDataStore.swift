@@ -43,15 +43,15 @@ final class RealmRecordDataStore: RecordDataStoreProtocol {
         let object = objects[index]
         // Recordのプロパティが増えたときにコンパイルで漏れを防ぐためにインスタンスを再生成している。
         let record = Record(title: record.title,
-                            time: record.time,
+                            today: record.today,
+                            histories: record.histories,
                             isExpanded: record.isExpanded,
                             graphColor: record.graphColor,
                             memo: record.memo,
                             order: record.order)
         try! realm.write {
             object.title = record.title
-            object.time?.today = record.time.today
-            object.time?.total = record.time.total
+            object.today = record.today
             object.isExpanded = record.isExpanded
             object.graphColor?.redValue = Float(record.graphColor.redValue)
             object.graphColor?.greenValue = Float(record.graphColor.greenValue)
@@ -100,14 +100,21 @@ private extension RecordRealm {
         self.init()
         // Recordのプロパティが増えたときにコンパイルで漏れを防ぐためにインスタンスを再生成している。
         let record = Record(title: record.title,
-                            time: record.time,
+                            today: record.today,
+                            histories: record.histories,
                             isExpanded: record.isExpanded,
                             graphColor: record.graphColor,
                             memo: record.memo,
                             order: record.order)
         self.title = record.title
-        self.time?.today = record.time.today
-        self.time?.total = record.time.total
+        self.today = record.today
+        let histories = List<HistoryRealm>()
+        record.histories?.forEach { history in
+            let historyRealm = HistoryRealm(value: ["date": history.date,
+                                                    "time": history.time])
+            histories.append(historyRealm)
+        }
+        self.histories = histories
         self.isExpanded = record.isExpanded
         self.graphColor?.redValue = Float(record.graphColor.redValue)
         self.graphColor?.greenValue = Float(record.graphColor.greenValue)
@@ -123,15 +130,21 @@ private extension Record {
     
     init(record: RecordRealm) {
         // Recordのプロパティが増えたときにコンパイルで漏れを防ぐためにインスタンスを再生成している。
+        var histories = [History]()
+        record.histories.forEach { history in
+            let history = History(date: history.date, time: history.time)
+            histories.append(history)
+        }
         let record = Record(title: record.title,
-                            time: Time(today: record.time?.today ?? 0,
-                                       total: record.time?.total ?? 0),
+                            today: record.today,
+                            histories: histories,
                             isExpanded: record.isExpanded,
                             graphColor: GraphColor(record: record),
                             memo: record.memo,
                             order: record.order)
         self.title = record.title
-        self.time = record.time
+        self.today = record.today
+        self.histories = record.histories
         self.isExpanded = record.isExpanded
         self.graphColor = record.graphColor
         self.memo = record.memo

@@ -10,16 +10,17 @@ import RealmSwift
 // 共通の型
 struct Record {
     var title: String
-    var time: Time
+    var today: Int
+    var histories: [History]?
     var isExpanded: Bool
     var graphColor: GraphColor
     var memo: String
     var order: Int
 }
 
-struct Time {
-    var today: Int
-    var total: Int
+struct History {
+    var date: Date
+    var time: Int
 }
 
 struct GraphColor {
@@ -32,16 +33,17 @@ struct GraphColor {
 // Realmに依存した型
 final class RecordRealm: Object {
     @objc dynamic var title: String = ""
-    @objc dynamic var time: TimeRealm? = TimeRealm()
+    @objc dynamic var today: Int = 0
+    var histories = List<HistoryRealm>()
     @objc dynamic var isExpanded: Bool = false
     @objc dynamic var graphColor: GraphColorRealm? = GraphColorRealm()
     @objc dynamic var memo: String = ""
     @objc dynamic var order: Int = 0
 }
 
-final class TimeRealm: Object {
-    @objc dynamic var today: Int = 0
-    @objc dynamic var total: Int = 0
+final class HistoryRealm: Object {
+    @objc dynamic var date: Date = Date()
+    @objc dynamic var time: Int = 0
 }
 
 final class GraphColorRealm: Object {
@@ -55,7 +57,8 @@ extension Record {
     
     init(record: Record) {
         self.init(title: record.title,
-                  time: record.time,
+                  today: record.today,
+                  histories: record.histories,
                   isExpanded: record.isExpanded,
                   graphColor: record.graphColor,
                   memo: record.memo,
@@ -99,4 +102,3 @@ extension GraphColor {
     }
     
 }
-

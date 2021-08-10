@@ -110,16 +110,18 @@ private extension StudyRecordSectionView {
     
     func setupTimeLabel(record: Record) {
         todayStudyTimeLabel.text = {
-            if record.time.today >= 60 {
-                return "今日: \(record.time.today / 60)時間"
+            if record.today >= 60 {
+                return "今日: \(record.today / 60)時間"
             }
-            return "今日: \(record.time.today)分"
+            return "今日: \(record.today)分"
         }()
+        var total = 0
+        record.histories?.forEach { total += $0.time }
         totalStudyTimeLabel.text = {
-            if record.time.total >= 60 {
-                return "合計: \(record.time.total / 60)時間"
+            if total >= 60 {
+                return "合計: \(total / 60)時間"
             }
-            return "合計: \(record.time.total)分"
+            return "合計: \(total)分"
         }()
     }
     

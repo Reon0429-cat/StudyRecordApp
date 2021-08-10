@@ -118,12 +118,12 @@ extension EditStudyRecordViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        return cellType.count
+        return cellType.count + (recordUseCase.records[tappedSection].histories?.count ?? 0)
     }
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellType = CellType(rawValue: indexPath.row)!
+        let cellType = CellType(rawValue: indexPath.row)
         switch cellType {
             case .title:
                 let cell = tableView.dequeueReusableCustomCell(with: StudyRecordTitleTableViewCell.self)
@@ -141,7 +141,7 @@ extension EditStudyRecordViewController: UITableViewDataSource {
             case .timeRecord:
                 let cell = tableView.dequeueReusableCustomCell(with: StudyRecordTimeRecordTableViewCell.self)
                 return cell
-            case .history:
+            default:
                 let cell = tableView.dequeueReusableCustomCell(with: StudyRecordHistoryTableViewCell.self)
                 return cell
         }
