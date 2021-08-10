@@ -39,6 +39,11 @@ final class StudyRecordViewController: UIViewController {
         
         tableState = .normal
         editRecordButton.title = "編集"
+        if records.count == 0 {
+            editRecordButton.isEnabled = false
+        } else {
+            editRecordButton.isEnabled = true
+        }
         tableView.reloadData()
         
     }
@@ -165,6 +170,13 @@ extension StudyRecordViewController: StudyRecordSectionViewDelegate {
             self.recordUseCase.delete(at: section)
             self.tableView.reloadData()
             self.dismiss(animated: true, completion: nil)
+            if self.records.count == 0 {
+                self.tableState = .normal
+                self.editRecordButton.title = "編集"
+                self.editRecordButton.isEnabled = false
+            } else {
+                self.editRecordButton.isEnabled = true
+            }
         })
         alert.addAction(UIAlertAction(title: "閉じる", style: .default) { _ in
             self.dismiss(animated: true, completion: nil)
