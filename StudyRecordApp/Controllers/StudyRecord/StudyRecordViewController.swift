@@ -7,6 +7,23 @@
 
 import UIKit
 
+private enum EditButtonState {
+    case edit
+    case completion
+    var title: String {
+        switch self {
+            case .edit: return "編集"
+            case .completion: return "完了"
+        }
+    }
+    mutating func toggle() {
+        switch self {
+            case .edit: self = .completion
+            case .completion: self = .edit
+        }
+    }
+}
+
 final class StudyRecordViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
@@ -21,11 +38,11 @@ final class StudyRecordViewController: UIViewController {
     private var records: [Record] {
         recordUseCase.records
     }
-    private enum TableState {
-        case normal
-        case editing
+    private var editButtonState: EditButtonState = .edit {
+        didSet {
+            editRecordButton.title = editButtonState.title
+        }
     }
-    private var tableState: TableState = .normal
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,8 +54,7 @@ final class StudyRecordViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        tableState = .normal
-        editRecordButton.title = "編集"
+        editButtonState = .edit
         if records.count == 0 {
             editRecordButton.isEnabled = false
         } else {
@@ -72,14 +88,8 @@ final class StudyRecordViewController: UIViewController {
     }
     
     @IBAction private func editButtonDidTapped(_ sender: Any) {
-        switch tableState {
-            case .normal:
-                editRecordButton.title = "完了"
-                tableState = .editing
-            case .editing:
-                editRecordButton.title = "編集"
-                tableState = .normal
-        }
+        editRecordButton.title = editButtonState.title
+        editButtonState.toggle()
         tableView.reloadData()
     }
     
@@ -107,7 +117,7 @@ extension StudyRecordViewController: UITableViewDelegate {
         let sectionView = tableView.dequeueReusableCustomHeaderFooterView(with: StudyRecordSectionView.self)
         let record = records[section]
         sectionView.configure(record: record)
-        let isEditing = tableState == .editing
+        let isEditing = editButtonState == .completion
         sectionView.changeMode(isEditing: isEditing)
         sectionView.tag = section
         sectionView.delegate = self
@@ -171,8 +181,8 @@ extension StudyRecordViewController: StudyRecordSectionViewDelegate {
             self.tableView.reloadData()
             self.dismiss(animated: true, completion: nil)
             if self.records.count == 0 {
-                self.tableState = .normal
-                self.editRecordButton.title = "編集"
+                self.editButtonState = .edit
+                self.editRecordButton.title = self.editButtonState.title
                 self.editRecordButton.isEnabled = false
             } else {
                 self.editRecordButton.isEnabled = true
