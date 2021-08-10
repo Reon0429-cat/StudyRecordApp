@@ -16,6 +16,7 @@ private enum CellType: Int, CaseIterable {
 }
 
 // MARK: - ToDo グラフカラーのセルをタップした時に想定外のタイルが丸くなってしまうバグを修正する
+// MARK: - タイトルまたはグラフカラーが未入力状態になった時は保存できないようにする
 
 final class EditStudyRecordViewController: UIViewController {
     
@@ -27,14 +28,8 @@ final class EditStudyRecordViewController: UIViewController {
             dataStore: RealmRecordDataStore()
         )
     )
-    private var record: Record {
-        recordUseCase.records[tappedSection]
-    }
     var tappedSection: Int!
-    var inputtedTitle = ""
-    var oldInputtedTitle = ""
-    var selectedGraphColor: UIColor = .white
-    var inputtedMemo = ""
+    var selectedRecord: Record!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +58,7 @@ final class EditStudyRecordViewController: UIViewController {
     }
     
     @IBAction private func saveButtonDidTapped(_ sender: Any) {
-        // MARK: - ToDo 保存処理
+        recordUseCase.update(record: selectedRecord, at: tappedSection)
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -77,16 +72,19 @@ extension EditStudyRecordViewController: UITableViewDelegate {
         let cellType = CellType(rawValue: indexPath.row)!
         switch cellType {
             case .title:
-                let alert = UIAlertController(title: "タイトル", message: nil, preferredStyle: .alert)
+                let alert = UIAlertController(title: "タイトル",
+                                              message: nil,
+                                              preferredStyle: .alert)
+                var oldInputtedTitle = selectedRecord.title
                 alert.addTextField { textField in
-                    textField.text = self.inputtedTitle
+                    textField.text = self.selectedRecord.title
                     textField.delegate = self
                 }
                 alert.addAction(UIAlertAction(title: "閉じる", style: .default) { _ in
-                    self.inputtedTitle = self.oldInputtedTitle
+                    self.selectedRecord.title = oldInputtedTitle
                 })
-                alert.addAction(UIAlertAction(title: "追加する", style: .default) { _ in
-                    self.oldInputtedTitle = self.inputtedTitle
+                alert.addAction(UIAlertAction(title: "編集する", style: .default) { _ in
+                    oldInputtedTitle = self.selectedRecord.title
                     self.tableView.reloadData()
                 })
                 present(alert, animated: true, completion: nil)
@@ -96,8 +94,7 @@ extension EditStudyRecordViewController: UITableViewDelegate {
                 present(studyRecordGraphColorVC, animated: true, completion: nil)
             case .memo:
                 let studyRecordMemoVC = StudyRecordMemoViewController.instantiate()
-                studyRecordMemoVC.inputtedMemo = inputtedMemo
-                studyRecordMemoVC.oldInputtedMemo = inputtedMemo
+                studyRecordMemoVC.inputtedMemo = selectedRecord.memo
                 studyRecordMemoVC.delegate = self
                 present(studyRecordMemoVC, animated: true, completion: nil)
             case .timeRecord:
@@ -127,15 +124,15 @@ extension EditStudyRecordViewController: UITableViewDataSource {
         switch cellType {
             case .title:
                 let cell = tableView.dequeueReusableCustomCell(with: StudyRecordTitleTableViewCell.self)
-                cell.configure(title: inputtedTitle, mandatoryLabelIsHidden: true)
+                cell.configure(title: selectedRecord.title)
                 return cell
             case .graphColor:
                 let cell = tableView.dequeueReusableCustomCell(with: StudyRecordGraphColorTableViewCell.self)
-                cell.configure(color: selectedGraphColor, mandatoryLabelIsHidden: true)
+                cell.configure(color: UIColor(record: selectedRecord))
                 return cell
             case .memo:
                 let cell = tableView.dequeueReusableCustomCell(with: StudyRecordMemoTableViewCell.self)
-                cell.configure(memo: inputtedMemo)
+                cell.configure(memo: selectedRecord.memo)
                 return cell
             case .timeRecord:
                 let cell = tableView.dequeueReusableCustomCell(with: StudyRecordTimeRecordTableViewCell.self)
@@ -151,7 +148,7 @@ extension EditStudyRecordViewController: UITableViewDataSource {
 extension EditStudyRecordViewController: StudyRecordGraphColorVCDelegate {
     
     func graphColorDidSelected(color: UIColor) {
-        selectedGraphColor = color
+        selectedRecord.graphColor = GraphColor(color: color)
         tableView.reloadData()
     }
     
@@ -160,17 +157,17 @@ extension EditStudyRecordViewController: StudyRecordGraphColorVCDelegate {
 extension EditStudyRecordViewController: StudyRecordMemoVCDelegate {
     
     func savedMemo(memo: String) {
-        inputtedMemo = memo
+        selectedRecord.memo = memo
         tableView.reloadData()
     }
     
 }
 
 extension EditStudyRecordViewController: UITextFieldDelegate {
-    
+
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        inputtedTitle = textField.text ?? ""
+        selectedRecord.title = textField.text ?? ""
     }
-    
+
 }
 
