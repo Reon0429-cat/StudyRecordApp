@@ -67,7 +67,7 @@ extension EditStudyRecordViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let cellType = CellType(rawValue: indexPath.row)!
+        let cellType = CellType(rawValue: indexPath.row)
         switch cellType {
             case .title:
                 let alert = UIAlertController(title: "タイトル",
@@ -102,7 +102,7 @@ extension EditStudyRecordViewController: UITableViewDelegate {
                 present(studyRecordMemoVC, animated: true, completion: nil)
             case .timeRecord:
                 break
-            case .history:
+            default:
                 break
         }
     }
@@ -118,7 +118,7 @@ extension EditStudyRecordViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        return cellType.count + (recordUseCase.records[tappedSection].histories?.count ?? 0)
+        return (cellType.count - 1) + (recordUseCase.records[tappedSection].histories?.count ?? 0)
     }
     
     func tableView(_ tableView: UITableView,

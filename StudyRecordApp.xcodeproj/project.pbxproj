@@ -23,6 +23,8 @@
 		AB13EDB126BFAA7D002F56FF /* StudyRecordSort.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13EDB026BFAA7D002F56FF /* StudyRecordSort.storyboard */; };
 		AB13EDB426BFAB8B002F56FF /* StudyRecordSortTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EDB226BFAB8B002F56FF /* StudyRecordSortTableViewCell.swift */; };
 		AB13EDB526BFAB8B002F56FF /* StudyRecordSortTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB13EDB326BFAB8B002F56FF /* StudyRecordSortTableViewCell.xib */; };
+		AB13EDD126C29D9E002F56FF /* StudyRecordTimeRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EDD026C29D9E002F56FF /* StudyRecordTimeRecordViewController.swift */; };
+		AB13EDD326C29DAF002F56FF /* StudyRecordTimeRecord.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13EDD226C29DAF002F56FF /* StudyRecordTimeRecord.storyboard */; };
 		AB2B5B8326A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B7E26A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift */; };
 		AB2B5B8426A2D0FD009BD3C7 /* NotificationName+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B7F26A2D0FD009BD3C7 /* NotificationName+Extension.swift */; };
 		AB2B5B8526A2D0FD009BD3C7 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B8026A2D0FD009BD3C7 /* UIColor+Extension.swift */; };
@@ -116,6 +118,8 @@
 		AB13EDB026BFAA7D002F56FF /* StudyRecordSort.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StudyRecordSort.storyboard; sourceTree = "<group>"; };
 		AB13EDB226BFAB8B002F56FF /* StudyRecordSortTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRecordSortTableViewCell.swift; sourceTree = "<group>"; };
 		AB13EDB326BFAB8B002F56FF /* StudyRecordSortTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudyRecordSortTableViewCell.xib; sourceTree = "<group>"; };
+		AB13EDD026C29D9E002F56FF /* StudyRecordTimeRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRecordTimeRecordViewController.swift; sourceTree = "<group>"; };
+		AB13EDD226C29DAF002F56FF /* StudyRecordTimeRecord.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StudyRecordTimeRecord.storyboard; sourceTree = "<group>"; };
 		AB2B5B7E26A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
 		AB2B5B7F26A2D0FD009BD3C7 /* NotificationName+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotificationName+Extension.swift"; sourceTree = "<group>"; };
 		AB2B5B8026A2D0FD009BD3C7 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -451,6 +455,7 @@
 				AB93C2C2266BC28E00C3AE8F /* EditStudyRecordViewController.swift */,
 				ABA0570426B50F8100E3DF01 /* StudyRecordGraphColorViewController.swift */,
 				AB13ED1726B8F5EA002F56FF /* StudyRecordMemoViewController.swift */,
+				AB13EDD026C29D9E002F56FF /* StudyRecordTimeRecordViewController.swift */,
 				AB13EDAE26BFAA62002F56FF /* StudyRecordSortViewController.swift */,
 			);
 			path = StudyRecord;
@@ -464,6 +469,7 @@
 				AB93C2C4266BC2D600C3AE8F /* EditStudyRecord.storyboard */,
 				ABA0570226B50F7100E3DF01 /* StudyRecordGraphColor.storyboard */,
 				AB13ED1526B8F5D0002F56FF /* StudyRecordMemo.storyboard */,
+				AB13EDD226C29DAF002F56FF /* StudyRecordTimeRecord.storyboard */,
 				AB13EDB026BFAA7D002F56FF /* StudyRecordSort.storyboard */,
 			);
 			path = StudyRecord;
@@ -617,6 +623,7 @@
 				ABA056FB26B5025C00E3DF01 /* StudyRecordMemoTableViewCell.xib in Resources */,
 				AB93C266266A7DEB00C3AE8F /* AdditionalStudyRecord.storyboard in Resources */,
 				AB13ED1626B8F5D0002F56FF /* StudyRecordMemo.storyboard in Resources */,
+				AB13EDD326C29DAF002F56FF /* StudyRecordTimeRecord.storyboard in Resources */,
 				ABAFB57226735E120095415F /* CurrentTime.storyboard in Resources */,
 				AB2B5BCD26A2DC1E009BD3C7 /* Top.storyboard in Resources */,
 				ABAFB57426737EDB0095415F /* TimeContainer.storyboard in Resources */,
@@ -724,6 +731,7 @@
 				AB13ED4B26BB9155002F56FF /* RecordRepository.swift in Sources */,
 				AB2B5B8D26A2D106009BD3C7 /* UITableView+Extension.swift in Sources */,
 				AB93C258266A5A0900C3AE8F /* StudyRecordTableViewCell.swift in Sources */,
+				AB13EDD126C29D9E002F56FF /* StudyRecordTimeRecordViewController.swift in Sources */,
 				AB93C3402670FC6400C3AE8F /* StopwatchViewController.swift in Sources */,
 				AB2B5BA226A2D1B7009BD3C7 /* ElegantConcept.swift in Sources */,
 				AB93C23D266A234800C3AE8F /* SceneDelegate.swift in Sources */,
