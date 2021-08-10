@@ -24,12 +24,13 @@
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l7w-wf-9MX">
-                                <rect key="frame" x="324" y="723" width="60" height="60"/>
+                                <rect key="frame" x="329" y="728" width="60" height="60"/>
                                 <color key="backgroundColor" systemColor="systemTealColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="l7w-wf-9MX" secondAttribute="height" id="CB2-9D-5wU"/>
                                     <constraint firstAttribute="width" constant="60" id="c9J-jA-YlZ"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal">
                                     <imageReference key="image" image="plus" catalog="system" symbolScale="large"/>
@@ -43,9 +44,9 @@
                         <viewLayoutGuide key="safeArea" id="TQ8-8f-sGS"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="TQ8-8f-sGS" firstAttribute="trailing" secondItem="l7w-wf-9MX" secondAttribute="trailing" constant="30" id="30f-Lb-cmC"/>
+                            <constraint firstItem="TQ8-8f-sGS" firstAttribute="trailing" secondItem="l7w-wf-9MX" secondAttribute="trailing" constant="25" id="30f-Lb-cmC"/>
                             <constraint firstItem="3pH-kq-Zvs" firstAttribute="top" secondItem="TQ8-8f-sGS" secondAttribute="top" id="9uH-gI-kE3"/>
-                            <constraint firstItem="TQ8-8f-sGS" firstAttribute="bottom" secondItem="l7w-wf-9MX" secondAttribute="bottom" constant="30" id="Ckb-KS-aOx"/>
+                            <constraint firstItem="TQ8-8f-sGS" firstAttribute="bottom" secondItem="l7w-wf-9MX" secondAttribute="bottom" constant="25" id="Ckb-KS-aOx"/>
                             <constraint firstItem="TQ8-8f-sGS" firstAttribute="trailing" secondItem="3pH-kq-Zvs" secondAttribute="trailing" id="Fu1-dd-Se4"/>
                             <constraint firstItem="3pH-kq-Zvs" firstAttribute="leading" secondItem="TQ8-8f-sGS" secondAttribute="leading" id="Jpv-Q5-neD"/>
                             <constraint firstItem="TQ8-8f-sGS" firstAttribute="bottom" secondItem="3pH-kq-Zvs" secondAttribute="bottom" id="vE3-CM-Jxb"/>

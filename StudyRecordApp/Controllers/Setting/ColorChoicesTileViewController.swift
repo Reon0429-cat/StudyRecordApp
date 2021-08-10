@@ -51,6 +51,8 @@ enum TileColorType: Int, CaseIterable {
     }
 }
 
+// MARK: - ToDo タイルを選択した時のバグを直す
+
 protocol TileViewDelegate: AnyObject {
     func tileViewDidTapped(selectedView: UIView)
 }
