@@ -71,15 +71,6 @@ final class StudyRecordViewController: UIViewController {
         
     }
     
-    private func setupTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.registerCustomCell(StudyRecordTableViewCell.self)
-        tableView.registerCustomCell(StudyRecordSectionView.self)
-        tableView.tableFooterView = UIView()
-        tableView.rowHeight = UITableView.automaticDimension
-    }
-    
     @IBAction private func addRecordButtonDidTapped(_ sender: Any) {
         let additionalStudyRecordVC = AdditionalStudyRecordViewController.instantiate()
         let navigationController = UINavigationController(rootViewController: additionalStudyRecordVC)
@@ -88,7 +79,6 @@ final class StudyRecordViewController: UIViewController {
     }
     
     @IBAction private func editButtonDidTapped(_ sender: Any) {
-        editRecordButton.title = editButtonState.title
         editButtonState.toggle()
         tableView.reloadData()
     }
@@ -182,7 +172,6 @@ extension StudyRecordViewController: StudyRecordSectionViewDelegate {
             self.dismiss(animated: true, completion: nil)
             if self.records.count == 0 {
                 self.editButtonState = .edit
-                self.editRecordButton.title = self.editButtonState.title
                 self.editRecordButton.isEnabled = false
             } else {
                 self.editRecordButton.isEnabled = true
@@ -199,6 +188,20 @@ extension StudyRecordViewController: StudyRecordSectionViewDelegate {
         let navigationController = UINavigationController(rootViewController: studyRecordSortVC)
         navigationController.modalPresentationStyle = .fullScreen
         present(navigationController, animated: true, completion: nil)
+    }
+    
+}
+
+// MARK: - setup
+private extension StudyRecordViewController {
+    
+    func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.registerCustomCell(StudyRecordTableViewCell.self)
+        tableView.registerCustomCell(StudyRecordSectionView.self)
+        tableView.tableFooterView = UIView()
+        tableView.rowHeight = UITableView.automaticDimension
     }
     
 }
