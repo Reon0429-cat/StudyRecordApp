@@ -24,6 +24,8 @@ private enum EditButtonState {
     }
 }
 
+// MARK: - ToDo グラフカラー選択時に該当の色を丸くする(追加と編集画面でそれぞれ確認する)
+
 final class StudyRecordViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
@@ -149,7 +151,7 @@ extension StudyRecordViewController: StudyRecordSectionViewDelegate {
         let editStudyRecordVC = EditStudyRecordViewController.instantiate()
         let record = records[section]
         editStudyRecordVC.tappedSection = section
-        editStudyRecordVC.selectedRecord = Record(record: record) 
+        editStudyRecordVC.selectedRecord = Record(record: record)
         self.navigationController?.pushViewController(editStudyRecordVC, animated: true)
     }
     

@@ -32,7 +32,6 @@ final class AdditionalStudyRecordViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
-        UserDefaults.standard.set(-1, forKey: "findSameColorKey")
         saveButton.isEnabled = false
         let tapGR = UITapGestureRecognizer(target: self,
                                            action: #selector(dismissKeyboard))

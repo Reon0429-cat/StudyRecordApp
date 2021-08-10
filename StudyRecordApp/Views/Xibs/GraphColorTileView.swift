@@ -29,13 +29,6 @@ final class GraphColorTileView: UIView {
         
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        findSameColor()
-        
-    }
-    
     private func setupTileViews() {
         tileStackViews
             .enumerated()
@@ -48,24 +41,8 @@ final class GraphColorTileView: UIView {
                         let alpha = CGFloat(100 - 10 * horizontalCount)
                         let color = TileColorType(rawValue: verticalCount)?.loadColor(alpha: alpha)
                         tileView.backgroundColor = color
-                        tileView.tag = Int(String(verticalCount) + String(horizontalCount))!
                     }
             }
-    }
-    
-    func findSameColor() {
-        tileStackViews.forEach { stackView in
-            stackView.arrangedSubviews
-                .map { $0 as! TileView }
-                .forEach { tileView in
-                    let tag = UserDefaults.standard.integer(forKey: "findSameColorKey")
-                    if tag == tileView.tag {
-                        tileView.layer.cornerRadius = tileView.frame.size.width / 2
-                        tileView.state = .circle
-                        delegate?.findSameColor(selectedView: tileView)
-                    }
-                }
-        }
     }
     
     private func loadNib() {

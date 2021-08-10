@@ -31,7 +31,6 @@ final class StudyRecordGraphColorViewController: UIViewController {
     @IBAction private func saveButtonDidTapped(_ sender: Any) {
         let color = selectedTileView?.backgroundColor ?? .white
         delegate?.graphColorDidSelected(color: color)
-        UserDefaults.standard.set(selectedTileView?.tag ?? -1, forKey: "findSameColorKey")
         dismiss(animated: true, completion: nil)
     }
     

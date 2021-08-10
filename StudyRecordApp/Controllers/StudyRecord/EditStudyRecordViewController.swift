@@ -15,9 +15,6 @@ private enum CellType: Int, CaseIterable {
     case history
 }
 
-// MARK: - ToDo グラフカラーのセルをタップした時に想定外のタイルが丸くなってしまうバグを修正する
-// MARK: - タイトルまたはグラフカラーが未入力状態になった時は保存できないようにする
-
 final class EditStudyRecordViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
