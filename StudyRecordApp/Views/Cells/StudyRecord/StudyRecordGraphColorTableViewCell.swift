@@ -26,15 +26,13 @@ final class StudyRecordGraphColorTableViewCell: UITableViewCell {
         graphColorView.layer.borderColor = UIColor.gray.cgColor
     }
     
-    func configure(color: UIColor,
-                   mandatoryLabelIsHidden: Bool = false) {
+    func configure(color: UIColor) {
         graphColorView.backgroundColor = color
         if color == .white {
             unselectedLabel.isHidden = false
         } else {
             unselectedLabel.isHidden = true
         }
-        mandatoryLabel.isHidden = mandatoryLabelIsHidden
     }
     
 }

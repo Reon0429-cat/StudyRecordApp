@@ -13,10 +13,8 @@ final class StudyRecordTitleTableViewCell: UITableViewCell {
     @IBOutlet private weak var inputtedTitleLabel: UILabel!
     @IBOutlet private weak var mandatoryLabel: UILabel!
     
-    func configure(title: String,
-                   mandatoryLabelIsHidden: Bool = false) {
+    func configure(title: String) {
         inputtedTitleLabel.text = title
-        mandatoryLabel.isHidden = mandatoryLabelIsHidden
     }
     
 }

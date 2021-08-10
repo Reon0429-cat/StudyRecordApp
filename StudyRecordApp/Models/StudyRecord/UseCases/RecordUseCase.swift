@@ -42,4 +42,7 @@ final class RecordUseCase {
                         to: destinationIndexPath)
     }
     
+    func update(record: Record, at index: Int) {
+        repository.update(record: record, at: index)
+    }
 }
