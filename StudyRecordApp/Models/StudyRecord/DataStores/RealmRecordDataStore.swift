@@ -139,14 +139,3 @@ private extension Record {
     }
     
 }
-
-private extension GraphColor {
-    
-    init(record: RecordRealm) {
-        self.init(redValue: CGFloat(record.graphColor?.redValue ?? 0.0),
-                  greenValue: CGFloat(record.graphColor?.greenValue ?? 0.0),
-                  blueValue: CGFloat(record.graphColor?.blueValue ?? 0.0),
-                  alphaValue: CGFloat(record.graphColor?.alphaValue ?? 0.0))
-    }
-    
-}

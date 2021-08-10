@@ -149,10 +149,7 @@ extension StudyRecordViewController: StudyRecordSectionViewDelegate {
         let editStudyRecordVC = EditStudyRecordViewController.instantiate()
         let record = records[section]
         editStudyRecordVC.tappedSection = section
-        editStudyRecordVC.inputtedTitle = record.title
-        editStudyRecordVC.oldInputtedTitle = record.title
-        editStudyRecordVC.selectedGraphColor = UIColor(record: record)
-        editStudyRecordVC.inputtedMemo = record.memo
+        editStudyRecordVC.selectedRecord = Record(record: record) 
         self.navigationController?.pushViewController(editStudyRecordVC, animated: true)
     }
     
@@ -202,17 +199,6 @@ private extension StudyRecordViewController {
         tableView.registerCustomCell(StudyRecordSectionView.self)
         tableView.tableFooterView = UIView()
         tableView.rowHeight = UITableView.automaticDimension
-    }
-    
-}
-
-private extension UIColor {
-    
-    convenience init(record: Record) {
-        self.init(red: record.graphColor.redValue,
-                  green: record.graphColor.greenValue,
-                  blue: record.graphColor.blueValue,
-                  alpha: record.graphColor.alphaValue)
     }
     
 }

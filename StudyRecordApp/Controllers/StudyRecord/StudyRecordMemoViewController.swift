@@ -19,12 +19,13 @@ final class StudyRecordMemoViewController: UIViewController {
     @IBOutlet private weak var textView: UITextView!
     weak var delegate: StudyRecordMemoVCDelegate?
     var inputtedMemo = ""
-    var oldInputtedMemo = ""
+    private var oldInputtedMemo = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTextView()
+        oldInputtedMemo = inputtedMemo
         
     }
     
