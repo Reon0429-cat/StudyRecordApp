@@ -36,7 +36,8 @@ final class StudyRecordTimeRecordViewController: UIViewController {
     }
     
     @IBAction private func saveButtonDidTapped(_ sender: Any) {
-        selectedDate = convertStringFrom(datePicker.date)
+        selectedDate = Convert().stringFrom(datePicker.date,
+                                            format: "yyyy年MM月dd日")
         delegate?.saveButtonDidTapped(hour: selectedHour,
                                       minutes: selectedMinutes,
                                       date: selectedDate)
@@ -49,17 +50,6 @@ final class StudyRecordTimeRecordViewController: UIViewController {
             identifier: String(describing: self)
         ) as! StudyRecordTimeRecordViewController
         return studyRecordTimeRecordVC
-    }
-    
-}
-
-private extension StudyRecordTimeRecordViewController {
-    
-    func convertStringFrom(_ date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ja_JP")
-        formatter.dateFormat = "yyyy年MM月dd日"
-        return formatter.string(from: date)
     }
     
 }

@@ -111,7 +111,7 @@ extension EditStudyRecordViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return (indexPath.row < cellType.count - 1) ? 80 : 50
     }
     
 }

@@ -43,7 +43,6 @@ final class RealmRecordDataStore: RecordDataStoreProtocol {
         let object = objects[index]
         // Recordのプロパティが増えたときにコンパイルで漏れを防ぐためにインスタンスを再生成している。
         let record = Record(title: record.title,
-                            today: record.today,
                             histories: record.histories,
                             isExpanded: record.isExpanded,
                             graphColor: record.graphColor,
@@ -51,7 +50,6 @@ final class RealmRecordDataStore: RecordDataStoreProtocol {
                             order: record.order)
         try! realm.write {
             object.title = record.title
-            object.today = record.today
             record.histories?.enumerated().forEach { index, history in
                 let historyRealm = HistoryRealm(value: ["date": history.date,
                                                         "hour": history.hour,
@@ -108,14 +106,12 @@ private extension RecordRealm {
         self.init()
         // Recordのプロパティが増えたときにコンパイルで漏れを防ぐためにインスタンスを再生成している。
         let record = Record(title: record.title,
-                            today: record.today,
                             histories: record.histories,
                             isExpanded: record.isExpanded,
                             graphColor: record.graphColor,
                             memo: record.memo,
                             order: record.order)
         self.title = record.title
-        self.today = record.today
         // [History] -> List<HistoryRealm>に変換
         let histories = List<HistoryRealm>()
         record.histories?.forEach { history in
@@ -149,14 +145,12 @@ private extension Record {
             histories.append(history)
         }
         let record = Record(title: record.title,
-                            today: record.today,
                             histories: histories,
                             isExpanded: record.isExpanded,
                             graphColor: GraphColor(record: record),
                             memo: record.memo,
                             order: record.order)
         self.title = record.title
-        self.today = record.today
         self.histories = record.histories
         self.isExpanded = record.isExpanded
         self.graphColor = record.graphColor

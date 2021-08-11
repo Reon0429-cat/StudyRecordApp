@@ -20,7 +20,6 @@ final class RecordUseCase {
     func changeOpeningAndClosing(at index: Int) {
         let record = repository.read(at: index)
         let newRecord = Record(title: record.title,
-                               today: record.today,
                                histories: record.histories,
                                isExpanded: !record.isExpanded,
                                graphColor: record.graphColor,
