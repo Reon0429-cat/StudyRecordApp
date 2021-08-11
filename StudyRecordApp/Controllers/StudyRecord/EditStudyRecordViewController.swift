@@ -105,7 +105,11 @@ extension EditStudyRecordViewController: UITableViewDelegate {
                 studyRecordTimeRecordVC.delegate = self
                 present(studyRecordTimeRecordVC, animated: true, completion: nil)
             default:
-                break
+                let studyRecordTimeRecordVC = StudyRecordTimeRecordViewController.instantiate()
+                if let history = selectedRecord.histories?[indexPath.row - (self.cellType.count - 1)] {
+                    studyRecordTimeRecordVC.history = history
+                }
+                present(studyRecordTimeRecordVC, animated: true, completion: nil)
         }
     }
     
@@ -146,9 +150,7 @@ extension EditStudyRecordViewController: UITableViewDataSource {
             default:
                 let cell = tableView.dequeueReusableCustomCell(with: StudyRecordHistoryTableViewCell.self)
                 if let history = selectedRecord.histories?[indexPath.row - (self.cellType.count - 1)] {
-                    cell.configure(date: history.date,
-                                   hour: history.hour,
-                                   minutes: history.minutes) 
+                    cell.configure(history: history)
                 }
                 return cell
         }
@@ -181,10 +183,8 @@ extension EditStudyRecordViewController: StudyRecordMemoVCDelegate {
 
 extension EditStudyRecordViewController: StudyRecordTimeRecordVCDelegate {
     
-    func saveButtonDidTapped(hour: Int, minutes: Int, date: String) {
-        selectedRecord.histories?.append(History(date: date,
-                                                 hour: hour,
-                                                 minutes: minutes))
+    func saveButtonDidTapped(history: History) {
+        selectedRecord.histories?.append(history)
         tableView.reloadData()
     }
     

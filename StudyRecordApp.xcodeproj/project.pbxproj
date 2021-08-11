@@ -25,7 +25,7 @@
 		AB13EDB526BFAB8B002F56FF /* StudyRecordSortTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB13EDB326BFAB8B002F56FF /* StudyRecordSortTableViewCell.xib */; };
 		AB13EDD126C29D9E002F56FF /* StudyRecordTimeRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EDD026C29D9E002F56FF /* StudyRecordTimeRecordViewController.swift */; };
 		AB13EDD326C29DAF002F56FF /* StudyRecordTimeRecord.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13EDD226C29DAF002F56FF /* StudyRecordTimeRecord.storyboard */; };
-		AB13EDD526C38E55002F56FF /* Convert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EDD426C38E55002F56FF /* Convert.swift */; };
+		AB13EDDB26C3C163002F56FF /* Convert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EDDA26C3C163002F56FF /* Convert.swift */; };
 		AB2B5B8326A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B7E26A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift */; };
 		AB2B5B8426A2D0FD009BD3C7 /* NotificationName+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B7F26A2D0FD009BD3C7 /* NotificationName+Extension.swift */; };
 		AB2B5B8526A2D0FD009BD3C7 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B8026A2D0FD009BD3C7 /* UIColor+Extension.swift */; };
@@ -121,7 +121,7 @@
 		AB13EDB326BFAB8B002F56FF /* StudyRecordSortTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudyRecordSortTableViewCell.xib; sourceTree = "<group>"; };
 		AB13EDD026C29D9E002F56FF /* StudyRecordTimeRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRecordTimeRecordViewController.swift; sourceTree = "<group>"; };
 		AB13EDD226C29DAF002F56FF /* StudyRecordTimeRecord.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StudyRecordTimeRecord.storyboard; sourceTree = "<group>"; };
-		AB13EDD426C38E55002F56FF /* Convert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Convert.swift; sourceTree = "<group>"; };
+		AB13EDDA26C3C163002F56FF /* Convert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Convert.swift; sourceTree = "<group>"; };
 		AB2B5B7E26A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
 		AB2B5B7F26A2D0FD009BD3C7 /* NotificationName+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotificationName+Extension.swift"; sourceTree = "<group>"; };
 		AB2B5B8026A2D0FD009BD3C7 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -400,10 +400,10 @@
 			children = (
 				AB13ED4226BB7F9D002F56FF /* StudyRecord */,
 				AB93C34C26711A1000C3AE8F /* TimeManager.swift */,
+				AB13EDDA26C3C163002F56FF /* Convert.swift */,
 				ABAFB62C2674D7750095415F /* Alarm.swift */,
 				AB2B5B9326A2D19E009BD3C7 /* ThemeColor.swift */,
 				AB2B5B9226A2D19E009BD3C7 /* ColorConcept.swift */,
-				AB13EDD426C38E55002F56FF /* Convert.swift */,
 				AB2B5BA526A2D1C1009BD3C7 /* SubConcepts */,
 			);
 			path = Models;
@@ -685,7 +685,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB2B5B9F26A2D1B7009BD3C7 /* OverseasConcept.swift in Sources */,
-				AB13EDD526C38E55002F56FF /* Convert.swift in Sources */,
+				AB13EDDB26C3C163002F56FF /* Convert.swift in Sources */,
 				AB2B5BC526A2D36F009BD3C7 /* ColorChoicesTileViewController.swift in Sources */,
 				AB93C24F266A271E00C3AE8F /* StudyRecordViewController.swift in Sources */,
 				AB93C33E2670FC4E00C3AE8F /* AlarmViewController.swift in Sources */,

@@ -111,7 +111,7 @@ private extension StudyRecordSectionView {
     func setupTimeLabel(record: Record) {
         var today = 0
         record.histories?.forEach {
-            if $0.date == Convert().stringFrom(Date(), format: "yyyy年MM月dd日") {
+            if "\($0.year)年\($0.month)月\($0.day)" == Convert().stringFrom(Date(), format: "yyyy年M月d日") {
                 today += ($0.hour * 60 + $0.minutes)
             }
         }

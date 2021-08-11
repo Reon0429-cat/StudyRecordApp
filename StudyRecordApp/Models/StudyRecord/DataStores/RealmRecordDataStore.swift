@@ -51,9 +51,7 @@ final class RealmRecordDataStore: RecordDataStoreProtocol {
         try! realm.write {
             object.title = record.title
             record.histories?.enumerated().forEach { index, history in
-                let historyRealm = HistoryRealm(value: ["date": history.date,
-                                                        "hour": history.hour,
-                                                        "minutes": history.minutes])
+                let historyRealm = HistoryRealm(history: history)
                 if index >= object.histories.count {
                     object.histories.append(historyRealm)
                 }
@@ -115,9 +113,7 @@ private extension RecordRealm {
         // [History] -> List<HistoryRealm>に変換
         let histories = List<HistoryRealm>()
         record.histories?.forEach { history in
-            let historyRealm = HistoryRealm(value: ["date": history.date,
-                                                    "hour": history.hour,
-                                                    "minutes": history.minutes])
+            let historyRealm = HistoryRealm(history: history)
             histories.append(historyRealm)
         }
         self.histories = histories
@@ -139,9 +135,7 @@ private extension Record {
         // List<HistoryRealm> -> [History]に変換
         var histories = [History]()
         record.histories.forEach { history in
-            let history = History(date: history.date,
-                                  hour: history.hour,
-                                  minutes: history.minutes)
+            let history = History(history: history)
             histories.append(history)
         }
         let record = Record(title: record.title,

@@ -18,7 +18,9 @@ struct Record {
 }
 
 struct History {
-    var date: String
+    var year: Int
+    var month: Int
+    var day: Int
     var hour: Int
     var minutes: Int
 }
@@ -41,7 +43,9 @@ final class RecordRealm: Object {
 }
 
 final class HistoryRealm: Object {
-    @objc dynamic var date: String = ""
+    @objc dynamic var year: Int = 0
+    @objc dynamic var month: Int = 0
+    @objc dynamic var day: Int = 0
     @objc dynamic var hour: Int = 0
     @objc dynamic var minutes: Int = 0
 }
@@ -98,6 +102,31 @@ extension GraphColor {
                   greenValue: color.greenValue,
                   blueValue: color.blueValue,
                   alphaValue: color.alphaValue)
+    }
+    
+}
+
+extension HistoryRealm {
+    
+    convenience init(history: History) {
+        let historyRealm = HistoryRealm(value: ["year": history.year,
+                                                "month": history.month,
+                                                "day": history.day,
+                                                "hour": history.hour,
+                                                "minutes": history.minutes])
+        self.init(value: historyRealm)
+    }
+    
+}
+
+extension History {
+    
+    init(history: HistoryRealm) {
+        self.init(year: history.year,
+                  month: history.month,
+                  day: history.day,
+                  hour: history.hour,
+                  minutes: history.minutes)
     }
     
 }
