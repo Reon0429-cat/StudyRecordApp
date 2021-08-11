@@ -101,7 +101,9 @@ extension EditStudyRecordViewController: UITableViewDelegate {
                 studyRecordMemoVC.delegate = self
                 present(studyRecordMemoVC, animated: true, completion: nil)
             case .timeRecord:
-                break
+                let studyRecordTimeRecordVC = StudyRecordTimeRecordViewController.instantiate()
+                studyRecordTimeRecordVC.delegate = self
+                present(studyRecordTimeRecordVC, animated: true, completion: nil)
             default:
                 break
         }
@@ -118,7 +120,7 @@ extension EditStudyRecordViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        return (cellType.count - 1) + (recordUseCase.records[tappedSection].histories?.count ?? 0)
+        return (cellType.count - 1) + (selectedRecord.histories?.count ?? 0)
     }
     
     func tableView(_ tableView: UITableView,
@@ -143,6 +145,11 @@ extension EditStudyRecordViewController: UITableViewDataSource {
                 return cell
             default:
                 let cell = tableView.dequeueReusableCustomCell(with: StudyRecordHistoryTableViewCell.self)
+                if let history = selectedRecord.histories?[indexPath.row - (self.cellType.count - 1)] {
+                    cell.configure(date: history.date,
+                                   hour: history.hour,
+                                   minutes: history.minutes) 
+                }
                 return cell
         }
     }
@@ -167,6 +174,17 @@ extension EditStudyRecordViewController: StudyRecordMemoVCDelegate {
     
     func savedMemo(memo: String) {
         selectedRecord.memo = memo
+        tableView.reloadData()
+    }
+    
+}
+
+extension EditStudyRecordViewController: StudyRecordTimeRecordVCDelegate {
+    
+    func saveButtonDidTapped(hour: Int, minutes: Int, date: String) {
+        selectedRecord.histories?.append(History(date: date,
+                                                 hour: hour,
+                                                 minutes: minutes))
         tableView.reloadData()
     }
     
