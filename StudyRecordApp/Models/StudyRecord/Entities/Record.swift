@@ -19,8 +19,9 @@ struct Record {
 }
 
 struct History {
-    var date: Date
-    var time: Int
+    var date: String
+    var hour: Int
+    var minutes: Int
 }
 
 struct GraphColor {
@@ -42,8 +43,9 @@ final class RecordRealm: Object {
 }
 
 final class HistoryRealm: Object {
-    @objc dynamic var date: Date = Date()
-    @objc dynamic var time: Int = 0
+    @objc dynamic var date: String = ""
+    @objc dynamic var hour: Int = 0
+    @objc dynamic var minutes: Int = 0
 }
 
 final class GraphColorRealm: Object {

@@ -16,9 +16,50 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="ftG-oz-6Ne">
+                                <rect key="frame" x="50" y="117" width="314" height="216"/>
+                                <locale key="locale" localeIdentifier="ja_JP"/>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebN-g7-m26">
+                                <rect key="frame" x="20" y="64" width="52" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="閉じる"/>
+                                <connections>
+                                    <action selector="dismissButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="cTR-Wa-JY9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rbY-zL-FU6">
+                                <rect key="frame" x="359" y="64" width="35" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="保存"/>
+                                <connections>
+                                    <action selector="saveButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="8Lu-Ge-nsk"/>
+                                </connections>
+                            </button>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Owx-3g-75L">
+                                <rect key="frame" x="50" y="353" width="314" height="216"/>
+                            </pickerView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ebN-g7-m26" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="7Vz-76-XO6"/>
+                            <constraint firstItem="rbY-zL-FU6" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="9Yu-jO-5il"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Owx-3g-75L" secondAttribute="trailing" constant="50" id="AsG-SE-hmf"/>
+                            <constraint firstItem="ebN-g7-m26" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="Cnn-YX-QWK"/>
+                            <constraint firstItem="ftG-oz-6Ne" firstAttribute="top" secondItem="ebN-g7-m26" secondAttribute="bottom" constant="20" id="HQZ-Qv-kOG"/>
+                            <constraint firstItem="ftG-oz-6Ne" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="KN7-pA-LPc"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ftG-oz-6Ne" secondAttribute="trailing" constant="50" id="O60-Md-T4p"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="rbY-zL-FU6" secondAttribute="trailing" constant="20" id="P7t-Dl-8dJ"/>
+                            <constraint firstItem="Owx-3g-75L" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="PIq-qA-86J"/>
+                            <constraint firstItem="Owx-3g-75L" firstAttribute="top" secondItem="ftG-oz-6Ne" secondAttribute="bottom" constant="20" id="TlE-4E-TpH"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="datePicker" destination="ftG-oz-6Ne" id="QGN-Hh-fck"/>
+                        <outlet property="pickerView" destination="Owx-3g-75L" id="pfc-7Y-udd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -7,17 +7,23 @@
 
 import UIKit
 
-class StudyRecordHistoryTableViewCell: UITableViewCell {
+final class StudyRecordHistoryTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    @IBOutlet private weak var dateLabel: UILabel!
+    @IBOutlet private weak var timeLabel: UILabel!
+    
+    func configure(date: String, hour: Int, minutes: Int) {
+        dateLabel.text = date
+        switch (hour == 0, minutes == 0) {
+            case (true, true):
+                timeLabel.text = "0分"
+            case (false, true):
+                timeLabel.text = "\(hour)時間"
+            case (false, false):
+                timeLabel.text = "\(hour)時間\(minutes)分"
+            case (true, false):
+                timeLabel.text = "\(minutes)分"
+        }
     }
     
 }

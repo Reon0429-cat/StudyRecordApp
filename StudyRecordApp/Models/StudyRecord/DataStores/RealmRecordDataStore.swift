@@ -52,6 +52,14 @@ final class RealmRecordDataStore: RecordDataStoreProtocol {
         try! realm.write {
             object.title = record.title
             object.today = record.today
+            record.histories?.enumerated().forEach { index, history in
+                let historyRealm = HistoryRealm(value: ["date": history.date,
+                                                        "hour": history.hour,
+                                                        "minutes": history.minutes])
+                if index >= object.histories.count {
+                    object.histories.append(historyRealm)
+                }
+            }
             object.isExpanded = record.isExpanded
             object.graphColor?.redValue = Float(record.graphColor.redValue)
             object.graphColor?.greenValue = Float(record.graphColor.greenValue)
@@ -108,10 +116,12 @@ private extension RecordRealm {
                             order: record.order)
         self.title = record.title
         self.today = record.today
+        // [History] -> List<HistoryRealm>に変換
         let histories = List<HistoryRealm>()
         record.histories?.forEach { history in
             let historyRealm = HistoryRealm(value: ["date": history.date,
-                                                    "time": history.time])
+                                                    "hour": history.hour,
+                                                    "minutes": history.minutes])
             histories.append(historyRealm)
         }
         self.histories = histories
@@ -130,9 +140,12 @@ private extension Record {
     
     init(record: RecordRealm) {
         // Recordのプロパティが増えたときにコンパイルで漏れを防ぐためにインスタンスを再生成している。
+        // List<HistoryRealm> -> [History]に変換
         var histories = [History]()
         record.histories.forEach { history in
-            let history = History(date: history.date, time: history.time)
+            let history = History(date: history.date,
+                                  hour: history.hour,
+                                  minutes: history.minutes)
             histories.append(history)
         }
         let record = Record(title: record.title,

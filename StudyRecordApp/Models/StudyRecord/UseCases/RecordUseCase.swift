@@ -46,4 +46,5 @@ final class RecordUseCase {
     func update(record: Record, at index: Int) {
         repository.update(record: record, at: index)
     }
+    
 }

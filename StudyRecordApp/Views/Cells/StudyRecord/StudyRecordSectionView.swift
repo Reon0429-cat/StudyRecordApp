@@ -116,7 +116,7 @@ private extension StudyRecordSectionView {
             return "今日: \(record.today)分"
         }()
         var total = 0
-        record.histories?.forEach { total += $0.time }
+        record.histories?.forEach { total += ($0.hour * 60 + $0.minutes) }
         totalStudyTimeLabel.text = {
             if total >= 60 {
                 return "合計: \(total / 60)時間"
