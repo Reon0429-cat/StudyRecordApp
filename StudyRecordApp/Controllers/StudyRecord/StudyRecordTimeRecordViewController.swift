@@ -9,6 +9,8 @@ import UIKit
 
 protocol StudyRecordTimeRecordVCDelegate: AnyObject {
     func saveButtonDidTapped(history: History)
+    func deleteButtonDidTapped(index: Int)
+    func editButtonDidTapped(index: Int, history: History)
 }
 
 // MARK: - ToDo 履歴の並び替えと消去と編集を実装する
@@ -16,6 +18,7 @@ protocol StudyRecordTimeRecordVCDelegate: AnyObject {
 final class StudyRecordTimeRecordViewController: UIViewController {
     
     @IBOutlet private weak var pickerView: UIPickerView!
+    @IBOutlet private weak var deleteButton: UIButton!
     
     private let years = [Int](2020...2030)
     private let months = [Int](1...12)
@@ -23,12 +26,15 @@ final class StudyRecordTimeRecordViewController: UIViewController {
     private let hours = [Int](0...23)
     private let minutes = [Int](0...59)
     var history: History?
+    var isHistory: Bool!
+    var tappedHistoryIndex: Int?
     var delegate: StudyRecordTimeRecordVCDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupPickerView()
+        deleteButton.isHidden = !isHistory
         
     }
     
@@ -37,8 +43,24 @@ final class StudyRecordTimeRecordViewController: UIViewController {
     }
     
     @IBAction private func saveButtonDidTapped(_ sender: Any) {
-        delegate?.saveButtonDidTapped(history: history!)
+        if isHistory {
+            delegate?.editButtonDidTapped(index: tappedHistoryIndex!, history: history!)
+        } else {
+            delegate?.saveButtonDidTapped(history: history!)
+        }
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction private func deleteButtonDidTapped(_ sender: Any) {
+        let alert = UIAlertController(title: "本当に削除しますか",
+                                      message: nil,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "削除", style: .destructive, handler: { _ in
+            self.delegate?.deleteButtonDidTapped(index: self.tappedHistoryIndex!)
+            self.dismiss(animated: true, completion: nil)
+        }))
+        alert.addAction(UIAlertAction(title: "閉じる", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
     
     static func instantiate() -> StudyRecordTimeRecordViewController {
@@ -57,7 +79,13 @@ private extension StudyRecordTimeRecordViewController {
     func setupPickerView() {
         pickerView.delegate = self
         pickerView.dataSource = self
-        if history == nil {
+        if isHistory {
+            pickerView.selectRow(history!.year - years.first!, inComponent: 0, animated: true)
+            pickerView.selectRow(history!.month - months.first!, inComponent: 1, animated: true)
+            pickerView.selectRow(history!.day - days.first!, inComponent: 2, animated: true)
+            pickerView.selectRow(history!.hour, inComponent: 3, animated: true)
+            pickerView.selectRow(history!.minutes, inComponent: 4, animated: true)
+        } else {
             let year = Int(Convert().stringFrom(Date(), format: "yyyy"))!
             let month = Int(Convert().stringFrom(Date(), format: "M"))!
             let day = Int(Convert().stringFrom(Date(), format: "d"))!
@@ -67,12 +95,6 @@ private extension StudyRecordTimeRecordViewController {
             pickerView.selectRow(0, inComponent: 3, animated: true)
             pickerView.selectRow(0, inComponent: 4, animated: true)
             history = History(year: year, month: month, day: day, hour: 0, minutes: 0)
-        } else {
-            pickerView.selectRow(history!.year - years.first!, inComponent: 0, animated: true)
-            pickerView.selectRow(history!.month - months.first!, inComponent: 1, animated: true)
-            pickerView.selectRow(history!.day - days.first!, inComponent: 2, animated: true)
-            pickerView.selectRow(history!.hour, inComponent: 3, animated: true)
-            pickerView.selectRow(history!.minutes, inComponent: 4, animated: true)
         }
     }
     

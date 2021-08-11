@@ -15,6 +15,9 @@ private enum CellType: Int, CaseIterable {
     case history
 }
 
+// MARK: - ToDo 履歴を削除や編集をした時に保存を押しても保存されないバグ
+// MARK: - ToDo 履歴をスワイプ消去できるように
+
 final class EditStudyRecordViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
@@ -103,12 +106,17 @@ extension EditStudyRecordViewController: UITableViewDelegate {
             case .timeRecord:
                 let studyRecordTimeRecordVC = StudyRecordTimeRecordViewController.instantiate()
                 studyRecordTimeRecordVC.delegate = self
+                studyRecordTimeRecordVC.isHistory = false
                 present(studyRecordTimeRecordVC, animated: true, completion: nil)
             default:
                 let studyRecordTimeRecordVC = StudyRecordTimeRecordViewController.instantiate()
-                if let history = selectedRecord.histories?[indexPath.row - (self.cellType.count - 1)] {
+                let index = indexPath.row - (self.cellType.count - 1)
+                if let history = selectedRecord.histories?[index] {
                     studyRecordTimeRecordVC.history = history
                 }
+                studyRecordTimeRecordVC.isHistory = true
+                studyRecordTimeRecordVC.tappedHistoryIndex = index
+                studyRecordTimeRecordVC.delegate = self
                 present(studyRecordTimeRecordVC, animated: true, completion: nil)
         }
     }
@@ -185,6 +193,16 @@ extension EditStudyRecordViewController: StudyRecordTimeRecordVCDelegate {
     
     func saveButtonDidTapped(history: History) {
         selectedRecord.histories?.append(history)
+        tableView.reloadData()
+    }
+    
+    func deleteButtonDidTapped(index: Int) {
+        selectedRecord.histories?.remove(at: index)
+        tableView.reloadData()
+    }
+    
+    func editButtonDidTapped(index: Int, history: History) {
+        selectedRecord.histories?[index] = history
         tableView.reloadData()
     }
     
