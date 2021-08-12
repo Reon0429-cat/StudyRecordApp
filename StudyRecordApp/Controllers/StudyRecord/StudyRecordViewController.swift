@@ -151,9 +151,7 @@ extension StudyRecordViewController: StudyRecordSectionViewDelegate {
     
     func baseViewDidTapped(section: Int) {
         let editStudyRecordVC = EditStudyRecordViewController.instantiate()
-        let record = records[section]
         editStudyRecordVC.tappedSection = section
-        editStudyRecordVC.selectedRecord = Record(record: record)
         self.navigationController?.pushViewController(editStudyRecordVC, animated: true)
     }
     

@@ -30,11 +30,12 @@ final class EditStudyRecordViewController: UIViewController {
         )
     )
     var tappedSection: Int!
-    var selectedRecord: Record!
+    private var selectedRecord: Record!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        selectedRecord = recordUseCase.records[tappedSection]
         setupTableView()
         
     }
