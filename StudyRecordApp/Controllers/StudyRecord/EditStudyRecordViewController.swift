@@ -15,8 +15,6 @@ private enum CellType: Int, CaseIterable {
     case history
 }
 
-// MARK: - ToDo 履歴をスワイプ消去できるように
-
 final class EditStudyRecordViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
@@ -123,7 +121,7 @@ extension EditStudyRecordViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return (indexPath.row < cellType.count - 1) ? 80 : 50
+        return (cellType.count - 1 <= indexPath.row) ? 50 : 80
     }
     
 }
@@ -157,13 +155,35 @@ extension EditStudyRecordViewController: UITableViewDataSource {
                 return cell
             default:
                 let cell = tableView.dequeueReusableCustomCell(with: StudyRecordHistoryTableViewCell.self)
-                if let history = selectedRecord.histories?[indexPath.row - (self.cellType.count - 1)] {
+                let index = indexPath.row - (self.cellType.count - 1)
+                if let history = selectedRecord.histories?[index] {
                     cell.configure(history: history)
                 }
                 return cell
         }
     }
     
+    func tableView(_ tableView: UITableView,
+                   commit editingStyle: UITableViewCell.EditingStyle,
+                   forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let index = indexPath.row - (cellType.count - 1)
+            selectedRecord.histories?.remove(at: index)
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.endUpdates()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   canEditRowAt indexPath: IndexPath) -> Bool {
+        return cellType.count - 1 <= indexPath.row
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "削除"
+    }
 }
 
 extension EditStudyRecordViewController: StudyRecordGraphColorVCDelegate {
