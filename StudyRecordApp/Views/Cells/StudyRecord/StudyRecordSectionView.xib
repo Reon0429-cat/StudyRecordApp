@@ -20,7 +20,7 @@
                     <rect key="frame" x="15" y="10" width="488" height="158"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="プログラミングを勉強するプログラミングを勉強するプログラミングを勉強するプログラミングを勉強するプログラミングを勉強するプログラミングを勉強するプログラミングを勉強するプログラミングを勉強するプログラミングを勉強するプログラミングを勉強する" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="UCy-gw-FOf">
-                            <rect key="frame" x="10" y="5" width="387.5" height="118"/>
+                            <rect key="frame" x="10" y="5" width="368" height="118"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -40,38 +40,66 @@
                             </connections>
                         </button>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="GcP-Kn-Pjq">
-                            <rect key="frame" x="397.5" y="10" width="85.5" height="138"/>
+                            <rect key="frame" x="378" y="10" width="100" height="138"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今日: 30分" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="UJ4-ti-qyc">
-                                    <rect key="frame" x="0.0" y="0.0" width="85.5" height="34.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="100" height="34.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合計: 200分" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="mMI-2J-opJ">
-                                    <rect key="frame" x="0.0" y="34.5" width="85.5" height="34.5"/>
+                                    <rect key="frame" x="0.0" y="34.5" width="100" height="34.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zsy-gk-ztN">
-                                    <rect key="frame" x="0.0" y="69" width="85.5" height="34.5"/>
-                                    <state key="normal">
-                                        <imageReference key="image" image="minus.circle" catalog="system" symbolScale="large" renderingMode="original"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="deleteButtonDidTappped:" destination="iN0-l3-epB" eventType="touchUpInside" id="DNM-JO-T36"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zAt-x2-DIx">
-                                    <rect key="frame" x="0.0" y="103.5" width="85.5" height="34.5"/>
-                                    <state key="normal">
-                                        <imageReference key="image" image="list.bullet" catalog="system" symbolScale="large" renderingMode="original"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="sortButtonDidTappped:" destination="iN0-l3-epB" eventType="touchUpInside" id="uHU-tR-29i"/>
-                                    </connections>
-                                </button>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pwj-I6-oSJ">
+                                    <rect key="frame" x="0.0" y="69" width="100" height="34.5"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zsy-gk-ztN">
+                                            <rect key="frame" x="60.5" y="0.0" width="34.5" height="34.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="Zsy-gk-ztN" secondAttribute="height" id="Ast-42-8nu"/>
+                                            </constraints>
+                                            <state key="normal">
+                                                <imageReference key="image" image="minus.circle" catalog="system" symbolScale="large" renderingMode="original"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="deleteButtonDidTappped:" destination="iN0-l3-epB" eventType="touchUpInside" id="DNM-JO-T36"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="Zsy-gk-ztN" secondAttribute="trailing" constant="5" id="7WJ-iZ-y88"/>
+                                        <constraint firstAttribute="bottom" secondItem="Zsy-gk-ztN" secondAttribute="bottom" id="JJl-nA-efs"/>
+                                        <constraint firstItem="Zsy-gk-ztN" firstAttribute="top" secondItem="Pwj-I6-oSJ" secondAttribute="top" id="YWe-QU-JbP"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lSI-c3-LVm">
+                                    <rect key="frame" x="0.0" y="103.5" width="100" height="34.5"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zAt-x2-DIx">
+                                            <rect key="frame" x="60.5" y="0.0" width="34.5" height="34.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="zAt-x2-DIx" secondAttribute="height" id="710-bz-mFa"/>
+                                            </constraints>
+                                            <state key="normal">
+                                                <imageReference key="image" image="list.bullet" catalog="system" symbolScale="large" renderingMode="original"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="sortButtonDidTappped:" destination="iN0-l3-epB" eventType="touchUpInside" id="uHU-tR-29i"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="zAt-x2-DIx" secondAttribute="trailing" constant="5" id="8G2-0Q-tru"/>
+                                        <constraint firstItem="zAt-x2-DIx" firstAttribute="top" secondItem="lSI-c3-LVm" secondAttribute="top" id="U3N-8C-xZf"/>
+                                        <constraint firstAttribute="bottom" secondItem="zAt-x2-DIx" secondAttribute="bottom" id="g1i-e2-uWN"/>
+                                    </constraints>
+                                </view>
                             </subviews>
                         </stackView>
                     </subviews>
@@ -81,7 +109,7 @@
                         <constraint firstItem="UCy-gw-FOf" firstAttribute="leading" secondItem="IE8-iR-sRG" secondAttribute="leading" constant="10" id="CV2-RY-nqj"/>
                         <constraint firstItem="Izn-Pd-Be1" firstAttribute="leading" secondItem="IE8-iR-sRG" secondAttribute="leading" id="Joq-jj-VXu"/>
                         <constraint firstItem="UCy-gw-FOf" firstAttribute="top" secondItem="IE8-iR-sRG" secondAttribute="top" constant="5" id="K7b-tU-3A8"/>
-                        <constraint firstAttribute="trailing" secondItem="GcP-Kn-Pjq" secondAttribute="trailing" constant="5" id="Pre-3V-Ihc"/>
+                        <constraint firstAttribute="trailing" secondItem="GcP-Kn-Pjq" secondAttribute="trailing" constant="10" id="Pre-3V-Ihc"/>
                         <constraint firstItem="GcP-Kn-Pjq" firstAttribute="top" secondItem="IE8-iR-sRG" secondAttribute="top" constant="10" id="Uy9-Im-09Y"/>
                         <constraint firstItem="GcP-Kn-Pjq" firstAttribute="centerY" secondItem="IE8-iR-sRG" secondAttribute="centerY" id="WLF-H9-Ic6"/>
                         <constraint firstAttribute="bottom" secondItem="Izn-Pd-Be1" secondAttribute="bottom" id="dEc-dT-BJh"/>
@@ -103,9 +131,9 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="baseView" destination="IE8-iR-sRG" id="Erx-nm-1L4"/>
-                <outlet property="deleteButton" destination="Zsy-gk-ztN" id="ll8-Vo-qaN"/>
+                <outlet property="deleteButtonBackView" destination="Pwj-I6-oSJ" id="dha-lN-2ut"/>
                 <outlet property="memoButton" destination="Izn-Pd-Be1" id="j83-PP-jWo"/>
-                <outlet property="sortButton" destination="zAt-x2-DIx" id="DYX-gL-YOs"/>
+                <outlet property="sortButtonBackView" destination="lSI-c3-LVm" id="9QM-Ym-QPe"/>
                 <outlet property="stackView" destination="GcP-Kn-Pjq" id="dfN-aI-Aay"/>
                 <outlet property="titleLabel" destination="UCy-gw-FOf" id="onO-Sg-6bM"/>
                 <outlet property="todayStudyTimeLabel" destination="UJ4-ti-qyc" id="AdB-0G-Qi8"/>

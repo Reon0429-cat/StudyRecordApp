@@ -39,9 +39,9 @@ final class StudyRecordSectionView: UITableViewHeaderFooterView {
     @IBOutlet private weak var stackView: UIStackView!
     @IBOutlet private weak var todayStudyTimeLabel: UILabel!
     @IBOutlet private weak var totalStudyTimeLabel: UILabel!
-    @IBOutlet private weak var deleteButton: UIButton!
-    @IBOutlet private weak var sortButton: UIButton!
-    
+    @IBOutlet private weak var deleteButtonBackView: UIView!
+    @IBOutlet private weak var sortButtonBackView: UIView!
+
     private var memoState: MemoState = .shrinked
     weak var delegate: StudyRecordSectionViewDelegate?
     
@@ -49,8 +49,8 @@ final class StudyRecordSectionView: UITableViewHeaderFooterView {
         super.awakeFromNib()
         
         setupBaseView()
-        deleteButton.isHidden = true
-        sortButton.isHidden = true
+        deleteButtonBackView.isHidden = true
+        sortButtonBackView.isHidden = true
         
     }
     
@@ -70,13 +70,13 @@ final class StudyRecordSectionView: UITableViewHeaderFooterView {
         if isEditing {
             todayStudyTimeLabel.isHidden = true
             totalStudyTimeLabel.isHidden = true
-            deleteButton.isHidden = false
-            sortButton.isHidden = false
+            deleteButtonBackView.isHidden = false
+            sortButtonBackView.isHidden = false
         } else {
             todayStudyTimeLabel.isHidden = false
             totalStudyTimeLabel.isHidden = false
-            deleteButton.isHidden = true
-            sortButton.isHidden = true
+            deleteButtonBackView.isHidden = true
+            sortButtonBackView.isHidden = true
         }
     }
     

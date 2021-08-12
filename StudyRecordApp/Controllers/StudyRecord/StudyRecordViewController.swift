@@ -25,7 +25,6 @@ private enum EditButtonState {
 }
 
 // MARK: - ToDo グラフカラー選択時に該当の色を丸くする(追加と編集画面でそれぞれ確認する)
-// MARK: - ToDo 合計時間が表示されると並び替えと消去ボタンのレイアウトがずれる
 
 final class StudyRecordViewController: UIViewController {
     
