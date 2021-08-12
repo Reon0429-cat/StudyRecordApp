@@ -51,10 +51,7 @@ final class RealmRecordDataStore: RecordDataStoreProtocol {
         try! realm.write {
             object.title = record.title
             object.histories.removeAll()
-            record.histories?.forEach { history in
-                let historyRealm = HistoryRealm(history: history)
-                object.histories.append(historyRealm)
-            }
+            object.histories.append(objectsIn: record.historiesList)
             object.isExpanded = record.isExpanded
             object.graphColor?.redValue = Float(record.graphColor.redValue)
             object.graphColor?.greenValue = Float(record.graphColor.greenValue)
@@ -109,13 +106,7 @@ private extension RecordRealm {
                             memo: record.memo,
                             order: record.order)
         self.title = record.title
-        // [History] -> List<HistoryRealm>に変換
-        let histories = List<HistoryRealm>()
-        record.histories?.forEach { history in
-            let historyRealm = HistoryRealm(history: history)
-            histories.append(historyRealm)
-        }
-        self.histories = histories
+        self.histories = record.historiesList
         self.isExpanded = record.isExpanded
         self.graphColor?.redValue = Float(record.graphColor.redValue)
         self.graphColor?.greenValue = Float(record.graphColor.greenValue)
@@ -131,14 +122,8 @@ private extension Record {
     
     init(record: RecordRealm) {
         // Recordのプロパティが増えたときにコンパイルで漏れを防ぐためにインスタンスを再生成している。
-        // List<HistoryRealm> -> [History]に変換
-        var histories = [History]()
-        record.histories.forEach { history in
-            let history = History(history: history)
-            histories.append(history)
-        }
         let record = Record(title: record.title,
-                            histories: histories,
+                            histories: record.historiesArray,
                             isExpanded: record.isExpanded,
                             graphColor: GraphColor(record: record),
                             memo: record.memo,
@@ -149,6 +134,34 @@ private extension Record {
         self.graphColor = record.graphColor
         self.memo = record.memo
         self.order = record.order
+    }
+    
+}
+
+// [History]に変換 ->  List<HistoryRealm>
+private extension Record {
+    
+    var historiesList: List<HistoryRealm> {
+        let histories = List<HistoryRealm>()
+        self.histories?.forEach { history in
+            let historyRealm = HistoryRealm(history: history)
+            histories.append(historyRealm)
+        }
+        return histories
+    }
+    
+}
+
+// List<HistoryRealm> -> [History]に変換
+private extension RecordRealm {
+    
+    var historiesArray: [History] {
+        var histories = [History]()
+        self.histories.forEach { history in
+            let history = History(history: history)
+            histories.append(history)
+        }
+        return histories
     }
     
 }
