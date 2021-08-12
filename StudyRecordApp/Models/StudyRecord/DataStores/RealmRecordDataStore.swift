@@ -50,11 +50,10 @@ final class RealmRecordDataStore: RecordDataStoreProtocol {
                             order: record.order)
         try! realm.write {
             object.title = record.title
-            record.histories?.enumerated().forEach { index, history in
+            object.histories.removeAll()
+            record.histories?.forEach { history in
                 let historyRealm = HistoryRealm(history: history)
-                if index >= object.histories.count {
-                    object.histories.append(historyRealm)
-                }
+                object.histories.append(historyRealm)
             }
             object.isExpanded = record.isExpanded
             object.graphColor?.redValue = Float(record.graphColor.redValue)
