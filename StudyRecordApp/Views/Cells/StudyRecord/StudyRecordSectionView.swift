@@ -87,9 +87,15 @@ final class StudyRecordSectionView: UITableViewHeaderFooterView {
     @IBAction private func deleteButtonDidTappped(_ sender: Any) {
         delegate?.deleteButtonDidTappped(section: self.tag)
     }
-
+    
     @IBAction private func sortButtonDidTappped(_ sender: Any) {
         delegate?.sortButtonDidTapped()
+    }
+    
+    private func isToday(_ history: History) -> Bool {
+        let historyDate = "\(history.year)年\(history.month)月\(history.day)日"
+        let today = Convert().stringFrom(Date(), format: "yyyy年M月d日")
+        return historyDate == today
     }
     
 }
@@ -109,20 +115,26 @@ private extension StudyRecordSectionView {
     }
     
     func setupTimeLabel(record: Record) {
-        var today = 0
-        record.histories?.forEach {
-            if "\($0.year)年\($0.month)月\($0.day)" == Convert().stringFrom(Date(), format: "yyyy年M月d日") {
-                today += ($0.hour * 60 + $0.minutes)
+        var today: Int = {
+            record.histories?.forEach { history in
+                if isToday(history) {
+                    today += (history.hour * 60 + history.minutes)
+                }
             }
-        }
+            return today
+        }()
         todayStudyTimeLabel.text = {
             if today >= 60 {
                 return "今日: \(today / 60)時間"
             }
             return "今日: \(today)分"
         }()
-        var total = 0
-        record.histories?.forEach { total += ($0.hour * 60 + $0.minutes) }
+        var total: Int = {
+            record.histories?.forEach { history in
+                total += (history.hour * 60 + history.minutes)
+            }
+            return total
+        }()
         totalStudyTimeLabel.text = {
             if total >= 60 {
                 return "合計: \(total / 60)時間"

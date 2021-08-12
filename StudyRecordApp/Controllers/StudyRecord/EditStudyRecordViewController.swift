@@ -15,7 +15,6 @@ private enum CellType: Int, CaseIterable {
     case history
 }
 
-// MARK: - ToDo 履歴を削除や編集をした時に保存を押しても保存されないバグ
 // MARK: - ToDo 履歴をスワイプ消去できるように
 
 final class EditStudyRecordViewController: UIViewController {
