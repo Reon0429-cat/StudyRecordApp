@@ -13,8 +13,6 @@ protocol StudyRecordTimeRecordVCDelegate: AnyObject {
     func editButtonDidTapped(index: Int, history: History)
 }
 
-// MARK: - ToDo 履歴の並び替えと消去と編集を実装する
-
 final class StudyRecordTimeRecordViewController: UIViewController {
     
     @IBOutlet private weak var pickerView: UIPickerView!
