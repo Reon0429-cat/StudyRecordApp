@@ -47,9 +47,8 @@ final class AdditionalStudyRecordViewController: UIViewController {
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.registerCustomCell(StudyRecordTitleTableViewCell.self)
+        tableView.registerCustomCell(StudyRecordCustomTableViewCell.self)
         tableView.registerCustomCell(StudyRecordGraphColorTableViewCell.self)
-        tableView.registerCustomCell(StudyRecordMemoTableViewCell.self)
         tableView.tableFooterView = UIView()
     }
     
@@ -161,16 +160,16 @@ extension AdditionalStudyRecordViewController: UITableViewDataSource {
         let cellType = CellType(rawValue: indexPath.row)!
         switch cellType {
             case .title:
-                let cell = tableView.dequeueReusableCustomCell(with: StudyRecordTitleTableViewCell.self)
-                cell.configure(title: inputtedTitle)
+                let cell = tableView.dequeueReusableCustomCell(with: StudyRecordCustomTableViewCell.self)
+                cell.configure(titleText: "タイトル", mandatoryIsHidden: false, auxiliaryText: inputtedTitle)
                 return cell
             case .graphColor:
                 let cell = tableView.dequeueReusableCustomCell(with: StudyRecordGraphColorTableViewCell.self)
                 cell.configure(color: selectedGraphColor)
                 return cell
             case .memo:
-                let cell = tableView.dequeueReusableCustomCell(with: StudyRecordMemoTableViewCell.self)
-                cell.configure(memo: inputtedMemo)
+                let cell = tableView.dequeueReusableCustomCell(with: StudyRecordCustomTableViewCell.self)
+                cell.configure(titleText: "メモ", mandatoryIsHidden: true, auxiliaryText: inputtedMemo)
                 return cell
         }
     }
