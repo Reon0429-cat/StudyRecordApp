@@ -56,9 +56,6 @@ private enum RowType {
 final class SettingViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var mainView: UIView!
-    @IBOutlet private weak var subView: UIView!
-    @IBOutlet private weak var accentView: UIView!
     
     private var tables: [(sectionType: SectionType, isExpanded: Bool)] = {
         var tables = [(sectionType: SectionType, isExpanded: Bool)]()
@@ -75,25 +72,12 @@ final class SettingViewController: UIViewController {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        setupThemeColor()
-        
-    }
-    
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.registerCustomCell(AccordionTableViewCell.self)
         tableView.registerCustomCell(SectionHeaderView.self)
         tableView.tableFooterView = UIView()
-    }
-    
-    private func setupThemeColor() {
-        mainView.backgroundColor = ThemeColor.main
-        subView.backgroundColor = ThemeColor.sub
-        accentView.backgroundColor = ThemeColor.accent
     }
     
 }

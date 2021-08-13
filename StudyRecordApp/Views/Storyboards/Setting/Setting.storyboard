@@ -18,37 +18,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9mX-as-Ot5">
-                                <rect key="frame" x="0.0" y="88" width="414" height="575"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="egv-F8-Uco">
-                                <rect key="frame" x="0.0" y="663" width="414" height="150"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BYu-Do-OlH">
-                                        <rect key="frame" x="0.0" y="0.0" width="138" height="150"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FEz-S3-f6j">
-                                        <rect key="frame" x="138" y="0.0" width="138" height="150"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p9H-ce-I3d">
-                                        <rect key="frame" x="276" y="0.0" width="138" height="150"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    </view>
-                                </subviews>
-                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="9mX-as-Ot5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="BgR-zi-yBX"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="egv-F8-Uco" secondAttribute="trailing" id="EP3-VJ-XYT"/>
-                            <constraint firstItem="egv-F8-Uco" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="HCy-xP-Wu9"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="egv-F8-Uco" secondAttribute="bottom" id="IhU-cN-QZm"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9mX-as-Ot5" secondAttribute="trailing" id="Kx9-05-mJZ"/>
-                            <constraint firstItem="egv-F8-Uco" firstAttribute="top" secondItem="9mX-as-Ot5" secondAttribute="bottom" id="WT8-cI-ko5"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="9mX-as-Ot5" secondAttribute="bottom" constant="150" id="fGC-qC-gJ2"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="9mX-as-Ot5" secondAttribute="bottom" id="fGC-qC-gJ2"/>
                             <constraint firstItem="9mX-as-Ot5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="wpJ-vZ-9qe"/>
                         </constraints>
                     </view>
@@ -57,9 +36,6 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="accentView" destination="p9H-ce-I3d" id="KRK-7l-BWV"/>
-                        <outlet property="mainView" destination="BYu-Do-OlH" id="RiX-bw-Qy9"/>
-                        <outlet property="subView" destination="FEz-S3-f6j" id="a4a-CC-dcH"/>
                         <outlet property="tableView" destination="9mX-as-Ot5" id="Skc-4O-BRz"/>
                     </connections>
                 </viewController>
