@@ -7,19 +7,30 @@
 
 import UIKit
 
-private enum CellType: Int, CaseIterable {
-    case title
-    case graphColor
-    case memo
-    case timeRecord
-    case history
-}
-
 final class EditStudyRecordViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var saveButton: UIBarButtonItem!
     
+    private enum CellType: Int, CaseIterable {
+        case title
+        case graphColor
+        case memo
+        case timeRecord
+        case history
+    }
+    private func getCellType(row: Int) -> CellType {
+        if isHistoryType(row: row) {
+            return .history
+        }
+        return CellType(rawValue: row) ?? .title
+    }
+    private func getHistoryCount(row: Int) -> Int {
+        return row - (self.cellType.count - 1)
+    }
+    private func isHistoryType(row: Int) -> Bool {
+        return getHistoryCount(row: row) >= 0
+    }
     private var cellType = CellType.allCases
     private var recordUseCase = RecordUseCase(
         repository: RecordRepository(
@@ -63,12 +74,14 @@ final class EditStudyRecordViewController: UIViewController {
     
 }
 
+// MARK: - ToDo タイトルとメモと時間を記録するは同じセルにする
+// MARK: - ToDo 時間を記録するは右のラベルをisHidden = true
 extension EditStudyRecordViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let cellType = CellType(rawValue: indexPath.row)
+        let cellType = getCellType(row: indexPath.row)
         switch cellType {
             case .title:
                 let alert = UIAlertController(title: "タイトル",
@@ -106,9 +119,9 @@ extension EditStudyRecordViewController: UITableViewDelegate {
                 studyRecordTimeRecordVC.delegate = self
                 studyRecordTimeRecordVC.isHistory = false
                 present(studyRecordTimeRecordVC, animated: true, completion: nil)
-            default:
+            case .history:
                 let studyRecordTimeRecordVC = StudyRecordTimeRecordViewController.instantiate()
-                let index = indexPath.row - (self.cellType.count - 1)
+                let index = getHistoryCount(row: indexPath.row)
                 if let history = selectedRecord.histories?[index] {
                     studyRecordTimeRecordVC.history = history
                 }
@@ -121,7 +134,7 @@ extension EditStudyRecordViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return (cellType.count - 1 <= indexPath.row) ? 50 : 80
+        return isHistoryType(row: indexPath.row) ? 50 : 80
     }
     
 }
@@ -135,7 +148,7 @@ extension EditStudyRecordViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellType = CellType(rawValue: indexPath.row)
+        let cellType = getCellType(row: indexPath.row)
         switch cellType {
             case .title:
                 let cell = tableView.dequeueReusableCustomCell(with: StudyRecordTitleTableViewCell.self)
@@ -153,9 +166,9 @@ extension EditStudyRecordViewController: UITableViewDataSource {
             case .timeRecord:
                 let cell = tableView.dequeueReusableCustomCell(with: StudyRecordTimeRecordTableViewCell.self)
                 return cell
-            default:
+            case .history:
                 let cell = tableView.dequeueReusableCustomCell(with: StudyRecordHistoryTableViewCell.self)
-                let index = indexPath.row - (self.cellType.count - 1)
+                let index = getHistoryCount(row: indexPath.row)
                 if let history = selectedRecord.histories?[index] {
                     cell.configure(history: history)
                 }
@@ -167,7 +180,7 @@ extension EditStudyRecordViewController: UITableViewDataSource {
                    commit editingStyle: UITableViewCell.EditingStyle,
                    forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let index = indexPath.row - (cellType.count - 1)
+            let index = getHistoryCount(row: indexPath.row)
             selectedRecord.histories?.remove(at: index)
             tableView.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .automatic)
@@ -177,13 +190,14 @@ extension EditStudyRecordViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    canEditRowAt indexPath: IndexPath) -> Bool {
-        return cellType.count - 1 <= indexPath.row
+        return isHistoryType(row: indexPath.row)
     }
     
     func tableView(_ tableView: UITableView,
                    titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         return "削除"
     }
+    
 }
 
 extension EditStudyRecordViewController: StudyRecordGraphColorVCDelegate {
