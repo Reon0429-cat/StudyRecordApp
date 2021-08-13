@@ -7,17 +7,18 @@
 
 import UIKit
 
-class StudyRecordCustomTableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+final class StudyRecordCustomTableViewCell: UITableViewCell {
+    
+    @IBOutlet private weak var mandatoryLabel: UILabel!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var auxiliaryLabel: UILabel!
+    
+    func configure(titleText: String,
+                   mandatoryIsHidden: Bool,
+                   auxiliaryText: String) {
+        titleLabel.text = titleText
+        mandatoryLabel.isHidden = mandatoryIsHidden
+        auxiliaryLabel.text = auxiliaryText
     }
     
 }

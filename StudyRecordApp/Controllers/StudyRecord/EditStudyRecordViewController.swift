@@ -51,10 +51,8 @@ final class EditStudyRecordViewController: UIViewController {
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.registerCustomCell(StudyRecordTitleTableViewCell.self)
+        tableView.registerCustomCell(StudyRecordCustomTableViewCell.self)
         tableView.registerCustomCell(StudyRecordGraphColorTableViewCell.self)
-        tableView.registerCustomCell(StudyRecordMemoTableViewCell.self)
-        tableView.registerCustomCell(StudyRecordTimeRecordTableViewCell.self)
         tableView.registerCustomCell(StudyRecordHistoryTableViewCell.self)
         tableView.tableFooterView = UIView()
     }
@@ -74,8 +72,6 @@ final class EditStudyRecordViewController: UIViewController {
     
 }
 
-// MARK: - ToDo タイトルとメモと時間を記録するは同じセルにする
-// MARK: - ToDo 時間を記録するは右のラベルをisHidden = true
 extension EditStudyRecordViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
@@ -151,8 +147,10 @@ extension EditStudyRecordViewController: UITableViewDataSource {
         let cellType = getCellType(row: indexPath.row)
         switch cellType {
             case .title:
-                let cell = tableView.dequeueReusableCustomCell(with: StudyRecordTitleTableViewCell.self)
-                cell.configure(title: selectedRecord.title)
+                let cell = tableView.dequeueReusableCustomCell(with: StudyRecordCustomTableViewCell.self)
+                cell.configure(titleText: "タイトル",
+                               mandatoryIsHidden: false,
+                               auxiliaryText: selectedRecord.title)
                 return cell
             case .graphColor:
                 let cell = tableView.dequeueReusableCustomCell(with: StudyRecordGraphColorTableViewCell.self)
@@ -160,11 +158,16 @@ extension EditStudyRecordViewController: UITableViewDataSource {
                 cell.configure(color: color)
                 return cell
             case .memo:
-                let cell = tableView.dequeueReusableCustomCell(with: StudyRecordMemoTableViewCell.self)
-                cell.configure(memo: selectedRecord.memo)
+                let cell = tableView.dequeueReusableCustomCell(with: StudyRecordCustomTableViewCell.self)
+                cell.configure(titleText: "メモ",
+                               mandatoryIsHidden: true,
+                               auxiliaryText: selectedRecord.memo)
                 return cell
             case .timeRecord:
-                let cell = tableView.dequeueReusableCustomCell(with: StudyRecordTimeRecordTableViewCell.self)
+                let cell = tableView.dequeueReusableCustomCell(with: StudyRecordCustomTableViewCell.self)
+                cell.configure(titleText: "時間を記録する",
+                               mandatoryIsHidden: true,
+                               auxiliaryText: "")
                 return cell
             case .history:
                 let cell = tableView.dequeueReusableCustomCell(with: StudyRecordHistoryTableViewCell.self)
