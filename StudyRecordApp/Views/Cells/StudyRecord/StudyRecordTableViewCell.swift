@@ -17,6 +17,8 @@ final class StudyRecordTableViewCell: UITableViewCell {
         textView.layer.cornerRadius = 10
         textView.isEditable = false
         
+        backgroundColor = .clear
+        
     }
     
     func configure(record: Record) {

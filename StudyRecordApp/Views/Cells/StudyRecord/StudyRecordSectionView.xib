@@ -119,7 +119,7 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="IE8-iR-sRG" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="UTq-hK-dED"/>
                 <constraint firstItem="IE8-iR-sRG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="cdN-hh-aB6"/>
@@ -145,9 +145,6 @@
     <resources>
         <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="minus.circle" catalog="system" width="128" height="121"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

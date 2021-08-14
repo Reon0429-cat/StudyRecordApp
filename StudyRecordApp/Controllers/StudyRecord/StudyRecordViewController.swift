@@ -116,6 +116,12 @@ extension StudyRecordViewController: UITableViewDelegate {
         return sectionView
     }
     
+    func tableView(_ tableView: UITableView,
+                   willDisplayHeaderView view: UIView,
+                   forSection section: Int) {
+        view.tintColor = .clear
+    }
+    
 }
 
 extension StudyRecordViewController: UITableViewDataSource {
@@ -135,12 +141,6 @@ extension StudyRecordViewController: UITableViewDataSource {
         let record = records[indexPath.section]
         cell.configure(record: record)
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView,
-                   willDisplayHeaderView view: UIView,
-                   forSection section: Int) {
-        view.tintColor = .white
     }
     
 }
