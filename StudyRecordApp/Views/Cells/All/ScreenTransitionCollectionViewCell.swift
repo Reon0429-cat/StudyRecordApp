@@ -7,11 +7,19 @@
 
 import UIKit
 
-class ScreenTransitionCollectionViewCell: UICollectionViewCell {
+final class ScreenTransitionCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet private weak var titleLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        backgroundColor = .red
+        
+    }
+    
+    func configure(title: String) {
+        titleLabel.text = title
     }
 
 }

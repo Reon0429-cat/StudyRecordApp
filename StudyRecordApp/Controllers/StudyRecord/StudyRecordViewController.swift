@@ -24,11 +24,30 @@ private enum EditButtonState {
     }
 }
 
+enum ScreenType: CaseIterable {
+    case record
+    case goal
+    case graph
+    case countDown
+    case setting
+    
+    var title: String {
+        switch self {
+            case .record: return "記録"
+            case .goal: return "目標"
+            case .graph: return "グラフ"
+            case .countDown: return "カウントダウン"
+            case .setting: return "設定"
+        }
+    }
+}
+
 // MARK: - ToDo グラフカラー選択時に該当の色を丸くする(追加と編集画面でそれぞれ確認する)
 
 final class StudyRecordViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var addRecordButton: UIButton!
     @IBOutlet private weak var editRecordButton: UIBarButtonItem!
     
@@ -45,11 +64,13 @@ final class StudyRecordViewController: UIViewController {
             editRecordButton.title = editButtonState.title
         }
     }
+    private var screenTypes = ScreenType.allCases
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTableView()
+        setupCollectionView()
         
     }
     
@@ -87,6 +108,7 @@ final class StudyRecordViewController: UIViewController {
     
 }
 
+// MARK: - UITableViewDelegate
 extension StudyRecordViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
@@ -124,6 +146,7 @@ extension StudyRecordViewController: UITableViewDelegate {
     
 }
 
+// MARK: - UITableViewDataSource
 extension StudyRecordViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -145,6 +168,52 @@ extension StudyRecordViewController: UITableViewDataSource {
     
 }
 
+// MARK: - UICollectionViewDelegate
+extension StudyRecordViewController: UICollectionViewDelegate {
+    
+}
+
+// MARK: - UICollectionViewDataSource
+extension StudyRecordViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
+        return screenTypes.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCustomCell(with: ScreenTransitionCollectionViewCell.self,
+                                                            indexPath: indexPath)
+        let screenType = screenTypes[indexPath.item]
+        cell.configure(title: screenType.title)
+        return cell
+    }
+    
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+extension StudyRecordViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let horizontalSpace = Constant.CollectionView.margin
+        let verticalSpace = Constant.CollectionView.margin
+        let width = collectionView.frame.size.width / 2 - horizontalSpace * 2
+        let height = collectionView.frame.size.height - verticalSpace * 2
+        return CGSize(width: width, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return Constant.CollectionView.margin
+    }
+    
+}
+
+// MARK: - StudyRecordSectionViewDelegate
 extension StudyRecordViewController: StudyRecordSectionViewDelegate {
     
     func baseViewDidTapped(section: Int) {
@@ -199,6 +268,27 @@ private extension StudyRecordViewController {
         tableView.registerCustomCell(StudyRecordSectionView.self)
         tableView.tableFooterView = UIView()
         tableView.rowHeight = UITableView.automaticDimension
+    }
+    
+    func setupCollectionView() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.registerCustomCell(ScreenTransitionCollectionViewCell.self)
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.sectionInset = UIEdgeInsets(top: 0,
+                                           left: Constant.CollectionView.margin,
+                                           bottom: 0,
+                                           right: Constant.CollectionView.margin)
+        collectionView.collectionViewLayout = layout
+    }
+    
+}
+
+private struct Constant {
+    
+    struct CollectionView {
+        static let margin: CGFloat = 15
     }
     
 }

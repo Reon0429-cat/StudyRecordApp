@@ -26,7 +26,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="okp-Jf-lKG">
                                 <rect key="frame" x="0.0" y="752" width="304" height="110"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JAc-lf-zTq">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JAc-lf-zTq">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -79,6 +79,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addRecordButton" destination="Xjl-eY-XDp" id="Z4Y-Yg-AiJ"/>
+                        <outlet property="collectionView" destination="okp-Jf-lKG" id="akS-ph-AfJ"/>
                         <outlet property="editRecordButton" destination="aEr-Ws-c9C" id="yRO-xZ-Qho"/>
                         <outlet property="tableView" destination="3pH-kq-Zvs" id="64T-QH-dME"/>
                     </connections>
