@@ -7,6 +7,20 @@
 
 import UIKit
 
+
+private struct Constant {
+    
+    struct CollectionView {
+        static let margin: CGFloat = 15
+    }
+    
+    struct TableView {
+        static let headerHeight: CGFloat = 120
+        
+    }
+    
+}
+
 private enum EditButtonState {
     case edit
     case completion
@@ -113,7 +127,7 @@ extension StudyRecordViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
                    heightForHeaderInSection section: Int) -> CGFloat {
-        return 120
+        return Constant.TableView.headerHeight
     }
     
     func tableView(_ tableView: UITableView,
@@ -281,14 +295,6 @@ private extension StudyRecordViewController {
                                            bottom: 0,
                                            right: Constant.CollectionView.margin)
         collectionView.collectionViewLayout = layout
-    }
-    
-}
-
-private struct Constant {
-    
-    struct CollectionView {
-        static let margin: CGFloat = 15
     }
     
 }
