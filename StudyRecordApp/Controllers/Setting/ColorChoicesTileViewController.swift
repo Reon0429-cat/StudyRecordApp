@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum TileColorType: Int, CaseIterable {
+enum TileColorType: Int {
     case licorice
     case maraschino
     case tangerine

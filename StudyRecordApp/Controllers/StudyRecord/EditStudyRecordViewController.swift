@@ -26,12 +26,12 @@ final class EditStudyRecordViewController: UIViewController {
         return CellType(rawValue: row) ?? .title
     }
     private func getHistoryCount(row: Int) -> Int {
-        return row - (self.cellType.count - 1)
+        return row - (self.cellTypes.count - 1)
     }
     private func isHistoryType(row: Int) -> Bool {
         return getHistoryCount(row: row) >= 0
     }
-    private var cellType = CellType.allCases
+    private var cellTypes = CellType.allCases
     private var recordUseCase = RecordUseCase(
         repository: RecordRepository(
             dataStore: RealmRecordDataStore()
@@ -139,7 +139,7 @@ extension EditStudyRecordViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        return (cellType.count - 1) + (selectedRecord.histories?.count ?? 0)
+        return (cellTypes.count - 1) + (selectedRecord.histories?.count ?? 0)
     }
     
     func tableView(_ tableView: UITableView,

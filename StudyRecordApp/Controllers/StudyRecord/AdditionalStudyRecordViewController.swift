@@ -17,7 +17,7 @@ final class AdditionalStudyRecordViewController: UIViewController {
         case graphColor
         case memo
     }
-    private let cellType = CellType.allCases
+    private let cellTypes = CellType.allCases
     private let recordUseCase = RecordUseCase(
         repository: RecordRepository(
             dataStore: RealmRecordDataStore()
@@ -152,7 +152,7 @@ extension AdditionalStudyRecordViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        return cellType.count
+        return cellTypes.count
     }
     
     func tableView(_ tableView: UITableView,
