@@ -17,9 +17,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="203" height="157"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWF-D8-tLE">
-                        <rect key="frame" x="80.5" y="68" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWF-D8-tLE">
+                        <rect key="frame" x="0.0" y="0.0" width="203" height="157"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -27,8 +27,12 @@
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="UWF-D8-tLE" secondAttribute="trailing" id="GH1-Hs-e8h"/>
                 <constraint firstItem="UWF-D8-tLE" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="PC6-Pk-BOQ"/>
+                <constraint firstItem="UWF-D8-tLE" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Qj2-S5-0se"/>
+                <constraint firstAttribute="bottom" secondItem="UWF-D8-tLE" secondAttribute="bottom" id="S0r-S8-vw6"/>
                 <constraint firstItem="UWF-D8-tLE" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="WsJ-PL-Z35"/>
+                <constraint firstItem="UWF-D8-tLE" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="yr7-2a-s4d"/>
             </constraints>
             <size key="customSize" width="203" height="157"/>
             <connections>

@@ -14,7 +14,9 @@ final class ScreenTransitionCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        backgroundColor = .red
+        layer.cornerRadius = 20
+        layer.borderWidth = 2
+        layer.borderColor = UIColor.yellow.cgColor
         
     }
     

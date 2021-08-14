@@ -50,7 +50,7 @@ enum ScreenType: CaseIterable {
             case .record: return "記録"
             case .goal: return "目標"
             case .graph: return "グラフ"
-            case .countDown: return "カウントダウン"
+            case .countDown: return "カウント\nダウン"
             case .setting: return "設定"
         }
     }
@@ -63,7 +63,7 @@ final class StudyRecordViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var addRecordButton: UIButton!
-    @IBOutlet private weak var editRecordButton: UIBarButtonItem!
+    @IBOutlet private weak var editRecordButton: UIButton!
     
     private let recordUseCase = RecordUseCase(
         repository: RecordRepository(
@@ -75,7 +75,7 @@ final class StudyRecordViewController: UIViewController {
     }
     private var editButtonState: EditButtonState = .edit {
         didSet {
-            editRecordButton.title = editButtonState.title
+            editRecordButton.setTitle(editButtonState.title)
         }
     }
     private var screenTypes = ScreenType.allCases
@@ -85,6 +85,8 @@ final class StudyRecordViewController: UIViewController {
         
         setupTableView()
         setupCollectionView()
+        
+        self.navigationController?.navigationBar.barTintColor = .clear
         
     }
     
@@ -105,6 +107,8 @@ final class StudyRecordViewController: UIViewController {
         super.viewDidLayoutSubviews()
         
         addRecordButton.layer.cornerRadius = addRecordButton.frame.height / 2
+        editRecordButton.layer.cornerRadius = editRecordButton.frame.height / 2
+        editRecordButton.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
         
     }
     
