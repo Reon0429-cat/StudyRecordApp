@@ -108,7 +108,7 @@ private extension StudyRecordSectionView {
         let tapGR = UITapGestureRecognizer(target: self,
                                            action: #selector(baseViewEvent))
         baseView.addGestureRecognizer(tapGR)
-        baseView.backgroundColor = .clear
+        baseView.backgroundColor = .white
         baseView.layer.borderColor = UIColor.black.cgColor
         baseView.layer.borderWidth = 1
     }
