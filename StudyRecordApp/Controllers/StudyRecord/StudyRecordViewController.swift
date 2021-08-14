@@ -10,13 +10,14 @@ import UIKit
 
 private struct Constant {
     
+    static let borderWidth: CGFloat = 1
+    
     struct CollectionView {
         static let margin: CGFloat = 15
     }
     
     struct TableView {
         static let headerHeight: CGFloat = 120
-        
     }
     
 }
@@ -57,6 +58,9 @@ enum ScreenType: CaseIterable {
 }
 
 // MARK: - ToDo グラフカラー選択時に該当の色を丸くする(追加と編集画面でそれぞれ確認する)
+// MARK: - ToDo UINavigationControllerを削除したため、画面遷移の方法を変える
+// MARK: - ToDo SwiftLintを導入する
+// MARK: - ToDo SwiftGenを導入する
 
 final class StudyRecordViewController: UIViewController {
     
@@ -64,6 +68,10 @@ final class StudyRecordViewController: UIViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var addRecordButton: UIButton!
     @IBOutlet private weak var editRecordButton: UIButton!
+    @IBOutlet private weak var topSeparatorView: UIView!
+    @IBOutlet private weak var middleSeparatorView: UIView!
+    @IBOutlet private weak var bottomSeparatorView: UIView!
+    @IBOutlet private weak var verticalSeparatorView: UIView!
     
     private let recordUseCase = RecordUseCase(
         repository: RecordRepository(
@@ -85,8 +93,7 @@ final class StudyRecordViewController: UIViewController {
         
         setupTableView()
         setupCollectionView()
-        
-        self.navigationController?.navigationBar.barTintColor = .clear
+        setupSeparators()
         
     }
     
@@ -106,9 +113,8 @@ final class StudyRecordViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        addRecordButton.layer.cornerRadius = addRecordButton.frame.height / 2
-        editRecordButton.layer.cornerRadius = editRecordButton.frame.height / 2
-        editRecordButton.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
+        setupAddRecordButton()
+        setupEditButton()
         
     }
     
@@ -286,12 +292,16 @@ private extension StudyRecordViewController {
         tableView.registerCustomCell(StudyRecordSectionView.self)
         tableView.tableFooterView = UIView()
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.showsVerticalScrollIndicator = false
+        tableView.showsHorizontalScrollIndicator = false
     }
     
     func setupCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.registerCustomCell(ScreenTransitionCollectionViewCell.self)
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.sectionInset = UIEdgeInsets(top: 0,
@@ -299,6 +309,26 @@ private extension StudyRecordViewController {
                                            bottom: 0,
                                            right: Constant.CollectionView.margin)
         collectionView.collectionViewLayout = layout
+    }
+    
+    func setupAddRecordButton() {
+        addRecordButton.layer.cornerRadius = addRecordButton.frame.height / 2
+        addRecordButton.layer.borderWidth = Constant.borderWidth
+        addRecordButton.layer.borderColor = UIColor.black.cgColor
+    }
+    
+    func setupEditButton() {
+        editRecordButton.layer.cornerRadius = editRecordButton.frame.height / 2
+        editRecordButton.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
+        editRecordButton.layer.borderWidth = Constant.borderWidth
+        editRecordButton.layer.borderColor = UIColor.black.cgColor
+    }
+    
+    func setupSeparators() {
+        topSeparatorView.backgroundColor = .black
+        middleSeparatorView.backgroundColor = .black
+        bottomSeparatorView.backgroundColor = .black
+        verticalSeparatorView.backgroundColor = .black
     }
     
 }

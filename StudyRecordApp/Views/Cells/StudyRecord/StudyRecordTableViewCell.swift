@@ -16,6 +16,9 @@ final class StudyRecordTableViewCell: UITableViewCell {
         
         textView.layer.cornerRadius = 10
         textView.isEditable = false
+        textView.backgroundColor = .clear
+        textView.layer.borderWidth = 1
+        textView.layer.borderColor = UIColor.black.cgColor
         
         backgroundColor = .clear
         

@@ -104,10 +104,13 @@ final class StudyRecordSectionView: UITableViewHeaderFooterView {
 private extension StudyRecordSectionView {
     
     func setupBaseView() {
-        baseView.layer.cornerRadius = 10
+        baseView.layer.cornerRadius = 20
         let tapGR = UITapGestureRecognizer(target: self,
                                            action: #selector(baseViewEvent))
         baseView.addGestureRecognizer(tapGR)
+        baseView.backgroundColor = .clear
+        baseView.layer.borderColor = UIColor.black.cgColor
+        baseView.layer.borderWidth = 1
     }
     
     func setupTitleLabel(record: Record) {
