@@ -19,37 +19,53 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3pH-kq-Zvs">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="615"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l7w-wf-9MX">
-                                <rect key="frame" x="329" y="728" width="60" height="60"/>
-                                <color key="backgroundColor" systemColor="systemTealColor"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="okp-Jf-lKG">
+                                <rect key="frame" x="0.0" y="703" width="304" height="110"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JAc-lf-zTq">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xjl-eY-XDp">
+                                <rect key="frame" x="324" y="723" width="70" height="70"/>
+                                <color key="backgroundColor" systemColor="systemPurpleColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="l7w-wf-9MX" secondAttribute="height" id="CB2-9D-5wU"/>
-                                    <constraint firstAttribute="width" constant="60" id="c9J-jA-YlZ"/>
+                                    <constraint firstAttribute="width" secondItem="Xjl-eY-XDp" secondAttribute="height" id="aVo-mP-r5B"/>
+                                    <constraint firstAttribute="width" constant="70" id="xbT-zn-565"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <color key="tintColor" systemColor="systemPinkColor"/>
                                 <state key="normal">
-                                    <imageReference key="image" image="plus" catalog="system" symbolScale="large"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="black"/>
+                                    <color key="titleColor" systemColor="systemRedColor"/>
+                                    <imageReference key="image" image="plus" catalog="system" symbolScale="large" renderingMode="template"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="heavy"/>
                                 </state>
                                 <connections>
-                                    <action selector="addRecordButtonDidTapped:" destination="TGE-gS-zNx" eventType="touchUpInside" id="BUF-ws-7oi"/>
+                                    <action selector="addRecordButtonDidTapped:" destination="TGE-gS-zNx" eventType="touchUpInside" id="yQC-Go-HHq"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="TQ8-8f-sGS"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemYellowColor"/>
                         <constraints>
-                            <constraint firstItem="TQ8-8f-sGS" firstAttribute="trailing" secondItem="l7w-wf-9MX" secondAttribute="trailing" constant="25" id="30f-Lb-cmC"/>
+                            <constraint firstItem="TQ8-8f-sGS" firstAttribute="trailing" secondItem="Xjl-eY-XDp" secondAttribute="trailing" constant="20" id="3Oy-qh-RqT"/>
                             <constraint firstItem="3pH-kq-Zvs" firstAttribute="top" secondItem="TQ8-8f-sGS" secondAttribute="top" id="9uH-gI-kE3"/>
-                            <constraint firstItem="TQ8-8f-sGS" firstAttribute="bottom" secondItem="l7w-wf-9MX" secondAttribute="bottom" constant="25" id="Ckb-KS-aOx"/>
+                            <constraint firstItem="okp-Jf-lKG" firstAttribute="leading" secondItem="TQ8-8f-sGS" secondAttribute="leading" id="BCK-vp-Ede"/>
                             <constraint firstItem="TQ8-8f-sGS" firstAttribute="trailing" secondItem="3pH-kq-Zvs" secondAttribute="trailing" id="Fu1-dd-Se4"/>
                             <constraint firstItem="3pH-kq-Zvs" firstAttribute="leading" secondItem="TQ8-8f-sGS" secondAttribute="leading" id="Jpv-Q5-neD"/>
-                            <constraint firstItem="TQ8-8f-sGS" firstAttribute="bottom" secondItem="3pH-kq-Zvs" secondAttribute="bottom" id="vE3-CM-Jxb"/>
+                            <constraint firstItem="Xjl-eY-XDp" firstAttribute="leading" secondItem="okp-Jf-lKG" secondAttribute="trailing" constant="20" id="aYm-gN-1bC"/>
+                            <constraint firstItem="okp-Jf-lKG" firstAttribute="top" secondItem="3pH-kq-Zvs" secondAttribute="bottom" id="j3E-kY-Yo4"/>
+                            <constraint firstItem="okp-Jf-lKG" firstAttribute="top" secondItem="Xjl-eY-XDp" secondAttribute="top" constant="-20" id="oVY-Wc-cfV"/>
+                            <constraint firstItem="TQ8-8f-sGS" firstAttribute="bottom" secondItem="Xjl-eY-XDp" secondAttribute="bottom" constant="20" id="uZW-FD-Jod"/>
+                            <constraint firstItem="TQ8-8f-sGS" firstAttribute="bottom" secondItem="okp-Jf-lKG" secondAttribute="bottom" id="yJW-S4-PSi"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="記録" image="square.and.pencil" catalog="system" id="55T-Qi-axi"/>
@@ -63,24 +79,33 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="addRecordButton" destination="l7w-wf-9MX" id="WOl-OD-eV5"/>
+                        <outlet property="addRecordButton" destination="Xjl-eY-XDp" id="Z4Y-Yg-AiJ"/>
                         <outlet property="editRecordButton" destination="aEr-Ws-c9C" id="yRO-xZ-Qho"/>
                         <outlet property="tableView" destination="3pH-kq-Zvs" id="64T-QH-dME"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3V3-ZY-amu" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4645" y="124"/>
+            <point key="canvasLocation" x="4644.927536231884" y="123.88392857142857"/>
         </scene>
     </scenes>
     <resources>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
-        <systemColor name="systemTealColor">
-            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
