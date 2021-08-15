@@ -94,6 +94,12 @@ extension StudyRecordViewController: UITableViewDelegate {
         view.tintColor = .clear
     }
     
+    func tableView(_ tableView: UITableView,
+                   heightForFooterInSection section: Int) -> CGFloat {
+        let isLast = (records.count - 1 == section)
+        return (isLast && records[section].isExpanded) ? 40 : 0
+    }
+    
 }
 
 // MARK: - UITableViewDataSource
@@ -130,15 +136,29 @@ extension StudyRecordViewController: StudyRecordSectionViewDelegate {
     
     func memoButtonDidTapped(section: Int) {
         recordUseCase.changeOpeningAndClosing(at: section)
-        tableView.beginUpdates()
-        tableView.reloadRows(at: [IndexPath(row: 0,
-                                            section: section)],
-                             with: .automatic)
-        tableView.endUpdates()
-        tableView.scrollToRow(at: IndexPath(row: 0,
-                                            section: section),
-                              at: .top,
-                              animated: true)
+        DispatchQueue.main.async {
+            self.tableView.beginUpdates()
+            self.tableView.reloadRows(at: [IndexPath(row: 0,
+                                                     section: section)],
+                                      with: .automatic)
+            self.tableView.endUpdates()
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            let cell = self.tableView.cellForRow(
+                at: IndexPath(row: 0, section: section)
+            ) as? StudyRecordTableViewCell
+            let isExpanded = self.records[section].isExpanded
+            let isLastSection = (section == self.records.count - 1)
+            let isManyMemo = (cell?.frame.height ?? 0.0 > self.tableView.frame.height / 2)
+            let isCellNil = (cell == nil)
+            let shouldScrollToTop = isExpanded && (isManyMemo || isLastSection || isCellNil)
+            if shouldScrollToTop {
+                self.tableView.scrollToRow(at: IndexPath(row: 0,
+                                                         section: section),
+                                           at: .top,
+                                           animated: true)
+            }
+        }
     }
     
     func deleteButtonDidTappped(section: Int) {
@@ -173,6 +193,7 @@ private extension StudyRecordViewController {
         tableView.registerCustomCell(StudyRecordTableViewCell.self)
         tableView.registerCustomCell(StudyRecordSectionView.self)
         tableView.tableFooterView = UIView()
+        tableView.sectionFooterHeight = 0
         tableView.rowHeight = UITableView.automaticDimension
         tableView.showsVerticalScrollIndicator = false
         tableView.showsHorizontalScrollIndicator = false
