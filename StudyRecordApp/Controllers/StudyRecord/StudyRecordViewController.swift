@@ -131,9 +131,14 @@ extension StudyRecordViewController: StudyRecordSectionViewDelegate {
     func memoButtonDidTapped(section: Int) {
         recordUseCase.changeOpeningAndClosing(at: section)
         tableView.beginUpdates()
-        tableView.reloadRows(at: [IndexPath(row: 0, section: section)],
+        tableView.reloadRows(at: [IndexPath(row: 0,
+                                            section: section)],
                              with: .automatic)
         tableView.endUpdates()
+        tableView.scrollToRow(at: IndexPath(row: 0,
+                                            section: section),
+                              at: .top,
+                              animated: true)
     }
     
     func deleteButtonDidTappped(section: Int) {
