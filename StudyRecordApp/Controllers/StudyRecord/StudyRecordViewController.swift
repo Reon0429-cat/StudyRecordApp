@@ -7,71 +7,15 @@
 
 import UIKit
 
-
-private struct Constant {
-    
-    static let borderWidth: CGFloat = 1
-    
-    struct CollectionView {
-        static let margin: CGFloat = 15
-    }
-    
-    struct TableView {
-        static let headerHeight: CGFloat = 120
-    }
-    
-}
-
-private enum EditButtonState {
-    case edit
-    case completion
-    var title: String {
-        switch self {
-            case .edit: return "編集"
-            case .completion: return "完了"
-        }
-    }
-    mutating func toggle() {
-        switch self {
-            case .edit: self = .completion
-            case .completion: self = .edit
-        }
-    }
-}
-
-enum ScreenType: CaseIterable {
-    case record
-    case goal
-    case graph
-    case countDown
-    case setting
-    
-    var title: String {
-        switch self {
-            case .record: return "記録"
-            case .goal: return "目標"
-            case .graph: return "グラフ"
-            case .countDown: return "カウント\nダウン"
-            case .setting: return "設定"
-        }
-    }
-}
-
 // MARK: - ToDo グラフカラー選択時に該当の色を丸くする(追加と編集画面でそれぞれ確認する)
 // MARK: - ToDo UINavigationControllerを削除したため、画面遷移の方法を変える
 // MARK: - ToDo SwiftLintを導入する
 // MARK: - ToDo SwiftGenを導入する
+// MARK: - ToDo StudyRecord -> Recordにする
 
 final class StudyRecordViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var collectionView: UICollectionView!
-    @IBOutlet private weak var addRecordButton: UIButton!
-    @IBOutlet private weak var editRecordButton: UIButton!
-    @IBOutlet private weak var topSeparatorView: UIView!
-    @IBOutlet private weak var middleSeparatorView: UIView!
-    @IBOutlet private weak var bottomSeparatorView: UIView!
-    @IBOutlet private weak var verticalSeparatorView: UIView!
     
     private let recordUseCase = RecordUseCase(
         repository: RecordRepository(
@@ -81,53 +25,25 @@ final class StudyRecordViewController: UIViewController {
     private var records: [Record] {
         recordUseCase.records
     }
-    private var editButtonState: EditButtonState = .edit {
-        didSet {
-            editRecordButton.setTitle(editButtonState.title)
-        }
-    }
-    private var screenTypes = ScreenType.allCases
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTableView()
-        setupCollectionView()
-        setupSeparators()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        editButtonState = .edit
-        if records.count == 0 {
-            editRecordButton.isEnabled = false
-        } else {
-            editRecordButton.isEnabled = true
-        }
-        tableView.reloadData()
+//        editButtonState = .edit
+//        if records.count == 0 {
+//            editRecordButton.isEnabled = false
+//        } else {
+//            editRecordButton.isEnabled = true
+//        }
+//        tableView.reloadData()
         
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        setupAddRecordButton()
-        setupEditButton()
-        
-    }
-    
-    @IBAction private func addRecordButtonDidTapped(_ sender: Any) {
-        let additionalStudyRecordVC = AdditionalStudyRecordViewController.instantiate()
-        let navigationController = UINavigationController(rootViewController: additionalStudyRecordVC)
-        navigationController.modalPresentationStyle = .fullScreen
-        present(navigationController, animated: true, completion: nil)
-    }
-    
-    @IBAction private func editButtonDidTapped(_ sender: Any) {
-        editButtonState.toggle()
-        tableView.reloadData()
     }
     
 }
@@ -155,7 +71,7 @@ extension StudyRecordViewController: UITableViewDelegate {
         let sectionView = tableView.dequeueReusableCustomHeaderFooterView(with: StudyRecordSectionView.self)
         let record = records[section]
         sectionView.configure(record: record)
-        let isEditing = editButtonState == .completion
+//        let isEditing = editButtonState == .completion
         sectionView.changeMode(isEditing: isEditing)
         sectionView.tag = section
         sectionView.delegate = self
@@ -192,51 +108,6 @@ extension StudyRecordViewController: UITableViewDataSource {
     
 }
 
-// MARK: - UICollectionViewDelegate
-extension StudyRecordViewController: UICollectionViewDelegate {
-    
-}
-
-// MARK: - UICollectionViewDataSource
-extension StudyRecordViewController: UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        numberOfItemsInSection section: Int) -> Int {
-        return screenTypes.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCustomCell(with: ScreenTransitionCollectionViewCell.self,
-                                                            indexPath: indexPath)
-        let screenType = screenTypes[indexPath.item]
-        cell.configure(title: screenType.title)
-        return cell
-    }
-    
-}
-
-// MARK: - UICollectionViewDelegateFlowLayout
-extension StudyRecordViewController: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let horizontalSpace = Constant.CollectionView.margin
-        let verticalSpace = Constant.CollectionView.margin
-        let width = collectionView.frame.size.width / 2 - horizontalSpace * 2
-        let height = collectionView.frame.size.height - verticalSpace * 2
-        return CGSize(width: width, height: height)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return Constant.CollectionView.margin
-    }
-    
-}
-
 // MARK: - StudyRecordSectionViewDelegate
 extension StudyRecordViewController: StudyRecordSectionViewDelegate {
     
@@ -260,12 +131,12 @@ extension StudyRecordViewController: StudyRecordSectionViewDelegate {
             self.recordUseCase.delete(at: section)
             self.tableView.reloadData()
             self.dismiss(animated: true, completion: nil)
-            if self.records.count == 0 {
-                self.editButtonState = .edit
-                self.editRecordButton.isEnabled = false
-            } else {
-                self.editRecordButton.isEnabled = true
-            }
+//            if self.records.count == 0 {
+//                self.editButtonState = .edit
+//                self.editRecordButton.isEnabled = false
+//            } else {
+//                self.editRecordButton.isEnabled = true
+//            }
         })
         alert.addAction(UIAlertAction(title: "閉じる", style: .default) { _ in
             self.dismiss(animated: true, completion: nil)
@@ -294,41 +165,6 @@ private extension StudyRecordViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.showsVerticalScrollIndicator = false
         tableView.showsHorizontalScrollIndicator = false
-    }
-    
-    func setupCollectionView() {
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.registerCustomCell(ScreenTransitionCollectionViewCell.self)
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.showsHorizontalScrollIndicator = false
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.sectionInset = UIEdgeInsets(top: 0,
-                                           left: Constant.CollectionView.margin,
-                                           bottom: 0,
-                                           right: Constant.CollectionView.margin)
-        collectionView.collectionViewLayout = layout
-    }
-    
-    func setupAddRecordButton() {
-        addRecordButton.layer.cornerRadius = addRecordButton.frame.height / 2
-        addRecordButton.layer.borderWidth = Constant.borderWidth
-        addRecordButton.layer.borderColor = UIColor.black.cgColor
-    }
-    
-    func setupEditButton() {
-        editRecordButton.layer.cornerRadius = editRecordButton.frame.height / 2
-        editRecordButton.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
-        editRecordButton.layer.borderWidth = Constant.borderWidth
-        editRecordButton.layer.borderColor = UIColor.black.cgColor
-    }
-    
-    func setupSeparators() {
-        topSeparatorView.backgroundColor = .black
-        middleSeparatorView.backgroundColor = .black
-        bottomSeparatorView.backgroundColor = .black
-        verticalSeparatorView.backgroundColor = .black
     }
     
 }

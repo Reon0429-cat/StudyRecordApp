@@ -28,6 +28,14 @@
 		AB13EDE126C64EBB002F56FF /* StudyRecordCustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB13EDDF26C64EBB002F56FF /* StudyRecordCustomTableViewCell.xib */; };
 		AB13EDE426C78DB4002F56FF /* ScreenTransitionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EDE226C78DB4002F56FF /* ScreenTransitionCollectionViewCell.swift */; };
 		AB13EDE526C78DB4002F56FF /* ScreenTransitionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB13EDE326C78DB4002F56FF /* ScreenTransitionCollectionViewCell.xib */; };
+		AB13EDE926C7C4C0002F56FF /* Top.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13EDE826C7C4C0002F56FF /* Top.storyboard */; };
+		AB13EDEB26C7C556002F56FF /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EDEA26C7C556002F56FF /* TopViewController.swift */; };
+		AB13EDF426C8BAAC002F56FF /* Goal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13EDF326C8BAAC002F56FF /* Goal.storyboard */; };
+		AB13EDF626C8BAB7002F56FF /* Graph.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13EDF526C8BAB7002F56FF /* Graph.storyboard */; };
+		AB13EDF826C8BAC1002F56FF /* CountDown.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13EDF726C8BAC1002F56FF /* CountDown.storyboard */; };
+		AB13EDFA26C8C585002F56FF /* GoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EDF926C8C585002F56FF /* GoalViewController.swift */; };
+		AB13EDFC26C8C596002F56FF /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EDFB26C8C596002F56FF /* GraphViewController.swift */; };
+		AB13EDFE26C8C59B002F56FF /* CountDownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EDFD26C8C59B002F56FF /* CountDownViewController.swift */; };
 		AB2B5B8326A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B7E26A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift */; };
 		AB2B5B8426A2D0FD009BD3C7 /* NotificationName+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B7F26A2D0FD009BD3C7 /* NotificationName+Extension.swift */; };
 		AB2B5B8526A2D0FD009BD3C7 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B8026A2D0FD009BD3C7 /* UIColor+Extension.swift */; };
@@ -109,6 +117,14 @@
 		AB13EDDF26C64EBB002F56FF /* StudyRecordCustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudyRecordCustomTableViewCell.xib; sourceTree = "<group>"; };
 		AB13EDE226C78DB4002F56FF /* ScreenTransitionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTransitionCollectionViewCell.swift; sourceTree = "<group>"; };
 		AB13EDE326C78DB4002F56FF /* ScreenTransitionCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScreenTransitionCollectionViewCell.xib; sourceTree = "<group>"; };
+		AB13EDE826C7C4C0002F56FF /* Top.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Top.storyboard; sourceTree = "<group>"; };
+		AB13EDEA26C7C556002F56FF /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
+		AB13EDF326C8BAAC002F56FF /* Goal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Goal.storyboard; sourceTree = "<group>"; };
+		AB13EDF526C8BAB7002F56FF /* Graph.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Graph.storyboard; sourceTree = "<group>"; };
+		AB13EDF726C8BAC1002F56FF /* CountDown.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CountDown.storyboard; sourceTree = "<group>"; };
+		AB13EDF926C8C585002F56FF /* GoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalViewController.swift; sourceTree = "<group>"; };
+		AB13EDFB26C8C596002F56FF /* GraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
+		AB13EDFD26C8C59B002F56FF /* CountDownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownViewController.swift; sourceTree = "<group>"; };
 		AB2B5B7E26A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
 		AB2B5B7F26A2D0FD009BD3C7 /* NotificationName+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotificationName+Extension.swift"; sourceTree = "<group>"; };
 		AB2B5B8026A2D0FD009BD3C7 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -262,6 +278,70 @@
 			path = All;
 			sourceTree = "<group>";
 		};
+		AB13EDE726C7C4B7002F56FF /* Top */ = {
+			isa = PBXGroup;
+			children = (
+				AB13EDE826C7C4C0002F56FF /* Top.storyboard */,
+			);
+			path = Top;
+			sourceTree = "<group>";
+		};
+		AB13EDEC26C7C561002F56FF /* Top */ = {
+			isa = PBXGroup;
+			children = (
+				AB13EDEA26C7C556002F56FF /* TopViewController.swift */,
+			);
+			path = Top;
+			sourceTree = "<group>";
+		};
+		AB13EDED26C8BA0F002F56FF /* Goal */ = {
+			isa = PBXGroup;
+			children = (
+				AB13EDF926C8C585002F56FF /* GoalViewController.swift */,
+			);
+			path = Goal;
+			sourceTree = "<group>";
+		};
+		AB13EDEE26C8BA18002F56FF /* Graph */ = {
+			isa = PBXGroup;
+			children = (
+				AB13EDFB26C8C596002F56FF /* GraphViewController.swift */,
+			);
+			path = Graph;
+			sourceTree = "<group>";
+		};
+		AB13EDEF26C8BA20002F56FF /* CountDown */ = {
+			isa = PBXGroup;
+			children = (
+				AB13EDFD26C8C59B002F56FF /* CountDownViewController.swift */,
+			);
+			path = CountDown;
+			sourceTree = "<group>";
+		};
+		AB13EDF026C8BA80002F56FF /* Goal */ = {
+			isa = PBXGroup;
+			children = (
+				AB13EDF326C8BAAC002F56FF /* Goal.storyboard */,
+			);
+			path = Goal;
+			sourceTree = "<group>";
+		};
+		AB13EDF126C8BA88002F56FF /* Graph */ = {
+			isa = PBXGroup;
+			children = (
+				AB13EDF526C8BAB7002F56FF /* Graph.storyboard */,
+			);
+			path = Graph;
+			sourceTree = "<group>";
+		};
+		AB13EDF226C8BA8D002F56FF /* CountDown */ = {
+			isa = PBXGroup;
+			children = (
+				AB13EDF726C8BAC1002F56FF /* CountDown.storyboard */,
+			);
+			path = CountDown;
+			sourceTree = "<group>";
+		};
 		AB2B5B9026A2D13C009BD3C7 /* UIKit+Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -390,7 +470,11 @@
 		AB93C25C266A5A2C00C3AE8F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				AB13EDEC26C7C561002F56FF /* Top */,
 				AB93C2C6266BC4B000C3AE8F /* StudyRecord */,
+				AB13EDED26C8BA0F002F56FF /* Goal */,
+				AB13EDEE26C8BA18002F56FF /* Graph */,
+				AB13EDEF26C8BA20002F56FF /* CountDown */,
 				AB2B5BBE26A2D352009BD3C7 /* Setting */,
 			);
 			path = Controllers;
@@ -399,7 +483,11 @@
 		AB93C25D266A5A5E00C3AE8F /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				AB13EDE726C7C4B7002F56FF /* Top */,
 				AB93C2C7266BC4F000C3AE8F /* StudyRecord */,
+				AB13EDF026C8BA80002F56FF /* Goal */,
+				AB13EDF126C8BA88002F56FF /* Graph */,
+				AB13EDF226C8BA8D002F56FF /* CountDown */,
 				AB2B5BA626A2D232009BD3C7 /* Setting */,
 			);
 			path = Storyboards;
@@ -551,11 +639,15 @@
 				AB13ECD626B7AEA3002F56FF /* ColorChoicesConcept.storyboard in Resources */,
 				AB93C2C1266BAD1100C3AE8F /* StudyRecordSectionView.xib in Resources */,
 				AB2B5BAC26A2D244009BD3C7 /* ThemeColor.storyboard in Resources */,
+				AB13EDE926C7C4C0002F56FF /* Top.storyboard in Resources */,
 				AB13EDE526C78DB4002F56FF /* ScreenTransitionCollectionViewCell.xib in Resources */,
 				AB93C259266A5A0900C3AE8F /* StudyRecordTableViewCell.xib in Resources */,
 				AB93C266266A7DEB00C3AE8F /* AdditionalStudyRecord.storyboard in Resources */,
+				AB13EDF826C8BAC1002F56FF /* CountDown.storyboard in Resources */,
+				AB13EDF426C8BAAC002F56FF /* Goal.storyboard in Resources */,
 				AB13ED1626B8F5D0002F56FF /* StudyRecordMemo.storyboard in Resources */,
 				AB13EDD326C29DAF002F56FF /* StudyRecordTimeRecord.storyboard in Resources */,
+				AB13EDF626C8BAB7002F56FF /* Graph.storyboard in Resources */,
 				AB2B5BAA26A2D244009BD3C7 /* Setting.storyboard in Resources */,
 				AB13ECD826B7AF27002F56FF /* ColorChoicesTile.storyboard in Resources */,
 			);
@@ -622,6 +714,7 @@
 				AB2B5B8426A2D0FD009BD3C7 /* NotificationName+Extension.swift in Sources */,
 				AB93C2BD266BABA900C3AE8F /* Record.swift in Sources */,
 				AB2B5BA026A2D1B7009BD3C7 /* ServiceConcept.swift in Sources */,
+				AB13EDEB26C7C556002F56FF /* TopViewController.swift in Sources */,
 				AB13ED4D26BB9241002F56FF /* RecordUseCase.swift in Sources */,
 				AB2B5B8726A2D0FD009BD3C7 /* UICollectionView+Extension.swift in Sources */,
 				AB4D6BBE2672099C00E5286E /* UIButton+Extension.swift in Sources */,
@@ -633,11 +726,13 @@
 				AB93C268266A7DFF00C3AE8F /* AdditionalStudyRecordViewController.swift in Sources */,
 				AB2B5B9E26A2D1B7009BD3C7 /* NaturalConcept.swift in Sources */,
 				ABA0570126B50D1900E3DF01 /* GraphColorTileView.swift in Sources */,
+				AB13EDFE26C8C59B002F56FF /* CountDownViewController.swift in Sources */,
 				AB13EDE426C78DB4002F56FF /* ScreenTransitionCollectionViewCell.swift in Sources */,
 				AB2B5BA326A2D1B7009BD3C7 /* JapanConcept.swift in Sources */,
 				AB2B5BA126A2D1B7009BD3C7 /* SeasonConcept.swift in Sources */,
 				AB2B5B8526A2D0FD009BD3C7 /* UIColor+Extension.swift in Sources */,
 				AB2B5BBA26A2D2C2009BD3C7 /* SectionHeaderView.swift in Sources */,
+				AB13EDFA26C8C585002F56FF /* GoalViewController.swift in Sources */,
 				AB2B5B8E26A2D106009BD3C7 /* UITableViewCell+Extension.swift in Sources */,
 				AB13ED4926BB8128002F56FF /* RealmRecordDataStore.swift in Sources */,
 				AB2B5B8626A2D0FD009BD3C7 /* NSObjectProtocol+Extension.swift in Sources */,
@@ -658,6 +753,7 @@
 				AB93C23D266A234800C3AE8F /* SceneDelegate.swift in Sources */,
 				AB2B5B9626A2D19E009BD3C7 /* ThemeColor.swift in Sources */,
 				AB93C2BF266BACE100C3AE8F /* StudyRecordSectionView.swift in Sources */,
+				AB13EDFC26C8C596002F56FF /* GraphViewController.swift in Sources */,
 				AB2B5B9526A2D19E009BD3C7 /* ColorConcept.swift in Sources */,
 				AB2B5BC826A2D36F009BD3C7 /* ColorConceptViewController.swift in Sources */,
 			);
