@@ -13,6 +13,12 @@ import UIKit
 // MARK: - ToDo SwiftGenを導入する
 // MARK: - ToDo StudyRecord -> Recordにする
 
+protocol StudyRecordVCDelegate: AnyObject {
+    var isEdit: Bool { get }
+    func viewWillAppear(records: [Record])
+    func deleteButtonDidTappped(records: [Record])
+}
+
 final class StudyRecordViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
@@ -25,25 +31,29 @@ final class StudyRecordViewController: UIViewController {
     private var records: [Record] {
         recordUseCase.records
     }
+    weak var delegate: StudyRecordVCDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTableView()
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(editButtonDidTapped),
+                                               name: .editButtonDidTapped,
+                                               object: nil)
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        editButtonState = .edit
-//        if records.count == 0 {
-//            editRecordButton.isEnabled = false
-//        } else {
-//            editRecordButton.isEnabled = true
-//        }
-//        tableView.reloadData()
+        delegate?.viewWillAppear(records: records)
+        tableView.reloadData()
         
+    }
+    
+    @objc private func editButtonDidTapped() {
+        tableView.reloadData()
     }
     
 }
@@ -71,8 +81,8 @@ extension StudyRecordViewController: UITableViewDelegate {
         let sectionView = tableView.dequeueReusableCustomHeaderFooterView(with: StudyRecordSectionView.self)
         let record = records[section]
         sectionView.configure(record: record)
-//        let isEditing = editButtonState == .completion
-        sectionView.changeMode(isEditing: isEditing)
+        let isEdit = delegate?.isEdit ?? false
+        sectionView.changeMode(isEdit: isEdit)
         sectionView.tag = section
         sectionView.delegate = self
         return sectionView
@@ -130,13 +140,8 @@ extension StudyRecordViewController: StudyRecordSectionViewDelegate {
         alert.addAction(UIAlertAction(title: "削除", style: .destructive) { _ in
             self.recordUseCase.delete(at: section)
             self.tableView.reloadData()
+            self.delegate?.deleteButtonDidTappped(records: self.records)
             self.dismiss(animated: true, completion: nil)
-//            if self.records.count == 0 {
-//                self.editButtonState = .edit
-//                self.editRecordButton.isEnabled = false
-//            } else {
-//                self.editRecordButton.isEnabled = true
-//            }
         })
         alert.addAction(UIAlertAction(title: "閉じる", style: .default) { _ in
             self.dismiss(animated: true, completion: nil)

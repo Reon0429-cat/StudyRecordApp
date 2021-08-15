@@ -85,6 +85,13 @@ final class TopViewController: UIViewController {
         }
         return screenType
     }
+    private struct SegueID {
+        static let studyRecord = "StudyRecord"
+        static let goal = "Goal"
+        static let graph = "Graph"
+        static let countDown = "CountDown"
+        static let setting = "Setting"
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,6 +100,13 @@ final class TopViewController: UIViewController {
         setupCollectionView()
         setupTitleLabel()
         setupSeparators()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        editButtonState = .edit
         
     }
     
@@ -114,7 +128,22 @@ final class TopViewController: UIViewController {
     }
     
     @IBAction private func editButtonDidTapped(_ sender: Any) {
-        editButtonState.toggle()
+        if screenType == .record {
+            editButtonState.toggle()
+            NotificationCenter.default.post(name: .editButtonDidTapped,
+                                            object: nil)
+        }
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+            case SegueID.studyRecord:
+                let studyRecordVC = segue.destination as! StudyRecordViewController
+                studyRecordVC.delegate = self
+            default:
+                break
+        }
     }
     
 }
@@ -238,6 +267,31 @@ private extension TopViewController {
         middleSeparatorView.backgroundColor = .black
         bottomSeparatorView.backgroundColor = .black
         verticalSeparatorView.backgroundColor = .black
+    }
+    
+}
+
+extension TopViewController: StudyRecordVCDelegate {
+    
+    var isEdit: Bool {
+        editButtonState == .completion
+    }
+    
+    func viewWillAppear(records: [Record]) {
+        if records.count == 0 {
+            editButton.isEnabled = false
+        } else {
+            editButton.isEnabled = true
+        }
+    }
+    
+    func deleteButtonDidTappped(records: [Record]) {
+        if records.count == 0 {
+            editButtonState = .edit
+            editButton.isEnabled = false
+        } else {
+            editButton.isEnabled = true
+        }
     }
     
 }

@@ -97,31 +97,31 @@
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jUt-iR-Ryd">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="624"/>
                                         <connections>
-                                            <segue destination="teU-GO-kWW" kind="embed" id="7Pa-Jg-USw"/>
+                                            <segue destination="teU-GO-kWW" kind="embed" identifier="StudyRecord" id="7Pa-Jg-USw"/>
                                         </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aAa-Cw-96W">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="624"/>
                                         <connections>
-                                            <segue destination="QEr-Wg-fPl" kind="embed" id="nup-XV-b88"/>
+                                            <segue destination="QEr-Wg-fPl" kind="embed" identifier="Goal" id="nup-XV-b88"/>
                                         </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Xv-Pd-mYx">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="624"/>
                                         <connections>
-                                            <segue destination="w1e-QX-ry7" kind="embed" id="P6b-q2-412"/>
+                                            <segue destination="w1e-QX-ry7" kind="embed" identifier="Graph" id="P6b-q2-412"/>
                                         </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TTa-fD-8wf">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="624"/>
                                         <connections>
-                                            <segue destination="kLY-VY-fCh" kind="embed" id="n7X-0i-L1m"/>
+                                            <segue destination="kLY-VY-fCh" kind="embed" identifier="CountDown" id="n7X-0i-L1m"/>
                                         </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SCb-SP-G5m">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="624"/>
                                         <connections>
-                                            <segue destination="KRS-Fc-Y7u" kind="embed" id="Tjp-Jr-MaG"/>
+                                            <segue destination="KRS-Fc-Y7u" kind="embed" identifier="Setting" id="Tjp-Jr-MaG"/>
                                         </connections>
                                     </containerView>
                                 </subviews>

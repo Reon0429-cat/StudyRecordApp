@@ -66,8 +66,8 @@ final class StudyRecordSectionView: UITableViewHeaderFooterView {
         setupMemoButton(record: record)
     }
     
-    func changeMode(isEditing: Bool) {
-        if isEditing {
+    func changeMode(isEdit: Bool) {
+        if isEdit {
             todayStudyTimeLabel.isHidden = true
             totalStudyTimeLabel.isHidden = true
             deleteButtonBackView.isHidden = false
