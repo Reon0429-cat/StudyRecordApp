@@ -153,6 +153,12 @@ extension TopViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
+        
+        collectionView.scrollToItem(at: IndexPath(item: indexPath.item,
+                                                  section: indexPath.section),
+                                    at: .centeredHorizontally,
+                                    animated: true)
+        
         screenType = getScreenType(item: indexPath.item)
         titleLabel.text = screenType.title
         titleLabel.font = .boldSystemFont(ofSize: 40)
