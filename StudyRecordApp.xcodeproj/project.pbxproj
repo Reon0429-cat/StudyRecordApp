@@ -342,6 +342,24 @@
 			path = CountDown;
 			sourceTree = "<group>";
 		};
+		AB13EDFF26C8E0E9002F56FF /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				AB2B5B9326A2D19E009BD3C7 /* ThemeColor.swift */,
+				AB2B5B9226A2D19E009BD3C7 /* ColorConcept.swift */,
+				AB2B5BA526A2D1C1009BD3C7 /* SubConcepts */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		AB13EE0026C8E114002F56FF /* All */ = {
+			isa = PBXGroup;
+			children = (
+				AB13EDDA26C3C163002F56FF /* Convert.swift */,
+			);
+			path = All;
+			sourceTree = "<group>";
+		};
 		AB2B5B9026A2D13C009BD3C7 /* UIKit+Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -448,11 +466,9 @@
 		AB93C25A266A5A0D00C3AE8F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AB13EE0026C8E114002F56FF /* All */,
 				AB13ED4226BB7F9D002F56FF /* StudyRecord */,
-				AB13EDDA26C3C163002F56FF /* Convert.swift */,
-				AB2B5B9326A2D19E009BD3C7 /* ThemeColor.swift */,
-				AB2B5B9226A2D19E009BD3C7 /* ColorConcept.swift */,
-				AB2B5BA526A2D1C1009BD3C7 /* SubConcepts */,
+				AB13EDFF26C8E0E9002F56FF /* Setting */,
 			);
 			path = Models;
 			sourceTree = "<group>";
