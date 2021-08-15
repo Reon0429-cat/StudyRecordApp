@@ -21,7 +21,7 @@ struct Constant {
     
 }
 
-private enum ScreenType: CaseIterable {
+private enum ScreenType: Int, CaseIterable {
     case record
     case goal
     case graph
@@ -78,14 +78,20 @@ final class TopViewController: UIViewController {
             editButton.setTitle(editButtonState.title)
         }
     }
-    private var screenTypes = ScreenType.allCases
-    private var containers = [UIView]()
+    private var screenType: ScreenType = .record
+    private func getScreenType(item: Int) -> ScreenType {
+        guard let screenType = ScreenType(rawValue: item) else {
+            fatalError()
+        }
+        return screenType
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupContainerViews()
         setupCollectionView()
+        setupTitleLabel()
         setupSeparators()
         
     }
@@ -99,10 +105,12 @@ final class TopViewController: UIViewController {
     }
     
     @IBAction private func addButtonDidTapped(_ sender: Any) {
-        //        let additionalStudyRecordVC = AdditionalStudyRecordViewController.instantiate()
-        //        let navigationController = UINavigationController(rootViewController: additionalStudyRecordVC)
-        //        navigationController.modalPresentationStyle = .fullScreen
-        //        present(navigationController, animated: true, completion: nil)
+        if screenType == .record {
+            let additionalStudyRecordVC = AdditionalStudyRecordViewController.instantiate()
+            let navigationController = UINavigationController(rootViewController: additionalStudyRecordVC)
+            navigationController.modalPresentationStyle = .fullScreen
+            present(navigationController, animated: true, completion: nil)
+        }
     }
     
     @IBAction private func editButtonDidTapped(_ sender: Any) {
@@ -116,8 +124,32 @@ extension TopViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
-        let containerView = containers[indexPath.item]
-        parentContainerView.bringSubviewToFront(containerView)
+        screenType = getScreenType(item: indexPath.item)
+        titleLabel.text = screenType.title
+        titleLabel.font = .boldSystemFont(ofSize: 40)
+        switch screenType {
+            case .record:
+                parentContainerView.bringSubviewToFront(studyRecordContainerView)
+                editButton.isHidden = false
+                addButton.isHidden = false
+            case .goal:
+                parentContainerView.bringSubviewToFront(goalContainerView)
+                editButton.isHidden = false
+                addButton.isHidden = false
+            case .graph:
+                parentContainerView.bringSubviewToFront(graphContainerView)
+                editButton.isHidden = false
+                addButton.isHidden = false
+            case .countDown:
+                parentContainerView.bringSubviewToFront(countDownContainerView)
+                titleLabel.font = .boldSystemFont(ofSize: 30)
+                editButton.isHidden = false
+                addButton.isHidden = false
+            case .setting:
+                parentContainerView.bringSubviewToFront(settingContainerView)
+                editButton.isHidden = true
+                addButton.isHidden = true
+        }
     }
     
 }
@@ -127,14 +159,14 @@ extension TopViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return screenTypes.count
+        return ScreenType.allCases.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCustomCell(with: ScreenTransitionCollectionViewCell.self,
                                                             indexPath: indexPath)
-        let screenType = screenTypes[indexPath.item]
+        let screenType = getScreenType(item: indexPath.item)
         cell.configure(title: screenType.title)
         return cell
     }
@@ -166,11 +198,6 @@ extension TopViewController: UICollectionViewDelegateFlowLayout {
 private extension TopViewController {
     
     func setupContainerViews() {
-        containers.append(studyRecordContainerView)
-        containers.append(goalContainerView)
-        containers.append(graphContainerView)
-        containers.append(countDownContainerView)
-        containers.append(settingContainerView)
         parentContainerView.bringSubviewToFront(studyRecordContainerView)
     }
     
@@ -187,6 +214,10 @@ private extension TopViewController {
                                            bottom: 0,
                                            right: Constant.CollectionView.margin)
         collectionView.collectionViewLayout = layout
+    }
+    
+    func setupTitleLabel() {
+        titleLabel.text = screenType.title
     }
     
     func setupAddButton() {
