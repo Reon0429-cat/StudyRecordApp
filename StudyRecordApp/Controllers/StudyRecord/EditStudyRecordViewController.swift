@@ -67,11 +67,11 @@ final class EditStudyRecordViewController: UIViewController {
     
     @IBAction private func saveButtonDidTapped(_ sender: Any) {
         recordUseCase.update(record: selectedRecord, at: tappedSection)
-        self.navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction private func dismissButtonDidTapped(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
     
 }
