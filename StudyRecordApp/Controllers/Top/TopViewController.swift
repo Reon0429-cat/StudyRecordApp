@@ -88,14 +88,6 @@ final class TopViewController: UIViewController {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        editButtonState = .edit
-        hideSortButton()
-        
-    }
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
@@ -118,14 +110,9 @@ final class TopViewController: UIViewController {
     }
     
     @IBAction private func editButtonDidTapped(_ sender: Any) {
-        switch screenType {
-            case .record:
-                editButtonState.toggle()
-                NotificationCenter.default.post(name: .editButtonDidTapped,
-                                                object: nil)
-            default:
-                break
-        }
+        editButtonState.toggle()
+        NotificationCenter.default.post(name: .editButtonDidTapped,
+                                        object: nil)
         if sortButton.isHidden {
             sortButton.setFade(.in)
         } else {
@@ -149,11 +136,6 @@ final class TopViewController: UIViewController {
             default:
                 break
         }
-    }
-    
-    private func hideSortButton() {
-        sortButton.isHidden = true
-        sortButton.alpha = 0
     }
     
 }
@@ -297,7 +279,8 @@ private extension TopViewController {
     }
     
     func setupSortButton() {
-        hideSortButton()
+        sortButton.isHidden = true
+        sortButton.alpha = 0
     }
     
     func setupSeparators() {

@@ -65,9 +65,9 @@ final class StudyRecordSectionView: UITableViewHeaderFooterView {
     
     func changeMode(isEdit: Bool) {
         if isEdit {
-            deleteButton.isHidden = false
+            deleteButton.setFade(.in)
         } else {
-            deleteButton.isHidden = true
+            deleteButton.setFade(.out)
         }
     }
     
