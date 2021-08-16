@@ -65,12 +65,8 @@ final class StudyRecordSectionView: UITableViewHeaderFooterView {
     
     func changeMode(isEdit: Bool) {
         if isEdit {
-            todayStudyTimeLabel.isHidden = true
-            totalStudyTimeLabel.isHidden = true
             deleteButton.isHidden = false
         } else {
-            todayStudyTimeLabel.isHidden = false
-            totalStudyTimeLabel.isHidden = false
             deleteButton.isHidden = true
         }
     }
