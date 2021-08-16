@@ -57,6 +57,7 @@ final class TopViewController: UIViewController {
     }
     private var pageViewController: UIPageViewController!
     private var viewControllers = [UIViewController]()
+    private var currentPageIndex = 0
     
     override func loadView() {
         super.loadView()
@@ -129,7 +130,28 @@ final class TopViewController: UIViewController {
                                     animated: true)
     }
     
-    private var pageViewIndex = 0
+    private func screenDidChanged(item: Int) {
+        screenType = getScreenType(item: item)
+        scrollCollectionViewItem(at: item)
+        currentPageIndex = item
+        reloadViews()
+    }
+    
+    private func reloadViews() {
+        titleLabel.text = screenType.title
+        if screenType == .setting {
+            editButton.isHidden = true
+            addButton.isHidden = true
+        } else {
+            editButton.isHidden = false
+            addButton.isHidden = false
+        }
+        if screenType == .countDown {
+            titleLabel.font = .boldSystemFont(ofSize: 30)
+        } else {
+            titleLabel.font = .boldSystemFont(ofSize: 40)
+        }
+    }
     
 }
 
@@ -138,18 +160,10 @@ extension TopViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
-        
-        scrollCollectionViewItem(at: indexPath.item)
-        
-        screenType = getScreenType(item: indexPath.item)
-        titleLabel.text = screenType.title
-        titleLabel.font = .boldSystemFont(ofSize: 40)
-        editButton.isHidden = false
-        addButton.isHidden = false
-        if screenType == .setting {
-            editButton.isHidden = true
-            addButton.isHidden = true
-        }
+        pageViewController.setViewControllers([viewControllers[indexPath.item]],
+                                              direction: currentPageIndex < indexPath.item ? .forward : .reverse,
+                                              animated: true,
+                                              completion: nil)
     }
     
 }
@@ -194,10 +208,20 @@ extension TopViewController: UICollectionViewDelegateFlowLayout {
     
 }
 
+// MARK: - UIPageViewControllerDelegate
 extension TopViewController: UIPageViewControllerDelegate {
-    
+    func pageViewController(_ pageViewController: UIPageViewController,
+                            didFinishAnimating finished: Bool,
+                            previousViewControllers: [UIViewController],
+                            transitionCompleted completed: Bool) {
+        guard completed,
+              let currentVC = pageViewController.viewControllers?.first,
+              let index = viewControllers.firstIndex(of: currentVC) else { return }
+        currentPageIndex = index
+    }
 }
 
+// MARK: - UIPageViewControllerDataSource
 extension TopViewController: UIPageViewControllerDataSource {
     
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
@@ -233,7 +257,7 @@ extension TopViewController: StudyRecordVCDelegate {
         } else {
             editButton.isEnabled = true
         }
-        scrollCollectionViewItem(at: index)
+        screenDidChanged(item: index)
     }
     
     func deleteButtonDidTappped(records: [Record]) {
@@ -250,7 +274,8 @@ extension TopViewController: StudyRecordVCDelegate {
 extension TopViewController: GoalVCDelegate, GraphVCDelegate, CountDownVCDelegate, SettingVCDelegate {
     
     func viewWillAppear(index: Int) {
-        scrollCollectionViewItem(at: index)
+        print(index)
+        screenDidChanged(item: index)
     }
     
 }
@@ -259,7 +284,6 @@ extension TopViewController: GoalVCDelegate, GraphVCDelegate, CountDownVCDelegat
 private extension TopViewController {
     
     func setupPageViewController() {
-        pageViewController.delegate = self
         pageViewController.dataSource = self
     }
     
