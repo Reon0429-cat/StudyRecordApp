@@ -12,6 +12,8 @@ import UIKit
 // MARK: - ToDo SwiftLintを導入する
 // MARK: - ToDo SwiftGenを導入する
 // MARK: - ToDo StudyRecord -> Recordにする
+// MARK: - ToDo 消去ボタンを右上に配置して並び替えボタンは編集ボタンの横にアイコンで表示
+// MARK: - ToDo スワイプで遷移
 
 protocol StudyRecordVCDelegate: AnyObject {
     var isEdit: Bool { get }
@@ -173,13 +175,6 @@ extension StudyRecordViewController: StudyRecordSectionViewDelegate {
             self.dismiss(animated: true, completion: nil)
         })
         present(alert, animated: true, completion: nil)
-    }
-    
-    func sortButtonDidTapped() {
-        let studyRecordSortVC = StudyRecordSortViewController.instantiate()
-        let navigationController = UINavigationController(rootViewController: studyRecordSortVC)
-        navigationController.modalPresentationStyle = .fullScreen
-        present(navigationController, animated: true, completion: nil)
     }
     
 }

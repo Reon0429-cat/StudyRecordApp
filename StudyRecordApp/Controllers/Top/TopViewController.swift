@@ -67,6 +67,7 @@ final class TopViewController: UIViewController {
     @IBOutlet private weak var settingContainerView: UIView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var titleLabelLeftConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var sortButton: UIButton!
     @IBOutlet private weak var addButton: UIButton!
     @IBOutlet private weak var addButtonRightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var editButton: UIButton!
@@ -115,6 +116,7 @@ final class TopViewController: UIViewController {
         setupContainerViews()
         setupCollectionView()
         setupTitleLabel()
+        setupSortButton()
         setAnimation()
         
     }
@@ -123,6 +125,7 @@ final class TopViewController: UIViewController {
         super.viewWillAppear(animated)
         
         editButtonState = .edit
+        sortButton.isHidden = true
         
     }
     
@@ -145,12 +148,22 @@ final class TopViewController: UIViewController {
     }
     
     @IBAction private func editButtonDidTapped(_ sender: Any) {
-        if screenType == .record {
-            editButtonState.toggle()
-            NotificationCenter.default.post(name: .editButtonDidTapped,
-                                            object: nil)
+        switch screenType {
+            case .record:
+                editButtonState.toggle()
+                NotificationCenter.default.post(name: .editButtonDidTapped,
+                                                object: nil)
+            default:
+                break
         }
-        
+        sortButton.isHidden.toggle()
+    }
+    
+    @IBAction private func sortButtonDidTapped(_ sender: Any) {
+        let studyRecordSortVC = StudyRecordSortViewController.instantiate()
+        let navigationController = UINavigationController(rootViewController: studyRecordSortVC)
+        navigationController.modalPresentationStyle = .fullScreen
+        present(navigationController, animated: true, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -311,6 +324,10 @@ private extension TopViewController {
         editButton.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
         editButton.layer.borderWidth = Constant.borderWidth
         editButton.layer.borderColor = UIColor.black.cgColor
+    }
+    
+    func setupSortButton() {
+        sortButton.isHidden = true
     }
     
     func setupSeparators() {

@@ -156,6 +156,21 @@
                                     <constraint firstAttribute="width" constant="2" id="8DD-0C-38z"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i73-vd-DE0">
+                                <rect key="frame" x="289" y="64" width="40" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="i73-vd-DE0" secondAttribute="height" multiplier="1:1" id="WK6-hV-FGU"/>
+                                    <constraint firstAttribute="width" constant="40" id="fH9-cZ-44Q"/>
+                                </constraints>
+                                <state key="normal">
+                                    <imageReference key="image" image="arrow.up.arrow.down.circle.fill" catalog="system" symbolScale="large" renderingMode="original"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
+                                </state>
+                                <connections>
+                                    <action selector="sortButtonDidTapped:" destination="gDA-S7-B4I" eventType="touchUpInside" id="jIp-9z-3WA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="89D-1W-suH"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -168,8 +183,10 @@
                             <constraint firstItem="ScA-mM-TvK" firstAttribute="leading" secondItem="Hd1-Bo-e7y" secondAttribute="trailing" id="Ez2-as-2X5"/>
                             <constraint firstItem="Jdi-bk-M6f" firstAttribute="top" secondItem="RA0-TX-Xc8" secondAttribute="bottom" constant="5" id="FgH-RL-6XX"/>
                             <constraint firstItem="rjj-14-Arj" firstAttribute="centerX" secondItem="FCt-wH-DiL" secondAttribute="centerX" id="GfA-4h-gKK"/>
+                            <constraint firstItem="i73-vd-DE0" firstAttribute="centerY" secondItem="RA0-TX-Xc8" secondAttribute="centerY" id="JyM-GW-2rr"/>
                             <constraint firstItem="89D-1W-suH" firstAttribute="trailing" secondItem="CLG-hU-5oH" secondAttribute="trailing" id="LfU-Hz-XiB"/>
                             <constraint firstItem="8Bf-hN-dBB" firstAttribute="centerX" secondItem="FCt-wH-DiL" secondAttribute="centerX" id="MFL-9E-kI9"/>
+                            <constraint firstItem="89D-1W-suH" firstAttribute="trailing" secondItem="i73-vd-DE0" secondAttribute="trailing" constant="85" id="MqJ-DS-qwY"/>
                             <constraint firstItem="Hd1-Bo-e7y" firstAttribute="top" secondItem="8Bf-hN-dBB" secondAttribute="bottom" id="MtA-Kv-Bdn"/>
                             <constraint firstItem="RA0-TX-Xc8" firstAttribute="trailing" secondItem="89D-1W-suH" secondAttribute="trailing" constant="5" id="Nlj-Fc-ld9"/>
                             <constraint firstItem="JvU-rz-cMR" firstAttribute="top" secondItem="89D-1W-suH" secondAttribute="top" id="Tbp-LZ-hGw"/>
@@ -203,6 +220,7 @@
                         <outlet property="middleSeparatorView" destination="8Bf-hN-dBB" id="ur5-3u-83R"/>
                         <outlet property="parentContainerView" destination="CLG-hU-5oH" id="5id-LV-FAj"/>
                         <outlet property="settingContainerView" destination="SCb-SP-G5m" id="Po3-e3-Hdl"/>
+                        <outlet property="sortButton" destination="i73-vd-DE0" id="0wB-r1-8Ku"/>
                         <outlet property="studyRecordContainerView" destination="jUt-iR-Ryd" id="Bx6-hN-1CL"/>
                         <outlet property="titleLabel" destination="JvU-rz-cMR" id="adk-KU-6WE"/>
                         <outlet property="titleLabelLeftConstraint" destination="8Ry-6W-LOA" id="xSe-49-VeP"/>
@@ -256,6 +274,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.up.arrow.down.circle.fill" catalog="system" width="128" height="121"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
