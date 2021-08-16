@@ -172,7 +172,6 @@
                             <constraint firstItem="8Bf-hN-dBB" firstAttribute="centerX" secondItem="FCt-wH-DiL" secondAttribute="centerX" id="MFL-9E-kI9"/>
                             <constraint firstItem="Hd1-Bo-e7y" firstAttribute="top" secondItem="8Bf-hN-dBB" secondAttribute="bottom" id="MtA-Kv-Bdn"/>
                             <constraint firstItem="RA0-TX-Xc8" firstAttribute="trailing" secondItem="89D-1W-suH" secondAttribute="trailing" constant="5" id="Nlj-Fc-ld9"/>
-                            <constraint firstItem="Tpi-lb-LHl" firstAttribute="leading" secondItem="ScA-mM-TvK" secondAttribute="trailing" constant="20" id="P5c-jE-dIl"/>
                             <constraint firstItem="JvU-rz-cMR" firstAttribute="top" secondItem="89D-1W-suH" secondAttribute="top" id="Tbp-LZ-hGw"/>
                             <constraint firstItem="Hd1-Bo-e7y" firstAttribute="leading" secondItem="89D-1W-suH" secondAttribute="leading" id="Usn-wr-YCa"/>
                             <constraint firstItem="RA0-TX-Xc8" firstAttribute="centerY" secondItem="JvU-rz-cMR" secondAttribute="centerY" id="WF0-m4-CVV"/>
@@ -182,6 +181,7 @@
                             <constraint firstItem="89D-1W-suH" firstAttribute="trailing" secondItem="Tpi-lb-LHl" secondAttribute="trailing" constant="20" id="aPh-KT-boH"/>
                             <constraint firstItem="89D-1W-suH" firstAttribute="trailing" secondItem="Jdi-bk-M6f" secondAttribute="trailing" constant="10" id="bAa-0U-zls"/>
                             <constraint firstItem="CLG-hU-5oH" firstAttribute="top" secondItem="Jdi-bk-M6f" secondAttribute="bottom" id="bKP-LF-tnN"/>
+                            <constraint firstItem="89D-1W-suH" firstAttribute="trailing" secondItem="ScA-mM-TvK" secondAttribute="trailing" constant="110" id="cN5-1U-69I"/>
                             <constraint firstItem="rjj-14-Arj" firstAttribute="top" secondItem="Hd1-Bo-e7y" secondAttribute="bottom" id="dyK-6Y-0z4"/>
                             <constraint firstAttribute="trailing" secondItem="rjj-14-Arj" secondAttribute="trailing" constant="10" id="irI-zX-0Ah"/>
                             <constraint firstItem="89D-1W-suH" firstAttribute="bottom" secondItem="Hd1-Bo-e7y" secondAttribute="bottom" id="toG-ZX-PEb"/>
@@ -192,10 +192,12 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addButton" destination="Tpi-lb-LHl" id="hfD-4l-3os"/>
+                        <outlet property="addButtonRightConstraint" destination="aPh-KT-boH" id="TLU-7c-iRb"/>
                         <outlet property="bottomSeparatorView" destination="rjj-14-Arj" id="obE-K1-JD9"/>
                         <outlet property="collectionView" destination="Hd1-Bo-e7y" id="U4A-Jj-8WQ"/>
                         <outlet property="countDownContainerView" destination="TTa-fD-8wf" id="CTa-Ww-zM7"/>
                         <outlet property="editButton" destination="RA0-TX-Xc8" id="NAq-Cy-0QO"/>
+                        <outlet property="editButtonRightConstraint" destination="Nlj-Fc-ld9" id="R4S-Ob-rMd"/>
                         <outlet property="goalContainerView" destination="aAa-Cw-96W" id="rgz-kM-SPY"/>
                         <outlet property="graphContainerView" destination="8Xv-Pd-mYx" id="YFP-VQ-FDB"/>
                         <outlet property="middleSeparatorView" destination="8Bf-hN-dBB" id="ur5-3u-83R"/>
@@ -203,6 +205,7 @@
                         <outlet property="settingContainerView" destination="SCb-SP-G5m" id="Po3-e3-Hdl"/>
                         <outlet property="studyRecordContainerView" destination="jUt-iR-Ryd" id="Bx6-hN-1CL"/>
                         <outlet property="titleLabel" destination="JvU-rz-cMR" id="adk-KU-6WE"/>
+                        <outlet property="titleLabelLeftConstraint" destination="8Ry-6W-LOA" id="xSe-49-VeP"/>
                         <outlet property="topSeparatorView" destination="Jdi-bk-M6f" id="9lx-d4-CKO"/>
                         <outlet property="verticalSeparatorView" destination="ScA-mM-TvK" id="Jfa-FO-XDw"/>
                     </connections>

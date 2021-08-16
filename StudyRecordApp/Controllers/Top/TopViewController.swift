@@ -66,8 +66,11 @@ final class TopViewController: UIViewController {
     @IBOutlet private weak var countDownContainerView: UIView!
     @IBOutlet private weak var settingContainerView: UIView!
     @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var titleLabelLeftConstraint: NSLayoutConstraint!
     @IBOutlet private weak var addButton: UIButton!
+    @IBOutlet private weak var addButtonRightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var editButton: UIButton!
+    @IBOutlet private weak var editButtonRightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var topSeparatorView: UIView!
     @IBOutlet private weak var middleSeparatorView: UIView!
     @IBOutlet private weak var bottomSeparatorView: UIView!
@@ -92,6 +95,19 @@ final class TopViewController: UIViewController {
         static let countDown = "CountDown"
         static let setting = "Setting"
     }
+    private struct LayoutConstant {
+        static let titleLabelLeft: CGFloat = 100
+        static let editButtonRight: CGFloat = -50
+        static let addButtonRight: CGFloat = 50
+    }
+    
+    
+    override func loadView() {
+        super.loadView()
+        
+        setupAnimation()
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,6 +116,7 @@ final class TopViewController: UIViewController {
         setupCollectionView()
         setupTitleLabel()
         setupSeparators()
+        setAnimation()
         
     }
     
@@ -229,6 +246,33 @@ extension TopViewController: UICollectionViewDelegateFlowLayout {
     
 }
 
+// MARK: - StudyRecordVCDelegate
+extension TopViewController: StudyRecordVCDelegate {
+    
+    var isEdit: Bool {
+        editButtonState == .completion
+    }
+    
+    func viewWillAppear(records: [Record]) {
+        if records.count == 0 {
+            editButton.isEnabled = false
+        } else {
+            editButton.isEnabled = true
+        }
+    }
+    
+    func deleteButtonDidTappped(records: [Record]) {
+        if records.count == 0 {
+            editButtonState = .edit
+            editButton.isEnabled = false
+        } else {
+            editButton.isEnabled = true
+        }
+    }
+    
+}
+
+
 // MARK: - setup
 private extension TopViewController {
     
@@ -274,29 +318,56 @@ private extension TopViewController {
         bottomSeparatorView.backgroundColor = .black
         verticalSeparatorView.backgroundColor = .black
     }
+
+    func setupAnimation() {
+        titleLabelLeftConstraint.constant -= LayoutConstant.titleLabelLeft
+        titleLabel.alpha = 0
+        
+        editButtonRightConstraint.constant -= LayoutConstant.editButtonRight
+        editButton.alpha = 0
+        
+        addButtonRightConstraint.constant -= LayoutConstant.addButtonRight
+        addButton.alpha = 0
+    }
     
 }
 
-extension TopViewController: StudyRecordVCDelegate {
+private extension TopViewController {
     
-    var isEdit: Bool {
-        editButtonState == .completion
-    }
-    
-    func viewWillAppear(records: [Record]) {
-        if records.count == 0 {
-            editButton.isEnabled = false
-        } else {
-            editButton.isEnabled = true
+    func setAnimation() {
+        UIView.animate(deadlineFromNow: 0.15) {
+            self.titleLabelLeftConstraint.constant += LayoutConstant.titleLabelLeft
+            self.titleLabel.alpha = 1
+            self.view.layoutIfNeeded()
+        }
+        
+        UIView.animate(deadlineFromNow: 0.4) {
+            self.editButtonRightConstraint.constant += LayoutConstant.editButtonRight
+            self.editButton.alpha = 1
+            self.view.layoutIfNeeded()
+        }
+        
+        UIView.animate(deadlineFromNow: 0.15) {
+            self.addButtonRightConstraint.constant += LayoutConstant.addButtonRight
+            self.addButton.alpha = 1
+            self.view.layoutIfNeeded()
         }
     }
     
-    func deleteButtonDidTappped(records: [Record]) {
-        if records.count == 0 {
-            editButtonState = .edit
-            editButton.isEnabled = false
-        } else {
-            editButton.isEnabled = true
+}
+
+private extension UIView {
+    
+    static func animate(deadlineFromNow: Double,
+                        _ animation: @escaping () -> Void) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + deadlineFromNow) {
+            UIView.animate(withDuration: 1,
+                           delay: 0,
+                           usingSpringWithDamping: 1,
+                           initialSpringVelocity: 0,
+                           options: []) {
+                animation()
+            }
         }
     }
     
