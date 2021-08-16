@@ -52,6 +52,9 @@ private enum RowType {
     }
 }
 
+protocol SettingVCDelegate: AnyObject {
+    func viewWillAppear(index: Int)
+}
 
 final class SettingViewController: UIViewController {
     
@@ -64,11 +67,19 @@ final class SettingViewController: UIViewController {
         }
         return tables
     }()
+    weak var delegate: SettingVCDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTableView()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        delegate?.viewWillAppear(index: self.view.tag)
         
     }
     
@@ -78,6 +89,14 @@ final class SettingViewController: UIViewController {
         tableView.registerCustomCell(AccordionTableViewCell.self)
         tableView.registerCustomCell(SectionHeaderView.self)
         tableView.tableFooterView = UIView()
+    }
+    
+    static func instantiate() -> SettingViewController {
+        let storyboard = UIStoryboard(name: "Setting", bundle: nil)
+        let settingVC = storyboard.instantiateViewController(
+            identifier: String(describing: self)
+        ) as! SettingViewController
+        return settingVC
     }
     
 }

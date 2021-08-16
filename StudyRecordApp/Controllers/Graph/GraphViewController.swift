@@ -7,23 +7,32 @@
 
 import UIKit
 
-class GraphViewController: UIViewController {
+protocol GraphVCDelegate: AnyObject {
+    func viewWillAppear(index: Int)
+}
+
+final class GraphViewController: UIViewController {
+    
+    weak var delegate: GraphVCDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        delegate?.viewWillAppear(index: self.view.tag)
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
-
+    
+    static func instantiate() -> GraphViewController {
+        let storyboard = UIStoryboard(name: "Graph", bundle: nil)
+        let graphVC = storyboard.instantiateViewController(
+            identifier: String(describing: self)
+        ) as! GraphViewController
+        return graphVC
+    }
+    
 }

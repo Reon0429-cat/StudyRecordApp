@@ -7,23 +7,32 @@
 
 import UIKit
 
-class CountDownViewController: UIViewController {
+protocol CountDownVCDelegate: AnyObject {
+    func viewWillAppear(index: Int)
+}
+
+final class CountDownViewController: UIViewController {
+    
+    weak var delegate: CountDownVCDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        delegate?.viewWillAppear(index: self.view.tag)
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
-
+    
+    static func instantiate() -> CountDownViewController {
+        let storyboard = UIStoryboard(name: "CountDown", bundle: nil)
+        let countDownVC = storyboard.instantiateViewController(
+            identifier: String(describing: self)
+        ) as! CountDownViewController
+        return countDownVC
+    }
+    
 }

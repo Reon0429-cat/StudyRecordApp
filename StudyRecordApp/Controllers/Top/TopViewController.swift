@@ -10,12 +10,6 @@ import UIKit
 final class TopViewController: UIViewController {
     
     @IBOutlet private weak var collectionView: UICollectionView!
-    @IBOutlet private weak var parentContainerView: UIView!
-    @IBOutlet private weak var studyRecordContainerView: UIView!
-    @IBOutlet private weak var goalContainerView: UIView!
-    @IBOutlet private weak var graphContainerView: UIView!
-    @IBOutlet private weak var countDownContainerView: UIView!
-    @IBOutlet private weak var settingContainerView: UIView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var titleLabelLeftConstraint: NSLayoutConstraint!
     @IBOutlet private weak var sortButton: UIButton!
@@ -49,13 +43,6 @@ final class TopViewController: UIViewController {
             }
         }
     }
-    private enum SegueType: String {
-        case studyRecord = "StudyRecord"
-        case goal = "Goal"
-        case graph = "Graph"
-        case countDown = "CountDown"
-        case setting = "Setting"
-    }
     private var editButtonState: EditButtonState = .edit {
         didSet {
             editButton.setTitle(editButtonState.title)
@@ -68,7 +55,8 @@ final class TopViewController: UIViewController {
         }
         return screenType
     }
-    
+    private var pageViewController: UIPageViewController!
+    private var viewControllers = [UIViewController]()
     
     override func loadView() {
         super.loadView()
@@ -80,7 +68,8 @@ final class TopViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupContainerViews()
+        setupPageViewController()
+        setupPageViews()
         setupCollectionView()
         setupTitleLabel()
         setupSortButton()
@@ -128,15 +117,19 @@ final class TopViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let segueType = SegueType(rawValue: segue.identifier!)
-        switch segueType {
-            case .studyRecord:
-                let studyRecordVC = segue.destination as! StudyRecordViewController
-                studyRecordVC.delegate = self
-            default:
-                break
+        if let pageViewController = segue.destination as? UIPageViewController {
+            self.pageViewController = pageViewController
         }
     }
+    
+    private func scrollCollectionViewItem(at item: Int) {
+        collectionView.scrollToItem(at: IndexPath(item: item,
+                                                  section: 0),
+                                    at: .centeredHorizontally,
+                                    animated: true)
+    }
+    
+    private var pageViewIndex = 0
     
 }
 
@@ -146,30 +139,16 @@ extension TopViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
         
-        collectionView.scrollToItem(at: IndexPath(item: indexPath.item,
-                                                  section: indexPath.section),
-                                    at: .centeredHorizontally,
-                                    animated: true)
+        scrollCollectionViewItem(at: indexPath.item)
         
         screenType = getScreenType(item: indexPath.item)
         titleLabel.text = screenType.title
         titleLabel.font = .boldSystemFont(ofSize: 40)
         editButton.isHidden = false
         addButton.isHidden = false
-        switch screenType {
-            case .record:
-                parentContainerView.bringSubviewToFront(studyRecordContainerView)
-            case .goal:
-                parentContainerView.bringSubviewToFront(goalContainerView)
-            case .graph:
-                parentContainerView.bringSubviewToFront(graphContainerView)
-            case .countDown:
-                parentContainerView.bringSubviewToFront(countDownContainerView)
-                titleLabel.font = .boldSystemFont(ofSize: 30)
-            case .setting:
-                parentContainerView.bringSubviewToFront(settingContainerView)
-                editButton.isHidden = true
-                addButton.isHidden = true
+        if screenType == .setting {
+            editButton.isHidden = true
+            addButton.isHidden = true
         }
     }
     
@@ -215,6 +194,32 @@ extension TopViewController: UICollectionViewDelegateFlowLayout {
     
 }
 
+extension TopViewController: UIPageViewControllerDelegate {
+    
+}
+
+extension TopViewController: UIPageViewControllerDataSource {
+    
+    func presentationCount(for pageViewController: UIPageViewController) -> Int {
+        return viewControllers.count
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController,
+                            viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        guard let index = viewControllers.firstIndex(of: viewController),
+              index > 0 else { return nil }
+        return viewControllers[index - 1]
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController,
+                            viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        guard let index = viewControllers.firstIndex(of: viewController),
+              viewControllers.count - 1 > index else { return nil }
+        return viewControllers[index + 1]
+    }
+    
+}
+
 // MARK: - StudyRecordVCDelegate
 extension TopViewController: StudyRecordVCDelegate {
     
@@ -222,12 +227,13 @@ extension TopViewController: StudyRecordVCDelegate {
         editButtonState == .completion
     }
     
-    func viewWillAppear(records: [Record]) {
+    func viewWillAppear(records: [Record], index: Int) {
         if records.count == 0 {
             editButton.isEnabled = false
         } else {
             editButton.isEnabled = true
         }
+        scrollCollectionViewItem(at: index)
     }
     
     func deleteButtonDidTappped(records: [Record]) {
@@ -241,12 +247,43 @@ extension TopViewController: StudyRecordVCDelegate {
     
 }
 
+extension TopViewController: GoalVCDelegate, GraphVCDelegate, CountDownVCDelegate, SettingVCDelegate {
+    
+    func viewWillAppear(index: Int) {
+        scrollCollectionViewItem(at: index)
+    }
+    
+}
 
 // MARK: - setup
 private extension TopViewController {
     
-    func setupContainerViews() {
-        parentContainerView.bringSubviewToFront(studyRecordContainerView)
+    func setupPageViewController() {
+        pageViewController.delegate = self
+        pageViewController.dataSource = self
+    }
+    
+    func setupPageViews() {
+        let studyRecordVC = StudyRecordViewController.instantiate()
+        studyRecordVC.delegate = self
+        let goalVC = GoalViewController.instantiate()
+        goalVC.delegate = self
+        let graphVC = GraphViewController.instantiate()
+        graphVC.delegate = self
+        let countDownVC = CountDownViewController.instantiate()
+        countDownVC.delegate = self
+        let settingVC = SettingViewController.instantiate()
+        settingVC.delegate = self
+        viewControllers.append(studyRecordVC)
+        viewControllers.append(goalVC)
+        viewControllers.append(graphVC)
+        viewControllers.append(countDownVC)
+        viewControllers.append(settingVC)
+        viewControllers.enumerated().forEach { $1.view.tag = $0 }
+        pageViewController.setViewControllers([viewControllers[0]],
+                                              direction: .forward,
+                                              animated: true,
+                                              completion: nil)
     }
     
     func setupCollectionView() {
@@ -289,7 +326,7 @@ private extension TopViewController {
         bottomSeparatorView.backgroundColor = .black
         verticalSeparatorView.backgroundColor = .black
     }
-
+    
     func setupAnimation() {
         titleLabelLeftConstraint.constant -= LayoutConstant.titleLabelLeft
         titleLabel.alpha = 0

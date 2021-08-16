@@ -359,6 +359,7 @@
 		AB13EE0026C8E114002F56FF /* All */ = {
 			isa = PBXGroup;
 			children = (
+				AB13EE6526CAC989002F56FF /* ScreenType.swift */,
 				AB13EDDA26C3C163002F56FF /* Convert.swift */,
 			);
 			path = All;
@@ -437,7 +438,6 @@
 		AB93C22E266A234800C3AE8F = {
 			isa = PBXGroup;
 			children = (
-				AB13EE6526CAC989002F56FF /* ScreenType.swift */,
 				AB93C239266A234800C3AE8F /* StudyRecordApp */,
 				AB93C238266A234800C3AE8F /* Products */,
 				6ED773C562BE78F875EC7183 /* Pods */,

@@ -12,7 +12,7 @@
         <!--Study Record View Controller-->
         <scene sceneID="R2w-MH-Cwh">
             <objects>
-                <viewController id="TGE-gS-zNx" customClass="StudyRecordViewController" customModule="StudyRecordApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StudyRecordViewController" id="TGE-gS-zNx" customClass="StudyRecordViewController" customModule="StudyRecordApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fWS-px-dSh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

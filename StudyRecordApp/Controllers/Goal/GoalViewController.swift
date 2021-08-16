@@ -7,23 +7,32 @@
 
 import UIKit
 
-class GoalViewController: UIViewController {
+protocol GoalVCDelegate: AnyObject {
+    func viewWillAppear(index: Int)
+}
+
+final class GoalViewController: UIViewController {
+    
+    weak var delegate: GoalVCDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        delegate?.viewWillAppear(index: self.view.tag)
+        
     }
-    */
+    
+    static func instantiate() -> GoalViewController {
+        let storyboard = UIStoryboard(name: "Goal", bundle: nil)
+        let goalVC = storyboard.instantiateViewController(
+            identifier: String(describing: self)
+        ) as! GoalViewController
+        return goalVC
+    }
 
 }

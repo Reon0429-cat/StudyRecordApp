@@ -91,64 +91,6 @@
                                     <constraint firstAttribute="height" constant="2" id="PAb-lv-Ugc"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CLG-hU-5oH">
-                                <rect key="frame" x="0.0" y="126" width="414" height="624"/>
-                                <subviews>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jUt-iR-Ryd">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="624"/>
-                                        <connections>
-                                            <segue destination="teU-GO-kWW" kind="embed" identifier="StudyRecord" id="7Pa-Jg-USw"/>
-                                        </connections>
-                                    </containerView>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aAa-Cw-96W">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="624"/>
-                                        <connections>
-                                            <segue destination="QEr-Wg-fPl" kind="embed" identifier="Goal" id="nup-XV-b88"/>
-                                        </connections>
-                                    </containerView>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Xv-Pd-mYx">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="624"/>
-                                        <connections>
-                                            <segue destination="w1e-QX-ry7" kind="embed" identifier="Graph" id="P6b-q2-412"/>
-                                        </connections>
-                                    </containerView>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TTa-fD-8wf">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="624"/>
-                                        <connections>
-                                            <segue destination="kLY-VY-fCh" kind="embed" identifier="CountDown" id="n7X-0i-L1m"/>
-                                        </connections>
-                                    </containerView>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SCb-SP-G5m">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="624"/>
-                                        <connections>
-                                            <segue destination="KRS-Fc-Y7u" kind="embed" identifier="Setting" id="Tjp-Jr-MaG"/>
-                                        </connections>
-                                    </containerView>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="jUt-iR-Ryd" secondAttribute="bottom" id="7hG-PC-0fe"/>
-                                    <constraint firstItem="8Xv-Pd-mYx" firstAttribute="leading" secondItem="CLG-hU-5oH" secondAttribute="leading" id="Amx-w6-M2r"/>
-                                    <constraint firstItem="aAa-Cw-96W" firstAttribute="top" secondItem="CLG-hU-5oH" secondAttribute="top" id="BDY-Gw-KoV"/>
-                                    <constraint firstItem="aAa-Cw-96W" firstAttribute="leading" secondItem="CLG-hU-5oH" secondAttribute="leading" id="D0S-9U-EJi"/>
-                                    <constraint firstItem="TTa-fD-8wf" firstAttribute="leading" secondItem="CLG-hU-5oH" secondAttribute="leading" id="LbO-4H-Vxy"/>
-                                    <constraint firstItem="SCb-SP-G5m" firstAttribute="leading" secondItem="CLG-hU-5oH" secondAttribute="leading" id="Lhg-79-Pj7"/>
-                                    <constraint firstItem="jUt-iR-Ryd" firstAttribute="top" secondItem="CLG-hU-5oH" secondAttribute="top" id="Sw9-GF-PQR"/>
-                                    <constraint firstAttribute="trailing" secondItem="aAa-Cw-96W" secondAttribute="trailing" id="Xpp-kT-pkp"/>
-                                    <constraint firstAttribute="bottom" secondItem="8Xv-Pd-mYx" secondAttribute="bottom" id="Ydi-hY-bu2"/>
-                                    <constraint firstItem="8Xv-Pd-mYx" firstAttribute="top" secondItem="CLG-hU-5oH" secondAttribute="top" id="ZtG-Cq-Lax"/>
-                                    <constraint firstItem="SCb-SP-G5m" firstAttribute="top" secondItem="CLG-hU-5oH" secondAttribute="top" id="aFW-TP-Uuj"/>
-                                    <constraint firstAttribute="bottom" secondItem="TTa-fD-8wf" secondAttribute="bottom" id="b6g-91-Au7"/>
-                                    <constraint firstAttribute="trailing" secondItem="8Xv-Pd-mYx" secondAttribute="trailing" id="fQE-pz-Nl0"/>
-                                    <constraint firstAttribute="trailing" secondItem="jUt-iR-Ryd" secondAttribute="trailing" id="hXV-wL-YZB"/>
-                                    <constraint firstAttribute="bottom" secondItem="aAa-Cw-96W" secondAttribute="bottom" id="lYR-7t-kfH"/>
-                                    <constraint firstItem="TTa-fD-8wf" firstAttribute="top" secondItem="CLG-hU-5oH" secondAttribute="top" id="lvU-dX-IHm"/>
-                                    <constraint firstAttribute="trailing" secondItem="SCb-SP-G5m" secondAttribute="trailing" id="nKH-iC-4CZ"/>
-                                    <constraint firstAttribute="bottom" secondItem="SCb-SP-G5m" secondAttribute="bottom" id="oOZ-0C-Yqj"/>
-                                    <constraint firstAttribute="trailing" secondItem="TTa-fD-8wf" secondAttribute="trailing" id="uNP-GF-Au5"/>
-                                    <constraint firstItem="jUt-iR-Ryd" firstAttribute="leading" secondItem="CLG-hU-5oH" secondAttribute="leading" id="vuw-yl-7o1"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ScA-mM-TvK">
                                 <rect key="frame" x="302" y="762" width="2" height="90"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -171,20 +113,25 @@
                                     <action selector="sortButtonDidTapped:" destination="gDA-S7-B4I" eventType="touchUpInside" id="jIp-9z-3WA"/>
                                 </connections>
                             </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wxl-h3-hMv">
+                                <rect key="frame" x="0.0" y="126" width="414" height="624"/>
+                                <connections>
+                                    <segue destination="Ct8-C7-lT7" kind="embed" id="wlW-gw-3U0"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="89D-1W-suH"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Wxl-h3-hMv" firstAttribute="leading" secondItem="89D-1W-suH" secondAttribute="leading" id="0LX-Gu-OFM"/>
                             <constraint firstItem="JvU-rz-cMR" firstAttribute="leading" secondItem="89D-1W-suH" secondAttribute="leading" constant="30" id="8Ry-6W-LOA"/>
                             <constraint firstItem="ScA-mM-TvK" firstAttribute="centerY" secondItem="Tpi-lb-LHl" secondAttribute="centerY" id="9YQ-jJ-0Hg"/>
-                            <constraint firstItem="8Bf-hN-dBB" firstAttribute="top" secondItem="CLG-hU-5oH" secondAttribute="bottom" id="9iA-FV-zCj"/>
                             <constraint firstAttribute="bottomMargin" secondItem="ScA-mM-TvK" secondAttribute="bottom" constant="10" id="BQK-66-m5E"/>
                             <constraint firstItem="Jdi-bk-M6f" firstAttribute="centerX" secondItem="FCt-wH-DiL" secondAttribute="centerX" id="DJR-QX-Eif"/>
                             <constraint firstItem="ScA-mM-TvK" firstAttribute="leading" secondItem="Hd1-Bo-e7y" secondAttribute="trailing" id="Ez2-as-2X5"/>
                             <constraint firstItem="Jdi-bk-M6f" firstAttribute="top" secondItem="RA0-TX-Xc8" secondAttribute="bottom" constant="5" id="FgH-RL-6XX"/>
                             <constraint firstItem="rjj-14-Arj" firstAttribute="centerX" secondItem="FCt-wH-DiL" secondAttribute="centerX" id="GfA-4h-gKK"/>
                             <constraint firstItem="i73-vd-DE0" firstAttribute="centerY" secondItem="RA0-TX-Xc8" secondAttribute="centerY" id="JyM-GW-2rr"/>
-                            <constraint firstItem="89D-1W-suH" firstAttribute="trailing" secondItem="CLG-hU-5oH" secondAttribute="trailing" id="LfU-Hz-XiB"/>
                             <constraint firstItem="8Bf-hN-dBB" firstAttribute="centerX" secondItem="FCt-wH-DiL" secondAttribute="centerX" id="MFL-9E-kI9"/>
                             <constraint firstItem="89D-1W-suH" firstAttribute="trailing" secondItem="i73-vd-DE0" secondAttribute="trailing" constant="85" id="MqJ-DS-qwY"/>
                             <constraint firstItem="Hd1-Bo-e7y" firstAttribute="top" secondItem="8Bf-hN-dBB" secondAttribute="bottom" id="MtA-Kv-Bdn"/>
@@ -193,14 +140,15 @@
                             <constraint firstItem="Hd1-Bo-e7y" firstAttribute="leading" secondItem="89D-1W-suH" secondAttribute="leading" id="Usn-wr-YCa"/>
                             <constraint firstItem="RA0-TX-Xc8" firstAttribute="centerY" secondItem="JvU-rz-cMR" secondAttribute="centerY" id="WF0-m4-CVV"/>
                             <constraint firstItem="89D-1W-suH" firstAttribute="bottom" secondItem="Tpi-lb-LHl" secondAttribute="bottom" constant="20" id="Wm4-xT-K8H"/>
-                            <constraint firstItem="CLG-hU-5oH" firstAttribute="leading" secondItem="89D-1W-suH" secondAttribute="leading" id="Ze1-dg-Ah2"/>
                             <constraint firstItem="Hd1-Bo-e7y" firstAttribute="top" secondItem="Tpi-lb-LHl" secondAttribute="top" constant="-20" id="a77-gz-QgM"/>
                             <constraint firstItem="89D-1W-suH" firstAttribute="trailing" secondItem="Tpi-lb-LHl" secondAttribute="trailing" constant="20" id="aPh-KT-boH"/>
                             <constraint firstItem="89D-1W-suH" firstAttribute="trailing" secondItem="Jdi-bk-M6f" secondAttribute="trailing" constant="10" id="bAa-0U-zls"/>
-                            <constraint firstItem="CLG-hU-5oH" firstAttribute="top" secondItem="Jdi-bk-M6f" secondAttribute="bottom" id="bKP-LF-tnN"/>
                             <constraint firstItem="89D-1W-suH" firstAttribute="trailing" secondItem="ScA-mM-TvK" secondAttribute="trailing" constant="110" id="cN5-1U-69I"/>
+                            <constraint firstItem="8Bf-hN-dBB" firstAttribute="top" secondItem="Wxl-h3-hMv" secondAttribute="bottom" id="cTZ-KU-mHN"/>
                             <constraint firstItem="rjj-14-Arj" firstAttribute="top" secondItem="Hd1-Bo-e7y" secondAttribute="bottom" id="dyK-6Y-0z4"/>
+                            <constraint firstItem="89D-1W-suH" firstAttribute="trailing" secondItem="Wxl-h3-hMv" secondAttribute="trailing" id="eLD-Zs-0VS"/>
                             <constraint firstAttribute="trailing" secondItem="rjj-14-Arj" secondAttribute="trailing" constant="10" id="irI-zX-0Ah"/>
+                            <constraint firstItem="Wxl-h3-hMv" firstAttribute="top" secondItem="Jdi-bk-M6f" secondAttribute="bottom" id="o1Q-C7-Bw1"/>
                             <constraint firstItem="89D-1W-suH" firstAttribute="bottom" secondItem="Hd1-Bo-e7y" secondAttribute="bottom" id="toG-ZX-PEb"/>
                             <constraint firstAttribute="trailing" secondItem="8Bf-hN-dBB" secondAttribute="trailing" constant="10" id="zER-Og-KNz"/>
                         </constraints>
@@ -212,16 +160,10 @@
                         <outlet property="addButtonRightConstraint" destination="aPh-KT-boH" id="TLU-7c-iRb"/>
                         <outlet property="bottomSeparatorView" destination="rjj-14-Arj" id="obE-K1-JD9"/>
                         <outlet property="collectionView" destination="Hd1-Bo-e7y" id="U4A-Jj-8WQ"/>
-                        <outlet property="countDownContainerView" destination="TTa-fD-8wf" id="CTa-Ww-zM7"/>
                         <outlet property="editButton" destination="RA0-TX-Xc8" id="NAq-Cy-0QO"/>
                         <outlet property="editButtonRightConstraint" destination="Nlj-Fc-ld9" id="R4S-Ob-rMd"/>
-                        <outlet property="goalContainerView" destination="aAa-Cw-96W" id="rgz-kM-SPY"/>
-                        <outlet property="graphContainerView" destination="8Xv-Pd-mYx" id="YFP-VQ-FDB"/>
                         <outlet property="middleSeparatorView" destination="8Bf-hN-dBB" id="ur5-3u-83R"/>
-                        <outlet property="parentContainerView" destination="CLG-hU-5oH" id="5id-LV-FAj"/>
-                        <outlet property="settingContainerView" destination="SCb-SP-G5m" id="Po3-e3-Hdl"/>
                         <outlet property="sortButton" destination="i73-vd-DE0" id="0wB-r1-8Ku"/>
-                        <outlet property="studyRecordContainerView" destination="jUt-iR-Ryd" id="Bx6-hN-1CL"/>
                         <outlet property="titleLabel" destination="JvU-rz-cMR" id="adk-KU-6WE"/>
                         <outlet property="titleLabelLeftConstraint" destination="8Ry-6W-LOA" id="xSe-49-VeP"/>
                         <outlet property="topSeparatorView" destination="Jdi-bk-M6f" id="9lx-d4-CKO"/>
@@ -232,53 +174,18 @@
             </objects>
             <point key="canvasLocation" x="1779.7101449275365" y="412.5"/>
         </scene>
-        <!--StudyRecord-->
-        <scene sceneID="8Fx-4y-jwr">
+        <!--Page View Controller-->
+        <scene sceneID="Z5q-jt-xxe">
             <objects>
-                <viewControllerPlaceholder storyboardName="StudyRecord" id="teU-GO-kWW" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="t2f-Ux-8C2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Ct8-C7-lT7" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lqe-Mg-yM4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2430" y="194"/>
-        </scene>
-        <!--Goal-->
-        <scene sceneID="k3Y-UY-eLr">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Goal" id="QEr-Wg-fPl" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="s8s-qS-DC4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2429" y="291"/>
-        </scene>
-        <!--Graph-->
-        <scene sceneID="tb6-aa-jqT">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Graph" id="w1e-QX-ry7" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1GH-rc-B8f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2430" y="379"/>
-        </scene>
-        <!--CountDown-->
-        <scene sceneID="Pui-y7-tNf">
-            <objects>
-                <viewControllerPlaceholder storyboardName="CountDown" id="kLY-VY-fCh" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hz1-KL-3An" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2430" y="474"/>
-        </scene>
-        <!--Setting-->
-        <scene sceneID="qbO-ML-g7z">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Setting" id="KRS-Fc-Y7u" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kNN-kM-2eZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2429" y="563"/>
+            <point key="canvasLocation" x="2539" y="413"/>
         </scene>
     </scenes>
     <resources>
         <image name="arrow.up.arrow.down.circle.fill" catalog="system" width="128" height="121"/>
         <image name="plus" catalog="system" width="128" height="113"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

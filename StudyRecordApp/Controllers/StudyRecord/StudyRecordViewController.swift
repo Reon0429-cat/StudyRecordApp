@@ -13,11 +13,10 @@ import UIKit
 // MARK: - ToDo SwiftGenを導入する
 // MARK: - ToDo StudyRecord -> Recordにする
 // MARK: - ToDo 消去ボタンを右上に配置して並び替えボタンは編集ボタンの横にアイコンで表示
-// MARK: - ToDo スワイプで遷移
 
 protocol StudyRecordVCDelegate: AnyObject {
     var isEdit: Bool { get }
-    func viewWillAppear(records: [Record])
+    func viewWillAppear(records: [Record], index: Int)
     func deleteButtonDidTappped(records: [Record])
 }
 
@@ -49,13 +48,21 @@ final class StudyRecordViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        delegate?.viewWillAppear(records: records)
+        delegate?.viewWillAppear(records: records, index: self.view.tag)
         tableView.reloadData()
         
     }
     
     @objc private func editButtonDidTapped() {
         tableView.reloadData()
+    }
+    
+    static func instantiate() -> StudyRecordViewController {
+        let storyboard = UIStoryboard(name: "StudyRecord", bundle: nil)
+        let studyRecordVC = storyboard.instantiateViewController(
+            identifier: String(describing: self)
+        ) as! StudyRecordViewController
+        return studyRecordVC
     }
     
 }
