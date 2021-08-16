@@ -28,7 +28,6 @@ protocol StudyRecordSectionViewDelegate: AnyObject {
     func baseViewDidTapped(section: Int)
     func memoButtonDidTapped(section: Int)
     func deleteButtonDidTappped(section: Int)
-    func sortButtonDidTapped()
 }
 
 final class StudyRecordSectionView: UITableViewHeaderFooterView {
@@ -39,8 +38,7 @@ final class StudyRecordSectionView: UITableViewHeaderFooterView {
     @IBOutlet private weak var stackView: UIStackView!
     @IBOutlet private weak var todayStudyTimeLabel: UILabel!
     @IBOutlet private weak var totalStudyTimeLabel: UILabel!
-    @IBOutlet private weak var deleteButtonBackView: UIView!
-    @IBOutlet private weak var sortButtonBackView: UIView!
+    @IBOutlet private weak var deleteButton: UIButton!
 
     private var memoState: MemoState = .shrinked
     weak var delegate: StudyRecordSectionViewDelegate?
@@ -49,8 +47,7 @@ final class StudyRecordSectionView: UITableViewHeaderFooterView {
         super.awakeFromNib()
         
         setupBaseView()
-        deleteButtonBackView.isHidden = true
-        sortButtonBackView.isHidden = true
+        setupDeleteButton()
         
     }
     
@@ -70,13 +67,11 @@ final class StudyRecordSectionView: UITableViewHeaderFooterView {
         if isEdit {
             todayStudyTimeLabel.isHidden = true
             totalStudyTimeLabel.isHidden = true
-            deleteButtonBackView.isHidden = false
-            sortButtonBackView.isHidden = false
+            deleteButton.isHidden = false
         } else {
             todayStudyTimeLabel.isHidden = false
             totalStudyTimeLabel.isHidden = false
-            deleteButtonBackView.isHidden = true
-            sortButtonBackView.isHidden = true
+            deleteButton.isHidden = true
         }
     }
     
@@ -86,10 +81,6 @@ final class StudyRecordSectionView: UITableViewHeaderFooterView {
     
     @IBAction private func deleteButtonDidTappped(_ sender: Any) {
         delegate?.deleteButtonDidTappped(section: self.tag)
-    }
-    
-    @IBAction private func sortButtonDidTappped(_ sender: Any) {
-        delegate?.sortButtonDidTapped()
     }
     
     private func isToday(_ history: History) -> Bool {
@@ -111,6 +102,12 @@ private extension StudyRecordSectionView {
         baseView.backgroundColor = .white
         baseView.layer.borderColor = UIColor.black.cgColor
         baseView.layer.borderWidth = 1
+    }
+    
+    func setupDeleteButton() {
+        deleteButton.isHidden = true
+        deleteButton.layer.cornerRadius = deleteButton.frame.height / 2
+        deleteButton.backgroundColor = .white
     }
     
     func setupTitleLabel(record: Record) {
