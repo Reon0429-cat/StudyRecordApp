@@ -70,6 +70,10 @@ final class EditStudyRecordViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction private func dismissButtonDidTapped(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
 }
 
 extension EditStudyRecordViewController: UITableViewDelegate {

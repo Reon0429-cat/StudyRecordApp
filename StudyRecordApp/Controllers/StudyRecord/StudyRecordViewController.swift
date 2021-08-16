@@ -131,9 +131,10 @@ extension StudyRecordViewController: StudyRecordSectionViewDelegate {
     
     func baseViewDidTapped(section: Int) {
         let editStudyRecordVC = EditStudyRecordViewController.instantiate()
-        editStudyRecordVC.modalPresentationStyle = .fullScreen
         editStudyRecordVC.tappedSection = section
-        present(editStudyRecordVC, animated: true, completion: nil)
+        let nav = UINavigationController(rootViewController: editStudyRecordVC)
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: true, completion: nil)
     }
     
     func memoButtonDidTapped(section: Int) {

@@ -7,6 +7,8 @@
 
 import UIKit
 
+// MARK: - ToDo メモを大量にかいたときに省略されてしまう
+
 final class AdditionalStudyRecordViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!

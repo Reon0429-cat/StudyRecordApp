@@ -33,6 +33,11 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="編集" id="5zf-kk-frX">
+                        <barButtonItem key="leftBarButtonItem" title="閉じる" id="gsT-tf-piv">
+                            <connections>
+                                <action selector="dismissButtonDidTapped:" destination="Y6W-OH-hqX" id="62m-Xq-k8i"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="保存" id="Xyp-Ax-bOS">
                             <connections>
                                 <action selector="saveButtonDidTapped:" destination="Y6W-OH-hqX" id="XiJ-WX-hTk"/>
