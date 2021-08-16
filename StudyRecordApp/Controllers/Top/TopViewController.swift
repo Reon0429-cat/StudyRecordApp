@@ -125,7 +125,7 @@ final class TopViewController: UIViewController {
         super.viewWillAppear(animated)
         
         editButtonState = .edit
-        sortButton.isHidden = true
+        hideSortButton()
         
     }
     
@@ -156,7 +156,11 @@ final class TopViewController: UIViewController {
             default:
                 break
         }
-        sortButton.isHidden.toggle()
+        if sortButton.isHidden {
+            sortButton.setFade(.in)
+        } else {
+            sortButton.setFade(.out)
+        }
     }
     
     @IBAction private func sortButtonDidTapped(_ sender: Any) {
@@ -175,6 +179,11 @@ final class TopViewController: UIViewController {
             default:
                 break
         }
+    }
+    
+    private func hideSortButton() {
+        sortButton.isHidden = true
+        sortButton.alpha = 0
     }
     
 }
@@ -327,7 +336,7 @@ private extension TopViewController {
     }
     
     func setupSortButton() {
-        sortButton.isHidden = true
+        hideSortButton()
     }
     
     func setupSeparators() {
@@ -387,6 +396,37 @@ private extension UIView {
                 animation()
             }
         }
+    }
+    
+    func setFade(_ fadeType: FadeType) {
+        let duration = 0.2
+        switch fadeType {
+            case .out:
+                UIView.animate(withDuration: duration,
+                               delay: 0,
+                               options: .curveEaseIn) {
+                    self.alpha = 0
+                } completion: { _ in
+                    self.isHidden = true
+                }
+            case .in:
+                UIView.animate(withDuration: duration,
+                               delay: 0,
+                               options: .curveEaseIn) {
+                    self.isHidden = false
+                } completion: { _ in
+                    UIView.animate(withDuration: duration,
+                                   delay: 0,
+                                   options: .curveEaseIn) {
+                        self.alpha = 1
+                    }
+                }
+        }
+    }
+    
+    enum FadeType {
+        case out
+        case `in`
     }
     
 }
