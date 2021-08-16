@@ -88,12 +88,12 @@ final class TopViewController: UIViewController {
         }
         return screenType
     }
-    private struct SegueID {
-        static let studyRecord = "StudyRecord"
-        static let goal = "Goal"
-        static let graph = "Graph"
-        static let countDown = "CountDown"
-        static let setting = "Setting"
+    private enum SegueType: String {
+        case studyRecord = "StudyRecord"
+        case goal = "Goal"
+        case graph = "Graph"
+        case countDown = "CountDown"
+        case setting = "Setting"
     }
     private struct LayoutConstant {
         static let titleLabelLeft: CGFloat = 100
@@ -115,7 +115,6 @@ final class TopViewController: UIViewController {
         setupContainerViews()
         setupCollectionView()
         setupTitleLabel()
-        setupSeparators()
         setAnimation()
         
     }
@@ -132,6 +131,7 @@ final class TopViewController: UIViewController {
         
         setupAddButton()
         setupEditButton()
+        setupSeparators()
         
     }
     
@@ -154,8 +154,9 @@ final class TopViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.identifier {
-            case SegueID.studyRecord:
+        let segueType = SegueType(rawValue: segue.identifier!)
+        switch segueType {
+            case .studyRecord:
                 let studyRecordVC = segue.destination as! StudyRecordViewController
                 studyRecordVC.delegate = self
             default:
