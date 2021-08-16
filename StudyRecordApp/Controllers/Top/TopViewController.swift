@@ -7,55 +7,6 @@
 
 import UIKit
 
-struct Constant {
-    
-    static let borderWidth: CGFloat = 1
-    
-    struct CollectionView {
-        static let margin: CGFloat = 15
-    }
-    
-    struct TableView {
-        static let headerHeight: CGFloat = 120
-    }
-    
-}
-
-private enum ScreenType: Int, CaseIterable {
-    case record
-    case goal
-    case graph
-    case countDown
-    case setting
-    
-    var title: String {
-        switch self {
-            case .record: return "記録"
-            case .goal: return "目標"
-            case .graph: return "グラフ"
-            case .countDown: return "カウント\nダウン"
-            case .setting: return "設定"
-        }
-    }
-}
-
-private enum EditButtonState {
-    case edit
-    case completion
-    var title: String {
-        switch self {
-            case .edit: return "編集"
-            case .completion: return "完了"
-        }
-    }
-    mutating func toggle() {
-        switch self {
-            case .edit: self = .completion
-            case .completion: self = .edit
-        }
-    }
-}
-
 final class TopViewController: UIViewController {
     
     @IBOutlet private weak var collectionView: UICollectionView!
@@ -77,6 +28,34 @@ final class TopViewController: UIViewController {
     @IBOutlet private weak var bottomSeparatorView: UIView!
     @IBOutlet private weak var verticalSeparatorView: UIView!
     
+    private struct LayoutConstant {
+        static let titleLabelLeft: CGFloat = 100
+        static let editButtonRight: CGFloat = -50
+        static let addButtonRight: CGFloat = 50
+    }
+    private enum EditButtonState {
+        case edit
+        case completion
+        var title: String {
+            switch self {
+                case .edit: return "編集"
+                case .completion: return "完了"
+            }
+        }
+        mutating func toggle() {
+            switch self {
+                case .edit: self = .completion
+                case .completion: self = .edit
+            }
+        }
+    }
+    private enum SegueType: String {
+        case studyRecord = "StudyRecord"
+        case goal = "Goal"
+        case graph = "Graph"
+        case countDown = "CountDown"
+        case setting = "Setting"
+    }
     private var editButtonState: EditButtonState = .edit {
         didSet {
             editButton.setTitle(editButtonState.title)
@@ -88,18 +67,6 @@ final class TopViewController: UIViewController {
             fatalError()
         }
         return screenType
-    }
-    private enum SegueType: String {
-        case studyRecord = "StudyRecord"
-        case goal = "Goal"
-        case graph = "Graph"
-        case countDown = "CountDown"
-        case setting = "Setting"
-    }
-    private struct LayoutConstant {
-        static let titleLabelLeft: CGFloat = 100
-        static let editButtonRight: CGFloat = -50
-        static let addButtonRight: CGFloat = 50
     }
     
     
@@ -139,11 +106,14 @@ final class TopViewController: UIViewController {
     }
     
     @IBAction private func addButtonDidTapped(_ sender: Any) {
-        if screenType == .record {
-            let additionalStudyRecordVC = AdditionalStudyRecordViewController.instantiate()
-            let navigationController = UINavigationController(rootViewController: additionalStudyRecordVC)
-            navigationController.modalPresentationStyle = .fullScreen
-            present(navigationController, animated: true, completion: nil)
+        switch screenType {
+            case .record:
+                let additionalStudyRecordVC = AdditionalStudyRecordViewController.instantiate()
+                let navigationController = UINavigationController(rootViewController: additionalStudyRecordVC)
+                navigationController.modalPresentationStyle = .fullScreen
+                present(navigationController, animated: true, completion: nil)
+            default:
+                break
         }
     }
     
@@ -202,24 +172,18 @@ extension TopViewController: UICollectionViewDelegate {
         screenType = getScreenType(item: indexPath.item)
         titleLabel.text = screenType.title
         titleLabel.font = .boldSystemFont(ofSize: 40)
+        editButton.isHidden = false
+        addButton.isHidden = false
         switch screenType {
             case .record:
                 parentContainerView.bringSubviewToFront(studyRecordContainerView)
-                editButton.isHidden = false
-                addButton.isHidden = false
             case .goal:
                 parentContainerView.bringSubviewToFront(goalContainerView)
-                editButton.isHidden = false
-                addButton.isHidden = false
             case .graph:
                 parentContainerView.bringSubviewToFront(graphContainerView)
-                editButton.isHidden = false
-                addButton.isHidden = false
             case .countDown:
                 parentContainerView.bringSubviewToFront(countDownContainerView)
                 titleLabel.font = .boldSystemFont(ofSize: 30)
-                editButton.isHidden = false
-                addButton.isHidden = false
             case .setting:
                 parentContainerView.bringSubviewToFront(settingContainerView)
                 editButton.isHidden = true
@@ -254,8 +218,8 @@ extension TopViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let horizontalSpace = Constant.CollectionView.margin
-        let verticalSpace = Constant.CollectionView.margin
+        let horizontalSpace: CGFloat = 15
+        let verticalSpace: CGFloat = 15
         let width = collectionView.frame.size.width / 2 - horizontalSpace * 2
         let height = collectionView.frame.size.height - verticalSpace * 2
         return CGSize(width: width, height: height)
@@ -264,7 +228,7 @@ extension TopViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return Constant.CollectionView.margin
+        return 15
     }
     
 }
@@ -311,10 +275,7 @@ private extension TopViewController {
         collectionView.showsHorizontalScrollIndicator = false
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.sectionInset = UIEdgeInsets(top: 0,
-                                           left: Constant.CollectionView.margin,
-                                           bottom: 0,
-                                           right: Constant.CollectionView.margin)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         collectionView.collectionViewLayout = layout
     }
     
@@ -324,14 +285,14 @@ private extension TopViewController {
     
     func setupAddButton() {
         addButton.layer.cornerRadius = addButton.frame.height / 2
-        addButton.layer.borderWidth = Constant.borderWidth
+        addButton.layer.borderWidth = 1
         addButton.layer.borderColor = UIColor.black.cgColor
     }
     
     func setupEditButton() {
         editButton.layer.cornerRadius = editButton.frame.height / 2
         editButton.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
-        editButton.layer.borderWidth = Constant.borderWidth
+        editButton.layer.borderWidth = 1
         editButton.layer.borderColor = UIColor.black.cgColor
     }
     
@@ -396,37 +357,6 @@ private extension UIView {
                 animation()
             }
         }
-    }
-    
-    func setFade(_ fadeType: FadeType) {
-        let duration = 0.2
-        switch fadeType {
-            case .out:
-                UIView.animate(withDuration: duration,
-                               delay: 0,
-                               options: .curveEaseIn) {
-                    self.alpha = 0
-                } completion: { _ in
-                    self.isHidden = true
-                }
-            case .in:
-                UIView.animate(withDuration: duration,
-                               delay: 0,
-                               options: .curveEaseIn) {
-                    self.isHidden = false
-                } completion: { _ in
-                    UIView.animate(withDuration: duration,
-                                   delay: 0,
-                                   options: .curveEaseIn) {
-                        self.alpha = 1
-                    }
-                }
-        }
-    }
-    
-    enum FadeType {
-        case out
-        case `in`
     }
     
 }

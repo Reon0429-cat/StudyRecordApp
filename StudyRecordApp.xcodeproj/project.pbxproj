@@ -36,6 +36,8 @@
 		AB13EDFA26C8C585002F56FF /* GoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EDF926C8C585002F56FF /* GoalViewController.swift */; };
 		AB13EDFC26C8C596002F56FF /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EDFB26C8C596002F56FF /* GraphViewController.swift */; };
 		AB13EDFE26C8C59B002F56FF /* CountDownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EDFD26C8C59B002F56FF /* CountDownViewController.swift */; };
+		AB13EE6626CAC98A002F56FF /* ScreenType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EE6526CAC989002F56FF /* ScreenType.swift */; };
+		AB13EE6826CACB16002F56FF /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EE6726CACB16002F56FF /* UIView+Extension.swift */; };
 		AB2B5B8326A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B7E26A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift */; };
 		AB2B5B8426A2D0FD009BD3C7 /* NotificationName+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B7F26A2D0FD009BD3C7 /* NotificationName+Extension.swift */; };
 		AB2B5B8526A2D0FD009BD3C7 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B8026A2D0FD009BD3C7 /* UIColor+Extension.swift */; };
@@ -125,6 +127,8 @@
 		AB13EDF926C8C585002F56FF /* GoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalViewController.swift; sourceTree = "<group>"; };
 		AB13EDFB26C8C596002F56FF /* GraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
 		AB13EDFD26C8C59B002F56FF /* CountDownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownViewController.swift; sourceTree = "<group>"; };
+		AB13EE6526CAC989002F56FF /* ScreenType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenType.swift; sourceTree = "<group>"; };
+		AB13EE6726CACB16002F56FF /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		AB2B5B7E26A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
 		AB2B5B7F26A2D0FD009BD3C7 /* NotificationName+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotificationName+Extension.swift"; sourceTree = "<group>"; };
 		AB2B5B8026A2D0FD009BD3C7 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -363,6 +367,7 @@
 		AB2B5B9026A2D13C009BD3C7 /* UIKit+Extension */ = {
 			isa = PBXGroup;
 			children = (
+				AB13EE6726CACB16002F56FF /* UIView+Extension.swift */,
 				AB2B5B8026A2D0FD009BD3C7 /* UIColor+Extension.swift */,
 				AB4D6BBD2672099C00E5286E /* UIButton+Extension.swift */,
 				AB2B5B8926A2D106009BD3C7 /* UITableView+Extension.swift */,
@@ -432,6 +437,7 @@
 		AB93C22E266A234800C3AE8F = {
 			isa = PBXGroup;
 			children = (
+				AB13EE6526CAC989002F56FF /* ScreenType.swift */,
 				AB93C239266A234800C3AE8F /* StudyRecordApp */,
 				AB93C238266A234800C3AE8F /* Products */,
 				6ED773C562BE78F875EC7183 /* Pods */,
@@ -719,6 +725,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB2B5B9F26A2D1B7009BD3C7 /* OverseasConcept.swift in Sources */,
+				AB13EE6626CAC98A002F56FF /* ScreenType.swift in Sources */,
 				AB13EDE026C64EBB002F56FF /* StudyRecordCustomTableViewCell.swift in Sources */,
 				AB13EDDB26C3C163002F56FF /* Convert.swift in Sources */,
 				AB2B5BC526A2D36F009BD3C7 /* ColorChoicesTileViewController.swift in Sources */,
@@ -767,6 +774,7 @@
 				AB13EDD126C29D9E002F56FF /* StudyRecordTimeRecordViewController.swift in Sources */,
 				AB2B5BA226A2D1B7009BD3C7 /* ElegantConcept.swift in Sources */,
 				AB93C23D266A234800C3AE8F /* SceneDelegate.swift in Sources */,
+				AB13EE6826CACB16002F56FF /* UIView+Extension.swift in Sources */,
 				AB2B5B9626A2D19E009BD3C7 /* ThemeColor.swift in Sources */,
 				AB93C2BF266BACE100C3AE8F /* StudyRecordSectionView.swift in Sources */,
 				AB13EDFC26C8C596002F56FF /* GraphViewController.swift in Sources */,
