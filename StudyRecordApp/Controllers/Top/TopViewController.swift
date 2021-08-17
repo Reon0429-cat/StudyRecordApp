@@ -7,13 +7,6 @@
 
 import UIKit
 
-// MARK: - 聞きたいこと
-/*
-  DispatchQue.main.async { } はどこに書くのか
-  TopVCからContainerViewの依存関係
-  
- */
-
 final class TopViewController: UIViewController {
     
     @IBOutlet private weak var collectionView: UICollectionView!
@@ -98,9 +91,8 @@ final class TopViewController: UIViewController {
         switch screenType {
             case .record:
                 let additionalStudyRecordVC = AdditionalStudyRecordViewController.instantiate()
-                let navigationController = UINavigationController(rootViewController: additionalStudyRecordVC)
-                navigationController.modalPresentationStyle = .fullScreen
-                present(navigationController, animated: true, completion: nil)
+                additionalStudyRecordVC.modalPresentationStyle = .fullScreen
+                present(additionalStudyRecordVC, animated: true, completion: nil)
             default:
                 break
         }
@@ -349,10 +341,7 @@ private extension TopViewController {
     }
     
     func setupEditButton() {
-        editButton.layer.cornerRadius = editButton.frame.height / 2
-        editButton.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
-        editButton.layer.borderWidth = 1
-        editButton.layer.borderColor = UIColor.black.cgColor
+        editButton.setMaskedCorners([.layerMinXMinYCorner, .layerMinXMaxYCorner])
     }
     
     func setupSortButton() {
