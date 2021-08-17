@@ -7,6 +7,13 @@
 
 import UIKit
 
+// MARK: - 聞きたいこと
+/*
+  DispatchQue.main.async { } はどこに書くのか
+  TopVCからContainerViewの依存関係
+  
+ */
+
 final class TopViewController: UIViewController {
     
     @IBOutlet private weak var collectionView: UICollectionView!
@@ -100,14 +107,7 @@ final class TopViewController: UIViewController {
     }
     
     @IBAction private func editButtonDidTapped(_ sender: Any) {
-        editButtonState.toggle()
-        NotificationCenter.default.post(name: .editButtonDidTapped,
-                                        object: nil)
-        if sortButton.isHidden {
-            sortButton.setFade(.in)
-        } else {
-            sortButton.setFade(.out)
-        }
+        changeEditMode()
     }
     
     @IBAction private func sortButtonDidTapped(_ sender: Any) {
@@ -123,11 +123,15 @@ final class TopViewController: UIViewController {
         }
     }
     
-    private func scrollCollectionViewItem(at item: Int) {
-        collectionView.scrollToItem(at: IndexPath(item: item,
-                                                  section: 0),
-                                    at: .centeredHorizontally,
-                                    animated: true)
+    private func changeEditMode() {
+        editButtonState.toggle()
+        NotificationCenter.default.post(name: .editButtonDidTapped,
+                                        object: nil)
+        if sortButton.isHidden {
+            sortButton.setFade(.in)
+        } else {
+            sortButton.setFade(.out)
+        }
     }
     
     private func screenDidChanged(item: Int) {
@@ -135,6 +139,13 @@ final class TopViewController: UIViewController {
         scrollCollectionViewItem(at: item)
         currentPageIndex = item
         reloadViews()
+    }
+    
+    private func scrollCollectionViewItem(at item: Int) {
+        collectionView.scrollToItem(at: IndexPath(item: item,
+                                                  section: 0),
+                                    at: .centeredHorizontally,
+                                    animated: true)
     }
     
     private func reloadViews() {
@@ -269,12 +280,17 @@ extension TopViewController: StudyRecordVCDelegate {
         }
     }
     
+    func baseViewLongPressDidRecognized() {
+        if editButtonState == .edit {
+            changeEditMode()
+        }
+    }
+    
 }
 
 extension TopViewController: GoalVCDelegate, GraphVCDelegate, CountDownVCDelegate, SettingVCDelegate {
     
     func viewWillAppear(index: Int) {
-        print(index)
         screenDidChanged(item: index)
     }
     

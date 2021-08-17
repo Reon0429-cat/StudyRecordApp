@@ -25,7 +25,8 @@ private enum MemoState {
 }
 
 protocol StudyRecordSectionViewDelegate: AnyObject {
-    func baseViewDidTapped(section: Int)
+    func baseViewTapDidRecognized(section: Int)
+    func baseViewLongPressDidRecognized()
     func memoButtonDidTapped(section: Int)
     func deleteButtonDidTappped(section: Int)
 }
@@ -73,10 +74,6 @@ final class StudyRecordSectionView: UITableViewHeaderFooterView {
         }
     }
     
-    @objc private func baseViewEvent() {
-        delegate?.baseViewDidTapped(section: self.tag)
-    }
-    
     @IBAction private func deleteButtonDidTappped(_ sender: Any) {
         delegate?.deleteButtonDidTappped(section: self.tag)
     }
@@ -87,6 +84,14 @@ final class StudyRecordSectionView: UITableViewHeaderFooterView {
         return historyDate == today
     }
     
+    @objc private func baseViewTapDidRecognized() {
+        delegate?.baseViewTapDidRecognized(section: self.tag)
+    }
+    
+    @objc private func baseViewLongPressDidRecognized() {
+        delegate?.baseViewLongPressDidRecognized()
+    }
+    
 }
 
 // MARK: - setup
@@ -95,8 +100,13 @@ private extension StudyRecordSectionView {
     func setupBaseView() {
         baseView.layer.cornerRadius = 20
         let tapGR = UITapGestureRecognizer(target: self,
-                                           action: #selector(baseViewEvent))
+                                           action: #selector(baseViewTapDidRecognized))
         baseView.addGestureRecognizer(tapGR)
+        let longPressGR = UILongPressGestureRecognizer(target: self,
+                                                       action: #selector(baseViewLongPressDidRecognized))
+        longPressGR.minimumPressDuration = 1
+        longPressGR.delegate = self
+        baseView.addGestureRecognizer(longPressGR)
         baseView.backgroundColor = .white
         baseView.layer.borderColor = UIColor.black.cgColor
         baseView.layer.borderWidth = 1
@@ -149,6 +159,15 @@ private extension StudyRecordSectionView {
         } else {
             memoButton.isHidden = false
         }
+    }
+    
+}
+
+extension StudyRecordSectionView: UIGestureRecognizerDelegate {
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
+                           shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
     
 }

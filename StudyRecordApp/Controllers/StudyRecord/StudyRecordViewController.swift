@@ -18,6 +18,7 @@ protocol StudyRecordVCDelegate: AnyObject {
     var isEdit: Bool { get }
     func viewWillAppear(records: [Record], index: Int)
     func deleteButtonDidTappped(records: [Record])
+    func baseViewLongPressDidRecognized()
 }
 
 final class StudyRecordViewController: UIViewController {
@@ -137,12 +138,16 @@ extension StudyRecordViewController: UITableViewDataSource {
 // MARK: - StudyRecordSectionViewDelegate
 extension StudyRecordViewController: StudyRecordSectionViewDelegate {
     
-    func baseViewDidTapped(section: Int) {
+    func baseViewTapDidRecognized(section: Int) {
         let editStudyRecordVC = EditStudyRecordViewController.instantiate()
         editStudyRecordVC.tappedSection = section
         let nav = UINavigationController(rootViewController: editStudyRecordVC)
         nav.modalPresentationStyle = .fullScreen
         present(nav, animated: true, completion: nil)
+    }
+    
+    func baseViewLongPressDidRecognized() {
+        delegate?.baseViewLongPressDidRecognized()
     }
     
     func memoButtonDidTapped(section: Int) {
