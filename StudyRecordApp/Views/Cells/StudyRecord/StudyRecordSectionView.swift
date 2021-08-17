@@ -105,7 +105,6 @@ private extension StudyRecordSectionView {
         let longPressGR = UILongPressGestureRecognizer(target: self,
                                                        action: #selector(baseViewLongPressDidRecognized))
         longPressGR.minimumPressDuration = 1
-        longPressGR.delegate = self
         baseView.addGestureRecognizer(longPressGR)
         baseView.backgroundColor = .white
         baseView.layer.borderColor = UIColor.black.cgColor
@@ -159,15 +158,6 @@ private extension StudyRecordSectionView {
         } else {
             memoButton.isHidden = false
         }
-    }
-    
-}
-
-extension StudyRecordSectionView: UIGestureRecognizerDelegate {
-    
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
-                           shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
     }
     
 }
