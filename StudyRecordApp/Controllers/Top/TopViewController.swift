@@ -23,7 +23,7 @@ final class TopViewController: UIViewController {
     @IBOutlet private weak var verticalSeparatorView: UIView!
     
     private struct LayoutConstant {
-        static let titleLabelLeft: CGFloat = 100
+        static let titleLabelLeft: CGFloat = 20
         static let editButtonRight: CGFloat = -50
         static let addButtonRight: CGFloat = 50
     }
@@ -129,8 +129,12 @@ final class TopViewController: UIViewController {
     private func screenDidChanged(item: Int) {
         screenType = getScreenType(item: item)
         scrollCollectionViewItem(at: item)
-        currentPageIndex = item
-        reloadViews()
+        reloadViews(index: item)
+        UIView.animate(withDuration: 0) {
+            self.setTitleLabelAnimation(index: item)
+        } completion: { _ in
+            self.currentPageIndex = item
+        }
     }
     
     private func scrollCollectionViewItem(at item: Int) {
@@ -140,8 +144,7 @@ final class TopViewController: UIViewController {
                                     animated: true)
     }
     
-    private func reloadViews() {
-        titleLabel.text = screenType.title
+    private func reloadViews(index: Int) {
         if screenType == .setting {
             editButton.isHidden = true
             addButton.isHidden = true
@@ -153,6 +156,30 @@ final class TopViewController: UIViewController {
             titleLabel.font = .boldSystemFont(ofSize: 30)
         } else {
             titleLabel.font = .boldSystemFont(ofSize: 40)
+        }
+    }
+    
+    private func setTitleLabelAnimation(index: Int) {
+        if index < self.currentPageIndex {
+            self.titleLabel.alpha = 0
+            self.titleLabelLeftConstraint.constant -= LayoutConstant.titleLabelLeft
+            self.titleLabel.text = self.screenType.title
+            UIView.animate(deadlineFromNow: 0.15) {
+                self.titleLabel.text = self.screenType.title
+                self.titleLabelLeftConstraint.constant += LayoutConstant.titleLabelLeft
+                self.titleLabel.alpha = 1
+                self.view.layoutIfNeeded()
+            }
+        }
+        if index > self.currentPageIndex {
+            self.titleLabel.alpha = 0
+            self.titleLabelLeftConstraint.constant += LayoutConstant.titleLabelLeft
+            self.titleLabel.text = self.screenType.title
+            UIView.animate(deadlineFromNow: 0.15) {
+                self.titleLabelLeftConstraint.constant -= LayoutConstant.titleLabelLeft
+                self.titleLabel.alpha = 1
+                self.view.layoutIfNeeded()
+            }
         }
     }
     
@@ -209,19 +236,6 @@ extension TopViewController: UICollectionViewDelegateFlowLayout {
         return 15
     }
     
-}
-
-// MARK: - UIPageViewControllerDelegate
-extension TopViewController: UIPageViewControllerDelegate {
-    func pageViewController(_ pageViewController: UIPageViewController,
-                            didFinishAnimating finished: Bool,
-                            previousViewControllers: [UIViewController],
-                            transitionCompleted completed: Bool) {
-        guard completed,
-              let currentVC = pageViewController.viewControllers?.first,
-              let index = viewControllers.firstIndex(of: currentVC) else { return }
-        currentPageIndex = index
-    }
 }
 
 // MARK: - UIPageViewControllerDataSource
