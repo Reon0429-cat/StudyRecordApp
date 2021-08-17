@@ -62,12 +62,14 @@ final class StudyRecordSectionView: UITableViewHeaderFooterView {
         setupTimeLabel(record: record)
         setupMemoButton(record: record)
     }
-    
-    func changeMode(isEdit: Bool) {
+
+    func changeMode(isEdit: Bool, isEvenIndex: Bool) {
         if isEdit {
             deleteButton.setFade(.in)
+            baseView.vibrate(.start, isEvenIndex: isEvenIndex)
         } else {
             deleteButton.setFade(.out)
+            baseView.vibrate(.stop)
         }
     }
     

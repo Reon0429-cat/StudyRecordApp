@@ -91,7 +91,8 @@ extension StudyRecordViewController: UITableViewDelegate {
         let record = records[section]
         sectionView.configure(record: record)
         let isEdit = delegate?.isEdit ?? false
-        sectionView.changeMode(isEdit: isEdit)
+        sectionView.changeMode(isEdit: isEdit,
+                               isEvenIndex: section.isMultiple(of: 2))
         sectionView.tag = section
         sectionView.delegate = self
         return sectionView
