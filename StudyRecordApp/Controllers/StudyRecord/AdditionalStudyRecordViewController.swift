@@ -30,7 +30,7 @@ final class AdditionalStudyRecordViewController: UIViewController {
     private var oldInputtedTitle = ""
     private var selectedGraphColor: UIColor = .white
     private var inputtedMemo = ""
-    private var isMandatoryFilled: Bool {
+    private var isMandatoryItemFilled: Bool {
         !inputtedTitle.isEmpty && selectedGraphColor != .white
     }
     
@@ -43,30 +43,17 @@ final class AdditionalStudyRecordViewController: UIViewController {
         
     }
     
-    
-    func setupTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.registerCustomCell(StudyRecordCustomTableViewCell.self)
-        tableView.registerCustomCell(StudyRecordGraphColorTableViewCell.self)
-        tableView.tableFooterView = UIView()
+    @IBAction private func saveButtonDidTapped(_ sender: Any) {
+        saveRecord()
+        dismiss(animated: true, completion: nil)
     }
     
-    func setupSaveButton() {
-        let tapGR = UITapGestureRecognizer(target: self,
-                                           action: #selector(dismissKeyboard))
-        tapGR.cancelsTouchesInView = false
-        self.view.addGestureRecognizer(tapGR)
-        saveButton.isEnabled = false
-        saveButton.setMaskedCorners([.layerMinXMaxYCorner, .layerMaxXMaxYCorner])
-    }
-    
-    func setupDismissButton() {
-        dismissButton.setMaskedCorners([.layerMinXMaxYCorner, .layerMaxXMaxYCorner])
-    }
-    
-    @objc private func dismissKeyboard() {
-        self.view.endEditing(true)
+    @IBAction private func dismissButtonDidTapped(_ sender: Any) {
+        if isMandatoryItemFilled {
+            showAlert()
+        } else {
+            dismiss(animated: true, completion: nil)
+        }
     }
     
     private func showAlert() {
@@ -81,8 +68,24 @@ final class AdditionalStudyRecordViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    private func showAlertWithTextField() {
+        let alert = UIAlertController(title: "タイトル", message: nil, preferredStyle: .alert)
+        alert.addTextField { textField in
+            textField.text = self.inputtedTitle
+            textField.delegate = self
+        }
+        alert.addAction(UIAlertAction(title: "閉じる", style: .default) { _ in
+            self.inputtedTitle = self.oldInputtedTitle
+        })
+        alert.addAction(UIAlertAction(title: "追加する", style: .default) { _ in
+            self.oldInputtedTitle = self.inputtedTitle
+            self.tableView.reloadData()
+        })
+        present(alert, animated: true, completion: nil)
+    }
+    
     private func controlSaveButton() {
-        if isMandatoryFilled {
+        if isMandatoryItemFilled {
             saveButton.isEnabled = true
         } else {
             saveButton.isEnabled = false
@@ -93,13 +96,14 @@ final class AdditionalStudyRecordViewController: UIViewController {
         let record = Record(title: inputtedTitle,
                             histories: nil,
                             isExpanded: false,
-                            graphColor: GraphColor(redValue: selectedGraphColor.redValue,
-                                                   greenValue: selectedGraphColor.greenValue,
-                                                   blueValue: selectedGraphColor.blueValue,
-                                                   alphaValue: selectedGraphColor.alphaValue),
+                            graphColor: GraphColor(color: selectedGraphColor),
                             memo: inputtedMemo,
                             order: recordUseCase.records.count)
         recordUseCase.save(record: record)
+    }
+    
+    @objc private func dismissKeyboard() {
+        self.view.endEditing(true)
     }
     
     static func instantiate() -> AdditionalStudyRecordViewController {
@@ -110,21 +114,9 @@ final class AdditionalStudyRecordViewController: UIViewController {
         return additionalStudyRecordVC
     }
     
-    @IBAction private func saveButtonDidTapped(_ sender: Any) {
-        saveRecord()
-        dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction private func dismissButtonDidTapped(_ sender: Any) {
-        if isMandatoryFilled {
-            showAlert()
-        } else {
-            dismiss(animated: true, completion: nil)
-        }
-    }
-    
 }
 
+// MARK: - UITableViewDelegate
 extension AdditionalStudyRecordViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
@@ -133,19 +125,7 @@ extension AdditionalStudyRecordViewController: UITableViewDelegate {
         let cellType = CellType(rawValue: indexPath.row)!
         switch cellType {
             case .title:
-                let alert = UIAlertController(title: "タイトル", message: nil, preferredStyle: .alert)
-                alert.addTextField { textField in
-                    textField.text = self.inputtedTitle
-                    textField.delegate = self
-                }
-                alert.addAction(UIAlertAction(title: "閉じる", style: .default) { _ in
-                    self.inputtedTitle = self.oldInputtedTitle
-                })
-                alert.addAction(UIAlertAction(title: "追加する", style: .default) { _ in
-                    self.oldInputtedTitle = self.inputtedTitle
-                    self.tableView.reloadData()
-                })
-                present(alert, animated: true, completion: nil)
+                showAlertWithTextField()
             case .graphColor:
                 let studyRecordGraphColorVC = StudyRecordGraphColorViewController.instantiate()
                 studyRecordGraphColorVC.delegate = self
@@ -165,6 +145,7 @@ extension AdditionalStudyRecordViewController: UITableViewDelegate {
     
 }
 
+// MARK: - UITableViewDataSource
 extension AdditionalStudyRecordViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
@@ -193,6 +174,7 @@ extension AdditionalStudyRecordViewController: UITableViewDataSource {
     
 }
 
+// MARK: - StudyRecordGraphColorVCDelegate
 extension AdditionalStudyRecordViewController: StudyRecordGraphColorVCDelegate {
     
     func graphColorDidSelected(color: UIColor) {
@@ -203,6 +185,7 @@ extension AdditionalStudyRecordViewController: StudyRecordGraphColorVCDelegate {
     
 }
 
+// MARK: - StudyRecordMemoVCDelegate
 extension AdditionalStudyRecordViewController: StudyRecordMemoVCDelegate {
     
     func savedMemo(memo: String) {
@@ -212,11 +195,38 @@ extension AdditionalStudyRecordViewController: StudyRecordMemoVCDelegate {
     
 }
 
+// MARK: - UITextFieldDelegate
 extension AdditionalStudyRecordViewController: UITextFieldDelegate {
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
         inputtedTitle = textField.text ?? ""
         controlSaveButton()
+    }
+    
+}
+
+// MARK: - setup
+private extension AdditionalStudyRecordViewController {
+    
+    func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.registerCustomCell(StudyRecordCustomTableViewCell.self)
+        tableView.registerCustomCell(StudyRecordGraphColorTableViewCell.self)
+        tableView.tableFooterView = UIView()
+    }
+    
+    func setupSaveButton() {
+        let tapGR = UITapGestureRecognizer(target: self,
+                                           action: #selector(dismissKeyboard))
+        tapGR.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tapGR)
+        saveButton.isEnabled = false
+        saveButton.setMaskedCorners([.layerMinXMaxYCorner, .layerMaxXMaxYCorner])
+    }
+    
+    func setupDismissButton() {
+        dismissButton.setMaskedCorners([.layerMinXMaxYCorner, .layerMaxXMaxYCorner])
     }
     
 }
