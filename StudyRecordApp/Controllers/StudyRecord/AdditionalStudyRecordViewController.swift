@@ -12,7 +12,8 @@ import UIKit
 final class AdditionalStudyRecordViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var saveButton: UIBarButtonItem!
+    @IBOutlet private weak var saveButton: UIButton!
+    @IBOutlet private weak var dismissButton: UIButton!
     
     private enum CellType: Int, CaseIterable {
         case title
@@ -29,29 +30,43 @@ final class AdditionalStudyRecordViewController: UIViewController {
     private var oldInputtedTitle = ""
     private var selectedGraphColor: UIColor = .white
     private var inputtedMemo = ""
+    private var isMandatoryFilled: Bool {
+        !inputtedTitle.isEmpty && selectedGraphColor != .white
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTableView()
-        saveButton.isEnabled = false
-        let tapGR = UITapGestureRecognizer(target: self,
-                                           action: #selector(dismissKeyboard))
-        tapGR.cancelsTouchesInView = false
-        self.view.addGestureRecognizer(tapGR)
+        setupSaveButton()
+        setupDismissButton()
         
     }
     
-    @objc private func dismissKeyboard() {
-        self.view.endEditing(true)
-    }
     
-    private func setupTableView() {
+    func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.registerCustomCell(StudyRecordCustomTableViewCell.self)
         tableView.registerCustomCell(StudyRecordGraphColorTableViewCell.self)
         tableView.tableFooterView = UIView()
+    }
+    
+    func setupSaveButton() {
+        let tapGR = UITapGestureRecognizer(target: self,
+                                           action: #selector(dismissKeyboard))
+        tapGR.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tapGR)
+        saveButton.isEnabled = false
+        saveButton.setMaskedCorners([.layerMinXMaxYCorner, .layerMaxXMaxYCorner])
+    }
+    
+    func setupDismissButton() {
+        dismissButton.setMaskedCorners([.layerMinXMaxYCorner, .layerMaxXMaxYCorner])
+    }
+    
+    @objc private func dismissKeyboard() {
+        self.view.endEditing(true)
     }
     
     private func showAlert() {
@@ -67,7 +82,7 @@ final class AdditionalStudyRecordViewController: UIViewController {
     }
     
     private func controlSaveButton() {
-        if !inputtedTitle.isEmpty && selectedGraphColor != .white {
+        if isMandatoryFilled {
             saveButton.isEnabled = true
         } else {
             saveButton.isEnabled = false
@@ -100,8 +115,8 @@ final class AdditionalStudyRecordViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction private func backButtonDidTapped(_ sender: Any) {
-        if !inputtedTitle.isEmpty && selectedGraphColor != .white {
+    @IBAction private func dismissButtonDidTapped(_ sender: Any) {
+        if isMandatoryFilled {
             showAlert()
         } else {
             dismiss(animated: true, completion: nil)
