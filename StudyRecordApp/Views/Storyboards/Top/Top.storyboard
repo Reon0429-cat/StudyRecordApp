@@ -177,10 +177,10 @@
         <!--Page View Controller-->
         <scene sceneID="Z5q-jt-xxe">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Ct8-C7-lT7" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lqe-Mg-yM4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Ct8-C7-lT7" sceneMemberID="viewController"/>
             </objects>
-            <point key="canvasLocation" x="2539" y="413"/>
+            <point key="canvasLocation" x="2528" y="413"/>
         </scene>
     </scenes>
     <resources>

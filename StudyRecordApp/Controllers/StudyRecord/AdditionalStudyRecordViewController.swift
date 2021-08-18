@@ -83,11 +83,7 @@ final class AdditionalStudyRecordViewController: UIViewController {
     }
     
     private func controlSaveButton() {
-        if isMandatoryItemFilled {
-            saveButton.isEnabled = true
-        } else {
-            saveButton.isEnabled = false
-        }
+        saveButton.isEnabled = isMandatoryItemFilled
     }
     
     private func saveRecord() {

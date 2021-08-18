@@ -58,7 +58,7 @@ final class TopViewController: UIViewController {
     private var pageViewController: UIPageViewController!
     private var viewControllers = [UIViewController]()
     private var currentPageIndex = 0
-    
+
     override func loadView() {
         super.loadView()
         
@@ -117,8 +117,9 @@ final class TopViewController: UIViewController {
     
     private func changeEditMode() {
         editButtonState.toggle()
-        NotificationCenter.default.post(name: .editButtonDidTapped,
-                                        object: nil)
+        if let studyRecordVC = viewControllers.first as? StudyRecordViewController {
+            studyRecordVC.reloadTableView()
+        }
         if sortButton.isHidden {
             sortButton.setFade(.in)
         } else {

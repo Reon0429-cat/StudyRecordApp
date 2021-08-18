@@ -11,7 +11,6 @@ extension Notification.Name {
     
     static let themeColor = Notification.Name("themeColor")
     static let initTileView = Notification.Name("initTileView")
-    static let editButtonDidTapped = Notification.Name("editButtonDidTapped")
 
 }
 

@@ -38,7 +38,7 @@
 		AB13EDFE26C8C59B002F56FF /* CountDownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EDFD26C8C59B002F56FF /* CountDownViewController.swift */; };
 		AB13EE6626CAC98A002F56FF /* ScreenType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EE6526CAC989002F56FF /* ScreenType.swift */; };
 		AB13EE6826CACB16002F56FF /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EE6726CACB16002F56FF /* UIView+Extension.swift */; };
-		AB13EE6A26CB6965002F56FF /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EE6926CB6965002F56FF /* WaveView.swift */; };
+		AB13EE6A26CB6965002F56FF /* RippleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EE6926CB6965002F56FF /* RippleView.swift */; };
 		AB2B5B8326A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B7E26A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift */; };
 		AB2B5B8426A2D0FD009BD3C7 /* NotificationName+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B7F26A2D0FD009BD3C7 /* NotificationName+Extension.swift */; };
 		AB2B5B8526A2D0FD009BD3C7 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B8026A2D0FD009BD3C7 /* UIColor+Extension.swift */; };
@@ -130,7 +130,7 @@
 		AB13EDFD26C8C59B002F56FF /* CountDownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownViewController.swift; sourceTree = "<group>"; };
 		AB13EE6526CAC989002F56FF /* ScreenType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenType.swift; sourceTree = "<group>"; };
 		AB13EE6726CACB16002F56FF /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
-		AB13EE6926CB6965002F56FF /* WaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveView.swift; sourceTree = "<group>"; };
+		AB13EE6926CB6965002F56FF /* RippleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleView.swift; sourceTree = "<group>"; };
 		AB2B5B7E26A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
 		AB2B5B7F26A2D0FD009BD3C7 /* NotificationName+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotificationName+Extension.swift"; sourceTree = "<group>"; };
 		AB2B5B8026A2D0FD009BD3C7 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -370,9 +370,16 @@
 		AB13EE6B26CB698D002F56FF /* All */ = {
 			isa = PBXGroup;
 			children = (
-				AB13EE6926CB6965002F56FF /* WaveView.swift */,
 			);
 			path = All;
+			sourceTree = "<group>";
+		};
+		AB16304D26CD68A200111F55 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				AB13EE6926CB6965002F56FF /* RippleView.swift */,
+			);
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 		AB2B5B9026A2D13C009BD3C7 /* UIKit+Extension */ = {
@@ -492,6 +499,7 @@
 		AB93C25B266A5A2800C3AE8F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AB16304D26CD68A200111F55 /* CustomViews */,
 				AB93C25D266A5A5E00C3AE8F /* Storyboards */,
 				AB13ECD126B601F8002F56FF /* Xibs */,
 				AB93C25E266A5A6600C3AE8F /* Cells */,
@@ -769,7 +777,7 @@
 				AB13EDFA26C8C585002F56FF /* GoalViewController.swift in Sources */,
 				AB2B5B8E26A2D106009BD3C7 /* UITableViewCell+Extension.swift in Sources */,
 				AB13ED4926BB8128002F56FF /* RealmRecordDataStore.swift in Sources */,
-				AB13EE6A26CB6965002F56FF /* WaveView.swift in Sources */,
+				AB13EE6A26CB6965002F56FF /* RippleView.swift in Sources */,
 				AB2B5B8626A2D0FD009BD3C7 /* NSObjectProtocol+Extension.swift in Sources */,
 				AB2B5BC626A2D36F009BD3C7 /* ColorChoicesSliderViewController.swift in Sources */,
 				AB13ED7D26BE7061002F56FF /* StudyRecordHistoryTableViewCell.swift in Sources */,

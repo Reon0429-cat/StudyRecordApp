@@ -7,6 +7,8 @@
 
 import UIKit
 
+// MARK: - ToDo sectionとcellを一つにまとめて可変なcellにするのもあり?
+
 // MARK: - ToDo グラフカラー選択時に該当の色を丸くする(追加と編集画面でそれぞれ確認する)
 // MARK: - ToDo UINavigationControllerを削除したため、画面遷移の方法を変える
 // MARK: - ToDo SwiftLintを導入する
@@ -39,10 +41,6 @@ final class StudyRecordViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(editButtonDidTapped),
-                                               name: .editButtonDidTapped,
-                                               object: nil)
         
     }
     
@@ -54,7 +52,7 @@ final class StudyRecordViewController: UIViewController {
         
     }
     
-    @objc private func editButtonDidTapped() {
+    func reloadTableView() {
         tableView.reloadData()
     }
     
