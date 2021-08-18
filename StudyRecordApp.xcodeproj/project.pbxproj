@@ -39,6 +39,8 @@
 		AB13EE6626CAC98A002F56FF /* ScreenType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EE6526CAC989002F56FF /* ScreenType.swift */; };
 		AB13EE6826CACB16002F56FF /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EE6726CACB16002F56FF /* UIView+Extension.swift */; };
 		AB13EE6A26CB6965002F56FF /* RippleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EE6926CB6965002F56FF /* RippleView.swift */; };
+		AB16304F26CD6AF400111F55 /* WaveView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB16304E26CD6AF400111F55 /* WaveView.xib */; };
+		AB16305126CD6B1400111F55 /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB16305026CD6B1400111F55 /* WaveView.swift */; };
 		AB2B5B8326A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B7E26A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift */; };
 		AB2B5B8426A2D0FD009BD3C7 /* NotificationName+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B7F26A2D0FD009BD3C7 /* NotificationName+Extension.swift */; };
 		AB2B5B8526A2D0FD009BD3C7 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B8026A2D0FD009BD3C7 /* UIColor+Extension.swift */; };
@@ -131,6 +133,8 @@
 		AB13EE6526CAC989002F56FF /* ScreenType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenType.swift; sourceTree = "<group>"; };
 		AB13EE6726CACB16002F56FF /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		AB13EE6926CB6965002F56FF /* RippleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleView.swift; sourceTree = "<group>"; };
+		AB16304E26CD6AF400111F55 /* WaveView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaveView.xib; sourceTree = "<group>"; };
+		AB16305026CD6B1400111F55 /* WaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveView.swift; sourceTree = "<group>"; };
 		AB2B5B7E26A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
 		AB2B5B7F26A2D0FD009BD3C7 /* NotificationName+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotificationName+Extension.swift"; sourceTree = "<group>"; };
 		AB2B5B8026A2D0FD009BD3C7 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -228,6 +232,8 @@
 			children = (
 				ABA056FE26B50CC700E3DF01 /* GraphColorTileView.xib */,
 				ABA0570026B50D1900E3DF01 /* GraphColorTileView.swift */,
+				AB16304E26CD6AF400111F55 /* WaveView.xib */,
+				AB16305026CD6B1400111F55 /* WaveView.swift */,
 			);
 			path = Xibs;
 			sourceTree = "<group>";
@@ -671,6 +677,7 @@
 				AB13ED7E26BE7061002F56FF /* StudyRecordHistoryTableViewCell.xib in Resources */,
 				AB2B5BB826A2D2C2009BD3C7 /* AccordionColorTableViewCell.xib in Resources */,
 				ABA0570326B50F7100E3DF01 /* StudyRecordGraphColor.storyboard in Resources */,
+				AB16304F26CD6AF400111F55 /* WaveView.xib in Resources */,
 				ABA056FF26B50CC700E3DF01 /* GraphColorTileView.xib in Resources */,
 				ABA056F726B4C7D800E3DF01 /* StudyRecordGraphColorTableViewCell.xib in Resources */,
 				AB93C2C5266BC2D600C3AE8F /* EditStudyRecord.storyboard in Resources */,
@@ -758,6 +765,7 @@
 				AB2B5BA026A2D1B7009BD3C7 /* ServiceConcept.swift in Sources */,
 				AB13EDEB26C7C556002F56FF /* TopViewController.swift in Sources */,
 				AB13ED4D26BB9241002F56FF /* RecordUseCase.swift in Sources */,
+				AB16305126CD6B1400111F55 /* WaveView.swift in Sources */,
 				AB2B5B8726A2D0FD009BD3C7 /* UICollectionView+Extension.swift in Sources */,
 				AB4D6BBE2672099C00E5286E /* UIButton+Extension.swift in Sources */,
 				AB2B5BA426A2D1B7009BD3C7 /* PopConcept.swift in Sources */,

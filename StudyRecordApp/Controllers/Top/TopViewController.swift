@@ -9,6 +9,7 @@ import UIKit
 
 final class TopViewController: UIViewController {
     
+    @IBOutlet private weak var waveView: WaveView!
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var titleLabelLeftConstraint: NSLayoutConstraint!
@@ -17,7 +18,6 @@ final class TopViewController: UIViewController {
     @IBOutlet private weak var addButtonRightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var editButton: UIButton!
     @IBOutlet private weak var editButtonRightConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var topSeparatorView: UIView!
     @IBOutlet private weak var middleSeparatorView: UIView!
     @IBOutlet private weak var bottomSeparatorView: UIView!
     @IBOutlet private weak var verticalSeparatorView: UIView!
@@ -75,6 +75,7 @@ final class TopViewController: UIViewController {
         setupTitleLabel()
         setupSortButton()
         setAnimation()
+        waveView.create()
         
     }
     
@@ -365,7 +366,6 @@ private extension TopViewController {
     }
     
     func setupSeparators() {
-        topSeparatorView.backgroundColor = .black
         middleSeparatorView.backgroundColor = .black
         bottomSeparatorView.backgroundColor = .black
         verticalSeparatorView.backgroundColor = .black
