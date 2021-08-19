@@ -7,7 +7,6 @@
 
 import UIKit
 
-// MARK: - ToDo sectionとcellを一つにまとめて可変なcellにする
 // MARK: - ToDo リアルタイムで同期して更新する処理も実装する(realm)
 // MARK: - ToDo グラフカラー選択時に該当の色を丸くする(追加と編集画面でそれぞれ確認する)
 // MARK: - ToDo UINavigationControllerを削除したため、画面遷移の方法を変える
@@ -70,43 +69,18 @@ final class StudyRecordViewController: UIViewController {
 extension StudyRecordViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
-                   heightForHeaderInSection section: Int) -> CGFloat {
-        return 120
-    }
-    
-    func tableView(_ tableView: UITableView,
                    estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return records[indexPath.section].isExpanded ? tableView.rowHeight : 0
+        return records[indexPath.row].isExpanded ? tableView.rowHeight : 120
     }
     
     func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return records[indexPath.section].isExpanded ? tableView.rowHeight : 0
+        return records[indexPath.row].isExpanded ? tableView.rowHeight : 120
     }
     
     func tableView(_ tableView: UITableView,
-                   viewForHeaderInSection section: Int) -> UIView? {
-        let sectionView = tableView.dequeueReusableCustomHeaderFooterView(with: StudyRecordSectionView.self)
-        let record = records[section]
-        sectionView.configure(record: record)
-        let isEdit = delegate?.isEdit ?? false
-        sectionView.changeMode(isEdit: isEdit,
-                               isEvenIndex: section.isMultiple(of: 2))
-        sectionView.tag = section
-        sectionView.delegate = self
-        return sectionView
-    }
-    
-    func tableView(_ tableView: UITableView,
-                   willDisplayHeaderView view: UIView,
-                   forSection section: Int) {
-        view.tintColor = .clear
-    }
-    
-    func tableView(_ tableView: UITableView,
-                   heightForFooterInSection section: Int) -> CGFloat {
-        let isLast = (records.count - 1 == section)
-        return (isLast && records[section].isExpanded) ? 40 : 0
+                   heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
     }
     
 }
@@ -114,31 +88,32 @@ extension StudyRecordViewController: UITableViewDelegate {
 // MARK: - UITableViewDataSource
 extension StudyRecordViewController: UITableViewDataSource {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
         return records.count
     }
     
     func tableView(_ tableView: UITableView,
-                   numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCustomCell(with: StudyRecordTableViewCell.self)
-        let record = records[indexPath.section]
+        let cell = tableView.dequeueReusableCustomCell(with: RecordTableViewCell.self)
+        let record = records[indexPath.row]
+        let isEdit = delegate?.isEdit ?? false
+        cell.tag = indexPath.row
+        cell.delegate = self
         cell.configure(record: record)
+        cell.changeMode(isEdit: isEdit,
+                        isEvenIndex: indexPath.row.isMultiple(of: 2))
         return cell
     }
     
 }
 
-// MARK: - StudyRecordSectionViewDelegate
-extension StudyRecordViewController: StudyRecordSectionViewDelegate {
+// MARK: - RecordTableViewCellDelegate
+extension StudyRecordViewController: RecordTableViewCellDelegate {
     
-    func baseViewTapDidRecognized(section: Int) {
+    func baseViewTapDidRecognized(row: Int) {
         let editStudyRecordVC = EditStudyRecordViewController.instantiate()
-        editStudyRecordVC.tappedSection = section
+        editStudyRecordVC.selectedRow = row
         let nav = UINavigationController(rootViewController: editStudyRecordVC)
         nav.modalPresentationStyle = .fullScreen
         present(nav, animated: true, completion: nil)
@@ -148,37 +123,35 @@ extension StudyRecordViewController: StudyRecordSectionViewDelegate {
         delegate?.baseViewLongPressDidRecognized()
     }
     
-    func memoButtonDidTapped(section: Int) {
-        recordUseCase.changeOpeningAndClosing(at: section)
+    func memoButtonDidTapped(row: Int) {
+        recordUseCase.changeOpeningAndClosing(at: row)
         DispatchQueue.main.async {
             self.tableView.beginUpdates()
-            self.tableView.reloadRows(at: [IndexPath(row: 0,
-                                                     section: section)],
+            self.tableView.reloadRows(at: [IndexPath(row: row, section: 0)],
                                       with: .automatic)
             self.tableView.endUpdates()
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
             let cell = self.tableView.cellForRow(
-                at: IndexPath(row: 0, section: section)
-            ) as? StudyRecordTableViewCell
-            let isExpanded = self.records[section].isExpanded
-            let isLastSection = (section == self.records.count - 1)
+                at: IndexPath(row: row, section: 0)
+            ) as? RecordTableViewCell
+            let isExpanded = self.records[row].isExpanded
+            let isLastRow = (row == self.records.count - 1)
             let isManyMemo = (cell?.frame.height ?? 0.0 > self.tableView.frame.height / 2)
             let isCellNil = (cell == nil)
-            let shouldScrollToTop = isExpanded && (isManyMemo || isLastSection || isCellNil)
+            let shouldScrollToTop = isExpanded && (isManyMemo || isLastRow || isCellNil)
             if shouldScrollToTop {
-                self.tableView.scrollToRow(at: IndexPath(row: 0,
-                                                         section: section),
+                self.tableView.scrollToRow(at: IndexPath(row: row, section: 0),
                                            at: .top,
                                            animated: true)
             }
         }
     }
     
-    func deleteButtonDidTappped(section: Int) {
+    func deleteButtonDidTappped(row: Int) {
         let alert = UIAlertController(title: "本当に削除しますか", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "削除", style: .destructive) { _ in
-            self.recordUseCase.delete(at: section)
+            self.recordUseCase.delete(at: row)
             self.tableView.reloadData()
             self.delegate?.deleteButtonDidTappped(records: self.records)
             self.dismiss(animated: true, completion: nil)
@@ -197,8 +170,7 @@ private extension StudyRecordViewController {
     func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.registerCustomCell(StudyRecordTableViewCell.self)
-        tableView.registerCustomCell(StudyRecordSectionView.self)
+        tableView.registerCustomCell(RecordTableViewCell.self)
         tableView.tableFooterView = UIView()
         tableView.sectionFooterHeight = 0
         tableView.rowHeight = UITableView.automaticDimension

@@ -37,13 +37,13 @@ final class EditStudyRecordViewController: UIViewController {
             dataStore: RealmRecordDataStore()
         )
     )
-    var tappedSection: Int!
+    var selectedRow: Int!
     private var selectedRecord: Record!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        selectedRecord = recordUseCase.records[tappedSection]
+        selectedRecord = recordUseCase.records[selectedRow]
         setupTableView()
         
     }
@@ -66,7 +66,7 @@ final class EditStudyRecordViewController: UIViewController {
     }
     
     @IBAction private func saveButtonDidTapped(_ sender: Any) {
-        recordUseCase.update(record: selectedRecord, at: tappedSection)
+        recordUseCase.update(record: selectedRecord, at: selectedRow)
         dismiss(animated: true, completion: nil)
     }
     
