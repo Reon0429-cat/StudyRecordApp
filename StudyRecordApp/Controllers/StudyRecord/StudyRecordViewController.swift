@@ -119,9 +119,8 @@ extension StudyRecordViewController: RecordTableViewCellDelegate {
     func baseViewTapDidRecognized(row: Int) {
         let editStudyRecordVC = EditStudyRecordViewController.instantiate()
         editStudyRecordVC.selectedRow = row
-        let nav = UINavigationController(rootViewController: editStudyRecordVC)
-        nav.modalPresentationStyle = .fullScreen
-        present(nav, animated: true, completion: nil)
+        editStudyRecordVC.modalPresentationStyle = .fullScreen
+        present(editStudyRecordVC, animated: true, completion: nil)
     }
     
     func baseViewLongPressDidRecognized() {

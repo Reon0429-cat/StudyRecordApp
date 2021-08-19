@@ -10,7 +10,9 @@ import UIKit
 final class EditStudyRecordViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var saveButton: UIBarButtonItem!
+    @IBOutlet private weak var topWaveView: WaveView!
+    @IBOutlet private weak var saveButton: NavigationButton!
+    @IBOutlet private weak var dismissButton: NavigationButton!
     
     private enum CellType: Int, CaseIterable {
         case title
@@ -45,16 +47,9 @@ final class EditStudyRecordViewController: UIViewController {
         
         selectedRecord = recordUseCase.records[selectedRow]
         setupTableView()
+        setupSaveButton()
+        setupDismissButton()
         
-    }
-    
-    private func setupTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.registerCustomCell(StudyRecordCustomTableViewCell.self)
-        tableView.registerCustomCell(StudyRecordGraphColorTableViewCell.self)
-        tableView.registerCustomCell(StudyRecordHistoryTableViewCell.self)
-        tableView.tableFooterView = UIView()
     }
     
     static func instantiate() -> EditStudyRecordViewController {
@@ -65,17 +60,9 @@ final class EditStudyRecordViewController: UIViewController {
         return editStudyRecordVC
     }
     
-    @IBAction private func saveButtonDidTapped(_ sender: Any) {
-        recordUseCase.update(record: selectedRecord, at: selectedRow)
-        dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction private func dismissButtonDidTapped(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    
 }
 
+// MARK: - UITableViewDelegate
 extension EditStudyRecordViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
@@ -97,11 +84,7 @@ extension EditStudyRecordViewController: UITableViewDelegate {
                 })
                 alert.addAction(UIAlertAction(title: "編集する", style: .default) { _ in
                     oldInputtedTitle = self.selectedRecord.title
-                    if oldInputtedTitle.isEmpty {
-                        self.saveButton.isEnabled = false
-                    } else {
-                        self.saveButton.isEnabled = true
-                    }
+                    self.saveButton.isEnabled(!oldInputtedTitle.isEmpty)
                     self.tableView.reloadData()
                 })
                 present(alert, animated: true, completion: nil)
@@ -139,6 +122,7 @@ extension EditStudyRecordViewController: UITableViewDelegate {
     
 }
 
+// MARK: - UITableViewDataSource
 extension EditStudyRecordViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
@@ -207,20 +191,18 @@ extension EditStudyRecordViewController: UITableViewDataSource {
     
 }
 
+// MARK: - StudyRecordGraphColorVCDelegate
 extension EditStudyRecordViewController: StudyRecordGraphColorVCDelegate {
     
     func graphColorDidSelected(color: UIColor) {
         selectedRecord.graphColor = GraphColor(color: color)
-        if color == .white {
-            saveButton.isEnabled = false
-        } else {
-            saveButton.isEnabled = true
-        }
+        saveButton.isEnabled(color != .white)
         tableView.reloadData()
     }
     
 }
 
+// MARK: - StudyRecordMemoVCDelegate
 extension EditStudyRecordViewController: StudyRecordMemoVCDelegate {
     
     func savedMemo(memo: String) {
@@ -230,6 +212,7 @@ extension EditStudyRecordViewController: StudyRecordMemoVCDelegate {
     
 }
 
+// MARK: - StudyRecordTimeRecordVCDelegate
 extension EditStudyRecordViewController: StudyRecordTimeRecordVCDelegate {
     
     func saveButtonDidTapped(history: History) {
@@ -249,6 +232,7 @@ extension EditStudyRecordViewController: StudyRecordTimeRecordVCDelegate {
     
 }
 
+// MARK: - UITextFieldDelegate
 extension EditStudyRecordViewController: UITextFieldDelegate {
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
@@ -257,3 +241,43 @@ extension EditStudyRecordViewController: UITextFieldDelegate {
     
 }
 
+// MARK: - NavigationButtonDelegate
+extension EditStudyRecordViewController: NavigationButtonDelegate {
+    
+    func titleButtonDidTapped(type: NavigationButtonType) {
+        if type == .save {
+            recordUseCase.update(record: selectedRecord, at: selectedRow)
+            dismiss(animated: true, completion: nil)
+        }
+        if type == .dismiss {
+            dismiss(animated: true, completion: nil)
+        }
+    }
+    
+}
+
+// MARK: - setup
+extension EditStudyRecordViewController {
+    
+    func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.registerCustomCell(StudyRecordCustomTableViewCell.self)
+        tableView.registerCustomCell(StudyRecordGraphColorTableViewCell.self)
+        tableView.registerCustomCell(StudyRecordHistoryTableViewCell.self)
+        tableView.tableFooterView = UIView()
+    }
+    
+    func setupSaveButton() {
+        saveButton.delegate = self
+        saveButton.type = .save
+        saveButton.backgroundColor = .clear
+    }
+    
+    func setupDismissButton() {
+        dismissButton.delegate = self
+        dismissButton.type = .dismiss
+        dismissButton.backgroundColor = .clear
+    }
+    
+}
