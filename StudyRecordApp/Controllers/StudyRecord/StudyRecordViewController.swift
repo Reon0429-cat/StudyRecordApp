@@ -12,8 +12,6 @@ import UIKit
 // MARK: - ToDo UINavigationControllerを削除したため、画面遷移の方法を変える
 // MARK: - ToDo SwiftLintを導入する
 // MARK: - ToDo SwiftGenを導入する
-// MARK: - ToDo StudyRecord -> Recordにする
-// MARK: - ToDo 消去ボタンを右上に配置して並び替えボタンは編集ボタンの横にアイコンで表示
 
 protocol StudyRecordVCDelegate: AnyObject {
     var isEdit: Bool { get }
@@ -81,6 +79,13 @@ extension StudyRecordViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView,
                    heightForHeaderInSection section: Int) -> CGFloat {
         return 30
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
     }
     
 }

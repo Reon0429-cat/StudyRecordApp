@@ -131,8 +131,6 @@ private extension UIView {
                                      height: self.frame.height + info.marginY)
         gradientLayer.colors = [UIColor.black.cgColor,
                                 UIColor.white.cgColor]
-        gradientLayer.colors = [UIColor.black.cgColor,
-                                UIColor.white.cgColor]
         gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
         gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
         self.layer.addSublayer(gradientLayer)
