@@ -7,9 +7,14 @@
 
 import UIKit
 
+// MARK: - ToDo 閉じるの文字を赤くする
+// MARK: - ToDo 保存が見えにくい
+// MARK: - ToDo memoの背景白くする
+
 final class AdditionalStudyRecordViewController: UIViewController {
     
     @IBOutlet private weak var topWaveView: WaveView!
+    @IBOutlet private weak var bottomWaveView: WaveView!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var saveButton: UIButton!
     @IBOutlet private weak var dismissButton: UIButton!
@@ -39,8 +44,7 @@ final class AdditionalStudyRecordViewController: UIViewController {
         setupTableView()
         setupSaveButton()
         setupDismissButton()
-        
-        topWaveView.create(isFill: true, marginY: 60)
+        setupWaveView()
         
     }
     
@@ -140,6 +144,18 @@ extension AdditionalStudyRecordViewController: UITableViewDelegate {
         return 80
     }
     
+    func tableView(_ tableView: UITableView,
+                   heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
+    }
+    
 }
 
 // MARK: - UITableViewDataSource
@@ -222,6 +238,11 @@ private extension AdditionalStudyRecordViewController {
     }
     
     func setupDismissButton() {
+    }
+    
+    func setupWaveView() {
+        topWaveView.create(isFill: true, marginY: 60)
+        bottomWaveView.create(isFill: false, marginY: 30, isShuffled: true)
     }
     
 }

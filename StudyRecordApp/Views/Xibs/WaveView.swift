@@ -43,20 +43,21 @@ final class WaveView: UIView {
         
     }
     
-    func create(isFill: Bool, marginY: CGFloat) {
+    func create(isFill: Bool, marginY: CGFloat, isShuffled: Bool = false) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-            self.cutToWaveView(isFill: isFill, marginY: marginY)
+            self.cutToWaveView(isFill: isFill, marginY: marginY, isShuffled: isShuffled)
         }
     }
     
-    private func cutToWaveView(isFill: Bool, marginY: CGFloat) {
+    private func cutToWaveView(isFill: Bool, marginY: CGFloat, isShuffled: Bool) {
         let alpha: CGFloat = 0.5
         let alphaMargin: CGFloat = 0.2
+        let maths: [Math] = isShuffled ? Math.random() : [.plusSin, .plusCos, .minusCos]
         let topInfo = WaveViewInfo(waveCount: 1,
                                    amplitude: 1,
                                    gradient: Gradient(leftColor: .black.withAlphaComponent(alpha - alphaMargin),
                                                       rightColor: .white.withAlphaComponent(alpha - alphaMargin)),
-                                   math: .plusSin,
+                                   math: maths[0],
                                    marginY: marginY,
                                    isFill: isFill)
         topView.cutView(info: topInfo)
@@ -64,7 +65,7 @@ final class WaveView: UIView {
                                       amplitude: 1.3,
                                       gradient: Gradient(leftColor: .black.withAlphaComponent(alpha),
                                                          rightColor: .white.withAlphaComponent(alpha)),
-                                      math: .plusCos,
+                                      math: maths[1],
                                       marginY: marginY,
                                       isFill: isFill)
         middleView.cutView(info: middleInfo)
@@ -72,7 +73,7 @@ final class WaveView: UIView {
                                       amplitude: 1.5,
                                       gradient: Gradient(leftColor: .black.withAlphaComponent(alpha + alphaMargin),
                                                          rightColor: .white.withAlphaComponent(alpha + alphaMargin)),
-                                      math: .minusCos,
+                                      math: maths[2],
                                       marginY: marginY,
                                       isFill: isFill)
         bottomView.cutView(info: bottomInfo)
@@ -94,7 +95,7 @@ struct Gradient {
     let rightColor: UIColor
 }
 
-enum Math {
+enum Math: CaseIterable {
     case minusSin
     case minusCos
     case plusSin
@@ -107,6 +108,10 @@ enum Math {
             case .plusSin: return sin(x)
             case .plusCos: return cos(x)
         }
+    }
+    
+    static func random() -> [Self] {
+        return Math.allCases.shuffled()
     }
 }
 
