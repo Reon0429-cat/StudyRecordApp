@@ -43,14 +43,13 @@ final class WaveView: UIView {
         
     }
     
-    func create() {
+    func create(isFill: Bool, marginY: CGFloat) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-            self.cutToWaveView()
+            self.cutToWaveView(isFill: isFill, marginY: marginY)
         }
     }
     
-    private func cutToWaveView() {
-        let marginY: CGFloat = 60
+    private func cutToWaveView(isFill: Bool, marginY: CGFloat) {
         let alpha: CGFloat = 0.5
         let alphaMargin: CGFloat = 0.2
         let topInfo = WaveViewInfo(waveCount: 1,
@@ -58,21 +57,24 @@ final class WaveView: UIView {
                                    gradient: Gradient(leftColor: .black.withAlphaComponent(alpha - alphaMargin),
                                                       rightColor: .white.withAlphaComponent(alpha - alphaMargin)),
                                    math: .plusSin,
-                                   marginY: marginY)
+                                   marginY: marginY,
+                                   isFill: isFill)
         topView.cutView(info: topInfo)
         let middleInfo = WaveViewInfo(waveCount: 1.5,
                                       amplitude: 1.3,
                                       gradient: Gradient(leftColor: .black.withAlphaComponent(alpha),
                                                          rightColor: .white.withAlphaComponent(alpha)),
                                       math: .plusCos,
-                                      marginY: marginY + 10)
+                                      marginY: marginY,
+                                      isFill: isFill)
         middleView.cutView(info: middleInfo)
         let bottomInfo = WaveViewInfo(waveCount: 1,
                                       amplitude: 1.5,
                                       gradient: Gradient(leftColor: .black.withAlphaComponent(alpha + alphaMargin),
                                                          rightColor: .white.withAlphaComponent(alpha + alphaMargin)),
                                       math: .minusCos,
-                                      marginY: marginY + 10)
+                                      marginY: marginY,
+                                      isFill: isFill)
         bottomView.cutView(info: bottomInfo)
     }
     
@@ -84,6 +86,7 @@ struct WaveViewInfo {
     let gradient: Gradient
     let math: Math
     let marginY: CGFloat
+    let isFill: Bool
 }
 
 struct Gradient {
@@ -115,10 +118,11 @@ private extension UIView {
                              y: 0,
                              width: self.frame.width,
                              height: self.frame.height)
-        layer.fillColor = info.gradient.leftColor.cgColor
+        let fillColor: UIColor = info.isFill ? info.gradient.leftColor : .clear
+        layer.fillColor = fillColor.cgColor
         layer.strokeColor = info.gradient.leftColor.cgColor
         layer.lineWidth = 3
-        layer.path = createSinPath(layer: layer, info: info)
+        layer.path = createPath(layer: layer, info: info)
         if let layer = self.layer.sublayers?.first {
             layer.removeFromSuperlayer()
         }
@@ -138,26 +142,26 @@ private extension UIView {
         gradientLayer.mask = layer
     }
     
-    private func createSinPath(layer: CAShapeLayer, info: WaveViewInfo) -> CGPath {
+    private func createPath(layer: CAShapeLayer, info: WaveViewInfo) -> CGPath {
         let div: Double = 1 / 100
-        let sinPath = UIBezierPath()
+        let path = UIBezierPath()
         let originX: CGFloat = layer.lineWidth
         let origin = CGPoint(x: -originX,
                              y: layer.frame.height / 2 + info.marginY)
         let count = info.waveCount * 2
         let xRatioToFill = Double(layer.frame.width) / (Double.pi / div)
-        sinPath.move(to: CGPoint(x: origin.x, y: 0))
-        sinPath.addLine(to: CGPoint(x: origin.x, y: origin.y))
+        path.move(to: CGPoint(x: origin.x, y: 0))
+        path.addLine(to: CGPoint(x: origin.x, y: origin.y))
         for i in 0...Int(Double.pi / div * count) {
             let x = div * Double(i)
             let y = info.math.trigonometricFunc(x)
-            sinPath.addLine(
+            path.addLine(
                 to: CGPoint(x: (x / div / count + Double(origin.x)) * xRatioToFill + Double(originX * 2),
                             y: Double(origin.y) * (1 - y * info.amplitude / 10))
             )
         }
-        sinPath.addLine(to: CGPoint(x: layer.frame.width + originX, y: 0))
-        return sinPath.cgPath
+        path.addLine(to: CGPoint(x: layer.frame.width + originX, y: 0))
+        return path.cgPath
     }
     
 }

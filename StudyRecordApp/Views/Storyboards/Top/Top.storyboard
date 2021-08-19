@@ -24,13 +24,37 @@
                                     <segue destination="Ct8-C7-lT7" kind="embed" id="wlW-gw-3U0"/>
                                 </connections>
                             </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Bf-hN-dBB" customClass="WaveView" customModule="StudyRecordApp" customModuleProvider="target">
+                                <rect key="frame" x="-5" y="712" width="424" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="ahx-aw-jmP"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rjj-14-Arj" customClass="WaveView" customModule="StudyRecordApp" customModuleProvider="target">
+                                <rect key="frame" x="-5" y="822" width="424" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="PAb-lv-Ugc"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ScA-mM-TvK">
+                                <rect key="frame" x="301" y="762" width="3" height="90"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="3" id="8DD-0C-38z"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K0S-IG-iAg" customClass="WaveView" customModule="StudyRecordApp" customModuleProvider="target">
                                 <rect key="frame" x="-5" y="0.0" width="424" height="114"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Hd1-Bo-e7y">
-                                <rect key="frame" x="0.0" y="752" width="302" height="110"/>
+                                <rect key="frame" x="0.0" y="752" width="301" height="110"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="110" id="uoY-u9-W5s"/>
+                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MXn-D9-Wrg">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -79,27 +103,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Bf-hN-dBB">
-                                <rect key="frame" x="10" y="750" width="394" height="2"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="2" id="ahx-aw-jmP"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rjj-14-Arj">
-                                <rect key="frame" x="10" y="862" width="394" height="2"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="2" id="PAb-lv-Ugc"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ScA-mM-TvK">
-                                <rect key="frame" x="302" y="762" width="2" height="90"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="2" id="8DD-0C-38z"/>
-                                </constraints>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i73-vd-DE0">
                                 <rect key="frame" x="289" y="59" width="40" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -142,13 +145,13 @@
                             <constraint firstItem="RA0-TX-Xc8" firstAttribute="top" secondItem="89D-1W-suH" secondAttribute="top" constant="5" id="bQ0-oT-IhB"/>
                             <constraint firstItem="K0S-IG-iAg" firstAttribute="top" secondItem="FCt-wH-DiL" secondAttribute="top" id="bdb-8p-F7c"/>
                             <constraint firstItem="89D-1W-suH" firstAttribute="trailing" secondItem="ScA-mM-TvK" secondAttribute="trailing" constant="110" id="cN5-1U-69I"/>
-                            <constraint firstItem="8Bf-hN-dBB" firstAttribute="top" secondItem="Wxl-h3-hMv" secondAttribute="bottom" id="cTZ-KU-mHN"/>
-                            <constraint firstItem="rjj-14-Arj" firstAttribute="top" secondItem="Hd1-Bo-e7y" secondAttribute="bottom" id="dyK-6Y-0z4"/>
+                            <constraint firstItem="rjj-14-Arj" firstAttribute="bottom" secondItem="Hd1-Bo-e7y" secondAttribute="bottom" id="d0V-Ma-HWX"/>
                             <constraint firstItem="89D-1W-suH" firstAttribute="trailing" secondItem="Wxl-h3-hMv" secondAttribute="trailing" id="eLD-Zs-0VS"/>
-                            <constraint firstAttribute="trailing" secondItem="rjj-14-Arj" secondAttribute="trailing" constant="10" id="irI-zX-0Ah"/>
+                            <constraint firstAttribute="trailing" secondItem="rjj-14-Arj" secondAttribute="trailing" constant="-5" id="irI-zX-0Ah"/>
                             <constraint firstItem="RA0-TX-Xc8" firstAttribute="centerY" secondItem="JvU-rz-cMR" secondAttribute="centerY" id="lAj-uP-Qcd"/>
                             <constraint firstItem="89D-1W-suH" firstAttribute="bottom" secondItem="Hd1-Bo-e7y" secondAttribute="bottom" id="toG-ZX-PEb"/>
-                            <constraint firstAttribute="trailing" secondItem="8Bf-hN-dBB" secondAttribute="trailing" constant="10" id="zER-Og-KNz"/>
+                            <constraint firstItem="Hd1-Bo-e7y" firstAttribute="top" secondItem="Wxl-h3-hMv" secondAttribute="bottom" constant="2" id="whZ-4Z-gqZ"/>
+                            <constraint firstAttribute="trailing" secondItem="8Bf-hN-dBB" secondAttribute="trailing" constant="-5" id="zER-Og-KNz"/>
                         </constraints>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
@@ -157,15 +160,16 @@
                         <outlet property="addButton" destination="Tpi-lb-LHl" id="hfD-4l-3os"/>
                         <outlet property="addButtonRightConstraint" destination="aPh-KT-boH" id="TLU-7c-iRb"/>
                         <outlet property="bottomSeparatorView" destination="rjj-14-Arj" id="obE-K1-JD9"/>
+                        <outlet property="bottomWaveView" destination="rjj-14-Arj" id="sld-Ql-RUX"/>
                         <outlet property="collectionView" destination="Hd1-Bo-e7y" id="U4A-Jj-8WQ"/>
                         <outlet property="editButton" destination="RA0-TX-Xc8" id="NAq-Cy-0QO"/>
                         <outlet property="editButtonRightConstraint" destination="Nlj-Fc-ld9" id="R4S-Ob-rMd"/>
-                        <outlet property="middleSeparatorView" destination="8Bf-hN-dBB" id="ur5-3u-83R"/>
+                        <outlet property="middleWaveView" destination="8Bf-hN-dBB" id="H40-si-Q0w"/>
                         <outlet property="sortButton" destination="i73-vd-DE0" id="0wB-r1-8Ku"/>
                         <outlet property="titleLabel" destination="JvU-rz-cMR" id="adk-KU-6WE"/>
                         <outlet property="titleLabelLeftConstraint" destination="8Ry-6W-LOA" id="xSe-49-VeP"/>
+                        <outlet property="topWaveView" destination="K0S-IG-iAg" id="KXP-5M-V0k"/>
                         <outlet property="verticalSeparatorView" destination="ScA-mM-TvK" id="Jfa-FO-XDw"/>
-                        <outlet property="waveView" destination="K0S-IG-iAg" id="KXP-5M-V0k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RIi-AQ-88R" sceneMemberID="firstResponder"/>
@@ -178,7 +182,7 @@
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Ct8-C7-lT7" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lqe-Mg-yM4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2528" y="413"/>
+            <point key="canvasLocation" x="2567" y="413"/>
         </scene>
     </scenes>
     <resources>

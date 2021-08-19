@@ -9,7 +9,6 @@ import UIKit
 
 final class TopViewController: UIViewController {
     
-    @IBOutlet private weak var waveView: WaveView!
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var titleLabelLeftConstraint: NSLayoutConstraint!
@@ -18,8 +17,10 @@ final class TopViewController: UIViewController {
     @IBOutlet private weak var addButtonRightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var editButton: UIButton!
     @IBOutlet private weak var editButtonRightConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var middleSeparatorView: UIView!
     @IBOutlet private weak var bottomSeparatorView: UIView!
+    @IBOutlet private weak var topWaveView: WaveView!
+    @IBOutlet private weak var middleWaveView: WaveView!
+    @IBOutlet private weak var bottomWaveView: WaveView!
     @IBOutlet private weak var verticalSeparatorView: UIView!
     
     private struct LayoutConstant {
@@ -58,7 +59,7 @@ final class TopViewController: UIViewController {
     private var pageViewController: UIPageViewController!
     private var viewControllers = [UIViewController]()
     private var currentPageIndex = 0
-
+    
     override func loadView() {
         super.loadView()
         
@@ -75,7 +76,8 @@ final class TopViewController: UIViewController {
         setupTitleLabel()
         setupSortButton()
         setAnimation()
-        waveView.create()
+        setupWaveViews()
+        setupSeparatorView()
         
     }
     
@@ -84,7 +86,6 @@ final class TopViewController: UIViewController {
         
         setupAddButton()
         setupEditButton()
-        setupSeparators()
         
     }
     
@@ -365,10 +366,24 @@ private extension TopViewController {
         sortButton.alpha = 0
     }
     
-    func setupSeparators() {
-        middleSeparatorView.backgroundColor = .black
-        bottomSeparatorView.backgroundColor = .black
-        verticalSeparatorView.backgroundColor = .black
+    func setupWaveViews() {
+        topWaveView.create(isFill: true, marginY: 60)
+        middleWaveView.create(isFill: false, marginY: 20)
+        bottomWaveView.create(isFill: false, marginY: 23)
+    }
+    
+    func setupSeparatorView() {
+        let gradientLayer = CAGradientLayer()
+        let frame = CGRect(x: 0,
+                           y: 0,
+                           width: verticalSeparatorView.frame.width,
+                           height: verticalSeparatorView.frame.height)
+        gradientLayer.frame = frame
+        gradientLayer.colors = [UIColor.white.cgColor,
+                                UIColor.black.cgColor]
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 1)
+        verticalSeparatorView.layer.addSublayer(gradientLayer)
     }
     
     func setupAnimation() {
@@ -424,3 +439,4 @@ private extension UIView {
     }
     
 }
+
