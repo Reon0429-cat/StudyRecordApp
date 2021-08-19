@@ -64,7 +64,7 @@
                                 <cells/>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Az-ju-5yI">
-                                <rect key="frame" x="353" y="94" width="27.5" height="3"/>
+                                <rect key="frame" x="355.5" y="89" width="22" height="3"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="3" id="eDj-1d-BJH"/>
@@ -133,7 +133,7 @@
                             <constraint firstItem="Wxl-h3-hMv" firstAttribute="top" secondItem="K0S-IG-iAg" secondAttribute="bottom" id="0b1-oZ-UxT"/>
                             <constraint firstItem="FBY-js-fhE" firstAttribute="top" secondItem="89D-1W-suH" secondAttribute="top" id="5Rz-na-4vM"/>
                             <constraint firstItem="JvU-rz-cMR" firstAttribute="leading" secondItem="89D-1W-suH" secondAttribute="leading" constant="30" id="8Ry-6W-LOA"/>
-                            <constraint firstItem="6Az-ju-5yI" firstAttribute="top" secondItem="FBY-js-fhE" secondAttribute="bottom" constant="-5" id="8Se-h5-rjy"/>
+                            <constraint firstItem="6Az-ju-5yI" firstAttribute="top" secondItem="FBY-js-fhE" secondAttribute="bottom" constant="-10" id="8Se-h5-rjy"/>
                             <constraint firstItem="Wxl-h3-hMv" firstAttribute="top" secondItem="JvU-rz-cMR" secondAttribute="bottom" id="8yy-34-sVV"/>
                             <constraint firstItem="ScA-mM-TvK" firstAttribute="centerY" secondItem="Tpi-lb-LHl" secondAttribute="centerY" id="9YQ-jJ-0Hg"/>
                             <constraint firstItem="K0S-IG-iAg" firstAttribute="leading" secondItem="FCt-wH-DiL" secondAttribute="leading" constant="-5" id="9kp-ac-95A"/>
@@ -153,7 +153,7 @@
                             <constraint firstItem="89D-1W-suH" firstAttribute="trailing" secondItem="Tpi-lb-LHl" secondAttribute="trailing" constant="20" id="aPh-KT-boH"/>
                             <constraint firstItem="K0S-IG-iAg" firstAttribute="top" secondItem="FCt-wH-DiL" secondAttribute="top" id="bdb-8p-F7c"/>
                             <constraint firstItem="89D-1W-suH" firstAttribute="trailing" secondItem="ScA-mM-TvK" secondAttribute="trailing" constant="110" id="cN5-1U-69I"/>
-                            <constraint firstItem="6Az-ju-5yI" firstAttribute="width" secondItem="FBY-js-fhE" secondAttribute="width" multiplier="0.5" id="cmt-e2-sHV"/>
+                            <constraint firstItem="6Az-ju-5yI" firstAttribute="width" secondItem="FBY-js-fhE" secondAttribute="width" multiplier="0.4" id="cmt-e2-sHV"/>
                             <constraint firstItem="rjj-14-Arj" firstAttribute="bottom" secondItem="Hd1-Bo-e7y" secondAttribute="bottom" id="d0V-Ma-HWX"/>
                             <constraint firstItem="89D-1W-suH" firstAttribute="trailing" secondItem="Wxl-h3-hMv" secondAttribute="trailing" id="eLD-Zs-0VS"/>
                             <constraint firstAttribute="trailing" secondItem="rjj-14-Arj" secondAttribute="trailing" constant="-5" id="irI-zX-0Ah"/>
