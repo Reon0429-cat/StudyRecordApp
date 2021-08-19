@@ -51,21 +51,26 @@ final class WaveView: UIView {
     
     private func cutToWaveView() {
         let marginY: CGFloat = 60
+        let alpha: CGFloat = 0.5
+        let alphaMargin: CGFloat = 0.2
         let topInfo = WaveViewInfo(waveCount: 1,
                                    amplitude: 1,
-                                   color: .systemPurple.withAlphaComponent(0.3),
+                                   gradient: Gradient(leftColor: .black.withAlphaComponent(alpha - alphaMargin),
+                                                      rightColor: .white.withAlphaComponent(alpha - alphaMargin)),
                                    math: .plusSin,
                                    marginY: marginY)
         topView.cutView(info: topInfo)
         let middleInfo = WaveViewInfo(waveCount: 1.5,
                                       amplitude: 1.3,
-                                      color: .systemPurple.withAlphaComponent(0.5),
+                                      gradient: Gradient(leftColor: .black.withAlphaComponent(alpha),
+                                                         rightColor: .white.withAlphaComponent(alpha)),
                                       math: .plusCos,
                                       marginY: marginY + 10)
         middleView.cutView(info: middleInfo)
         let bottomInfo = WaveViewInfo(waveCount: 1,
                                       amplitude: 1.5,
-                                      color: .systemPurple.withAlphaComponent(0.8),
+                                      gradient: Gradient(leftColor: .black.withAlphaComponent(alpha + alphaMargin),
+                                                         rightColor: .white.withAlphaComponent(alpha + alphaMargin)),
                                       math: .minusCos,
                                       marginY: marginY + 10)
         bottomView.cutView(info: bottomInfo)
@@ -76,9 +81,14 @@ final class WaveView: UIView {
 struct WaveViewInfo {
     let waveCount: Double
     let amplitude: Double
-    let color: UIColor
+    let gradient: Gradient
     let math: Math
     let marginY: CGFloat
+}
+
+struct Gradient {
+    let leftColor: UIColor
+    let rightColor: UIColor
 }
 
 enum Math {
@@ -105,14 +115,29 @@ private extension UIView {
                              y: 0,
                              width: self.frame.width,
                              height: self.frame.height)
-        layer.fillColor = info.color.cgColor
-        layer.strokeColor = info.color.cgColor
+        layer.fillColor = info.gradient.leftColor.cgColor
+        layer.strokeColor = info.gradient.leftColor.cgColor
         layer.lineWidth = 3
         layer.path = createSinPath(layer: layer, info: info)
         if let layer = self.layer.sublayers?.first {
             layer.removeFromSuperlayer()
         }
         self.layer.addSublayer(layer)
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = CGRect(x: 0,
+                                     y: 0,
+                                     width: self.frame.width,
+                                     height: self.frame.height + info.marginY)
+        gradientLayer.colors = [UIColor.black.cgColor,
+                                UIColor.white.cgColor]
+        gradientLayer.colors = [UIColor.black.cgColor,
+                                UIColor.white.cgColor]
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
+        self.layer.addSublayer(gradientLayer)
+        
+        gradientLayer.mask = layer
     }
     
     private func createSinPath(layer: CAShapeLayer, info: WaveViewInfo) -> CGPath {
