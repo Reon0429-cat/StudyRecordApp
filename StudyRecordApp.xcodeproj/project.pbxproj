@@ -43,6 +43,8 @@
 		AB16305126CD6B1400111F55 /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB16305026CD6B1400111F55 /* WaveView.swift */; };
 		AB16307B26CE123A00111F55 /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB16307926CE123A00111F55 /* RecordTableViewCell.swift */; };
 		AB16307C26CE123A00111F55 /* RecordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB16307A26CE123A00111F55 /* RecordTableViewCell.xib */; };
+		AB16308226CEAB9300111F55 /* NavigationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB16308126CEAB9300111F55 /* NavigationButton.swift */; };
+		AB16308426CEABD400111F55 /* NavigationButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB16308326CEABD400111F55 /* NavigationButton.xib */; };
 		AB2B5B8326A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B7E26A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift */; };
 		AB2B5B8426A2D0FD009BD3C7 /* NotificationName+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B7F26A2D0FD009BD3C7 /* NotificationName+Extension.swift */; };
 		AB2B5B8526A2D0FD009BD3C7 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B8026A2D0FD009BD3C7 /* UIColor+Extension.swift */; };
@@ -135,6 +137,8 @@
 		AB16305026CD6B1400111F55 /* WaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveView.swift; sourceTree = "<group>"; };
 		AB16307926CE123A00111F55 /* RecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
 		AB16307A26CE123A00111F55 /* RecordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordTableViewCell.xib; sourceTree = "<group>"; };
+		AB16308126CEAB9300111F55 /* NavigationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationButton.swift; sourceTree = "<group>"; };
+		AB16308326CEABD400111F55 /* NavigationButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavigationButton.xib; sourceTree = "<group>"; };
 		AB2B5B7E26A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
 		AB2B5B7F26A2D0FD009BD3C7 /* NotificationName+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotificationName+Extension.swift"; sourceTree = "<group>"; };
 		AB2B5B8026A2D0FD009BD3C7 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -230,6 +234,8 @@
 				ABA0570026B50D1900E3DF01 /* GraphColorTileView.swift */,
 				AB16304E26CD6AF400111F55 /* WaveView.xib */,
 				AB16305026CD6B1400111F55 /* WaveView.swift */,
+				AB16308326CEABD400111F55 /* NavigationButton.xib */,
+				AB16308126CEAB9300111F55 /* NavigationButton.swift */,
 			);
 			path = Xibs;
 			sourceTree = "<group>";
@@ -677,6 +683,7 @@
 				ABA056F726B4C7D800E3DF01 /* StudyRecordGraphColorTableViewCell.xib in Resources */,
 				AB93C2C5266BC2D600C3AE8F /* EditStudyRecord.storyboard in Resources */,
 				AB13EDB126BFAA7D002F56FF /* StudyRecordSort.storyboard in Resources */,
+				AB16308426CEABD400111F55 /* NavigationButton.xib in Resources */,
 				AB2B5BB626A2D2C2009BD3C7 /* SectionHeaderView.xib in Resources */,
 				AB2B5BBD26A2D2C2009BD3C7 /* AccordionTableViewCell.xib in Resources */,
 				AB13ECD626B7AEA3002F56FF /* ColorChoicesConcept.storyboard in Resources */,
@@ -764,6 +771,7 @@
 				AB16307B26CE123A00111F55 /* RecordTableViewCell.swift in Sources */,
 				AB2B5BA426A2D1B7009BD3C7 /* PopConcept.swift in Sources */,
 				AB2B5BBC26A2D2C2009BD3C7 /* AccordionTableViewCell.swift in Sources */,
+				AB16308226CEAB9300111F55 /* NavigationButton.swift in Sources */,
 				AB2B5BC726A2D36F009BD3C7 /* ColorChoicesConceptViewController.swift in Sources */,
 				AB2B5BB726A2D2C2009BD3C7 /* ColorConceptTableViewCell.swift in Sources */,
 				AB2B5B8326A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift in Sources */,

@@ -34,41 +34,24 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hnf-pd-ghJ">
-                                <rect key="frame" x="355.5" y="89" width="22" height="3"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9zE-YA-py5">
-                                <rect key="frame" x="36.5" y="89" width="22" height="3"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="3" id="OKS-Ty-VQr"/>
-                                </constraints>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKj-xC-yzJ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKj-xC-yzJ" customClass="NavigationButton" customModule="StudyRecordApp" customModuleProvider="target">
                                 <rect key="frame" x="339" y="44" width="55" height="55"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="CKj-xC-yzJ" secondAttribute="height" id="Agx-pI-Mpv"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="保存"/>
-                                <connections>
-                                    <action selector="saveButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Hdw-Bf-nYu"/>
-                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WaU-0M-EIH">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WaU-0M-EIH" customClass="NavigationButton" customModule="StudyRecordApp" customModuleProvider="target">
                                 <rect key="frame" x="20" y="44" width="55" height="55"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="WaU-0M-EIH" secondAttribute="height" id="O7g-EN-DbG"/>
                                     <constraint firstAttribute="width" constant="55" id="jKA-0R-CtL"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="閉じる"/>
-                                <connections>
-                                    <action selector="dismissButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="iL0-Z7-wSm"/>
-                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="epS-Lu-8du" customClass="WaveView" customModule="StudyRecordApp" customModuleProvider="target">
                                 <rect key="frame" x="-5" y="756" width="424" height="100"/>
@@ -86,7 +69,6 @@
                             <constraint firstItem="PvQ-cR-IQc" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Bb3-O9-H9g"/>
                             <constraint firstItem="WaU-0M-EIH" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="Bjw-ZQ-cwY"/>
                             <constraint firstItem="CKj-xC-yzJ" firstAttribute="top" secondItem="WaU-0M-EIH" secondAttribute="top" id="Doe-qn-7I6"/>
-                            <constraint firstItem="hnf-pd-ghJ" firstAttribute="centerX" secondItem="CKj-xC-yzJ" secondAttribute="centerX" id="Gut-xN-PGF"/>
                             <constraint firstItem="WaU-0M-EIH" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="QOH-Zb-uNe"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="bIv-uz-tFw" secondAttribute="trailing" id="S23-fF-pWb"/>
                             <constraint firstItem="PtW-9I-bBT" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="-5" id="Tbe-2A-9aj"/>
@@ -94,16 +76,10 @@
                             <constraint firstItem="epS-Lu-8du" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="-5" id="Zd3-P1-KGQ"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="epS-Lu-8du" secondAttribute="trailing" constant="-5" id="bub-EP-c4X"/>
                             <constraint firstItem="PtW-9I-bBT" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="cbH-KM-mN1"/>
-                            <constraint firstItem="9zE-YA-py5" firstAttribute="centerX" secondItem="WaU-0M-EIH" secondAttribute="centerX" id="d9k-va-y2b"/>
-                            <constraint firstItem="9zE-YA-py5" firstAttribute="top" secondItem="WaU-0M-EIH" secondAttribute="bottom" constant="-10" id="ddp-Nf-nW7"/>
                             <constraint firstItem="CKj-xC-yzJ" firstAttribute="centerY" secondItem="WaU-0M-EIH" secondAttribute="centerY" id="g4w-HE-VOL"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="CKj-xC-yzJ" secondAttribute="trailing" constant="20" id="gEV-ll-pAb"/>
                             <constraint firstItem="bIv-uz-tFw" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="gdw-UV-rx7"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="bIv-uz-tFw" secondAttribute="bottom" id="hHy-Fm-c5I"/>
-                            <constraint firstItem="hnf-pd-ghJ" firstAttribute="centerY" secondItem="9zE-YA-py5" secondAttribute="centerY" id="nLK-f3-S7V"/>
-                            <constraint firstItem="9zE-YA-py5" firstAttribute="width" secondItem="WaU-0M-EIH" secondAttribute="width" multiplier="0.4" id="rfw-bJ-1Eg"/>
-                            <constraint firstItem="hnf-pd-ghJ" firstAttribute="height" secondItem="9zE-YA-py5" secondAttribute="height" id="vat-iP-tb8"/>
-                            <constraint firstItem="hnf-pd-ghJ" firstAttribute="width" secondItem="9zE-YA-py5" secondAttribute="width" id="vmj-L5-tsv"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="PtW-9I-bBT" secondAttribute="trailing" constant="-5" id="yVQ-BO-WhY"/>
                         </constraints>
                     </view>
@@ -111,9 +87,7 @@
                     <connections>
                         <outlet property="bottomWaveView" destination="epS-Lu-8du" id="4PJ-Zm-sNL"/>
                         <outlet property="dismissButton" destination="WaU-0M-EIH" id="LKi-n8-jYI"/>
-                        <outlet property="dismissButtonBottomView" destination="9zE-YA-py5" id="HYD-ev-aqg"/>
                         <outlet property="saveButton" destination="CKj-xC-yzJ" id="RvG-xg-tJX"/>
-                        <outlet property="saveButtonBottomView" destination="hnf-pd-ghJ" id="Rfk-mf-mJr"/>
                         <outlet property="tableView" destination="bIv-uz-tFw" id="6sr-OU-sAj"/>
                         <outlet property="topWaveView" destination="PtW-9I-bBT" id="NZO-sS-dZx"/>
                     </connections>

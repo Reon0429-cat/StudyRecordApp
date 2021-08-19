@@ -15,7 +15,7 @@ final class TopViewController: UIViewController {
     @IBOutlet private weak var sortButton: UIButton!
     @IBOutlet private weak var addButton: UIButton!
     @IBOutlet private weak var addButtonRightConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var editButton: UIButton!
+    @IBOutlet private weak var editButton: NavigationButton!
     @IBOutlet private weak var editButtonRightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var bottomSeparatorView: UIView!
     @IBOutlet private weak var topWaveView: WaveView!
@@ -28,25 +28,9 @@ final class TopViewController: UIViewController {
         static let editButtonRight: CGFloat = 70
         static let addButtonRight: CGFloat = 50
     }
-    private enum EditButtonState {
-        case edit
-        case completion
-        var title: String {
-            switch self {
-                case .edit: return "編集"
-                case .completion: return "完了"
-            }
-        }
-        mutating func toggle() {
-            switch self {
-                case .edit: self = .completion
-                case .completion: self = .edit
-            }
-        }
-    }
-    private var editButtonState: EditButtonState = .edit {
+    private var navigationButtonType: NavigationButtonType = .edit {
         didSet {
-            editButton.setTitle(editButtonState.title)
+            editButton.type = navigationButtonType
         }
     }
     private var screenType: ScreenType = .record
@@ -74,6 +58,7 @@ final class TopViewController: UIViewController {
         setupPageViews()
         setupCollectionView()
         setupTitleLabel()
+        setupEditButton()
         setupSortButton()
         setAnimation()
         setupWaveViews()
@@ -85,7 +70,6 @@ final class TopViewController: UIViewController {
         super.viewDidLayoutSubviews()
         
         setupAddButton()
-        setupEditButton()
         
     }
     
@@ -98,10 +82,6 @@ final class TopViewController: UIViewController {
             default:
                 break
         }
-    }
-    
-    @IBAction private func editButtonDidTapped(_ sender: Any) {
-        changeEditMode()
     }
     
     @IBAction private func sortButtonDidTapped(_ sender: Any) {
@@ -117,8 +97,8 @@ final class TopViewController: UIViewController {
         }
     }
     
-    private func changeEditMode() {
-        editButtonState.toggle()
+    private func changeEditMode(type: NavigationButtonType) {
+        navigationButtonType = (navigationButtonType == .edit) ? .completion : .edit
         if let studyRecordVC = viewControllers.first as? StudyRecordViewController {
             studyRecordVC.reloadTableView()
         }
@@ -268,7 +248,7 @@ extension TopViewController: UIPageViewControllerDataSource {
 extension TopViewController: StudyRecordVCDelegate {
     
     var isEdit: Bool {
-        editButtonState == .completion
+        navigationButtonType == .completion
     }
     
     func viewWillAppear(records: [Record], index: Int) {
@@ -282,7 +262,7 @@ extension TopViewController: StudyRecordVCDelegate {
     
     func deleteButtonDidTappped(records: [Record]) {
         if records.count == 0 {
-            editButtonState = .edit
+            navigationButtonType = .edit
             editButton.isEnabled = false
         } else {
             editButton.isEnabled = true
@@ -290,8 +270,8 @@ extension TopViewController: StudyRecordVCDelegate {
     }
     
     func baseViewLongPressDidRecognized() {
-        if editButtonState == .edit {
-            changeEditMode()
+        if navigationButtonType == .edit {
+            changeEditMode(type: navigationButtonType)
         }
     }
     
@@ -301,6 +281,15 @@ extension TopViewController: GoalVCDelegate, GraphVCDelegate, CountDownVCDelegat
     
     func viewWillAppear(index: Int) {
         screenDidChanged(item: index)
+    }
+    
+}
+
+// MARK: - NavigationButtonDelegate
+extension TopViewController: NavigationButtonDelegate {
+        
+    func titleButtonDidTapped(type: NavigationButtonType) {
+        changeEditMode(type: type)
     }
     
 }
@@ -358,7 +347,9 @@ private extension TopViewController {
     }
     
     func setupEditButton() {
-        
+        editButton.delegate = self
+        editButton.backgroundColor = .clear
+        editButton.type = .edit
     }
     
     func setupSortButton() {

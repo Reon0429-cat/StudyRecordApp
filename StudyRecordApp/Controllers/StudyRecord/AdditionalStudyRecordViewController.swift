@@ -12,10 +12,8 @@ final class AdditionalStudyRecordViewController: UIViewController {
     @IBOutlet private weak var topWaveView: WaveView!
     @IBOutlet private weak var bottomWaveView: WaveView!
     @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var saveButton: UIButton!
-    @IBOutlet private weak var saveButtonBottomView: UIView!
-    @IBOutlet private weak var dismissButton: UIButton!
-    @IBOutlet private weak var dismissButtonBottomView: UIView!
+    @IBOutlet private weak var saveButton: NavigationButton!
+    @IBOutlet private weak var dismissButton: NavigationButton!
     
     private enum CellType: Int, CaseIterable {
         case title
@@ -44,19 +42,6 @@ final class AdditionalStudyRecordViewController: UIViewController {
         setupDismissButton()
         setupWaveView()
         
-    }
-    
-    @IBAction private func saveButtonDidTapped(_ sender: Any) {
-        saveRecord()
-        dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction private func dismissButtonDidTapped(_ sender: Any) {
-        if isMandatoryItemFilled {
-            showAlert()
-        } else {
-            dismiss(animated: true, completion: nil)
-        }
     }
     
     private func showAlert() {
@@ -88,13 +73,7 @@ final class AdditionalStudyRecordViewController: UIViewController {
     }
     
     private func controlSaveButton() {
-        if isMandatoryItemFilled {
-            saveButton.isEnabled = true
-            saveButtonBottomView.backgroundColor = .black
-        } else {
-            saveButton.isEnabled = false
-            saveButtonBottomView.backgroundColor = .gray
-        }
+        saveButton.isEnabled(isMandatoryItemFilled)
     }
     
     private func saveRecord() {
@@ -222,6 +201,25 @@ extension AdditionalStudyRecordViewController: UITextFieldDelegate {
     
 }
 
+// MARK: - NavigationButtonDelegate
+extension AdditionalStudyRecordViewController: NavigationButtonDelegate {
+    
+    func titleButtonDidTapped(type: NavigationButtonType) {
+        if type == .save {
+            saveRecord()
+            dismiss(animated: true, completion: nil)
+        }
+        if type == .dismiss {
+            if isMandatoryItemFilled {
+                showAlert()
+            } else {
+                dismiss(animated: true, completion: nil)
+            }
+        }
+    }
+    
+}
+
 // MARK: - setup
 private extension AdditionalStudyRecordViewController {
     
@@ -238,11 +236,16 @@ private extension AdditionalStudyRecordViewController {
                                            action: #selector(dismissKeyboard))
         tapGR.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tapGR)
-        saveButton.isEnabled = false
-        saveButtonBottomView.backgroundColor = .gray
+        saveButton.isEnabled(false)
+        saveButton.type = .save
+        saveButton.delegate = self
+        saveButton.backgroundColor = .clear
     }
     
     func setupDismissButton() {
+        dismissButton.delegate = self
+        dismissButton.type = .dismiss
+        dismissButton.backgroundColor = .clear
     }
     
     func setupWaveView() {
@@ -251,3 +254,4 @@ private extension AdditionalStudyRecordViewController {
     }
     
 }
+
