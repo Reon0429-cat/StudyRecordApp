@@ -37,6 +37,7 @@
                                             <constraint firstAttribute="width" constant="52" id="Phh-JQ-cIh"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="tintColor" systemColor="systemRedColor"/>
                                         <state key="normal" title="閉じる"/>
                                         <connections>
                                             <action selector="dismissButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="WKL-li-07d"/>
@@ -91,6 +92,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

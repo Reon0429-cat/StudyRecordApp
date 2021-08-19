@@ -7,17 +7,15 @@
 
 import UIKit
 
-// MARK: - ToDo 閉じるの文字を赤くする
-// MARK: - ToDo 保存が見えにくい
-// MARK: - ToDo memoの背景白くする
-
 final class AdditionalStudyRecordViewController: UIViewController {
     
     @IBOutlet private weak var topWaveView: WaveView!
     @IBOutlet private weak var bottomWaveView: WaveView!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var saveButton: UIButton!
+    @IBOutlet private weak var saveButtonBottomView: UIView!
     @IBOutlet private weak var dismissButton: UIButton!
+    @IBOutlet private weak var dismissButtonBottomView: UIView!
     
     private enum CellType: Int, CaseIterable {
         case title
@@ -63,7 +61,7 @@ final class AdditionalStudyRecordViewController: UIViewController {
     
     private func showAlert() {
         let alert = UIAlertController(title: "保存せずに閉じますか", message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "閉じる", style: .default) { _ in
+        alert.addAction(UIAlertAction(title: "閉じる", style: .destructive) { _ in
             self.dismiss(animated: true, completion: nil)
         })
         alert.addAction(UIAlertAction(title: "保存する", style: .default) { _ in
@@ -79,10 +77,10 @@ final class AdditionalStudyRecordViewController: UIViewController {
             textField.text = self.inputtedTitle
             textField.delegate = self
         }
-        alert.addAction(UIAlertAction(title: "閉じる", style: .default) { _ in
+        alert.addAction(UIAlertAction(title: "閉じる", style: .destructive) { _ in
             self.inputtedTitle = self.oldInputtedTitle
         })
-        alert.addAction(UIAlertAction(title: "追加する", style: .default) { _ in
+        alert.addAction(UIAlertAction(title: "追加", style: .default) { _ in
             self.oldInputtedTitle = self.inputtedTitle
             self.tableView.reloadData()
         })
@@ -90,7 +88,13 @@ final class AdditionalStudyRecordViewController: UIViewController {
     }
     
     private func controlSaveButton() {
-        saveButton.isEnabled = isMandatoryItemFilled
+        if isMandatoryItemFilled {
+            saveButton.isEnabled = true
+            saveButtonBottomView.backgroundColor = .black
+        } else {
+            saveButton.isEnabled = false
+            saveButtonBottomView.backgroundColor = .gray
+        }
     }
     
     private func saveRecord() {
@@ -235,6 +239,7 @@ private extension AdditionalStudyRecordViewController {
         tapGR.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tapGR)
         saveButton.isEnabled = false
+        saveButtonBottomView.backgroundColor = .gray
     }
     
     func setupDismissButton() {

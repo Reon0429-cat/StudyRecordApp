@@ -17,6 +17,7 @@ final class StudyRecordMemoViewController: UIViewController {
         didSet { baseView.layer.cornerRadius = 10 }
     }
     @IBOutlet private weak var textView: UITextView!
+    
     weak var delegate: StudyRecordMemoVCDelegate?
     var inputtedMemo = ""
     private var oldInputtedMemo = ""
@@ -32,6 +33,9 @@ final class StudyRecordMemoViewController: UIViewController {
     private func setupTextView() {
         textView.text = inputtedMemo
         textView.delegate = self
+        textView.backgroundColor = .white
+        textView.layer.borderWidth = 1
+        textView.layer.borderColor = UIColor.black.cgColor
         textView.layer.cornerRadius = 10
         textView.becomeFirstResponder()
     }
