@@ -82,7 +82,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RA0-TX-Xc8">
-                                <rect key="frame" x="359" y="49" width="60" height="60"/>
+                                <rect key="frame" x="344" y="49" width="60" height="60"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="RA0-TX-Xc8" secondAttribute="height" id="IDg-mg-aLC"/>
@@ -132,10 +132,10 @@
                             <constraint firstAttribute="bottomMargin" secondItem="ScA-mM-TvK" secondAttribute="bottom" constant="10" id="BQK-66-m5E"/>
                             <constraint firstItem="ScA-mM-TvK" firstAttribute="leading" secondItem="Hd1-Bo-e7y" secondAttribute="trailing" id="Ez2-as-2X5"/>
                             <constraint firstItem="rjj-14-Arj" firstAttribute="centerX" secondItem="FCt-wH-DiL" secondAttribute="centerX" id="GfA-4h-gKK"/>
+                            <constraint firstAttribute="trailing" secondItem="RA0-TX-Xc8" secondAttribute="trailing" constant="10" id="LKx-ny-D6d"/>
                             <constraint firstItem="8Bf-hN-dBB" firstAttribute="centerX" secondItem="FCt-wH-DiL" secondAttribute="centerX" id="MFL-9E-kI9"/>
                             <constraint firstItem="89D-1W-suH" firstAttribute="trailing" secondItem="i73-vd-DE0" secondAttribute="trailing" constant="85" id="MqJ-DS-qwY"/>
                             <constraint firstItem="Hd1-Bo-e7y" firstAttribute="top" secondItem="8Bf-hN-dBB" secondAttribute="bottom" id="MtA-Kv-Bdn"/>
-                            <constraint firstItem="RA0-TX-Xc8" firstAttribute="trailing" secondItem="89D-1W-suH" secondAttribute="trailing" constant="5" id="Nlj-Fc-ld9"/>
                             <constraint firstItem="K0S-IG-iAg" firstAttribute="trailing" secondItem="89D-1W-suH" secondAttribute="trailing" constant="5" id="Tbk-p4-1eh"/>
                             <constraint firstItem="JvU-rz-cMR" firstAttribute="top" secondItem="89D-1W-suH" secondAttribute="top" id="Tbp-LZ-hGw"/>
                             <constraint firstItem="Hd1-Bo-e7y" firstAttribute="leading" secondItem="89D-1W-suH" secondAttribute="leading" id="Usn-wr-YCa"/>
@@ -163,7 +163,7 @@
                         <outlet property="bottomWaveView" destination="rjj-14-Arj" id="sld-Ql-RUX"/>
                         <outlet property="collectionView" destination="Hd1-Bo-e7y" id="U4A-Jj-8WQ"/>
                         <outlet property="editButton" destination="RA0-TX-Xc8" id="NAq-Cy-0QO"/>
-                        <outlet property="editButtonRightConstraint" destination="Nlj-Fc-ld9" id="R4S-Ob-rMd"/>
+                        <outlet property="editButtonRightConstraint" destination="LKx-ny-D6d" id="rFI-bP-XqD"/>
                         <outlet property="middleWaveView" destination="8Bf-hN-dBB" id="H40-si-Q0w"/>
                         <outlet property="sortButton" destination="i73-vd-DE0" id="0wB-r1-8Ku"/>
                         <outlet property="titleLabel" destination="JvU-rz-cMR" id="adk-KU-6WE"/>

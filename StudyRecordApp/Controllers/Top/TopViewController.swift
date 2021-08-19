@@ -25,7 +25,7 @@ final class TopViewController: UIViewController {
     
     private struct LayoutConstant {
         static let titleLabelLeft: CGFloat = 20
-        static let editButtonRight: CGFloat = -50
+        static let editButtonRight: CGFloat = 50
         static let addButtonRight: CGFloat = 50
     }
     private enum EditButtonState {
@@ -358,7 +358,9 @@ private extension TopViewController {
     }
     
     func setupEditButton() {
-        editButton.setMaskedCorners([.layerMinXMinYCorner, .layerMinXMaxYCorner])
+        editButton.layer.cornerRadius = editButton.frame.height / 2
+        editButton.layer.borderWidth = 1
+        editButton.layer.borderColor = UIColor.black.cgColor
     }
     
     func setupSortButton() {

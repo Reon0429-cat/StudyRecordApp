@@ -9,6 +9,7 @@ import UIKit
 
 final class AdditionalStudyRecordViewController: UIViewController {
     
+    @IBOutlet private weak var topWaveView: WaveView!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var saveButton: UIButton!
     @IBOutlet private weak var dismissButton: UIButton!
@@ -38,6 +39,8 @@ final class AdditionalStudyRecordViewController: UIViewController {
         setupTableView()
         setupSaveButton()
         setupDismissButton()
+        
+        topWaveView.create(isFill: true, marginY: 60)
         
     }
     
@@ -216,11 +219,9 @@ private extension AdditionalStudyRecordViewController {
         tapGR.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tapGR)
         saveButton.isEnabled = false
-        saveButton.setMaskedCorners([.layerMinXMaxYCorner, .layerMaxXMaxYCorner])
     }
     
     func setupDismissButton() {
-        dismissButton.setMaskedCorners([.layerMinXMaxYCorner, .layerMaxXMaxYCorner])
     }
     
 }
