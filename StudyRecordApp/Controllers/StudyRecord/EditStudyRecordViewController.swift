@@ -7,10 +7,14 @@
 
 import UIKit
 
+// MARK: - ToDo 履歴がbottomWaveViewの下に被るようになったら、スクロール可能かつbottomWaveViewを消す(履歴が消されたらWaveは見えるようにする)
+// MARK: - ToDo 編集が少しでも行われた場合、編集内容が破棄されますがよろしいですかのアラートを表示する
+
 final class EditStudyRecordViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var topWaveView: WaveView!
+    @IBOutlet private weak var bottomWaveView: WaveView!
     @IBOutlet private weak var saveButton: NavigationButton!
     @IBOutlet private weak var dismissButton: NavigationButton!
     
@@ -41,6 +45,7 @@ final class EditStudyRecordViewController: UIViewController {
     )
     var selectedRow: Int!
     private var selectedRecord: Record!
+    private var oldInputtedTitle: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +54,7 @@ final class EditStudyRecordViewController: UIViewController {
         setupTableView()
         setupSaveButton()
         setupDismissButton()
+        setupWaveViews()
         
     }
     
@@ -74,17 +80,17 @@ extension EditStudyRecordViewController: UITableViewDelegate {
                 let alert = UIAlertController(title: "タイトル",
                                               message: nil,
                                               preferredStyle: .alert)
-                var oldInputtedTitle = selectedRecord.title
+                oldInputtedTitle = selectedRecord.title
                 alert.addTextField { textField in
                     textField.text = self.selectedRecord.title
                     textField.delegate = self
                 }
-                alert.addAction(UIAlertAction(title: "閉じる", style: .default) { _ in
-                    self.selectedRecord.title = oldInputtedTitle
+                alert.addAction(UIAlertAction(title: "閉じる", style: .destructive) { _ in
+                    self.selectedRecord.title = self.oldInputtedTitle
                 })
                 alert.addAction(UIAlertAction(title: "編集する", style: .default) { _ in
-                    oldInputtedTitle = self.selectedRecord.title
-                    self.saveButton.isEnabled(!oldInputtedTitle.isEmpty)
+                    self.oldInputtedTitle = self.selectedRecord.title
+                    self.saveButton.isEnabled(!self.oldInputtedTitle.isEmpty)
                     self.tableView.reloadData()
                 })
                 present(alert, animated: true, completion: nil)
@@ -118,6 +124,18 @@ extension EditStudyRecordViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
         return isHistoryType(row: indexPath.row) ? 50 : 80
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
     }
     
 }
@@ -250,7 +268,11 @@ extension EditStudyRecordViewController: NavigationButtonDelegate {
             dismiss(animated: true, completion: nil)
         }
         if type == .dismiss {
-            dismiss(animated: true, completion: nil)
+//            if selectedRecord == recordUseCase.records[selectedRow] {
+//                dismiss(animated: true, completion: nil)
+//            } else {
+//                //　アラート
+//            }
         }
     }
     
@@ -278,6 +300,11 @@ extension EditStudyRecordViewController {
         dismissButton.delegate = self
         dismissButton.type = .dismiss
         dismissButton.backgroundColor = .clear
+    }
+    
+    func setupWaveViews() {
+        topWaveView.create(isFill: true, marginY: 60)
+        bottomWaveView.create(isFill: false, marginY: 30, isShuffled: true)
     }
     
 }
