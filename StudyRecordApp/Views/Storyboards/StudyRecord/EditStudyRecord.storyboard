@@ -21,6 +21,13 @@
                                 <rect key="frame" x="0.0" y="114" width="414" height="748"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rU8-3L-yix" customClass="WaveView" customModule="StudyRecordApp" customModuleProvider="target">
+                                <rect key="frame" x="-5" y="756" width="424" height="100"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="3RZ-yl-Oa2"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KMx-Wz-brP" customClass="WaveView" customModule="StudyRecordApp" customModuleProvider="target">
                                 <rect key="frame" x="-5" y="0.0" width="424" height="114"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -52,20 +59,12 @@
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rU8-3L-yix" customClass="WaveView" customModule="StudyRecordApp" customModuleProvider="target">
-                                <rect key="frame" x="-5" y="756" width="424" height="100"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="3RZ-yl-Oa2"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="70P-GE-O5D" secondAttribute="trailing" constant="20" id="54L-yv-CtO"/>
                             <constraint firstItem="oWx-kP-IUO" firstAttribute="top" secondItem="KMx-Wz-brP" secondAttribute="bottom" id="DXV-M9-yUj"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="oWx-kP-IUO" secondAttribute="bottom" id="Euh-RK-zLh"/>
                             <constraint firstAttribute="bottom" secondItem="rU8-3L-yix" secondAttribute="bottom" constant="40" id="Ne1-TH-XtJ"/>
                             <constraint firstItem="oWx-kP-IUO" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="P8i-Fk-mv1"/>
                             <constraint firstItem="Cl5-GU-8cS" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="QI2-Cg-Q5W"/>
@@ -75,6 +74,7 @@
                             <constraint firstItem="L4F-Wp-KvU" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="daQ-J3-nVP"/>
                             <constraint firstAttribute="trailing" secondItem="rU8-3L-yix" secondAttribute="trailing" constant="-5" id="eva-Td-pIz"/>
                             <constraint firstItem="L4F-Wp-KvU" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="hMf-oP-Ad7"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="oWx-kP-IUO" secondAttribute="bottom" id="hmD-zP-iI0"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="KMx-Wz-brP" secondAttribute="trailing" constant="-5" id="jHX-YZ-Nst"/>
                             <constraint firstItem="KMx-Wz-brP" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="-5" id="mmI-81-b20"/>
                             <constraint firstItem="rU8-3L-yix" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="-5" id="puH-Gq-nt5"/>

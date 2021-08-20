@@ -7,8 +7,6 @@
 
 import UIKit
 
-// MARK: - ToDo 履歴がbottomWaveViewの下に被るようになったら、スクロール可能かつbottomWaveViewを消す(履歴が消されたらWaveは見えるようにする)
-
 final class EditStudyRecordViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
@@ -31,17 +29,19 @@ final class EditStudyRecordViewController: UIViewController {
         return CellType(rawValue: row) ?? .title
     }
     private func getHistoryCount(row: Int) -> Int {
-        return row - (self.cellTypes.count - 1)
+        return row - (CellType.allCases.count - 1)
     }
     private func isHistoryType(row: Int) -> Bool {
         return getHistoryCount(row: row) >= 0
     }
-    private var cellTypes = CellType.allCases
     private var recordUseCase = RecordUseCase(
         repository: RecordRepository(
             dataStore: RealmRecordDataStore()
         )
     )
+    private var rowCount: Int {
+        (CellType.allCases.count - 1) + (selectedRecord.histories?.count ?? 0)
+    }
     var selectedRow: Int!
     private var selectedRecord: Record!
     private var oldInputtedTitle: String = ""
@@ -144,11 +144,25 @@ extension EditStudyRecordViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        return (cellTypes.count - 1) + (selectedRecord.histories?.count ?? 0)
+        return rowCount
     }
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == rowCount - 1 {
+            let indexPath = IndexPath(row: indexPath.row, section: 0)
+            let tableBottomMaxY = tableView.rectForRow(at: indexPath).maxY
+            let shouldHideWave = bottomWaveView.frame.minY - bottomWaveView.frame.height < tableBottomMaxY
+            if shouldHideWave {
+                tableView.isScrollEnabled = true
+                bottomWaveView.isHidden = true
+            } else {
+                tableView.isScrollEnabled = false
+                bottomWaveView.isHidden = false
+                
+            }
+        }
+        
         let cellType = getCellType(row: indexPath.row)
         switch cellType {
             case .title:
