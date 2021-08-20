@@ -153,14 +153,8 @@ extension EditStudyRecordViewController: UITableViewDataSource {
             let indexPath = IndexPath(row: indexPath.row, section: 0)
             let tableBottomMaxY = tableView.rectForRow(at: indexPath).maxY
             let shouldHideWave = bottomWaveView.frame.minY - bottomWaveView.frame.height < tableBottomMaxY
-            if shouldHideWave {
-                tableView.isScrollEnabled = true
-                bottomWaveView.isHidden = true
-            } else {
-                tableView.isScrollEnabled = false
-                bottomWaveView.isHidden = false
-                
-            }
+            tableView.isScrollEnabled = shouldHideWave
+            bottomWaveView.isHidden = shouldHideWave
         }
         
         let cellType = getCellType(row: indexPath.row)
