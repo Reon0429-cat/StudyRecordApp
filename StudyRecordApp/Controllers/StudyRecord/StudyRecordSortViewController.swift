@@ -10,6 +10,8 @@ import UIKit
 final class StudyRecordSortViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var topWaveView: WaveView!
+    @IBOutlet private weak var bottomWaveView: WaveView!
     @IBOutlet private weak var dismissButton: NavigationButton!
     
     private let recordUseCase = RecordUseCase(
@@ -25,6 +27,7 @@ final class StudyRecordSortViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
+        setupWaveViews()
         setupDismissButton()
         
     }
@@ -59,6 +62,7 @@ extension StudyRecordSortViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCustomCell(with: StudyRecordSortTableViewCell.self)
         let record = records[indexPath.row]
         cell.configure(title: record.title)
@@ -70,6 +74,18 @@ extension StudyRecordSortViewController: UITableViewDataSource {
                    to destinationIndexPath: IndexPath) {
         recordUseCase.sort(from: sourceIndexPath,
                            to: destinationIndexPath)
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
     }
     
 }
@@ -126,6 +142,11 @@ private extension StudyRecordSortViewController {
         tableView.dragInteractionEnabled = true
         tableView.registerCustomCell(StudyRecordSortTableViewCell.self)
         tableView.tableFooterView = UIView()
+    }
+    
+    func setupWaveViews() {
+        topWaveView.create(isFill: true, marginY: 60)
+        bottomWaveView.create(isFill: false, marginY: 30, isShuffled: true)
     }
     
     func setupDismissButton() {
