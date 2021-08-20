@@ -8,7 +8,6 @@
 import UIKit
 
 // MARK: - ToDo 履歴がbottomWaveViewの下に被るようになったら、スクロール可能かつbottomWaveViewを消す(履歴が消されたらWaveは見えるようにする)
-// MARK: - ToDo 編集が少しでも行われた場合、編集内容が破棄されますがよろしいですかのアラートを表示する
 
 final class EditStudyRecordViewController: UIViewController {
     
@@ -268,11 +267,16 @@ extension EditStudyRecordViewController: NavigationButtonDelegate {
             dismiss(animated: true, completion: nil)
         }
         if type == .dismiss {
-//            if selectedRecord == recordUseCase.records[selectedRow] {
-//                dismiss(animated: true, completion: nil)
-//            } else {
-//                //　アラート
-//            }
+            if selectedRecord == recordUseCase.records[selectedRow] {
+                dismiss(animated: true, completion: nil)
+            } else {
+                let alert = UIAlertController(title: "編集内容を破棄しますか", message: nil, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "破棄する", style: .destructive) { _ in
+                    self.dismiss(animated: true, completion: nil)
+                })
+                alert.addAction(UIAlertAction(title: "閉じる", style: .default, handler: nil))
+                present(alert, animated: true, completion: nil)
+            }
         }
     }
     

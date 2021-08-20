@@ -8,7 +8,7 @@
 import RealmSwift
 
 // 共通の型
-struct Record {
+struct Record: Equatable {
     var title: String
     var histories: [History]?
     var isExpanded: Bool
@@ -17,7 +17,7 @@ struct Record {
     var order: Int
 }
 
-struct History {
+struct History: Equatable {
     var year: Int
     var month: Int
     var day: Int
@@ -25,7 +25,7 @@ struct History {
     var minutes: Int
 }
 
-struct GraphColor {
+struct GraphColor: Equatable {
     var redValue: CGFloat
     var greenValue: CGFloat
     var blueValue: CGFloat
