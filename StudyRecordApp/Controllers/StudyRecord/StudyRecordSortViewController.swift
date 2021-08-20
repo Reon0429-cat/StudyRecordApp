@@ -62,6 +62,13 @@ extension StudyRecordSortViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == records.count - 1 {
+            let indexPath = IndexPath(row: indexPath.row, section: 0)
+            let tableBottomMaxY = tableView.rectForRow(at: indexPath).maxY
+            let shouldHideWave = bottomWaveView.frame.minY - bottomWaveView.frame.height < tableBottomMaxY
+            tableView.isScrollEnabled = shouldHideWave
+            bottomWaveView.isHidden = shouldHideWave
+        }
         
         let cell = tableView.dequeueReusableCustomCell(with: StudyRecordSortTableViewCell.self)
         let record = records[indexPath.row]
