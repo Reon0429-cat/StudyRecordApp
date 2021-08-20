@@ -86,9 +86,8 @@ final class TopViewController: UIViewController {
     
     @IBAction private func sortButtonDidTapped(_ sender: Any) {
         let studyRecordSortVC = StudyRecordSortViewController.instantiate()
-        let navigationController = UINavigationController(rootViewController: studyRecordSortVC)
-        navigationController.modalPresentationStyle = .fullScreen
-        present(navigationController, animated: true, completion: nil)
+        studyRecordSortVC.modalPresentationStyle = .fullScreen
+        present(studyRecordSortVC, animated: true, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

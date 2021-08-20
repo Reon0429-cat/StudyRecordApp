@@ -10,6 +10,8 @@ import UIKit
 final class StudyRecordSortViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var dismissButton: NavigationButton!
+    
     private let recordUseCase = RecordUseCase(
         repository: RecordRepository(
             dataStore: RealmRecordDataStore()
@@ -23,21 +25,8 @@ final class StudyRecordSortViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
+        setupDismissButton()
         
-    }
-    
-    private func setupTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.dragDelegate = self
-        tableView.dropDelegate = self
-        tableView.dragInteractionEnabled = true
-        tableView.registerCustomCell(StudyRecordSortTableViewCell.self)
-        tableView.tableFooterView = UIView()
-    }
-    
-    @IBAction private func dismissButtonDidTapped(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
     }
     
     static func instantiate() -> StudyRecordSortViewController {
@@ -50,6 +39,7 @@ final class StudyRecordSortViewController: UIViewController {
     
 }
 
+// MARK: - UITableViewDelegate
 extension StudyRecordSortViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
@@ -59,6 +49,7 @@ extension StudyRecordSortViewController: UITableViewDelegate {
     
 }
 
+// MARK: - UITableViewDataSource
 extension StudyRecordSortViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
@@ -83,6 +74,7 @@ extension StudyRecordSortViewController: UITableViewDataSource {
     
 }
 
+// MARK: - UITableViewDragDelegate
 extension StudyRecordSortViewController: UITableViewDragDelegate {
     
     func tableView(_ tableView: UITableView,
@@ -95,6 +87,7 @@ extension StudyRecordSortViewController: UITableViewDragDelegate {
     
 }
 
+// MARK: - UITableViewDropDelegate
 extension StudyRecordSortViewController: UITableViewDropDelegate {
     
     func tableView(_ tableView: UITableView,
@@ -107,6 +100,38 @@ extension StudyRecordSortViewController: UITableViewDropDelegate {
     func tableView(_ tableView: UITableView,
                    performDropWith coordinator: UITableViewDropCoordinator) {
         return
+    }
+    
+}
+
+// MARK: - NavigationButtonDelegate
+extension StudyRecordSortViewController: NavigationButtonDelegate {
+    
+    func titleButtonDidTapped(type: NavigationButtonType) {
+        if type == .dismiss {
+            dismiss(animated: true, completion: nil)
+        }
+    }
+    
+}
+
+// MARK: - setup
+private extension StudyRecordSortViewController {
+    
+    func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.dragDelegate = self
+        tableView.dropDelegate = self
+        tableView.dragInteractionEnabled = true
+        tableView.registerCustomCell(StudyRecordSortTableViewCell.self)
+        tableView.tableFooterView = UIView()
+    }
+    
+    func setupDismissButton() {
+        dismissButton.type = .dismiss
+        dismissButton.delegate = self
+        dismissButton.backgroundColor = .clear
     }
     
 }
