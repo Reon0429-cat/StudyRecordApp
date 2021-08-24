@@ -80,6 +80,14 @@
 		AB2B5BC926A2D36F009BD3C7 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5BC326A2D36F009BD3C7 /* SettingViewController.swift */; };
 		AB2B5BCA26A2D36F009BD3C7 /* ThemeColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5BC426A2D36F009BD3C7 /* ThemeColorViewController.swift */; };
 		AB4D6BBE2672099C00E5286E /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4D6BBD2672099C00E5286E /* UIButton+Extension.swift */; };
+		AB86A85A26D4915700EA990A /* HalfModalDismissInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86A85426D4915700EA990A /* HalfModalDismissInteractiveTransition.swift */; };
+		AB86A85B26D4915700EA990A /* HalfModalDismissAnimatedTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86A85526D4915700EA990A /* HalfModalDismissAnimatedTransition.swift */; };
+		AB86A85C26D4915700EA990A /* HalfModalIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86A85626D4915700EA990A /* HalfModalIndicatorView.swift */; };
+		AB86A85D26D4915700EA990A /* HalfModalOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86A85726D4915700EA990A /* HalfModalOverlayView.swift */; };
+		AB86A85E26D4915700EA990A /* HalfModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86A85826D4915700EA990A /* HalfModalPresentationController.swift */; };
+		AB86A85F26D4915700EA990A /* HalfModalPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86A85926D4915700EA990A /* HalfModalPresenter.swift */; };
+		AB86A86226D4918A00EA990A /* HalfModal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB86A86126D4918A00EA990A /* HalfModal.storyboard */; };
+		AB86A86426D4919600EA990A /* HalfModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86A86326D4919600EA990A /* HalfModalViewController.swift */; };
 		AB93C23B266A234800C3AE8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C23A266A234800C3AE8F /* AppDelegate.swift */; };
 		AB93C23D266A234800C3AE8F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C23C266A234800C3AE8F /* SceneDelegate.swift */; };
 		AB93C244266A234C00C3AE8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB93C243266A234C00C3AE8F /* Assets.xcassets */; };
@@ -174,6 +182,14 @@
 		AB2B5BC326A2D36F009BD3C7 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		AB2B5BC426A2D36F009BD3C7 /* ThemeColorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeColorViewController.swift; sourceTree = "<group>"; };
 		AB4D6BBD2672099C00E5286E /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		AB86A85426D4915700EA990A /* HalfModalDismissInteractiveTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalDismissInteractiveTransition.swift; sourceTree = "<group>"; };
+		AB86A85526D4915700EA990A /* HalfModalDismissAnimatedTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalDismissAnimatedTransition.swift; sourceTree = "<group>"; };
+		AB86A85626D4915700EA990A /* HalfModalIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalIndicatorView.swift; sourceTree = "<group>"; };
+		AB86A85726D4915700EA990A /* HalfModalOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalOverlayView.swift; sourceTree = "<group>"; };
+		AB86A85826D4915700EA990A /* HalfModalPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalPresentationController.swift; sourceTree = "<group>"; };
+		AB86A85926D4915700EA990A /* HalfModalPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalPresenter.swift; sourceTree = "<group>"; };
+		AB86A86126D4918A00EA990A /* HalfModal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HalfModal.storyboard; sourceTree = "<group>"; };
+		AB86A86326D4919600EA990A /* HalfModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfModalViewController.swift; sourceTree = "<group>"; };
 		AB93C237266A234800C3AE8F /* StudyRecordApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyRecordApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB93C23A266A234800C3AE8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB93C23C266A234800C3AE8F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -378,6 +394,7 @@
 		AB13EE6B26CB698D002F56FF /* All */ = {
 			isa = PBXGroup;
 			children = (
+				AB86A86026D4917800EA990A /* HalfModal */,
 			);
 			path = All;
 			sourceTree = "<group>";
@@ -460,6 +477,36 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
+		AB86A85226D4912500EA990A /* All */ = {
+			isa = PBXGroup;
+			children = (
+				AB86A85326D4912C00EA990A /* HalfModal */,
+			);
+			path = All;
+			sourceTree = "<group>";
+		};
+		AB86A85326D4912C00EA990A /* HalfModal */ = {
+			isa = PBXGroup;
+			children = (
+				AB86A86326D4919600EA990A /* HalfModalViewController.swift */,
+				AB86A85926D4915700EA990A /* HalfModalPresenter.swift */,
+				AB86A85826D4915700EA990A /* HalfModalPresentationController.swift */,
+				AB86A85526D4915700EA990A /* HalfModalDismissAnimatedTransition.swift */,
+				AB86A85426D4915700EA990A /* HalfModalDismissInteractiveTransition.swift */,
+				AB86A85626D4915700EA990A /* HalfModalIndicatorView.swift */,
+				AB86A85726D4915700EA990A /* HalfModalOverlayView.swift */,
+			);
+			path = HalfModal;
+			sourceTree = "<group>";
+		};
+		AB86A86026D4917800EA990A /* HalfModal */ = {
+			isa = PBXGroup;
+			children = (
+				AB86A86126D4918A00EA990A /* HalfModal.storyboard */,
+			);
+			path = HalfModal;
+			sourceTree = "<group>";
+		};
 		AB93C22E266A234800C3AE8F = {
 			isa = PBXGroup;
 			children = (
@@ -518,6 +565,7 @@
 		AB93C25C266A5A2C00C3AE8F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				AB86A85226D4912500EA990A /* All */,
 				AB13EDEC26C7C561002F56FF /* Top */,
 				AB93C2C6266BC4B000C3AE8F /* StudyRecord */,
 				AB13EDED26C8BA0F002F56FF /* Goal */,
@@ -675,6 +723,7 @@
 				AB2B5BAB26A2D244009BD3C7 /* ColorConcept.storyboard in Resources */,
 				AB93C244266A234C00C3AE8F /* Assets.xcassets in Resources */,
 				AB13ED7E26BE7061002F56FF /* StudyRecordHistoryTableViewCell.xib in Resources */,
+				AB86A86226D4918A00EA990A /* HalfModal.storyboard in Resources */,
 				AB2B5BB826A2D2C2009BD3C7 /* AccordionColorTableViewCell.xib in Resources */,
 				ABA0570326B50F7100E3DF01 /* StudyRecordGraphColor.storyboard in Resources */,
 				AB16307C26CE123A00111F55 /* RecordTableViewCell.xib in Resources */,
@@ -750,6 +799,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB86A85D26D4915700EA990A /* HalfModalOverlayView.swift in Sources */,
 				AB2B5B9F26A2D1B7009BD3C7 /* OverseasConcept.swift in Sources */,
 				AB13EE6626CAC98A002F56FF /* ScreenType.swift in Sources */,
 				AB13EDE026C64EBB002F56FF /* StudyRecordCustomTableViewCell.swift in Sources */,
@@ -759,14 +809,17 @@
 				AB13EDAF26BFAA62002F56FF /* StudyRecordSortViewController.swift in Sources */,
 				AB2B5BCA26A2D36F009BD3C7 /* ThemeColorViewController.swift in Sources */,
 				AB2B5B8C26A2D106009BD3C7 /* UITableViewHeaderFooterView+Extension.swift in Sources */,
+				AB86A86426D4919600EA990A /* HalfModalViewController.swift in Sources */,
 				ABA0570526B50F8100E3DF01 /* StudyRecordGraphColorViewController.swift in Sources */,
 				AB2B5B8426A2D0FD009BD3C7 /* NotificationName+Extension.swift in Sources */,
 				AB93C2BD266BABA900C3AE8F /* Record.swift in Sources */,
+				AB86A85A26D4915700EA990A /* HalfModalDismissInteractiveTransition.swift in Sources */,
 				AB2B5BA026A2D1B7009BD3C7 /* ServiceConcept.swift in Sources */,
 				AB13EDEB26C7C556002F56FF /* TopViewController.swift in Sources */,
 				AB13ED4D26BB9241002F56FF /* RecordUseCase.swift in Sources */,
 				AB16305126CD6B1400111F55 /* WaveView.swift in Sources */,
 				AB2B5B8726A2D0FD009BD3C7 /* UICollectionView+Extension.swift in Sources */,
+				AB86A85F26D4915700EA990A /* HalfModalPresenter.swift in Sources */,
 				AB4D6BBE2672099C00E5286E /* UIButton+Extension.swift in Sources */,
 				AB16307B26CE123A00111F55 /* RecordTableViewCell.swift in Sources */,
 				AB2B5BA426A2D1B7009BD3C7 /* PopConcept.swift in Sources */,
@@ -777,6 +830,7 @@
 				AB2B5B8326A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift in Sources */,
 				AB93C268266A7DFF00C3AE8F /* AdditionalStudyRecordViewController.swift in Sources */,
 				AB2B5B9E26A2D1B7009BD3C7 /* NaturalConcept.swift in Sources */,
+				AB86A85C26D4915700EA990A /* HalfModalIndicatorView.swift in Sources */,
 				ABA0570126B50D1900E3DF01 /* GraphColorTileView.swift in Sources */,
 				AB13EDFE26C8C59B002F56FF /* CountDownViewController.swift in Sources */,
 				AB13EDE426C78DB4002F56FF /* ScreenTransitionCollectionViewCell.swift in Sources */,
@@ -788,12 +842,14 @@
 				AB2B5B8E26A2D106009BD3C7 /* UITableViewCell+Extension.swift in Sources */,
 				AB13ED4926BB8128002F56FF /* RealmRecordDataStore.swift in Sources */,
 				AB13EE6A26CB6965002F56FF /* RippleView.swift in Sources */,
+				AB86A85E26D4915700EA990A /* HalfModalPresentationController.swift in Sources */,
 				AB2B5B8626A2D0FD009BD3C7 /* NSObjectProtocol+Extension.swift in Sources */,
 				AB2B5BC626A2D36F009BD3C7 /* ColorChoicesSliderViewController.swift in Sources */,
 				AB13ED7D26BE7061002F56FF /* StudyRecordHistoryTableViewCell.swift in Sources */,
 				AB93C23B266A234800C3AE8F /* AppDelegate.swift in Sources */,
 				AB2B5BC926A2D36F009BD3C7 /* SettingViewController.swift in Sources */,
 				AB2B5BB926A2D2C2009BD3C7 /* AccordionColorTableViewCell.swift in Sources */,
+				AB86A85B26D4915700EA990A /* HalfModalDismissAnimatedTransition.swift in Sources */,
 				AB13EDB426BFAB8B002F56FF /* StudyRecordSortTableViewCell.swift in Sources */,
 				AB13ED1826B8F5EA002F56FF /* StudyRecordMemoViewController.swift in Sources */,
 				AB93C2C3266BC28E00C3AE8F /* EditStudyRecordViewController.swift in Sources */,

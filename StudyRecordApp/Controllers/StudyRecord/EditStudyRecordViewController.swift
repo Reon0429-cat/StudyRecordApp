@@ -45,7 +45,8 @@ final class EditStudyRecordViewController: UIViewController {
     var selectedRow: Int!
     private var selectedRecord: Record!
     private var oldInputtedTitle: String = ""
-    
+    private var halfModalPresenter = HalfModalPresenter()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -103,10 +104,11 @@ extension EditStudyRecordViewController: UITableViewDelegate {
                 studyRecordMemoVC.delegate = self
                 present(studyRecordMemoVC, animated: true, completion: nil)
             case .timeRecord:
-                let studyRecordTimeRecordVC = StudyRecordTimeRecordViewController.instantiate()
-                studyRecordTimeRecordVC.delegate = self
-                studyRecordTimeRecordVC.isHistory = false
-                present(studyRecordTimeRecordVC, animated: true, completion: nil)
+//                studyRecordTimeRecordVC.delegate = self
+//                studyRecordTimeRecordVC.isHistory = false
+                let halfModalVC = HalfModalViewController.instantiate() 
+                halfModalPresenter.viewController = halfModalVC
+                present(halfModalVC, animated: true, completion: nil)
             case .history:
                 let studyRecordTimeRecordVC = StudyRecordTimeRecordViewController.instantiate()
                 let index = getHistoryCount(row: indexPath.row)

@@ -7,23 +7,25 @@
 
 import UIKit
 
-class HalfModalViewController: UIViewController {
+final class HalfModalViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    @IBOutlet private weak var contentView: UIView!
+    
+    static func instantiate() -> HalfModalViewController {
+        let storyboard = UIStoryboard(name: "HalfModal", bundle: nil)
+        let modalVC = storyboard.instantiateViewController(
+            identifier: String(describing: self)
+        ) as! HalfModalViewController
+        return modalVC
+    }
 
-        // Do any additional setup after loading the view.
+}
+
+// MARK: - HalfModalPresenterDelegate
+extension HalfModalViewController: HalfModalPresenterDelegate {
+    
+    var halfModalContentHeight: CGFloat {
+        return contentView.frame.height
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
