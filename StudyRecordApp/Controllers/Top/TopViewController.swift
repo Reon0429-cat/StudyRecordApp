@@ -45,6 +45,7 @@ final class TopViewController: UIViewController {
     private var currentPageIndex = 0
     
     override func loadView() {
+        super.loadView()
         
         setupAnimation()
         

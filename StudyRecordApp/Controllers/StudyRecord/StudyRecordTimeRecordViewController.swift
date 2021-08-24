@@ -19,11 +19,44 @@ final class StudyRecordTimeRecordViewController: UIViewController {
     @IBOutlet private weak var deleteButton: UIButton!
     @IBOutlet private weak var contentView: UIView!
     
-    private let years = [Int](2020...2030)
-    private let months = [Int](1...12)
-    private let days = [Int](1...31)
-    private let hours = [Int](0...23)
-    private let minutes = [Int](0...59)
+    private enum DateType: Int, CaseIterable {
+        case year
+        case month
+        case day
+        case hour
+        case minutes
+        
+        var component: Int {
+            self.rawValue
+        }
+        var numbers: [Int] {
+            switch self {
+                case .year: return [Int](2020...2030)
+                case .month: return [Int](1...12)
+                case .day: return [Int](1...31)
+                case .hour: return [Int](0...23)
+                case .minutes: return [Int](0...59)
+            }
+        }
+        func title(row: Int) -> String {
+            switch self {
+                case .year: return "\(self.numbers[row])年"
+                case .month: return "\(self.numbers[row])月"
+                case .day: return "\(self.numbers[row])日"
+                case .hour: return "\(self.numbers[row])時間"
+                case .minutes: return "\(self.numbers[row])分"
+            }
+        }
+        var alignment: NSTextAlignment {
+            switch self {
+                case .year: return .right
+                case .month: return .center
+                case .day: return .left
+                case .hour: return .center
+                case .minutes: return .left
+            }
+        }
+    }
     var history: History?
     var isHistoryDidTapped: Bool!
     var tappedHistoryIndex: Int?
@@ -37,16 +70,16 @@ final class StudyRecordTimeRecordViewController: UIViewController {
         
     }
     
-    @IBAction private func dismissButtonDidTapped(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    
     @IBAction private func saveButtonDidTapped(_ sender: Any) {
         if isHistoryDidTapped {
             delegate?.editButtonDidTapped(index: tappedHistoryIndex!, history: history!)
         } else {
             delegate?.saveButtonDidTapped(history: history!)
         }
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction private func dismissButtonDidTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
@@ -71,20 +104,20 @@ private extension StudyRecordTimeRecordViewController {
         pickerView.delegate = self
         pickerView.dataSource = self
         if isHistoryDidTapped {
-            pickerView.selectRow(history!.year - years.first!, inComponent: 0, animated: true)
-            pickerView.selectRow(history!.month - months.first!, inComponent: 1, animated: true)
-            pickerView.selectRow(history!.day - days.first!, inComponent: 2, animated: true)
-            pickerView.selectRow(history!.hour, inComponent: 3, animated: true)
-            pickerView.selectRow(history!.minutes, inComponent: 4, animated: true)
+            pickerView.selectRow(history!.year - DateType.year.numbers.first!, inComponent: DateType.year.component, animated: true)
+            pickerView.selectRow(history!.month - DateType.month.numbers.first!, inComponent: DateType.month.component, animated: true)
+            pickerView.selectRow(history!.day - DateType.day.numbers.first!, inComponent: DateType.day.component, animated: true)
+            pickerView.selectRow(history!.hour, inComponent: DateType.hour.component, animated: true)
+            pickerView.selectRow(history!.minutes, inComponent: DateType.minutes.component, animated: true)
         } else {
             let year = Int(Convert().stringFrom(Date(), format: "yyyy"))!
             let month = Int(Convert().stringFrom(Date(), format: "M"))!
             let day = Int(Convert().stringFrom(Date(), format: "d"))!
-            pickerView.selectRow(year - years.first!, inComponent: 0, animated: true)
-            pickerView.selectRow(month - months.first!, inComponent: 1, animated: true)
-            pickerView.selectRow(day - days.first!, inComponent: 2, animated: true)
-            pickerView.selectRow(0, inComponent: 3, animated: true)
-            pickerView.selectRow(0, inComponent: 4, animated: true)
+            pickerView.selectRow(year - DateType.year.numbers.first!, inComponent: DateType.year.component, animated: true)
+            pickerView.selectRow(month - DateType.month.numbers.first!, inComponent: DateType.month.component, animated: true)
+            pickerView.selectRow(day - DateType.day.numbers.first!, inComponent: DateType.day.component, animated: true)
+            pickerView.selectRow(0, inComponent: DateType.hour.component, animated: true)
+            pickerView.selectRow(0, inComponent: DateType.minutes.component, animated: true)
             history = History(year: year, month: month, day: day, hour: 0, minutes: 0)
         }
     }
@@ -97,13 +130,13 @@ extension StudyRecordTimeRecordViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView,
                     didSelectRow row: Int,
                     inComponent component: Int) {
-        switch component {
-            case 0: history?.year = row + years.first!
-            case 1: history?.month = row + months.first!
-            case 2: history?.day = row + days.first!
-            case 3: history?.hour = row
-            case 4: history?.minutes = row
-            default: fatalError("予期しないcomponentがあります。")
+        let dateType = DateType.allCases[component]
+        switch dateType {
+            case .year: history?.year = row + DateType.year.numbers.first!
+            case .month: history?.month = row + DateType.month.numbers.first!
+            case .day: history?.day = row + DateType.day.numbers.first!
+            case .hour: history?.hour = row
+            case .minutes: history?.minutes = row
         }
     }
     
@@ -113,19 +146,13 @@ extension StudyRecordTimeRecordViewController: UIPickerViewDelegate {
 extension StudyRecordTimeRecordViewController: UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 5
+        return DateType.allCases.count
     }
     
     func pickerView(_ pickerView: UIPickerView,
                     numberOfRowsInComponent component: Int) -> Int {
-        switch component {
-            case 0: return years.count
-            case 1: return months.count
-            case 2: return days.count
-            case 3: return hours.count
-            case 4: return minutes.count
-            default: fatalError("予期しないcomponentがあります。")
-        }
+        let dateType = DateType.allCases[component]
+        return dateType.numbers.count
     }
     
     func pickerView(_ pickerView: UIPickerView,
@@ -143,24 +170,9 @@ extension StudyRecordTimeRecordViewController: UIPickerViewDataSource {
             label.leftAnchor.constraint(equalTo: view.leftAnchor),
             label.rightAnchor.constraint(equalTo: view.rightAnchor)
         ])
-        switch component {
-            case 0:
-                label.text = "\(years[row])年"
-                label.textAlignment = .right
-            case 1:
-                label.text = "\(months[row])月"
-                label.textAlignment = .center
-            case 2:
-                label.text = "\(days[row])日"
-                label.textAlignment = .left
-            case 3:
-                label.text = "\(hours[row])時間"
-                label.textAlignment = .center
-            case 4:
-                label.text = "\(minutes[row])分"
-                label.textAlignment = .left
-            default: fatalError("予期しないcomponentがあります。")
-        }
+        let dateType = DateType.allCases[component]
+        label.text = dateType.title(row: row)
+        label.textAlignment = dateType.alignment
         return view
     }
     
