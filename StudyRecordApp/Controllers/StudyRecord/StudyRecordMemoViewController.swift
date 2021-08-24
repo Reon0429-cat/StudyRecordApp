@@ -73,6 +73,7 @@ final class StudyRecordMemoViewController: UIViewController {
     
 }
 
+// MARK: - UITextViewDelegate
 extension StudyRecordMemoViewController: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {

@@ -99,6 +99,7 @@ private extension StudyRecordTimeRecordViewController {
     
 }
 
+// MARK: - UIPickerViewDelegate
 extension StudyRecordTimeRecordViewController: UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView,
@@ -116,6 +117,7 @@ extension StudyRecordTimeRecordViewController: UIPickerViewDelegate {
     
 }
 
+// MARK: - UIPickerViewDataSource
 extension StudyRecordTimeRecordViewController: UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

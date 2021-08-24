@@ -43,7 +43,7 @@
                                         <rect key="frame" x="0.0" y="63" width="414" height="216"/>
                                     </pickerView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fNv-fO-UuD">
-                                        <rect key="frame" x="189.5" y="279" width="35" height="33"/>
+                                        <rect key="frame" x="189.5" y="274" width="35" height="33"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="tintColor" systemColor="systemRedColor"/>
@@ -60,9 +60,9 @@
                                     <constraint firstItem="Kry-Cg-N7k" firstAttribute="leading" secondItem="9Ev-7T-R4L" secondAttribute="leading" constant="30" id="GVB-Y5-lzZ"/>
                                     <constraint firstItem="zGK-Tm-SLx" firstAttribute="top" secondItem="Kry-Cg-N7k" secondAttribute="bottom" constant="20" id="KcR-ja-v16"/>
                                     <constraint firstItem="Kry-Cg-N7k" firstAttribute="top" secondItem="9Ev-7T-R4L" secondAttribute="top" constant="10" id="KvY-1a-vi7"/>
-                                    <constraint firstItem="fNv-fO-UuD" firstAttribute="top" secondItem="zGK-Tm-SLx" secondAttribute="bottom" id="aTV-zb-HUT"/>
+                                    <constraint firstItem="fNv-fO-UuD" firstAttribute="top" secondItem="zGK-Tm-SLx" secondAttribute="bottom" constant="-5" id="aTV-zb-HUT"/>
                                     <constraint firstItem="fNv-fO-UuD" firstAttribute="centerX" secondItem="9Ev-7T-R4L" secondAttribute="centerX" id="jhH-Vn-gXe"/>
-                                    <constraint firstAttribute="bottom" secondItem="fNv-fO-UuD" secondAttribute="bottom" constant="20" id="kWp-tb-XbD"/>
+                                    <constraint firstAttribute="bottom" secondItem="fNv-fO-UuD" secondAttribute="bottom" constant="25" id="kWp-tb-XbD"/>
                                     <constraint firstItem="3s8-7Q-oJE" firstAttribute="top" secondItem="9Ev-7T-R4L" secondAttribute="top" constant="10" id="leU-ki-NKM"/>
                                     <constraint firstAttribute="trailing" secondItem="zGK-Tm-SLx" secondAttribute="trailing" id="reT-Y0-KLN"/>
                                 </constraints>

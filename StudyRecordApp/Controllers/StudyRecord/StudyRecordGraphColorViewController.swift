@@ -50,6 +50,7 @@ final class StudyRecordGraphColorViewController: UIViewController {
     
 }
 
+// MARK: - GraphColorTileViewDelegate
 extension StudyRecordGraphColorViewController: GraphColorTileViewDelegate {
     
     func findSameColor(selectedView: UIView) {
