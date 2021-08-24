@@ -19,8 +19,7 @@ final class RippleView: UIView {
     
     private func drawRipple(touch: UITouch) {
         let width: CGFloat = 200
-        let rippleView = UIView(frame: CGRect(x: 0, y: 0,
-                                            width: width , height: width))
+        let rippleView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: width))
         rippleView.layer.cornerRadius = width / 2
         rippleView.center = touch.location(in: self)
         rippleView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
@@ -33,7 +32,7 @@ final class RippleView: UIView {
                        animations: {
                         rippleView.transform = CGAffineTransform(scaleX: 1, y: 1)
                         rippleView.backgroundColor = .clear
-                       }, completion: { finished in
+                       }, completion: { _ in
                         rippleView.removeFromSuperview()
                        })
     }

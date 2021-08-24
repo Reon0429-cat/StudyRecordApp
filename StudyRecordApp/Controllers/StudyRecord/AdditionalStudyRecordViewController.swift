@@ -86,7 +86,8 @@ final class AdditionalStudyRecordViewController: UIViewController {
         recordUseCase.save(record: record)
     }
     
-    @objc private func dismissKeyboard() {
+    @objc
+    private func dismissKeyboard() {
         self.view.endEditing(true)
     }
     

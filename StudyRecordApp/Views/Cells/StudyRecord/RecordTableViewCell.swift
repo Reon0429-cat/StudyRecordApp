@@ -106,11 +106,13 @@ private extension RecordTableViewCell {
         baseView.layer.borderWidth = 1
     }
     
-    @objc func baseViewTapDidRecognized() {
+    @objc
+    func baseViewTapDidRecognized() {
         delegate?.baseViewTapDidRecognized(row: self.tag)
     }
     
-    @objc func baseViewLongPressDidRecognized() {
+    @objc
+    func baseViewLongPressDidRecognized() {
         delegate?.baseViewLongPressDidRecognized()
     }
     

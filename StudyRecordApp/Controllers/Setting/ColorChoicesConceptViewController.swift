@@ -28,7 +28,7 @@ final class ColorChoicesConceptViewController: UIViewController {
         var isExpanded: Bool
     }
     private var sections = [Section]()
-    private var lastTappedSection: Int? = nil
+    private var lastTappedSection: Int?
     weak var delegate: ColorChoicesConceptVCDelegate?
     
     override func viewDidLoad() {

@@ -69,23 +69,7 @@ extension EditStudyRecordViewController: UITableViewDelegate {
         let cellType = getCellType(row: indexPath.row)
         switch cellType {
             case .title:
-                let alert = UIAlertController(title: "タイトル",
-                                              message: nil,
-                                              preferredStyle: .alert)
-                oldInputtedTitle = selectedRecord.title
-                alert.addTextField { textField in
-                    textField.text = self.selectedRecord.title
-                    textField.delegate = self
-                }
-                alert.addAction(UIAlertAction(title: "閉じる", style: .destructive) { _ in
-                    self.selectedRecord.title = self.oldInputtedTitle
-                })
-                alert.addAction(UIAlertAction(title: "編集する", style: .default) { _ in
-                    self.oldInputtedTitle = self.selectedRecord.title
-                    self.saveButton.isEnabled(!self.oldInputtedTitle.isEmpty)
-                    self.tableView.reloadData()
-                })
-                present(alert, animated: true, completion: nil)
+                showAlertWithTextField()
             case .graphColor:
                 let studyRecordGraphColorVC = StudyRecordGraphColorViewController.instantiate()
                 studyRecordGraphColorVC.modalPresentationStyle = .overCurrentContext
@@ -117,6 +101,26 @@ extension EditStudyRecordViewController: UITableViewDelegate {
                 studyRecordTimeRecordVC.delegate = self
                 present(studyRecordTimeRecordVC, animated: true, completion: nil)
         }
+    }
+    
+    private func showAlertWithTextField() {
+        let alert = UIAlertController(title: "タイトル",
+                                      message: nil,
+                                      preferredStyle: .alert)
+        oldInputtedTitle = selectedRecord.title
+        alert.addTextField { textField in
+            textField.text = self.selectedRecord.title
+            textField.delegate = self
+        }
+        alert.addAction(UIAlertAction(title: "閉じる", style: .destructive) { _ in
+            self.selectedRecord.title = self.oldInputtedTitle
+        })
+        alert.addAction(UIAlertAction(title: "編集する", style: .default) { _ in
+            self.oldInputtedTitle = self.selectedRecord.title
+            self.saveButton.isEnabled(!self.oldInputtedTitle.isEmpty)
+            self.tableView.reloadData()
+        })
+        present(alert, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView,

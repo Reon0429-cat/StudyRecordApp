@@ -36,7 +36,7 @@ final class TopViewController: UIViewController {
     private var screenType: ScreenType = .record
     private func getScreenType(item: Int) -> ScreenType {
         guard let screenType = ScreenType(rawValue: item) else {
-            fatalError()
+            fatalError("予期しないitemです。")
         }
         return screenType
     }
@@ -45,7 +45,6 @@ final class TopViewController: UIViewController {
     private var currentPageIndex = 0
     
     override func loadView() {
-        super.loadView()
         
         setupAnimation()
         
@@ -251,7 +250,7 @@ extension TopViewController: StudyRecordVCDelegate {
     }
     
     func viewWillAppear(records: [Record], index: Int) {
-        if records.count == 0 {
+        if records.isEmpty {
             editButton.isEnabled = false
         } else {
             editButton.isEnabled = true
@@ -260,7 +259,7 @@ extension TopViewController: StudyRecordVCDelegate {
     }
     
     func deleteButtonDidTappped(records: [Record]) {
-        if records.count == 0 {
+        if records.isEmpty {
             navigationButtonType = .edit
             editButton.isEnabled = false
         } else {

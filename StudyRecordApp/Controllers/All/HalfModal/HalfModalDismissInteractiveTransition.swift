@@ -42,7 +42,8 @@ final class HalfModalDismissInteractiveTransition: UIPercentDrivenInteractiveTra
         }
     }
     
-    @objc private func dismiss(recognizer: UIPanGestureRecognizer) {
+    @objc
+    private func dismiss(recognizer: UIPanGestureRecognizer) {
         guard let viewController = viewController else { return }
         isInteractiveDismalTransition = (recognizer.state == .began || recognizer.state == .changed)
         switch recognizer.state {

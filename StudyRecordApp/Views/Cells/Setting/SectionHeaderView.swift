@@ -23,7 +23,8 @@ final class SectionHeaderView: UITableViewHeaderFooterView {
         
     }
     
-    @objc private func didTapped() {
+    @objc
+    private func didTapped() {
         onTapEvent?()
     }
     

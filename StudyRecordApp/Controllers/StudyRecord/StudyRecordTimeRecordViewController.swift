@@ -27,7 +27,7 @@ final class StudyRecordTimeRecordViewController: UIViewController {
     var history: History?
     var isHistoryDidTapped: Bool!
     var tappedHistoryIndex: Int?
-    var delegate: StudyRecordTimeRecordVCDelegate?
+    weak var delegate: StudyRecordTimeRecordVCDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,10 +54,10 @@ final class StudyRecordTimeRecordViewController: UIViewController {
         let alert = UIAlertController(title: "本当に削除しますか",
                                       message: nil,
                                       preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "削除", style: .destructive, handler: { _ in
+        alert.addAction(UIAlertAction(title: "削除", style: .destructive) { _ in
             self.delegate?.deleteButtonDidTapped(index: self.tappedHistoryIndex!)
             self.dismiss(animated: true, completion: nil)
-        }))
+        })
         alert.addAction(UIAlertAction(title: "閉じる", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
@@ -103,7 +103,7 @@ extension StudyRecordTimeRecordViewController: UIPickerViewDelegate {
             case 2: history?.day = row + days.first!
             case 3: history?.hour = row
             case 4: history?.minutes = row
-            default: fatalError()
+            default: fatalError("予期しないcomponentがあります。")
         }
     }
     
@@ -124,7 +124,7 @@ extension StudyRecordTimeRecordViewController: UIPickerViewDataSource {
             case 2: return days.count
             case 3: return hours.count
             case 4: return minutes.count
-            default: fatalError()
+            default: fatalError("予期しないcomponentがあります。")
         }
     }
     
@@ -141,7 +141,7 @@ extension StudyRecordTimeRecordViewController: UIPickerViewDataSource {
             label.heightAnchor.constraint(equalTo: view.heightAnchor),
             label.widthAnchor.constraint(equalTo: view.widthAnchor),
             label.leftAnchor.constraint(equalTo: view.leftAnchor),
-            label.rightAnchor.constraint(equalTo: view.rightAnchor),
+            label.rightAnchor.constraint(equalTo: view.rightAnchor)
         ])
         switch component {
             case 0:
@@ -159,7 +159,7 @@ extension StudyRecordTimeRecordViewController: UIPickerViewDataSource {
             case 4:
                 label.text = "\(minutes[row])分"
                 label.textAlignment = .left
-            default: fatalError()
+            default: fatalError("予期しないcomponentがあります。")
         }
         return view
     }

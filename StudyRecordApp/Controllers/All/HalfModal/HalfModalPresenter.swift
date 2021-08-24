@@ -41,11 +41,13 @@ final class HalfModalPresenter: NSObject {
         return indicator
     }()
     
-    @objc private func overlayViewDidTapped(_ sender: AnyObject) {
+    @objc
+    private func overlayViewDidTapped(_ sender: AnyObject) {
         viewController?.dismiss(animated: true, completion: nil)
     }
 
-    @objc private func indicatorViewDidTapped(_ sender: AnyObject) {
+    @objc
+    private func indicatorViewDidTapped(_ sender: AnyObject) {
         viewController?.dismiss(animated: true, completion: nil)
     }
     
@@ -55,7 +57,8 @@ final class HalfModalPresenter: NSObject {
 extension HalfModalPresenter: UIViewControllerTransitioningDelegate {
     
     func presentationController(forPresented presented: UIViewController,
-                                presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+                                presenting: UIViewController?,
+                                source: UIViewController) -> UIPresentationController? {
         return HalfModalPresentationController(presentedViewController: presented,
                                                presenting: presenting,
                                                overlayView: overlayView,

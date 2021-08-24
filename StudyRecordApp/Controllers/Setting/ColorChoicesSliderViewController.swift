@@ -39,7 +39,8 @@ final class ColorChoicesSliderViewController: UIViewController {
         
     }
     
-    @objc private func adjustSliders(notification: Notification) {
+    @objc
+    private func adjustSliders(notification: Notification) {
         let nextSelectedView = notification.userInfo!["selectedView"] as! UIView
         let redValue = round(nextSelectedView.backgroundColor!.redValue * 255)
         let greenValue = round(nextSelectedView.backgroundColor!.greenValue * 255)

@@ -132,7 +132,8 @@ final class ColorChoicesTileViewController: UIViewController {
             }
     }
     
-    @objc private func findSameColorTileView(notification: Notification) {
+    @objc
+    private func findSameColorTileView(notification: Notification) {
         let nextSelectedView = notification.userInfo!["selectedView"] as! UIView
         selectedTileView?.layer.cornerRadius = 0
         tileStackViews.forEach { stackView in
@@ -149,7 +150,8 @@ final class ColorChoicesTileViewController: UIViewController {
         }
     }
     
-    @objc private func initTileView() {
+    @objc
+    private func initTileView() {
         selectedTileView?.layer.cornerRadius = 0
     }
     

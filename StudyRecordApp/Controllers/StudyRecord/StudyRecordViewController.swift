@@ -9,8 +9,6 @@ import UIKit
 
 // MARK: - ToDo リアルタイムで同期して更新する処理も実装する(realm)
 // MARK: - ToDo グラフカラー選択時に該当の色を丸くする(追加と編集画面でそれぞれ確認する)
-// MARK: - ToDo UINavigationControllerを削除したため、画面遷移の方法を変える
-// MARK: - ToDo SwiftLintを導入する
 // MARK: - ToDo SwiftGenを導入する
 
 protocol StudyRecordVCDelegate: AnyObject {

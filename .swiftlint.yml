@@ -9,7 +9,7 @@ disabled_rules:
 #- compiler_protocol_init
 #- control_statement
 #- custom_rules
-#- cyclomatic_complexity
+- cyclomatic_complexity
 #- deployment_target
 #- discarded_notification_center_observer
 #- discouraged_direct_init
@@ -25,11 +25,11 @@ disabled_rules:
 #- function_body_length
 #- function_parameter_count
 #- generic_type_name
-#- identifier_name
+- identifier_name
 #- implicit_getter
 #- inert_defer
 #- is_disjoint
-#- large_tuple
+- large_tuple
 #- leading_whitespace
 #- legacy_cggeometry_functions
 #- legacy_constant
@@ -57,11 +57,11 @@ disabled_rules:
 #- shorthand_operator
 #- statement_position
 #- superfluous_disable_command
-#- switch_case_alignment
+- switch_case_alignment
 #- syntactic_sugar
 #- todo
 #- trailing_comma
-#- trailing_newline
+- trailing_newline
 #- trailing_semicolon
 - trailing_whitespace
 - type_body_length
@@ -73,8 +73,8 @@ disabled_rules:
 #- unused_optional_binding
 #- unused_setter_value
 #- valid_ibinspectable
-#- vertical_parameter_alignment
-#- vertical_whitespace
+- vertical_parameter_alignment
+- vertical_whitespace
 #- void_return
 #- weak_computed_property
 #- weak_delegate
@@ -91,7 +91,7 @@ opt_in_rules:
     - collection_alignment
     #- conditional_returns_on_newline
     - contains_over_first_not_nil
-    - convenience_type
+#    - convenience_type
     #- discouraged_object_literal
     - discouraged_optional_boolean
     #- discouraged_optional_collection
@@ -113,7 +113,7 @@ opt_in_rules:
     #- force_unwrapping
     - function_default_parameter_at_end
     - identical_operands
-    - implicit_return
+#    - implicit_return
     #- implicitly_unwrapped_optional
     - joined_default_parameter
     - last_where
@@ -123,12 +123,12 @@ opt_in_rules:
     - lower_acl_than_parent
     - missing_docs
     - modifier_order
-    - multiline_arguments
+#    - multiline_arguments
     #- multiline_arguments_brackets
     - multiline_function_chains
-    - multiline_literal_brackets
+#    - multiline_literal_brackets
     - multiline_parameters
-    - multiline_parameters_brackets
+#    - multiline_parameters_brackets
     - nimble_operator
     #- no_extension_access_modifier
     #- no_grouping_extension
@@ -148,7 +148,7 @@ opt_in_rules:
     - quick_discouraged_focused_test
     - quick_discouraged_pending_test
     - redundant_nil_coalescing
-    - redundant_type_annotation
+#    - redundant_type_annotation
     #- required_deinit
     - required_enum_case
     - single_test_class
@@ -164,7 +164,7 @@ opt_in_rules:
     - unneeded_parentheses_in_closure_argument
     - untyped_error_in_catch
     - unused_import
-    - unused_private_declaration
+#    - unused_private_declaration
     - vertical_parameter_alignment_on_call
     #- vertical_whitespace_between_cases
     #- vertical_whitespace_closing_braces
@@ -182,6 +182,7 @@ excluded:
     - Carthage
     - SourcePackages
     - Generated
+    - StudyRecordApp/SceneDelegate.swift
 
 line_length:
     warning: 500

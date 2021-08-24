@@ -139,13 +139,13 @@ final class ThemeColorViewController: UIViewController {
             view.imageView.heightAnchor.constraint(equalToConstant: 40),
             view.imageView.widthAnchor.constraint(equalToConstant: 40),
             view.imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            view.imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            view.imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
         view.imageView.isHidden = true
     }
     
     private func setThemeSubViewColor(view: ThemeColorView?) {
-        guard let color = view?.backgroundColor else { fatalError() }
+        guard let color = view?.backgroundColor else { return }
         view?.subviews.forEach { view in
             let shouldWhite = (color.redValue < 0.4
                                 && color.greenValue < 0.4
