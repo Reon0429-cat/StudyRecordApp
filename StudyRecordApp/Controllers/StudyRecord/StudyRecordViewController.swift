@@ -53,14 +53,6 @@ final class StudyRecordViewController: UIViewController {
         tableView.reloadData()
     }
     
-    static func instantiate() -> StudyRecordViewController {
-        let storyboard = UIStoryboard(name: "StudyRecord", bundle: nil)
-        let studyRecordVC = storyboard.instantiateViewController(
-            identifier: String(describing: self)
-        ) as! StudyRecordViewController
-        return studyRecordVC
-    }
-    
 }
 
 // MARK: - UITableViewDelegate

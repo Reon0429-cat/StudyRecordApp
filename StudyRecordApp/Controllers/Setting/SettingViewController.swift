@@ -91,14 +91,6 @@ final class SettingViewController: UIViewController {
         tableView.tableFooterView = UIView()
     }
     
-    static func instantiate() -> SettingViewController {
-        let storyboard = UIStoryboard(name: "Setting", bundle: nil)
-        let settingVC = storyboard.instantiateViewController(
-            identifier: String(describing: self)
-        ) as! SettingViewController
-        return settingVC
-    }
-    
 }
 
 extension SettingViewController: UITableViewDelegate {

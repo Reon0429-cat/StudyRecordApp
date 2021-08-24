@@ -90,14 +90,6 @@ final class AdditionalStudyRecordViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    static func instantiate() -> AdditionalStudyRecordViewController {
-        let storyboard = UIStoryboard(name: "AdditionalStudyRecord", bundle: nil)
-        let additionalStudyRecordVC = storyboard.instantiateViewController(
-            identifier: String(describing: self)
-        ) as! AdditionalStudyRecordViewController
-        return additionalStudyRecordVC
-    }
-    
 }
 
 // MARK: - UITableViewDelegate
@@ -112,10 +104,14 @@ extension AdditionalStudyRecordViewController: UITableViewDelegate {
                 showAlertWithTextField()
             case .graphColor:
                 let studyRecordGraphColorVC = StudyRecordGraphColorViewController.instantiate()
+                studyRecordGraphColorVC.modalPresentationStyle = .overCurrentContext
+                studyRecordGraphColorVC.modalTransitionStyle = .crossDissolve
                 studyRecordGraphColorVC.delegate = self
                 present(studyRecordGraphColorVC, animated: true, completion: nil)
             case .memo:
                 let studyRecordMemoVC = StudyRecordMemoViewController.instantiate()
+                studyRecordMemoVC.modalPresentationStyle = .overCurrentContext
+                studyRecordMemoVC.modalTransitionStyle = .crossDissolve
                 studyRecordMemoVC.inputtedMemo = inputtedMemo
                 studyRecordMemoVC.delegate = self
                 present(studyRecordMemoVC, animated: true, completion: nil)

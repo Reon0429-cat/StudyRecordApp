@@ -14,7 +14,7 @@ protocol GraphVCDelegate: AnyObject {
 final class GraphViewController: UIViewController {
     
     weak var delegate: GraphVCDelegate?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,15 +24,7 @@ final class GraphViewController: UIViewController {
         super.viewWillAppear(animated)
         
         delegate?.viewWillAppear(index: self.view.tag)
-
-    }
-    
-    static func instantiate() -> GraphViewController {
-        let storyboard = UIStoryboard(name: "Graph", bundle: nil)
-        let graphVC = storyboard.instantiateViewController(
-            identifier: String(describing: self)
-        ) as! GraphViewController
-        return graphVC
+        
     }
     
 }

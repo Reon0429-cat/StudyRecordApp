@@ -26,13 +26,5 @@ final class GoalViewController: UIViewController {
         delegate?.viewWillAppear(index: self.view.tag)
         
     }
-    
-    static func instantiate() -> GoalViewController {
-        let storyboard = UIStoryboard(name: "Goal", bundle: nil)
-        let goalVC = storyboard.instantiateViewController(
-            identifier: String(describing: self)
-        ) as! GoalViewController
-        return goalVC
-    }
 
 }

@@ -86,6 +86,7 @@
 		AB86A85D26D4915700EA990A /* HalfModalOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86A85726D4915700EA990A /* HalfModalOverlayView.swift */; };
 		AB86A85E26D4915700EA990A /* HalfModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86A85826D4915700EA990A /* HalfModalPresentationController.swift */; };
 		AB86A85F26D4915700EA990A /* HalfModalPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86A85926D4915700EA990A /* HalfModalPresenter.swift */; };
+		AB8B703F26D4A2410069FF67 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8B703E26D4A2410069FF67 /* UIViewController+Extension.swift */; };
 		AB93C23B266A234800C3AE8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C23A266A234800C3AE8F /* AppDelegate.swift */; };
 		AB93C23D266A234800C3AE8F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C23C266A234800C3AE8F /* SceneDelegate.swift */; };
 		AB93C244266A234C00C3AE8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB93C243266A234C00C3AE8F /* Assets.xcassets */; };
@@ -186,6 +187,7 @@
 		AB86A85726D4915700EA990A /* HalfModalOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalOverlayView.swift; sourceTree = "<group>"; };
 		AB86A85826D4915700EA990A /* HalfModalPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalPresentationController.swift; sourceTree = "<group>"; };
 		AB86A85926D4915700EA990A /* HalfModalPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalPresenter.swift; sourceTree = "<group>"; };
+		AB8B703E26D4A2410069FF67 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		AB93C237266A234800C3AE8F /* StudyRecordApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyRecordApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB93C23A266A234800C3AE8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB93C23C266A234800C3AE8F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -406,6 +408,7 @@
 			isa = PBXGroup;
 			children = (
 				AB13EE6726CACB16002F56FF /* UIView+Extension.swift */,
+				AB8B703E26D4A2410069FF67 /* UIViewController+Extension.swift */,
 				AB2B5B8026A2D0FD009BD3C7 /* UIColor+Extension.swift */,
 				AB4D6BBD2672099C00E5286E /* UIButton+Extension.swift */,
 				AB2B5B8926A2D106009BD3C7 /* UITableView+Extension.swift */,
@@ -837,6 +840,7 @@
 				AB13EDB426BFAB8B002F56FF /* StudyRecordSortTableViewCell.swift in Sources */,
 				AB13ED1826B8F5EA002F56FF /* StudyRecordMemoViewController.swift in Sources */,
 				AB93C2C3266BC28E00C3AE8F /* EditStudyRecordViewController.swift in Sources */,
+				AB8B703F26D4A2410069FF67 /* UIViewController+Extension.swift in Sources */,
 				ABA056F626B4C7D800E3DF01 /* StudyRecordGraphColorTableViewCell.swift in Sources */,
 				AB13ED4B26BB9155002F56FF /* RecordRepository.swift in Sources */,
 				AB2B5B8D26A2D106009BD3C7 /* UITableView+Extension.swift in Sources */,

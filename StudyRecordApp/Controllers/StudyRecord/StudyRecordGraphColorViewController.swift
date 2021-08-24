@@ -38,16 +38,6 @@ final class StudyRecordGraphColorViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    static func instantiate() -> StudyRecordGraphColorViewController {
-        let storyboard = UIStoryboard(name: "StudyRecordGraphColor", bundle: nil)
-        let studyRecordGraphColorVC = storyboard.instantiateViewController(
-            identifier: String(describing: self)
-        ) as! StudyRecordGraphColorViewController
-        studyRecordGraphColorVC.modalPresentationStyle = .overCurrentContext
-        studyRecordGraphColorVC.modalTransitionStyle = .crossDissolve
-        return studyRecordGraphColorVC
-    }
-    
 }
 
 // MARK: - GraphColorTileViewDelegate

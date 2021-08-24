@@ -62,14 +62,6 @@ final class StudyRecordTimeRecordViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    static func instantiate() -> StudyRecordTimeRecordViewController {
-        let storyboard = UIStoryboard(name: "StudyRecordTimeRecord", bundle: nil)
-        let studyRecordTimeRecordVC = storyboard.instantiateViewController(
-            identifier: String(describing: self)
-        ) as! StudyRecordTimeRecordViewController
-        return studyRecordTimeRecordVC
-    }
-    
 }
 
 // MARK: - setup

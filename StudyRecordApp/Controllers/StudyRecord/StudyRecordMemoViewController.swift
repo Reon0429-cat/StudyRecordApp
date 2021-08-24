@@ -40,16 +40,6 @@ final class StudyRecordMemoViewController: UIViewController {
         textView.becomeFirstResponder()
     }
     
-    static func instantiate() -> StudyRecordMemoViewController {
-        let storyboard = UIStoryboard(name: "StudyRecordMemo", bundle: nil)
-        let studyRecordMemoVC = storyboard.instantiateViewController(
-            identifier: String(describing: self)
-        ) as! StudyRecordMemoViewController
-        studyRecordMemoVC.modalPresentationStyle = .overCurrentContext
-        studyRecordMemoVC.modalTransitionStyle = .crossDissolve
-        return studyRecordMemoVC
-    }
-    
     @IBAction private func dismissButtonDidTapped(_ sender: Any) {
         if inputtedMemo == oldInputtedMemo {
             dismiss(animated: true, completion: nil)

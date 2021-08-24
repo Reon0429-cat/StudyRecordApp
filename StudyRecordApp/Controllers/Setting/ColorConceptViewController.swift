@@ -27,16 +27,6 @@ final class ColorConceptViewController: UIViewController {
         tableView.tableFooterView = UIView()
     }
     
-    static func instantiate() -> ColorConceptViewController {
-        let colorConceptVC = UIStoryboard(
-            name: "ColorConcept",
-            bundle: nil
-        ).instantiateViewController(
-            withIdentifier: String(describing: self)
-        ) as! ColorConceptViewController
-        return colorConceptVC
-    }
-    
 }
 
 extension ColorConceptViewController: UITableViewDelegate {

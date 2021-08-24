@@ -32,14 +32,6 @@ final class StudyRecordSortViewController: UIViewController {
         
     }
     
-    static func instantiate() -> StudyRecordSortViewController {
-        let storyboard = UIStoryboard(name: "StudyRecordSort", bundle: nil)
-        let studyRecordSortVC = storyboard.instantiateViewController(
-            identifier: String(describing: self)
-        ) as! StudyRecordSortViewController
-        return studyRecordSortVC
-    }
-    
 }
 
 // MARK: - UITableViewDelegate

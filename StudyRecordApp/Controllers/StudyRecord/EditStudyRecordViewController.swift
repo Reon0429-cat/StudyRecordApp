@@ -58,14 +58,6 @@ final class EditStudyRecordViewController: UIViewController {
         
     }
     
-    static func instantiate() -> EditStudyRecordViewController {
-        let storyboard = UIStoryboard(name: "EditStudyRecord", bundle: nil)
-        let editStudyRecordVC = storyboard.instantiateViewController(
-            identifier: String(describing: self)
-        ) as! EditStudyRecordViewController
-        return editStudyRecordVC
-    }
-    
 }
 
 // MARK: - UITableViewDelegate
@@ -96,10 +88,14 @@ extension EditStudyRecordViewController: UITableViewDelegate {
                 present(alert, animated: true, completion: nil)
             case .graphColor:
                 let studyRecordGraphColorVC = StudyRecordGraphColorViewController.instantiate()
+                studyRecordGraphColorVC.modalPresentationStyle = .overCurrentContext
+                studyRecordGraphColorVC.modalTransitionStyle = .crossDissolve
                 studyRecordGraphColorVC.delegate = self
                 present(studyRecordGraphColorVC, animated: true, completion: nil)
             case .memo:
                 let studyRecordMemoVC = StudyRecordMemoViewController.instantiate()
+                studyRecordMemoVC.modalPresentationStyle = .overCurrentContext
+                studyRecordMemoVC.modalTransitionStyle = .crossDissolve
                 studyRecordMemoVC.inputtedMemo = selectedRecord.memo
                 studyRecordMemoVC.delegate = self
                 present(studyRecordMemoVC, animated: true, completion: nil)

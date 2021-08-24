@@ -27,12 +27,4 @@ final class CountDownViewController: UIViewController {
 
     }
     
-    static func instantiate() -> CountDownViewController {
-        let storyboard = UIStoryboard(name: "CountDown", bundle: nil)
-        let countDownVC = storyboard.instantiateViewController(
-            identifier: String(describing: self)
-        ) as! CountDownViewController
-        return countDownVC
-    }
-    
 }
