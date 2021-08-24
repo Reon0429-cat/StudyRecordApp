@@ -104,19 +104,20 @@ extension EditStudyRecordViewController: UITableViewDelegate {
                 studyRecordMemoVC.delegate = self
                 present(studyRecordMemoVC, animated: true, completion: nil)
             case .timeRecord:
-//                studyRecordTimeRecordVC.delegate = self
-//                studyRecordTimeRecordVC.isHistory = false
-                let halfModalVC = HalfModalViewController.instantiate() 
-                halfModalPresenter.viewController = halfModalVC
-                present(halfModalVC, animated: true, completion: nil)
+                let studyRecordTimeRecordVC = StudyRecordTimeRecordViewController.instantiate()
+                studyRecordTimeRecordVC.isHistoryDidTapped = false
+                halfModalPresenter.viewController = studyRecordTimeRecordVC
+                studyRecordTimeRecordVC.delegate = self
+                present(studyRecordTimeRecordVC, animated: true, completion: nil)
             case .history:
                 let studyRecordTimeRecordVC = StudyRecordTimeRecordViewController.instantiate()
                 let index = getHistoryCount(row: indexPath.row)
                 if let history = selectedRecord.histories?[index] {
                     studyRecordTimeRecordVC.history = history
                 }
-                studyRecordTimeRecordVC.isHistory = true
                 studyRecordTimeRecordVC.tappedHistoryIndex = index
+                studyRecordTimeRecordVC.isHistoryDidTapped = true
+                halfModalPresenter.viewController = studyRecordTimeRecordVC
                 studyRecordTimeRecordVC.delegate = self
                 present(studyRecordTimeRecordVC, animated: true, completion: nil)
         }

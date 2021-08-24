@@ -17,6 +17,7 @@ final class StudyRecordTimeRecordViewController: UIViewController {
     
     @IBOutlet private weak var pickerView: UIPickerView!
     @IBOutlet private weak var deleteButton: UIButton!
+    @IBOutlet private weak var contentView: UIView!
     
     private let years = [Int](2020...2030)
     private let months = [Int](1...12)
@@ -24,7 +25,7 @@ final class StudyRecordTimeRecordViewController: UIViewController {
     private let hours = [Int](0...23)
     private let minutes = [Int](0...59)
     var history: History?
-    var isHistory: Bool!
+    var isHistoryDidTapped: Bool!
     var tappedHistoryIndex: Int?
     var delegate: StudyRecordTimeRecordVCDelegate?
     
@@ -32,7 +33,7 @@ final class StudyRecordTimeRecordViewController: UIViewController {
         super.viewDidLoad()
         
         setupPickerView()
-        deleteButton.isHidden = !isHistory
+        deleteButton.isHidden = !isHistoryDidTapped
         
     }
     
@@ -41,7 +42,7 @@ final class StudyRecordTimeRecordViewController: UIViewController {
     }
     
     @IBAction private func saveButtonDidTapped(_ sender: Any) {
-        if isHistory {
+        if isHistoryDidTapped {
             delegate?.editButtonDidTapped(index: tappedHistoryIndex!, history: history!)
         } else {
             delegate?.saveButtonDidTapped(history: history!)
@@ -77,7 +78,7 @@ private extension StudyRecordTimeRecordViewController {
     func setupPickerView() {
         pickerView.delegate = self
         pickerView.dataSource = self
-        if isHistory {
+        if isHistoryDidTapped {
             pickerView.selectRow(history!.year - years.first!, inComponent: 0, animated: true)
             pickerView.selectRow(history!.month - months.first!, inComponent: 1, animated: true)
             pickerView.selectRow(history!.day - days.first!, inComponent: 2, animated: true)
@@ -167,6 +168,15 @@ extension StudyRecordTimeRecordViewController: UIPickerViewDataSource {
             default: fatalError()
         }
         return view
+    }
+    
+}
+
+// MARK: - HalfModalPresenterDelegate
+extension StudyRecordTimeRecordViewController: HalfModalPresenterDelegate {
+    
+    var halfModalContentHeight: CGFloat {
+        return contentView.frame.height
     }
     
 }

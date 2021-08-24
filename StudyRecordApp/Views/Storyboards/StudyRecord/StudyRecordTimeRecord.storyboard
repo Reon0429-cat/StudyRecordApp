@@ -17,61 +17,78 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebN-g7-m26">
-                                <rect key="frame" x="20" y="64" width="52" height="33"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="閉じる"/>
-                                <connections>
-                                    <action selector="dismissButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="cTR-Wa-JY9"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rbY-zL-FU6">
-                                <rect key="frame" x="359" y="64" width="35" height="33"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="保存"/>
-                                <connections>
-                                    <action selector="saveButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="8Lu-Ge-nsk"/>
-                                </connections>
-                            </button>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ABd-8f-eOX">
-                                <rect key="frame" x="10" y="97" width="394" height="216"/>
-                            </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PE2-nY-mtn">
-                                <rect key="frame" x="191.5" y="323" width="31" height="30"/>
-                                <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="削除"/>
-                                <connections>
-                                    <action selector="deleteButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="8Ob-H2-fK3"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Ev-7T-R4L">
+                                <rect key="frame" x="0.0" y="44" width="414" height="326"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kry-Cg-N7k">
+                                        <rect key="frame" x="10" y="10" width="46" height="30"/>
+                                        <state key="normal" title="閉じる"/>
+                                        <connections>
+                                            <action selector="dismissButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="rop-f8-NxI"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3s8-7Q-oJE">
+                                        <rect key="frame" x="373" y="10" width="31" height="30"/>
+                                        <state key="normal" title="保存"/>
+                                        <connections>
+                                            <action selector="saveButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="lZj-s9-lfk"/>
+                                        </connections>
+                                    </button>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zGK-Tm-SLx">
+                                        <rect key="frame" x="0.0" y="60" width="414" height="216"/>
+                                    </pickerView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fNv-fO-UuD">
+                                        <rect key="frame" x="191.5" y="276" width="31" height="30"/>
+                                        <color key="tintColor" systemColor="systemRedColor"/>
+                                        <state key="normal" title="削除"/>
+                                        <connections>
+                                            <action selector="deleteButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="UlQ-wU-AlK"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="3s8-7Q-oJE" secondAttribute="trailing" constant="10" id="1e3-7Z-0dK"/>
+                                    <constraint firstItem="zGK-Tm-SLx" firstAttribute="leading" secondItem="9Ev-7T-R4L" secondAttribute="leading" id="GLV-c1-adj"/>
+                                    <constraint firstItem="Kry-Cg-N7k" firstAttribute="leading" secondItem="9Ev-7T-R4L" secondAttribute="leading" constant="10" id="GVB-Y5-lzZ"/>
+                                    <constraint firstItem="zGK-Tm-SLx" firstAttribute="top" secondItem="Kry-Cg-N7k" secondAttribute="bottom" constant="20" id="KcR-ja-v16"/>
+                                    <constraint firstItem="Kry-Cg-N7k" firstAttribute="top" secondItem="9Ev-7T-R4L" secondAttribute="top" constant="10" id="KvY-1a-vi7"/>
+                                    <constraint firstItem="fNv-fO-UuD" firstAttribute="top" secondItem="zGK-Tm-SLx" secondAttribute="bottom" id="aTV-zb-HUT"/>
+                                    <constraint firstItem="fNv-fO-UuD" firstAttribute="centerX" secondItem="9Ev-7T-R4L" secondAttribute="centerX" id="eRx-lr-8Tb"/>
+                                    <constraint firstAttribute="bottom" secondItem="fNv-fO-UuD" secondAttribute="bottom" constant="20" id="kWp-tb-XbD"/>
+                                    <constraint firstItem="3s8-7Q-oJE" firstAttribute="top" secondItem="9Ev-7T-R4L" secondAttribute="top" constant="10" id="leU-ki-NKM"/>
+                                    <constraint firstAttribute="trailing" secondItem="zGK-Tm-SLx" secondAttribute="trailing" id="reT-Y0-KLN"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="PE2-nY-mtn" firstAttribute="top" secondItem="ABd-8f-eOX" secondAttribute="bottom" constant="10" id="2QZ-0A-FO8"/>
-                            <constraint firstItem="ebN-g7-m26" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="7Vz-76-XO6"/>
-                            <constraint firstItem="rbY-zL-FU6" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="9Yu-jO-5il"/>
-                            <constraint firstItem="ebN-g7-m26" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="Cnn-YX-QWK"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ABd-8f-eOX" secondAttribute="trailing" constant="10" id="IOx-Rm-9Ag"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="rbY-zL-FU6" secondAttribute="trailing" constant="20" id="P7t-Dl-8dJ"/>
-                            <constraint firstItem="ABd-8f-eOX" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="boL-af-6RQ"/>
-                            <constraint firstItem="ABd-8f-eOX" firstAttribute="top" secondItem="ebN-g7-m26" secondAttribute="bottom" id="bqz-I0-1cB"/>
-                            <constraint firstItem="PE2-nY-mtn" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="noE-zt-Cyg"/>
+                            <constraint firstItem="9Ev-7T-R4L" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="SAV-Un-3Ve"/>
+                            <constraint firstItem="9Ev-7T-R4L" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="XRC-jV-x7h"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="9Ev-7T-R4L" secondAttribute="trailing" id="osr-2d-Sch"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="deleteButton" destination="PE2-nY-mtn" id="CTx-1K-YP3"/>
-                        <outlet property="pickerView" destination="ABd-8f-eOX" id="mld-ZY-BCd"/>
+                        <outlet property="contentView" destination="9Ev-7T-R4L" id="wm1-ef-0ia"/>
+                        <outlet property="deleteButton" destination="fNv-fO-UuD" id="2y9-5u-NXb"/>
+                        <outlet property="pickerView" destination="zGK-Tm-SLx" id="ja8-We-Ndf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="102"/>
+            <point key="canvasLocation" x="137.68115942028987" y="101.78571428571428"/>
         </scene>
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
