@@ -8,5 +8,6 @@ target 'StudyRecordApp' do
   # Pods for StudyRecordApp
    pod 'RealmSwift'
    pod 'Firebase/Analytics'
+   pod 'Firebase/Auth'
 
 end
