@@ -7,14 +7,15 @@
 
 import UIKit
 
+// MARK: - ToDo 横スワイプでもログインとサインアップを切り替えられるようにする
+
 final class LoginAndSignUpViewController: UIViewController {
     
+    @IBOutlet private weak var baseView: UIView!
     @IBOutlet private weak var loginContainerView: UIView!
     @IBOutlet private weak var signUpContainerView: UIView!
-    @IBOutlet private weak var loginToggleView: UIView!
-    @IBOutlet private weak var signUpToggleView: UIView!
-    @IBOutlet private weak var loginLabel: UILabel!
-    @IBOutlet private weak var signUpLabel: UILabel!
+    @IBOutlet private weak var loginButton: UIButton!
+    @IBOutlet private weak var signUpButton: UIButton!
     @IBOutlet private weak var containerView: UIView!
     
     private enum ViewType {
@@ -32,7 +33,9 @@ final class LoginAndSignUpViewController: UIViewController {
         super.viewDidLoad()
         
         viewType = .login
-        setupToggleViews()
+        setupBaseView()
+        setupLoginButton()
+        setupSignUpButton()
         
     }
     
@@ -48,16 +51,24 @@ final class LoginAndSignUpViewController: UIViewController {
     private func setToggleViewColor() {
         switch viewType {
             case .login:
-                loginToggleView.backgroundColor = .systemRed
-                signUpToggleView.backgroundColor = .clear
-                loginLabel.textColor = .black
-                signUpLabel.textColor = .gray
+                loginButton.backgroundColor = .systemRed
+                signUpButton.backgroundColor = .clear
+                loginButton.tintColor = .black
+                signUpButton.tintColor = .gray
             case .signUp:
-                loginToggleView.backgroundColor = .clear
-                signUpToggleView.backgroundColor = .systemGreen
-                loginLabel.textColor = .gray
-                signUpLabel.textColor = .black
+                loginButton.backgroundColor = .clear
+                signUpButton.backgroundColor = .systemGreen
+                loginButton.tintColor = .gray
+                signUpButton.tintColor = .black
         }
+    }
+    
+    @IBAction private func loginButtonDidTapped(_ sender: Any) {
+        viewType = .login
+    }
+    
+    @IBAction private func signUpButtonDidTapped(_ sender: Any) {
+        viewType = .signUp
     }
     
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -75,23 +86,29 @@ final class LoginAndSignUpViewController: UIViewController {
 // MARK: - setup
 private extension LoginAndSignUpViewController {
     
-    func setupToggleViews() {
-        let loginTapGR = UITapGestureRecognizer(target: self,
-                                                action: #selector(loginBackViewDidTapped))
-        self.loginToggleView.addGestureRecognizer(loginTapGR)
-        let signUpTapGR = UITapGestureRecognizer(target: self,
-                                                 action: #selector(signUpBackViewDidTapped))
-        self.signUpToggleView.addGestureRecognizer(signUpTapGR)
+    func setupBaseView() {
+        baseView.setShadow()
     }
     
-    @objc
-    func loginBackViewDidTapped() {
-        viewType = .login
+    func setupLoginButton() {
+        loginButton.layer.cornerRadius = 20
+        loginButton.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
     
-    @objc
-    func signUpBackViewDidTapped() {
-        viewType = .signUp
+    func setupSignUpButton() {
+        signUpButton.layer.cornerRadius = 20
+        signUpButton.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+    }
+    
+}
+
+private extension UIView {
+    
+    func setShadow() {
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset = CGSize(width: 3, height: 3)
+        self.layer.shadowRadius = 5
+        self.layer.shadowOpacity = 0.6
     }
     
 }

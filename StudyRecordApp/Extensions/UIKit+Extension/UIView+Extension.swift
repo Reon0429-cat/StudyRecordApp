@@ -66,13 +66,6 @@ extension UIView {
         }
     }
     
-    func setMaskedCorners(_ maskedCorners: CACornerMask) {
-        self.layer.cornerRadius = self.frame.height / 2
-        self.layer.maskedCorners = maskedCorners
-        self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.black.cgColor
-    }
-    
     func cutToCircle(borderColor: UIColor?, width: CGFloat?) {
         self.layer.cornerRadius = self.frame.height / 2
         self.layer.borderColor = borderColor?.cgColor ?? UIColor.clear.cgColor
