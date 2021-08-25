@@ -103,22 +103,26 @@ private extension StudyRecordTimeRecordViewController {
     func setupPickerView() {
         pickerView.delegate = self
         pickerView.dataSource = self
-        if isHistoryDidTapped {
-            pickerView.selectRow(history!.year - DateType.year.numbers.first!, inComponent: DateType.year.component, animated: true)
-            pickerView.selectRow(history!.month - DateType.month.numbers.first!, inComponent: DateType.month.component, animated: true)
-            pickerView.selectRow(history!.day - DateType.day.numbers.first!, inComponent: DateType.day.component, animated: true)
-            pickerView.selectRow(history!.hour, inComponent: DateType.hour.component, animated: true)
-            pickerView.selectRow(history!.minutes, inComponent: DateType.minutes.component, animated: true)
-        } else {
+        if !isHistoryDidTapped {
             let year = Int(Convert().stringFrom(Date(), format: "yyyy"))!
             let month = Int(Convert().stringFrom(Date(), format: "M"))!
             let day = Int(Convert().stringFrom(Date(), format: "d"))!
-            pickerView.selectRow(year - DateType.year.numbers.first!, inComponent: DateType.year.component, animated: true)
-            pickerView.selectRow(month - DateType.month.numbers.first!, inComponent: DateType.month.component, animated: true)
-            pickerView.selectRow(day - DateType.day.numbers.first!, inComponent: DateType.day.component, animated: true)
-            pickerView.selectRow(0, inComponent: DateType.hour.component, animated: true)
-            pickerView.selectRow(0, inComponent: DateType.minutes.component, animated: true)
             history = History(year: year, month: month, day: day, hour: 0, minutes: 0)
+        }
+        setPickerViewDate()
+    }
+    
+    func setPickerViewDate() {
+        guard let history = history else { fatalError("historyがnil") }
+        let selectingRowsAndComponents: [(row: Int, component: Int)] = [
+            (row: DateType.year.numbers.firstIndex(of: history.year) ?? 0, component: DateType.year.component),
+            (row: DateType.month.numbers.firstIndex(of: history.month) ?? 0, component: DateType.month.component),
+            (row: DateType.day.numbers.firstIndex(of: history.day) ?? 0, component: DateType.day.component),
+            (row: history.hour, component: DateType.hour.component),
+            (row: history.minutes, component: DateType.minutes.component)
+        ]
+        selectingRowsAndComponents.forEach {
+            pickerView.selectRow($0.row, inComponent: $0.component, animated: true)
         }
     }
     
