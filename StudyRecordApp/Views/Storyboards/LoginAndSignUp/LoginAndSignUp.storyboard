@@ -1,25 +1,136 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17150" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17122"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login And Sign Up View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginAndSignUpViewController" id="Y6W-OH-hqX" customClass="LoginAndSignUpViewController" customModule="StudyRecordApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="svn-zu-u1z">
+                                <rect key="frame" x="20" y="64" width="374" height="70"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hzc-Te-Upg">
+                                        <rect key="frame" x="0.0" y="0.0" width="182" height="70"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ログイン" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="R6O-CJ-AYF">
+                                                <rect key="frame" x="0.0" y="0.0" width="182" height="70"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="R6O-CJ-AYF" firstAttribute="top" secondItem="hzc-Te-Upg" secondAttribute="top" id="7V5-dD-eOt"/>
+                                            <constraint firstAttribute="bottom" secondItem="R6O-CJ-AYF" secondAttribute="bottom" id="HhS-k9-fZE"/>
+                                            <constraint firstItem="R6O-CJ-AYF" firstAttribute="leading" secondItem="hzc-Te-Upg" secondAttribute="leading" id="fxt-Xe-tsu"/>
+                                            <constraint firstAttribute="trailing" secondItem="R6O-CJ-AYF" secondAttribute="trailing" id="i0l-ve-4yX"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LKn-Xn-mBz">
+                                        <rect key="frame" x="192" y="0.0" width="182" height="70"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="サインアップ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="5x0-Py-2DA">
+                                                <rect key="frame" x="0.0" y="0.0" width="182" height="70"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="5x0-Py-2DA" secondAttribute="trailing" id="2DJ-WM-lKd"/>
+                                            <constraint firstItem="5x0-Py-2DA" firstAttribute="leading" secondItem="LKn-Xn-mBz" secondAttribute="leading" id="Nbd-9s-9Wp"/>
+                                            <constraint firstItem="5x0-Py-2DA" firstAttribute="top" secondItem="LKn-Xn-mBz" secondAttribute="top" id="eHO-oi-Deo"/>
+                                            <constraint firstAttribute="bottom" secondItem="5x0-Py-2DA" secondAttribute="bottom" id="j0p-gT-fJ1"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="eUK-qf-w18"/>
+                                </constraints>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RSb-mh-iqN">
+                                <rect key="frame" x="20" y="134" width="374" height="762"/>
+                                <subviews>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cgi-FW-Llc">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="762"/>
+                                        <connections>
+                                            <segue destination="HP9-cM-C2N" kind="embed" id="mlu-nE-YlD"/>
+                                        </connections>
+                                    </containerView>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2br-ix-kJk">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="762"/>
+                                        <connections>
+                                            <segue destination="Eaf-BD-RDI" kind="embed" id="1Nl-cs-rvh"/>
+                                        </connections>
+                                    </containerView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="2br-ix-kJk" firstAttribute="leading" secondItem="RSb-mh-iqN" secondAttribute="leading" id="Ocf-LX-fvu"/>
+                                    <constraint firstAttribute="trailing" secondItem="2br-ix-kJk" secondAttribute="trailing" id="Z4T-45-mVD"/>
+                                    <constraint firstItem="Cgi-FW-Llc" firstAttribute="leading" secondItem="RSb-mh-iqN" secondAttribute="leading" id="dqo-O1-lYp"/>
+                                    <constraint firstItem="Cgi-FW-Llc" firstAttribute="top" secondItem="RSb-mh-iqN" secondAttribute="top" id="mqY-Bs-2L7"/>
+                                    <constraint firstItem="2br-ix-kJk" firstAttribute="top" secondItem="RSb-mh-iqN" secondAttribute="top" id="ooa-Tp-mh4"/>
+                                    <constraint firstAttribute="trailing" secondItem="Cgi-FW-Llc" secondAttribute="trailing" id="ume-jS-9fK"/>
+                                    <constraint firstAttribute="bottom" secondItem="2br-ix-kJk" secondAttribute="bottom" id="xfU-xE-pNq"/>
+                                    <constraint firstAttribute="bottom" secondItem="Cgi-FW-Llc" secondAttribute="bottom" id="zdM-Kc-0Na"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="RSb-mh-iqN" firstAttribute="top" secondItem="svn-zu-u1z" secondAttribute="bottom" id="C3C-3b-P5K"/>
+                            <constraint firstItem="svn-zu-u1z" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="C7J-t8-a0m"/>
+                            <constraint firstItem="svn-zu-u1z" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="XTq-t9-BSb"/>
+                            <constraint firstItem="svn-zu-u1z" firstAttribute="trailing" secondItem="RSb-mh-iqN" secondAttribute="trailing" id="gcu-LF-GHx"/>
+                            <constraint firstItem="RSb-mh-iqN" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="qze-DU-2vJ"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="RSb-mh-iqN" secondAttribute="trailing" constant="20" id="wqG-va-cxq"/>
+                            <constraint firstAttribute="bottom" secondItem="RSb-mh-iqN" secondAttribute="bottom" id="yuI-gF-H4O"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="containerView" destination="RSb-mh-iqN" id="f2y-iu-hgM"/>
+                        <outlet property="loginContainerView" destination="2br-ix-kJk" id="Cbu-ac-GBp"/>
+                        <outlet property="loginLabel" destination="R6O-CJ-AYF" id="qoZ-Es-ha5"/>
+                        <outlet property="loginToggleView" destination="hzc-Te-Upg" id="npM-bA-hHJ"/>
+                        <outlet property="signUpContainerView" destination="Cgi-FW-Llc" id="nHd-0W-wlx"/>
+                        <outlet property="signUpLabel" destination="5x0-Py-2DA" id="jjw-AM-Emj"/>
+                        <outlet property="signUpToggleView" destination="LKn-Xn-mBz" id="q0b-AX-sdz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="37.681159420289859" y="101.78571428571428"/>
+        </scene>
+        <!--Login-->
+        <scene sceneID="RVv-gB-dtd">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Login" id="Eaf-BD-RDI" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8aO-gi-U4t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="595" y="80"/>
+        </scene>
+        <!--SignUp-->
+        <scene sceneID="1Eh-d0-8d7">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SignUp" id="HP9-cM-C2N" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="txo-E1-9D0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="603" y="157"/>
         </scene>
     </scenes>
     <resources>

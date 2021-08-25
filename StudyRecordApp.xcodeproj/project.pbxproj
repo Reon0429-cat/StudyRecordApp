@@ -88,6 +88,12 @@
 		AB86A85F26D4915700EA990A /* HalfModalPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86A85926D4915700EA990A /* HalfModalPresenter.swift */; };
 		AB8B703F26D4A2410069FF67 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8B703E26D4A2410069FF67 /* UIViewController+Extension.swift */; };
 		AB8B704C26D600500069FF67 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB8B704B26D600500069FF67 /* GoogleService-Info.plist */; };
+		AB8B704E26D62F800069FF67 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8B704D26D62F800069FF67 /* LoginViewController.swift */; };
+		AB8B705026D62FA90069FF67 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB8B704F26D62FA90069FF67 /* Login.storyboard */; };
+		AB8B705726D6AD1F0069FF67 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB8B705626D6AD1F0069FF67 /* SignUp.storyboard */; };
+		AB8B705926D6AD290069FF67 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8B705826D6AD290069FF67 /* SignUpViewController.swift */; };
+		AB8B705E26D6AD950069FF67 /* LoginAndSignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB8B705D26D6AD950069FF67 /* LoginAndSignUp.storyboard */; };
+		AB8B706026D6AD9E0069FF67 /* LoginAndSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8B705F26D6AD9E0069FF67 /* LoginAndSignUpViewController.swift */; };
 		AB93C23B266A234800C3AE8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C23A266A234800C3AE8F /* AppDelegate.swift */; };
 		AB93C23D266A234800C3AE8F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C23C266A234800C3AE8F /* SceneDelegate.swift */; };
 		AB93C244266A234C00C3AE8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB93C243266A234C00C3AE8F /* Assets.xcassets */; };
@@ -190,6 +196,12 @@
 		AB86A85926D4915700EA990A /* HalfModalPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalPresenter.swift; sourceTree = "<group>"; };
 		AB8B703E26D4A2410069FF67 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		AB8B704B26D600500069FF67 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AB8B704D26D62F800069FF67 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		AB8B704F26D62FA90069FF67 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		AB8B705626D6AD1F0069FF67 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
+		AB8B705826D6AD290069FF67 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		AB8B705D26D6AD950069FF67 /* LoginAndSignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginAndSignUp.storyboard; sourceTree = "<group>"; };
+		AB8B705F26D6AD9E0069FF67 /* LoginAndSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAndSignUpViewController.swift; sourceTree = "<group>"; };
 		AB93C237266A234800C3AE8F /* StudyRecordApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyRecordApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB93C23A266A234800C3AE8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB93C23C266A234800C3AE8F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -464,6 +476,26 @@
 			path = DataStores;
 			sourceTree = "<group>";
 		};
+		AB8B705B26D6AD460069FF67 /* LoginAndSignUp */ = {
+			isa = PBXGroup;
+			children = (
+				AB8B705D26D6AD950069FF67 /* LoginAndSignUp.storyboard */,
+				AB8B704F26D62FA90069FF67 /* Login.storyboard */,
+				AB8B705626D6AD1F0069FF67 /* SignUp.storyboard */,
+			);
+			path = LoginAndSignUp;
+			sourceTree = "<group>";
+		};
+		AB8B705C26D6AD570069FF67 /* LoginAndSignUp */ = {
+			isa = PBXGroup;
+			children = (
+				AB8B705F26D6AD9E0069FF67 /* LoginAndSignUpViewController.swift */,
+				AB8B704D26D62F800069FF67 /* LoginViewController.swift */,
+				AB8B705826D6AD290069FF67 /* SignUpViewController.swift */,
+			);
+			path = LoginAndSignUp;
+			sourceTree = "<group>";
+		};
 		AB93C22E266A234800C3AE8F = {
 			isa = PBXGroup;
 			children = (
@@ -527,6 +559,7 @@
 			isa = PBXGroup;
 			children = (
 				AB86A85226D4912500EA990A /* All */,
+				AB8B705C26D6AD570069FF67 /* LoginAndSignUp */,
 				AB13EDEC26C7C561002F56FF /* Top */,
 				AB93C2C6266BC4B000C3AE8F /* StudyRecord */,
 				AB13EDED26C8BA0F002F56FF /* Goal */,
@@ -540,6 +573,7 @@
 		AB93C25D266A5A5E00C3AE8F /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				AB8B705B26D6AD460069FF67 /* LoginAndSignUp */,
 				AB13EDE726C7C4B7002F56FF /* Top */,
 				AB93C2C7266BC4F000C3AE8F /* StudyRecord */,
 				AB13EDF026C8BA80002F56FF /* Goal */,
@@ -683,6 +717,7 @@
 				AB93C251266A27B900C3AE8F /* StudyRecord.storyboard in Resources */,
 				AB2B5BAB26A2D244009BD3C7 /* ColorConcept.storyboard in Resources */,
 				AB93C244266A234C00C3AE8F /* Assets.xcassets in Resources */,
+				AB8B705026D62FA90069FF67 /* Login.storyboard in Resources */,
 				AB8B704C26D600500069FF67 /* GoogleService-Info.plist in Resources */,
 				AB13ED7E26BE7061002F56FF /* StudyRecordHistoryTableViewCell.xib in Resources */,
 				AB2B5BB826A2D2C2009BD3C7 /* AccordionColorTableViewCell.xib in Resources */,
@@ -692,12 +727,14 @@
 				ABA056FF26B50CC700E3DF01 /* GraphColorTileView.xib in Resources */,
 				ABA056F726B4C7D800E3DF01 /* StudyRecordGraphColorTableViewCell.xib in Resources */,
 				AB93C2C5266BC2D600C3AE8F /* EditStudyRecord.storyboard in Resources */,
+				AB8B705E26D6AD950069FF67 /* LoginAndSignUp.storyboard in Resources */,
 				AB13EDB126BFAA7D002F56FF /* StudyRecordSort.storyboard in Resources */,
 				AB16308426CEABD400111F55 /* NavigationButton.xib in Resources */,
 				AB2B5BB626A2D2C2009BD3C7 /* SectionHeaderView.xib in Resources */,
 				AB2B5BBD26A2D2C2009BD3C7 /* AccordionTableViewCell.xib in Resources */,
 				AB13ECD626B7AEA3002F56FF /* ColorChoicesConcept.storyboard in Resources */,
 				AB2B5BAC26A2D244009BD3C7 /* ThemeColor.storyboard in Resources */,
+				AB8B705726D6AD1F0069FF67 /* SignUp.storyboard in Resources */,
 				AB13EDE926C7C4C0002F56FF /* Top.storyboard in Resources */,
 				AB13EDE526C78DB4002F56FF /* ScreenTransitionCollectionViewCell.xib in Resources */,
 				AB93C266266A7DEB00C3AE8F /* AdditionalStudyRecord.storyboard in Resources */,
@@ -786,6 +823,7 @@
 				AB93C24F266A271E00C3AE8F /* StudyRecordViewController.swift in Sources */,
 				AB13EDAF26BFAA62002F56FF /* StudyRecordSortViewController.swift in Sources */,
 				AB2B5BCA26A2D36F009BD3C7 /* ThemeColorViewController.swift in Sources */,
+				AB8B705926D6AD290069FF67 /* SignUpViewController.swift in Sources */,
 				AB2B5B8C26A2D106009BD3C7 /* UITableViewHeaderFooterView+Extension.swift in Sources */,
 				ABA0570526B50F8100E3DF01 /* StudyRecordGraphColorViewController.swift in Sources */,
 				AB2B5B8426A2D0FD009BD3C7 /* NotificationName+Extension.swift in Sources */,
@@ -831,12 +869,14 @@
 				AB13ED1826B8F5EA002F56FF /* StudyRecordMemoViewController.swift in Sources */,
 				AB93C2C3266BC28E00C3AE8F /* EditStudyRecordViewController.swift in Sources */,
 				AB8B703F26D4A2410069FF67 /* UIViewController+Extension.swift in Sources */,
+				AB8B704E26D62F800069FF67 /* LoginViewController.swift in Sources */,
 				ABA056F626B4C7D800E3DF01 /* StudyRecordGraphColorTableViewCell.swift in Sources */,
 				AB13ED4B26BB9155002F56FF /* RecordRepository.swift in Sources */,
 				AB2B5B8D26A2D106009BD3C7 /* UITableView+Extension.swift in Sources */,
 				AB13EDD126C29D9E002F56FF /* StudyRecordTimeRecordViewController.swift in Sources */,
 				AB2B5BA226A2D1B7009BD3C7 /* ElegantConcept.swift in Sources */,
 				AB93C23D266A234800C3AE8F /* SceneDelegate.swift in Sources */,
+				AB8B706026D6AD9E0069FF67 /* LoginAndSignUpViewController.swift in Sources */,
 				AB13EE6826CACB16002F56FF /* UIView+Extension.swift in Sources */,
 				AB2B5B9626A2D19E009BD3C7 /* ThemeColor.swift in Sources */,
 				AB13EDFC26C8C596002F56FF /* GraphViewController.swift in Sources */,
