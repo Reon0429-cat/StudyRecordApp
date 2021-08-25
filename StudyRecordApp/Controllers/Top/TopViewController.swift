@@ -7,6 +7,8 @@
 
 import UIKit
 
+// MARK: - ToDo 追加画面と編集画面の共通化
+
 final class TopViewController: UIViewController {
     
     @IBOutlet private weak var collectionView: UICollectionView!

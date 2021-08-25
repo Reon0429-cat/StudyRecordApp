@@ -241,62 +241,6 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		AB13ECD126B601F8002F56FF /* Xibs */ = {
-			isa = PBXGroup;
-			children = (
-				ABA056FE26B50CC700E3DF01 /* GraphColorTileView.xib */,
-				ABA0570026B50D1900E3DF01 /* GraphColorTileView.swift */,
-				AB16304E26CD6AF400111F55 /* WaveView.xib */,
-				AB16305026CD6B1400111F55 /* WaveView.swift */,
-				AB16308326CEABD400111F55 /* NavigationButton.xib */,
-				AB16308126CEAB9300111F55 /* NavigationButton.swift */,
-			);
-			path = Xibs;
-			sourceTree = "<group>";
-		};
-		AB13ED4226BB7F9D002F56FF /* StudyRecord */ = {
-			isa = PBXGroup;
-			children = (
-				AB13ED4326BB7FF1002F56FF /* Entities */,
-				AB13ED4426BB8008002F56FF /* DataStores */,
-				AB13ED4626BB8014002F56FF /* Repositories */,
-				AB13ED4726BB801B002F56FF /* UseCases */,
-			);
-			path = StudyRecord;
-			sourceTree = "<group>";
-		};
-		AB13ED4326BB7FF1002F56FF /* Entities */ = {
-			isa = PBXGroup;
-			children = (
-				AB93C2BC266BABA900C3AE8F /* Record.swift */,
-			);
-			path = Entities;
-			sourceTree = "<group>";
-		};
-		AB13ED4426BB8008002F56FF /* DataStores */ = {
-			isa = PBXGroup;
-			children = (
-				AB13ED4826BB8128002F56FF /* RealmRecordDataStore.swift */,
-			);
-			path = DataStores;
-			sourceTree = "<group>";
-		};
-		AB13ED4626BB8014002F56FF /* Repositories */ = {
-			isa = PBXGroup;
-			children = (
-				AB13ED4A26BB9155002F56FF /* RecordRepository.swift */,
-			);
-			path = Repositories;
-			sourceTree = "<group>";
-		};
-		AB13ED4726BB801B002F56FF /* UseCases */ = {
-			isa = PBXGroup;
-			children = (
-				AB13ED4C26BB9241002F56FF /* RecordUseCase.swift */,
-			);
-			path = UseCases;
-			sourceTree = "<group>";
-		};
 		AB13EDE626C78DD0002F56FF /* All */ = {
 			isa = PBXGroup;
 			children = (
@@ -380,26 +324,16 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
-		AB13EE0026C8E114002F56FF /* All */ = {
-			isa = PBXGroup;
-			children = (
-				AB13EE6526CAC989002F56FF /* ScreenType.swift */,
-				AB13EDDA26C3C163002F56FF /* Convert.swift */,
-			);
-			path = All;
-			sourceTree = "<group>";
-		};
-		AB13EE6B26CB698D002F56FF /* All */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = All;
-			sourceTree = "<group>";
-		};
 		AB16304D26CD68A200111F55 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
 				AB13EE6926CB6965002F56FF /* RippleView.swift */,
+				ABA056FE26B50CC700E3DF01 /* GraphColorTileView.xib */,
+				ABA0570026B50D1900E3DF01 /* GraphColorTileView.swift */,
+				AB16304E26CD6AF400111F55 /* WaveView.xib */,
+				AB16305026CD6B1400111F55 /* WaveView.swift */,
+				AB16308326CEABD400111F55 /* NavigationButton.xib */,
+				AB16308126CEAB9300111F55 /* NavigationButton.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -496,6 +430,38 @@
 			path = HalfModal;
 			sourceTree = "<group>";
 		};
+		AB8B704726D5EF1B0069FF67 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				AB93C2BC266BABA900C3AE8F /* Record.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		AB8B704826D5EF210069FF67 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				AB13ED4C26BB9241002F56FF /* RecordUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		AB8B704926D5EF290069FF67 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				AB13ED4A26BB9155002F56FF /* RecordRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		AB8B704A26D5EF3F0069FF67 /* DataStores */ = {
+			isa = PBXGroup;
+			children = (
+				AB13ED4826BB8128002F56FF /* RealmRecordDataStore.swift */,
+			);
+			path = DataStores;
+			sourceTree = "<group>";
+		};
 		AB93C22E266A234800C3AE8F = {
 			isa = PBXGroup;
 			children = (
@@ -517,7 +483,11 @@
 		AB93C239266A234800C3AE8F /* StudyRecordApp */ = {
 			isa = PBXGroup;
 			children = (
-				AB93C25A266A5A0D00C3AE8F /* Models */,
+				AB8B704726D5EF1B0069FF67 /* Entities */,
+				AB8B704A26D5EF3F0069FF67 /* DataStores */,
+				AB8B704926D5EF290069FF67 /* Repositories */,
+				AB8B704826D5EF210069FF67 /* UseCases */,
+				AB93C25A266A5A0D00C3AE8F /* Utilities */,
 				AB93C25B266A5A2800C3AE8F /* Views */,
 				AB93C25C266A5A2C00C3AE8F /* Controllers */,
 				AB93C2CB266C84CA00C3AE8F /* Extensions */,
@@ -530,14 +500,14 @@
 			path = StudyRecordApp;
 			sourceTree = "<group>";
 		};
-		AB93C25A266A5A0D00C3AE8F /* Models */ = {
+		AB93C25A266A5A0D00C3AE8F /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				AB13EE0026C8E114002F56FF /* All */,
-				AB13ED4226BB7F9D002F56FF /* StudyRecord */,
+				AB13EE6526CAC989002F56FF /* ScreenType.swift */,
+				AB13EDDA26C3C163002F56FF /* Convert.swift */,
 				AB13EDFF26C8E0E9002F56FF /* Setting */,
 			);
-			path = Models;
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		AB93C25B266A5A2800C3AE8F /* Views */ = {
@@ -545,7 +515,6 @@
 			children = (
 				AB16304D26CD68A200111F55 /* CustomViews */,
 				AB93C25D266A5A5E00C3AE8F /* Storyboards */,
-				AB13ECD126B601F8002F56FF /* Xibs */,
 				AB93C25E266A5A6600C3AE8F /* Cells */,
 			);
 			path = Views;
@@ -568,7 +537,6 @@
 		AB93C25D266A5A5E00C3AE8F /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				AB13EE6B26CB698D002F56FF /* All */,
 				AB13EDE726C7C4B7002F56FF /* Top */,
 				AB93C2C7266BC4F000C3AE8F /* StudyRecord */,
 				AB13EDF026C8BA80002F56FF /* Goal */,
