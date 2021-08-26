@@ -26,8 +26,10 @@ final class LoginAndSignUpViewController: UIViewController {
         didSet {
             bringContainerView()
             setToggleViewColor()
+            setContainerViewCorners()
         }
     }
+    private let cornerRadiusConstant: CGFloat = 15
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +39,14 @@ final class LoginAndSignUpViewController: UIViewController {
         setupLoginButton()
         setupSignUpButton()
         
+    }
+    
+    @IBAction private func loginButtonDidTapped(_ sender: Any) {
+        viewType = .login
+    }
+    
+    @IBAction private func signUpButtonDidTapped(_ sender: Any) {
+        viewType = .signUp
     }
     
     private func bringContainerView() {
@@ -63,12 +73,21 @@ final class LoginAndSignUpViewController: UIViewController {
         }
     }
     
-    @IBAction private func loginButtonDidTapped(_ sender: Any) {
-        viewType = .login
-    }
-    
-    @IBAction private func signUpButtonDidTapped(_ sender: Any) {
-        viewType = .signUp
+    private func setContainerViewCorners() {
+        switch viewType {
+            case .login:
+                containerView.layer.cornerRadius = cornerRadiusConstant
+                containerView.layer.maskedCorners = [.layerMaxXMinYCorner,
+                                                     .layerMinXMaxYCorner,
+                                                     .layerMaxXMaxYCorner]
+                containerView.layer.masksToBounds = true
+            case .signUp:
+                containerView.layer.cornerRadius = cornerRadiusConstant
+                containerView.layer.maskedCorners = [.layerMinXMinYCorner,
+                                                     .layerMinXMaxYCorner,
+                                                     .layerMaxXMaxYCorner]
+                containerView.layer.masksToBounds = true
+        }
     }
     
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -91,12 +110,12 @@ private extension LoginAndSignUpViewController {
     }
     
     func setupLoginButton() {
-        loginButton.layer.cornerRadius = 20
+        loginButton.layer.cornerRadius = cornerRadiusConstant
         loginButton.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
     
     func setupSignUpButton() {
-        signUpButton.layer.cornerRadius = 20
+        signUpButton.layer.cornerRadius = cornerRadiusConstant
         signUpButton.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
     
