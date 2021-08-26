@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yS3-Kn-stY">
-                                <rect key="frame" x="20" y="44" width="374" height="818"/>
+                                <rect key="frame" x="20" y="54" width="374" height="778"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="svn-zu-u1z">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
@@ -47,16 +47,16 @@
                                         </constraints>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RSb-mh-iqN">
-                                        <rect key="frame" x="0.0" y="70" width="374" height="748"/>
+                                        <rect key="frame" x="0.0" y="70" width="374" height="708"/>
                                         <subviews>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cgi-FW-Llc">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="748"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="708"/>
                                                 <connections>
                                                     <segue destination="HP9-cM-C2N" kind="embed" identifier="signUpSegueId" id="mlu-nE-YlD"/>
                                                 </connections>
                                             </containerView>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2br-ix-kJk">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="748"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="708"/>
                                                 <connections>
                                                     <segue destination="Eaf-BD-RDI" kind="embed" identifier="loginSegueId" id="1Nl-cs-rvh"/>
                                                 </connections>
@@ -90,9 +90,9 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="yS3-Kn-stY" secondAttribute="bottom" id="PTf-ac-hZM"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="yS3-Kn-stY" secondAttribute="bottom" constant="30" id="PTf-ac-hZM"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="yS3-Kn-stY" secondAttribute="trailing" constant="20" id="Vuc-6D-kXL"/>
-                            <constraint firstItem="yS3-Kn-stY" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="X91-ex-jbQ"/>
+                            <constraint firstItem="yS3-Kn-stY" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="X91-ex-jbQ"/>
                             <constraint firstItem="yS3-Kn-stY" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="YMt-f8-hCy"/>
                         </constraints>
                     </view>

@@ -28,7 +28,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="O8j-gg-h58"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -44,7 +44,7 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="パスワード" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="euz-71-knd">
                                                 <rect key="frame" x="0.0" y="0.0" width="314" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -90,7 +90,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTw-3S-5KP">
-                                <rect key="frame" x="100" y="434" width="214" height="60"/>
+                                <rect key="frame" x="100" y="404" width="214" height="60"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="kKa-8b-3aA"/>
@@ -102,24 +102,51 @@
                                     <action selector="loginButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="wn1-fO-Mfp"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gor-eW-KDk">
+                                <rect key="frame" x="130" y="802" width="264" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="パスワードをお忘れの方は" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sTT-7f-ND3">
+                                        <rect key="frame" x="0.0" y="0.0" width="208" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EYA-AQ-VMN">
+                                        <rect key="frame" x="208" y="0.0" width="56" height="30"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="こちら"/>
+                                        <connections>
+                                            <action selector="passwordForgotButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="9bI-kC-1r9"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="hvg-Lq-o5g"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="SzB-s5-H1W" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="3MZ-eL-sgm"/>
                             <constraint firstItem="gbF-C3-DJA" firstAttribute="leading" secondItem="SzB-s5-H1W" secondAttribute="trailing" constant="5" id="6NR-f7-OQ5"/>
+                            <constraint firstItem="gor-eW-KDk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="9f1-oU-PLt"/>
                             <constraint firstItem="oit-PF-ZG4" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="Cp8-v2-RQG"/>
                             <constraint firstItem="SzB-s5-H1W" firstAttribute="leading" secondItem="E1T-9B-WQm" secondAttribute="trailing" constant="5" id="QKp-rC-G8E"/>
                             <constraint firstItem="gbF-C3-DJA" firstAttribute="centerY" secondItem="Fy8-UG-gHq" secondAttribute="centerY" id="Qt2-8e-avR"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="gor-eW-KDk" secondAttribute="trailing" constant="20" id="X2z-og-4Ys"/>
                             <constraint firstItem="oit-PF-ZG4" firstAttribute="centerY" secondItem="Fy8-UG-gHq" secondAttribute="centerY" id="YyH-85-4ln"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="SzB-s5-H1W" secondAttribute="trailing" constant="50" id="dzj-mg-DFS"/>
                             <constraint firstItem="E1T-9B-WQm" firstAttribute="centerY" secondItem="S80-2s-Ve2" secondAttribute="centerY" id="fns-zA-iVs"/>
                             <constraint firstItem="SzB-s5-H1W" firstAttribute="leading" secondItem="oit-PF-ZG4" secondAttribute="trailing" constant="5" id="ims-cf-1Me"/>
                             <constraint firstItem="E1T-9B-WQm" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="mOs-hV-VTh"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="gbF-C3-DJA" secondAttribute="trailing" constant="10" id="mn8-wH-y9h"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="gor-eW-KDk" secondAttribute="bottom" constant="30" id="mv1-vu-AyV"/>
                             <constraint firstItem="jTw-3S-5KP" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="orP-lp-K5b"/>
                             <constraint firstItem="SzB-s5-H1W" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="130" id="qf3-rk-Gj4"/>
-                            <constraint firstItem="jTw-3S-5KP" firstAttribute="top" secondItem="SzB-s5-H1W" secondAttribute="bottom" constant="100" id="zHh-ld-m8N"/>
+                            <constraint firstItem="jTw-3S-5KP" firstAttribute="top" secondItem="SzB-s5-H1W" secondAttribute="bottom" constant="70" id="zHh-ld-m8N"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="jTw-3S-5KP" secondAttribute="trailing" constant="100" id="zpo-WM-r2E"/>
                         </constraints>
                     </view>
@@ -127,6 +154,7 @@
                         <outlet property="loginButton" destination="jTw-3S-5KP" id="GKu-Ia-MIl"/>
                         <outlet property="loginButtonTopConstraint" destination="zHh-ld-m8N" id="Xl3-Qw-80p"/>
                         <outlet property="mailAddressTextField" destination="S80-2s-Ve2" id="ZiO-Q9-7s6"/>
+                        <outlet property="passwordForgotButton" destination="EYA-AQ-VMN" id="uvd-KU-NoC"/>
                         <outlet property="passwordSecureButton" destination="gbF-C3-DJA" id="cpY-l1-t77"/>
                         <outlet property="passwordTextField" destination="Fy8-UG-gHq" id="xY8-An-dZN"/>
                         <outlet property="stackViewTopConstraint" destination="qf3-rk-Gj4" id="UiM-Kn-zth"/>

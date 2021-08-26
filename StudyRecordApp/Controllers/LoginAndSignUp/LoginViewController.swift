@@ -19,6 +19,7 @@ final class LoginViewController: UIViewController {
     @IBOutlet private weak var passwordSecureButton: UIButton!
     @IBOutlet private weak var loginButtonTopConstraint: NSLayoutConstraint!
     @IBOutlet private weak var loginButton: UIButton!
+    @IBOutlet private weak var passwordForgotButton: UIButton!
     
     weak var delegate: LoginVCDelegate?
     private var isHiddenPassword = true
@@ -31,6 +32,7 @@ final class LoginViewController: UIViewController {
         setupMailAddressTextField()
         setupPasswordTextField()
         setupLoginButton()
+        setupPasswordForgotButton()
         setupKeyboardObserver()
         
     }
@@ -57,6 +59,10 @@ final class LoginViewController: UIViewController {
     }
     
     @IBAction private func loginButtonDidTapped(_ sender: Any) {
+        
+    }
+    
+    @IBAction private func passwordForgotButtonDidTapped(_ sender: Any) {
         
     }
     
@@ -96,6 +102,10 @@ private extension LoginViewController {
         loginButton.layer.cornerRadius = 10
     }
     
+    func setupPasswordForgotButton() {
+        passwordForgotButton.layer.cornerRadius = 10
+    }
+    
     func setupKeyboardObserver() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillShow),
@@ -112,7 +122,7 @@ private extension LoginViewController {
         if isKeyboardHidden {
             UIView.animate(deadlineFromNow: 0, duration: 0.5) {
                 self.stackViewTopConstraint.constant -= 100
-                self.loginButtonTopConstraint.constant -= 50
+                self.loginButtonTopConstraint.constant -= 30
                 self.view.layoutIfNeeded()
             }
         }
@@ -124,7 +134,7 @@ private extension LoginViewController {
         if !isKeyboardHidden {
             UIView.animate(deadlineFromNow: 0, duration: 0.5) {
                 self.stackViewTopConstraint.constant += 100
-                self.loginButtonTopConstraint.constant += 50
+                self.loginButtonTopConstraint.constant += 30
                 self.view.layoutIfNeeded()
             }
         }
