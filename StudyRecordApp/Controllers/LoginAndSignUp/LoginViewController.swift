@@ -22,7 +22,7 @@ final class LoginViewController: UIViewController {
     @IBOutlet private weak var passwordForgotButton: UIButton!
     
     weak var delegate: LoginVCDelegate?
-    private var isHiddenPassword = true
+    private var isPasswordHidden = true
     private var isKeyboardHidden = true
     
     override func viewDidLoad() {
@@ -48,14 +48,14 @@ final class LoginViewController: UIViewController {
     @IBAction private func passwordSecureButtonDidTapped(_ sender: Any) {
         guard let eyeFillImage = UIImage(systemName: "eye.fill"),
               let eyeSlashFillImage = UIImage(systemName: "eye.slash.fill") else { return }
-        if isHiddenPassword {
+        if isPasswordHidden {
             passwordSecureButton.setImage(eyeFillImage)
             passwordTextField.isSecureTextEntry = false
         } else {
             passwordSecureButton.setImage(eyeSlashFillImage)
             passwordTextField.isSecureTextEntry = true
         }
-        isHiddenPassword.toggle()
+        isPasswordHidden.toggle()
     }
     
     @IBAction private func loginButtonDidTapped(_ sender: Any) {

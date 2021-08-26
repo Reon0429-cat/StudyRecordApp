@@ -69,11 +69,11 @@
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oit-PF-ZG4">
-                                <rect key="frame" x="20" y="307.5" width="25" height="23.5"/>
+                                <rect key="frame" x="20" y="309" width="25" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="oit-PF-ZG4" secondAttribute="height" id="DvA-AR-077"/>
                                 </constraints>
-                                <imageReference key="image" image="key" catalog="system" renderingMode="original"/>
+                                <imageReference key="image" image="lock" catalog="system" renderingMode="original"/>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gbF-C3-DJA">
@@ -95,7 +95,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="kKa-8b-3aA"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="ログイン"/>
                                 <connections>
@@ -168,6 +168,6 @@
     <resources>
         <image name="envelope" catalog="system" width="128" height="93"/>
         <image name="eye.slash.fill" catalog="system" width="128" height="82"/>
-        <image name="key" catalog="system" width="86" height="128"/>
+        <image name="lock" catalog="system" width="128" height="128"/>
     </resources>
 </document>
