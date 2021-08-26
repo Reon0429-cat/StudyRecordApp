@@ -13,12 +13,16 @@ protocol LoginVCDelegate: AnyObject {
 
 final class LoginViewController: UIViewController {
     
+    @IBOutlet private weak var stackViewTopConstraint: NSLayoutConstraint!
     @IBOutlet private weak var mailAddressTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     @IBOutlet private weak var passwordSecureButton: UIButton!
+    @IBOutlet private weak var loginButtonTopConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var loginButton: UIButton!
     
     weak var delegate: LoginVCDelegate?
     private var isHiddenPassword = true
+    private var isKeyboardHidden = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +30,8 @@ final class LoginViewController: UIViewController {
         setupGR()
         setupMailAddressTextField()
         setupPasswordTextField()
+        setupLoginButton()
+        setupKeyboardObserver()
         
     }
     
@@ -48,6 +54,10 @@ final class LoginViewController: UIViewController {
             passwordTextField.isSecureTextEntry = true
         }
         isHiddenPassword.toggle()
+    }
+    
+    @IBAction private func loginButtonDidTapped(_ sender: Any) {
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -80,6 +90,45 @@ private extension LoginViewController {
         passwordTextField.delegate = self
         passwordTextField.isSecureTextEntry = true
         passwordTextField.keyboardType = .URL
+    }
+    
+    func setupLoginButton() {
+        loginButton.layer.cornerRadius = 10
+    }
+    
+    func setupKeyboardObserver() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    }
+    
+    @objc
+    func keyboardWillShow() {
+        if isKeyboardHidden {
+            UIView.animate(deadlineFromNow: 0, duration: 0.5) {
+                self.stackViewTopConstraint.constant -= 100
+                self.loginButtonTopConstraint.constant -= 50
+                self.view.layoutIfNeeded()
+            }
+        }
+        isKeyboardHidden = false
+    }
+    
+    @objc
+    func keyboardWillHide() {
+        if !isKeyboardHidden {
+            UIView.animate(deadlineFromNow: 0, duration: 0.5) {
+                self.stackViewTopConstraint.constant += 100
+                self.loginButtonTopConstraint.constant += 50
+                self.view.layoutIfNeeded()
+            }
+        }
+        isKeyboardHidden = true
     }
     
 }

@@ -415,20 +415,3 @@ private extension TopViewController {
     
 }
 
-private extension UIView {
-    
-    static func animate(deadlineFromNow: Double,
-                        _ animation: @escaping () -> Void) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + deadlineFromNow) {
-            UIView.animate(withDuration: 1,
-                           delay: 0,
-                           usingSpringWithDamping: 1,
-                           initialSpringVelocity: 0,
-                           options: []) {
-                animation()
-            }
-        }
-    }
-    
-}
-

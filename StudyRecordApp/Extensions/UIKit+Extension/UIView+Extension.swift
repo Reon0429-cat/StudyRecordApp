@@ -72,4 +72,18 @@ extension UIView {
         self.layer.borderWidth = width ?? 0
     }
     
+    static func animate(deadlineFromNow: Double,
+                        duration: Double = 1,
+                        _ animation: @escaping () -> Void) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + deadlineFromNow) {
+            UIView.animate(withDuration: duration,
+                           delay: 0,
+                           usingSpringWithDamping: 1,
+                           initialSpringVelocity: 0,
+                           options: []) {
+                animation()
+            }
+        }
+    }
+    
 }
