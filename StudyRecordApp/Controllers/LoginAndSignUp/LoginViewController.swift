@@ -7,23 +7,36 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+protocol LoginVCDelegate: AnyObject {
+    func leftSwipeDid()
+}
 
+final class LoginViewController: UIViewController {
+    
+    weak var delegate: LoginVCDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        setupGR()
+        
     }
     
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+// MARK: - setup
+private extension LoginViewController {
+    
+    func setupGR() {
+        let leftSwipeGR = UISwipeGestureRecognizer(target: self,
+                                                   action: #selector(leftSwipeDid))
+        leftSwipeGR.direction = .left
+        self.view.addGestureRecognizer(leftSwipeGR)
     }
-    */
-
+    
+    @objc
+    func leftSwipeDid() {
+        delegate?.leftSwipeDid()
+    }
+    
 }

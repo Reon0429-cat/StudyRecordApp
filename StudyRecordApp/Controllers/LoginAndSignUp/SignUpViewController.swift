@@ -7,23 +7,38 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController {
+protocol SignUpVCDelegate: AnyObject {
+    func rightSwipeDid()
+}
 
+final class SignUpViewController: UIViewController {
+    
+    weak var delegate: SignUpVCDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        setupGR()
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+
+// MARK: - setup
+private extension SignUpViewController {
+    
+    func setupGR() {
+        let rightSwipeGR = UISwipeGestureRecognizer(target: self,
+                                                    action: #selector(rightSwipeDid))
+        rightSwipeGR.direction = .right
+        self.view.addGestureRecognizer(rightSwipeGR)
+    }
+    
+    @objc
+    func rightSwipeDid() {
+        delegate?.rightSwipeDid()
+    }
+    
+}
+
+

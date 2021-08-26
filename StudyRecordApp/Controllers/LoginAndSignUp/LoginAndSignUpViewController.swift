@@ -22,6 +22,13 @@ final class LoginAndSignUpViewController: UIViewController {
         case login
         case signUp
     }
+    private func convertToViewTypeFrom(_ id: String) -> ViewType {
+        switch id {
+            case "loginSegueId": return .login
+            case "signUpSegueId": return .signUp
+            default: fatalError("予期しないidがあります。")
+        }
+    }
     private var viewType: ViewType = .login {
         didSet {
             bringContainerView()
@@ -90,15 +97,18 @@ final class LoginAndSignUpViewController: UIViewController {
         }
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        switch viewType {
-//            case .login:
-//                let loginVC = segue.destination as! LoginViewController
-//
-//            case .signUp:
-//                let signUpVC = segue.destination as! SignUpViewController
-//        }
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let segueId = segue.identifier else { return }
+        let viewType = convertToViewTypeFrom(segueId)
+        switch viewType {
+            case .login:
+                let loginVC = segue.destination as! LoginViewController
+                loginVC.delegate = self
+            case .signUp:
+                let signUpVC = segue.destination as! SignUpViewController
+                signUpVC.delegate = self
+        }
+    }
     
 }
 
@@ -117,6 +127,24 @@ private extension LoginAndSignUpViewController {
     func setupSignUpButton() {
         signUpButton.layer.cornerRadius = cornerRadiusConstant
         signUpButton.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+    }
+    
+}
+
+// MARK: - LoginVCDelegate
+extension LoginAndSignUpViewController: LoginVCDelegate {
+    
+    func leftSwipeDid() {
+        viewType = .signUp
+    }
+    
+}
+
+// MARK: - SignUpVCDelegate
+extension LoginAndSignUpViewController: SignUpVCDelegate {
+    
+    func rightSwipeDid() {
+        viewType = .login
     }
     
 }

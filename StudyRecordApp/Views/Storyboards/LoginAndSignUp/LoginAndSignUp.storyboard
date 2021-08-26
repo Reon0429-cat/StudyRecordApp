@@ -52,13 +52,13 @@
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cgi-FW-Llc">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="748"/>
                                                 <connections>
-                                                    <segue destination="HP9-cM-C2N" kind="embed" id="mlu-nE-YlD"/>
+                                                    <segue destination="HP9-cM-C2N" kind="embed" identifier="signUpSegueId" id="mlu-nE-YlD"/>
                                                 </connections>
                                             </containerView>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2br-ix-kJk">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="748"/>
                                                 <connections>
-                                                    <segue destination="Eaf-BD-RDI" kind="embed" id="1Nl-cs-rvh"/>
+                                                    <segue destination="Eaf-BD-RDI" kind="embed" identifier="loginSegueId" id="1Nl-cs-rvh"/>
                                                 </connections>
                                             </containerView>
                                         </subviews>
