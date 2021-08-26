@@ -68,13 +68,13 @@ final class LoginAndSignUpViewController: UIViewController {
     private func setToggleViewColor() {
         switch viewType {
             case .login:
-                loginButton.backgroundColor = .systemRed
+                loginButton.backgroundColor = .white
                 signUpButton.backgroundColor = .clear
                 loginButton.tintColor = .black
                 signUpButton.tintColor = .gray
             case .signUp:
                 loginButton.backgroundColor = .clear
-                signUpButton.backgroundColor = .systemGreen
+                signUpButton.backgroundColor = .white
                 loginButton.tintColor = .gray
                 signUpButton.tintColor = .black
         }
