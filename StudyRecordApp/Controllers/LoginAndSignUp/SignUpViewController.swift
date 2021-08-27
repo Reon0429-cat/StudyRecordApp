@@ -6,6 +6,9 @@
 //
 
 import UIKit
+#warning("消す")
+import Firebase
+import FirebaseFirestore
 
 protocol SignUpVCDelegate: AnyObject {
     func rightSwipeDid()
@@ -76,7 +79,39 @@ final class SignUpViewController: UIViewController {
     }
     
     @IBAction private func signUpButtonDidTapped(_ sender: Any) {
-        
+        guard let mailAddressText = mailAddressTextField.text,
+              let passwordText = passwordTextField.text,
+              let passwordConfirmationText = passwordConfirmationTextField.text else { return }
+        if passwordText != passwordConfirmationText {
+            showAlert(title: "パスワードが一致しません")
+            return
+        }
+        if passwordText.count < 6 {
+            showAlert(title: "パスワードは６文字以上で入力してください")
+            return
+        }
+        if mailAddressText == Auth.auth().currentUser?.email ?? "" {
+            showAlert(title: "このメールアドレスは既に登録されています")
+            return
+        }
+        Auth.auth().createUser(withEmail: mailAddressText,
+                               password: passwordText) { result, error in
+            if error != nil {
+                self.showAlert(title: "新規登録に失敗しました\(error!.localizedDescription)")
+                return
+            }
+            if let user = result?.user {
+                let docData = ["mail": mailAddressText]
+                let userRef = Firestore.firestore().collection("users")
+                userRef.document(user.uid).setData(docData) { error in
+                    if error != nil {
+                        self.showAlert(title: "新規登録に失敗しました\(error!.localizedDescription)")
+                        return
+                    }
+                    print("DEBUG_PRINT ユーザー作成完了")
+                }
+            }
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -86,6 +121,12 @@ final class SignUpViewController: UIViewController {
     private func changeSignUpButtonState(isEnabled: Bool) {
         signUpButton.isEnabled = isEnabled
         signUpButton.backgroundColor = isEnabled ? .black : .gray
+    }
+    
+    private func showAlert(title: String) {
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "閉じる", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
     
 }
