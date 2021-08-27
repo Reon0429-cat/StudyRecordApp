@@ -34,6 +34,7 @@ final class LoginViewController: UIViewController {
         setupLoginButton()
         setupPasswordForgotButton()
         setupKeyboardObserver()
+        changeLoginButtonState(isEnabled: false)
         
     }
     
@@ -68,6 +69,11 @@ final class LoginViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+    }
+    
+    private func changeLoginButtonState(isEnabled: Bool) {
+        loginButton.isEnabled = isEnabled
+        loginButton.backgroundColor = isEnabled ? .black : .gray
     }
     
 }
@@ -149,6 +155,13 @@ extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        guard let mailAddressText = mailAddressTextField.text,
+              let passwordText = passwordTextField.text else { return }
+        let isEnabled = !mailAddressText.isEmpty && !passwordText.isEmpty
+        changeLoginButtonState(isEnabled: isEnabled)
     }
     
 }

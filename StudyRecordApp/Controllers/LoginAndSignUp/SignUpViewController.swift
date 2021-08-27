@@ -36,6 +36,7 @@ final class SignUpViewController: UIViewController {
         setupPasswordConfirmationTextField()
         setupSignUpButton()
         setupKeyboardObserver()
+        changeSignUpButtonState(isEnabled: false)
         
     }
     
@@ -80,6 +81,11 @@ final class SignUpViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+    }
+    
+    private func changeSignUpButtonState(isEnabled: Bool) {
+        signUpButton.isEnabled = isEnabled
+        signUpButton.backgroundColor = isEnabled ? .black : .gray
     }
     
 }
@@ -163,6 +169,14 @@ extension SignUpViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        guard let mailAddressText = mailAddressTextField.text,
+              let passwordText = passwordTextField.text,
+              let passwordConfirmationText = passwordConfirmationTextField.text else { return }
+        let isEnabled = !mailAddressText.isEmpty && !passwordText.isEmpty && !passwordConfirmationText.isEmpty
+        changeSignUpButtonState(isEnabled: isEnabled)
     }
     
 }
