@@ -95,7 +95,7 @@ private extension LoginViewController {
     func setupPasswordTextField() {
         passwordTextField.delegate = self
         passwordTextField.isSecureTextEntry = true
-        passwordTextField.keyboardType = .URL
+        passwordTextField.textContentType = .newPassword
     }
     
     func setupLoginButton() {
