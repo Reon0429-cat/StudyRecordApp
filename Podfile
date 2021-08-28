@@ -6,9 +6,11 @@ target 'StudyRecordApp' do
   use_frameworks!
 
   # Pods for StudyRecordApp
+   pod 'PKHUD', '~> 5.0'
    pod 'RealmSwift'
    pod 'Firebase/Analytics'
    pod 'Firebase/Auth'
    pod 'Firebase/Firestore'
    
 end
+

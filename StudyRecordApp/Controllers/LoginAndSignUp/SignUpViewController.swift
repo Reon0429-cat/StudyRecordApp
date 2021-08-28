@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import PKHUD
 #warning("消す")
-import Firebase
+import FirebaseAuth
 import FirebaseFirestore
 
 protocol SignUpVCDelegate: AnyObject {
@@ -94,21 +95,31 @@ final class SignUpViewController: UIViewController {
             showAlert(title: "このメールアドレスは既に登録されています")
             return
         }
+        if mailAddressText.contains(" ") {
+            showAlert(title: "メールアドレスに空白が含まれます")
+            return
+        }
+        HUD.show(.progress)
         Auth.auth().createUser(withEmail: mailAddressText,
                                password: passwordText) { result, error in
             if error != nil {
-                self.showAlert(title: "新規登録に失敗しました\(error!.localizedDescription)")
+                self.flashHUD(.error) {
+                    self.showAlert(title: "新規登録に失敗しました\(error!.localizedDescription)")
+                }
                 return
             }
             if let user = result?.user {
-                let docData = ["mail": mailAddressText]
                 let userRef = Firestore.firestore().collection("users")
-                userRef.document(user.uid).setData(docData) { error in
+                userRef.document(user.uid).setData(["mail": mailAddressText]) { error in
                     if error != nil {
-                        self.showAlert(title: "新規登録に失敗しました\(error!.localizedDescription)")
+                        self.flashHUD(.error) {
+                            self.showAlert(title: "新規登録に失敗しました\(error!.localizedDescription)")
+                        }
                         return
                     }
-                    print("DEBUG_PRINT ユーザー作成完了")
+                    self.flashHUD(.success) {
+                        print("成功")
+                    }
                 }
             }
         }
@@ -127,6 +138,15 @@ final class SignUpViewController: UIViewController {
         let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "閉じる", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
+    }
+    
+    private func flashHUD(_ type: HUDContentType,
+                          completion: @escaping () -> Void) {
+        HUD.flash(type,
+                  onView: nil,
+                  delay: 0) { _ in
+            completion()
+        }
     }
     
 }
