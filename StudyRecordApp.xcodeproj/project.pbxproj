@@ -40,6 +40,7 @@
 		AB13EE6826CACB16002F56FF /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EE6726CACB16002F56FF /* UIView+Extension.swift */; };
 		AB13EE6A26CB6965002F56FF /* RippleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EE6926CB6965002F56FF /* RippleView.swift */; };
 		AB14B46026DA3381007A5F16 /* UserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB14B45F26DA3381007A5F16 /* UserUseCase.swift */; };
+		AB14B46226DA855F007A5F16 /* CommunicationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB14B46126DA855F007A5F16 /* CommunicationStatus.swift */; };
 		AB16304F26CD6AF400111F55 /* WaveView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB16304E26CD6AF400111F55 /* WaveView.xib */; };
 		AB16305126CD6B1400111F55 /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB16305026CD6B1400111F55 /* WaveView.swift */; };
 		AB16307B26CE123A00111F55 /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB16307926CE123A00111F55 /* RecordTableViewCell.swift */; };
@@ -150,6 +151,7 @@
 		AB13EE6726CACB16002F56FF /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		AB13EE6926CB6965002F56FF /* RippleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleView.swift; sourceTree = "<group>"; };
 		AB14B45F26DA3381007A5F16 /* UserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUseCase.swift; sourceTree = "<group>"; };
+		AB14B46126DA855F007A5F16 /* CommunicationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationStatus.swift; sourceTree = "<group>"; };
 		AB16304E26CD6AF400111F55 /* WaveView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaveView.xib; sourceTree = "<group>"; };
 		AB16305026CD6B1400111F55 /* WaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveView.swift; sourceTree = "<group>"; };
 		AB16307926CE123A00111F55 /* RecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
@@ -544,6 +546,7 @@
 		AB93C25A266A5A0D00C3AE8F /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				AB14B46126DA855F007A5F16 /* CommunicationStatus.swift */,
 				AB13EE6526CAC989002F56FF /* ScreenType.swift */,
 				AB13EDDA26C3C163002F56FF /* Convert.swift */,
 				AB13EDFF26C8E0E9002F56FF /* Setting */,
@@ -846,6 +849,7 @@
 				AB2B5BA426A2D1B7009BD3C7 /* PopConcept.swift in Sources */,
 				AB2B5BBC26A2D2C2009BD3C7 /* AccordionTableViewCell.swift in Sources */,
 				AB16308226CEAB9300111F55 /* NavigationButton.swift in Sources */,
+				AB14B46226DA855F007A5F16 /* CommunicationStatus.swift in Sources */,
 				AB2B5BC726A2D36F009BD3C7 /* ColorChoicesConceptViewController.swift in Sources */,
 				AB2B5BB726A2D2C2009BD3C7 /* ColorConceptTableViewCell.swift in Sources */,
 				AB2B5B8326A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift in Sources */,

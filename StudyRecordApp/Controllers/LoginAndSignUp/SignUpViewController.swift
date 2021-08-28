@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import PKHUD
-import Reachability
 
 protocol SignUpVCDelegate: AnyObject {
     func rightSwipeDid()
@@ -83,16 +81,15 @@ private extension SignUpViewController {
         guard let mailAddressText = mailAddressTextField.text,
               let passwordText = passwordTextField.text,
               let passwordConfirmationText = passwordConfirmationTextField.text else { return }
-        let reachability = try! Reachability()
-        if reachability.connection == .unavailable {
-            showAlert(title: "通信環境が良くありません")
+        if CommunicationStatus().unstable() {
+            showErrorAlert(title: "通信環境が良くありません")
             return
         }
         if passwordText != passwordConfirmationText {
-            showAlert(title: "パスワードが一致しません")
+            showErrorAlert(title: "パスワードが一致しません")
             return
         }
-        HUD.show(.progress)
+        showHUD(.progress)
         registerUser(email: mailAddressText, password: passwordText)
     }
     
@@ -107,7 +104,7 @@ private extension SignUpViewController {
             switch result {
                 case .failure(let message):
                     self.flashHUD(.error) {
-                        self.showAlert(title: message)
+                        self.showErrorAlert(title: message)
                     }
                 case .success(let user):
                     self.createUser(userId: user.uid, mailAddressText: email)
@@ -119,9 +116,9 @@ private extension SignUpViewController {
         userUseCase.createUser(userId: userId,
                                email: mailAddressText) { result in
             switch result {
-                case .failure(let message):
+                case .failure(let title):
                     self.flashHUD(.error) {
-                        self.showAlert(title: message)
+                        self.showErrorAlert(title: title)
                     }
                 case .success:
                     self.flashHUD(.success) {
@@ -131,24 +128,9 @@ private extension SignUpViewController {
         }
     }
     
-    func flashHUD(_ type: HUDContentType,
-                  completion: @escaping () -> Void) {
-        HUD.flash(type,
-                  onView: nil,
-                  delay: 0) { _ in
-            completion()
-        }
-    }
-    
     func changeSignUpButtonState(isEnabled: Bool) {
         signUpButton.isEnabled = isEnabled
         signUpButton.backgroundColor = isEnabled ? .black : .gray
-    }
-    
-    func showAlert(title: String) {
-        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "閉じる", style: .default, handler: nil))
-        present(alert, animated: true, completion: nil)
     }
     
 }
