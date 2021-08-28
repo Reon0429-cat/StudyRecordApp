@@ -26,20 +26,24 @@ final class UserUseCase {
     func registerUser(email: String,
                       password: String,
                       completion: @escaping ResultHandler<Firebase.User>) {
+        if password.count < 6 {
+            completion(.failure("パスワードは６文字以上で入力してください"))
+            return
+        }
+        if password.contains(" ") {
+            completion(.failure("パスワードに空白が含まれています"))
+            return
+        }
+        if email == self.currentUser?.email ?? "" {
+            completion(.failure("このメールアドレスは既に登録されています"))
+            return
+        }
+        if email.contains(" ") {
+            completion(.failure("メールアドレスに空白が含まれています"))
+            return
+        }
         Auth.auth().createUser(withEmail: email,
                                password: password) { result, error in
-            if password.count < 6 {
-                completion(.failure("パスワードは６文字以上で入力してください"))
-                return
-            }
-            if email == self.currentUser?.email ?? "" {
-                completion(.failure("このメールアドレスは既に登録されています"))
-                return
-            }
-            if email.contains(" ") {
-                completion(.failure("メールアドレスに空白が含まれます"))
-                return
-            }
             if let error = error {
                 completion(.failure(error.localizedDescription))
             } else {
@@ -56,7 +60,8 @@ final class UserUseCase {
                     email: String,
                     completion: @escaping ResultHandler<Any?>) {
         let userRef = Firestore.firestore().collection("users")
-        userRef.document(userId).setData(["mail": email]) { error in
+        let data = [String: Any]()
+        userRef.document(userId).setData(data) { error in
             if let error = error {
                 completion(.failure(error.localizedDescription))
             } else {

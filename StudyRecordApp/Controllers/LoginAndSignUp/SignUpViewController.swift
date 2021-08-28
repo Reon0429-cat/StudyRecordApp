@@ -63,13 +63,9 @@ private extension SignUpViewController {
     @IBAction func passwordSecureButtonDidTapped(_ sender: Any) {
         guard let eyeFillImage = UIImage(systemName: "eye.fill"),
               let eyeSlashFillImage = UIImage(systemName: "eye.slash.fill") else { return }
-        if isPasswordHidden {
-            passwordSecureButton.setImage(eyeFillImage)
-            passwordTextField.isSecureTextEntry = false
-        } else {
-            passwordSecureButton.setImage(eyeSlashFillImage)
-            passwordTextField.isSecureTextEntry = true
-        }
+        let image = isPasswordHidden ? eyeFillImage : eyeSlashFillImage
+        passwordSecureButton.setImage(image)
+        passwordTextField.isSecureTextEntry.toggle()
         isPasswordHidden.toggle()
     }
     
@@ -182,7 +178,7 @@ private extension SignUpViewController {
     
     func setupMailAddressTextField() {
         mailAddressTextField.delegate = self
-        mailAddressTextField.keyboardType = .URL
+        mailAddressTextField.keyboardType = .emailAddress
     }
     
     func setupPasswordTextField() {
