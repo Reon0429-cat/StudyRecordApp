@@ -7,9 +7,6 @@
 
 import UIKit
 import PKHUD
-#warning("消す")
-import FirebaseAuth
-import FirebaseFirestore
 
 protocol SignUpVCDelegate: AnyObject {
     func rightSwipeDid()
@@ -30,6 +27,7 @@ final class SignUpViewController: UIViewController {
     private var isPasswordHidden = true
     private var isPasswordConfirmationHidden = true
     private var isKeyboardHidden = true
+    private var userUseCase = UserUseCase()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,7 +89,7 @@ final class SignUpViewController: UIViewController {
             showAlert(title: "パスワードは６文字以上で入力してください")
             return
         }
-        if mailAddressText == Auth.auth().currentUser?.email ?? "" {
+        if mailAddressText == userUseCase.currentUser?.email ?? "" {
             showAlert(title: "このメールアドレスは既に登録されています")
             return
         }
@@ -100,44 +98,33 @@ final class SignUpViewController: UIViewController {
             return
         }
         HUD.show(.progress)
-        Auth.auth().createUser(withEmail: mailAddressText,
-                               password: passwordText) { result, error in
-            if error != nil {
-                self.flashHUD(.error) {
-                    self.showAlert(title: "新規登録に失敗しました\(error!.localizedDescription)")
-                }
-                return
-            }
-            if let user = result?.user {
-                let userRef = Firestore.firestore().collection("users")
-                userRef.document(user.uid).setData(["mail": mailAddressText]) { error in
-                    if error != nil {
-                        self.flashHUD(.error) {
-                            self.showAlert(title: "新規登録に失敗しました\(error!.localizedDescription)")
-                        }
-                        return
+        userUseCase.registerUser(email: mailAddressText,
+                                 password: passwordText) { result in
+            switch result {
+                case .failure(let error):
+                    self.flashHUD(.error) {
+                        self.showAlert(title: "新規登録に失敗しました\(error.localizedDescription)")
                     }
-                    self.flashHUD(.success) {
-                        print("成功")
-                    }
-                }
+                case .success(let user):
+                    self.createUser(userId: user.uid, mailAddressText: mailAddressText)
             }
         }
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-    
-    private func changeSignUpButtonState(isEnabled: Bool) {
-        signUpButton.isEnabled = isEnabled
-        signUpButton.backgroundColor = isEnabled ? .black : .gray
-    }
-    
-    private func showAlert(title: String) {
-        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "閉じる", style: .default, handler: nil))
-        present(alert, animated: true, completion: nil)
+    private func createUser(userId: String, mailAddressText: String) {
+        self.userUseCase.createUser(userId: userId,
+                                    email: mailAddressText) { result in
+            switch result {
+                case .failure(let error):
+                    self.flashHUD(.error) {
+                        self.showAlert(title: "新規登録に失敗しました\(error.localizedDescription)")
+                    }
+                case .success:
+                    self.flashHUD(.success) {
+                        print("成功")
+                    }
+            }
+        }
     }
     
     private func flashHUD(_ type: HUDContentType,
@@ -147,6 +134,21 @@ final class SignUpViewController: UIViewController {
                   delay: 0) { _ in
             completion()
         }
+    }
+    
+    private func showAlert(title: String) {
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "閉じる", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    private func changeSignUpButtonState(isEnabled: Bool) {
+        signUpButton.isEnabled = isEnabled
+        signUpButton.backgroundColor = isEnabled ? .black : .gray
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
 }
