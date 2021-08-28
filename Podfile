@@ -7,6 +7,7 @@ target 'StudyRecordApp' do
 
   # Pods for StudyRecordApp
    pod 'PKHUD', '~> 5.0'
+   pod 'ReachabilitySwift'
    pod 'RealmSwift'
    pod 'Firebase/Analytics'
    pod 'Firebase/Auth'

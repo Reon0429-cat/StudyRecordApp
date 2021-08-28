@@ -476,6 +476,7 @@ PODS:
   - nanopb/encode (2.30908.0)
   - PKHUD (5.3.0)
   - PromisesObjC (2.0.0)
+  - ReachabilitySwift (5.0.0)
   - Realm (10.13.0):
     - Realm/Headers (= 10.13.0)
   - Realm/Headers (10.13.0)
@@ -487,6 +488,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Firestore
   - PKHUD (~> 5.0)
+  - ReachabilitySwift
   - RealmSwift
 
 SPEC REPOS:
@@ -510,6 +512,7 @@ SPEC REPOS:
     - nanopb
     - PKHUD
     - PromisesObjC
+    - ReachabilitySwift
     - Realm
     - RealmSwift
 
@@ -533,9 +536,10 @@ SPEC CHECKSUMS:
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   Realm: e3a1225aafa7cec96a020dc199201b9d1f9cd59c
   RealmSwift: 62585b4a934754a9d9117331689f4e8a5b1f6113
 
-PODFILE CHECKSUM: 686e5351532710b9ea9b602c77c4a3ed2423a948
+PODFILE CHECKSUM: 1fa495ffd70cd4c2b8fe1287a89002f4bdaa006b
 
 COCOAPODS: 1.10.2
