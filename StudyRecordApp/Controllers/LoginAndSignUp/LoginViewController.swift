@@ -24,7 +24,8 @@ final class LoginViewController: UIViewController {
     weak var delegate: LoginVCDelegate?
     private var isPasswordHidden = true
     private var isKeyboardHidden = true
-    
+    private var userUseCase = UserUseCase()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -60,7 +61,26 @@ final class LoginViewController: UIViewController {
     }
     
     @IBAction private func loginButtonDidTapped(_ sender: Any) {
-        
+        guard let email = mailAddressTextField.text,
+              let password = passwordTextField.text else { return }
+        if CommunicationStatus().unstable() {
+            showErrorAlert(title: "通信環境が良くありません")
+            return
+        }
+        showHUD(.progress)
+        userUseCase.login(email: email,
+                          password: password) { result in
+            switch result {
+                case .failure(let title):
+                    self.flashHUD(.error) {
+                        self.showErrorAlert(title: title)
+                    }
+                case .success:
+                    self.flashHUD(.success) {
+                        print("成功")
+                    }
+            }
+        }
     }
     
     @IBAction private func passwordForgotButtonDidTapped(_ sender: Any) {

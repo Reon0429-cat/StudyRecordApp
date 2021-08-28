@@ -78,19 +78,19 @@ private extension SignUpViewController {
     }
     
     @IBAction func signUpButtonDidTapped(_ sender: Any) {
-        guard let mailAddressText = mailAddressTextField.text,
-              let passwordText = passwordTextField.text,
-              let passwordConfirmationText = passwordConfirmationTextField.text else { return }
+        guard let email = mailAddressTextField.text,
+              let password = passwordTextField.text,
+              let passwordConfirmation = passwordConfirmationTextField.text else { return }
         if CommunicationStatus().unstable() {
             showErrorAlert(title: "通信環境が良くありません")
             return
         }
-        if passwordText != passwordConfirmationText {
+        if password != passwordConfirmation {
             showErrorAlert(title: "パスワードが一致しません")
             return
         }
         showHUD(.progress)
-        registerUser(email: mailAddressText, password: passwordText)
+        registerUser(email: email, password: password)
     }
     
 }
@@ -102,9 +102,9 @@ private extension SignUpViewController {
         userUseCase.registerUser(email: email,
                                  password: password) { result in
             switch result {
-                case .failure(let message):
+                case .failure(let title):
                     self.flashHUD(.error) {
-                        self.showErrorAlert(title: message)
+                        self.showErrorAlert(title: title)
                     }
                 case .success(let user):
                     self.createUser(userId: user.uid, mailAddressText: email)
