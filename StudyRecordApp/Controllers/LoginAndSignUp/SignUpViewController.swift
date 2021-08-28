@@ -82,28 +82,16 @@ final class SignUpViewController: UIViewController {
               let passwordText = passwordTextField.text,
               let passwordConfirmationText = passwordConfirmationTextField.text else { return }
         if passwordText != passwordConfirmationText {
-            showAlert(title: "パスワードが一致しません")
-            return
-        }
-        if passwordText.count < 6 {
-            showAlert(title: "パスワードは６文字以上で入力してください")
-            return
-        }
-        if mailAddressText == userUseCase.currentUser?.email ?? "" {
-            showAlert(title: "このメールアドレスは既に登録されています")
-            return
-        }
-        if mailAddressText.contains(" ") {
-            showAlert(title: "メールアドレスに空白が含まれます")
+            showAlert(message: "パスワードが一致しません")
             return
         }
         HUD.show(.progress)
         userUseCase.registerUser(email: mailAddressText,
                                  password: passwordText) { result in
             switch result {
-                case .failure(let error):
+                case .failure(let message):
                     self.flashHUD(.error) {
-                        self.showAlert(title: "新規登録に失敗しました\(error.localizedDescription)")
+                        self.showAlert(message: message)
                     }
                 case .success(let user):
                     self.createUser(userId: user.uid, mailAddressText: mailAddressText)
@@ -112,12 +100,12 @@ final class SignUpViewController: UIViewController {
     }
     
     private func createUser(userId: String, mailAddressText: String) {
-        self.userUseCase.createUser(userId: userId,
-                                    email: mailAddressText) { result in
+        userUseCase.createUser(userId: userId,
+                               email: mailAddressText) { result in
             switch result {
-                case .failure(let error):
+                case .failure(let message):
                     self.flashHUD(.error) {
-                        self.showAlert(title: "新規登録に失敗しました\(error.localizedDescription)")
+                        self.showAlert(message: message)
                     }
                 case .success:
                     self.flashHUD(.success) {
@@ -136,8 +124,8 @@ final class SignUpViewController: UIViewController {
         }
     }
     
-    private func showAlert(title: String) {
-        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+    private func showAlert(message: String) {
+        let alert = UIAlertController(title: message, message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "閉じる", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }

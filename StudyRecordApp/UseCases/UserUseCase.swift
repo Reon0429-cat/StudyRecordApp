@@ -10,7 +10,12 @@ import FirebaseAuth
 import FirebaseFirestore
 import Firebase
 
-typealias ResultHandler<T> = (Result<T, Error>) -> Void
+enum Result<Success, Failure> {
+    case success(Success)
+    case failure(Failure)
+}
+
+typealias ResultHandler<T> = (Result<T, String>) -> Void
 
 final class UserUseCase {
     
@@ -23,13 +28,25 @@ final class UserUseCase {
                       completion: @escaping ResultHandler<Firebase.User>) {
         Auth.auth().createUser(withEmail: email,
                                password: password) { result, error in
+            if password.count < 6 {
+                completion(.failure("パスワードは６文字以上で入力してください"))
+                return
+            }
+            if email == self.currentUser?.email ?? "" {
+                completion(.failure("このメールアドレスは既に登録されています"))
+                return
+            }
+            if email.contains(" ") {
+                completion(.failure("メールアドレスに空白が含まれます"))
+                return
+            }
             if let error = error {
-                completion(.failure(error))
+                completion(.failure(error.localizedDescription))
             } else {
                 if let user = result?.user {
                     completion(.success(user))
                 } else if let error = error {
-                    completion(.failure(error))
+                    completion(.failure(error.localizedDescription))
                 }
             }
         }
@@ -41,7 +58,7 @@ final class UserUseCase {
         let userRef = Firestore.firestore().collection("users")
         userRef.document(userId).setData(["mail": email]) { error in
             if let error = error {
-                completion(.failure(error))
+                completion(.failure(error.localizedDescription))
             } else {
                 completion(.success(nil))
             }
