@@ -7,6 +7,7 @@
 
 import UIKit
 import PKHUD
+import Reachability
 
 protocol SignUpVCDelegate: AnyObject {
     func rightSwipeDid()
@@ -82,28 +83,37 @@ private extension SignUpViewController {
         guard let mailAddressText = mailAddressTextField.text,
               let passwordText = passwordTextField.text,
               let passwordConfirmationText = passwordConfirmationTextField.text else { return }
+        let reachability = try! Reachability()
+        if reachability.connection == .unavailable {
+            showAlert(title: "通信環境が良くありません")
+            return
+        }
         if passwordText != passwordConfirmationText {
             showAlert(title: "パスワードが一致しません")
             return
         }
         HUD.show(.progress)
-        userUseCase.registerUser(email: mailAddressText,
-                                 password: passwordText) { result in
-            switch result {
-                case .failure(let message):
-                    self.flashHUD(.error) {
-                        self.showAlert(title: message)
-                    }
-                case .success(let user):
-                    self.createUser(userId: user.uid, mailAddressText: mailAddressText)
-            }
-        }
+        registerUser(email: mailAddressText, password: passwordText)
     }
     
 }
 
 // MARK: - func
 private extension SignUpViewController {
+    
+    func registerUser(email: String, password: String) {
+        userUseCase.registerUser(email: email,
+                                 password: password) { result in
+            switch result {
+                case .failure(let message):
+                    self.flashHUD(.error) {
+                        self.showAlert(title: message)
+                    }
+                case .success(let user):
+                    self.createUser(userId: user.uid, mailAddressText: email)
+            }
+        }
+    }
     
     func createUser(userId: String, mailAddressText: String) {
         userUseCase.createUser(userId: userId,
