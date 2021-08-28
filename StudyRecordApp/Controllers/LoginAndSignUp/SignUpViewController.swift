@@ -51,7 +51,16 @@ final class SignUpViewController: UIViewController {
         
     }
     
-    @IBAction private func passwordSecureButtonDidTapped(_ sender: Any) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+}
+
+// MARK: - IBAction func
+private extension SignUpViewController {
+    
+    @IBAction func passwordSecureButtonDidTapped(_ sender: Any) {
         guard let eyeFillImage = UIImage(systemName: "eye.fill"),
               let eyeSlashFillImage = UIImage(systemName: "eye.slash.fill") else { return }
         if isPasswordHidden {
@@ -64,25 +73,21 @@ final class SignUpViewController: UIViewController {
         isPasswordHidden.toggle()
     }
     
-    @IBAction private func passwordConfirmationSecureButtonDidTapped(_ sender: Any) {
+    @IBAction func passwordConfirmationSecureButtonDidTapped(_ sender: Any) {
         guard let eyeFillImage = UIImage(systemName: "eye.fill"),
               let eyeSlashFillImage = UIImage(systemName: "eye.slash.fill") else { return }
-        if isPasswordConfirmationHidden {
-            passwordConfirmationSecureButton.setImage(eyeFillImage)
-            passwordConfirmationTextField.isSecureTextEntry = false
-        } else {
-            passwordConfirmationSecureButton.setImage(eyeSlashFillImage)
-            passwordConfirmationTextField.isSecureTextEntry = true
-        }
+        let image = isPasswordConfirmationHidden ? eyeFillImage : eyeSlashFillImage
+        passwordConfirmationSecureButton.setImage(image)
+        passwordConfirmationTextField.isSecureTextEntry.toggle()
         isPasswordConfirmationHidden.toggle()
     }
     
-    @IBAction private func signUpButtonDidTapped(_ sender: Any) {
+    @IBAction func signUpButtonDidTapped(_ sender: Any) {
         guard let mailAddressText = mailAddressTextField.text,
               let passwordText = passwordTextField.text,
               let passwordConfirmationText = passwordConfirmationTextField.text else { return }
         if passwordText != passwordConfirmationText {
-            showAlert(message: "パスワードが一致しません")
+            showAlert(title: "パスワードが一致しません")
             return
         }
         HUD.show(.progress)
@@ -91,7 +96,7 @@ final class SignUpViewController: UIViewController {
             switch result {
                 case .failure(let message):
                     self.flashHUD(.error) {
-                        self.showAlert(message: message)
+                        self.showAlert(title: message)
                     }
                 case .success(let user):
                     self.createUser(userId: user.uid, mailAddressText: mailAddressText)
@@ -99,13 +104,18 @@ final class SignUpViewController: UIViewController {
         }
     }
     
-    private func createUser(userId: String, mailAddressText: String) {
+}
+
+// MARK: - func
+private extension SignUpViewController {
+    
+    func createUser(userId: String, mailAddressText: String) {
         userUseCase.createUser(userId: userId,
                                email: mailAddressText) { result in
             switch result {
                 case .failure(let message):
                     self.flashHUD(.error) {
-                        self.showAlert(message: message)
+                        self.showAlert(title: message)
                     }
                 case .success:
                     self.flashHUD(.success) {
@@ -115,8 +125,8 @@ final class SignUpViewController: UIViewController {
         }
     }
     
-    private func flashHUD(_ type: HUDContentType,
-                          completion: @escaping () -> Void) {
+    func flashHUD(_ type: HUDContentType,
+                  completion: @escaping () -> Void) {
         HUD.flash(type,
                   onView: nil,
                   delay: 0) { _ in
@@ -124,19 +134,33 @@ final class SignUpViewController: UIViewController {
         }
     }
     
-    private func showAlert(message: String) {
-        let alert = UIAlertController(title: message, message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "閉じる", style: .default, handler: nil))
-        present(alert, animated: true, completion: nil)
-    }
-    
-    private func changeSignUpButtonState(isEnabled: Bool) {
+    func changeSignUpButtonState(isEnabled: Bool) {
         signUpButton.isEnabled = isEnabled
         signUpButton.backgroundColor = isEnabled ? .black : .gray
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
+    func showAlert(title: String) {
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "閉じる", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
+}
+
+// MARK: - UITextFieldDelegate
+extension SignUpViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        guard let mailAddressText = mailAddressTextField.text,
+              let passwordText = passwordTextField.text,
+              let passwordConfirmationText = passwordConfirmationTextField.text else { return }
+        let isEnabled = !mailAddressText.isEmpty && !passwordText.isEmpty && !passwordConfirmationText.isEmpty
+        changeSignUpButtonState(isEnabled: isEnabled)
     }
     
 }
@@ -210,24 +234,6 @@ private extension SignUpViewController {
             }
         }
         isKeyboardHidden = true
-    }
-    
-}
-
-// MARK: - UITextFieldDelegate
-extension SignUpViewController: UITextFieldDelegate {
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    func textFieldDidChangeSelection(_ textField: UITextField) {
-        guard let mailAddressText = mailAddressTextField.text,
-              let passwordText = passwordTextField.text,
-              let passwordConfirmationText = passwordConfirmationTextField.text else { return }
-        let isEnabled = !mailAddressText.isEmpty && !passwordText.isEmpty && !passwordConfirmationText.isEmpty
-        changeSignUpButtonState(isEnabled: isEnabled)
     }
     
 }
