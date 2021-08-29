@@ -25,7 +25,7 @@ final class LoginViewController: UIViewController {
     private var isPasswordHidden = true
     private var isKeyboardHidden = true
     private var userUseCase = UserUseCase()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,7 +47,16 @@ final class LoginViewController: UIViewController {
         
     }
     
-    @IBAction private func passwordSecureButtonDidTapped(_ sender: Any) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+}
+
+// MARK: - IBAction func
+private extension LoginViewController {
+    
+    @IBAction func passwordSecureButtonDidTapped(_ sender: Any) {
         guard let eyeFillImage = UIImage(systemName: "eye.fill"),
               let eyeSlashFillImage = UIImage(systemName: "eye.slash.fill") else { return }
         if isPasswordHidden {
@@ -60,7 +69,7 @@ final class LoginViewController: UIViewController {
         isPasswordHidden.toggle()
     }
     
-    @IBAction private func loginButtonDidTapped(_ sender: Any) {
+    @IBAction func loginButtonDidTapped(_ sender: Any) {
         guard let email = mailAddressTextField.text,
               let password = passwordTextField.text else { return }
         if CommunicationStatus().unstable() {
@@ -83,17 +92,35 @@ final class LoginViewController: UIViewController {
         }
     }
     
-    @IBAction private func passwordForgotButtonDidTapped(_ sender: Any) {
+    @IBAction func passwordForgotButtonDidTapped(_ sender: Any) {
         
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
+}
+
+// MARK: - func
+private extension LoginViewController {
     
-    private func changeLoginButtonState(isEnabled: Bool) {
+    func changeLoginButtonState(isEnabled: Bool) {
         loginButton.isEnabled = isEnabled
         loginButton.backgroundColor = isEnabled ? .black : .gray
+    }
+    
+}
+
+// MARK: - UITextFieldDelegate
+extension LoginViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        guard let mailAddressText = mailAddressTextField.text,
+              let passwordText = passwordTextField.text else { return }
+        let isEnabled = !mailAddressText.isEmpty && !passwordText.isEmpty
+        changeLoginButtonState(isEnabled: isEnabled)
     }
     
 }
@@ -168,21 +195,3 @@ private extension LoginViewController {
     }
     
 }
-
-// MARK: - UITextFieldDelegate
-extension LoginViewController: UITextFieldDelegate {
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    func textFieldDidChangeSelection(_ textField: UITextField) {
-        guard let mailAddressText = mailAddressTextField.text,
-              let passwordText = passwordTextField.text else { return }
-        let isEnabled = !mailAddressText.isEmpty && !passwordText.isEmpty
-        changeLoginButtonState(isEnabled: isEnabled)
-    }
-    
-}
-
