@@ -19,8 +19,8 @@ final class SignUpViewController: UIViewController {
     @IBOutlet private weak var passwordSecureButton: UIButton!
     @IBOutlet private weak var passwordConfirmationTextField: UITextField!
     @IBOutlet private weak var passwordConfirmationSecureButton: UIButton!
-    @IBOutlet private weak var signUpButtonTopConstraint: NSLayoutConstraint!
     @IBOutlet private weak var signUpButton: UIButton!
+    @IBOutlet private weak var signUpButtonTopConstraint: NSLayoutConstraint!
     
     weak var delegate: SignUpVCDelegate?
     private var isPasswordHidden = true
@@ -217,8 +217,12 @@ private extension SignUpViewController {
     func keyboardWillShow() {
         if isKeyboardHidden {
             UIView.animate(deadlineFromNow: 0, duration: 0.5) {
-                self.stackView.spacing -= 15
-                self.signUpButtonTopConstraint.constant -= 30
+                if self.view.frame.height < 600 {
+                    self.stackView.spacing -= 25
+                    self.signUpButtonTopConstraint.constant -= 40
+                } else {
+                    self.stackView.spacing -= 15
+                }
                 self.view.layoutIfNeeded()
             }
         }
@@ -229,8 +233,12 @@ private extension SignUpViewController {
     func keyboardWillHide() {
         if !isKeyboardHidden {
             UIView.animate(deadlineFromNow: 0, duration: 0.5) {
-                self.stackView.spacing += 15
-                self.signUpButtonTopConstraint.constant += 30
+                if self.view.frame.height < 600 {
+                    self.stackView.spacing += 25
+                    self.signUpButtonTopConstraint.constant += 40
+                } else {
+                    self.stackView.spacing += 15
+                }
                 self.view.layoutIfNeeded()
             }
         }

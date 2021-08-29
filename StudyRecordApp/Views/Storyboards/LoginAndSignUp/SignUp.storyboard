@@ -166,7 +166,7 @@
                         <outlet property="passwordSecureButton" destination="2yc-xT-gBp" id="AbK-W9-UAj"/>
                         <outlet property="passwordTextField" destination="4zx-Mw-kMb" id="QcO-c6-zO4"/>
                         <outlet property="signUpButton" destination="unj-IW-pzZ" id="r5t-G2-cs2"/>
-                        <outlet property="signUpButtonTopConstraint" destination="UbH-OG-beW" id="efQ-P3-5ed"/>
+                        <outlet property="signUpButtonTopConstraint" destination="UbH-OG-beW" id="1X5-dY-SH0"/>
                         <outlet property="stackView" destination="hbs-9T-FZn" id="r5p-xb-IR7"/>
                     </connections>
                 </viewController>

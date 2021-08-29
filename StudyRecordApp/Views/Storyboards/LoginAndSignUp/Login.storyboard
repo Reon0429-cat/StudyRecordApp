@@ -152,7 +152,6 @@
                     </view>
                     <connections>
                         <outlet property="loginButton" destination="jTw-3S-5KP" id="GKu-Ia-MIl"/>
-                        <outlet property="loginButtonTopConstraint" destination="zHh-ld-m8N" id="Xl3-Qw-80p"/>
                         <outlet property="mailAddressTextField" destination="S80-2s-Ve2" id="ZiO-Q9-7s6"/>
                         <outlet property="passwordForgotButton" destination="EYA-AQ-VMN" id="uvd-KU-NoC"/>
                         <outlet property="passwordSecureButton" destination="gbF-C3-DJA" id="cpY-l1-t77"/>

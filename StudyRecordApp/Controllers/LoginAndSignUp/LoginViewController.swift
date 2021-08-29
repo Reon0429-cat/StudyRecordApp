@@ -17,7 +17,6 @@ final class LoginViewController: UIViewController {
     @IBOutlet private weak var mailAddressTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     @IBOutlet private weak var passwordSecureButton: UIButton!
-    @IBOutlet private weak var loginButtonTopConstraint: NSLayoutConstraint!
     @IBOutlet private weak var loginButton: UIButton!
     @IBOutlet private weak var passwordForgotButton: UIButton!
     
@@ -176,7 +175,6 @@ private extension LoginViewController {
         if isKeyboardHidden {
             UIView.animate(deadlineFromNow: 0, duration: 0.5) {
                 self.stackViewTopConstraint.constant -= 100
-                self.loginButtonTopConstraint.constant -= 30
                 self.view.layoutIfNeeded()
             }
         }
@@ -188,7 +186,6 @@ private extension LoginViewController {
         if !isKeyboardHidden {
             UIView.animate(deadlineFromNow: 0, duration: 0.5) {
                 self.stackViewTopConstraint.constant += 100
-                self.loginButtonTopConstraint.constant += 30
                 self.view.layoutIfNeeded()
             }
         }
