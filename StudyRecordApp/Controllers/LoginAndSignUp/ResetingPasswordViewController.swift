@@ -11,14 +11,17 @@ final class ResetingPasswordViewController: UIViewController {
     
     @IBOutlet private weak var mailAddressTextField: UITextField!
     @IBOutlet private weak var sendButton: UIButton!
+    @IBOutlet private weak var stackViewTopConstraint: NSLayoutConstraint!
     
     private var userUseCase = UserUseCase()
+    private var isKeyboardHidden = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupSendButton()
         setupMailAddressTextField()
+        setupKeyboardObserver()
         
     }
     
@@ -93,6 +96,41 @@ private extension ResetingPasswordViewController {
         mailAddressTextField.delegate = self
         mailAddressTextField.keyboardType = .emailAddress
         mailAddressTextField.setUnderLine()
+    }
+    
+    func setupKeyboardObserver() {
+        if self.view.frame.height < 800 {
+            NotificationCenter.default.addObserver(self,
+                                                   selector: #selector(keyboardWillShow),
+                                                   name: UIResponder.keyboardWillShowNotification,
+                                                   object: nil)
+            NotificationCenter.default.addObserver(self,
+                                                   selector: #selector(keyboardWillHide),
+                                                   name: UIResponder.keyboardWillHideNotification,
+                                                   object: nil)
+        }
+    }
+    
+    @objc
+    func keyboardWillShow() {
+        if isKeyboardHidden {
+            UIView.animate(deadlineFromNow: 0, duration: 0.5) {
+                self.stackViewTopConstraint.constant -= 30
+                self.view.layoutIfNeeded()
+            }
+        }
+        isKeyboardHidden = false
+    }
+    
+    @objc
+    func keyboardWillHide() {
+        if !isKeyboardHidden {
+            UIView.animate(deadlineFromNow: 0, duration: 0.5) {
+                self.stackViewTopConstraint.constant += 30
+                self.view.layoutIfNeeded()
+            }
+        }
+        isKeyboardHidden = true
     }
     
 }
