@@ -69,6 +69,19 @@ final class UserUseCase {
         }
     }
     
+    func sendPasswordResetMail(email: String,
+                               completion: @escaping ResultHandler<Any?>) {
+        Auth.auth().languageCode = "ja_JP"
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            if let error = error {
+                let message = self.authErrorMessage(error)
+                completion(.failure(message))
+                return
+            }
+            completion(.success(nil))
+        }
+    }
+    
     private func authErrorMessage(_ error: Error) -> String {
         if let errorCode = AuthErrorCode(rawValue: error._code) {
             switch errorCode {

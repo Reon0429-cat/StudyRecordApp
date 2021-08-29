@@ -37,11 +37,11 @@ final class SignUpViewController: UIViewController {
         setupPasswordConfirmationTextField()
         setupSignUpButton()
         setupKeyboardObserver()
-        changeSignUpButtonState(isEnabled: false)
         
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>,
+                               with event: UIEvent?) {
         self.view.endEditing(true)
     }
     
@@ -181,6 +181,7 @@ private extension SignUpViewController {
     
     func setupSignUpButton() {
         signUpButton.layer.cornerRadius = 10
+        changeSignUpButtonState(isEnabled: false)
     }
     
     func setupKeyboardObserver() {

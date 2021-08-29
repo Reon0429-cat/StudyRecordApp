@@ -35,11 +35,11 @@ final class LoginViewController: UIViewController {
         setupLoginButton()
         setupPasswordForgotButton()
         setupKeyboardObserver()
-        changeLoginButtonState(isEnabled: false)
         
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>,
+                               with event: UIEvent?) {
         self.view.endEditing(true)
     }
     
@@ -148,6 +148,7 @@ private extension LoginViewController {
     
     func setupLoginButton() {
         loginButton.layer.cornerRadius = 10
+        changeLoginButtonState(isEnabled: false)
     }
     
     func setupPasswordForgotButton() {
