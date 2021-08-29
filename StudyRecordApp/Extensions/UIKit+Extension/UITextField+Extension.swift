@@ -10,12 +10,14 @@ import UIKit
 extension UITextField {
     
     func setUnderLine() {
-        self.borderStyle = .none
-        let underline = UIView()
-        underline.frame = CGRect(x: 0, y: self.frame.height, width: self.frame.width, height: 2)
-        underline.backgroundColor = .black
-        self.addSubview(underline)
-        self.bringSubviewToFront(underline)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+            self.borderStyle = .none
+            let underline = UIView()
+            underline.frame = CGRect(x: 0, y: self.frame.height, width: self.frame.width, height: 2)
+            underline.backgroundColor = .black
+            self.addSubview(underline)
+            self.bringSubviewToFront(underline)
+        }
     }
     
 }

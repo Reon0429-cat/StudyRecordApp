@@ -39,14 +39,6 @@ final class LoginViewController: UIViewController {
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        mailAddressTextField.setUnderLine()
-        passwordTextField.setUnderLine()
-        
-    }
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
@@ -93,7 +85,8 @@ private extension LoginViewController {
     }
     
     @IBAction func passwordForgotButtonDidTapped(_ sender: Any) {
-        
+        let resetingPasswordVC = ResetingPasswordViewController.instantiate()
+        present(resetingPasswordVC, animated: true, completion: nil)
     }
     
 }
@@ -143,12 +136,14 @@ private extension LoginViewController {
     func setupMailAddressTextField() {
         mailAddressTextField.delegate = self
         mailAddressTextField.keyboardType = .URL
+        mailAddressTextField.setUnderLine()
     }
     
     func setupPasswordTextField() {
         passwordTextField.delegate = self
         passwordTextField.isSecureTextEntry = true
         passwordTextField.textContentType = .newPassword
+        passwordTextField.setUnderLine()
     }
     
     func setupLoginButton() {
