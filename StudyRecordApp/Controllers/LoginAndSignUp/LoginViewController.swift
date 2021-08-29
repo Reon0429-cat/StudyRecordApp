@@ -33,6 +33,7 @@ final class LoginViewController: UIViewController {
         setupMailAddressTextField()
         setupPasswordTextField()
         setupLoginButton()
+        setupPasswordSecureButton()
         setupPasswordForgotButton()
         setupKeyboardObserver()
         
@@ -49,15 +50,8 @@ final class LoginViewController: UIViewController {
 private extension LoginViewController {
     
     @IBAction func passwordSecureButtonDidTapped(_ sender: Any) {
-        guard let eyeFillImage = UIImage(systemName: "eye.fill"),
-              let eyeSlashFillImage = UIImage(systemName: "eye.slash.fill") else { return }
-        if isPasswordHidden {
-            passwordSecureButton.setImage(eyeFillImage)
-            passwordTextField.isSecureTextEntry = false
-        } else {
-            passwordSecureButton.setImage(eyeSlashFillImage)
-            passwordTextField.isSecureTextEntry = true
-        }
+        changePasswordSecureButtonImage(isSlash: isPasswordHidden)
+        passwordTextField.isSecureTextEntry.toggle()
         isPasswordHidden.toggle()
     }
     
@@ -97,6 +91,13 @@ private extension LoginViewController {
     func changeLoginButtonState(isEnabled: Bool) {
         loginButton.isEnabled = isEnabled
         loginButton.backgroundColor = isEnabled ? .black : .gray
+    }
+    
+    func changePasswordSecureButtonImage(isSlash: Bool) {
+        guard let eyeFillImage = UIImage(systemName: "eye.fill"),
+              let eyeSlashFillImage = UIImage(systemName: "eye.slash.fill") else { return }
+        let image = isSlash ? eyeSlashFillImage : eyeFillImage
+        passwordSecureButton.setImage(image)
     }
     
 }
@@ -149,6 +150,10 @@ private extension LoginViewController {
     func setupLoginButton() {
         loginButton.layer.cornerRadius = 10
         changeLoginButtonState(isEnabled: false)
+    }
+    
+    func setupPasswordSecureButton() {
+        changePasswordSecureButtonImage(isSlash: false)
     }
     
     func setupPasswordForgotButton() {

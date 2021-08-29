@@ -35,6 +35,8 @@ final class SignUpViewController: UIViewController {
         setupMailAddressTextField()
         setupPasswordTextField()
         setupPasswordConfirmationTextField()
+        setupPasswordSecureButton()
+        setupPasswordConfirmationSecureButton()
         setupSignUpButton()
         setupKeyboardObserver()
         
@@ -51,19 +53,13 @@ final class SignUpViewController: UIViewController {
 private extension SignUpViewController {
     
     @IBAction func passwordSecureButtonDidTapped(_ sender: Any) {
-        guard let eyeFillImage = UIImage(systemName: "eye.fill"),
-              let eyeSlashFillImage = UIImage(systemName: "eye.slash.fill") else { return }
-        let image = isPasswordHidden ? eyeFillImage : eyeSlashFillImage
-        passwordSecureButton.setImage(image)
+        changePasswordSecureButtonImage(isSlash: isPasswordHidden)
         passwordTextField.isSecureTextEntry.toggle()
         isPasswordHidden.toggle()
     }
     
     @IBAction func passwordConfirmationSecureButtonDidTapped(_ sender: Any) {
-        guard let eyeFillImage = UIImage(systemName: "eye.fill"),
-              let eyeSlashFillImage = UIImage(systemName: "eye.slash.fill") else { return }
-        let image = isPasswordConfirmationHidden ? eyeFillImage : eyeSlashFillImage
-        passwordConfirmationSecureButton.setImage(image)
+        changePasswordConfirmationSecureButtonImage(isSlash: isPasswordConfirmationHidden)
         passwordConfirmationTextField.isSecureTextEntry.toggle()
         isPasswordConfirmationHidden.toggle()
     }
@@ -124,6 +120,20 @@ private extension SignUpViewController {
         signUpButton.backgroundColor = isEnabled ? .black : .gray
     }
     
+    func changePasswordSecureButtonImage(isSlash: Bool) {
+        guard let eyeFillImage = UIImage(systemName: "eye.fill"),
+              let eyeSlashFillImage = UIImage(systemName: "eye.slash.fill") else { return }
+        let image = isSlash ? eyeSlashFillImage : eyeFillImage
+        passwordSecureButton.setImage(image)
+    }
+    
+    func changePasswordConfirmationSecureButtonImage(isSlash: Bool) {
+        guard let eyeFillImage = UIImage(systemName: "eye.fill"),
+              let eyeSlashFillImage = UIImage(systemName: "eye.slash.fill") else { return }
+        let image = isSlash ? eyeSlashFillImage : eyeFillImage
+        passwordConfirmationSecureButton.setImage(image)
+    }
+    
 }
 
 // MARK: - UITextFieldDelegate
@@ -177,6 +187,14 @@ private extension SignUpViewController {
         passwordConfirmationTextField.isSecureTextEntry = true
         passwordTextField.textContentType = .newPassword
         passwordConfirmationTextField.setUnderLine()
+    }
+    
+    func setupPasswordSecureButton() {
+        changePasswordSecureButtonImage(isSlash: false)
+    }
+    
+    func setupPasswordConfirmationSecureButton() {
+        changePasswordConfirmationSecureButtonImage(isSlash: false)
     }
     
     func setupSignUpButton() {

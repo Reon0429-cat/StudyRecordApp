@@ -111,7 +111,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2yc-xT-gBp">
                                 <rect key="frame" x="369" y="201.5" width="35" height="35"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="eye.slash.fill" catalog="system">
+                                <state key="normal" image="eye.fill" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                 </state>
                                 <connections>
@@ -121,7 +121,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TuE-hR-DD0">
                                 <rect key="frame" x="369" y="301.5" width="35" height="35"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="eye.slash.fill" catalog="system">
+                                <state key="normal" image="eye.fill" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                 </state>
                                 <connections>
@@ -177,7 +177,7 @@
     </scenes>
     <resources>
         <image name="envelope" catalog="system" width="128" height="93"/>
-        <image name="eye.slash.fill" catalog="system" width="128" height="82"/>
+        <image name="eye.fill" catalog="system" width="128" height="78"/>
         <image name="lock" catalog="system" width="128" height="128"/>
     </resources>
 </document>

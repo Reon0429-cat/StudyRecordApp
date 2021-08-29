@@ -82,7 +82,7 @@
                                     <constraint firstAttribute="width" secondItem="gbF-C3-DJA" secondAttribute="height" multiplier="1:1" id="YvO-I1-HXq"/>
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="eye.slash.fill" catalog="system">
+                                <state key="normal" image="eye.fill" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                 </state>
                                 <connections>
@@ -167,7 +167,7 @@
     </scenes>
     <resources>
         <image name="envelope" catalog="system" width="128" height="93"/>
-        <image name="eye.slash.fill" catalog="system" width="128" height="82"/>
+        <image name="eye.fill" catalog="system" width="128" height="78"/>
         <image name="lock" catalog="system" width="128" height="128"/>
     </resources>
 </document>
