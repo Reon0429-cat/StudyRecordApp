@@ -43,6 +43,9 @@
 		AB14B46226DA855F007A5F16 /* CommunicationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB14B46126DA855F007A5F16 /* CommunicationStatus.swift */; };
 		AB14B46426DB515D007A5F16 /* ResetingPassword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB14B46326DB515C007A5F16 /* ResetingPassword.storyboard */; };
 		AB14B46626DB516E007A5F16 /* ResetingPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB14B46526DB516E007A5F16 /* ResetingPasswordViewController.swift */; };
+		AB14B46826DBA4F9007A5F16 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB14B46726DBA4F9007A5F16 /* UserRepository.swift */; };
+		AB14B46A26DBA653007A5F16 /* FirebaseUserDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB14B46926DBA653007A5F16 /* FirebaseUserDataStore.swift */; };
+		AB14B46C26DBA80A007A5F16 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB14B46B26DBA80A007A5F16 /* User.swift */; };
 		AB16304F26CD6AF400111F55 /* WaveView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB16304E26CD6AF400111F55 /* WaveView.xib */; };
 		AB16305126CD6B1400111F55 /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB16305026CD6B1400111F55 /* WaveView.swift */; };
 		AB16307B26CE123A00111F55 /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB16307926CE123A00111F55 /* RecordTableViewCell.swift */; };
@@ -156,6 +159,9 @@
 		AB14B46126DA855F007A5F16 /* CommunicationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationStatus.swift; sourceTree = "<group>"; };
 		AB14B46326DB515C007A5F16 /* ResetingPassword.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ResetingPassword.storyboard; sourceTree = "<group>"; };
 		AB14B46526DB516E007A5F16 /* ResetingPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetingPasswordViewController.swift; sourceTree = "<group>"; };
+		AB14B46726DBA4F9007A5F16 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		AB14B46926DBA653007A5F16 /* FirebaseUserDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUserDataStore.swift; sourceTree = "<group>"; };
+		AB14B46B26DBA80A007A5F16 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AB16304E26CD6AF400111F55 /* WaveView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaveView.xib; sourceTree = "<group>"; };
 		AB16305026CD6B1400111F55 /* WaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveView.swift; sourceTree = "<group>"; };
 		AB16307926CE123A00111F55 /* RecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
@@ -459,6 +465,7 @@
 			isa = PBXGroup;
 			children = (
 				AB93C2BC266BABA900C3AE8F /* Record.swift */,
+				AB14B46B26DBA80A007A5F16 /* User.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -476,6 +483,7 @@
 			isa = PBXGroup;
 			children = (
 				AB13ED4A26BB9155002F56FF /* RecordRepository.swift */,
+				AB14B46726DBA4F9007A5F16 /* UserRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -484,6 +492,7 @@
 			isa = PBXGroup;
 			children = (
 				AB13ED4826BB8128002F56FF /* RealmRecordDataStore.swift */,
+				AB14B46926DBA653007A5F16 /* FirebaseUserDataStore.swift */,
 			);
 			path = DataStores;
 			sourceTree = "<group>";
@@ -866,6 +875,7 @@
 				AB86A85C26D4915700EA990A /* HalfModalIndicatorView.swift in Sources */,
 				ABA0570126B50D1900E3DF01 /* GraphColorTileView.swift in Sources */,
 				AB13EDFE26C8C59B002F56FF /* CountDownViewController.swift in Sources */,
+				AB14B46826DBA4F9007A5F16 /* UserRepository.swift in Sources */,
 				AB13EDE426C78DB4002F56FF /* ScreenTransitionCollectionViewCell.swift in Sources */,
 				AB2B5BA326A2D1B7009BD3C7 /* JapanConcept.swift in Sources */,
 				AB14B46026DA3381007A5F16 /* UserUseCase.swift in Sources */,
@@ -880,7 +890,9 @@
 				AB86A85E26D4915700EA990A /* HalfModalPresentationController.swift in Sources */,
 				AB2B5B8626A2D0FD009BD3C7 /* NSObjectProtocol+Extension.swift in Sources */,
 				AB2B5BC626A2D36F009BD3C7 /* ColorChoicesSliderViewController.swift in Sources */,
+				AB14B46A26DBA653007A5F16 /* FirebaseUserDataStore.swift in Sources */,
 				AB13ED7D26BE7061002F56FF /* StudyRecordHistoryTableViewCell.swift in Sources */,
+				AB14B46C26DBA80A007A5F16 /* User.swift in Sources */,
 				AB93C23B266A234800C3AE8F /* AppDelegate.swift in Sources */,
 				AB2B5BC926A2D36F009BD3C7 /* SettingViewController.swift in Sources */,
 				AB2B5BB926A2D2C2009BD3C7 /* AccordionColorTableViewCell.swift in Sources */,

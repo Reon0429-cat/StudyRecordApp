@@ -26,7 +26,11 @@ final class SignUpViewController: UIViewController {
     private var isPasswordHidden = true
     private var isPasswordConfirmationHidden = true
     private var isKeyboardHidden = true
-    private var userUseCase = UserUseCase()
+    private var userUseCase = UserUseCase(
+        repository: UserRepository(
+            dataStore: FirebaseUserDataStore()
+        )
+    )
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -222,6 +226,7 @@ private extension SignUpViewController {
                     self.signUpButtonTopConstraint.constant -= 40
                 } else {
                     self.stackView.spacing -= 15
+                    self.signUpButtonTopConstraint.constant -= 20
                 }
                 self.view.layoutIfNeeded()
             }
@@ -238,6 +243,7 @@ private extension SignUpViewController {
                     self.signUpButtonTopConstraint.constant += 40
                 } else {
                     self.stackView.spacing += 15
+                    self.signUpButtonTopConstraint.constant += 20
                 }
                 self.view.layoutIfNeeded()
             }
