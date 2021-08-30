@@ -50,6 +50,7 @@ final class TopViewController: UIViewController {
     private var pageViewController: UIPageViewController!
     private var viewControllers = [UIViewController]()
     private var currentPageIndex = 0
+    private var isEditMode = true
     
     override func loadView() {
         super.loadView()
@@ -121,11 +122,8 @@ final class TopViewController: UIViewController {
         if let studyRecordVC = viewControllers.first as? StudyRecordViewController {
             studyRecordVC.reloadTableView()
         }
-        if sortButton.isHidden {
-            sortButton.setFade(.in)
-        } else {
-            sortButton.setFade(.out)
-        }
+        sortButton.setFade(isEditMode ? .in : .out)
+        isEditMode.toggle()
     }
     
     private func screenDidChanged(item: Int) {
@@ -185,6 +183,13 @@ final class TopViewController: UIViewController {
         }
     }
     
+    private func pageVCSetVCs(at item: Int, direction: UIPageViewController.NavigationDirection) {
+        pageViewController.setViewControllers([viewControllers[item]],
+                                              direction: direction,
+                                              animated: true,
+                                              completion: nil)
+    }
+    
 }
 
 // MARK: - UICollectionViewDelegate
@@ -192,10 +197,8 @@ extension TopViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
-        pageViewController.setViewControllers([viewControllers[indexPath.item]],
-                                              direction: currentPageIndex < indexPath.item ? .forward : .reverse,
-                                              animated: true,
-                                              completion: nil)
+        pageVCSetVCs(at: indexPath.item,
+                     direction: currentPageIndex < indexPath.item ? .forward : .reverse)
     }
     
 }
@@ -271,21 +274,15 @@ extension TopViewController: StudyRecordVCDelegate {
     }
     
     func viewWillAppear(records: [Record], index: Int) {
-        if records.isEmpty {
-            editButton.isEnabled = false
-        } else {
-            editButton.isEnabled = true
-        }
+        editButton.isEnabled(!records.isEmpty)
         screenDidChanged(item: index)
     }
     
     func deleteButtonDidTappped(records: [Record]) {
         if records.isEmpty {
-            navigationButtonType = .edit
-            editButton.isEnabled = false
-        } else {
-            editButton.isEnabled = true
+            changeEditMode(type: .edit)
         }
+        editButton.isEnabled(!records.isEmpty)
     }
     
     func baseViewLongPressDidRecognized() {
@@ -308,10 +305,7 @@ extension TopViewController: GoalVCDelegate, GraphVCDelegate, CountDownVCDelegat
 extension TopViewController: SettingVCDelegate {
     
     func loginAndSignUpVCDidShowed() {
-        pageViewController.setViewControllers([viewControllers[0]],
-                                              direction: .reverse,
-                                              animated: true,
-                                              completion: nil)
+        pageVCSetVCs(at: 0, direction: .reverse)
         screenDidChanged(item: 0)
     }
     
@@ -319,7 +313,7 @@ extension TopViewController: SettingVCDelegate {
 
 // MARK: - NavigationButtonDelegate
 extension TopViewController: NavigationButtonDelegate {
-        
+    
     func titleButtonDidTapped(type: NavigationButtonType) {
         changeEditMode(type: type)
     }
