@@ -18,29 +18,7 @@ final class GoalPriorityViewController: UIViewController {
     @IBOutlet private weak var pickerView: UIPickerView!
     
     weak var delegate: GoalPriorityVCDelegate?
-    private struct PriorityType {
-        var mark: PriorityMark
-        var number: PriorityNumber
-    }
-    private enum PriorityMark: Int {
-        case star
-        case heart
-        
-        var image: UIImage {
-            switch self {
-                case .star: return UIImage(systemName: "star.fill")!
-                case .heart: return UIImage(systemName: "heart.fill")!
-            }
-        }
-    }
-    private enum PriorityNumber: Int, CaseIterable {
-        case one
-        case two
-        case three
-        case four
-        case five
-    }
-    private var priorityType = PriorityType(mark: .star, number: .one)
+    private var priority = Priority(mark: .star, number: .one)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,13 +34,13 @@ private extension GoalPriorityViewController {
     
     @IBAction func segmentedControlDidSelected(_ sender: UISegmentedControl) {
         guard let mark = PriorityMark(rawValue: sender.selectedSegmentIndex) else { return }
-        priorityType = PriorityType(mark: mark, number: priorityType.number)
+        priority = Priority(mark: mark, number: priority.number)
         pickerView.reloadComponent(0)
     }
     
     @IBAction func addButtonDidTapped(_ sender: Any) {
         // MARK: - ToDo 追加処理
-        print(priorityType.mark, priorityType.number)
+        print(priority.mark, priority.number)
         dismiss(animated: true, completion: nil)
     }
     
@@ -74,8 +52,8 @@ extension GoalPriorityViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView,
                     didSelectRow row: Int,
                     inComponent component: Int) {
-        guard let priority = PriorityNumber(rawValue: row) else { return }
-        priorityType = PriorityType(mark: priorityType.mark, number: priority)
+        guard let number = PriorityNumber(rawValue: row) else { return }
+        priority = Priority(mark: priority.mark, number: number)
     }
     
     func pickerView(_ pickerView: UIPickerView,
@@ -93,7 +71,7 @@ extension GoalPriorityViewController: UIPickerViewDelegate {
             let imageView = UIImageView()
             imageView.tintColor = .black
             imageView.preferredSymbolConfiguration = .init(pointSize: 20)
-            imageView.image = priorityType.mark.image
+            imageView.image = priority.mark.image
             stackView.addArrangedSubview(imageView)
         }
         view.addSubview(stackView)

@@ -91,6 +91,7 @@
 		AB4397EF26DD305B008C8CA8 /* AdditionalGoal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB4397EE26DD305B008C8CA8 /* AdditionalGoal.storyboard */; };
 		AB4397F126DD3B2A008C8CA8 /* GoalPriority.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB4397F026DD3B2A008C8CA8 /* GoalPriority.storyboard */; };
 		AB4397F326DD3B32008C8CA8 /* GoalPriorityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4397F226DD3B32008C8CA8 /* GoalPriorityViewController.swift */; };
+		AB4397F526DD57B9008C8CA8 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4397F426DD57B9008C8CA8 /* Goal.swift */; };
 		AB4D6BBE2672099C00E5286E /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4D6BBD2672099C00E5286E /* UIButton+Extension.swift */; };
 		AB86A85A26D4915700EA990A /* HalfModalDismissInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86A85426D4915700EA990A /* HalfModalDismissInteractiveTransition.swift */; };
 		AB86A85B26D4915700EA990A /* HalfModalDismissAnimatedTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86A85526D4915700EA990A /* HalfModalDismissAnimatedTransition.swift */; };
@@ -212,6 +213,7 @@
 		AB4397EE26DD305B008C8CA8 /* AdditionalGoal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AdditionalGoal.storyboard; sourceTree = "<group>"; };
 		AB4397F026DD3B2A008C8CA8 /* GoalPriority.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoalPriority.storyboard; sourceTree = "<group>"; };
 		AB4397F226DD3B32008C8CA8 /* GoalPriorityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPriorityViewController.swift; sourceTree = "<group>"; };
+		AB4397F426DD57B9008C8CA8 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		AB4D6BBD2672099C00E5286E /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		AB86A85426D4915700EA990A /* HalfModalDismissInteractiveTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalDismissInteractiveTransition.swift; sourceTree = "<group>"; };
 		AB86A85526D4915700EA990A /* HalfModalDismissAnimatedTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalDismissAnimatedTransition.swift; sourceTree = "<group>"; };
@@ -487,6 +489,7 @@
 			children = (
 				AB93C2BC266BABA900C3AE8F /* Record.swift */,
 				AB14B46B26DBA80A007A5F16 /* User.swift */,
+				AB4397F426DD57B9008C8CA8 /* Goal.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -909,6 +912,7 @@
 				AB4397F326DD3B32008C8CA8 /* GoalPriorityViewController.swift in Sources */,
 				AB2B5BBA26A2D2C2009BD3C7 /* SectionHeaderView.swift in Sources */,
 				AB13EDFA26C8C585002F56FF /* GoalViewController.swift in Sources */,
+				AB4397F526DD57B9008C8CA8 /* Goal.swift in Sources */,
 				AB2B5B8E26A2D106009BD3C7 /* UITableViewCell+Extension.swift in Sources */,
 				AB13ED4926BB8128002F56FF /* RealmRecordDataStore.swift in Sources */,
 				AB9B4FD626D771C5001A7BAB /* UITextField+Extension.swift in Sources */,
