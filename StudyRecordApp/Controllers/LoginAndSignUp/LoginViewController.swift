@@ -9,6 +9,7 @@ import UIKit
 
 protocol LoginVCDelegate: AnyObject {
     func leftSwipeDid()
+    func loginDidSuccessed()
 }
 
 final class LoginViewController: UIViewController {
@@ -75,7 +76,7 @@ private extension LoginViewController {
                     }
                 case .success:
                     Indicator().flash(.success) {
-                        print("成功")
+                        self.delegate?.loginDidSuccessed()
                     }
             }
         }

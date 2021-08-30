@@ -18,6 +18,7 @@ protocol UserRepositoryProtocol {
     func login(email: String,
                password: String,
                completion: @escaping ResultHandler<Any?>)
+    func logout(completion: @escaping ResultHandler<Any?>)
     func sendPasswordResetMail(email: String,
                                completion: @escaping ResultHandler<Any?>)
 }
@@ -55,6 +56,10 @@ final class UserRepository: UserRepositoryProtocol {
         dataStore.login(email: email,
                         password: password,
                         completion: completion)
+    }
+    
+    func logout(completion: @escaping ResultHandler<Any?>) {
+        dataStore.logout(completion: completion)
     }
     
     func sendPasswordResetMail(email: String,

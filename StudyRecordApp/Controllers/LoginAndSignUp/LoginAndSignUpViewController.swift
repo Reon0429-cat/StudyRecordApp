@@ -7,8 +7,6 @@
 
 import UIKit
 
-// MARK: - ToDo 横スワイプでもログインとサインアップを切り替えられるようにする
-
 final class LoginAndSignUpViewController: UIViewController {
     
     @IBOutlet private weak var baseView: UIView!
@@ -48,15 +46,38 @@ final class LoginAndSignUpViewController: UIViewController {
         
     }
     
-    @IBAction private func loginButtonDidTapped(_ sender: Any) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let segueId = segue.identifier else { return }
+        let viewType = convertToViewTypeFrom(segueId)
+        switch viewType {
+            case .login:
+                let loginVC = segue.destination as! LoginViewController
+                loginVC.delegate = self
+            case .signUp:
+                let signUpVC = segue.destination as! SignUpViewController
+                signUpVC.delegate = self
+        }
+    }
+    
+}
+
+// MARK: - IBAction func
+private extension LoginAndSignUpViewController {
+    
+    @IBAction func loginButtonDidTapped(_ sender: Any) {
         viewType = .login
     }
     
-    @IBAction private func signUpButtonDidTapped(_ sender: Any) {
+    @IBAction func signUpButtonDidTapped(_ sender: Any) {
         viewType = .signUp
     }
     
-    private func bringContainerView() {
+}
+
+// MARK: - func
+private extension LoginAndSignUpViewController {
+    
+    func bringContainerView() {
         switch viewType {
             case .login:
                 containerView.bringSubviewToFront(loginContainerView)
@@ -65,7 +86,7 @@ final class LoginAndSignUpViewController: UIViewController {
         }
     }
     
-    private func setToggleViewColor() {
+    func setToggleViewColor() {
         switch viewType {
             case .login:
                 loginButton.backgroundColor = .white
@@ -80,7 +101,7 @@ final class LoginAndSignUpViewController: UIViewController {
         }
     }
     
-    private func setContainerViewCorners() {
+    func setContainerViewCorners() {
         switch viewType {
             case .login:
                 containerView.layer.cornerRadius = cornerRadiusConstant
@@ -94,19 +115,6 @@ final class LoginAndSignUpViewController: UIViewController {
                                                      .layerMinXMaxYCorner,
                                                      .layerMaxXMaxYCorner]
                 containerView.layer.masksToBounds = true
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let segueId = segue.identifier else { return }
-        let viewType = convertToViewTypeFrom(segueId)
-        switch viewType {
-            case .login:
-                let loginVC = segue.destination as! LoginViewController
-                loginVC.delegate = self
-            case .signUp:
-                let signUpVC = segue.destination as! SignUpViewController
-                signUpVC.delegate = self
         }
     }
     
@@ -138,6 +146,10 @@ extension LoginAndSignUpViewController: LoginVCDelegate {
         viewType = .signUp
     }
     
+    func loginDidSuccessed() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }
 
 // MARK: - SignUpVCDelegate
@@ -145,6 +157,10 @@ extension LoginAndSignUpViewController: SignUpVCDelegate {
     
     func rightSwipeDid() {
         viewType = .login
+    }
+    
+    func signUpDidSuccessed() {
+        self.dismiss(animated: true, completion: nil)
     }
     
 }

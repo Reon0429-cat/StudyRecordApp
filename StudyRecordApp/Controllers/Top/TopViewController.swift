@@ -42,6 +42,11 @@ final class TopViewController: UIViewController {
         }
         return screenType
     }
+    private var userUseCase = UserUseCase(
+        repository: UserRepository(
+            dataStore: FirebaseUserDataStore()
+        )
+    )
     private var pageViewController: UIPageViewController!
     private var viewControllers = [UIViewController]()
     private var currentPageIndex = 0
@@ -65,6 +70,19 @@ final class TopViewController: UIViewController {
         setAnimation()
         setupWaveViews()
         setupSeparatorView()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        DispatchQueue.main.async {
+            if !self.userUseCase.isLoggedIn {
+                let loginAndSignUpVC = LoginAndSignUpViewController.instantiate()
+                loginAndSignUpVC.modalPresentationStyle = .fullScreen
+                self.present(loginAndSignUpVC, animated: true, completion: nil)
+            }
+        }
         
     }
     
@@ -278,10 +296,23 @@ extension TopViewController: StudyRecordVCDelegate {
     
 }
 
-extension TopViewController: GoalVCDelegate, GraphVCDelegate, CountDownVCDelegate, SettingVCDelegate {
+extension TopViewController: GoalVCDelegate, GraphVCDelegate, CountDownVCDelegate {
     
     func viewWillAppear(index: Int) {
         screenDidChanged(item: index)
+    }
+    
+}
+
+// MARK: - SettingVCDelegate
+extension TopViewController: SettingVCDelegate {
+    
+    func loginAndSignUpVCDidShowed() {
+        pageViewController.setViewControllers([viewControllers[0]],
+                                              direction: .reverse,
+                                              animated: true,
+                                              completion: nil)
+        screenDidChanged(item: 0)
     }
     
 }

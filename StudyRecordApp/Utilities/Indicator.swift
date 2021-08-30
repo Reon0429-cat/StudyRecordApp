@@ -22,4 +22,9 @@ struct Indicator {
     func show(_ type: HUDContentType) {
         HUD.show(type)
     }
+    
+    func hide() {
+        HUD.hide()
+    }
+    
 }
