@@ -6,3 +6,62 @@
 //
 
 import Foundation
+
+protocol UserRepositoryProtocol {
+    var currentUser: User? { get }
+    func registerUser(email: String,
+                      password: String,
+                      completion: @escaping ResultHandler<User>)
+    func createUser(userId: String,
+                    email: String,
+                    completion: @escaping ResultHandler<Any?>)
+    func login(email: String,
+               password: String,
+               completion: @escaping ResultHandler<Any?>)
+    func sendPasswordResetMail(email: String,
+                               completion: @escaping ResultHandler<Any?>)
+}
+
+final class UserRepository: UserRepositoryProtocol {
+    
+    private var dataStore: UserDataStoreProtocol
+    init(dataStore: UserDataStoreProtocol) {
+        self.dataStore = dataStore
+    }
+    
+    var currentUser: User? {
+        dataStore.currentUser
+    }
+    
+    func registerUser(email: String,
+                      password: String,
+                      completion: @escaping ResultHandler<User>) {
+        dataStore.registerUser(email: email,
+                               password: password,
+                               completion: completion)
+    }
+    
+    func createUser(userId: String,
+                    email: String,
+                    completion: @escaping ResultHandler<Any?>) {
+        dataStore.createUser(userId: userId,
+                             email: email,
+                             completion: completion)
+    }
+    
+    func login(email: String,
+               password: String,
+               completion: @escaping ResultHandler<Any?>) {
+        dataStore.login(email: email,
+                        password: password,
+                        completion: completion)
+    }
+    
+    func sendPasswordResetMail(email: String,
+                               completion: @escaping ResultHandler<Any?>) {
+        dataStore.sendPasswordResetMail(email: email,
+                                        completion: completion)
+    }
+    
+}
+
