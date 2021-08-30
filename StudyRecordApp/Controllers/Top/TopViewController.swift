@@ -100,6 +100,10 @@ final class TopViewController: UIViewController {
                 let additionalStudyRecordVC = AdditionalStudyRecordViewController.instantiate()
                 additionalStudyRecordVC.modalPresentationStyle = .fullScreen
                 present(additionalStudyRecordVC, animated: true, completion: nil)
+            case .goal:
+                let additionalGoalVC = AdditionalGoalViewController.instantiate()
+                additionalGoalVC.modalPresentationStyle = .fullScreen
+                present(additionalGoalVC, animated: true, completion: nil)
             default:
                 break
         }

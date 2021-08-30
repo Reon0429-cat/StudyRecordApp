@@ -87,6 +87,10 @@
 		AB2B5BC826A2D36F009BD3C7 /* ColorConceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5BC226A2D36F009BD3C7 /* ColorConceptViewController.swift */; };
 		AB2B5BC926A2D36F009BD3C7 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5BC326A2D36F009BD3C7 /* SettingViewController.swift */; };
 		AB2B5BCA26A2D36F009BD3C7 /* ThemeColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5BC426A2D36F009BD3C7 /* ThemeColorViewController.swift */; };
+		AB4397ED26DD3051008C8CA8 /* AdditionalGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4397EC26DD3051008C8CA8 /* AdditionalGoalViewController.swift */; };
+		AB4397EF26DD305B008C8CA8 /* AdditionalGoal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB4397EE26DD305B008C8CA8 /* AdditionalGoal.storyboard */; };
+		AB4397F126DD3B2A008C8CA8 /* GoalPriority.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB4397F026DD3B2A008C8CA8 /* GoalPriority.storyboard */; };
+		AB4397F326DD3B32008C8CA8 /* GoalPriorityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4397F226DD3B32008C8CA8 /* GoalPriorityViewController.swift */; };
 		AB4D6BBE2672099C00E5286E /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4D6BBD2672099C00E5286E /* UIButton+Extension.swift */; };
 		AB86A85A26D4915700EA990A /* HalfModalDismissInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86A85426D4915700EA990A /* HalfModalDismissInteractiveTransition.swift */; };
 		AB86A85B26D4915700EA990A /* HalfModalDismissAnimatedTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86A85526D4915700EA990A /* HalfModalDismissAnimatedTransition.swift */; };
@@ -204,6 +208,10 @@
 		AB2B5BC226A2D36F009BD3C7 /* ColorConceptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorConceptViewController.swift; sourceTree = "<group>"; };
 		AB2B5BC326A2D36F009BD3C7 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		AB2B5BC426A2D36F009BD3C7 /* ThemeColorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeColorViewController.swift; sourceTree = "<group>"; };
+		AB4397EC26DD3051008C8CA8 /* AdditionalGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalGoalViewController.swift; sourceTree = "<group>"; };
+		AB4397EE26DD305B008C8CA8 /* AdditionalGoal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AdditionalGoal.storyboard; sourceTree = "<group>"; };
+		AB4397F026DD3B2A008C8CA8 /* GoalPriority.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoalPriority.storyboard; sourceTree = "<group>"; };
+		AB4397F226DD3B32008C8CA8 /* GoalPriorityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPriorityViewController.swift; sourceTree = "<group>"; };
 		AB4D6BBD2672099C00E5286E /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		AB86A85426D4915700EA990A /* HalfModalDismissInteractiveTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalDismissInteractiveTransition.swift; sourceTree = "<group>"; };
 		AB86A85526D4915700EA990A /* HalfModalDismissAnimatedTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalDismissAnimatedTransition.swift; sourceTree = "<group>"; };
@@ -302,6 +310,8 @@
 			isa = PBXGroup;
 			children = (
 				AB13EDF926C8C585002F56FF /* GoalViewController.swift */,
+				AB4397EC26DD3051008C8CA8 /* AdditionalGoalViewController.swift */,
+				AB4397F226DD3B32008C8CA8 /* GoalPriorityViewController.swift */,
 			);
 			path = Goal;
 			sourceTree = "<group>";
@@ -326,6 +336,8 @@
 			isa = PBXGroup;
 			children = (
 				AB13EDF326C8BAAC002F56FF /* Goal.storyboard */,
+				AB4397EE26DD305B008C8CA8 /* AdditionalGoal.storyboard */,
+				AB4397F026DD3B2A008C8CA8 /* GoalPriority.storyboard */,
 			);
 			path = Goal;
 			sourceTree = "<group>";
@@ -368,6 +380,13 @@
 				AB16308126CEAB9300111F55 /* NavigationButton.swift */,
 			);
 			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		AB275FFF26DCDDD3009F63B3 /* Goal */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Goal;
 			sourceTree = "<group>";
 		};
 		AB2B5B9026A2D13C009BD3C7 /* UIKit+Extension */ = {
@@ -616,6 +635,7 @@
 			children = (
 				AB13EDE626C78DD0002F56FF /* All */,
 				AB93C2C8266BC50600C3AE8F /* StudyRecord */,
+				AB275FFF26DCDDD3009F63B3 /* Goal */,
 				AB2B5BAD26A2D2A8009BD3C7 /* Setting */,
 			);
 			path = Cells;
@@ -738,6 +758,7 @@
 			files = (
 				AB93C247266A234C00C3AE8F /* LaunchScreen.storyboard in Resources */,
 				AB14B46426DB515D007A5F16 /* ResetingPassword.storyboard in Resources */,
+				AB4397EF26DD305B008C8CA8 /* AdditionalGoal.storyboard in Resources */,
 				AB2B5BBB26A2D2C2009BD3C7 /* ColorConceptTableViewCell.xib in Resources */,
 				AB13EDE126C64EBB002F56FF /* StudyRecordCustomTableViewCell.xib in Resources */,
 				AB13ECDA26B7AF6F002F56FF /* ColorChoicesSlider.storyboard in Resources */,
@@ -749,6 +770,7 @@
 				AB8B704C26D600500069FF67 /* GoogleService-Info.plist in Resources */,
 				AB13ED7E26BE7061002F56FF /* StudyRecordHistoryTableViewCell.xib in Resources */,
 				AB2B5BB826A2D2C2009BD3C7 /* AccordionColorTableViewCell.xib in Resources */,
+				AB4397F126DD3B2A008C8CA8 /* GoalPriority.storyboard in Resources */,
 				ABA0570326B50F7100E3DF01 /* StudyRecordGraphColor.storyboard in Resources */,
 				AB16307C26CE123A00111F55 /* RecordTableViewCell.xib in Resources */,
 				AB16304F26CD6AF400111F55 /* WaveView.xib in Resources */,
@@ -884,6 +906,7 @@
 				AB14B46026DA3381007A5F16 /* UserUseCase.swift in Sources */,
 				AB2B5BA126A2D1B7009BD3C7 /* SeasonConcept.swift in Sources */,
 				AB2B5B8526A2D0FD009BD3C7 /* UIColor+Extension.swift in Sources */,
+				AB4397F326DD3B32008C8CA8 /* GoalPriorityViewController.swift in Sources */,
 				AB2B5BBA26A2D2C2009BD3C7 /* SectionHeaderView.swift in Sources */,
 				AB13EDFA26C8C585002F56FF /* GoalViewController.swift in Sources */,
 				AB2B5B8E26A2D106009BD3C7 /* UITableViewCell+Extension.swift in Sources */,
@@ -903,6 +926,7 @@
 				AB13EDB426BFAB8B002F56FF /* StudyRecordSortTableViewCell.swift in Sources */,
 				AB13ED1826B8F5EA002F56FF /* StudyRecordMemoViewController.swift in Sources */,
 				AB93C2C3266BC28E00C3AE8F /* EditStudyRecordViewController.swift in Sources */,
+				AB4397ED26DD3051008C8CA8 /* AdditionalGoalViewController.swift in Sources */,
 				AB8B703F26D4A2410069FF67 /* UIViewController+Extension.swift in Sources */,
 				AB8B704E26D62F800069FF67 /* LoginViewController.swift in Sources */,
 				ABA056F626B4C7D800E3DF01 /* StudyRecordGraphColorTableViewCell.swift in Sources */,
