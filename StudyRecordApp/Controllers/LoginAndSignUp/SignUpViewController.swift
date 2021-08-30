@@ -80,7 +80,7 @@ private extension SignUpViewController {
             showErrorAlert(title: "パスワードが一致しません")
             return
         }
-        showHUD(.progress)
+        Indicator().show(.progress)
         registerUser(email: email, password: password)
     }
     
@@ -94,11 +94,11 @@ private extension SignUpViewController {
                                  password: password) { result in
             switch result {
                 case .failure(let title):
-                    self.flashHUD(.error) {
+                    Indicator().flash(.error) {
                         self.showErrorAlert(title: title)
                     }
                 case .success(let user):
-                    self.createUser(userId: user.uid, mailAddressText: email)
+                    self.createUser(userId: user.id, mailAddressText: email)
             }
         }
     }
@@ -108,11 +108,11 @@ private extension SignUpViewController {
                                email: mailAddressText) { result in
             switch result {
                 case .failure(let title):
-                    self.flashHUD(.error) {
+                    Indicator().flash(.error) {
                         self.showErrorAlert(title: title)
                     }
                 case .success:
-                    self.flashHUD(.success) {
+                    Indicator().flash(.success) {
                         print("成功")
                     }
             }

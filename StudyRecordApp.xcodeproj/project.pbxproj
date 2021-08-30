@@ -52,6 +52,7 @@
 		AB16307C26CE123A00111F55 /* RecordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB16307A26CE123A00111F55 /* RecordTableViewCell.xib */; };
 		AB16308226CEAB9300111F55 /* NavigationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB16308126CEAB9300111F55 /* NavigationButton.swift */; };
 		AB16308426CEABD400111F55 /* NavigationButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB16308326CEABD400111F55 /* NavigationButton.xib */; };
+		AB275FFE26DCAA56009F63B3 /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB275FFD26DCAA56009F63B3 /* Indicator.swift */; };
 		AB2B5B8326A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B7E26A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift */; };
 		AB2B5B8426A2D0FD009BD3C7 /* NotificationName+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B7F26A2D0FD009BD3C7 /* NotificationName+Extension.swift */; };
 		AB2B5B8526A2D0FD009BD3C7 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B8026A2D0FD009BD3C7 /* UIColor+Extension.swift */; };
@@ -168,6 +169,7 @@
 		AB16307A26CE123A00111F55 /* RecordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordTableViewCell.xib; sourceTree = "<group>"; };
 		AB16308126CEAB9300111F55 /* NavigationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationButton.swift; sourceTree = "<group>"; };
 		AB16308326CEABD400111F55 /* NavigationButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavigationButton.xib; sourceTree = "<group>"; };
+		AB275FFD26DCAA56009F63B3 /* Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
 		AB2B5B7E26A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
 		AB2B5B7F26A2D0FD009BD3C7 /* NotificationName+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotificationName+Extension.swift"; sourceTree = "<group>"; };
 		AB2B5B8026A2D0FD009BD3C7 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -561,6 +563,7 @@
 		AB93C25A266A5A0D00C3AE8F /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				AB275FFD26DCAA56009F63B3 /* Indicator.swift */,
 				AB14B46126DA855F007A5F16 /* CommunicationStatus.swift */,
 				AB13EE6526CAC989002F56FF /* ScreenType.swift */,
 				AB13EDDA26C3C163002F56FF /* Convert.swift */,
@@ -906,6 +909,7 @@
 				AB13ED4B26BB9155002F56FF /* RecordRepository.swift in Sources */,
 				AB2B5B8D26A2D106009BD3C7 /* UITableView+Extension.swift in Sources */,
 				AB13EDD126C29D9E002F56FF /* StudyRecordTimeRecordViewController.swift in Sources */,
+				AB275FFE26DCAA56009F63B3 /* Indicator.swift in Sources */,
 				AB2B5BA226A2D1B7009BD3C7 /* ElegantConcept.swift in Sources */,
 				AB93C23D266A234800C3AE8F /* SceneDelegate.swift in Sources */,
 				AB8B706026D6AD9E0069FF67 /* LoginAndSignUpViewController.swift in Sources */,

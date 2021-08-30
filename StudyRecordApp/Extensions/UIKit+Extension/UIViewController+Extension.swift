@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import PKHUD
 
 extension UIViewController {
     
@@ -28,19 +27,6 @@ extension UIViewController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "閉じる", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
-    }
-    
-    func flashHUD(_ type: HUDContentType,
-                  completion: @escaping () -> Void) {
-        HUD.flash(type,
-                  onView: nil,
-                  delay: 0) { _ in
-            completion()
-        }
-    }
-    
-    func showHUD(_ type: HUDContentType) {
-        HUD.show(type)
     }
     
 }

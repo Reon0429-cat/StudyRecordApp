@@ -43,7 +43,7 @@ private extension ResetingPasswordViewController {
     
     @IBAction func sendButtonDidTapped(_ sender: Any) {
         guard let email = mailAddressTextField.text else { return }
-        showHUD(.progress)
+        Indicator().show(.progress)
         sendPasswordResetMail(email: email)
     }
     
@@ -56,11 +56,11 @@ private extension ResetingPasswordViewController {
         userUseCase.sendPasswordResetMail(email: email) { result in
             switch result {
                 case .failure(let title):
-                    self.flashHUD(.error) {
+                    Indicator().flash(.error) {
                         self.showErrorAlert(title: title)
                     }
                 case .success:
-                    self.flashHUD(.success) {
+                    Indicator().flash(.success) {
                         self.dismiss(animated: true, completion: nil)
                     }
             }

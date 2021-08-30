@@ -65,16 +65,16 @@ private extension LoginViewController {
             showErrorAlert(title: "通信環境が良くありません")
             return
         }
-        showHUD(.progress)
+        Indicator().show(.progress)
         userUseCase.login(email: email,
                           password: password) { result in
             switch result {
                 case .failure(let title):
-                    self.flashHUD(.error) {
+                    Indicator().flash(.error) {
                         self.showErrorAlert(title: title)
                     }
                 case .success:
-                    self.flashHUD(.success) {
+                    Indicator().flash(.success) {
                         print("成功")
                     }
             }

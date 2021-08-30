@@ -22,30 +22,30 @@ final class UserUseCase {
                       password: String,
                       completion: @escaping ResultHandler<User>) {
         repository.registerUser(email: email,
-                               password: password,
-                               completion: completion)
+                                password: password,
+                                completion: completion)
     }
     
     func createUser(userId: String,
                     email: String,
                     completion: @escaping ResultHandler<Any?>) {
         repository.createUser(userId: userId,
-                             email: email,
-                             completion: completion)
+                              email: email,
+                              completion: completion)
     }
     
     func login(email: String,
                password: String,
                completion: @escaping ResultHandler<Any?>) {
         repository.login(email: email,
-                        password: password,
-                        completion: completion)
+                         password: password,
+                         completion: completion)
     }
     
     func sendPasswordResetMail(email: String,
                                completion: @escaping ResultHandler<Any?>) {
         repository.sendPasswordResetMail(email: email,
-                                        completion: completion)
+                                         completion: completion)
     }
     
 }
