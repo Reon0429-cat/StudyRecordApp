@@ -54,6 +54,7 @@ private enum RowType {
 
 protocol SettingVCDelegate: AnyObject {
     func viewWillAppear(index: Int)
+    func loginAndSignUpVCDidShowed()
 }
 
 final class SettingViewController: UIViewController {
@@ -68,6 +69,11 @@ final class SettingViewController: UIViewController {
         return tables
     }()
     weak var delegate: SettingVCDelegate?
+    private var userUseCase = UserUseCase(
+        repository: UserRepository(
+            dataStore: FirebaseUserDataStore()
+        )
+    )
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,6 +95,33 @@ final class SettingViewController: UIViewController {
         tableView.registerCustomCell(AccordionTableViewCell.self)
         tableView.registerCustomCell(SectionHeaderView.self)
         tableView.tableFooterView = UIView()
+    }
+    
+    @IBAction private func logoutButtonDidTapped(_ sender: Any) {
+        let alert = UIAlertController(title: "本当にログアウトしてもよろしいですか",
+                                      message: nil,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "閉じる", style: .destructive))
+        alert.addAction(UIAlertAction(title: "ログアウト", style: .default) { _ in
+            Indicator().show(.progress)
+            self.userUseCase.logout { result in
+                switch result {
+                    case .failure(let title):
+                        Indicator().flash(.error) {
+                            self.showErrorAlert(title: title)
+                        }
+                    case .success:
+                        Indicator().flash(.success) {
+                            let loginAndSignUpVC = LoginAndSignUpViewController.instantiate()
+                            loginAndSignUpVC.modalPresentationStyle = .fullScreen
+                            self.present(loginAndSignUpVC, animated: true) {
+                                self.delegate?.loginAndSignUpVCDidShowed()
+                            }
+                        }
+                }
+            }
+        })
+        self.present(alert, animated: true, completion: nil)
     }
     
 }

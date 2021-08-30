@@ -28,6 +28,7 @@ protocol UserDataStoreProtocol {
     func login(email: String,
                password: String,
                completion: @escaping ResultHandler<Any?>)
+    func logout(completion: @escaping ResultHandler<Any?>)
     func sendPasswordResetMail(email: String,
                                completion: @escaping ResultHandler<Any?>)
 }
@@ -82,6 +83,16 @@ final class FirebaseUserDataStore: UserDataStoreProtocol {
                 return
             }
             completion(.success(nil))
+        }
+    }
+    
+    func logout(completion: @escaping ResultHandler<Any?>) {
+        do {
+            try Auth.auth().signOut()
+            completion(.success(nil))
+        } catch let error {
+            let message = authErrorMessage(error)
+            completion(.failure(message))
         }
     }
     
