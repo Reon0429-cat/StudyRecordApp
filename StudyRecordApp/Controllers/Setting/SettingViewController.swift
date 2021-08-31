@@ -74,6 +74,7 @@ final class SettingViewController: UIViewController {
             dataStore: FirebaseUserDataStore()
         )
     )
+    private let indicator = Indicator(kinds: PKHUDIndicator())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,16 +103,17 @@ final class SettingViewController: UIViewController {
                                       message: nil,
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "閉じる", style: .destructive))
-        alert.addAction(UIAlertAction(title: "ログアウト", style: .default) { _ in
-            Indicator().show(.progress)
+        alert.addAction(UIAlertAction(title: "ログアウト", style: .default) { [weak self] _ in
+            guard let self = self else { return }
+            self.indicator.show(.progress)
             self.userUseCase.logout { result in
                 switch result {
                     case .failure(let title):
-                        Indicator().flash(.error) {
+                        self.indicator.flash(.error) {
                             self.showErrorAlert(title: title)
                         }
                     case .success:
-                        Indicator().flash(.success) {
+                        self.indicator.flash(.success) {
                             let loginAndSignUpVC = LoginAndSignUpViewController.instantiate()
                             loginAndSignUpVC.modalPresentationStyle = .fullScreen
                             self.present(loginAndSignUpVC, animated: true) {

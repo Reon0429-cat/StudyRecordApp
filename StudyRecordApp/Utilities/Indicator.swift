@@ -6,25 +6,38 @@
 //
 
 import Foundation
-import PKHUD
+
+enum IndicatorType {
+    case progress
+    case success
+    case error
+}
+
+protocol IndicatorProtocol {
+    func flash(_ type: IndicatorType,
+               completion: @escaping () -> Void)
+    func show(_ type: IndicatorType)
+    func hide()
+}
 
 struct Indicator {
     
-    func flash(_ type: HUDContentType,
-                  completion: @escaping () -> Void) {
-        HUD.flash(type,
-                  onView: nil,
-                  delay: 0) { _ in
-            completion()
-        }
+    private let indicator: IndicatorProtocol
+    init(kinds indicator: IndicatorProtocol) {
+        self.indicator = indicator
     }
     
-    func show(_ type: HUDContentType) {
-        HUD.show(type)
+    func flash(_ type: IndicatorType,
+               completion: @escaping () -> Void) {
+        indicator.flash(type, completion: completion)
+    }
+    
+    func show(_ type: IndicatorType) {
+        indicator.show(type)
     }
     
     func hide() {
-        HUD.hide()
+        indicator.hide()
     }
     
 }

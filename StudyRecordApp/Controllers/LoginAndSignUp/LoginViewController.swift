@@ -29,6 +29,7 @@ final class LoginViewController: UIViewController {
             dataStore: FirebaseUserDataStore()
         )
     )
+    private let indicator = Indicator(kinds: PKHUDIndicator())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,16 +67,17 @@ private extension LoginViewController {
             showErrorAlert(title: "通信環境が良くありません")
             return
         }
-        Indicator().show(.progress)
+        indicator.show(.progress)
         userUseCase.login(email: email,
-                          password: password) { result in
+                          password: password) { [weak self] result in
+            guard let self = self else { return }
             switch result {
                 case .failure(let title):
-                    Indicator().flash(.error) {
+                    self.indicator.flash(.error) {
                         self.showErrorAlert(title: title)
                     }
                 case .success:
-                    Indicator().flash(.success) {
+                    self.indicator.flash(.success) {
                         self.delegate?.loginDidSuccessed()
                     }
             }

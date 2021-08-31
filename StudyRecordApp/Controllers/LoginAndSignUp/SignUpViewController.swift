@@ -32,6 +32,7 @@ final class SignUpViewController: UIViewController {
             dataStore: FirebaseUserDataStore()
         )
     )
+    private let indicator = Indicator(kinds: PKHUDIndicator())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,7 +82,7 @@ private extension SignUpViewController {
             showErrorAlert(title: "パスワードが一致しません")
             return
         }
-        Indicator().show(.progress)
+        indicator.show(.progress)
         registerUser(email: email, password: password)
     }
     
@@ -92,10 +93,11 @@ private extension SignUpViewController {
     
     func registerUser(email: String, password: String) {
         userUseCase.registerUser(email: email,
-                                 password: password) { result in
+                                 password: password) { [weak self] result in
+            guard let self = self else { return }
             switch result {
                 case .failure(let title):
-                    Indicator().flash(.error) {
+                    self.indicator.flash(.error) {
                         self.showErrorAlert(title: title)
                     }
                 case .success(let user):
@@ -106,14 +108,15 @@ private extension SignUpViewController {
     
     func createUser(userId: String, mailAddressText: String) {
         userUseCase.createUser(userId: userId,
-                               email: mailAddressText) { result in
+                               email: mailAddressText) { [weak self] result in
+            guard let self = self else { return }
             switch result {
                 case .failure(let title):
-                    Indicator().flash(.error) {
+                    self.indicator.flash(.error) {
                         self.showErrorAlert(title: title)
                     }
                 case .success:
-                    Indicator().flash(.success) {
+                    self.indicator.flash(.success) {
                         self.delegate?.signUpDidSuccessed()
                     }
             }

@@ -21,6 +21,7 @@ final class ResetingPasswordViewController: UIViewController {
         )
     )
     private var isKeyboardHidden = true
+    private let indicator = Indicator(kinds: PKHUDIndicator())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +44,7 @@ private extension ResetingPasswordViewController {
     
     @IBAction func sendButtonDidTapped(_ sender: Any) {
         guard let email = mailAddressTextField.text else { return }
-        Indicator().show(.progress)
+        indicator.show(.progress)
         sendPasswordResetMail(email: email)
     }
     
@@ -53,14 +54,15 @@ private extension ResetingPasswordViewController {
 private extension ResetingPasswordViewController {
     
     func sendPasswordResetMail(email: String) {
-        userUseCase.sendPasswordResetMail(email: email) { result in
+        userUseCase.sendPasswordResetMail(email: email) { [weak self] result in
+            guard let self = self else { return }
             switch result {
                 case .failure(let title):
-                    Indicator().flash(.error) {
+                    self.indicator.flash(.error) {
                         self.showErrorAlert(title: title)
                     }
                 case .success:
-                    Indicator().flash(.success) {
+                    self.indicator.flash(.success) {
                         self.dismiss(animated: true, completion: nil)
                     }
             }
