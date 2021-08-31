@@ -9,6 +9,9 @@ import UIKit
 
 final class AdditionalGoalViewController: UIViewController {
     
+    @IBOutlet private weak var topWaveView: WaveView!
+    @IBOutlet private weak var dismissButton: NavigationButton!
+    @IBOutlet private weak var saveButton: NavigationButton!
     @IBOutlet private weak var tableView: UITableView!
     
     private enum RowType: Int, CaseIterable {
@@ -35,11 +38,19 @@ final class AdditionalGoalViewController: UIViewController {
     private var inputtedTitle = ""
     private var oldInputtedTitle = ""
     private var halfModalPresenter = HalfModalPresenter()
+    private var goalUseCase = GoalUseCase(
+        repository: GoalRepository(
+            dataStore: RealmGoalDataStore()
+        )
+    )
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTableView()
+        setupSaveButton()
+        setupDismissButton()
+        setupWaveView()
         
     }
     
@@ -93,6 +104,18 @@ extension AdditionalGoalViewController: UITableViewDelegate {
         return 80
     }
     
+    func tableView(_ tableView: UITableView,
+                   heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
+    }
+    
 }
 
 // MARK: - UITableViewDataSource
@@ -138,6 +161,20 @@ extension AdditionalGoalViewController: UITextFieldDelegate {
     
 }
 
+extension AdditionalGoalViewController: NavigationButtonDelegate {
+    
+    func titleButtonDidTapped(type: NavigationButtonType) {
+        if type == .save {
+            // MARK: - 保存処理
+            self.dismiss(animated: true, completion: nil)
+        }
+        if type == .dismiss {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+}
+
 // MARK: - setup
 private extension AdditionalGoalViewController {
     
@@ -146,6 +183,22 @@ private extension AdditionalGoalViewController {
         tableView.dataSource = self
         tableView.registerCustomCell(StudyRecordCustomTableViewCell.self)
         tableView.tableFooterView = UIView()
+    }
+    
+    func setupSaveButton() {
+        saveButton.delegate = self
+        saveButton.type = .save
+        saveButton.backgroundColor = .clear
+    }
+    
+    func setupDismissButton() {
+        dismissButton.delegate = self
+        dismissButton.type = .dismiss
+        dismissButton.backgroundColor = .clear
+    }
+    
+    func setupWaveView() {
+        topWaveView.create(isFill: true, marginY: 60)
     }
     
 }
