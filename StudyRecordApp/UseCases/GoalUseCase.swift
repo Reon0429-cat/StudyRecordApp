@@ -6,3 +6,16 @@
 //
 
 import Foundation
+
+final class GoalUseCase {
+    
+    private let repository: GoalRepositoryProtocol
+    init(repository: GoalRepositoryProtocol) {
+        self.repository = repository
+    }
+    
+    var goals: [Goal] {
+        repository.readAll()
+    }
+    
+}

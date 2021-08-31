@@ -21,6 +21,11 @@ final class GoalViewController: UIViewController {
         case category
         case simple
     }
+    private var goalUseCase = GoalUseCase(
+        repository: GoalRepository(
+            dataStore: RealmGoalDataStore()
+        )
+    )
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,13 +69,16 @@ extension GoalViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return goalUseCase.goals.count
     }
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCustomCell(with: <#T##T.Type#>)
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCustomCell(with: GoalTableViewCell.self)
+        let goal = goalUseCase.goals[indexPath.row]
+        let title = "\(goal.title), \(goal.priority.mark), \(goal.priority.number), \(goal.dueDate), \(goal.createdDate)"
+        cell.configure(title: title)
+        return cell
     }
     
 }
@@ -81,7 +89,7 @@ private extension GoalViewController {
     func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-//        tableView.registerCustomCell(<#T##cellType: T.Type##T.Type#>)
+        tableView.registerCustomCell(GoalTableViewCell.self)
         tableView.tableFooterView = UIView()
     }
     

@@ -13,13 +13,13 @@ struct Goal {
     var category: Category
     var memo: String
     var priority: Priority
-    var image: UIImage
+    //    var image: UIImage
     var dueDate: Date
     var createdDate: Date
 }
 
 struct Category {
-    
+    var title: String
 }
 
 struct Priority {
@@ -31,12 +31,10 @@ enum PriorityMark: Int {
     case star
     case heart
     
-    var image: UIImage {
+    var imageName: String {
         switch self {
-            case .star:
-                return UIImage(systemName: "star.fill")!
-            case .heart:
-                return UIImage(systemName: "heart.fill")!
+            case .star: return "star.fill"
+            case .heart: return "heart.fill"
         }
     }
 }
@@ -52,35 +50,35 @@ enum PriorityNumber: Int, CaseIterable {
 // Realmに依存した型
 final class GoalRealm: Object {
     @objc dynamic var title: String = ""
-    @objc dynamic var category: RealmCategory = RealmCategory()
+    @objc dynamic var category: CategoryRealm? = CategoryRealm()
     @objc dynamic var memo: String = ""
-    @objc dynamic var priority: RealmPriority = RealmPriority()
-    @objc dynamic var image: UIImage = UIImage()
+    @objc dynamic var priority: PriorityRealm? = PriorityRealm()
+    //    @objc dynamic var image: UIImage = UIImage()
     @objc dynamic var dueDate: Date = Date()
     @objc dynamic var createdDate: Date = Date()
 }
 
-final class RealmCategory: Object {
-    
+final class CategoryRealm: Object {
+    @objc dynamic var title: String = ""
 }
 
-final class RealmPriority: Object {
-    @objc dynamic private var markRawValue = 0
-    var mark: PriorityMark? {
+final class PriorityRealm: Object {
+    @objc private dynamic var markRawValue = 0
+    var mark: PriorityMark {
         get {
-            return PriorityMark(rawValue: markRawValue)
+            return PriorityMark(rawValue: markRawValue) ?? .star
         }
         set {
-            markRawValue = newValue?.rawValue ?? 0
+            markRawValue = newValue.rawValue
         }
     }
-    @objc dynamic private var numberRawValue = 0
-    var number: PriorityNumber? {
+    @objc private dynamic var numberRawValue = 0
+    var number: PriorityNumber {
         get {
-            return PriorityNumber(rawValue: numberRawValue)
+            return PriorityNumber(rawValue: numberRawValue) ?? .one
         }
         set {
-            numberRawValue = newValue?.rawValue ?? 0
+            numberRawValue = newValue.rawValue
         }
     }
 }

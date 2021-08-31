@@ -71,7 +71,7 @@ extension GoalPriorityViewController: UIPickerViewDelegate {
             let imageView = UIImageView()
             imageView.tintColor = .black
             imageView.preferredSymbolConfiguration = .init(pointSize: 20)
-            imageView.image = priority.mark.image
+            imageView.image = UIImage(systemName: priority.mark.imageName) 
             stackView.addArrangedSubview(imageView)
         }
         view.addSubview(stackView)
