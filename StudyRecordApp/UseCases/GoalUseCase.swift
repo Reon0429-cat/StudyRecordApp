@@ -18,4 +18,8 @@ final class GoalUseCase {
         repository.readAll()
     }
     
+    func create(goal: Goal) {
+        repository.create(goal: goal)
+    }
+    
 }

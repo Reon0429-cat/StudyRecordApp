@@ -39,6 +39,7 @@ final class GoalViewController: UIViewController {
         super.viewWillAppear(animated)
         
         delegate?.viewWillAppear(index: self.view.tag)
+        tableView.reloadData()
         
     }
     
@@ -76,7 +77,7 @@ extension GoalViewController: UITableViewDataSource {
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCustomCell(with: GoalTableViewCell.self)
         let goal = goalUseCase.goals[indexPath.row]
-        let title = "\(goal.title), \(goal.priority.mark), \(goal.priority.number), \(goal.dueDate), \(goal.createdDate)"
+        let title = "\(goal.title), \(goal.priority.mark), \(goal.priority.number), \(goal.category.title)"
         cell.configure(title: title)
         return cell
     }

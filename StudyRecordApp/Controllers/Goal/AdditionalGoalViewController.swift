@@ -38,12 +38,15 @@ final class AdditionalGoalViewController: UIViewController {
     private var inputtedTitle = ""
     private var oldInputtedTitle = ""
     private var halfModalPresenter = HalfModalPresenter()
+    private var isMandatoryItemFilled: Bool {
+        !inputtedTitle.isEmpty
+    }
     private var goalUseCase = GoalUseCase(
         repository: GoalRepository(
             dataStore: RealmGoalDataStore()
         )
     )
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -73,6 +76,29 @@ private extension AdditionalGoalViewController {
             self.tableView.reloadData()
         })
         present(alert, animated: true, completion: nil)
+    }
+    
+    func showAlert() {
+        let alert = UIAlertController(title: "保存せずに閉じますか", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "閉じる", style: .destructive) { _ in
+            self.dismiss(animated: true, completion: nil)
+        })
+        alert.addAction(UIAlertAction(title: "保存する", style: .default) { _ in
+            self.saveGoal()
+            self.dismiss(animated: true, completion: nil)
+        })
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func saveGoal() {
+        let goal = Goal(title: inputtedTitle,
+                        category: Category(title: "カテゴリー"),
+                        memo: "メモ",
+                        priority: Priority(mark: .heart,
+                                           number: .three),
+                        dueDate: Date(),
+                        createdDate: Date())
+        goalUseCase.create(goal: goal)
     }
     
 }
@@ -157,19 +183,25 @@ extension AdditionalGoalViewController: UITextFieldDelegate {
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
         inputtedTitle = textField.text ?? ""
+        saveButton.isEnabled(isMandatoryItemFilled)
     }
     
 }
 
+// MARK: - NavigationButtonDelegate
 extension AdditionalGoalViewController: NavigationButtonDelegate {
     
     func titleButtonDidTapped(type: NavigationButtonType) {
         if type == .save {
-            // MARK: - 保存処理
+            saveGoal()
             self.dismiss(animated: true, completion: nil)
         }
         if type == .dismiss {
-            self.dismiss(animated: true, completion: nil)
+            if isMandatoryItemFilled {
+                showAlert()
+            } else {
+                self.dismiss(animated: true, completion: nil)
+            }
         }
     }
     
@@ -188,6 +220,7 @@ private extension AdditionalGoalViewController {
     func setupSaveButton() {
         saveButton.delegate = self
         saveButton.type = .save
+        saveButton.isEnabled(false)
         saveButton.backgroundColor = .clear
     }
     
