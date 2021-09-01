@@ -37,6 +37,7 @@ final class AdditionalGoalViewController: UIViewController {
     }
     private var inputtedTitle = ""
     private var oldInputtedTitle = ""
+    private var inputtedMemo = ""
     private var inputtedPriority = Priority(mark: .star, number: .one)
     private var halfModalPresenter = HalfModalPresenter()
     private var isMandatoryItemFilled: Bool {
@@ -94,7 +95,7 @@ private extension AdditionalGoalViewController {
     func saveGoal() {
         let goal = Goal(title: inputtedTitle,
                         category: Category(title: "カテゴリー"),
-                        memo: "メモ",
+                        memo: inputtedMemo,
                         priority: inputtedPriority,
                         dueDate: Date(),
                         createdDate: Date())
@@ -114,7 +115,13 @@ extension AdditionalGoalViewController: UITableViewDelegate {
             case .title:
                 showAlertWithTextField()
             case .category: break
-            case .memo: break
+            case .memo:
+                let studyRecordMemoVC = StudyRecordMemoViewController.instantiate()
+                studyRecordMemoVC.modalPresentationStyle = .overCurrentContext
+                studyRecordMemoVC.modalTransitionStyle = .crossDissolve
+                studyRecordMemoVC.inputtedMemo = inputtedMemo
+                studyRecordMemoVC.delegate = self
+                present(studyRecordMemoVC, animated: true, completion: nil)
             case .priority:
                 let goalPriorityVC = GoalPriorityViewController.instantiate()
                 goalPriorityVC.delegate = self
@@ -165,7 +172,12 @@ extension AdditionalGoalViewController: UITableViewDataSource {
                                auxiliaryText: inputtedTitle)
                 return cell
             case .category: return UITableViewCell()
-            case .memo: return UITableViewCell()
+            case .memo:
+                let cell = tableView.dequeueReusableCustomCell(with: StudyRecordCustomTableViewCell.self)
+                cell.configure(titleText: rowType.title,
+                               mandatoryIsHidden: true,
+                               auxiliaryText: inputtedMemo)
+                return cell
             case .priority:
                 let cell = tableView.dequeueReusableCustomCell(with: GoalPriorityTableViewCell.self)
                 cell.configure(title: rowType.title, priority: inputtedPriority)
@@ -193,6 +205,16 @@ extension AdditionalGoalViewController: GoalPriorityVCDelegate {
     
     func addButtonDidTapped(priority: Priority) {
         inputtedPriority = priority
+        tableView.reloadData()
+    }
+    
+}
+
+// MARK: - StudyRecordMemoVCDelegate
+extension AdditionalGoalViewController: StudyRecordMemoVCDelegate {
+    
+    func savedMemo(memo: String) {
+        inputtedMemo = memo
         tableView.reloadData()
     }
     

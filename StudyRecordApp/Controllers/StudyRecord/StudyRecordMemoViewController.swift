@@ -45,7 +45,7 @@ final class StudyRecordMemoViewController: UIViewController {
             dismiss(animated: true, completion: nil)
         } else {
             let alert = UIAlertController(title: "保存せずにメモを閉じますか", message: nil, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "閉じる", style: .default) { _ in
+            alert.addAction(UIAlertAction(title: "閉じる", style: .destructive) { _ in
                 self.dismiss(animated: true, completion: nil)
             })
             alert.addAction(UIAlertAction(title: "保存する", style: .default) { _ in
