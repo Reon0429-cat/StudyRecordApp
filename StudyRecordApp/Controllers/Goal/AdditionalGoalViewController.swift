@@ -9,7 +9,6 @@ import UIKit
 
 // MARK: - ToDo トリミングサイズで貼れるようにする
 // MARK: - ToDo 写真を保存できるようにする
-// MARK: - ToDo 写真を撮るを実装する
 
 final class AdditionalGoalViewController: UIViewController {
     
@@ -107,16 +106,10 @@ private extension AdditionalGoalViewController {
         goalUseCase.create(goal: goal)
     }
     
-    func presentCamera() {
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            
-        }
-    }
-    
-    func presentLibrary() {
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+    func presentTo(_ sourceType: UIImagePickerController.SourceType) {
+        if UIImagePickerController.isSourceTypeAvailable(sourceType) {
             let imagePickerController = UIImagePickerController()
-            imagePickerController.sourceType = .photoLibrary
+            imagePickerController.sourceType = sourceType
             imagePickerController.modalPresentationStyle = .fullScreen
             imagePickerController.allowsEditing = true
             imagePickerController.delegate = self
@@ -147,11 +140,11 @@ private extension AdditionalGoalViewController {
                                       preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "写真を撮る",
                                       style: .default) { _ in
-            self.presentCamera()
+            self.presentTo(.camera)
         })
         alert.addAction(UIAlertAction(title: "ライブラリから選択する",
                                       style: .default) { _ in
-            self.presentLibrary()
+            self.presentTo(.photoLibrary)
         })
         if inputtedImage != nil {
             alert.addAction(UIAlertAction(title: "写真を削除する",
@@ -315,6 +308,9 @@ extension AdditionalGoalViewController: UIImagePickerControllerDelegate,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         let image = info[.originalImage] as! UIImage
         inputtedImage = image
+        if picker.sourceType == .camera {
+            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        }
         self.dismiss(animated: true, completion: nil)
         tableView.reloadData()
     }
