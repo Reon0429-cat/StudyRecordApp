@@ -10,7 +10,7 @@ import UIKit
 extension UITextField {
     
     func setUnderLine() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+        DispatchQueue.main.async {
             self.borderStyle = .none
             let underline = UIView()
             underline.frame = CGRect(x: 0, y: self.frame.height, width: self.frame.width, height: 2)

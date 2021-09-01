@@ -48,6 +48,15 @@ final class SignUpViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        mailAddressTextField.setUnderLine()
+        passwordTextField.setUnderLine()
+        passwordConfirmationTextField.setUnderLine()
+        
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>,
                                with event: UIEvent?) {
         self.view.endEditing(true)
@@ -180,21 +189,18 @@ private extension SignUpViewController {
     func setupMailAddressTextField() {
         mailAddressTextField.delegate = self
         mailAddressTextField.keyboardType = .emailAddress
-        mailAddressTextField.setUnderLine()
     }
     
     func setupPasswordTextField() {
         passwordTextField.delegate = self
         passwordTextField.isSecureTextEntry = true
         passwordTextField.textContentType = .newPassword
-        passwordTextField.setUnderLine()
     }
     
     func setupPasswordConfirmationTextField() {
         passwordConfirmationTextField.delegate = self
         passwordConfirmationTextField.isSecureTextEntry = true
         passwordTextField.textContentType = .newPassword
-        passwordConfirmationTextField.setUnderLine()
     }
     
     func setupPasswordSecureButton() {

@@ -44,6 +44,14 @@ final class LoginViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        mailAddressTextField.setUnderLine()
+        passwordTextField.setUnderLine()
+        
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>,
                                with event: UIEvent?) {
         self.view.endEditing(true)
@@ -143,14 +151,12 @@ private extension LoginViewController {
     func setupMailAddressTextField() {
         mailAddressTextField.delegate = self
         mailAddressTextField.keyboardType = .URL
-        mailAddressTextField.setUnderLine()
     }
     
     func setupPasswordTextField() {
         passwordTextField.delegate = self
         passwordTextField.isSecureTextEntry = true
         passwordTextField.textContentType = .newPassword
-        passwordTextField.setUnderLine()
     }
     
     func setupLoginButton() {
