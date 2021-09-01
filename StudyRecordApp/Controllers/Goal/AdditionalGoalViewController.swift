@@ -8,7 +8,8 @@
 import UIKit
 
 // MARK: - ToDo トリミングサイズで貼れるようにする
-// MARK: - ToDo 写真を消した時にゆっくりテーブルが閉じるようにする
+// MARK: - ToDo 写真を保存できるようにする
+// MARK: - ToDo 写真を撮るを実装する
 
 final class AdditionalGoalViewController: UIViewController {
     
@@ -68,7 +69,7 @@ final class AdditionalGoalViewController: UIViewController {
 // MARK: - func
 private extension AdditionalGoalViewController {
     
-    func showAlertWithTextField() {
+    func presentAlertWithTextField() {
         let alert = UIAlertController(title: "タイトル", message: nil, preferredStyle: .alert)
         alert.addTextField { textField in
             textField.text = self.inputtedTitle
@@ -84,7 +85,7 @@ private extension AdditionalGoalViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    func showAlert() {
+    func presentAlert() {
         let alert = UIAlertController(title: "保存せずに閉じますか", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "閉じる", style: .destructive) { _ in
             self.dismiss(animated: true, completion: nil)
@@ -106,13 +107,13 @@ private extension AdditionalGoalViewController {
         goalUseCase.create(goal: goal)
     }
     
-    func showCamera() {
+    func presentCamera() {
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             
         }
     }
     
-    func showLibrary() {
+    func presentLibrary() {
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
             let imagePickerController = UIImagePickerController()
             imagePickerController.sourceType = .photoLibrary
@@ -121,6 +122,52 @@ private extension AdditionalGoalViewController {
             imagePickerController.delegate = self
             self.present(imagePickerController, animated: true, completion: nil)
         }
+    }
+    
+    func presentStudyRecordMemoVC() {
+        let studyRecordMemoVC = StudyRecordMemoViewController.instantiate()
+        studyRecordMemoVC.modalPresentationStyle = .overCurrentContext
+        studyRecordMemoVC.modalTransitionStyle = .crossDissolve
+        studyRecordMemoVC.inputtedMemo = inputtedMemo
+        studyRecordMemoVC.delegate = self
+        present(studyRecordMemoVC, animated: true, completion: nil)
+    }
+    
+    func presentGoalPriorityVC() {
+        let goalPriorityVC = GoalPriorityViewController.instantiate()
+        goalPriorityVC.delegate = self
+        goalPriorityVC.inputtedPriority = inputtedPriority
+        halfModalPresenter.viewController = goalPriorityVC
+        present(goalPriorityVC, animated: true, completion: nil)
+    }
+    
+    func presentPhotoActionSheet(row: Int) {
+        let alert = UIAlertController(title: nil,
+                                      message: nil,
+                                      preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "写真を撮る",
+                                      style: .default) { _ in
+            self.presentCamera()
+        })
+        alert.addAction(UIAlertAction(title: "ライブラリから選択する",
+                                      style: .default) { _ in
+            self.presentLibrary()
+        })
+        if inputtedImage != nil {
+            alert.addAction(UIAlertAction(title: "写真を削除する",
+                                          style: .destructive) { _ in
+                self.inputtedImage = nil
+                DispatchQueue.main.async {
+                    self.tableView.beginUpdates()
+                    self.tableView.reloadRows(at: [IndexPath(row: row,
+                                                             section: 0)],
+                                              with: .automatic)
+                    self.tableView.endUpdates()
+                }
+            })
+        }
+        alert.addAction(UIAlertAction(title: "閉じる", style: .cancel))
+        self.present(alert, animated: true, completion: nil)
     }
     
 }
@@ -134,44 +181,16 @@ extension AdditionalGoalViewController: UITableViewDelegate {
         let rowType = RowType.allCases[indexPath.row]
         switch rowType {
             case .title:
-                showAlertWithTextField()
+                presentAlertWithTextField()
             case .category: break
             case .memo:
-                let studyRecordMemoVC = StudyRecordMemoViewController.instantiate()
-                studyRecordMemoVC.modalPresentationStyle = .overCurrentContext
-                studyRecordMemoVC.modalTransitionStyle = .crossDissolve
-                studyRecordMemoVC.inputtedMemo = inputtedMemo
-                studyRecordMemoVC.delegate = self
-                present(studyRecordMemoVC, animated: true, completion: nil)
+                presentStudyRecordMemoVC()
             case .priority:
-                let goalPriorityVC = GoalPriorityViewController.instantiate()
-                goalPriorityVC.delegate = self
-                goalPriorityVC.inputtedPriority = inputtedPriority
-                halfModalPresenter.viewController = goalPriorityVC
-                present(goalPriorityVC, animated: true, completion: nil)
+                presentGoalPriorityVC()
             case .dueDate: break
             case .createdDate: break
             case .photo:
-                let alert = UIAlertController(title: nil,
-                                              message: nil,
-                                              preferredStyle: .actionSheet)
-                alert.addAction(UIAlertAction(title: "写真を撮る",
-                                              style: .default) { _ in
-                    self.showCamera()
-                })
-                alert.addAction(UIAlertAction(title: "ライブラリから選択する",
-                                              style: .default) { _ in
-                    self.showLibrary()
-                })
-                if inputtedImage != nil {
-                    alert.addAction(UIAlertAction(title: "写真を削除する",
-                                                  style: .destructive) { _ in
-                        self.inputtedImage = nil
-                        self.tableView.reloadData()
-                    })
-                }
-                alert.addAction(UIAlertAction(title: "閉じる", style: .cancel))
-                self.present(alert, animated: true, completion: nil)
+                presentPhotoActionSheet(row: indexPath.row)
         }
     }
     
@@ -279,7 +298,7 @@ extension AdditionalGoalViewController: NavigationButtonDelegate {
         }
         if type == .dismiss {
             if isMandatoryItemFilled {
-                showAlert()
+                presentAlert()
             } else {
                 self.dismiss(animated: true, completion: nil)
             }
