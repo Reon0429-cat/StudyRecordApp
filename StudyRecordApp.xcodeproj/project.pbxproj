@@ -134,6 +134,8 @@
 		ABA0570326B50F7100E3DF01 /* StudyRecordGraphColor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABA0570226B50F7100E3DF01 /* StudyRecordGraphColor.storyboard */; };
 		ABA0570526B50F8100E3DF01 /* StudyRecordGraphColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA0570426B50F8100E3DF01 /* StudyRecordGraphColorViewController.swift */; };
 		ABFAB15526DF802A0095EC20 /* PriorityStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAB15426DF802A0095EC20 /* PriorityStackView.swift */; };
+		ABFAB15826DF86920095EC20 /* GoalPhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAB15626DF86920095EC20 /* GoalPhotoTableViewCell.swift */; };
+		ABFAB15926DF86920095EC20 /* GoalPhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABFAB15726DF86920095EC20 /* GoalPhotoTableViewCell.xib */; };
 		D14EABCB62E5596481983E6D /* Pods_StudyRecordApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7ADEAD2199951B48FEFB0D8 /* Pods_StudyRecordApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -267,6 +269,8 @@
 		ABA0570226B50F7100E3DF01 /* StudyRecordGraphColor.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StudyRecordGraphColor.storyboard; sourceTree = "<group>"; };
 		ABA0570426B50F8100E3DF01 /* StudyRecordGraphColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRecordGraphColorViewController.swift; sourceTree = "<group>"; };
 		ABFAB15426DF802A0095EC20 /* PriorityStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityStackView.swift; sourceTree = "<group>"; };
+		ABFAB15626DF86920095EC20 /* GoalPhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPhotoTableViewCell.swift; sourceTree = "<group>"; };
+		ABFAB15726DF86920095EC20 /* GoalPhotoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoalPhotoTableViewCell.xib; sourceTree = "<group>"; };
 		B7ADEAD2199951B48FEFB0D8 /* Pods_StudyRecordApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudyRecordApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F080AD4E0F25E92F286ED79A /* Pods-StudyRecordApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyRecordApp.debug.xcconfig"; path = "Target Support Files/Pods-StudyRecordApp/Pods-StudyRecordApp.debug.xcconfig"; sourceTree = "<group>"; };
 		F4A1350DA353A8FEAF4BEEB3 /* Pods-StudyRecordApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyRecordApp.release.xcconfig"; path = "Target Support Files/Pods-StudyRecordApp/Pods-StudyRecordApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -398,6 +402,7 @@
 				AB16305026CD6B1400111F55 /* WaveView.swift */,
 				AB16308326CEABD400111F55 /* NavigationButton.xib */,
 				AB16308126CEAB9300111F55 /* NavigationButton.swift */,
+				ABFAB15426DF802A0095EC20 /* PriorityStackView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -408,8 +413,9 @@
 				AB43980226DE1DD6008C8CA8 /* GoalTableViewCell.swift */,
 				AB43980326DE1DD6008C8CA8 /* GoalTableViewCell.xib */,
 				AB43980626DE2D72008C8CA8 /* GoalPriorityTableViewCell.swift */,
-				ABFAB15426DF802A0095EC20 /* PriorityStackView.swift */,
 				AB43980726DE2D72008C8CA8 /* GoalPriorityTableViewCell.xib */,
+				ABFAB15626DF86920095EC20 /* GoalPhotoTableViewCell.swift */,
+				ABFAB15726DF86920095EC20 /* GoalPhotoTableViewCell.xib */,
 			);
 			path = Goal;
 			sourceTree = "<group>";
@@ -817,6 +823,7 @@
 				AB13ECD626B7AEA3002F56FF /* ColorChoicesConcept.storyboard in Resources */,
 				AB2B5BAC26A2D244009BD3C7 /* ThemeColor.storyboard in Resources */,
 				AB8B705726D6AD1F0069FF67 /* SignUp.storyboard in Resources */,
+				ABFAB15926DF86920095EC20 /* GoalPhotoTableViewCell.xib in Resources */,
 				AB13EDE926C7C4C0002F56FF /* Top.storyboard in Resources */,
 				AB13EDE526C78DB4002F56FF /* ScreenTransitionCollectionViewCell.xib in Resources */,
 				AB93C266266A7DEB00C3AE8F /* AdditionalStudyRecord.storyboard in Resources */,
@@ -926,6 +933,7 @@
 				AB16308226CEAB9300111F55 /* NavigationButton.swift in Sources */,
 				AB14B46626DB516E007A5F16 /* ResetingPasswordViewController.swift in Sources */,
 				AB4397FB26DDF78A008C8CA8 /* HUDIndicator.swift in Sources */,
+				ABFAB15826DF86920095EC20 /* GoalPhotoTableViewCell.swift in Sources */,
 				AB14B46226DA855F007A5F16 /* CommunicationStatus.swift in Sources */,
 				ABFAB15526DF802A0095EC20 /* PriorityStackView.swift in Sources */,
 				AB2B5BC726A2D36F009BD3C7 /* ColorChoicesConceptViewController.swift in Sources */,

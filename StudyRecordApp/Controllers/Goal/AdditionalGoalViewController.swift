@@ -7,6 +7,9 @@
 
 import UIKit
 
+// MARK: - ToDo トリミングサイズで貼れるようにする
+// MARK: - ToDo 写真を消した時にゆっくりテーブルが閉じるようにする
+
 final class AdditionalGoalViewController: UIViewController {
     
     @IBOutlet private weak var topWaveView: WaveView!
@@ -19,9 +22,9 @@ final class AdditionalGoalViewController: UIViewController {
         case category
         case memo
         case priority
-        case image
         case dueDate
         case createdDate
+        case photo
         
         var title: String {
             switch self {
@@ -29,15 +32,16 @@ final class AdditionalGoalViewController: UIViewController {
                 case .category: return "カテゴリー"
                 case .memo: return "メモ"
                 case .priority: return "優先度"
-                case .image: return "画像"
                 case .dueDate: return "期日"
                 case .createdDate: return "作成日"
+                case .photo: return "写真"
             }
         }
     }
     private var inputtedTitle = ""
     private var oldInputtedTitle = ""
     private var inputtedMemo = ""
+    private var inputtedImage: UIImage?
     private var inputtedPriority = Priority(mark: .star, number: .one)
     private var halfModalPresenter = HalfModalPresenter()
     private var isMandatoryItemFilled: Bool {
@@ -102,6 +106,23 @@ private extension AdditionalGoalViewController {
         goalUseCase.create(goal: goal)
     }
     
+    func showCamera() {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            
+        }
+    }
+    
+    func showLibrary() {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.sourceType = .photoLibrary
+            imagePickerController.modalPresentationStyle = .fullScreen
+            imagePickerController.allowsEditing = true
+            imagePickerController.delegate = self
+            self.present(imagePickerController, animated: true, completion: nil)
+        }
+    }
+    
 }
 
 // MARK: - UITableViewDelegate
@@ -128,14 +149,37 @@ extension AdditionalGoalViewController: UITableViewDelegate {
                 goalPriorityVC.inputtedPriority = inputtedPriority
                 halfModalPresenter.viewController = goalPriorityVC
                 present(goalPriorityVC, animated: true, completion: nil)
-            case .image: break
             case .dueDate: break
             case .createdDate: break
+            case .photo:
+                let alert = UIAlertController(title: nil,
+                                              message: nil,
+                                              preferredStyle: .actionSheet)
+                alert.addAction(UIAlertAction(title: "写真を撮る",
+                                              style: .default) { _ in
+                    self.showCamera()
+                })
+                alert.addAction(UIAlertAction(title: "ライブラリから選択する",
+                                              style: .default) { _ in
+                    self.showLibrary()
+                })
+                if inputtedImage != nil {
+                    alert.addAction(UIAlertAction(title: "写真を削除する",
+                                                  style: .destructive) { _ in
+                        self.inputtedImage = nil
+                        self.tableView.reloadData()
+                    })
+                }
+                alert.addAction(UIAlertAction(title: "閉じる", style: .cancel))
+                self.present(alert, animated: true, completion: nil)
         }
     }
     
     func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if RowType(rawValue: indexPath.row) == .photo && inputtedImage != nil {
+            return tableView.rowHeight
+        }
         return 80
     }
     
@@ -180,11 +224,16 @@ extension AdditionalGoalViewController: UITableViewDataSource {
                 return cell
             case .priority:
                 let cell = tableView.dequeueReusableCustomCell(with: GoalPriorityTableViewCell.self)
-                cell.configure(title: rowType.title, priority: inputtedPriority)
+                cell.configure(title: rowType.title,
+                               priority: inputtedPriority)
                 return cell
-            case .image: return UITableViewCell()
             case .dueDate: return UITableViewCell()
             case .createdDate: return UITableViewCell()
+            case .photo:
+                let cell = tableView.dequeueReusableCustomCell(with: GoalPhotoTableViewCell.self)
+                cell.configure(title: rowType.title,
+                               image: inputtedImage)
+                return cell
         }
     }
     
@@ -239,6 +288,20 @@ extension AdditionalGoalViewController: NavigationButtonDelegate {
     
 }
 
+// MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
+extension AdditionalGoalViewController: UIImagePickerControllerDelegate,
+                                        UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        let image = info[.originalImage] as! UIImage
+        inputtedImage = image
+        self.dismiss(animated: true, completion: nil)
+        tableView.reloadData()
+    }
+    
+}
+
 // MARK: - setup
 private extension AdditionalGoalViewController {
     
@@ -247,6 +310,8 @@ private extension AdditionalGoalViewController {
         tableView.dataSource = self
         tableView.registerCustomCell(StudyRecordCustomTableViewCell.self)
         tableView.registerCustomCell(GoalPriorityTableViewCell.self)
+        tableView.registerCustomCell(GoalPhotoTableViewCell.self)
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.tableFooterView = UIView()
     }
     
