@@ -21,25 +21,13 @@ final class GoalPriorityTableViewCell: UITableViewCell {
     
     private func setupStackView(priority: Priority) {
         self.stackView.removeFromSuperview()
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.distribution = .fillEqually
-        stackView.alignment = .fill
-        stackView.spacing = 10
-        stackView.axis = .horizontal
-        (0...priority.number.rawValue).forEach { _ in
-            let imageView = UIImageView()
-            imageView.tintColor = .black
-            imageView.preferredSymbolConfiguration = .init(pointSize: 20)
-            imageView.image = UIImage(systemName: priority.mark.imageName)
-            stackView.addArrangedSubview(imageView)
-        }
-        self.addSubview(stackView)
+        let priorityStackView = PriorityStackView(priority: priority)
+        self.addSubview(priorityStackView)
         NSLayoutConstraint.activate([
-            stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            stackView.trailingAnchor.constraint(equalTo: arrowLabel.leadingAnchor, constant: -10)
+            priorityStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            priorityStackView.trailingAnchor.constraint(equalTo: arrowLabel.leadingAnchor, constant: -10)
         ])
-        self.stackView = stackView
+        self.stackView = priorityStackView
     }
     
 }

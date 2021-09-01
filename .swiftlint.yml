@@ -111,7 +111,7 @@ opt_in_rules:
     #- file_name
     - first_where
     #- force_unwrapping
-    - function_default_parameter_at_end
+#    - function_default_parameter_at_end
     - identical_operands
 #    - implicit_return
     #- implicitly_unwrapped_optional

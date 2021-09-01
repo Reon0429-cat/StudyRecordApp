@@ -90,7 +90,7 @@ final class FirebaseUserDataStore: UserDataStoreProtocol {
         do {
             try Auth.auth().signOut()
             completion(.success(nil))
-        } catch let error {
+        } catch {
             let message = authErrorMessage(error)
             completion(.failure(message))
         }
@@ -117,7 +117,7 @@ final class FirebaseUserDataStore: UserDataStoreProtocol {
                 case .wrongPassword: return "パスワードに誤りがあります。"
                 case .userNotFound: return "こちらのメールアドレスは登録されていません。"
                 case .emailAlreadyInUse: return "こちらのメールアドレスは既に登録されています。"
-                default: return "ログインに失敗しました\(error)"
+                default: return "ログインに失敗しました\(error.localizedDescription)"
             }
         }
         return "不明なエラーが発生しました。"

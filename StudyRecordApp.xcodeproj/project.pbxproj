@@ -133,6 +133,7 @@
 		ABA0570126B50D1900E3DF01 /* GraphColorTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA0570026B50D1900E3DF01 /* GraphColorTileView.swift */; };
 		ABA0570326B50F7100E3DF01 /* StudyRecordGraphColor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABA0570226B50F7100E3DF01 /* StudyRecordGraphColor.storyboard */; };
 		ABA0570526B50F8100E3DF01 /* StudyRecordGraphColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA0570426B50F8100E3DF01 /* StudyRecordGraphColorViewController.swift */; };
+		ABFAB15526DF802A0095EC20 /* PriorityStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAB15426DF802A0095EC20 /* PriorityStackView.swift */; };
 		D14EABCB62E5596481983E6D /* Pods_StudyRecordApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7ADEAD2199951B48FEFB0D8 /* Pods_StudyRecordApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -265,6 +266,7 @@
 		ABA0570026B50D1900E3DF01 /* GraphColorTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphColorTileView.swift; sourceTree = "<group>"; };
 		ABA0570226B50F7100E3DF01 /* StudyRecordGraphColor.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StudyRecordGraphColor.storyboard; sourceTree = "<group>"; };
 		ABA0570426B50F8100E3DF01 /* StudyRecordGraphColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRecordGraphColorViewController.swift; sourceTree = "<group>"; };
+		ABFAB15426DF802A0095EC20 /* PriorityStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityStackView.swift; sourceTree = "<group>"; };
 		B7ADEAD2199951B48FEFB0D8 /* Pods_StudyRecordApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudyRecordApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F080AD4E0F25E92F286ED79A /* Pods-StudyRecordApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyRecordApp.debug.xcconfig"; path = "Target Support Files/Pods-StudyRecordApp/Pods-StudyRecordApp.debug.xcconfig"; sourceTree = "<group>"; };
 		F4A1350DA353A8FEAF4BEEB3 /* Pods-StudyRecordApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyRecordApp.release.xcconfig"; path = "Target Support Files/Pods-StudyRecordApp/Pods-StudyRecordApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -406,6 +408,7 @@
 				AB43980226DE1DD6008C8CA8 /* GoalTableViewCell.swift */,
 				AB43980326DE1DD6008C8CA8 /* GoalTableViewCell.xib */,
 				AB43980626DE2D72008C8CA8 /* GoalPriorityTableViewCell.swift */,
+				ABFAB15426DF802A0095EC20 /* PriorityStackView.swift */,
 				AB43980726DE2D72008C8CA8 /* GoalPriorityTableViewCell.xib */,
 			);
 			path = Goal;
@@ -924,6 +927,7 @@
 				AB14B46626DB516E007A5F16 /* ResetingPasswordViewController.swift in Sources */,
 				AB4397FB26DDF78A008C8CA8 /* HUDIndicator.swift in Sources */,
 				AB14B46226DA855F007A5F16 /* CommunicationStatus.swift in Sources */,
+				ABFAB15526DF802A0095EC20 /* PriorityStackView.swift in Sources */,
 				AB2B5BC726A2D36F009BD3C7 /* ColorChoicesConceptViewController.swift in Sources */,
 				AB2B5BB726A2D2C2009BD3C7 /* ColorConceptTableViewCell.swift in Sources */,
 				AB2B5B8326A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift in Sources */,

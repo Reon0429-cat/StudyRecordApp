@@ -61,23 +61,13 @@ extension GoalPriorityViewController: UIPickerViewDelegate {
                     forComponent component: Int,
                     reusing view: UIView?) -> UIView {
         let view = UIView()
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.distribution = .fillEqually
-        stackView.alignment = .fill
-        stackView.spacing = 10
-        stackView.axis = .horizontal
-        (0...row).forEach { _ in
-            let imageView = UIImageView()
-            imageView.tintColor = .black
-            imageView.preferredSymbolConfiguration = .init(pointSize: 20)
-            imageView.image = UIImage(systemName: inputtedPriority.mark.imageName)
-            stackView.addArrangedSubview(imageView)
-        }
-        view.addSubview(stackView)
+        let priority = Priority(mark: inputtedPriority.mark,
+                                number: PriorityNumber(rawValue: row) ?? .one)
+        let priorityStackView = PriorityStackView(priority: priority)
+        view.addSubview(priorityStackView)
         NSLayoutConstraint.activate([
-            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            priorityStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            priorityStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         return view
     }
