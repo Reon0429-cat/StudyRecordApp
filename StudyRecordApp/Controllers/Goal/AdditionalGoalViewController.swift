@@ -37,6 +37,7 @@ final class AdditionalGoalViewController: UIViewController {
     }
     private var inputtedTitle = ""
     private var oldInputtedTitle = ""
+    private var inputtedPriority = Priority(mark: .star, number: .one)
     private var halfModalPresenter = HalfModalPresenter()
     private var isMandatoryItemFilled: Bool {
         !inputtedTitle.isEmpty
@@ -94,8 +95,7 @@ private extension AdditionalGoalViewController {
         let goal = Goal(title: inputtedTitle,
                         category: Category(title: "カテゴリー"),
                         memo: "メモ",
-                        priority: Priority(mark: .heart,
-                                           number: .three),
+                        priority: inputtedPriority,
                         dueDate: Date(),
                         createdDate: Date())
         goalUseCase.create(goal: goal)
@@ -117,6 +117,8 @@ extension AdditionalGoalViewController: UITableViewDelegate {
             case .memo: break
             case .priority:
                 let goalPriorityVC = GoalPriorityViewController.instantiate()
+                goalPriorityVC.delegate = self
+                goalPriorityVC.inputtedPriority = inputtedPriority
                 halfModalPresenter.viewController = goalPriorityVC
                 present(goalPriorityVC, animated: true, completion: nil)
             case .image: break
@@ -165,10 +167,8 @@ extension AdditionalGoalViewController: UITableViewDataSource {
             case .category: return UITableViewCell()
             case .memo: return UITableViewCell()
             case .priority:
-                let cell = tableView.dequeueReusableCustomCell(with: StudyRecordCustomTableViewCell.self)
-                cell.configure(titleText: rowType.title,
-                               mandatoryIsHidden: true,
-                               auxiliaryText: "")
+                let cell = tableView.dequeueReusableCustomCell(with: GoalPriorityTableViewCell.self)
+                cell.configure(title: rowType.title, priority: inputtedPriority)
                 return cell
             case .image: return UITableViewCell()
             case .dueDate: return UITableViewCell()
@@ -184,6 +184,16 @@ extension AdditionalGoalViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         inputtedTitle = textField.text ?? ""
         saveButton.isEnabled(isMandatoryItemFilled)
+    }
+    
+}
+
+// MARK: - GoalPriorityVCDelegate
+extension AdditionalGoalViewController: GoalPriorityVCDelegate {
+    
+    func addButtonDidTapped(priority: Priority) {
+        inputtedPriority = priority
+        tableView.reloadData()
     }
     
 }
@@ -214,6 +224,7 @@ private extension AdditionalGoalViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.registerCustomCell(StudyRecordCustomTableViewCell.self)
+        tableView.registerCustomCell(GoalPriorityTableViewCell.self)
         tableView.tableFooterView = UIView()
     }
     

@@ -8,7 +8,7 @@
 import UIKit
 
 protocol GoalPriorityVCDelegate: AnyObject {
-    
+    func addButtonDidTapped(priority: Priority)
 }
 
 final class GoalPriorityViewController: UIViewController {
@@ -18,12 +18,13 @@ final class GoalPriorityViewController: UIViewController {
     @IBOutlet private weak var pickerView: UIPickerView!
     
     weak var delegate: GoalPriorityVCDelegate?
-    private var priority = Priority(mark: .star, number: .one)
+    var inputtedPriority = Priority(mark: .star, number: .one)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupPickerView()
+        setupSegmentedControl()
         
     }
     
@@ -34,13 +35,12 @@ private extension GoalPriorityViewController {
     
     @IBAction func segmentedControlDidSelected(_ sender: UISegmentedControl) {
         guard let mark = PriorityMark(rawValue: sender.selectedSegmentIndex) else { return }
-        priority = Priority(mark: mark, number: priority.number)
+        inputtedPriority = Priority(mark: mark, number: inputtedPriority.number)
         pickerView.reloadComponent(0)
     }
     
     @IBAction func addButtonDidTapped(_ sender: Any) {
-        // MARK: - ToDo 追加処理
-        print(priority.mark, priority.number)
+        delegate?.addButtonDidTapped(priority: inputtedPriority)
         dismiss(animated: true, completion: nil)
     }
     
@@ -53,7 +53,7 @@ extension GoalPriorityViewController: UIPickerViewDelegate {
                     didSelectRow row: Int,
                     inComponent component: Int) {
         guard let number = PriorityNumber(rawValue: row) else { return }
-        priority = Priority(mark: priority.mark, number: number)
+        inputtedPriority = Priority(mark: inputtedPriority.mark, number: number)
     }
     
     func pickerView(_ pickerView: UIPickerView,
@@ -71,7 +71,7 @@ extension GoalPriorityViewController: UIPickerViewDelegate {
             let imageView = UIImageView()
             imageView.tintColor = .black
             imageView.preferredSymbolConfiguration = .init(pointSize: 20)
-            imageView.image = UIImage(systemName: priority.mark.imageName) 
+            imageView.image = UIImage(systemName: inputtedPriority.mark.imageName)
             stackView.addArrangedSubview(imageView)
         }
         view.addSubview(stackView)
@@ -113,6 +113,13 @@ private extension GoalPriorityViewController {
     func setupPickerView() {
         pickerView.delegate = self
         pickerView.dataSource = self
+        pickerView.selectRow(inputtedPriority.number.rawValue,
+                             inComponent: 0,
+                             animated: true)
+    }
+    
+    func setupSegmentedControl() {
+        segmentedControl.selectedSegmentIndex = inputtedPriority.mark.rawValue
     }
     
 }
