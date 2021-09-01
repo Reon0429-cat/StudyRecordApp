@@ -7,7 +7,6 @@
 
 import UIKit
 
-// MARK: - ToDo トリミングサイズで貼れるようにする
 // MARK: - ToDo 写真を保存できるようにする
 
 final class AdditionalGoalViewController: UIViewController {
@@ -306,7 +305,7 @@ extension AdditionalGoalViewController: UIImagePickerControllerDelegate,
     
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        let image = info[.originalImage] as! UIImage
+        let image = info[.editedImage] as! UIImage
         inputtedImage = image
         if picker.sourceType == .camera {
             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
