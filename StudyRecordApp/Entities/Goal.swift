@@ -13,9 +13,9 @@ struct Goal {
     var category: Category
     var memo: String
     var priority: Priority
-    //    var image: UIImage
     var dueDate: Date
     var createdDate: Date
+    var photoUrlString: String?
 }
 
 struct Category {
@@ -53,9 +53,9 @@ final class GoalRealm: Object {
     @objc dynamic var category: CategoryRealm? = CategoryRealm()
     @objc dynamic var memo: String = ""
     @objc dynamic var priority: PriorityRealm? = PriorityRealm()
-    //    @objc dynamic var image: UIImage = UIImage()
     @objc dynamic var dueDate: Date = Date()
     @objc dynamic var createdDate: Date = Date()
+    @objc dynamic var photoUrlString: String?
 }
 
 final class CategoryRealm: Object {
