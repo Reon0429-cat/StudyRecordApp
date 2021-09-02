@@ -16,6 +16,13 @@ struct Converter {
         return formatter.string(from: date)
     }
     
+    static func convertToDate(from string: String, format: String) -> Date? {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ja_JP")
+        formatter.dateFormat = format
+        return formatter.date(from: string)
+    }
+    
     static func convertToImage(from data: Data?) -> UIImage? {
         if let data = data {
             return UIImage(data: data)

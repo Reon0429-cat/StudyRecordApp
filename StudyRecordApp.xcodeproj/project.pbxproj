@@ -136,6 +136,8 @@
 		ABFAB15526DF802A0095EC20 /* PriorityStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAB15426DF802A0095EC20 /* PriorityStackView.swift */; };
 		ABFAB15826DF86920095EC20 /* GoalPhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAB15626DF86920095EC20 /* GoalPhotoTableViewCell.swift */; };
 		ABFAB15926DF86920095EC20 /* GoalPhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABFAB15726DF86920095EC20 /* GoalPhotoTableViewCell.xib */; };
+		ABFAB1E326E11FEC0095EC20 /* GoalTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAB1E226E11FEC0095EC20 /* GoalTimeViewController.swift */; };
+		ABFAB1E526E11FF80095EC20 /* GoalTime.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABFAB1E426E11FF80095EC20 /* GoalTime.storyboard */; };
 		D14EABCB62E5596481983E6D /* Pods_StudyRecordApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7ADEAD2199951B48FEFB0D8 /* Pods_StudyRecordApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -271,6 +273,8 @@
 		ABFAB15426DF802A0095EC20 /* PriorityStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityStackView.swift; sourceTree = "<group>"; };
 		ABFAB15626DF86920095EC20 /* GoalPhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPhotoTableViewCell.swift; sourceTree = "<group>"; };
 		ABFAB15726DF86920095EC20 /* GoalPhotoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoalPhotoTableViewCell.xib; sourceTree = "<group>"; };
+		ABFAB1E226E11FEC0095EC20 /* GoalTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTimeViewController.swift; sourceTree = "<group>"; };
+		ABFAB1E426E11FF80095EC20 /* GoalTime.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoalTime.storyboard; sourceTree = "<group>"; };
 		B7ADEAD2199951B48FEFB0D8 /* Pods_StudyRecordApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudyRecordApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F080AD4E0F25E92F286ED79A /* Pods-StudyRecordApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyRecordApp.debug.xcconfig"; path = "Target Support Files/Pods-StudyRecordApp/Pods-StudyRecordApp.debug.xcconfig"; sourceTree = "<group>"; };
 		F4A1350DA353A8FEAF4BEEB3 /* Pods-StudyRecordApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyRecordApp.release.xcconfig"; path = "Target Support Files/Pods-StudyRecordApp/Pods-StudyRecordApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -336,6 +340,7 @@
 				AB13EDF926C8C585002F56FF /* GoalViewController.swift */,
 				AB4397EC26DD3051008C8CA8 /* AdditionalGoalViewController.swift */,
 				AB4397F226DD3B32008C8CA8 /* GoalPriorityViewController.swift */,
+				ABFAB1E226E11FEC0095EC20 /* GoalTimeViewController.swift */,
 			);
 			path = Goal;
 			sourceTree = "<group>";
@@ -362,6 +367,7 @@
 				AB13EDF326C8BAAC002F56FF /* Goal.storyboard */,
 				AB4397EE26DD305B008C8CA8 /* AdditionalGoal.storyboard */,
 				AB4397F026DD3B2A008C8CA8 /* GoalPriority.storyboard */,
+				ABFAB1E426E11FF80095EC20 /* GoalTime.storyboard */,
 			);
 			path = Goal;
 			sourceTree = "<group>";
@@ -805,6 +811,7 @@
 				AB93C244266A234C00C3AE8F /* Assets.xcassets in Resources */,
 				AB8B705026D62FA90069FF67 /* Login.storyboard in Resources */,
 				AB8B704C26D600500069FF67 /* GoogleService-Info.plist in Resources */,
+				ABFAB1E526E11FF80095EC20 /* GoalTime.storyboard in Resources */,
 				AB43980526DE1DD6008C8CA8 /* GoalTableViewCell.xib in Resources */,
 				AB13ED7E26BE7061002F56FF /* StudyRecordHistoryTableViewCell.xib in Resources */,
 				AB2B5BB826A2D2C2009BD3C7 /* AccordionColorTableViewCell.xib in Resources */,
@@ -983,6 +990,7 @@
 				AB13EDD126C29D9E002F56FF /* StudyRecordTimeRecordViewController.swift in Sources */,
 				AB275FFE26DCAA56009F63B3 /* Indicator.swift in Sources */,
 				AB2B5BA226A2D1B7009BD3C7 /* ElegantConcept.swift in Sources */,
+				ABFAB1E326E11FEC0095EC20 /* GoalTimeViewController.swift in Sources */,
 				AB93C23D266A234800C3AE8F /* SceneDelegate.swift in Sources */,
 				AB8B706026D6AD9E0069FF67 /* LoginAndSignUpViewController.swift in Sources */,
 				AB13EE6826CACB16002F56FF /* UIView+Extension.swift in Sources */,

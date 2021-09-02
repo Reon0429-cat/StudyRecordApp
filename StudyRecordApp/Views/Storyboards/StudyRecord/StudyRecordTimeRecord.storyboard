@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Ev-7T-R4L">
-                                <rect key="frame" x="0.0" y="44" width="414" height="332"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="312"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kry-Cg-N7k">
                                         <rect key="frame" x="30" y="10" width="52" height="33"/>
@@ -40,10 +40,10 @@
                                         </connections>
                                     </button>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zGK-Tm-SLx">
-                                        <rect key="frame" x="0.0" y="63" width="414" height="216"/>
+                                        <rect key="frame" x="0.0" y="43" width="414" height="216"/>
                                     </pickerView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fNv-fO-UuD">
-                                        <rect key="frame" x="189.5" y="274" width="35" height="33"/>
+                                        <rect key="frame" x="189.5" y="254" width="35" height="33"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="tintColor" systemColor="systemRedColor"/>
@@ -58,7 +58,7 @@
                                     <constraint firstAttribute="trailing" secondItem="3s8-7Q-oJE" secondAttribute="trailing" constant="30" id="1e3-7Z-0dK"/>
                                     <constraint firstItem="zGK-Tm-SLx" firstAttribute="leading" secondItem="9Ev-7T-R4L" secondAttribute="leading" id="GLV-c1-adj"/>
                                     <constraint firstItem="Kry-Cg-N7k" firstAttribute="leading" secondItem="9Ev-7T-R4L" secondAttribute="leading" constant="30" id="GVB-Y5-lzZ"/>
-                                    <constraint firstItem="zGK-Tm-SLx" firstAttribute="top" secondItem="Kry-Cg-N7k" secondAttribute="bottom" constant="20" id="KcR-ja-v16"/>
+                                    <constraint firstItem="zGK-Tm-SLx" firstAttribute="top" secondItem="Kry-Cg-N7k" secondAttribute="bottom" id="KcR-ja-v16"/>
                                     <constraint firstItem="Kry-Cg-N7k" firstAttribute="top" secondItem="9Ev-7T-R4L" secondAttribute="top" constant="10" id="KvY-1a-vi7"/>
                                     <constraint firstItem="fNv-fO-UuD" firstAttribute="top" secondItem="zGK-Tm-SLx" secondAttribute="bottom" constant="-5" id="aTV-zb-HUT"/>
                                     <constraint firstItem="fNv-fO-UuD" firstAttribute="centerX" secondItem="9Ev-7T-R4L" secondAttribute="centerX" id="jhH-Vn-gXe"/>

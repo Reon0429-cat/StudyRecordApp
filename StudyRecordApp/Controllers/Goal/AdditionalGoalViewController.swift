@@ -40,6 +40,8 @@ final class AdditionalGoalViewController: UIViewController {
     private var inputtedMemo = ""
     private var inputtedImageData: Data?
     private var inputtedPriority = Priority(mark: .star, number: .one)
+    private var inputtedCreatedDate = Date()
+    private var inputtedDueDate = Date()
     private var halfModalPresenter = HalfModalPresenter()
     private var isMandatoryItemFilled: Bool {
         !inputtedTitle.isEmpty
@@ -98,8 +100,8 @@ private extension AdditionalGoalViewController {
                         category: Category(title: "カテゴリー"),
                         memo: inputtedMemo,
                         priority: inputtedPriority,
-                        dueDate: Date(),
-                        createdDate: Date(),
+                        dueDate: inputtedDueDate,
+                        createdDate: inputtedCreatedDate,
                         imageData: inputtedImageData)
         goalUseCase.create(goal: goal)
     }
@@ -130,6 +132,20 @@ private extension AdditionalGoalViewController {
         goalPriorityVC.inputtedPriority = inputtedPriority
         halfModalPresenter.viewController = goalPriorityVC
         present(goalPriorityVC, animated: true, completion: nil)
+    }
+    
+    func presentGoalTimeVC(dateType: GoalDateType) {
+        let goalTimeVC = GoalTimeViewController.instantiate()
+        goalTimeVC.dateType = dateType
+        goalTimeVC.delegate = self
+        switch dateType {
+            case .created:
+                goalTimeVC.inputtedDate = inputtedCreatedDate
+            case .due:
+                goalTimeVC.inputtedDate = inputtedDueDate
+        }
+        halfModalPresenter.viewController = goalTimeVC
+        present(goalTimeVC, animated: true, completion: nil)
     }
     
     func presentPhotoActionSheet(row: Int) {
@@ -178,8 +194,10 @@ extension AdditionalGoalViewController: UITableViewDelegate {
                 presentStudyRecordMemoVC()
             case .priority:
                 presentGoalPriorityVC()
-            case .dueDate: break
-            case .createdDate: break
+            case .dueDate:
+                presentGoalTimeVC(dateType: .due)
+            case .createdDate:
+                presentGoalTimeVC(dateType: .created)
             case .photo:
                 presentPhotoActionSheet(row: indexPath.row)
         }
@@ -237,8 +255,15 @@ extension AdditionalGoalViewController: UITableViewDataSource {
                 cell.configure(title: rowType.title,
                                priority: inputtedPriority)
                 return cell
-            case .dueDate: return UITableViewCell()
-            case .createdDate: return UITableViewCell()
+            case .createdDate, .dueDate:
+                let cell = tableView.dequeueReusableCustomCell(with: StudyRecordCustomTableViewCell.self)
+                let inputtedDate = (rowType == .createdDate) ? inputtedCreatedDate : inputtedDueDate
+                let auxiliaryText = Converter.convertToString(from: inputtedDate,
+                                                              format: "yyyy年M月d日")
+                cell.configure(titleText: rowType.title,
+                               mandatoryIsHidden: true,
+                               auxiliaryText: auxiliaryText)
+                return cell
             case .photo:
                 let cell = tableView.dequeueReusableCustomCell(with: GoalPhotoTableViewCell.self)
                 let image = Converter.convertToImage(from: inputtedImageData)
@@ -279,6 +304,22 @@ extension AdditionalGoalViewController: StudyRecordMemoVCDelegate {
     }
     
 }
+
+// MARK: - GoalTimeVCDelegate
+extension AdditionalGoalViewController: GoalTimeVCDelegate {
+    
+    func saveButtonDidTapped(date: Date, dateType: GoalDateType) {
+        switch dateType {
+            case .created:
+                inputtedCreatedDate = date
+            case .due:
+                inputtedDueDate = date
+        }
+        tableView.reloadData()
+    }
+    
+}
+
 
 // MARK: - NavigationButtonDelegate
 extension AdditionalGoalViewController: NavigationButtonDelegate {
