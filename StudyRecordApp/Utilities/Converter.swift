@@ -9,7 +9,7 @@ import UIKit
 
 struct Converter {
     
-    static func stringFrom(_ date: Date, format: String) -> String {
+    static func convertToString(from date: Date, format: String) -> String {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ja_JP")
         formatter.dateFormat = format
