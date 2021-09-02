@@ -6,9 +6,6 @@
 //
 
 import UIKit
-import Photos
-
-// MARK: - ToDo 写真を保存できるようにする
 
 final class AdditionalGoalViewController: UIViewController {
     
@@ -41,7 +38,7 @@ final class AdditionalGoalViewController: UIViewController {
     private var inputtedTitle = ""
     private var oldInputtedTitle = ""
     private var inputtedMemo = ""
-    private var inputtedPhotoUrlString: String?
+    private var inputtedImageData: Data?
     private var inputtedPriority = Priority(mark: .star, number: .one)
     private var halfModalPresenter = HalfModalPresenter()
     private var isMandatoryItemFilled: Bool {
@@ -103,7 +100,7 @@ private extension AdditionalGoalViewController {
                         priority: inputtedPriority,
                         dueDate: Date(),
                         createdDate: Date(),
-                        photoUrlString: inputtedPhotoUrlString)
+                        imageData: inputtedImageData)
         goalUseCase.create(goal: goal)
     }
     
@@ -141,16 +138,16 @@ private extension AdditionalGoalViewController {
                                       preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "写真を撮る",
                                       style: .default) { _ in
-            self.requestLibraryAuthorization(.camera)
+            self.presentTo(.camera)
         })
         alert.addAction(UIAlertAction(title: "ライブラリから選択する",
                                       style: .default) { _ in
-            self.requestLibraryAuthorization(.photoLibrary)
+            self.presentTo(.photoLibrary)
         })
-        if inputtedPhotoUrlString != nil {
+        if inputtedImageData != nil {
             alert.addAction(UIAlertAction(title: "写真を削除する",
                                           style: .destructive) { _ in
-                self.inputtedPhotoUrlString = nil
+                self.inputtedImageData = nil
                 DispatchQueue.main.async {
                     self.tableView.beginUpdates()
                     self.tableView.reloadRows(at: [IndexPath(row: row,
@@ -162,30 +159,6 @@ private extension AdditionalGoalViewController {
         }
         alert.addAction(UIAlertAction(title: "閉じる", style: .cancel))
         self.present(alert, animated: true, completion: nil)
-    }
-    
-    func requestLibraryAuthorization(_ sourceType: UIImagePickerController.SourceType) {
-        let authorizationStatus: PHAuthorizationStatus = {
-            if #available(iOS 14, *) {
-                return PHPhotoLibrary.authorizationStatus(for: .addOnly)
-            }
-            return PHPhotoLibrary.authorizationStatus()
-        }()
-        switch authorizationStatus {
-            case .notDetermined:
-                PHPhotoLibrary.requestAuthorization { status in
-                    switch status {
-                        case .authorized:
-                            DispatchQueue.main.async {
-                                self.presentTo(sourceType)
-                            }
-                        case .denied:
-                            print("denied")
-                        default: break
-                    }
-                }
-            default: break
-        }
     }
     
 }
@@ -214,7 +187,7 @@ extension AdditionalGoalViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if RowType(rawValue: indexPath.row) == .photo && inputtedPhotoUrlString != nil {
+        if RowType(rawValue: indexPath.row) == .photo && inputtedImageData != nil {
             return tableView.rowHeight
         }
         return 80
@@ -268,8 +241,9 @@ extension AdditionalGoalViewController: UITableViewDataSource {
             case .createdDate: return UITableViewCell()
             case .photo:
                 let cell = tableView.dequeueReusableCustomCell(with: GoalPhotoTableViewCell.self)
+                let image = Converter.convertToImage(from: inputtedImageData)
                 cell.configure(title: rowType.title,
-                               image: UIImage())
+                               image: image)
                 return cell
         }
     }
@@ -331,16 +305,11 @@ extension AdditionalGoalViewController: UIImagePickerControllerDelegate,
     
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        guard let phAsset = info[.phAsset] as? PHAsset else { return }
-        let options = PHContentEditingInputRequestOptions()
-        phAsset.requestContentEditingInput(with: options) { input, info in 
-            guard let url = input?.fullSizeImageURL else { return }
-            print(url.absoluteString)
+        let image = info[.editedImage] as! UIImage
+        inputtedImageData = Converter.convertToData(from: image)
+        if picker.sourceType == .camera {
+            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
         }
-//        inputtedImage = image
-//        if picker.sourceType == .camera {
-//            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-//        }
         picker.dismiss(animated: true, completion: nil)
         tableView.reloadData()
     }

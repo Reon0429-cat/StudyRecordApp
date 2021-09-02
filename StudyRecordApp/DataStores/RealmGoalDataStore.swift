@@ -45,7 +45,7 @@ final class RealmGoalDataStore: GoalDataStoreProtocol {
                         priority: goal.priority,
                         dueDate: goal.dueDate,
                         createdDate: goal.createdDate,
-                        photoUrlString: goal.photoUrlString)
+                        imageData: goal.imageData)
         try! realm.write {
             object.title = goal.title
             object.category = CategoryRealm(goal: goal)
@@ -53,7 +53,7 @@ final class RealmGoalDataStore: GoalDataStoreProtocol {
             object.priority = PriorityRealm(goal: goal)
             object.dueDate = goal.dueDate
             object.createdDate = goal.createdDate
-            object.photoUrlString = goal.photoUrlString
+            object.imageData = goal.imageData
         }
     }
     
@@ -75,7 +75,7 @@ private extension Goal {
         self.priority = Priority(goal: goal)
         self.dueDate = goal.dueDate
         self.createdDate = goal.createdDate
-        self.photoUrlString = goal.photoUrlString
+        self.imageData = goal.imageData
     }
     
 }
@@ -110,14 +110,14 @@ private extension GoalRealm {
                         priority: goal.priority,
                         dueDate: goal.dueDate,
                         createdDate: goal.createdDate,
-                        photoUrlString: goal.photoUrlString)
+                        imageData: goal.imageData)
         self.title = goal.title
         self.category = CategoryRealm(goal: goal)
         self.memo = goal.memo
         self.priority = PriorityRealm(goal: goal)
         self.dueDate = goal.dueDate
         self.createdDate = goal.createdDate
-        self.photoUrlString = goal.photoUrlString
+        self.imageData = goal.imageData
     }
     
 }

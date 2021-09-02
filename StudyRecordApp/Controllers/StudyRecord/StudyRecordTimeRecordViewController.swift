@@ -104,9 +104,9 @@ private extension StudyRecordTimeRecordViewController {
         pickerView.delegate = self
         pickerView.dataSource = self
         if !isHistoryDidTapped {
-            let year = Int(Convert().stringFrom(Date(), format: "yyyy"))!
-            let month = Int(Convert().stringFrom(Date(), format: "M"))!
-            let day = Int(Convert().stringFrom(Date(), format: "d"))!
+            let year = Int(Converter.stringFrom(Date(), format: "yyyy"))!
+            let month = Int(Converter.stringFrom(Date(), format: "M"))!
+            let day = Int(Converter.stringFrom(Date(), format: "d"))!
             history = History(year: year, month: month, day: day, hour: 0, minutes: 0)
         }
         setPickerViewDate()

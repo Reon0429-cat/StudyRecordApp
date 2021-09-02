@@ -23,7 +23,7 @@
 		AB13EDB526BFAB8B002F56FF /* StudyRecordSortTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB13EDB326BFAB8B002F56FF /* StudyRecordSortTableViewCell.xib */; };
 		AB13EDD126C29D9E002F56FF /* StudyRecordTimeRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EDD026C29D9E002F56FF /* StudyRecordTimeRecordViewController.swift */; };
 		AB13EDD326C29DAF002F56FF /* StudyRecordTimeRecord.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13EDD226C29DAF002F56FF /* StudyRecordTimeRecord.storyboard */; };
-		AB13EDDB26C3C163002F56FF /* Convert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EDDA26C3C163002F56FF /* Convert.swift */; };
+		AB13EDDB26C3C163002F56FF /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EDDA26C3C163002F56FF /* Converter.swift */; };
 		AB13EDE026C64EBB002F56FF /* StudyRecordCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EDDE26C64EBB002F56FF /* StudyRecordCustomTableViewCell.swift */; };
 		AB13EDE126C64EBB002F56FF /* StudyRecordCustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB13EDDF26C64EBB002F56FF /* StudyRecordCustomTableViewCell.xib */; };
 		AB13EDE426C78DB4002F56FF /* ScreenTransitionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EDE226C78DB4002F56FF /* ScreenTransitionCollectionViewCell.swift */; };
@@ -156,7 +156,7 @@
 		AB13EDB326BFAB8B002F56FF /* StudyRecordSortTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudyRecordSortTableViewCell.xib; sourceTree = "<group>"; };
 		AB13EDD026C29D9E002F56FF /* StudyRecordTimeRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRecordTimeRecordViewController.swift; sourceTree = "<group>"; };
 		AB13EDD226C29DAF002F56FF /* StudyRecordTimeRecord.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StudyRecordTimeRecord.storyboard; sourceTree = "<group>"; };
-		AB13EDDA26C3C163002F56FF /* Convert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Convert.swift; sourceTree = "<group>"; };
+		AB13EDDA26C3C163002F56FF /* Converter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
 		AB13EDDE26C64EBB002F56FF /* StudyRecordCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRecordCustomTableViewCell.swift; sourceTree = "<group>"; };
 		AB13EDDF26C64EBB002F56FF /* StudyRecordCustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudyRecordCustomTableViewCell.xib; sourceTree = "<group>"; };
 		AB13EDE226C78DB4002F56FF /* ScreenTransitionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTransitionCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -621,7 +621,7 @@
 				AB4397FA26DDF78A008C8CA8 /* HUDIndicator.swift */,
 				AB14B46126DA855F007A5F16 /* CommunicationStatus.swift */,
 				AB13EE6526CAC989002F56FF /* ScreenType.swift */,
-				AB13EDDA26C3C163002F56FF /* Convert.swift */,
+				AB13EDDA26C3C163002F56FF /* Converter.swift */,
 				AB13EDFF26C8E0E9002F56FF /* Setting */,
 			);
 			path = Utilities;
@@ -907,7 +907,7 @@
 				AB2B5B9F26A2D1B7009BD3C7 /* OverseasConcept.swift in Sources */,
 				AB13EE6626CAC98A002F56FF /* ScreenType.swift in Sources */,
 				AB13EDE026C64EBB002F56FF /* StudyRecordCustomTableViewCell.swift in Sources */,
-				AB13EDDB26C3C163002F56FF /* Convert.swift in Sources */,
+				AB13EDDB26C3C163002F56FF /* Converter.swift in Sources */,
 				AB2B5BC526A2D36F009BD3C7 /* ColorChoicesTileViewController.swift in Sources */,
 				AB93C24F266A271E00C3AE8F /* StudyRecordViewController.swift in Sources */,
 				AB43980826DE2D72008C8CA8 /* GoalPriorityTableViewCell.swift in Sources */,
