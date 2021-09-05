@@ -46,4 +46,29 @@ final class RecordUseCase {
         repository.update(record: record, at: index)
     }
     
+    func read(at index: Int) -> Record {
+        repository.read(at: index)
+    }
+    
+    func sorted(histories: [History], at index: Int) -> [History] {
+        let histories = histories.sorted {
+            if $0.year == $1.year {
+                if $0.month == $1.month {
+                    return $0.day > $1.day
+                }
+                return $0.month > $1.month
+            }
+            return $0.year > $1.year
+        }
+        let record = repository.read(at: index)
+        let newRecord = Record(title: record.title,
+                               histories: histories,
+                               isExpanded: record.isExpanded,
+                               graphColor: record.graphColor,
+                               memo: record.memo,
+                               order: record.order)
+        repository.update(record: newRecord, at: index)
+        return histories
+    }
+    
 }

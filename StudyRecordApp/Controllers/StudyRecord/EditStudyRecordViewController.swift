@@ -188,9 +188,10 @@ extension EditStudyRecordViewController: UITableViewDataSource {
             case .history:
                 let cell = tableView.dequeueReusableCustomCell(with: StudyRecordHistoryTableViewCell.self)
                 let index = getHistoryCount(row: indexPath.row)
-                if let history = selectedRecord.histories?[index] {
-                    cell.configure(history: history)
-                }
+                guard var histories = selectedRecord.histories else { fatalError("history is nil") }
+                histories = recordUseCase.sorted(histories: histories, at: selectedRow)
+                selectedRecord.histories = histories
+                cell.configure(history: histories[index])
                 return cell
         }
     }

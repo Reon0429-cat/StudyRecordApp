@@ -7,6 +7,8 @@
 
 import UIKit
 
+// MARK: - ToDo 年度別にグラフを表示するようにする
+
 protocol GraphVCDelegate: AnyObject {
     func viewWillAppear(index: Int)
 }
@@ -33,6 +35,7 @@ final class GraphViewController: UIViewController {
         super.viewWillAppear(animated)
         
         delegate?.viewWillAppear(index: self.view.tag)
+        tableView.reloadData()
         
     }
     
@@ -59,8 +62,14 @@ extension GraphViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCustomCell(with: GraphTableViewCell.self)
-        let record = recordUseCase.records[indexPath.row]
-        cell.configure(record: record)
+        let record = recordUseCase.read(at: indexPath.row)
+        let newRecord = Record(title: record.title,
+                               histories: record.histories?.reversed(),
+                               isExpanded: record.isExpanded,
+                               graphColor: record.graphColor,
+                               memo: record.memo,
+                               order: record.order)
+        cell.configure(record: newRecord)
         return cell
     }
     

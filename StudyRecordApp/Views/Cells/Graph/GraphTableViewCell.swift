@@ -8,6 +8,8 @@
 import UIKit
 import ScrollableGraphView
 
+// MARK: - ToDo 同じ時間のものはまとめてグラフにする
+
 final class GraphTableViewCell: UITableViewCell {
     
     @IBOutlet private weak var titleLabel: UILabel!
@@ -27,6 +29,8 @@ final class GraphTableViewCell: UITableViewCell {
         titleLabel.text = record.title
         
         createGraphView()
+        lines.removeAll()
+        dataPointLabelTexts.removeAll()
         guard let histories = record.histories else { return }
         histories.forEach { historiy in
             let identifier = "\(historiy.year)-\(historiy.month)-\(historiy.day)"
@@ -38,6 +42,7 @@ final class GraphTableViewCell: UITableViewCell {
             createLineDot(color: UIColor(record: record), identifier: identifier)
         }
         createReferenceLines()
+        myGraphView.subviews.forEach { $0.removeFromSuperview() }
         myGraphView.addSubview(graphView)
     }
     
@@ -47,11 +52,13 @@ final class GraphTableViewCell: UITableViewCell {
                            width: myGraphView.frame.width - myGraphViewRightConstraint.constant * 2,
                            height: myGraphView.frame.height)
         graphView = ScrollableGraphView(frame: frame, dataSource: self)
+        graphView.delegate = self
         graphView.rangeMin = 24
         graphView.rangeMax = 0
         graphView.backgroundFillColor = .clear
         graphView.shouldAnimateOnStartup = true
         graphView.shouldAdaptRange = true
+        graphView.shouldRangeAlwaysStartAtZero = true
         graphView.topMargin = 10
         graphView.dataPointSpacing = 30
     }
@@ -61,9 +68,12 @@ final class GraphTableViewCell: UITableViewCell {
         referenceLines.referenceLineLabelFont = .boldSystemFont(ofSize: 10)
         referenceLines.dataPointLabelFont = .boldSystemFont(ofSize: 10)
         referenceLines.referenceLineColor = .black
-        referenceLines.positionType = .absolute
         referenceLines.includeMinMax = false
+        referenceLines.positionType = .absolute
         referenceLines.absolutePositions = [Int](0...24).map { Double($0) }
+        referenceLines.referenceLineUnits = "時間"
+        referenceLines.shouldAddUnitsToIntermediateReferenceLineLabels = true
+        referenceLines.shouldShowReferenceLineUnits = true
         graphView.addReferenceLines(referenceLines: referenceLines)
     }
     
@@ -94,6 +104,16 @@ final class GraphTableViewCell: UITableViewCell {
     
 }
 
+// MARK: - UIScrollViewDelegate
+extension GraphTableViewCell: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        let scrollableGraphView = scrollView as? ScrollableGraphView
+    }
+    
+}
+
+// MARK: - ScrollableGraphViewDataSource
 extension GraphTableViewCell: ScrollableGraphViewDataSource {
     
     func value(forPlot plot: Plot,
