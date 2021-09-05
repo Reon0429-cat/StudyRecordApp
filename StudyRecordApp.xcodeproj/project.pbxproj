@@ -138,6 +138,8 @@
 		ABFAB15926DF86920095EC20 /* GoalPhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABFAB15726DF86920095EC20 /* GoalPhotoTableViewCell.xib */; };
 		ABFAB1E326E11FEC0095EC20 /* GoalTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAB1E226E11FEC0095EC20 /* GoalTimeViewController.swift */; };
 		ABFAB1E526E11FF80095EC20 /* GoalTime.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABFAB1E426E11FF80095EC20 /* GoalTime.storyboard */; };
+		ABFAB20826E394A60095EC20 /* GraphTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAB20626E394A60095EC20 /* GraphTableViewCell.swift */; };
+		ABFAB20926E394A60095EC20 /* GraphTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABFAB20726E394A60095EC20 /* GraphTableViewCell.xib */; };
 		D14EABCB62E5596481983E6D /* Pods_StudyRecordApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7ADEAD2199951B48FEFB0D8 /* Pods_StudyRecordApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -275,6 +277,8 @@
 		ABFAB15726DF86920095EC20 /* GoalPhotoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoalPhotoTableViewCell.xib; sourceTree = "<group>"; };
 		ABFAB1E226E11FEC0095EC20 /* GoalTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTimeViewController.swift; sourceTree = "<group>"; };
 		ABFAB1E426E11FF80095EC20 /* GoalTime.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoalTime.storyboard; sourceTree = "<group>"; };
+		ABFAB20626E394A60095EC20 /* GraphTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphTableViewCell.swift; sourceTree = "<group>"; };
+		ABFAB20726E394A60095EC20 /* GraphTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GraphTableViewCell.xib; sourceTree = "<group>"; };
 		B7ADEAD2199951B48FEFB0D8 /* Pods_StudyRecordApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudyRecordApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F080AD4E0F25E92F286ED79A /* Pods-StudyRecordApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyRecordApp.debug.xcconfig"; path = "Target Support Files/Pods-StudyRecordApp/Pods-StudyRecordApp.debug.xcconfig"; sourceTree = "<group>"; };
 		F4A1350DA353A8FEAF4BEEB3 /* Pods-StudyRecordApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyRecordApp.release.xcconfig"; path = "Target Support Files/Pods-StudyRecordApp/Pods-StudyRecordApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -678,6 +682,7 @@
 				AB13EDE626C78DD0002F56FF /* All */,
 				AB93C2C8266BC50600C3AE8F /* StudyRecord */,
 				AB275FFF26DCDDD3009F63B3 /* Goal */,
+				ABFAB20A26E394B10095EC20 /* Graph */,
 				AB2B5BAD26A2D2A8009BD3C7 /* Setting */,
 			);
 			path = Cells;
@@ -736,6 +741,15 @@
 				AB2B5B8126A2D0FD009BD3C7 /* NSObjectProtocol+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		ABFAB20A26E394B10095EC20 /* Graph */ = {
+			isa = PBXGroup;
+			children = (
+				ABFAB20626E394A60095EC20 /* GraphTableViewCell.swift */,
+				ABFAB20726E394A60095EC20 /* GraphTableViewCell.xib */,
+			);
+			path = Graph;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -825,6 +839,7 @@
 				AB8B705E26D6AD950069FF67 /* LoginAndSignUp.storyboard in Resources */,
 				AB13EDB126BFAA7D002F56FF /* StudyRecordSort.storyboard in Resources */,
 				AB16308426CEABD400111F55 /* NavigationButton.xib in Resources */,
+				ABFAB20926E394A60095EC20 /* GraphTableViewCell.xib in Resources */,
 				AB2B5BB626A2D2C2009BD3C7 /* SectionHeaderView.xib in Resources */,
 				AB2B5BBD26A2D2C2009BD3C7 /* AccordionTableViewCell.xib in Resources */,
 				AB13ECD626B7AEA3002F56FF /* ColorChoicesConcept.storyboard in Resources */,
@@ -968,6 +983,7 @@
 				AB86A85E26D4915700EA990A /* HalfModalPresentationController.swift in Sources */,
 				AB2B5B8626A2D0FD009BD3C7 /* NSObjectProtocol+Extension.swift in Sources */,
 				AB2B5BC626A2D36F009BD3C7 /* ColorChoicesSliderViewController.swift in Sources */,
+				ABFAB20826E394A60095EC20 /* GraphTableViewCell.swift in Sources */,
 				AB14B46A26DBA653007A5F16 /* FirebaseUserDataStore.swift in Sources */,
 				AB13ED7D26BE7061002F56FF /* StudyRecordHistoryTableViewCell.swift in Sources */,
 				AB14B46C26DBA80A007A5F16 /* User.swift in Sources */,

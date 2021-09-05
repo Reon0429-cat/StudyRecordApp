@@ -13,10 +13,19 @@ protocol GraphVCDelegate: AnyObject {
 
 final class GraphViewController: UIViewController {
     
+    @IBOutlet private weak var tableView: UITableView!
+    
     weak var delegate: GraphVCDelegate?
+    private var recordUseCase = RecordUseCase(
+        repository: RecordRepository(
+            dataStore: RealmRecordDataStore()
+        )
+    )
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupTableView()
         
     }
     
@@ -28,3 +37,45 @@ final class GraphViewController: UIViewController {
     }
     
 }
+
+// MARK: - UITableViewDelegate
+extension GraphViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView,
+                   heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 300
+    }
+    
+}
+
+// MARK: - UITableViewDataSource
+extension GraphViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
+        return recordUseCase.records.count
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCustomCell(with: GraphTableViewCell.self)
+        let record = recordUseCase.records[indexPath.row]
+        cell.configure(record: record)
+        return cell
+    }
+    
+}
+
+// MARK: - setup
+private extension GraphViewController {
+    
+    func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.registerCustomCell(GraphTableViewCell.self)
+        tableView.tableFooterView = UIView()
+    }
+    
+}
+
+
