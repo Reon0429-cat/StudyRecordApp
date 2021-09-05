@@ -152,7 +152,7 @@ extension EditStudyRecordViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == rowCount - 1 {
+        if indexPath.row > CellType.allCases.count + 2 {
             let indexPath = IndexPath(row: indexPath.row, section: 0)
             let tableBottomMaxY = tableView.rectForRow(at: indexPath).maxY
             let shouldHideWave = bottomWaveView.frame.minY - bottomWaveView.frame.height < tableBottomMaxY
