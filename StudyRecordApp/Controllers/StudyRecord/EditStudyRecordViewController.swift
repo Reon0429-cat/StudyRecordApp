@@ -7,8 +7,6 @@
 
 import UIKit
 
-// MARK: - ToDo 分を追加した時にバグる
-
 final class EditStudyRecordViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
@@ -265,11 +263,17 @@ extension EditStudyRecordViewController: StudyRecordTimeRecordVCDelegate {
             if _history.year == history.year
                 && _history.month == history.month
                 && _history.day == history.day {
+                var hour = histories[index].hour + history.hour
+                var minutes = histories[index].minutes + history.minutes
+                if minutes >= 60 {
+                    hour += 1
+                    minutes -= 60
+                }
                 let history = History(year: history.year,
                                       month: history.month,
                                       day: history.day,
-                                      hour: histories[index].hour + history.hour,
-                                      minutes: histories[index].minutes + history.minutes)
+                                      hour: hour,
+                                      minutes: minutes)
                 selectedRecord.histories?[index] = history
                 return true
             }
