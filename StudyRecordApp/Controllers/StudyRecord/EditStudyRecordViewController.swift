@@ -48,7 +48,7 @@ final class EditStudyRecordViewController: UIViewController {
     private var selectedRecord: Record!
     private var oldInputtedTitle: String = ""
     private var halfModalPresenter = HalfModalPresenter()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -250,30 +250,31 @@ extension EditStudyRecordViewController: StudyRecordTimeRecordVCDelegate {
         if isHistory {
             selectedRecord.histories?.append(history)
         } else {
-            guard let histories = selectedRecord.histories else { return }
-            if histories.isEmpty {
+            let isSameDateExisted = isSameDateValidation(history: history)
+            let isHistoriesIsEmpty = selectedRecord.histories?.isEmpty ?? true
+            if !isSameDateExisted || isHistoriesIsEmpty {
                 selectedRecord.histories?.append(history)
-            } else {
-                var isSameHistoryHitted = false
-                histories.enumerated().forEach { index, _history in
-                    if _history.year == history.year
-                        && _history.month == history.month
-                        && _history.day == history.day {
-                        let history = History(year: history.year,
-                                              month: history.month,
-                                              day: history.day,
-                                              hour: histories[index].hour + history.hour,
-                                              minutes: histories[index].minutes + history.minutes)
-                        selectedRecord.histories?[index] = history
-                        isSameHistoryHitted = true
-                    }
-                }
-                if !isSameHistoryHitted {
-                    selectedRecord.histories?.append(history)
-                }
             }
         }
         tableView.reloadData()
+    }
+    
+    private func isSameDateValidation(history: History) -> Bool {
+        guard let histories = selectedRecord.histories else { return false }
+        for (index, _history) in histories.enumerated() {
+            if _history.year == history.year
+                && _history.month == history.month
+                && _history.day == history.day {
+                let history = History(year: history.year,
+                                      month: history.month,
+                                      day: history.day,
+                                      hour: histories[index].hour + history.hour,
+                                      minutes: histories[index].minutes + history.minutes)
+                selectedRecord.histories?[index] = history
+                return true
+            }
+        }
+        return false
     }
     
     func deleteButtonDidTapped(index: Int) {
