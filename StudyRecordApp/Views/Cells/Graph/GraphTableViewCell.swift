@@ -9,6 +9,7 @@ import UIKit
 import ScrollableGraphView
 
 // MARK: - ToDo 同じ時間のものはまとめてグラフにする
+// MARK: - ToDo 年度、月別にグラフを切り替えられるようにする
 
 final class GraphTableViewCell: UITableViewCell {
     
@@ -38,12 +39,13 @@ final class GraphTableViewCell: UITableViewCell {
     private func createGraphView() {
         let frame = CGRect(x: 0,
                            y: 0,
-                           width: myGraphView.frame.width - myGraphViewRightConstraint.constant * 2,
+                           width: myGraphView.frame.width,
                            height: myGraphView.frame.height)
         graphView = ScrollableGraphView(frame: frame, dataSource: self)
         graphView.delegate = self
         graphView.rangeMin = 24
         graphView.rangeMax = 0
+        graphView.rightmostPointPadding = 0
         graphView.backgroundFillColor = .clear
         graphView.shouldAnimateOnStartup = true
         graphView.shouldAdaptRange = true
@@ -58,9 +60,9 @@ final class GraphTableViewCell: UITableViewCell {
             let identifier = "\(historiy.year)-\(historiy.month)-\(historiy.day)"
             let data = histories.map { Double($0.hour * 60 + $0.minutes) }
             lineData.append((color: UIColor(record: record),
-                          identifier: identifier,
-                          data: data,
-                          xTitle: "\(historiy.month)/\(historiy.day)"))
+                             identifier: identifier,
+                             data: data,
+                             xTitle: "\(historiy.month)/\(historiy.day)"))
             createLineDot(color: UIColor(record: record), identifier: identifier)
         }
     }
@@ -73,9 +75,6 @@ final class GraphTableViewCell: UITableViewCell {
         referenceLines.includeMinMax = false
         referenceLines.positionType = .absolute
         referenceLines.absolutePositions = [Int](0...24).map { Double($0) }
-        referenceLines.referenceLineUnits = "時間"
-        referenceLines.shouldAddUnitsToIntermediateReferenceLineLabels = true
-        referenceLines.shouldShowReferenceLineUnits = true
         graphView.addReferenceLines(referenceLines: referenceLines)
     }
     

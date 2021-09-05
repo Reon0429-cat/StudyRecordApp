@@ -7,8 +7,6 @@
 
 import UIKit
 
-// MARK: - ToDo 年度別にグラフを表示するようにする
-
 protocol GraphVCDelegate: AnyObject {
     func viewWillAppear(index: Int)
 }
@@ -69,7 +67,9 @@ extension GraphViewController: UITableViewDataSource {
                                graphColor: record.graphColor,
                                memo: record.memo,
                                order: record.order)
-        cell.configure(record: newRecord)
+        DispatchQueue.main.async {
+            cell.configure(record: newRecord)
+        }
         return cell
     }
     
