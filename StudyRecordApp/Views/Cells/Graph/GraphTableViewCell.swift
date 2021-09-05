@@ -16,8 +16,7 @@ final class GraphTableViewCell: UITableViewCell {
     @IBOutlet private weak var myGraphView: UIView!
     @IBOutlet private weak var myGraphViewRightConstraint: NSLayoutConstraint!
     
-    private var lines = [(color: UIColor, identifier: String, data: [Double])]()
-    private var dataPointLabelTexts = [String]()
+    private var lineData = [(color: UIColor, identifier: String, data: [Double], xTitle: String)]()
     private var graphView: ScrollableGraphView!
     
     override func awakeFromNib() {
@@ -29,18 +28,8 @@ final class GraphTableViewCell: UITableViewCell {
         titleLabel.text = record.title
         
         createGraphView()
-        lines.removeAll()
-        dataPointLabelTexts.removeAll()
-        guard let histories = record.histories else { return }
-        histories.forEach { historiy in
-            let identifier = "\(historiy.year)-\(historiy.month)-\(historiy.day)"
-            let data = histories.map { Double($0.hour * 60 + $0.minutes) }
-            lines.append((color: UIColor(record: record),
-                          identifier: identifier,
-                          data: data))
-            dataPointLabelTexts.append("\(historiy.month)/\(historiy.day)")
-            createLineDot(color: UIColor(record: record), identifier: identifier)
-        }
+        lineData.removeAll()
+        setupLineData(record: record)
         createReferenceLines()
         myGraphView.subviews.forEach { $0.removeFromSuperview() }
         myGraphView.addSubview(graphView)
@@ -61,6 +50,19 @@ final class GraphTableViewCell: UITableViewCell {
         graphView.shouldRangeAlwaysStartAtZero = true
         graphView.topMargin = 10
         graphView.dataPointSpacing = 30
+    }
+    
+    private func setupLineData(record: Record) {
+        guard let histories = record.histories else { return }
+        histories.forEach { historiy in
+            let identifier = "\(historiy.year)-\(historiy.month)-\(historiy.day)"
+            let data = histories.map { Double($0.hour * 60 + $0.minutes) }
+            lineData.append((color: UIColor(record: record),
+                          identifier: identifier,
+                          data: data,
+                          xTitle: "\(historiy.month)/\(historiy.day)"))
+            createLineDot(color: UIColor(record: record), identifier: identifier)
+        }
     }
     
     private func createReferenceLines() {
@@ -108,7 +110,7 @@ final class GraphTableViewCell: UITableViewCell {
 extension GraphTableViewCell: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        let scrollableGraphView = scrollView as? ScrollableGraphView
+        //        let scrollableGraphView = scrollView as? ScrollableGraphView
     }
     
 }
@@ -118,7 +120,7 @@ extension GraphTableViewCell: ScrollableGraphViewDataSource {
     
     func value(forPlot plot: Plot,
                atIndex pointIndex: Int) -> Double {
-        for line in lines where plot.identifier == line.identifier {
+        for line in lineData where plot.identifier == line.identifier {
             let data = Int(line.data[pointIndex])
             let hour = Double(data / 60)
             let minutes = Double(data % 60) / 60
@@ -128,14 +130,14 @@ extension GraphTableViewCell: ScrollableGraphViewDataSource {
     }
     
     func label(atIndex pointIndex: Int) -> String {
-        return dataPointLabelTexts[pointIndex]
+        return lineData[pointIndex].xTitle
     }
     
     func numberOfPoints() -> Int {
-        if lines.isEmpty {
+        if lineData.isEmpty {
             return 0
         }
-        return lines[0].data.count
+        return lineData[0].data.count
     }
     
 }
