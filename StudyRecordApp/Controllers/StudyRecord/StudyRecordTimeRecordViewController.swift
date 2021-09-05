@@ -8,7 +8,7 @@
 import UIKit
 
 protocol StudyRecordTimeRecordVCDelegate: AnyObject {
-    func saveButtonDidTapped(history: History)
+    func saveButtonDidTapped(history: History, isHistory: Bool)
     func deleteButtonDidTapped(index: Int)
     func editButtonDidTapped(index: Int, history: History)
 }
@@ -74,7 +74,7 @@ final class StudyRecordTimeRecordViewController: UIViewController {
         if isHistoryDidTapped {
             delegate?.editButtonDidTapped(index: tappedHistoryIndex!, history: history!)
         } else {
-            delegate?.saveButtonDidTapped(history: history!)
+            delegate?.saveButtonDidTapped(history: history!, isHistory: isHistoryDidTapped)
         }
         dismiss(animated: true, completion: nil)
     }

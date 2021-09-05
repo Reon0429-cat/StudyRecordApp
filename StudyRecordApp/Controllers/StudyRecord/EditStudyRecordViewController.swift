@@ -7,6 +7,8 @@
 
 import UIKit
 
+// MARK: - ToDo 分を追加した時にバグる
+
 final class EditStudyRecordViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
@@ -244,8 +246,33 @@ extension EditStudyRecordViewController: StudyRecordMemoVCDelegate {
 // MARK: - StudyRecordTimeRecordVCDelegate
 extension EditStudyRecordViewController: StudyRecordTimeRecordVCDelegate {
     
-    func saveButtonDidTapped(history: History) {
-        selectedRecord.histories?.append(history)
+    func saveButtonDidTapped(history: History, isHistory: Bool) {
+        if isHistory {
+            selectedRecord.histories?.append(history)
+        } else {
+            guard let histories = selectedRecord.histories else { return }
+            if histories.isEmpty {
+                selectedRecord.histories?.append(history)
+            } else {
+                var isSameHistoryHitted = false
+                histories.enumerated().forEach { index, _history in
+                    if _history.year == history.year
+                        && _history.month == history.month
+                        && _history.day == history.day {
+                        let history = History(year: history.year,
+                                              month: history.month,
+                                              day: history.day,
+                                              hour: histories[index].hour + history.hour,
+                                              minutes: histories[index].minutes + history.minutes)
+                        selectedRecord.histories?[index] = history
+                        isSameHistoryHitted = true
+                    }
+                }
+                if !isSameHistoryHitted {
+                    selectedRecord.histories?.append(history)
+                }
+            }
+        }
         tableView.reloadData()
     }
     

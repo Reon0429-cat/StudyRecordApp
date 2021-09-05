@@ -60,14 +60,6 @@ final class RecordUseCase {
             }
             return $0.year > $1.year
         }
-        let record = repository.read(at: index)
-        let newRecord = Record(title: record.title,
-                               histories: histories,
-                               isExpanded: record.isExpanded,
-                               graphColor: record.graphColor,
-                               memo: record.memo,
-                               order: record.order)
-        repository.update(record: newRecord, at: index)
         return histories
     }
     
