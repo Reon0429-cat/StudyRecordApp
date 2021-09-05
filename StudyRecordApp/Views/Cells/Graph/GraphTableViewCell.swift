@@ -34,6 +34,7 @@ final class GraphTableViewCell: UITableViewCell {
         createReferenceLines()
         myGraphView.subviews.forEach { $0.removeFromSuperview() }
         myGraphView.addSubview(graphView)
+        
     }
     
     private func createGraphView() {
@@ -45,7 +46,7 @@ final class GraphTableViewCell: UITableViewCell {
         graphView.delegate = self
         graphView.rangeMin = 24
         graphView.rangeMax = 0
-        graphView.rightmostPointPadding = 0
+        graphView.rightmostPointPadding = 20
         graphView.backgroundFillColor = .clear
         graphView.shouldAnimateOnStartup = true
         graphView.shouldAdaptRange = true
@@ -89,7 +90,7 @@ final class GraphTableViewCell: UITableViewCell {
         let linePlot = LinePlot(identifier: identifier)
         linePlot.lineColor = color
         linePlot.adaptAnimationType = .easeOut
-        linePlot.animationDuration = 0.2
+        linePlot.animationDuration = 0.1
         return linePlot
     }
     
@@ -99,7 +100,7 @@ final class GraphTableViewCell: UITableViewCell {
         dotPlot.dataPointSize = 5
         dotPlot.dataPointFillColor = color
         dotPlot.adaptAnimationType = .easeOut
-        dotPlot.animationDuration = 0.2
+        dotPlot.animationDuration = 0.1
         return dotPlot
     }
     
