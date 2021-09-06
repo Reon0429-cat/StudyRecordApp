@@ -16,6 +16,7 @@ extension UIViewController {
                  completion: (() -> Void)? = nil) {
         let vc = ViewControllerType.instantiate()
         vc.modalPresentationStyle = modalPresentationStyle
+        vc.modalTransitionStyle = modalTransitionStyle
         handler?(vc)
         self.present(vc, animated: true, completion: completion)
     }
