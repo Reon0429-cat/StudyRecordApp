@@ -13,9 +13,7 @@ protocol StudyRecordMemoVCDelegate: AnyObject {
 
 final class StudyRecordMemoViewController: UIViewController {
     
-    @IBOutlet private weak var baseView: UIView! {
-        didSet { baseView.layer.cornerRadius = 10 }
-    }
+    @IBOutlet private weak var baseView: UIView!
     @IBOutlet private weak var textView: UITextView!
     
     weak var delegate: StudyRecordMemoVCDelegate?
@@ -26,39 +24,44 @@ final class StudyRecordMemoViewController: UIViewController {
         super.viewDidLoad()
         
         setupTextView()
+        setupBaseView()
         oldInputtedMemo = inputtedMemo
         
     }
     
-    private func setupTextView() {
-        textView.text = inputtedMemo
-        textView.delegate = self
-        textView.backgroundColor = .white
-        textView.layer.borderWidth = 1
-        textView.layer.borderColor = UIColor.black.cgColor
-        textView.layer.cornerRadius = 10
-        textView.becomeFirstResponder()
-    }
+}
+
+// MARK: - IBAction func
+private extension StudyRecordMemoViewController {
     
-    @IBAction private func dismissButtonDidTapped(_ sender: Any) {
+    @IBAction func dismissButtonDidTapped(_ sender: Any) {
         if inputtedMemo == oldInputtedMemo {
             dismiss(animated: true, completion: nil)
         } else {
-            let alert = UIAlertController(title: "保存せずにメモを閉じますか", message: nil, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "閉じる", style: .destructive) { _ in
-                self.dismiss(animated: true, completion: nil)
-            })
-            alert.addAction(UIAlertAction(title: "保存する", style: .default) { _ in
-                self.delegate?.savedMemo(memo: self.inputtedMemo)
-                self.dismiss(animated: true, completion: nil)
-            })
-            present(alert, animated: true, completion: nil)
+            showAlert()
         }
     }
     
-    @IBAction private func saveButtonDidTapped(_ sender: Any) {
+    @IBAction func saveButtonDidTapped(_ sender: Any) {
         self.delegate?.savedMemo(memo: self.inputtedMemo)
         dismiss(animated: true, completion: nil)
+    }
+    
+}
+
+// MARK: - func
+private extension StudyRecordMemoViewController {
+    
+    func showAlert() {
+        let alert = Alert.create(title: "保存せずにメモを閉じますか")
+            .addAction(title: "閉じる", style: .destructive) {
+                self.dismiss(animated: true, completion: nil)
+            }
+            .addAction(title: "保存する") {
+                self.delegate?.savedMemo(memo: self.inputtedMemo)
+                self.dismiss(animated: true, completion: nil)
+            }
+        present(alert, animated: true)
     }
     
 }
@@ -72,4 +75,21 @@ extension StudyRecordMemoViewController: UITextViewDelegate {
     
 }
 
-
+// MARK: - setup
+private extension StudyRecordMemoViewController {
+    
+    func setupTextView() {
+        textView.text = inputtedMemo
+        textView.delegate = self
+        textView.backgroundColor = .white
+        textView.layer.borderWidth = 1
+        textView.layer.borderColor = UIColor.black.cgColor
+        textView.layer.cornerRadius = 10
+        textView.becomeFirstResponder()
+    }
+    
+    func setupBaseView() {
+        baseView.layer.cornerRadius = 10
+    }
+    
+}

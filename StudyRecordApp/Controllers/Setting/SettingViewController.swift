@@ -90,40 +90,59 @@ final class SettingViewController: UIViewController {
         
     }
     
-    private func setupTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.registerCustomCell(AccordionTableViewCell.self)
-        tableView.registerCustomCell(SectionHeaderView.self)
-        tableView.tableFooterView = UIView()
-    }
+}
+
+// MARK: - IBAction func
+private extension SettingViewController {
     
-    @IBAction private func logoutButtonDidTapped(_ sender: Any) {
-        let alert = UIAlertController(title: "本当にログアウトしてもよろしいですか",
-                                      message: nil,
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "閉じる", style: .destructive))
-        alert.addAction(UIAlertAction(title: "ログアウト", style: .default) { [weak self] _ in
-            guard let self = self else { return }
-            self.indicator.show(.progress)
-            self.userUseCase.logout { result in
-                switch result {
-                    case .failure(let title):
-                        self.indicator.flash(.error) {
-                            self.showErrorAlert(title: title)
-                        }
-                    case .success:
-                        self.indicator.flash(.success) {
-                            self.present(LoginAndSignUpViewController.self,
-                                         modalPresentationStyle: .fullScreen,
-                                         completion: {
-                                            self.delegate?.loginAndSignUpVCDidShowed()
-                                         })
-                        }
+    @IBAction func logoutButtonDidTapped(_ sender: Any) {
+        let alert = Alert.create(title: "本当にログアウトしてもよろしいですか")
+            .addAction(title: "閉じる", style: .destructive)
+            .addAction(title: "ログアウト") { [weak self] in
+                guard let self = self else { return }
+                self.indicator.show(.progress)
+                self.userUseCase.logout { result in
+                    switch result {
+                        case .failure(let title):
+                            self.indicator.flash(.error) {
+                                self.showErrorAlert(title: title)
+                            }
+                        case .success:
+                            self.indicator.flash(.success) {
+                                self.presentLoginAndSignUpVC()
+                            }
+                    }
                 }
             }
-        })
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true)
+    }
+    
+    func presentLoginAndSignUpVC() {
+        present(LoginAndSignUpViewController.self,
+                modalPresentationStyle: .fullScreen) { _ in
+        } completion: {
+            self.delegate?.loginAndSignUpVCDidShowed()
+        }
+    }
+    
+    func showAlert(section: Int) {
+        let alert = Alert.create(title: "デフォルトカラーにしますか？")
+            .addAction(title: "いいえ")
+            .addAction(title: "はい") {
+                UserDefaults.standard.save(color: nil, .main)
+                UserDefaults.standard.save(color: nil, .sub)
+                UserDefaults.standard.save(color: nil, .accent)
+                self.expand(section: section)
+            }
+        present(alert, animated: true)
+    }
+    
+    func expand(section: Int) {
+        tables[section].isExpanded.toggle()
+        tableView.beginUpdates()
+        tableView.reloadRows(at: [IndexPath(row: 0, section: section)],
+                             with: .automatic)
+        tableView.endUpdates()
     }
     
 }
@@ -141,11 +160,15 @@ extension SettingViewController: UITableViewDelegate {
             case .default:
                 showAlert(section: indexPath.section)
             case .custom:
-                let themeColorVC = ThemeColorViewController.instantiate(containerType: .tile, colorConcept: nil)
-                navigationController?.pushViewController(themeColorVC, animated: true)
+                present(ThemeColorViewController.self,
+                        modalPresentationStyle: .fullScreen) { vc in
+                    vc.colorConcept = nil
+                    vc.containerType = .tile
+                    vc.navTitle = "セルフ"
+                }
             case .recommend:
-                let colorConceptVC = ColorConceptViewController.instantiate()
-                navigationController?.pushViewController(colorConceptVC, animated: true)
+                present(ColorConceptViewController.self,
+                        modalPresentationStyle: .fullScreen)
             case .sample100:
                 break
         }
@@ -178,28 +201,6 @@ extension SettingViewController: UITableViewDelegate {
         return headerView
     }
     
-    private func showAlert(section: Int) {
-        let alert = UIAlertController(title: "デフォルトカラーにしますか？",
-                                      message: nil,
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "いいえ", style: .default, handler: nil))
-        alert.addAction(UIAlertAction(title: "はい", style: .default) { _ in
-            UserDefaults.standard.save(color: nil, .main)
-            UserDefaults.standard.save(color: nil, .sub)
-            UserDefaults.standard.save(color: nil, .accent)
-            self.expand(section: section)
-        })
-        present(alert, animated: true, completion: nil)
-    }
-    
-    private func expand(section: Int) {
-        tables[section].isExpanded.toggle()
-        tableView.beginUpdates()
-        tableView.reloadRows(at: [IndexPath(row: 0, section: section)],
-                             with: .automatic)
-        tableView.endUpdates()
-    }
-    
 }
 
 extension SettingViewController: UITableViewDataSource {
@@ -219,6 +220,19 @@ extension SettingViewController: UITableViewDataSource {
         let title = tables[indexPath.section].sectionType.rowTypes[indexPath.row].title
         cell.configure(title: title)
         return cell
+    }
+    
+}
+
+// MARK: - setup
+private extension SettingViewController {
+    
+    private func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.registerCustomCell(AccordionTableViewCell.self)
+        tableView.registerCustomCell(SectionHeaderView.self)
+        tableView.tableFooterView = UIView()
     }
     
 }

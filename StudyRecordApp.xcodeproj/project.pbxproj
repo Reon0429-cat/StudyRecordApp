@@ -144,6 +144,7 @@
 		ABFAB20E26E638390095EC20 /* RealmGraphDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAB20D26E638390095EC20 /* RealmGraphDataStore.swift */; };
 		ABFAB21026E63A830095EC20 /* GraphRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAB20F26E63A830095EC20 /* GraphRepository.swift */; };
 		ABFAB21226E63B350095EC20 /* GraphUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAB21126E63B350095EC20 /* GraphUseCase.swift */; };
+		ABFAB21426E67A2E0095EC20 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAB21326E67A2E0095EC20 /* Alert.swift */; };
 		D14EABCB62E5596481983E6D /* Pods_StudyRecordApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7ADEAD2199951B48FEFB0D8 /* Pods_StudyRecordApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -287,6 +288,7 @@
 		ABFAB20D26E638390095EC20 /* RealmGraphDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmGraphDataStore.swift; sourceTree = "<group>"; };
 		ABFAB20F26E63A830095EC20 /* GraphRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphRepository.swift; sourceTree = "<group>"; };
 		ABFAB21126E63B350095EC20 /* GraphUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphUseCase.swift; sourceTree = "<group>"; };
+		ABFAB21326E67A2E0095EC20 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		B7ADEAD2199951B48FEFB0D8 /* Pods_StudyRecordApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudyRecordApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F080AD4E0F25E92F286ED79A /* Pods-StudyRecordApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyRecordApp.debug.xcconfig"; path = "Target Support Files/Pods-StudyRecordApp/Pods-StudyRecordApp.debug.xcconfig"; sourceTree = "<group>"; };
 		F4A1350DA353A8FEAF4BEEB3 /* Pods-StudyRecordApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyRecordApp.release.xcconfig"; path = "Target Support Files/Pods-StudyRecordApp/Pods-StudyRecordApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -639,6 +641,7 @@
 		AB93C25A266A5A0D00C3AE8F /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				ABFAB21326E67A2E0095EC20 /* Alert.swift */,
 				AB275FFD26DCAA56009F63B3 /* Indicator.swift */,
 				AB4397FA26DDF78A008C8CA8 /* HUDIndicator.swift */,
 				AB14B46126DA855F007A5F16 /* CommunicationStatus.swift */,
@@ -941,6 +944,7 @@
 				AB2B5B9F26A2D1B7009BD3C7 /* OverseasConcept.swift in Sources */,
 				AB13EE6626CAC98A002F56FF /* ScreenType.swift in Sources */,
 				AB13EDE026C64EBB002F56FF /* StudyRecordCustomTableViewCell.swift in Sources */,
+				ABFAB21426E67A2E0095EC20 /* Alert.swift in Sources */,
 				AB13EDDB26C3C163002F56FF /* Converter.swift in Sources */,
 				AB2B5BC526A2D36F009BD3C7 /* ColorChoicesTileViewController.swift in Sources */,
 				AB93C24F266A271E00C3AE8F /* StudyRecordViewController.swift in Sources */,

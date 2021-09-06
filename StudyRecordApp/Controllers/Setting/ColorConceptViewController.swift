@@ -11,8 +11,6 @@ final class ColorConceptViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
     
-    private let colorConcepts = ColorConcept.allCases
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,7 +18,51 @@ final class ColorConceptViewController: UIViewController {
         
     }
     
-    private func setupTableView() {
+}
+
+// MARK: - UITableViewDelegate
+extension ColorConceptViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView,
+                   didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        present(ThemeColorViewController.self,
+                modalPresentationStyle: .fullScreen) { vc in
+            vc.containerType = .concept
+            vc.colorConcept = ColorConcept.allCases[indexPath.row]
+            vc.navTitle = ColorConcept.allCases[indexPath.row].title
+        }
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
+}
+
+// MARK: - UITableViewDataSource
+extension ColorConceptViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
+        return ColorConcept.allCases.count
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCustomCell(with: ColorConceptTableViewCell.self)
+        let title = ColorConcept.allCases[indexPath.row].title
+        cell.configure(title: title)
+        return cell
+    }
+    
+}
+
+// MARK: - setup
+private extension ColorConceptViewController {
+    
+    func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.registerCustomCell(ColorConceptTableViewCell.self)
@@ -28,40 +70,3 @@ final class ColorConceptViewController: UIViewController {
     }
     
 }
-
-extension ColorConceptViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        let themeColorVC = ThemeColorViewController.instantiate(containerType: .concept,
-                                                                colorConcept: colorConcepts[indexPath.row])
-        self.navigationController?.pushViewController(themeColorVC, animated: true)
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
-    }
-    
-}
-
-extension ColorConceptViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return colorConcepts.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCustomCell(with: ColorConceptTableViewCell.self)
-        let title = colorConcepts[indexPath.row].title
-        cell.configure(title: title)
-        return cell
-    }
-    
-}
-
-
-
-
-
-
-

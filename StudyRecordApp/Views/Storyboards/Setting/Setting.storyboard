@@ -47,7 +47,6 @@
                             <constraint firstItem="9mX-as-Ot5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="wpJ-vZ-9qe"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="設定" image="gearshape" catalog="system" id="wTh-MF-B2V"/>
                     <navigationItem key="navigationItem" title="設定" id="4lr-yd-duF"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -57,11 +56,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1030" y="124"/>
+            <point key="canvasLocation" x="1306" y="114"/>
         </scene>
     </scenes>
     <resources>
-        <image name="gearshape" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -80,32 +80,32 @@ final class AdditionalGoalViewController: UIViewController {
 // MARK: - func
 private extension AdditionalGoalViewController {
     
-    func presentAlertWithTextField() {
-        let alert = UIAlertController(title: "タイトル", message: nil, preferredStyle: .alert)
-        alert.addTextField { textField in
-            textField.text = self.inputtedTitle
-            textField.delegate = self
-        }
-        alert.addAction(UIAlertAction(title: "閉じる", style: .destructive) { _ in
-            self.inputtedTitle = self.oldInputtedTitle
-        })
-        alert.addAction(UIAlertAction(title: "追加", style: .default) { _ in
-            self.oldInputtedTitle = self.inputtedTitle
-            self.tableView.reloadData()
-        })
-        present(alert, animated: true, completion: nil)
+    func showAlertWithTextField() {
+        let alert = Alert.create(title: "タイトル")
+            .setTextField { textField in
+                textField.text = self.inputtedTitle
+                textField.delegate = self
+            }
+            .addAction(title: "閉じる", style: .destructive) {
+                self.inputtedTitle = self.oldInputtedTitle
+            }
+            .addAction(title: "追加") {
+                self.oldInputtedTitle = self.inputtedTitle
+                self.tableView.reloadData()
+            }
+        present(alert, animated: true)
     }
     
-    func presentAlert() {
-        let alert = UIAlertController(title: "保存せずに閉じますか", message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "閉じる", style: .destructive) { _ in
-            self.dismiss(animated: true, completion: nil)
-        })
-        alert.addAction(UIAlertAction(title: "保存する", style: .default) { _ in
-            self.saveGoal()
-            self.dismiss(animated: true, completion: nil)
-        })
-        present(alert, animated: true, completion: nil)
+    func showAlert() {
+        let alert = Alert.create(title: "保存せずに閉じますか")
+            .addAction(title: "閉じる", style: .destructive) {
+                self.dismiss(animated: true)
+            }
+            .addAction(title: "保存する") {
+                self.saveGoal()
+                self.dismiss(animated: true)
+            }
+        present(alert, animated: true)
     }
     
     func saveGoal() {
@@ -157,20 +157,15 @@ private extension AdditionalGoalViewController {
     }
     
     func presentPhotoActionSheet(row: Int) {
-        let alert = UIAlertController(title: nil,
-                                      message: nil,
-                                      preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "写真を撮る",
-                                      style: .default) { _ in
-            self.presentTo(.camera)
-        })
-        alert.addAction(UIAlertAction(title: "ライブラリから選択する",
-                                      style: .default) { _ in
-            self.presentTo(.photoLibrary)
-        })
+        var alert = Alert.create(preferredStyle: .actionSheet)
+            .addAction(title: "写真を撮る") {
+                self.presentTo(.camera)
+            }
+            .addAction(title: "ライブラリから選択する") {
+                self.presentTo(.photoLibrary)
+            }
         if inputtedImageData != nil {
-            alert.addAction(UIAlertAction(title: "写真を削除する",
-                                          style: .destructive) { _ in
+            alert = alert.addAction(title: "写真を削除する", style: .destructive) {
                 self.inputtedImageData = nil
                 DispatchQueue.main.async {
                     self.tableView.beginUpdates()
@@ -179,10 +174,10 @@ private extension AdditionalGoalViewController {
                                               with: .automatic)
                     self.tableView.endUpdates()
                 }
-            })
+            }
         }
-        alert.addAction(UIAlertAction(title: "閉じる", style: .cancel))
-        self.present(alert, animated: true, completion: nil)
+        alert = alert.addAction(title: "閉じる", style: .cancel)
+        present(alert, animated: true)
     }
     
 }
@@ -196,7 +191,7 @@ extension AdditionalGoalViewController: UITableViewDelegate {
         let rowType = RowType.allCases[indexPath.row]
         switch rowType {
             case .title:
-                presentAlertWithTextField()
+                showAlertWithTextField()
             case .category:
                 break
             case .memo:
@@ -339,7 +334,7 @@ extension AdditionalGoalViewController: NavigationButtonDelegate {
         }
         if type == .dismiss {
             if isMandatoryItemFilled {
-                presentAlert()
+                showAlert()
             } else {
                 self.dismiss(animated: true, completion: nil)
             }

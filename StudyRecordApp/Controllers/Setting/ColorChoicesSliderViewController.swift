@@ -32,15 +32,61 @@ final class ColorChoicesSliderViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setObserver()
+        
+    }
+    
+}
+
+// MARK: - IBAction func
+private extension ColorChoicesSliderViewController {
+    
+    @IBAction func redSliderValueDidChanged(_ sender: UISlider) {
+        let redValue = CGFloat(sender.value)
+        sliderView.backgroundColor = UIColor.rgba(red: redValue, green: rgba.green, blue: rgba.blue, alpha: rgba.alpha)
+        delegate?.sliderValueDidChanged(view: sliderView)
+        NotificationCenter.default.post(name: .initTileView, object: nil)
+        redNumberLabel.text = String(Int(sender.value))
+    }
+    
+    @IBAction func greenSliderValueDidChanged(_ sender: UISlider) {
+        let greenValue = CGFloat(sender.value)
+        sliderView.backgroundColor = UIColor.rgba(red: rgba.red, green: greenValue, blue: rgba.blue, alpha: rgba.alpha)
+        delegate?.sliderValueDidChanged(view: sliderView)
+        NotificationCenter.default.post(name: .initTileView, object: nil)
+        greenNumberLabel.text = String(Int(sender.value))
+    }
+    
+    @IBAction func blueSliderValueDidChanged(_ sender: UISlider) {
+        let blueValue = CGFloat(sender.value)
+        sliderView.backgroundColor = UIColor.rgba(red: rgba.red, green: rgba.green, blue: blueValue, alpha: rgba.alpha)
+        delegate?.sliderValueDidChanged(view: sliderView)
+        NotificationCenter.default.post(name: .initTileView, object: nil)
+        blueNumberLabel.text = String(Int(sender.value))
+    }
+    
+    @IBAction func alphaSliderValueDidChanged(_ sender: UISlider) {
+        let alphaValue = CGFloat(sender.value)
+        sliderView.backgroundColor = UIColor.rgba(red: rgba.red, green: rgba.green, blue: rgba.blue, alpha: alphaValue)
+        delegate?.sliderValueDidChanged(view: sliderView)
+        NotificationCenter.default.post(name: .initTileView, object: nil)
+        alphaNumberLabel.text = String(Int(sender.value))
+    }
+    
+}
+
+// MARK: - func
+private extension ColorChoicesSliderViewController {
+    
+    func setObserver() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(adjustSliders),
                                                name: .themeColor,
                                                object: nil)
-        
     }
     
     @objc
-    private func adjustSliders(notification: Notification) {
+    func adjustSliders(notification: Notification) {
         let nextSelectedView = notification.userInfo!["selectedView"] as! UIView
         let redValue = round(nextSelectedView.backgroundColor!.redValue * 255)
         let greenValue = round(nextSelectedView.backgroundColor!.greenValue * 255)
@@ -56,38 +102,6 @@ final class ColorChoicesSliderViewController: UIViewController {
         greenSlider.value = Float(greenValue)
         blueSlider.value = Float(blueValue)
         alphaSlider.value = Float(alphaValue)
-    }
-    
-    @IBAction private func redSliderValueDidChanged(_ sender: UISlider) {
-        let redValue = CGFloat(sender.value)
-        sliderView.backgroundColor = UIColor.rgba(red: redValue, green: rgba.green, blue: rgba.blue, alpha: rgba.alpha)
-        delegate?.sliderValueDidChanged(view: sliderView)
-        NotificationCenter.default.post(name: .initTileView, object: nil)
-        redNumberLabel.text = String(Int(sender.value))
-    }
-    
-    @IBAction private func greenSliderValueDidChanged(_ sender: UISlider) {
-        let greenValue = CGFloat(sender.value)
-        sliderView.backgroundColor = UIColor.rgba(red: rgba.red, green: greenValue, blue: rgba.blue, alpha: rgba.alpha)
-        delegate?.sliderValueDidChanged(view: sliderView)
-        NotificationCenter.default.post(name: .initTileView, object: nil)
-        greenNumberLabel.text = String(Int(sender.value))
-    }
-    
-    @IBAction private func blueSliderValueDidChanged(_ sender: UISlider) {
-        let blueValue = CGFloat(sender.value)
-        sliderView.backgroundColor = UIColor.rgba(red: rgba.red, green: rgba.green, blue: blueValue, alpha: rgba.alpha)
-        delegate?.sliderValueDidChanged(view: sliderView)
-        NotificationCenter.default.post(name: .initTileView, object: nil)
-        blueNumberLabel.text = String(Int(sender.value))
-    }
-    
-    @IBAction private func alphaSliderValueDidChanged(_ sender: UISlider) {
-        let alphaValue = CGFloat(sender.value)
-        sliderView.backgroundColor = UIColor.rgba(red: rgba.red, green: rgba.green, blue: rgba.blue, alpha: alphaValue)
-        delegate?.sliderValueDidChanged(view: sliderView)
-        NotificationCenter.default.post(name: .initTileView, object: nil)
-        alphaNumberLabel.text = String(Int(sender.value))
     }
     
 }

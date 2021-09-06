@@ -66,64 +66,45 @@ final class StudyRecordTimeRecordViewController: UIViewController {
         super.viewDidLoad()
         
         setupPickerView()
-        deleteButton.isHidden = !isHistoryDidTapped
+        setupDeleteButton()
         
     }
     
-    @IBAction private func saveButtonDidTapped(_ sender: Any) {
+}
+
+// MARK: - IBAction func
+private extension StudyRecordTimeRecordViewController {
+    
+    @IBAction func saveButtonDidTapped(_ sender: Any) {
         if isHistoryDidTapped {
             delegate?.editButtonDidTapped(index: tappedHistoryIndex!, history: history!)
         } else {
             delegate?.saveButtonDidTapped(history: history!, isHistory: isHistoryDidTapped)
         }
-        dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction private func dismissButtonDidTapped(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+    @IBAction func dismissButtonDidTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction private func deleteButtonDidTapped(_ sender: Any) {
-        let alert = UIAlertController(title: "本当に削除しますか",
-                                      message: nil,
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "削除", style: .destructive) { _ in
-            self.delegate?.deleteButtonDidTapped(index: self.tappedHistoryIndex!)
-            self.dismiss(animated: true, completion: nil)
-        })
-        alert.addAction(UIAlertAction(title: "閉じる", style: .default, handler: nil))
-        present(alert, animated: true, completion: nil)
+    @IBAction func deleteButtonDidTapped(_ sender: Any) {
+        showAlert()
     }
     
 }
 
-// MARK: - setup
+// MARK: - func
 private extension StudyRecordTimeRecordViewController {
     
-    func setupPickerView() {
-        pickerView.delegate = self
-        pickerView.dataSource = self
-        if !isHistoryDidTapped {
-            let year = Int(Converter.convertToString(from: Date(), format: "yyyy"))!
-            let month = Int(Converter.convertToString(from: Date(), format: "M"))!
-            let day = Int(Converter.convertToString(from: Date(), format: "d"))!
-            history = History(year: year, month: month, day: day, hour: 0, minutes: 0)
-        }
-        setPickerViewDate()
-    }
-    
-    func setPickerViewDate() {
-        guard let history = history else { fatalError("historyがnil") }
-        let selectingRowsAndComponents: [(row: Int, component: Int)] = [
-            (row: DateType.year.numbers.firstIndex(of: history.year) ?? 0, component: DateType.year.component),
-            (row: DateType.month.numbers.firstIndex(of: history.month) ?? 0, component: DateType.month.component),
-            (row: DateType.day.numbers.firstIndex(of: history.day) ?? 0, component: DateType.day.component),
-            (row: history.hour, component: DateType.hour.component),
-            (row: history.minutes, component: DateType.minutes.component)
-        ]
-        selectingRowsAndComponents.forEach {
-            pickerView.selectRow($0.row, inComponent: $0.component, animated: true)
-        }
+    func showAlert() {
+        let alert = Alert.create(title: "本当に削除しますか")
+            .addAction(title: "削除", style: .destructive) {
+                self.delegate?.deleteButtonDidTapped(index: self.tappedHistoryIndex!)
+                self.dismiss(animated: true, completion: nil)
+            }
+            .addAction(title: "閉じる")
+        self.present(alert, animated: true)
     }
     
 }
@@ -187,6 +168,41 @@ extension StudyRecordTimeRecordViewController: HalfModalPresenterDelegate {
     
     var halfModalContentHeight: CGFloat {
         return contentView.frame.height
+    }
+    
+}
+
+// MARK: - setup
+private extension StudyRecordTimeRecordViewController {
+    
+    func setupPickerView() {
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        if !isHistoryDidTapped {
+            let year = Int(Converter.convertToString(from: Date(), format: "yyyy"))!
+            let month = Int(Converter.convertToString(from: Date(), format: "M"))!
+            let day = Int(Converter.convertToString(from: Date(), format: "d"))!
+            history = History(year: year, month: month, day: day, hour: 0, minutes: 0)
+        }
+        setPickerViewDate()
+    }
+    
+    func setPickerViewDate() {
+        guard let history = history else { fatalError("historyがnil") }
+        let selectingRowsAndComponents: [(row: Int, component: Int)] = [
+            (row: DateType.year.numbers.firstIndex(of: history.year) ?? 0, component: DateType.year.component),
+            (row: DateType.month.numbers.firstIndex(of: history.month) ?? 0, component: DateType.month.component),
+            (row: DateType.day.numbers.firstIndex(of: history.day) ?? 0, component: DateType.day.component),
+            (row: history.hour, component: DateType.hour.component),
+            (row: history.minutes, component: DateType.minutes.component)
+        ]
+        selectingRowsAndComponents.forEach {
+            pickerView.selectRow($0.row, inComponent: $0.component, animated: true)
+        }
+    }
+    
+    func setupDeleteButton() {
+        deleteButton.isHidden = !isHistoryDidTapped
     }
     
 }

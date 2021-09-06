@@ -21,6 +21,14 @@ extension UIViewController {
         self.present(vc, animated: true, completion: completion)
     }
     
+    func push<T: UIViewController>(_ ViewControllerType: T.Type,
+                                   nav: UINavigationController?,
+                 handler: ((T) -> Void)? = nil) {
+        let vc = ViewControllerType.instantiate()
+        handler?(vc)
+        nav?.pushViewController(vc, animated: true)
+    }
+    
     static func instantiate() -> Self {
         var storyboardName = String(describing: self)
         if let result = storyboardName.range(of: "ViewController") {

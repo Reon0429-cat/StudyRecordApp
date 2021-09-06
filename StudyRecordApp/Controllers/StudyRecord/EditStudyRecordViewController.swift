@@ -60,6 +60,38 @@ final class EditStudyRecordViewController: UIViewController {
     
 }
 
+// MARK: - func
+private extension EditStudyRecordViewController {
+    
+    func showAlertWithTextField() {
+        oldInputtedTitle = selectedRecord.title
+        let alert = Alert.create(title: "タイトル")
+            .setTextField { textField in
+                textField.text = self.selectedRecord.title
+                textField.delegate = self
+            }
+            .addAction(title: "閉じる", style: .destructive) {
+                self.selectedRecord.title = self.oldInputtedTitle
+            }
+            .addAction(title: "編集する") {
+                self.oldInputtedTitle = self.selectedRecord.title
+                self.saveButton.isEnabled(!self.oldInputtedTitle.isEmpty)
+                self.tableView.reloadData()
+            }
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func showAlert() {
+        let alert = Alert.create(title: "編集内容を破棄しますか")
+            .addAction(title: "破棄する", style: .destructive) {
+                self.dismiss(animated: true, completion: nil)
+            }
+            .addAction(title: "閉じる", style: .default)
+        present(alert, animated: true)
+    }
+    
+}
+
 // MARK: - UITableViewDelegate
 extension EditStudyRecordViewController: UITableViewDelegate {
     
@@ -101,26 +133,6 @@ extension EditStudyRecordViewController: UITableViewDelegate {
                     vc.delegate = self
                 }
         }
-    }
-    
-    private func showAlertWithTextField() {
-        let alert = UIAlertController(title: "タイトル",
-                                      message: nil,
-                                      preferredStyle: .alert)
-        oldInputtedTitle = selectedRecord.title
-        alert.addTextField { textField in
-            textField.text = self.selectedRecord.title
-            textField.delegate = self
-        }
-        alert.addAction(UIAlertAction(title: "閉じる", style: .destructive) { _ in
-            self.selectedRecord.title = self.oldInputtedTitle
-        })
-        alert.addAction(UIAlertAction(title: "編集する", style: .default) { _ in
-            self.oldInputtedTitle = self.selectedRecord.title
-            self.saveButton.isEnabled(!self.oldInputtedTitle.isEmpty)
-            self.tableView.reloadData()
-        })
-        present(alert, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView,
@@ -314,12 +326,7 @@ extension EditStudyRecordViewController: NavigationButtonDelegate {
             if selectedRecord == recordUseCase.records[selectedRow] {
                 dismiss(animated: true, completion: nil)
             } else {
-                let alert = UIAlertController(title: "編集内容を破棄しますか", message: nil, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "破棄する", style: .destructive) { _ in
-                    self.dismiss(animated: true, completion: nil)
-                })
-                alert.addAction(UIAlertAction(title: "閉じる", style: .default, handler: nil))
-                present(alert, animated: true, completion: nil)
+                showAlert()
             }
         }
     }
