@@ -12,13 +12,14 @@ import ScrollableGraphView
 // MARK: - ToDo 編集で間を0で埋めるかどうかを選択できるようにする
 // MARK: - ToDo セグメントを編集の方に移動させる
 // MARK: - ToDo セグメントを共通化する
+// MARK: - ToDo データがないときに、データがないよラベルを表示させる
 
 final class GraphTableViewCell: UITableViewCell {
     
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var myGraphView: UIView!
     @IBOutlet private weak var myGraphViewRightConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var segmentedControl: UISegmentedControl!
+    @IBOutlet private weak var segmentedControl: CustomSegmentedControl!
     
     private var graphView: ScrollableGraphView!
     private var lineData = [(color: UIColor, identifier: String, xTitle: String)]()
@@ -44,7 +45,8 @@ final class GraphTableViewCell: UITableViewCell {
     }
     
     @IBAction private func segmentedControlDidSelected(_ sender: UISegmentedControl) {
-        UserDefaults.standard.set(sender.selectedSegmentIndex, forKey: segmentedControlSelectedIndexID)
+        UserDefaults.standard.set(sender.selectedSegmentIndex,
+                                  forKey: segmentedControlSelectedIndexID)
         onSegmentedControlEvent?()
     }
     
@@ -157,11 +159,6 @@ private extension GraphTableViewCell {
         }
         let index = UserDefaults.standard.integer(forKey: segmentedControlSelectedIndexID)
         segmentedControl.selectedSegmentIndex = index
-        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black],
-                                                for: .normal)
-        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white],
-                                                for: .selected)
-        segmentedControl.selectedSegmentTintColor = .black
     }
     
     func setupLineData(record: Record) {

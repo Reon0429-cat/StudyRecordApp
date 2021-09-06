@@ -9,6 +9,25 @@ import UIKit
 
 extension UIViewController {
     
+    func present<T: UIViewController>(_ ViewControllerType: T.Type,
+                                      modalPresentationStyle: UIModalPresentationStyle = .automatic,
+                                      modalTransitionStyle: UIModalTransitionStyle = .coverVertical,
+                                      handler: ((T) -> Void)? = nil,
+                                      completion: (() -> Void)? = nil) {
+        let vc = ViewControllerType.instantiate()
+        vc.modalPresentationStyle = modalPresentationStyle
+        vc.modalTransitionStyle = modalTransitionStyle
+        handler?(vc)
+        present(vc, animated: true, completion: completion)
+    }
+    
+    func push<T: UIViewController>(_ ViewControllerType: T.Type,
+                                   handler: ((T) -> Void)? = nil) {
+        let vc = ViewControllerType.instantiate()
+        handler?(vc)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     static func instantiate() -> Self {
         var storyboardName = String(describing: self)
         if let result = storyboardName.range(of: "ViewController") {
@@ -26,7 +45,7 @@ extension UIViewController {
     func showErrorAlert(title: String, message: String? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "閉じる", style: .default, handler: nil))
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: true)
     }
     
 }

@@ -14,7 +14,7 @@ protocol GoalVCDelegate: AnyObject {
 final class GoalViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var segmentedControl: UISegmentedControl!
+    @IBOutlet private weak var segmentedControl: CustomSegmentedControl!
     
     weak var delegate: GoalVCDelegate?
     private enum SegmentType: Int {
@@ -31,7 +31,6 @@ final class GoalViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
-        setupSegmentedControl()
         
     }
     
@@ -100,14 +99,6 @@ private extension GoalViewController {
         tableView.dataSource = self
         tableView.registerCustomCell(GoalTableViewCell.self)
         tableView.tableFooterView = UIView()
-    }
-    
-    func setupSegmentedControl() {
-        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black],
-                                                for: .normal)
-        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white],
-                                                for: .selected)
-        segmentedControl.selectedSegmentTintColor = .black
     }
     
 }

@@ -147,7 +147,7 @@ extension LoginAndSignUpViewController: LoginVCDelegate {
     }
     
     func loginDidSuccessed() {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
     
 }
@@ -160,7 +160,7 @@ extension LoginAndSignUpViewController: SignUpVCDelegate {
     }
     
     func signUpDidSuccessed() {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
     
 }

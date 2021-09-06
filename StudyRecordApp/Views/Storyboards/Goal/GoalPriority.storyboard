@@ -20,7 +20,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ubk-xT-TfJ">
                                 <rect key="frame" x="0.0" y="44" width="414" height="267"/>
                                 <subviews>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BYL-No-bro">
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BYL-No-bro" customClass="CustomSegmentedControl" customModule="StudyRecordApp" customModuleProvider="target">
                                         <rect key="frame" x="10" y="10" width="81" height="32"/>
                                         <segments>
                                             <segment title="" image="star.fill" catalog="system"/>

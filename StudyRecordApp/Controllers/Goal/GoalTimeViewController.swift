@@ -75,7 +75,7 @@ extension GoalTimeViewController {
     
     @IBAction private func saveButtonDidTapped(_ sender: Any) {
         delegate?.saveButtonDidTapped(date: inputtedDate, dateType: dateType)
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
     
     @IBAction private func todayButtonDidTapped(_ sender: Any) {
@@ -84,7 +84,7 @@ extension GoalTimeViewController {
     }
     
     @IBAction private func dismissButtonDidTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
     
 }

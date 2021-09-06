@@ -124,7 +124,7 @@ extension StudyRecordSortViewController: NavigationButtonDelegate {
     
     func titleButtonDidTapped(type: NavigationButtonType) {
         if type == .dismiss {
-            dismiss(animated: true, completion: nil)
+            dismiss(animated: true)
         }
     }
     

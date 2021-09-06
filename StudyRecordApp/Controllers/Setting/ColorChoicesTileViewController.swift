@@ -95,16 +95,26 @@ final class ColorChoicesTileViewController: UIViewController {
     
     @IBOutlet private weak var themeColorStackView: UIStackView!
     
+    weak var delegate: ColorChoicesTileVCDelegate?
     private var tileStackViews: [UIStackView] {
         themeColorStackView.arrangedSubviews.map { $0 as! UIStackView }
     }
     private var selectedTileView: UIView?
-    weak var delegate: ColorChoicesTileVCDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTileViews()
+        setObserver()
+        
+    }
+    
+}
+
+// MARK: - func
+private extension ColorChoicesTileViewController {
+    
+    func setObserver() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(findSameColorTileView),
                                                name: .themeColor,
@@ -113,10 +123,52 @@ final class ColorChoicesTileViewController: UIViewController {
                                                selector: #selector(initTileView),
                                                name: .initTileView,
                                                object: nil)
-        
     }
     
-    private func setupTileViews() {
+    @objc
+    func findSameColorTileView(notification: Notification) {
+        let nextSelectedView = notification.userInfo!["selectedView"] as! UIView
+        selectedTileView?.layer.cornerRadius = 0
+        tileStackViews.forEach { stackView in
+            stackView.arrangedSubviews
+                .map { $0 as! TileView }
+                .forEach { tileView in
+                    let sameColor = (tileView.backgroundColor == nextSelectedView.backgroundColor)
+                    let sameAlpha = (tileView.alpha == nextSelectedView.alpha)
+                    if sameColor && sameAlpha {
+                        tileView.layer.cornerRadius = tileView.frame.size.width / 2
+                        self.selectedTileView = tileView
+                    }
+                }
+        }
+    }
+    
+    @objc
+    func initTileView() {
+        selectedTileView?.layer.cornerRadius = 0
+    }
+    
+}
+
+// MARK: - TileViewDelegate
+extension ColorChoicesTileViewController: TileViewDelegate {
+    
+    func tileViewDidTapped(selectedView: UIView) {
+        delegate?.tileViewDidTapped(selectedView: selectedView)
+        UIView.animate(withDuration: 0.1) {
+            if self.selectedTileView != selectedView {
+                self.selectedTileView?.layer.cornerRadius = 0
+            }
+        }
+        self.selectedTileView = selectedView
+    }
+    
+}
+
+// MARK: - setup
+private extension ColorChoicesTileViewController {
+    
+    func setupTileViews() {
         tileStackViews
             .enumerated()
             .forEach { verticalCount, stackView in
@@ -132,42 +184,4 @@ final class ColorChoicesTileViewController: UIViewController {
             }
     }
     
-    @objc
-    private func findSameColorTileView(notification: Notification) {
-        let nextSelectedView = notification.userInfo!["selectedView"] as! UIView
-        selectedTileView?.layer.cornerRadius = 0
-        tileStackViews.forEach { stackView in
-            stackView.arrangedSubviews
-                .map { $0 as! TileView }
-                .forEach { tileView in 
-                    let sameColor = (tileView.backgroundColor == nextSelectedView.backgroundColor)
-                    let sameAlpha = (tileView.alpha == nextSelectedView.alpha)
-                    if sameColor && sameAlpha {
-                        tileView.layer.cornerRadius = tileView.frame.size.width / 2
-                        self.selectedTileView = tileView
-                    }
-                }
-        }
-    }
-    
-    @objc
-    private func initTileView() {
-        selectedTileView?.layer.cornerRadius = 0
-    }
-    
 }
-
-extension ColorChoicesTileViewController: TileViewDelegate {
-    
-    func tileViewDidTapped(selectedView: UIView) {
-        delegate?.tileViewDidTapped(selectedView: selectedView)
-        UIView.animate(withDuration: 0.1) {
-            if self.selectedTileView != selectedView {
-                self.selectedTileView?.layer.cornerRadius = 0
-            }
-        }
-        self.selectedTileView = selectedView
-    }
-    
-}
-

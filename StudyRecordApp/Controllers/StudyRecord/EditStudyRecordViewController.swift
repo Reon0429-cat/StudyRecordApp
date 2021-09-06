@@ -60,6 +60,38 @@ final class EditStudyRecordViewController: UIViewController {
     
 }
 
+// MARK: - func
+private extension EditStudyRecordViewController {
+    
+    func showAlertWithTextField() {
+        oldInputtedTitle = selectedRecord.title
+        let alert = Alert.create(title: "タイトル")
+            .setTextField { textField in
+                textField.text = self.selectedRecord.title
+                textField.delegate = self
+            }
+            .addAction(title: "閉じる", style: .destructive) {
+                self.selectedRecord.title = self.oldInputtedTitle
+            }
+            .addAction(title: "編集する") {
+                self.oldInputtedTitle = self.selectedRecord.title
+                self.saveButton.isEnabled(!self.oldInputtedTitle.isEmpty)
+                self.tableView.reloadData()
+            }
+        present(alert, animated: true)
+    }
+    
+    func showAlert() {
+        let alert = Alert.create(title: "編集内容を破棄しますか")
+            .addAction(title: "破棄する", style: .destructive) {
+                self.dismiss(animated: true)
+            }
+            .addAction(title: "閉じる", style: .default)
+        present(alert, animated: true)
+    }
+    
+}
+
 // MARK: - UITableViewDelegate
 extension EditStudyRecordViewController: UITableViewDelegate {
     
@@ -71,56 +103,36 @@ extension EditStudyRecordViewController: UITableViewDelegate {
             case .title:
                 showAlertWithTextField()
             case .graphColor:
-                let studyRecordGraphColorVC = StudyRecordGraphColorViewController.instantiate()
-                studyRecordGraphColorVC.modalPresentationStyle = .overCurrentContext
-                studyRecordGraphColorVC.modalTransitionStyle = .crossDissolve
-                studyRecordGraphColorVC.delegate = self
-                present(studyRecordGraphColorVC, animated: true, completion: nil)
-            case .memo:
-                let studyRecordMemoVC = StudyRecordMemoViewController.instantiate()
-                studyRecordMemoVC.modalPresentationStyle = .overCurrentContext
-                studyRecordMemoVC.modalTransitionStyle = .crossDissolve
-                studyRecordMemoVC.inputtedMemo = selectedRecord.memo
-                studyRecordMemoVC.delegate = self
-                present(studyRecordMemoVC, animated: true, completion: nil)
-            case .timeRecord:
-                let studyRecordTimeRecordVC = StudyRecordTimeRecordViewController.instantiate()
-                studyRecordTimeRecordVC.isHistoryDidTapped = false
-                halfModalPresenter.viewController = studyRecordTimeRecordVC
-                studyRecordTimeRecordVC.delegate = self
-                present(studyRecordTimeRecordVC, animated: true, completion: nil)
-            case .history:
-                let studyRecordTimeRecordVC = StudyRecordTimeRecordViewController.instantiate()
-                let index = getHistoryCount(row: indexPath.row)
-                if let history = selectedRecord.histories?[index] {
-                    studyRecordTimeRecordVC.history = history
+                present(StudyRecordGraphColorViewController.self,
+                        modalPresentationStyle: .overCurrentContext,
+                        modalTransitionStyle: .crossDissolve) { vc in
+                    vc.delegate = self
                 }
-                studyRecordTimeRecordVC.tappedHistoryIndex = index
-                studyRecordTimeRecordVC.isHistoryDidTapped = true
-                halfModalPresenter.viewController = studyRecordTimeRecordVC
-                studyRecordTimeRecordVC.delegate = self
-                present(studyRecordTimeRecordVC, animated: true, completion: nil)
+            case .memo:
+                present(StudyRecordMemoViewController.self,
+                        modalPresentationStyle: .overCurrentContext,
+                        modalTransitionStyle: .crossDissolve) { vc in
+                    vc.inputtedMemo = self.selectedRecord.memo
+                    vc.delegate = self
+                }
+            case .timeRecord:
+                present(StudyRecordTimeRecordViewController.self) { vc in
+                    vc.isHistoryDidTapped = false
+                    self.halfModalPresenter.viewController = vc
+                    vc.delegate = self
+                }
+            case .history:
+                present(StudyRecordTimeRecordViewController.self) { vc in
+                    let index = self.getHistoryCount(row: indexPath.row)
+                    if let history = self.selectedRecord.histories?[index] {
+                        vc.history = history
+                    }
+                    vc.tappedHistoryIndex = index
+                    vc.isHistoryDidTapped = true
+                    self.halfModalPresenter.viewController = vc
+                    vc.delegate = self
+                }
         }
-    }
-    
-    private func showAlertWithTextField() {
-        let alert = UIAlertController(title: "タイトル",
-                                      message: nil,
-                                      preferredStyle: .alert)
-        oldInputtedTitle = selectedRecord.title
-        alert.addTextField { textField in
-            textField.text = self.selectedRecord.title
-            textField.delegate = self
-        }
-        alert.addAction(UIAlertAction(title: "閉じる", style: .destructive) { _ in
-            self.selectedRecord.title = self.oldInputtedTitle
-        })
-        alert.addAction(UIAlertAction(title: "編集する", style: .default) { _ in
-            self.oldInputtedTitle = self.selectedRecord.title
-            self.saveButton.isEnabled(!self.oldInputtedTitle.isEmpty)
-            self.tableView.reloadData()
-        })
-        present(alert, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView,
@@ -308,18 +320,13 @@ extension EditStudyRecordViewController: NavigationButtonDelegate {
     func titleButtonDidTapped(type: NavigationButtonType) {
         if type == .save {
             recordUseCase.update(record: selectedRecord, at: selectedRow)
-            dismiss(animated: true, completion: nil)
+            dismiss(animated: true)
         }
         if type == .dismiss {
             if selectedRecord == recordUseCase.records[selectedRow] {
-                dismiss(animated: true, completion: nil)
+                dismiss(animated: true)
             } else {
-                let alert = UIAlertController(title: "編集内容を破棄しますか", message: nil, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "破棄する", style: .destructive) { _ in
-                    self.dismiss(animated: true, completion: nil)
-                })
-                alert.addAction(UIAlertAction(title: "閉じる", style: .default, handler: nil))
-                present(alert, animated: true, completion: nil)
+                showAlert()
             }
         }
     }

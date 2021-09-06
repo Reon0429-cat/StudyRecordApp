@@ -13,9 +13,7 @@ protocol StudyRecordGraphColorVCDelegate: AnyObject {
 
 final class StudyRecordGraphColorViewController: UIViewController {
     
-    @IBOutlet private weak var graphColorView: UIView! {
-        didSet { graphColorView.layer.cornerRadius = 10 }
-    }
+    @IBOutlet private weak var graphColorView: UIView!
     @IBOutlet private weak var graphColorTileView: GraphColorTileView!
     
     private var selectedTileView: UIView?
@@ -24,18 +22,24 @@ final class StudyRecordGraphColorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        graphColorTileView.delegate = self
+        setupGraphColorView()
+        setupGraphColorTileView()
         
     }
     
-    @IBAction private func saveButtonDidTapped(_ sender: Any) {
+}
+
+// MARK: - IBAction func
+private extension StudyRecordGraphColorViewController {
+    
+    @IBAction func saveButtonDidTapped(_ sender: Any) {
         let color = selectedTileView?.backgroundColor ?? .white
         delegate?.graphColorDidSelected(color: color)
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
     
-    @IBAction private func dismissButtonDidTapped(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+    @IBAction func dismissButtonDidTapped(_ sender: Any) {
+        dismiss(animated: true)
     }
     
 }
@@ -64,6 +68,19 @@ extension StudyRecordGraphColorViewController: GraphColorTileViewDelegate {
                     self.selectedTileView = selectedView
             }
         }
+    }
+    
+}
+
+// MARK: - setup
+private extension StudyRecordGraphColorViewController {
+    
+    func setupGraphColorView() {
+        graphColorView.layer.cornerRadius = 10
+    }
+    
+    func setupGraphColorTileView() {
+        graphColorTileView.delegate = self
     }
     
 }

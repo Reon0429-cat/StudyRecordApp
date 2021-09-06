@@ -107,10 +107,10 @@ extension StudyRecordViewController: UITableViewDataSource {
 extension StudyRecordViewController: RecordTableViewCellDelegate {
     
     func baseViewTapDidRecognized(row: Int) {
-        let editStudyRecordVC = EditStudyRecordViewController.instantiate()
-        editStudyRecordVC.selectedRow = row
-        editStudyRecordVC.modalPresentationStyle = .fullScreen
-        present(editStudyRecordVC, animated: true, completion: nil)
+        present(EditStudyRecordViewController.self,
+                modalPresentationStyle: .fullScreen) { vc in
+            vc.selectedRow = row
+        }
     }
     
     func baseViewLongPressDidRecognized() {
@@ -143,17 +143,17 @@ extension StudyRecordViewController: RecordTableViewCellDelegate {
     }
     
     func deleteButtonDidTappped(row: Int) {
-        let alert = UIAlertController(title: "本当に削除しますか", message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "削除", style: .destructive) { _ in
-            self.recordUseCase.delete(at: row)
-            self.tableView.reloadData()
-            self.delegate?.deleteButtonDidTappped(records: self.records)
-            self.dismiss(animated: true, completion: nil)
-        })
-        alert.addAction(UIAlertAction(title: "閉じる", style: .default) { _ in
-            self.dismiss(animated: true, completion: nil)
-        })
-        present(alert, animated: true, completion: nil)
+        let alert = Alert.create(title: "本当に削除しますか")
+            .addAction(title: "削除", style: .destructive) {
+                self.recordUseCase.delete(at: row)
+                self.tableView.reloadData()
+                self.delegate?.deleteButtonDidTappped(records: self.records)
+                self.dismiss(animated: true)
+            }
+            .addAction(title: "閉じる") {
+                self.dismiss(animated: true)
+            }
+        present(alert, animated: true)
     }
     
 }

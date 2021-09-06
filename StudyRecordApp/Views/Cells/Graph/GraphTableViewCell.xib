@@ -28,7 +28,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="KmU-DN-1q2">
+                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="KmU-DN-1q2" customClass="CustomSegmentedControl" customModule="StudyRecordApp" customModuleProvider="target">
                         <rect key="frame" x="268" y="10" width="131" height="26"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="F0Q-Ey-0fF"/>

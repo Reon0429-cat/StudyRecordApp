@@ -15,7 +15,8 @@ protocol ColorChoicesConceptVCDelegate: AnyObject {
 final class ColorChoicesConceptViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
-    
+
+    weak var delegate: ColorChoicesConceptVCDelegate?
     var colorConcept: ColorConcept?
     private var titles: [String] {
         return colorConcept?.subConceptTitles ?? []
@@ -29,7 +30,6 @@ final class ColorChoicesConceptViewController: UIViewController {
     }
     private var sections = [Section]()
     private var lastTappedSection: Int?
-    weak var delegate: ColorChoicesConceptVCDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,23 +45,15 @@ final class ColorChoicesConceptViewController: UIViewController {
         
     }
     
-    private func setupTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.registerCustomCell(AccordionColorTableViewCell.self)
-        tableView.registerCustomCell(SectionHeaderView.self)
-        tableView.tableFooterView = UIView()
-    }
-    
-    private func setupTableViewData() {
-        titles.forEach { title in
-            sections.append(Section(title: title, isExpanded: false))
-        }
-    }
-    
 }
 
+// MARK: - UITableViewDelegate
 extension ColorChoicesConceptViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView,
+                   didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
     
     func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -98,6 +90,7 @@ extension ColorChoicesConceptViewController: UITableViewDelegate {
     
 }
 
+// MARK: - UITableViewDataSource
 extension ColorChoicesConceptViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
@@ -116,8 +109,26 @@ extension ColorChoicesConceptViewController: UITableViewDataSource {
         cell.configure(colors: colors) { view in
             self.delegate?.subConceptTileViewDidTapped(view: view)
         }
-        cell.selectionStyle = .none
         return cell
+    }
+    
+}
+
+// MARK: - setup
+private extension ColorChoicesConceptViewController {
+    
+    func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.registerCustomCell(AccordionColorTableViewCell.self)
+        tableView.registerCustomCell(SectionHeaderView.self)
+        tableView.tableFooterView = UIView()
+    }
+    
+    func setupTableViewData() {
+        titles.forEach { title in
+            sections.append(Section(title: title, isExpanded: false))
+        }
     }
     
 }

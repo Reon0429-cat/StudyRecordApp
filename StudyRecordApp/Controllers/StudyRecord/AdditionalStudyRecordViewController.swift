@@ -44,39 +44,16 @@ final class AdditionalStudyRecordViewController: UIViewController {
         
     }
     
-    private func showAlert() {
-        let alert = UIAlertController(title: "保存せずに閉じますか", message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "閉じる", style: .destructive) { _ in
-            self.dismiss(animated: true, completion: nil)
-        })
-        alert.addAction(UIAlertAction(title: "保存する", style: .default) { _ in
-            self.saveRecord()
-            self.dismiss(animated: true, completion: nil)
-        })
-        present(alert, animated: true, completion: nil)
-    }
+}
+
+// MARK: - func
+private extension AdditionalStudyRecordViewController {
     
-    private func showAlertWithTextField() {
-        let alert = UIAlertController(title: "タイトル", message: nil, preferredStyle: .alert)
-        alert.addTextField { textField in
-            textField.text = self.inputtedTitle
-            textField.delegate = self
-        }
-        alert.addAction(UIAlertAction(title: "閉じる", style: .destructive) { _ in
-            self.inputtedTitle = self.oldInputtedTitle
-        })
-        alert.addAction(UIAlertAction(title: "追加", style: .default) { _ in
-            self.oldInputtedTitle = self.inputtedTitle
-            self.tableView.reloadData()
-        })
-        present(alert, animated: true, completion: nil)
-    }
-    
-    private func controlSaveButton() {
+    func controlSaveButton() {
         saveButton.isEnabled(isMandatoryItemFilled)
     }
     
-    private func saveRecord() {
+    func saveRecord() {
         let record = Record(title: inputtedTitle,
                             histories: nil,
                             isExpanded: false,
@@ -87,9 +64,32 @@ final class AdditionalStudyRecordViewController: UIViewController {
         recordUseCase.save(record: record)
     }
     
-    @objc
-    private func dismissKeyboard() {
-        self.view.endEditing(true)
+    func showAlert() {
+        let alert = Alert.create(title: "保存せずに閉じますか")
+            .addAction(title: "閉じる", style: .destructive) {
+                self.dismiss(animated: true)
+            }
+            .addAction(title: "保存する") {
+                self.saveRecord()
+                self.dismiss(animated: true)
+            }
+        present(alert, animated: true)
+    }
+    
+    func showAlertWithTextField() {
+        let alert = Alert.create(title: "タイトル")
+            .setTextField { textField in
+                textField.text = self.inputtedTitle
+                textField.delegate = self
+            }
+            .addAction(title: "閉じる", style: .destructive) {
+                self.inputtedTitle = self.oldInputtedTitle
+            }
+            .addAction(title: "追加") {
+                self.oldInputtedTitle = self.inputtedTitle
+                self.tableView.reloadData()
+            }
+        present(alert, animated: true)
     }
     
 }
@@ -105,18 +105,18 @@ extension AdditionalStudyRecordViewController: UITableViewDelegate {
             case .title:
                 showAlertWithTextField()
             case .graphColor:
-                let studyRecordGraphColorVC = StudyRecordGraphColorViewController.instantiate()
-                studyRecordGraphColorVC.modalPresentationStyle = .overCurrentContext
-                studyRecordGraphColorVC.modalTransitionStyle = .crossDissolve
-                studyRecordGraphColorVC.delegate = self
-                present(studyRecordGraphColorVC, animated: true, completion: nil)
+                present(StudyRecordGraphColorViewController.self,
+                        modalPresentationStyle: .overCurrentContext,
+                        modalTransitionStyle: .crossDissolve) { vc in
+                    vc.delegate = self
+                }
             case .memo:
-                let studyRecordMemoVC = StudyRecordMemoViewController.instantiate()
-                studyRecordMemoVC.modalPresentationStyle = .overCurrentContext
-                studyRecordMemoVC.modalTransitionStyle = .crossDissolve
-                studyRecordMemoVC.inputtedMemo = inputtedMemo
-                studyRecordMemoVC.delegate = self
-                present(studyRecordMemoVC, animated: true, completion: nil)
+                present(StudyRecordMemoViewController.self,
+                        modalPresentationStyle: .overCurrentContext,
+                        modalTransitionStyle: .crossDissolve) { vc in
+                    vc.inputtedMemo = self.inputtedMemo
+                    vc.delegate = self
+                }
         }
     }
     
@@ -205,13 +205,13 @@ extension AdditionalStudyRecordViewController: NavigationButtonDelegate {
     func titleButtonDidTapped(type: NavigationButtonType) {
         if type == .save {
             saveRecord()
-            dismiss(animated: true, completion: nil)
+            dismiss(animated: true)
         }
         if type == .dismiss {
             if isMandatoryItemFilled {
                 showAlert()
             } else {
-                dismiss(animated: true, completion: nil)
+                dismiss(animated: true)
             }
         }
     }
@@ -238,6 +238,11 @@ private extension AdditionalStudyRecordViewController {
         saveButton.type = .save
         saveButton.delegate = self
         saveButton.backgroundColor = .clear
+    }
+    
+    @objc
+    func dismissKeyboard() {
+        self.view.endEditing(true)
     }
     
     func setupDismissButton() {

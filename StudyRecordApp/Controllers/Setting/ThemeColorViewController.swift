@@ -49,14 +49,16 @@ final class ThemeColorViewController: UIViewController {
     @IBOutlet private weak var mainColorView: ThemeColorView!
     @IBOutlet private weak var subColorView: ThemeColorView!
     @IBOutlet private weak var accentColorView: ThemeColorView!
-    @IBOutlet private weak var segmentedControl: UISegmentedControl!
+    @IBOutlet private weak var segmentedControl: CustomSegmentedControl!
     @IBOutlet private weak var segmentedControlBackView: UIView!
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var colorChoicesConceptContainerView: UIView!
     @IBOutlet private weak var colorChoicesTileContainerView: UIView!
     @IBOutlet private weak var colorChoicesSliderContainerView: UIView!
     
-    private var containerType: ContainerType = .tile
+    var containerType: ContainerType = .tile
+    var colorConcept: ColorConcept?
+    var navTitle = ""
     private var currentContainerView: UIView {
         switch containerType {
             case .concept: return colorChoicesConceptContainerView
@@ -64,8 +66,6 @@ final class ThemeColorViewController: UIViewController {
             case .slider: return colorChoicesSliderContainerView
         }
     }
-    private var navTitle = ""
-    private var colorConcept: ColorConcept?
     private var lastSelectedThemeColorView: ThemeColorView?
     private var scheme: ColorSchemeType = .main
     
@@ -74,7 +74,7 @@ final class ThemeColorViewController: UIViewController {
         
         containerView.bringSubviewToFront(currentContainerView)
         self.navigationItem.title = navTitle
-        setupThemeColorView()
+        setupThemeColorViews()
         setupSegmentedControl()
         setupContainerViewControllers()
         
@@ -88,60 +88,6 @@ final class ThemeColorViewController: UIViewController {
                                         object: nil,
                                         userInfo: ["selectedView": mainColorView!])
         
-    }
-    
-    private func setupContainerViewControllers() {
-        let colorChoicesConceptVC = children[ContainerType.concept.rawValue] as! ColorChoicesConceptViewController
-        colorChoicesConceptVC.delegate = self
-        colorChoicesConceptVC.colorConcept = colorConcept
-        
-        let colorChoicesTileVC = children[ContainerType.tile.rawValue] as! ColorChoicesTileViewController
-        colorChoicesTileVC.delegate = self
-        
-        let colorChoicesSliderVC = children[ContainerType.slider.rawValue] as! ColorChoicesSliderViewController
-        colorChoicesSliderVC.delegate = self
-    }
-    
-    private func setupThemeColorView() {
-        mainColorView.delegate = self
-        subColorView.delegate = self
-        accentColorView.delegate = self
-        if containerType == .concept {
-            mainColorView.isUserInteractionEnabled = false
-            subColorView.isUserInteractionEnabled = false
-            accentColorView.isUserInteractionEnabled = false
-        }
-        setupImageView(view: mainColorView)
-        setupImageView(view: subColorView)
-        setupImageView(view: accentColorView)
-        mainColorView.hideImage(false)
-        lastSelectedThemeColorView = mainColorView
-    }
-    
-    private func setupSegmentedControl() {
-        if containerType == .concept {
-            segmentedControlBackView.isHidden = true
-        }
-    }
-    
-    private func setupThemeColorViewColor() {
-        mainColorView.backgroundColor = ThemeColor.main
-        subColorView.backgroundColor = ThemeColor.sub
-        accentColorView.backgroundColor = ThemeColor.accent
-        setThemeSubViewColor(view: mainColorView)
-        setThemeSubViewColor(view: subColorView)
-        setThemeSubViewColor(view: accentColorView)
-    }
-    
-    private func setupImageView(view: ThemeColorView) {
-        view.addSubview(view.imageView)
-        NSLayoutConstraint.activate([
-            view.imageView.heightAnchor.constraint(equalToConstant: 40),
-            view.imageView.widthAnchor.constraint(equalToConstant: 40),
-            view.imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            view.imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ])
-        view.imageView.isHidden = true
     }
     
     private func setThemeSubViewColor(view: ThemeColorView?) {
@@ -160,7 +106,12 @@ final class ThemeColorViewController: UIViewController {
         }
     }
     
-    @IBAction private func segmentedControlDidSelected(_ sender: UISegmentedControl) {
+}
+
+// MARK: - IBAction func
+private extension ThemeColorViewController {
+    
+    @IBAction func segmentedControlDidSelected(_ sender: UISegmentedControl) {
         // enum ContainerTypeにあわせるために+1する。
         containerType = ContainerType(rawValue: sender.selectedSegmentIndex + 1)!
         if containerType == .slider {
@@ -171,69 +122,19 @@ final class ThemeColorViewController: UIViewController {
         containerView.bringSubviewToFront(currentContainerView)
     }
     
-    @IBAction private func saveButtonDidTapped(_ sender: Any) {
+    @IBAction func saveButtonDidTapped(_ sender: Any) {
         UserDefaults.standard.save(color: mainColorView.backgroundColor, .main)
         UserDefaults.standard.save(color: subColorView.backgroundColor, .sub)
         UserDefaults.standard.save(color: accentColorView.backgroundColor, .accent)
         self.navigationController?.popToRootViewController(animated: true)
     }
     
-    static func instantiate(containerType: ContainerType,
-                            colorConcept: ColorConcept?) -> ThemeColorViewController {
-        let themeColorVC = UIStoryboard(
-            name: "ThemeColor",
-            bundle: nil
-        ).instantiateViewController(
-            withIdentifier: String(describing: self)
-        ) as! ThemeColorViewController
-        themeColorVC.containerType = containerType
-        let navTitle = colorConcept?.title ?? "セルフ"
-        themeColorVC.navTitle = navTitle
-        themeColorVC.colorConcept = colorConcept
-        return themeColorVC
-    }
-    
 }
 
-extension ThemeColorViewController: ColorChoicesTileVCDelegate {
+// MARK: - func
+private extension ThemeColorViewController {
     
-    func tileViewDidTapped(selectedView: UIView) {
-        lastSelectedThemeColorView?.backgroundColor = selectedView.backgroundColor
-        lastSelectedThemeColorView?.alpha = selectedView.alpha
-        setThemeSubViewColor(view: lastSelectedThemeColorView)
-    }
-    
-}
-
-extension ThemeColorViewController: ColorChoicesSliderVCDelegate {
-    
-    func sliderValueDidChanged(view: UIView) {
-        lastSelectedThemeColorView?.backgroundColor = view.backgroundColor
-        lastSelectedThemeColorView?.alpha = view.alpha
-        setThemeSubViewColor(view: lastSelectedThemeColorView)
-    }
-    
-}
-
-extension ThemeColorViewController: ColorChoicesConceptVCDelegate {
-    
-    func subConceptTileViewDidTapped(view: UIView) {
-        lastSelectedThemeColorView?.backgroundColor = view.backgroundColor
-        lastSelectedThemeColorView?.alpha = view.alpha
-        mainColorView.hideImage(true)
-        subColorView.hideImage({ scheme != .main }())
-        accentColorView.hideImage({ scheme != .sub }())
-        switchTheme(scheme: scheme)
-    }
-    
-    func subConceptTitleDidTapped(isExpanded: Bool) {
-        mainColorView.hideImage(!isExpanded)
-        subColorView.hideImage(true)
-        accentColorView.hideImage(true)
-        switchTheme()
-    }
-    
-    private func switchTheme(scheme: ColorSchemeType? = nil) {
+    func switchTheme(scheme: ColorSchemeType? = nil) {
         if lastSelectedThemeColorView != nil {
             setThemeSubViewColor(view: lastSelectedThemeColorView)
         }
@@ -254,6 +155,50 @@ extension ThemeColorViewController: ColorChoicesConceptVCDelegate {
     
 }
 
+// MARK: - ColorChoicesTileVCDelegate
+extension ThemeColorViewController: ColorChoicesTileVCDelegate {
+    
+    func tileViewDidTapped(selectedView: UIView) {
+        lastSelectedThemeColorView?.backgroundColor = selectedView.backgroundColor
+        lastSelectedThemeColorView?.alpha = selectedView.alpha
+        setThemeSubViewColor(view: lastSelectedThemeColorView)
+    }
+    
+}
+
+// MARK: - ColorChoicesSliderVCDelegate
+extension ThemeColorViewController: ColorChoicesSliderVCDelegate {
+    
+    func sliderValueDidChanged(view: UIView) {
+        lastSelectedThemeColorView?.backgroundColor = view.backgroundColor
+        lastSelectedThemeColorView?.alpha = view.alpha
+        setThemeSubViewColor(view: lastSelectedThemeColorView)
+    }
+    
+}
+
+// MARK: - ColorChoicesConceptVCDelegate
+extension ThemeColorViewController: ColorChoicesConceptVCDelegate {
+    
+    func subConceptTileViewDidTapped(view: UIView) {
+        lastSelectedThemeColorView?.backgroundColor = view.backgroundColor
+        lastSelectedThemeColorView?.alpha = view.alpha
+        mainColorView.hideImage(true)
+        subColorView.hideImage({ scheme != .main }())
+        accentColorView.hideImage({ scheme != .sub }())
+        switchTheme(scheme: scheme)
+    }
+    
+    func subConceptTitleDidTapped(isExpanded: Bool) {
+        mainColorView.hideImage(!isExpanded)
+        subColorView.hideImage(true)
+        accentColorView.hideImage(true)
+        switchTheme()
+    }
+    
+}
+
+// MARK: - ThemeColorViewDelegate
 extension ThemeColorViewController: ThemeColorViewDelegate {
     
     func themeColorViewDidTapped(nextSelectedView: UIView) {
@@ -268,6 +213,65 @@ extension ThemeColorViewController: ThemeColorViewDelegate {
         }
         setThemeSubViewColor(view: lastSelectedThemeColorView)
         lastSelectedThemeColorView = _nextSelectedView
+    }
+    
+}
+
+// MARK: - setup
+private extension ThemeColorViewController {
+    
+    func setupContainerViewControllers() {
+        let colorChoicesConceptVC = children[ContainerType.concept.rawValue] as! ColorChoicesConceptViewController
+        colorChoicesConceptVC.delegate = self
+        colorChoicesConceptVC.colorConcept = colorConcept
+        
+        let colorChoicesTileVC = children[ContainerType.tile.rawValue] as! ColorChoicesTileViewController
+        colorChoicesTileVC.delegate = self
+        
+        let colorChoicesSliderVC = children[ContainerType.slider.rawValue] as! ColorChoicesSliderViewController
+        colorChoicesSliderVC.delegate = self
+    }
+    
+    func setupThemeColorViews() {
+        mainColorView.delegate = self
+        subColorView.delegate = self
+        accentColorView.delegate = self
+        if containerType == .concept {
+            mainColorView.isUserInteractionEnabled = false
+            subColorView.isUserInteractionEnabled = false
+            accentColorView.isUserInteractionEnabled = false
+        }
+        setupImageView(view: mainColorView)
+        setupImageView(view: subColorView)
+        setupImageView(view: accentColorView)
+        mainColorView.hideImage(false)
+        lastSelectedThemeColorView = mainColorView
+    }
+    
+    func setupSegmentedControl() {
+        if containerType == .concept {
+            segmentedControlBackView.isHidden = true
+        }
+    }
+    
+    func setupThemeColorViewColor() {
+        mainColorView.backgroundColor = ThemeColor.main
+        subColorView.backgroundColor = ThemeColor.sub
+        accentColorView.backgroundColor = ThemeColor.accent
+        setThemeSubViewColor(view: mainColorView)
+        setThemeSubViewColor(view: subColorView)
+        setThemeSubViewColor(view: accentColorView)
+    }
+    
+    func setupImageView(view: ThemeColorView) {
+        view.addSubview(view.imageView)
+        NSLayoutConstraint.activate([
+            view.imageView.heightAnchor.constraint(equalToConstant: 40),
+            view.imageView.widthAnchor.constraint(equalToConstant: 40),
+            view.imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            view.imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+        view.imageView.isHidden = true
     }
     
 }
