@@ -105,18 +105,18 @@ extension AdditionalStudyRecordViewController: UITableViewDelegate {
             case .title:
                 showAlertWithTextField()
             case .graphColor:
-                let studyRecordGraphColorVC = StudyRecordGraphColorViewController.instantiate()
-                studyRecordGraphColorVC.modalPresentationStyle = .overCurrentContext
-                studyRecordGraphColorVC.modalTransitionStyle = .crossDissolve
-                studyRecordGraphColorVC.delegate = self
-                present(studyRecordGraphColorVC, animated: true, completion: nil)
+                present(StudyRecordGraphColorViewController.self,
+                        modalPresentationStyle: .overCurrentContext,
+                        modalTransitionStyle: .crossDissolve) { vc in
+                    vc.delegate = self
+                }
             case .memo:
-                let studyRecordMemoVC = StudyRecordMemoViewController.instantiate()
-                studyRecordMemoVC.modalPresentationStyle = .overCurrentContext
-                studyRecordMemoVC.modalTransitionStyle = .crossDissolve
-                studyRecordMemoVC.inputtedMemo = inputtedMemo
-                studyRecordMemoVC.delegate = self
-                present(studyRecordMemoVC, animated: true, completion: nil)
+                present(StudyRecordMemoViewController.self,
+                        modalPresentationStyle: .overCurrentContext,
+                        modalTransitionStyle: .crossDissolve) { vc in
+                    vc.inputtedMemo = self.inputtedMemo
+                    vc.delegate = self
+                }
         }
     }
     
