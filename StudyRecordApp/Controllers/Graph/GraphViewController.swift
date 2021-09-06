@@ -66,6 +66,7 @@ extension GraphViewController: UITableViewDataSource {
                                isExpanded: record.isExpanded,
                                graphColor: record.graphColor,
                                memo: record.memo,
+                               yearID: record.yearID,
                                order: record.order)
         DispatchQueue.main.async {
             cell.configure(record: newRecord)

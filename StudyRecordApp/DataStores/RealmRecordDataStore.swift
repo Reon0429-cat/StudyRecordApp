@@ -47,6 +47,7 @@ final class RealmRecordDataStore: RecordDataStoreProtocol {
                             isExpanded: record.isExpanded,
                             graphColor: record.graphColor,
                             memo: record.memo,
+                            yearID: record.yearID,
                             order: record.order)
         try! realm.write {
             object.title = record.title
@@ -58,6 +59,7 @@ final class RealmRecordDataStore: RecordDataStoreProtocol {
             object.graphColor?.blueValue = Float(record.graphColor.blueValue)
             object.graphColor?.alphaValue = Float(record.graphColor.alphaValue)
             object.memo = record.memo
+            object.yearID = record.yearID
             object.order = record.order
         }
     }
@@ -104,6 +106,7 @@ private extension RecordRealm {
                             isExpanded: record.isExpanded,
                             graphColor: record.graphColor,
                             memo: record.memo,
+                            yearID: record.yearID,
                             order: record.order)
         self.title = record.title
         self.histories = record.historiesList
@@ -113,6 +116,7 @@ private extension RecordRealm {
         self.graphColor?.blueValue = Float(record.graphColor.blueValue)
         self.graphColor?.alphaValue = Float(record.graphColor.alphaValue)
         self.memo = record.memo
+        self.yearID = record.yearID
         self.order = record.order
     }
     
@@ -127,12 +131,14 @@ private extension Record {
                             isExpanded: record.isExpanded,
                             graphColor: GraphColor(record: record),
                             memo: record.memo,
+                            yearID: record.yearID,
                             order: record.order)
         self.title = record.title
         self.histories = record.histories
         self.isExpanded = record.isExpanded
         self.graphColor = record.graphColor
         self.memo = record.memo
+        self.yearID = record.yearID
         self.order = record.order
     }
     

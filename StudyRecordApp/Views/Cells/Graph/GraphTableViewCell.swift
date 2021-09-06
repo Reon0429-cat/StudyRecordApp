@@ -8,7 +8,9 @@
 import UIKit
 import ScrollableGraphView
 
-// MARK: - ToDo 年度、月別にグラフを切り替えられるようにする
+// MARK: - ToDo 今日が一番右にスクロールされるようのする
+// MARK: - ToDo 編集で間を0で埋めるかどうかを選択できるようにする
+// MARK: - ToDo セグメントを編集の方に移動させる
 
 final class GraphTableViewCell: UITableViewCell {
     
@@ -23,16 +25,12 @@ final class GraphTableViewCell: UITableViewCell {
     private var beforeIdentifier = ""
     private var beforeYear = 0
     private var years = [Int]()
-    private var segmentedControlSelectedIndexID = "segmentedControlSelectedIndexID"
+    private var segmentedControlSelectedIndexID = ""
     var onSegmentedControlEvent: (() -> Void)?
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-    }
     
     func configure(record: Record) {
         setupTitleLabel(record: record)
+        segmentedControlSelectedIndexID = record.yearID
         setupSegmentedControl(record: record)
         createGraphView()
         lineData.removeAll()
@@ -129,6 +127,7 @@ extension GraphTableViewCell: ScrollableGraphViewDataSource {
         if sumData.isEmpty {
             return 0
         }
+        guard segmentedControl.selectedSegmentIndex != -1 else { return 0 }
         let selectedYear = years[segmentedControl.selectedSegmentIndex]
         let filteredSumData = sumData.filter { $0.key.hasPrefix("\(selectedYear)") }
         return filteredSumData.count
@@ -155,7 +154,6 @@ private extension GraphTableViewCell {
         years.enumerated().forEach { index, year in
             segmentedControl.insertSegment(withTitle: "\(year)", at: index, animated: false)
         }
-        
         let index = UserDefaults.standard.integer(forKey: segmentedControlSelectedIndexID)
         segmentedControl.selectedSegmentIndex = index
         segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black],

@@ -24,6 +24,7 @@ final class RecordUseCase {
                                isExpanded: !record.isExpanded,
                                graphColor: record.graphColor,
                                memo: record.memo,
+                               yearID: record.yearID,
                                order: record.order)
         repository.update(record: newRecord, at: index)
     }
