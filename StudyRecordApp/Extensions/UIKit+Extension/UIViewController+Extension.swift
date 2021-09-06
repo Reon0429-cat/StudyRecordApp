@@ -9,6 +9,12 @@ import UIKit
 
 extension UIViewController {
     
+    func present(_ vc: UIViewController.Type, modalPresentationStyle: UIModalPresentationStyle = .automatic) {
+        let vc = vc.instantiate()
+        vc.modalPresentationStyle = modalPresentationStyle
+        self.present(vc, animated: true, completion: nil)
+    }
+    
     static func instantiate() -> Self {
         var storyboardName = String(describing: self)
         if let result = storyboardName.range(of: "ViewController") {

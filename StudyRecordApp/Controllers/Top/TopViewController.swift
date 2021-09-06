@@ -7,8 +7,6 @@
 
 import UIKit
 
-// MARK: - ToDo 追加画面と編集画面の共通化
-
 final class TopViewController: UIViewController {
     
     @IBOutlet private weak var collectionView: UICollectionView!
@@ -79,9 +77,8 @@ final class TopViewController: UIViewController {
         
         DispatchQueue.main.async {
             if !self.userUseCase.isLoggedIn {
-                let loginAndSignUpVC = LoginAndSignUpViewController.instantiate()
-                loginAndSignUpVC.modalPresentationStyle = .fullScreen
-                self.present(loginAndSignUpVC, animated: true, completion: nil)
+                self.present(LoginAndSignUpViewController.self,
+                             modalPresentationStyle: .fullScreen)
             }
         }
         
@@ -94,34 +91,40 @@ final class TopViewController: UIViewController {
         
     }
     
-    @IBAction private func addButtonDidTapped(_ sender: Any) {
-        switch screenType {
-            case .record:
-                let additionalStudyRecordVC = AdditionalStudyRecordViewController.instantiate()
-                additionalStudyRecordVC.modalPresentationStyle = .fullScreen
-                present(additionalStudyRecordVC, animated: true, completion: nil)
-            case .goal:
-                let additionalGoalVC = AdditionalGoalViewController.instantiate()
-                additionalGoalVC.modalPresentationStyle = .fullScreen
-                present(additionalGoalVC, animated: true, completion: nil)
-            default:
-                break
-        }
-    }
-    
-    @IBAction private func sortButtonDidTapped(_ sender: Any) {
-        let studyRecordSortVC = StudyRecordSortViewController.instantiate()
-        studyRecordSortVC.modalPresentationStyle = .fullScreen
-        present(studyRecordSortVC, animated: true, completion: nil)
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let pageViewController = segue.destination as? UIPageViewController {
             self.pageViewController = pageViewController
         }
     }
     
-    private func changeEditMode(type: NavigationButtonType) {
+}
+
+// MARK: - IBAction func
+private extension TopViewController {
+    
+    @IBAction func addButtonDidTapped(_ sender: Any) {
+        switch screenType {
+            case .record:
+                present(AdditionalStudyRecordViewController.self,
+                        modalPresentationStyle: .fullScreen)
+            case .goal:
+                present(AdditionalGoalViewController.self,
+                        modalPresentationStyle: .fullScreen)
+            default: break
+        }
+    }
+    
+    @IBAction func sortButtonDidTapped(_ sender: Any) {
+        present(StudyRecordSortViewController.self,
+                modalPresentationStyle: .fullScreen)
+    }
+    
+}
+
+// MARK: - func
+private extension TopViewController {
+    
+    func changeEditMode(type: NavigationButtonType) {
         navigationButtonType = (navigationButtonType == .edit) ? .completion : .edit
         if let studyRecordVC = viewControllers.first as? StudyRecordViewController {
             studyRecordVC.reloadTableView()
@@ -130,7 +133,7 @@ final class TopViewController: UIViewController {
         isEditMode.toggle()
     }
     
-    private func screenDidChanged(item: Int) {
+    func screenDidChanged(item: Int) {
         screenType = getScreenType(item: item)
         scrollCollectionViewItem(at: item)
         reloadViews(index: item)
@@ -141,14 +144,14 @@ final class TopViewController: UIViewController {
         }
     }
     
-    private func scrollCollectionViewItem(at item: Int) {
+    func scrollCollectionViewItem(at item: Int) {
         collectionView.scrollToItem(at: IndexPath(item: item,
                                                   section: 0),
                                     at: .centeredHorizontally,
                                     animated: true)
     }
     
-    private func reloadViews(index: Int) {
+    func reloadViews(index: Int) {
         if screenType == .setting {
             editButton.isHidden = true
             addButton.isHidden = true
@@ -163,7 +166,7 @@ final class TopViewController: UIViewController {
         }
     }
     
-    private func setTitleLabelAnimation(index: Int) {
+    func setTitleLabelAnimation(index: Int) {
         if index < self.currentPageIndex {
             self.titleLabel.alpha = 0
             self.titleLabelLeftConstraint.constant -= LayoutConstant.titleLabelLeft
@@ -187,7 +190,7 @@ final class TopViewController: UIViewController {
         }
     }
     
-    private func pageVCSetVCs(at item: Int, direction: UIPageViewController.NavigationDirection) {
+    func pageVCSetVCs(at item: Int, direction: UIPageViewController.NavigationDirection) {
         pageViewController.setViewControllers([viewControllers[item]],
                                               direction: direction,
                                               animated: true,
@@ -342,11 +345,7 @@ private extension TopViewController {
         countDownVC.delegate = self
         let settingVC = SettingViewController.instantiate()
         settingVC.delegate = self
-        viewControllers.append(studyRecordVC)
-        viewControllers.append(goalVC)
-        viewControllers.append(graphVC)
-        viewControllers.append(countDownVC)
-        viewControllers.append(settingVC)
+        viewControllers = [studyRecordVC, goalVC, graphVC, countDownVC, settingVC]
         viewControllers.enumerated().forEach { $1.view.tag = $0 }
         pageViewController.setViewControllers([viewControllers[0]],
                                               direction: .forward,

@@ -12,6 +12,7 @@ import ScrollableGraphView
 // MARK: - ToDo 編集で間を0で埋めるかどうかを選択できるようにする
 // MARK: - ToDo セグメントを編集の方に移動させる
 // MARK: - ToDo セグメントを共通化する
+// MARK: - ToDo データがないときに、データがないよラベルを表示させる
 
 final class GraphTableViewCell: UITableViewCell {
     
