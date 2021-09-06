@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="304" id="KGk-i7-Jjw" customClass="GraphTableViewCell" customModule="StudyRecordApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="409" height="304"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="409" height="304"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iG7-E6-k4J">
+                        <rect key="frame" x="10" y="88.5" width="389" height="205.5"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="時間" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZyS-oE-sQZ">
+                        <rect key="frame" x="10" y="74" width="25" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="KmU-DN-1q2">
+                        <rect key="frame" x="268" y="10" width="131" height="26"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="F0Q-Ey-0fF"/>
+                        </constraints>
+                        <segments>
+                            <segment title="First"/>
+                            <segment title="Second"/>
+                        </segments>
+                        <connections>
+                            <action selector="segmentedControlDidSelected:" destination="KGk-i7-Jjw" eventType="valueChanged" id="tlZ-sT-EqO"/>
+                        </connections>
+                    </segmentedControl>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タイトル" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="sNK-SC-fH8">
+                        <rect key="frame" x="10" y="40" width="82" height="24"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="iG7-E6-k4J" secondAttribute="trailing" constant="10" id="2fn-I6-hAv"/>
+                    <constraint firstItem="sNK-SC-fH8" firstAttribute="top" secondItem="KmU-DN-1q2" secondAttribute="bottom" constant="5" id="9LS-Wp-OVJ"/>
+                    <constraint firstItem="KmU-DN-1q2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="HIh-7m-z1r"/>
+                    <constraint firstAttribute="trailing" secondItem="KmU-DN-1q2" secondAttribute="trailing" constant="10" id="Jmk-Ur-GBx"/>
+                    <constraint firstItem="iG7-E6-k4J" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="RPw-gI-p1A"/>
+                    <constraint firstAttribute="bottom" secondItem="iG7-E6-k4J" secondAttribute="bottom" constant="10" id="dU4-A1-Y99"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="sNK-SC-fH8" secondAttribute="trailing" constant="10" id="jzU-Bi-UEm"/>
+                    <constraint firstItem="KmU-DN-1q2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="nqH-2E-jZq"/>
+                    <constraint firstItem="ZyS-oE-sQZ" firstAttribute="top" secondItem="sNK-SC-fH8" secondAttribute="bottom" constant="10" id="q22-4U-HAc"/>
+                    <constraint firstItem="ZyS-oE-sQZ" firstAttribute="leading" secondItem="iG7-E6-k4J" secondAttribute="leading" id="rUi-X7-84K"/>
+                    <constraint firstItem="sNK-SC-fH8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="sYw-3f-vhv"/>
+                    <constraint firstItem="iG7-E6-k4J" firstAttribute="top" secondItem="ZyS-oE-sQZ" secondAttribute="bottom" id="yy7-VC-gyg"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="myGraphView" destination="iG7-E6-k4J" id="TJH-XC-YAt"/>
+                <outlet property="myGraphViewRightConstraint" destination="2fn-I6-hAv" id="5bw-tV-t1t"/>
+                <outlet property="segmentedControl" destination="KmU-DN-1q2" id="BkB-mL-jbk"/>
+                <outlet property="titleLabel" destination="sNK-SC-fH8" id="25y-9G-n88"/>
+            </connections>
+            <point key="canvasLocation" x="202.17391304347828" y="199.55357142857142"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

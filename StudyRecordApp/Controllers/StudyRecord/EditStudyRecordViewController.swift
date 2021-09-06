@@ -46,7 +46,7 @@ final class EditStudyRecordViewController: UIViewController {
     private var selectedRecord: Record!
     private var oldInputtedTitle: String = ""
     private var halfModalPresenter = HalfModalPresenter()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -152,7 +152,7 @@ extension EditStudyRecordViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == rowCount - 1 {
+        if indexPath.row > CellType.allCases.count + 2 {
             let indexPath = IndexPath(row: indexPath.row, section: 0)
             let tableBottomMaxY = tableView.rectForRow(at: indexPath).maxY
             let shouldHideWave = bottomWaveView.frame.minY - bottomWaveView.frame.height < tableBottomMaxY
@@ -188,9 +188,10 @@ extension EditStudyRecordViewController: UITableViewDataSource {
             case .history:
                 let cell = tableView.dequeueReusableCustomCell(with: StudyRecordHistoryTableViewCell.self)
                 let index = getHistoryCount(row: indexPath.row)
-                if let history = selectedRecord.histories?[index] {
-                    cell.configure(history: history)
-                }
+                guard var histories = selectedRecord.histories else { fatalError("history is nil") }
+                histories = recordUseCase.sorted(histories: histories, at: selectedRow)
+                selectedRecord.histories = histories
+                cell.configure(history: histories[index])
                 return cell
         }
     }
@@ -243,9 +244,41 @@ extension EditStudyRecordViewController: StudyRecordMemoVCDelegate {
 // MARK: - StudyRecordTimeRecordVCDelegate
 extension EditStudyRecordViewController: StudyRecordTimeRecordVCDelegate {
     
-    func saveButtonDidTapped(history: History) {
-        selectedRecord.histories?.append(history)
+    func saveButtonDidTapped(history: History, isHistory: Bool) {
+        if isHistory {
+            selectedRecord.histories?.append(history)
+        } else {
+            let isSameDateExisted = isSameDateValidation(history: history)
+            let isHistoriesIsEmpty = selectedRecord.histories?.isEmpty ?? true
+            if !isSameDateExisted || isHistoriesIsEmpty {
+                selectedRecord.histories?.append(history)
+            }
+        }
         tableView.reloadData()
+    }
+    
+    private func isSameDateValidation(history: History) -> Bool {
+        guard let histories = selectedRecord.histories else { return false }
+        for (index, _history) in histories.enumerated() {
+            if _history.year == history.year
+                && _history.month == history.month
+                && _history.day == history.day {
+                var hour = histories[index].hour + history.hour
+                var minutes = histories[index].minutes + history.minutes
+                if minutes >= 60 {
+                    hour += 1
+                    minutes -= 60
+                }
+                let history = History(year: history.year,
+                                      month: history.month,
+                                      day: history.day,
+                                      hour: hour,
+                                      minutes: minutes)
+                selectedRecord.histories?[index] = history
+                return true
+            }
+        }
+        return false
     }
     
     func deleteButtonDidTapped(index: Int) {

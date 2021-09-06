@@ -82,6 +82,7 @@ final class AdditionalStudyRecordViewController: UIViewController {
                             isExpanded: false,
                             graphColor: GraphColor(color: selectedGraphColor),
                             memo: inputtedMemo,
+                            yearID: UUID().uuidString,
                             order: recordUseCase.records.count)
         recordUseCase.save(record: record)
     }

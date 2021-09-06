@@ -14,6 +14,7 @@ struct Record: Equatable {
     var isExpanded: Bool
     var graphColor: GraphColor
     var memo: String
+    var yearID: String
     var order: Int
 }
 
@@ -39,6 +40,7 @@ final class RecordRealm: Object {
     @objc dynamic var isExpanded: Bool = false
     @objc dynamic var graphColor: GraphColorRealm? = GraphColorRealm()
     @objc dynamic var memo: String = ""
+    @objc dynamic var yearID: String = ""
     @objc dynamic var order: Int = 0
 }
 
@@ -65,6 +67,7 @@ extension Record {
                   isExpanded: record.isExpanded,
                   graphColor: record.graphColor,
                   memo: record.memo,
+                  yearID: record.yearID,
                   order: record.order)
     }
     
