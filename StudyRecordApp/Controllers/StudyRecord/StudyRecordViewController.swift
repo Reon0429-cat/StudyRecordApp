@@ -107,10 +107,10 @@ extension StudyRecordViewController: UITableViewDataSource {
 extension StudyRecordViewController: RecordTableViewCellDelegate {
     
     func baseViewTapDidRecognized(row: Int) {
-        let editStudyRecordVC = EditStudyRecordViewController.instantiate()
-        editStudyRecordVC.selectedRow = row
-        editStudyRecordVC.modalPresentationStyle = .fullScreen
-        present(editStudyRecordVC, animated: true, completion: nil)
+        present(EditStudyRecordViewController.self,
+                modalPresentationStyle: .fullScreen) { vc in
+            vc.selectedRow = row
+        }
     }
     
     func baseViewLongPressDidRecognized() {
