@@ -93,8 +93,7 @@ private extension LoginViewController {
     }
     
     @IBAction func passwordForgotButtonDidTapped(_ sender: Any) {
-        let resetingPasswordVC = ResetingPasswordViewController.instantiate()
-        present(resetingPasswordVC, animated: true, completion: nil)
+        present(ResetingPasswordViewController.self)
     }
     
 }
