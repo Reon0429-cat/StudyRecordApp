@@ -71,35 +71,35 @@ extension EditStudyRecordViewController: UITableViewDelegate {
             case .title:
                 showAlertWithTextField()
             case .graphColor:
-                let studyRecordGraphColorVC = StudyRecordGraphColorViewController.instantiate()
-                studyRecordGraphColorVC.modalPresentationStyle = .overCurrentContext
-                studyRecordGraphColorVC.modalTransitionStyle = .crossDissolve
-                studyRecordGraphColorVC.delegate = self
-                present(studyRecordGraphColorVC, animated: true, completion: nil)
-            case .memo:
-                let studyRecordMemoVC = StudyRecordMemoViewController.instantiate()
-                studyRecordMemoVC.modalPresentationStyle = .overCurrentContext
-                studyRecordMemoVC.modalTransitionStyle = .crossDissolve
-                studyRecordMemoVC.inputtedMemo = selectedRecord.memo
-                studyRecordMemoVC.delegate = self
-                present(studyRecordMemoVC, animated: true, completion: nil)
-            case .timeRecord:
-                let studyRecordTimeRecordVC = StudyRecordTimeRecordViewController.instantiate()
-                studyRecordTimeRecordVC.isHistoryDidTapped = false
-                halfModalPresenter.viewController = studyRecordTimeRecordVC
-                studyRecordTimeRecordVC.delegate = self
-                present(studyRecordTimeRecordVC, animated: true, completion: nil)
-            case .history:
-                let studyRecordTimeRecordVC = StudyRecordTimeRecordViewController.instantiate()
-                let index = getHistoryCount(row: indexPath.row)
-                if let history = selectedRecord.histories?[index] {
-                    studyRecordTimeRecordVC.history = history
+                present(StudyRecordGraphColorViewController.self,
+                        modalPresentationStyle: .overCurrentContext,
+                        modalTransitionStyle: .crossDissolve) { vc in
+                    vc.delegate = self
                 }
-                studyRecordTimeRecordVC.tappedHistoryIndex = index
-                studyRecordTimeRecordVC.isHistoryDidTapped = true
-                halfModalPresenter.viewController = studyRecordTimeRecordVC
-                studyRecordTimeRecordVC.delegate = self
-                present(studyRecordTimeRecordVC, animated: true, completion: nil)
+            case .memo:
+                present(StudyRecordMemoViewController.self,
+                        modalPresentationStyle: .overCurrentContext,
+                        modalTransitionStyle: .crossDissolve) { vc in
+                    vc.inputtedMemo = self.selectedRecord.memo
+                    vc.delegate = self
+                }
+            case .timeRecord:
+                present(StudyRecordTimeRecordViewController.self) { vc in
+                    vc.isHistoryDidTapped = false
+                    self.halfModalPresenter.viewController = vc
+                    vc.delegate = self
+                }
+            case .history:
+                present(StudyRecordTimeRecordViewController.self) { vc in
+                    let index = self.getHistoryCount(row: indexPath.row)
+                    if let history = self.selectedRecord.histories?[index] {
+                        vc.history = history
+                    }
+                    vc.tappedHistoryIndex = index
+                    vc.isHistoryDidTapped = true
+                    self.halfModalPresenter.viewController = vc
+                    vc.delegate = self
+                }
         }
     }
     
