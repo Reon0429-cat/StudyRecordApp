@@ -8,7 +8,6 @@
 import UIKit
 import ScrollableGraphView
 
-// MARK: - ToDo 同じ時間のものはまとめてグラフにする
 // MARK: - ToDo 年度、月別にグラフを切り替えられるようにする
 
 final class GraphTableViewCell: UITableViewCell {
@@ -17,8 +16,10 @@ final class GraphTableViewCell: UITableViewCell {
     @IBOutlet private weak var myGraphView: UIView!
     @IBOutlet private weak var myGraphViewRightConstraint: NSLayoutConstraint!
     
-    private var lineData = [(color: UIColor, identifier: String, data: [Double], xTitle: String)]()
     private var graphView: ScrollableGraphView!
+    private var lineData = [(color: UIColor, identifier: String, xTitle: String)]()
+    private var sumData = [String: Double]()
+    private var beforeIdentifier = ""
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,6 +31,7 @@ final class GraphTableViewCell: UITableViewCell {
         
         createGraphView()
         lineData.removeAll()
+        sumData.removeAll()
         setupLineData(record: record)
         createReferenceLines()
         myGraphView.subviews.forEach { $0.removeFromSuperview() }
@@ -43,7 +45,6 @@ final class GraphTableViewCell: UITableViewCell {
                            width: myGraphView.frame.width,
                            height: myGraphView.frame.height)
         graphView = ScrollableGraphView(frame: frame, dataSource: self)
-        graphView.delegate = self
         graphView.rangeMin = 24
         graphView.rangeMax = 0
         graphView.rightmostPointPadding = 20
@@ -59,10 +60,16 @@ final class GraphTableViewCell: UITableViewCell {
         guard let histories = record.histories else { return }
         histories.forEach { historiy in
             let identifier = "\(historiy.year)-\(historiy.month)-\(historiy.day)"
-            let data = histories.map { Double($0.hour * 60 + $0.minutes) }
+            let data = Double(historiy.hour * 60 + historiy.minutes)
+            if beforeIdentifier == identifier {
+                let data = (sumData[identifier] ?? 0.0) + data
+                sumData.updateValue(data, forKey: identifier)
+            } else {
+                sumData[identifier] = data
+                beforeIdentifier = identifier
+            }
             lineData.append((color: UIColor(record: record),
                              identifier: identifier,
-                             data: data,
                              xTitle: "\(historiy.month)/\(historiy.day)"))
             createLineDot(color: UIColor(record: record), identifier: identifier)
         }
@@ -106,27 +113,16 @@ final class GraphTableViewCell: UITableViewCell {
     
 }
 
-// MARK: - UIScrollViewDelegate
-extension GraphTableViewCell: UIScrollViewDelegate {
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        //        let scrollableGraphView = scrollView as? ScrollableGraphView
-    }
-    
-}
-
 // MARK: - ScrollableGraphViewDataSource
 extension GraphTableViewCell: ScrollableGraphViewDataSource {
     
     func value(forPlot plot: Plot,
                atIndex pointIndex: Int) -> Double {
-        for line in lineData where plot.identifier == line.identifier {
-            let data = Int(line.data[pointIndex])
-            let hour = Double(data / 60)
-            let minutes = Double(data % 60) / 60
-            return hour + minutes
-        }
-        return 0.0
+        let identifier = lineData[pointIndex].identifier
+        guard let sumData = sumData[identifier] else { return 0.0 }
+        let hour = Double(sumData / 60)
+        let minutes = Double(Int(sumData) % 60 / 60)
+        return hour + minutes
     }
     
     func label(atIndex pointIndex: Int) -> String {
@@ -134,11 +130,10 @@ extension GraphTableViewCell: ScrollableGraphViewDataSource {
     }
     
     func numberOfPoints() -> Int {
-        if lineData.isEmpty {
+        if sumData.isEmpty {
             return 0
         }
-        return lineData[0].data.count
+        return sumData.count
     }
     
 }
-
