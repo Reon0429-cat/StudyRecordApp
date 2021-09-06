@@ -9,10 +9,15 @@ import UIKit
 
 extension UIViewController {
     
-    func present(_ vc: UIViewController.Type, modalPresentationStyle: UIModalPresentationStyle = .automatic) {
-        let vc = vc.instantiate()
+    func present<T: UIViewController>(_ ViewControllerType: T.Type,
+                 modalPresentationStyle: UIModalPresentationStyle = .automatic,
+                 modalTransitionStyle: UIModalTransitionStyle = .coverVertical,
+                 handler: ((T) -> Void)? = nil,
+                 completion: (() -> Void)? = nil) {
+        let vc = ViewControllerType.instantiate()
         vc.modalPresentationStyle = modalPresentationStyle
-        self.present(vc, animated: true, completion: nil)
+        handler?(vc)
+        self.present(vc, animated: true, completion: completion)
     }
     
     static func instantiate() -> Self {
