@@ -11,6 +11,7 @@ import ScrollableGraphView
 // MARK: - ToDo 今日が一番右にスクロールされるようのする
 // MARK: - ToDo 編集で間を0で埋めるかどうかを選択できるようにする
 // MARK: - ToDo セグメントを編集の方に移動させる
+// MARK: - ToDo セグメントを共通化する
 
 final class GraphTableViewCell: UITableViewCell {
     
