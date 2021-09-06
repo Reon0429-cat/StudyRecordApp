@@ -118,9 +118,8 @@ private extension SettingViewController {
     
     func presentLoginAndSignUpVC() {
         present(LoginAndSignUpViewController.self,
-                modalPresentationStyle: .fullScreen) { _ in
-        } completion: {
-            self.delegate?.loginAndSignUpVCDidShowed()
+                modalPresentationStyle: .fullScreen) { _ in 
+                self.delegate?.loginAndSignUpVCDidShowed()
         }
     }
     
