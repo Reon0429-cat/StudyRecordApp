@@ -19,9 +19,9 @@ final class AdditionalGoalViewController: UIViewController {
         case category
         case memo
         case priority
-        case image
         case dueDate
         case createdDate
+        case photo
         
         var title: String {
             switch self {
@@ -29,15 +29,19 @@ final class AdditionalGoalViewController: UIViewController {
                 case .category: return "カテゴリー"
                 case .memo: return "メモ"
                 case .priority: return "優先度"
-                case .image: return "画像"
                 case .dueDate: return "期日"
                 case .createdDate: return "作成日"
+                case .photo: return "写真"
             }
         }
     }
     private var inputtedTitle = ""
     private var oldInputtedTitle = ""
+    private var inputtedMemo = ""
+    private var inputtedImageData: Data?
     private var inputtedPriority = Priority(mark: .star, number: .one)
+    private var inputtedCreatedDate = Date()
+    private var inputtedDueDate = Date()
     private var halfModalPresenter = HalfModalPresenter()
     private var isMandatoryItemFilled: Bool {
         !inputtedTitle.isEmpty
@@ -63,7 +67,7 @@ final class AdditionalGoalViewController: UIViewController {
 // MARK: - func
 private extension AdditionalGoalViewController {
     
-    func showAlertWithTextField() {
+    func presentAlertWithTextField() {
         let alert = UIAlertController(title: "タイトル", message: nil, preferredStyle: .alert)
         alert.addTextField { textField in
             textField.text = self.inputtedTitle
@@ -79,7 +83,7 @@ private extension AdditionalGoalViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    func showAlert() {
+    func presentAlert() {
         let alert = UIAlertController(title: "保存せずに閉じますか", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "閉じる", style: .destructive) { _ in
             self.dismiss(animated: true, completion: nil)
@@ -94,11 +98,83 @@ private extension AdditionalGoalViewController {
     func saveGoal() {
         let goal = Goal(title: inputtedTitle,
                         category: Category(title: "カテゴリー"),
-                        memo: "メモ",
+                        memo: inputtedMemo,
                         priority: inputtedPriority,
-                        dueDate: Date(),
-                        createdDate: Date())
+                        dueDate: inputtedDueDate,
+                        createdDate: inputtedCreatedDate,
+                        imageData: inputtedImageData)
         goalUseCase.create(goal: goal)
+    }
+    
+    func presentTo(_ sourceType: UIImagePickerController.SourceType) {
+        if UIImagePickerController.isSourceTypeAvailable(sourceType) {
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.sourceType = sourceType
+            imagePickerController.modalPresentationStyle = .fullScreen
+            imagePickerController.allowsEditing = true
+            imagePickerController.delegate = self
+            self.present(imagePickerController, animated: true, completion: nil)
+        }
+    }
+    
+    func presentStudyRecordMemoVC() {
+        let studyRecordMemoVC = StudyRecordMemoViewController.instantiate()
+        studyRecordMemoVC.modalPresentationStyle = .overCurrentContext
+        studyRecordMemoVC.modalTransitionStyle = .crossDissolve
+        studyRecordMemoVC.inputtedMemo = inputtedMemo
+        studyRecordMemoVC.delegate = self
+        present(studyRecordMemoVC, animated: true, completion: nil)
+    }
+    
+    func presentGoalPriorityVC() {
+        let goalPriorityVC = GoalPriorityViewController.instantiate()
+        goalPriorityVC.delegate = self
+        goalPriorityVC.inputtedPriority = inputtedPriority
+        halfModalPresenter.viewController = goalPriorityVC
+        present(goalPriorityVC, animated: true, completion: nil)
+    }
+    
+    func presentGoalTimeVC(dateType: GoalDateType) {
+        let goalTimeVC = GoalTimeViewController.instantiate()
+        goalTimeVC.dateType = dateType
+        goalTimeVC.delegate = self
+        switch dateType {
+            case .created:
+                goalTimeVC.inputtedDate = inputtedCreatedDate
+            case .due:
+                goalTimeVC.inputtedDate = inputtedDueDate
+        }
+        halfModalPresenter.viewController = goalTimeVC
+        present(goalTimeVC, animated: true, completion: nil)
+    }
+    
+    func presentPhotoActionSheet(row: Int) {
+        let alert = UIAlertController(title: nil,
+                                      message: nil,
+                                      preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "写真を撮る",
+                                      style: .default) { _ in
+            self.presentTo(.camera)
+        })
+        alert.addAction(UIAlertAction(title: "ライブラリから選択する",
+                                      style: .default) { _ in
+            self.presentTo(.photoLibrary)
+        })
+        if inputtedImageData != nil {
+            alert.addAction(UIAlertAction(title: "写真を削除する",
+                                          style: .destructive) { _ in
+                self.inputtedImageData = nil
+                DispatchQueue.main.async {
+                    self.tableView.beginUpdates()
+                    self.tableView.reloadRows(at: [IndexPath(row: row,
+                                                             section: 0)],
+                                              with: .automatic)
+                    self.tableView.endUpdates()
+                }
+            })
+        }
+        alert.addAction(UIAlertAction(title: "閉じる", style: .cancel))
+        self.present(alert, animated: true, completion: nil)
     }
     
 }
@@ -112,23 +188,26 @@ extension AdditionalGoalViewController: UITableViewDelegate {
         let rowType = RowType.allCases[indexPath.row]
         switch rowType {
             case .title:
-                showAlertWithTextField()
+                presentAlertWithTextField()
             case .category: break
-            case .memo: break
+            case .memo:
+                presentStudyRecordMemoVC()
             case .priority:
-                let goalPriorityVC = GoalPriorityViewController.instantiate()
-                goalPriorityVC.delegate = self
-                goalPriorityVC.inputtedPriority = inputtedPriority
-                halfModalPresenter.viewController = goalPriorityVC
-                present(goalPriorityVC, animated: true, completion: nil)
-            case .image: break
-            case .dueDate: break
-            case .createdDate: break
+                presentGoalPriorityVC()
+            case .dueDate:
+                presentGoalTimeVC(dateType: .due)
+            case .createdDate:
+                presentGoalTimeVC(dateType: .created)
+            case .photo:
+                presentPhotoActionSheet(row: indexPath.row)
         }
     }
     
     func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if RowType(rawValue: indexPath.row) == .photo && inputtedImageData != nil {
+            return tableView.rowHeight
+        }
         return 80
     }
     
@@ -165,14 +244,32 @@ extension AdditionalGoalViewController: UITableViewDataSource {
                                auxiliaryText: inputtedTitle)
                 return cell
             case .category: return UITableViewCell()
-            case .memo: return UITableViewCell()
+            case .memo:
+                let cell = tableView.dequeueReusableCustomCell(with: StudyRecordCustomTableViewCell.self)
+                cell.configure(titleText: rowType.title,
+                               mandatoryIsHidden: true,
+                               auxiliaryText: inputtedMemo)
+                return cell
             case .priority:
                 let cell = tableView.dequeueReusableCustomCell(with: GoalPriorityTableViewCell.self)
-                cell.configure(title: rowType.title, priority: inputtedPriority)
+                cell.configure(title: rowType.title,
+                               priority: inputtedPriority)
                 return cell
-            case .image: return UITableViewCell()
-            case .dueDate: return UITableViewCell()
-            case .createdDate: return UITableViewCell()
+            case .createdDate, .dueDate:
+                let cell = tableView.dequeueReusableCustomCell(with: StudyRecordCustomTableViewCell.self)
+                let inputtedDate = (rowType == .createdDate) ? inputtedCreatedDate : inputtedDueDate
+                let auxiliaryText = Converter.convertToString(from: inputtedDate,
+                                                              format: "yyyy年M月d日")
+                cell.configure(titleText: rowType.title,
+                               mandatoryIsHidden: true,
+                               auxiliaryText: auxiliaryText)
+                return cell
+            case .photo:
+                let cell = tableView.dequeueReusableCustomCell(with: GoalPhotoTableViewCell.self)
+                let image = Converter.convertToImage(from: inputtedImageData)
+                cell.configure(title: rowType.title,
+                               image: image)
+                return cell
         }
     }
     
@@ -198,6 +295,32 @@ extension AdditionalGoalViewController: GoalPriorityVCDelegate {
     
 }
 
+// MARK: - StudyRecordMemoVCDelegate
+extension AdditionalGoalViewController: StudyRecordMemoVCDelegate {
+    
+    func savedMemo(memo: String) {
+        inputtedMemo = memo
+        tableView.reloadData()
+    }
+    
+}
+
+// MARK: - GoalTimeVCDelegate
+extension AdditionalGoalViewController: GoalTimeVCDelegate {
+    
+    func saveButtonDidTapped(date: Date, dateType: GoalDateType) {
+        switch dateType {
+            case .created:
+                inputtedCreatedDate = date
+            case .due:
+                inputtedDueDate = date
+        }
+        tableView.reloadData()
+    }
+    
+}
+
+
 // MARK: - NavigationButtonDelegate
 extension AdditionalGoalViewController: NavigationButtonDelegate {
     
@@ -208,11 +331,28 @@ extension AdditionalGoalViewController: NavigationButtonDelegate {
         }
         if type == .dismiss {
             if isMandatoryItemFilled {
-                showAlert()
+                presentAlert()
             } else {
                 self.dismiss(animated: true, completion: nil)
             }
         }
+    }
+    
+}
+
+// MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
+extension AdditionalGoalViewController: UIImagePickerControllerDelegate,
+                                        UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        let image = info[.editedImage] as! UIImage
+        inputtedImageData = Converter.convertToData(from: image)
+        if picker.sourceType == .camera {
+            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        }
+        picker.dismiss(animated: true, completion: nil)
+        tableView.reloadData()
     }
     
 }
@@ -225,6 +365,8 @@ private extension AdditionalGoalViewController {
         tableView.dataSource = self
         tableView.registerCustomCell(StudyRecordCustomTableViewCell.self)
         tableView.registerCustomCell(GoalPriorityTableViewCell.self)
+        tableView.registerCustomCell(GoalPhotoTableViewCell.self)
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.tableFooterView = UIView()
     }
     

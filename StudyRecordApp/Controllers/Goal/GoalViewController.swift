@@ -63,6 +63,11 @@ private extension GoalViewController {
 // MARK: - UITableViewDelegate
 extension GoalViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView,
+                   heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
+    }
+    
 }
 
 // MARK: - UITableViewDataSource
@@ -77,8 +82,11 @@ extension GoalViewController: UITableViewDataSource {
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCustomCell(with: GoalTableViewCell.self)
         let goal = goalUseCase.goals[indexPath.row]
-        let title = "\(goal.title), \(goal.priority.mark), \(goal.priority.number), \(goal.category.title)"
-        cell.configure(title: title)
+        let createdDateString = Converter.convertToString(from: goal.createdDate, format: "yyyy年M月d日")
+        let dueDateString = Converter.convertToString(from: goal.dueDate, format: "yyyy年M月d日")
+        let title = "\(createdDateString), \(dueDateString)"
+        let image = Converter.convertToImage(from: goal.imageData)
+        cell.configure(title: title, image: image)
         return cell
     }
     

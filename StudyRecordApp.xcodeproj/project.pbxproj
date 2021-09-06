@@ -23,7 +23,7 @@
 		AB13EDB526BFAB8B002F56FF /* StudyRecordSortTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB13EDB326BFAB8B002F56FF /* StudyRecordSortTableViewCell.xib */; };
 		AB13EDD126C29D9E002F56FF /* StudyRecordTimeRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EDD026C29D9E002F56FF /* StudyRecordTimeRecordViewController.swift */; };
 		AB13EDD326C29DAF002F56FF /* StudyRecordTimeRecord.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13EDD226C29DAF002F56FF /* StudyRecordTimeRecord.storyboard */; };
-		AB13EDDB26C3C163002F56FF /* Convert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EDDA26C3C163002F56FF /* Convert.swift */; };
+		AB13EDDB26C3C163002F56FF /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EDDA26C3C163002F56FF /* Converter.swift */; };
 		AB13EDE026C64EBB002F56FF /* StudyRecordCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EDDE26C64EBB002F56FF /* StudyRecordCustomTableViewCell.swift */; };
 		AB13EDE126C64EBB002F56FF /* StudyRecordCustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB13EDDF26C64EBB002F56FF /* StudyRecordCustomTableViewCell.xib */; };
 		AB13EDE426C78DB4002F56FF /* ScreenTransitionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EDE226C78DB4002F56FF /* ScreenTransitionCollectionViewCell.swift */; };
@@ -134,6 +134,10 @@
 		ABA0570326B50F7100E3DF01 /* StudyRecordGraphColor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABA0570226B50F7100E3DF01 /* StudyRecordGraphColor.storyboard */; };
 		ABA0570526B50F8100E3DF01 /* StudyRecordGraphColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA0570426B50F8100E3DF01 /* StudyRecordGraphColorViewController.swift */; };
 		ABFAB15526DF802A0095EC20 /* PriorityStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAB15426DF802A0095EC20 /* PriorityStackView.swift */; };
+		ABFAB15826DF86920095EC20 /* GoalPhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAB15626DF86920095EC20 /* GoalPhotoTableViewCell.swift */; };
+		ABFAB15926DF86920095EC20 /* GoalPhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABFAB15726DF86920095EC20 /* GoalPhotoTableViewCell.xib */; };
+		ABFAB1E326E11FEC0095EC20 /* GoalTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAB1E226E11FEC0095EC20 /* GoalTimeViewController.swift */; };
+		ABFAB1E526E11FF80095EC20 /* GoalTime.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABFAB1E426E11FF80095EC20 /* GoalTime.storyboard */; };
 		D14EABCB62E5596481983E6D /* Pods_StudyRecordApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7ADEAD2199951B48FEFB0D8 /* Pods_StudyRecordApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -154,7 +158,7 @@
 		AB13EDB326BFAB8B002F56FF /* StudyRecordSortTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudyRecordSortTableViewCell.xib; sourceTree = "<group>"; };
 		AB13EDD026C29D9E002F56FF /* StudyRecordTimeRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRecordTimeRecordViewController.swift; sourceTree = "<group>"; };
 		AB13EDD226C29DAF002F56FF /* StudyRecordTimeRecord.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StudyRecordTimeRecord.storyboard; sourceTree = "<group>"; };
-		AB13EDDA26C3C163002F56FF /* Convert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Convert.swift; sourceTree = "<group>"; };
+		AB13EDDA26C3C163002F56FF /* Converter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
 		AB13EDDE26C64EBB002F56FF /* StudyRecordCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRecordCustomTableViewCell.swift; sourceTree = "<group>"; };
 		AB13EDDF26C64EBB002F56FF /* StudyRecordCustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudyRecordCustomTableViewCell.xib; sourceTree = "<group>"; };
 		AB13EDE226C78DB4002F56FF /* ScreenTransitionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTransitionCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -267,6 +271,10 @@
 		ABA0570226B50F7100E3DF01 /* StudyRecordGraphColor.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StudyRecordGraphColor.storyboard; sourceTree = "<group>"; };
 		ABA0570426B50F8100E3DF01 /* StudyRecordGraphColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRecordGraphColorViewController.swift; sourceTree = "<group>"; };
 		ABFAB15426DF802A0095EC20 /* PriorityStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityStackView.swift; sourceTree = "<group>"; };
+		ABFAB15626DF86920095EC20 /* GoalPhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPhotoTableViewCell.swift; sourceTree = "<group>"; };
+		ABFAB15726DF86920095EC20 /* GoalPhotoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoalPhotoTableViewCell.xib; sourceTree = "<group>"; };
+		ABFAB1E226E11FEC0095EC20 /* GoalTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTimeViewController.swift; sourceTree = "<group>"; };
+		ABFAB1E426E11FF80095EC20 /* GoalTime.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoalTime.storyboard; sourceTree = "<group>"; };
 		B7ADEAD2199951B48FEFB0D8 /* Pods_StudyRecordApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudyRecordApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F080AD4E0F25E92F286ED79A /* Pods-StudyRecordApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyRecordApp.debug.xcconfig"; path = "Target Support Files/Pods-StudyRecordApp/Pods-StudyRecordApp.debug.xcconfig"; sourceTree = "<group>"; };
 		F4A1350DA353A8FEAF4BEEB3 /* Pods-StudyRecordApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyRecordApp.release.xcconfig"; path = "Target Support Files/Pods-StudyRecordApp/Pods-StudyRecordApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -332,6 +340,7 @@
 				AB13EDF926C8C585002F56FF /* GoalViewController.swift */,
 				AB4397EC26DD3051008C8CA8 /* AdditionalGoalViewController.swift */,
 				AB4397F226DD3B32008C8CA8 /* GoalPriorityViewController.swift */,
+				ABFAB1E226E11FEC0095EC20 /* GoalTimeViewController.swift */,
 			);
 			path = Goal;
 			sourceTree = "<group>";
@@ -358,6 +367,7 @@
 				AB13EDF326C8BAAC002F56FF /* Goal.storyboard */,
 				AB4397EE26DD305B008C8CA8 /* AdditionalGoal.storyboard */,
 				AB4397F026DD3B2A008C8CA8 /* GoalPriority.storyboard */,
+				ABFAB1E426E11FF80095EC20 /* GoalTime.storyboard */,
 			);
 			path = Goal;
 			sourceTree = "<group>";
@@ -398,6 +408,7 @@
 				AB16305026CD6B1400111F55 /* WaveView.swift */,
 				AB16308326CEABD400111F55 /* NavigationButton.xib */,
 				AB16308126CEAB9300111F55 /* NavigationButton.swift */,
+				ABFAB15426DF802A0095EC20 /* PriorityStackView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -408,8 +419,9 @@
 				AB43980226DE1DD6008C8CA8 /* GoalTableViewCell.swift */,
 				AB43980326DE1DD6008C8CA8 /* GoalTableViewCell.xib */,
 				AB43980626DE2D72008C8CA8 /* GoalPriorityTableViewCell.swift */,
-				ABFAB15426DF802A0095EC20 /* PriorityStackView.swift */,
 				AB43980726DE2D72008C8CA8 /* GoalPriorityTableViewCell.xib */,
+				ABFAB15626DF86920095EC20 /* GoalPhotoTableViewCell.swift */,
+				ABFAB15726DF86920095EC20 /* GoalPhotoTableViewCell.xib */,
 			);
 			path = Goal;
 			sourceTree = "<group>";
@@ -615,7 +627,7 @@
 				AB4397FA26DDF78A008C8CA8 /* HUDIndicator.swift */,
 				AB14B46126DA855F007A5F16 /* CommunicationStatus.swift */,
 				AB13EE6526CAC989002F56FF /* ScreenType.swift */,
-				AB13EDDA26C3C163002F56FF /* Convert.swift */,
+				AB13EDDA26C3C163002F56FF /* Converter.swift */,
 				AB13EDFF26C8E0E9002F56FF /* Setting */,
 			);
 			path = Utilities;
@@ -799,6 +811,7 @@
 				AB93C244266A234C00C3AE8F /* Assets.xcassets in Resources */,
 				AB8B705026D62FA90069FF67 /* Login.storyboard in Resources */,
 				AB8B704C26D600500069FF67 /* GoogleService-Info.plist in Resources */,
+				ABFAB1E526E11FF80095EC20 /* GoalTime.storyboard in Resources */,
 				AB43980526DE1DD6008C8CA8 /* GoalTableViewCell.xib in Resources */,
 				AB13ED7E26BE7061002F56FF /* StudyRecordHistoryTableViewCell.xib in Resources */,
 				AB2B5BB826A2D2C2009BD3C7 /* AccordionColorTableViewCell.xib in Resources */,
@@ -817,6 +830,7 @@
 				AB13ECD626B7AEA3002F56FF /* ColorChoicesConcept.storyboard in Resources */,
 				AB2B5BAC26A2D244009BD3C7 /* ThemeColor.storyboard in Resources */,
 				AB8B705726D6AD1F0069FF67 /* SignUp.storyboard in Resources */,
+				ABFAB15926DF86920095EC20 /* GoalPhotoTableViewCell.xib in Resources */,
 				AB13EDE926C7C4C0002F56FF /* Top.storyboard in Resources */,
 				AB13EDE526C78DB4002F56FF /* ScreenTransitionCollectionViewCell.xib in Resources */,
 				AB93C266266A7DEB00C3AE8F /* AdditionalStudyRecord.storyboard in Resources */,
@@ -900,7 +914,7 @@
 				AB2B5B9F26A2D1B7009BD3C7 /* OverseasConcept.swift in Sources */,
 				AB13EE6626CAC98A002F56FF /* ScreenType.swift in Sources */,
 				AB13EDE026C64EBB002F56FF /* StudyRecordCustomTableViewCell.swift in Sources */,
-				AB13EDDB26C3C163002F56FF /* Convert.swift in Sources */,
+				AB13EDDB26C3C163002F56FF /* Converter.swift in Sources */,
 				AB2B5BC526A2D36F009BD3C7 /* ColorChoicesTileViewController.swift in Sources */,
 				AB93C24F266A271E00C3AE8F /* StudyRecordViewController.swift in Sources */,
 				AB43980826DE2D72008C8CA8 /* GoalPriorityTableViewCell.swift in Sources */,
@@ -926,6 +940,7 @@
 				AB16308226CEAB9300111F55 /* NavigationButton.swift in Sources */,
 				AB14B46626DB516E007A5F16 /* ResetingPasswordViewController.swift in Sources */,
 				AB4397FB26DDF78A008C8CA8 /* HUDIndicator.swift in Sources */,
+				ABFAB15826DF86920095EC20 /* GoalPhotoTableViewCell.swift in Sources */,
 				AB14B46226DA855F007A5F16 /* CommunicationStatus.swift in Sources */,
 				ABFAB15526DF802A0095EC20 /* PriorityStackView.swift in Sources */,
 				AB2B5BC726A2D36F009BD3C7 /* ColorChoicesConceptViewController.swift in Sources */,
@@ -975,6 +990,7 @@
 				AB13EDD126C29D9E002F56FF /* StudyRecordTimeRecordViewController.swift in Sources */,
 				AB275FFE26DCAA56009F63B3 /* Indicator.swift in Sources */,
 				AB2B5BA226A2D1B7009BD3C7 /* ElegantConcept.swift in Sources */,
+				ABFAB1E326E11FEC0095EC20 /* GoalTimeViewController.swift in Sources */,
 				AB93C23D266A234800C3AE8F /* SceneDelegate.swift in Sources */,
 				AB8B706026D6AD9E0069FF67 /* LoginAndSignUpViewController.swift in Sources */,
 				AB13EE6826CACB16002F56FF /* UIView+Extension.swift in Sources */,

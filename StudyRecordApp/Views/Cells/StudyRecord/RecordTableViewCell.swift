@@ -83,7 +83,7 @@ final class RecordTableViewCell: UITableViewCell {
     
     private func isToday(_ history: History) -> Bool {
         let historyDate = "\(history.year)年\(history.month)月\(history.day)日"
-        let today = Convert().stringFrom(Date(), format: "yyyy年M月d日")
+        let today = Converter.convertToString(from: Date(), format: "yyyy年M月d日")
         return historyDate == today
     }
     

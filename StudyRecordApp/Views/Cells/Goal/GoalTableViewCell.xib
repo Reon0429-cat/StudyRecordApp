@@ -10,32 +10,42 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="253" id="KGk-i7-Jjw" customClass="GoalTableViewCell" customModule="StudyRecordApp" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="593" height="253"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="126" id="KGk-i7-Jjw" customClass="GoalTableViewCell" customModule="StudyRecordApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="581" height="126"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="593" height="253"/>
+                <rect key="frame" x="0.0" y="0.0" width="581" height="126"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTQ-oI-H5h">
-                        <rect key="frame" x="20" y="11" width="553" height="231"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="i3d-9F-Unj">
+                        <rect key="frame" x="455" y="0.0" width="126" height="126"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="i3d-9F-Unj" secondAttribute="height" id="hiv-Id-XSV"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kB6-Ko-reZ">
+                        <rect key="frame" x="0.0" y="0.0" width="455" height="126"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="HTQ-oI-H5h" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="6YV-28-BVc"/>
-                    <constraint firstItem="HTQ-oI-H5h" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="hq9-0n-pPY"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="HTQ-oI-H5h" secondAttribute="trailing" id="mrP-5d-D1P"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="HTQ-oI-H5h" secondAttribute="bottom" id="zbg-bL-0dT"/>
+                    <constraint firstItem="i3d-9F-Unj" firstAttribute="leading" secondItem="kB6-Ko-reZ" secondAttribute="trailing" id="7Nc-5H-afI"/>
+                    <constraint firstAttribute="trailing" secondItem="i3d-9F-Unj" secondAttribute="trailing" id="Kgd-AC-I8o"/>
+                    <constraint firstAttribute="bottom" secondItem="i3d-9F-Unj" secondAttribute="bottom" id="LPB-zJ-UaJ"/>
+                    <constraint firstItem="kB6-Ko-reZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="SFH-P3-7VF"/>
+                    <constraint firstItem="i3d-9F-Unj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="TZY-Pl-roG"/>
+                    <constraint firstAttribute="bottom" secondItem="kB6-Ko-reZ" secondAttribute="bottom" id="dpt-3A-N5q"/>
+                    <constraint firstItem="kB6-Ko-reZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="sRn-RY-zHI"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="titleLabel" destination="HTQ-oI-H5h" id="EUs-3K-2gs"/>
+                <outlet property="myImageView" destination="i3d-9F-Unj" id="QL1-TW-Sru"/>
+                <outlet property="titleLabel" destination="kB6-Ko-reZ" id="x35-sV-riK"/>
             </connections>
-            <point key="canvasLocation" x="242.75362318840581" y="179.79910714285714"/>
+            <point key="canvasLocation" x="234.05797101449278" y="136.60714285714286"/>
         </tableViewCell>
     </objects>
 </document>

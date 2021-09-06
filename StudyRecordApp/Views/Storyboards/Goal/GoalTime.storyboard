@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Goal Time View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="GoalTimeViewController" id="Y6W-OH-hqX" customClass="GoalTimeViewController" customModule="StudyRecordApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8lC-zk-Koi">
+                                <rect key="frame" x="0.0" y="44" width="414" height="259"/>
+                                <subviews>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UGs-RT-zOY">
+                                        <rect key="frame" x="0.0" y="43" width="414" height="216"/>
+                                    </pickerView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JgV-5W-JYw">
+                                        <rect key="frame" x="30" y="10" width="52" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="tintColor" systemColor="systemRedColor"/>
+                                        <state key="normal" title="閉じる"/>
+                                        <connections>
+                                            <action selector="dismissButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="7Mg-BA-euL"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E9U-qc-Jbk">
+                                        <rect key="frame" x="349" y="10" width="35" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="保存"/>
+                                        <connections>
+                                            <action selector="saveButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Ceg-2J-Ygn"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9B7-1d-C0L">
+                                        <rect key="frame" x="189.5" y="10" width="35" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="今日"/>
+                                        <connections>
+                                            <action selector="todayButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="GGs-Hw-hDB"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="JgV-5W-JYw" firstAttribute="top" secondItem="8lC-zk-Koi" secondAttribute="top" constant="10" id="33i-HD-FVp"/>
+                                    <constraint firstItem="E9U-qc-Jbk" firstAttribute="centerY" secondItem="JgV-5W-JYw" secondAttribute="centerY" id="3Ox-g1-CpZ"/>
+                                    <constraint firstItem="UGs-RT-zOY" firstAttribute="top" secondItem="JgV-5W-JYw" secondAttribute="bottom" id="DCN-Sc-dAz"/>
+                                    <constraint firstAttribute="bottom" secondItem="UGs-RT-zOY" secondAttribute="bottom" id="DDa-Q6-aeM"/>
+                                    <constraint firstItem="9B7-1d-C0L" firstAttribute="centerX" secondItem="8lC-zk-Koi" secondAttribute="centerX" id="OQc-vS-2Iz"/>
+                                    <constraint firstItem="UGs-RT-zOY" firstAttribute="leading" secondItem="8lC-zk-Koi" secondAttribute="leading" id="dhC-ty-MQ9"/>
+                                    <constraint firstAttribute="trailing" secondItem="UGs-RT-zOY" secondAttribute="trailing" id="kQj-s6-w2L"/>
+                                    <constraint firstItem="9B7-1d-C0L" firstAttribute="centerY" secondItem="JgV-5W-JYw" secondAttribute="centerY" id="keq-yO-LYE"/>
+                                    <constraint firstItem="JgV-5W-JYw" firstAttribute="leading" secondItem="8lC-zk-Koi" secondAttribute="leading" constant="30" id="tqb-Xm-UmR"/>
+                                    <constraint firstAttribute="trailing" secondItem="E9U-qc-Jbk" secondAttribute="trailing" constant="30" id="wYu-1R-NM5"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="8lC-zk-Koi" secondAttribute="trailing" id="0QB-Wv-Hou"/>
+                            <constraint firstItem="8lC-zk-Koi" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="P6h-hR-3lZ"/>
+                            <constraint firstItem="8lC-zk-Koi" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="ppj-m4-htZ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="contentView" destination="8lC-zk-Koi" id="3cZ-Tp-5Fa"/>
+                        <outlet property="dismissButton" destination="JgV-5W-JYw" id="LzW-Dc-iKb"/>
+                        <outlet property="pickerView" destination="UGs-RT-zOY" id="5mJ-sn-htL"/>
+                        <outlet property="saveButton" destination="E9U-qc-Jbk" id="d1a-fw-pcI"/>
+                        <outlet property="todayButton" destination="9B7-1d-C0L" id="LK6-Oj-WiY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139" y="102"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

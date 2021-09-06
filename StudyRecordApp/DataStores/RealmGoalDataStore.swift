@@ -44,7 +44,8 @@ final class RealmGoalDataStore: GoalDataStoreProtocol {
                         memo: goal.memo,
                         priority: goal.priority,
                         dueDate: goal.dueDate,
-                        createdDate: goal.createdDate)
+                        createdDate: goal.createdDate,
+                        imageData: goal.imageData)
         try! realm.write {
             object.title = goal.title
             object.category = CategoryRealm(goal: goal)
@@ -52,6 +53,7 @@ final class RealmGoalDataStore: GoalDataStoreProtocol {
             object.priority = PriorityRealm(goal: goal)
             object.dueDate = goal.dueDate
             object.createdDate = goal.createdDate
+            object.imageData = goal.imageData
         }
     }
     
@@ -67,18 +69,13 @@ final class RealmGoalDataStore: GoalDataStoreProtocol {
 private extension Goal {
     
     init(goal: GoalRealm) {
-        let goal = Goal(title: goal.title,
-                        category: Category(goal: goal),
-                        memo: goal.memo,
-                        priority: Priority(goal: goal),
-                        dueDate: goal.dueDate,
-                        createdDate: goal.createdDate)
         self.title = goal.title
-        self.category = goal.category
+        self.category = Category(goal: goal)
         self.memo = goal.memo
-        self.priority = goal.priority
+        self.priority = Priority(goal: goal)
         self.dueDate = goal.dueDate
         self.createdDate = goal.createdDate
+        self.imageData = goal.imageData
     }
     
 }
@@ -112,13 +109,15 @@ private extension GoalRealm {
                         memo: goal.memo,
                         priority: goal.priority,
                         dueDate: goal.dueDate,
-                        createdDate: goal.createdDate)
+                        createdDate: goal.createdDate,
+                        imageData: goal.imageData)
         self.title = goal.title
         self.category = CategoryRealm(goal: goal)
         self.memo = goal.memo
         self.priority = PriorityRealm(goal: goal)
         self.dueDate = goal.dueDate
         self.createdDate = goal.createdDate
+        self.imageData = goal.imageData
     }
     
 }

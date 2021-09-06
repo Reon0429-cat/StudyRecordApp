@@ -10,9 +10,11 @@ import UIKit
 final class GoalTableViewCell: UITableViewCell {
     
     @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var myImageView: UIImageView!
     
-    func configure(title: String) {
+    func configure(title: String, image: UIImage?) {
         titleLabel.text = title
+        myImageView.image = image
     }
     
 }
