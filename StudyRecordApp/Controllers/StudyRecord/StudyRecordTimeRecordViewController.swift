@@ -81,11 +81,11 @@ private extension StudyRecordTimeRecordViewController {
         } else {
             delegate?.saveButtonDidTapped(history: history!, isHistory: isHistoryDidTapped)
         }
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true)
     }
     
     @IBAction func dismissButtonDidTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true)
     }
     
     @IBAction func deleteButtonDidTapped(_ sender: Any) {
@@ -101,10 +101,10 @@ private extension StudyRecordTimeRecordViewController {
         let alert = Alert.create(title: "本当に削除しますか")
             .addAction(title: "削除", style: .destructive) {
                 self.delegate?.deleteButtonDidTapped(index: self.tappedHistoryIndex!)
-                self.dismiss(animated: true, completion: nil)
+                self.dismiss(animated: true)
             }
             .addAction(title: "閉じる")
-        self.present(alert, animated: true)
+        present(alert, animated: true)
     }
     
 }

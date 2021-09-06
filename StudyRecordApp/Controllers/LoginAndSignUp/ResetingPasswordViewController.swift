@@ -63,7 +63,7 @@ private extension ResetingPasswordViewController {
                     }
                 case .success:
                     self.indicator.flash(.success) {
-                        self.dismiss(animated: true, completion: nil)
+                        self.dismiss(animated: true)
                     }
             }
         }

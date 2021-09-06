@@ -36,7 +36,7 @@ private extension StudyRecordMemoViewController {
     
     @IBAction func dismissButtonDidTapped(_ sender: Any) {
         if inputtedMemo == oldInputtedMemo {
-            dismiss(animated: true, completion: nil)
+            dismiss(animated: true)
         } else {
             showAlert()
         }
@@ -44,7 +44,7 @@ private extension StudyRecordMemoViewController {
     
     @IBAction func saveButtonDidTapped(_ sender: Any) {
         self.delegate?.savedMemo(memo: self.inputtedMemo)
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
     
 }
@@ -55,11 +55,11 @@ private extension StudyRecordMemoViewController {
     func showAlert() {
         let alert = Alert.create(title: "保存せずにメモを閉じますか")
             .addAction(title: "閉じる", style: .destructive) {
-                self.dismiss(animated: true, completion: nil)
+                self.dismiss(animated: true)
             }
             .addAction(title: "保存する") {
                 self.delegate?.savedMemo(memo: self.inputtedMemo)
-                self.dismiss(animated: true, completion: nil)
+                self.dismiss(animated: true)
             }
         present(alert, animated: true)
     }

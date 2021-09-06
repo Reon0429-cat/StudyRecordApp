@@ -67,11 +67,11 @@ private extension AdditionalStudyRecordViewController {
     func showAlert() {
         let alert = Alert.create(title: "保存せずに閉じますか")
             .addAction(title: "閉じる", style: .destructive) {
-                self.dismiss(animated: true, completion: nil)
+                self.dismiss(animated: true)
             }
             .addAction(title: "保存する") {
                 self.saveRecord()
-                self.dismiss(animated: true, completion: nil)
+                self.dismiss(animated: true)
             }
         present(alert, animated: true)
     }
@@ -205,13 +205,13 @@ extension AdditionalStudyRecordViewController: NavigationButtonDelegate {
     func titleButtonDidTapped(type: NavigationButtonType) {
         if type == .save {
             saveRecord()
-            dismiss(animated: true, completion: nil)
+            dismiss(animated: true)
         }
         if type == .dismiss {
             if isMandatoryItemFilled {
                 showAlert()
             } else {
-                dismiss(animated: true, completion: nil)
+                dismiss(animated: true)
             }
         }
     }

@@ -41,7 +41,7 @@ private extension GoalPriorityViewController {
     
     @IBAction func addButtonDidTapped(_ sender: Any) {
         delegate?.addButtonDidTapped(priority: inputtedPriority)
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
     
 }

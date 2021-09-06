@@ -78,13 +78,13 @@ private extension EditStudyRecordViewController {
                 self.saveButton.isEnabled(!self.oldInputtedTitle.isEmpty)
                 self.tableView.reloadData()
             }
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: true)
     }
     
     func showAlert() {
         let alert = Alert.create(title: "編集内容を破棄しますか")
             .addAction(title: "破棄する", style: .destructive) {
-                self.dismiss(animated: true, completion: nil)
+                self.dismiss(animated: true)
             }
             .addAction(title: "閉じる", style: .default)
         present(alert, animated: true)
@@ -320,11 +320,11 @@ extension EditStudyRecordViewController: NavigationButtonDelegate {
     func titleButtonDidTapped(type: NavigationButtonType) {
         if type == .save {
             recordUseCase.update(record: selectedRecord, at: selectedRow)
-            dismiss(animated: true, completion: nil)
+            dismiss(animated: true)
         }
         if type == .dismiss {
             if selectedRecord == recordUseCase.records[selectedRow] {
-                dismiss(animated: true, completion: nil)
+                dismiss(animated: true)
             } else {
                 showAlert()
             }

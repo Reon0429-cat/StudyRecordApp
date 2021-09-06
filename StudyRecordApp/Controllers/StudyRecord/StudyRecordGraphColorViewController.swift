@@ -35,11 +35,11 @@ private extension StudyRecordGraphColorViewController {
     @IBAction func saveButtonDidTapped(_ sender: Any) {
         let color = selectedTileView?.backgroundColor ?? .white
         delegate?.graphColorDidSelected(color: color)
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
     
     @IBAction func dismissButtonDidTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
     
 }

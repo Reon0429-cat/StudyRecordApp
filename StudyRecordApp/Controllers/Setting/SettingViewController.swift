@@ -97,9 +97,7 @@ private extension SettingViewController {
     
     @IBAction func logoutButtonDidTapped(_ sender: Any) {
         let alert = Alert.create(title: "本当にログアウトしてもよろしいですか")
-            .addAction(title: "閉じる", style: .destructive)
-            .addAction(title: "ログアウト") { [weak self] in
-                guard let self = self else { return }
+            .addAction(title: "ログアウト", style: .destructive) {
                 self.indicator.show(.progress)
                 self.userUseCase.logout { result in
                     switch result {
@@ -114,6 +112,7 @@ private extension SettingViewController {
                     }
                 }
             }
+            .addAction(title: "閉じる")
         present(alert, animated: true)
     }
     

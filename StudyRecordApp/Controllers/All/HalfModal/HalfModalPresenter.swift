@@ -43,12 +43,12 @@ final class HalfModalPresenter: NSObject {
     
     @objc
     private func overlayViewDidTapped(_ sender: AnyObject) {
-        viewController?.dismiss(animated: true, completion: nil)
+        viewController?.dismiss(animated: true)
     }
 
     @objc
     private func indicatorViewDidTapped(_ sender: AnyObject) {
-        viewController?.dismiss(animated: true, completion: nil)
+        viewController?.dismiss(animated: true)
     }
     
 }

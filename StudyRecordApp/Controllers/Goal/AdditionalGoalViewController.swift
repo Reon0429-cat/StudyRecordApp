@@ -126,7 +126,7 @@ private extension AdditionalGoalViewController {
             imagePickerController.modalPresentationStyle = .fullScreen
             imagePickerController.allowsEditing = true
             imagePickerController.delegate = self
-            self.present(imagePickerController, animated: true, completion: nil)
+            present(imagePickerController, animated: true)
         }
     }
     
@@ -330,13 +330,13 @@ extension AdditionalGoalViewController: NavigationButtonDelegate {
     func titleButtonDidTapped(type: NavigationButtonType) {
         if type == .save {
             saveGoal()
-            self.dismiss(animated: true, completion: nil)
+            dismiss(animated: true)
         }
         if type == .dismiss {
             if isMandatoryItemFilled {
                 showAlert()
             } else {
-                self.dismiss(animated: true, completion: nil)
+                dismiss(animated: true)
             }
         }
     }
@@ -354,7 +354,7 @@ extension AdditionalGoalViewController: UIImagePickerControllerDelegate,
         if picker.sourceType == .camera {
             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
         }
-        picker.dismiss(animated: true, completion: nil)
+        picker.dismiss(animated: true)
         tableView.reloadData()
     }
     

@@ -153,7 +153,7 @@ extension StudyRecordViewController: RecordTableViewCellDelegate {
             .addAction(title: "閉じる") {
                 self.dismiss(animated: true)
             }
-        self.present(alert, animated: true)
+        present(alert, animated: true)
     }
     
 }
