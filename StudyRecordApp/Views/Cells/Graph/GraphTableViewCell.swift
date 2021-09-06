@@ -15,11 +15,16 @@ final class GraphTableViewCell: UITableViewCell {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var myGraphView: UIView!
     @IBOutlet private weak var myGraphViewRightConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var segmentedControl: UISegmentedControl!
     
     private var graphView: ScrollableGraphView!
     private var lineData = [(color: UIColor, identifier: String, xTitle: String)]()
     private var sumData = [String: Double]()
     private var beforeIdentifier = ""
+    private var beforeYear = 0
+    private var years = [Int]()
+    private var segmentedControlSelectedIndexID = "segmentedControlSelectedIndexID"
+    var onSegmentedControlEvent: (() -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,16 +32,21 @@ final class GraphTableViewCell: UITableViewCell {
     }
     
     func configure(record: Record) {
-        titleLabel.text = record.title
-        
+        setupTitleLabel(record: record)
+        setupSegmentedControl(record: record)
         createGraphView()
         lineData.removeAll()
         sumData.removeAll()
+        beforeYear = 0
         setupLineData(record: record)
         createReferenceLines()
         myGraphView.subviews.forEach { $0.removeFromSuperview() }
         myGraphView.addSubview(graphView)
-        
+    }
+    
+    @IBAction private func segmentedControlDidSelected(_ sender: UISegmentedControl) {
+        UserDefaults.standard.set(sender.selectedSegmentIndex, forKey: segmentedControlSelectedIndexID)
+        onSegmentedControlEvent?()
     }
     
     private func createGraphView() {
@@ -54,25 +64,6 @@ final class GraphTableViewCell: UITableViewCell {
         graphView.shouldRangeAlwaysStartAtZero = true
         graphView.topMargin = 10
         graphView.dataPointSpacing = 30
-    }
-    
-    private func setupLineData(record: Record) {
-        guard let histories = record.histories else { return }
-        histories.forEach { historiy in
-            let identifier = "\(historiy.year)-\(historiy.month)-\(historiy.day)"
-            let data = Double(historiy.hour * 60 + historiy.minutes)
-            if beforeIdentifier == identifier {
-                let data = (sumData[identifier] ?? 0.0) + data
-                sumData.updateValue(data, forKey: identifier)
-            } else {
-                sumData[identifier] = data
-                beforeIdentifier = identifier
-            }
-            lineData.append((color: UIColor(record: record),
-                             identifier: identifier,
-                             xTitle: "\(historiy.month)/\(historiy.day)"))
-            createLineDot(color: UIColor(record: record), identifier: identifier)
-        }
     }
     
     private func createReferenceLines() {
@@ -119,21 +110,77 @@ extension GraphTableViewCell: ScrollableGraphViewDataSource {
     func value(forPlot plot: Plot,
                atIndex pointIndex: Int) -> Double {
         let identifier = lineData[pointIndex].identifier
-        guard let sumData = sumData[identifier] else { return 0.0 }
+        let selectedYear = years[segmentedControl.selectedSegmentIndex]
+        let filteredSumData = sumData.filter { $0.key.hasPrefix("\(selectedYear)") }
+        guard let sumData = filteredSumData[identifier] else { return 0.0 }
         let hour = Double(sumData / 60)
         let minutes = Double(Int(sumData) % 60 / 60)
         return hour + minutes
     }
     
     func label(atIndex pointIndex: Int) -> String {
-        return lineData[pointIndex].xTitle
+        let selectedYear = years[segmentedControl.selectedSegmentIndex]
+        let filteredLineData = lineData.filter { $0.identifier.hasPrefix("\(selectedYear)") }
+        return filteredLineData[pointIndex].xTitle
     }
     
     func numberOfPoints() -> Int {
         if sumData.isEmpty {
             return 0
         }
-        return sumData.count
+        let selectedYear = years[segmentedControl.selectedSegmentIndex]
+        let filteredSumData = sumData.filter { $0.key.hasPrefix("\(selectedYear)") }
+        return filteredSumData.count
+    }
+    
+}
+
+// MARK: - setup
+private extension GraphTableViewCell {
+    
+    func setupTitleLabel(record: Record) {
+        titleLabel.text = record.title
+    }
+    
+    func setupSegmentedControl(record: Record) {
+        years.removeAll()
+        record.histories?.forEach { history in
+            if beforeYear != history.year {
+                years.append(history.year)
+                beforeYear = history.year
+            }
+        }
+        segmentedControl.removeAllSegments()
+        years.enumerated().forEach { index, year in
+            segmentedControl.insertSegment(withTitle: "\(year)", at: index, animated: false)
+        }
+        
+        let index = UserDefaults.standard.integer(forKey: segmentedControlSelectedIndexID)
+        segmentedControl.selectedSegmentIndex = index
+        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black],
+                                                for: .normal)
+        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white],
+                                                for: .selected)
+        segmentedControl.selectedSegmentTintColor = .black
+    }
+    
+    func setupLineData(record: Record) {
+        guard let histories = record.histories else { return }
+        histories.forEach { historiy in
+            let identifier = "\(historiy.year)-\(historiy.month)-\(historiy.day)"
+            let data = Double(historiy.hour * 60 + historiy.minutes)
+            if beforeIdentifier == identifier {
+                let data = (sumData[identifier] ?? 0.0) + data
+                sumData.updateValue(data, forKey: identifier)
+            } else {
+                sumData[identifier] = data
+                beforeIdentifier = identifier
+            }
+            lineData.append((color: UIColor(record: record),
+                             identifier: identifier,
+                             xTitle: "\(historiy.month)/\(historiy.day)"))
+            createLineDot(color: UIColor(record: record), identifier: identifier)
+        }
     }
     
 }

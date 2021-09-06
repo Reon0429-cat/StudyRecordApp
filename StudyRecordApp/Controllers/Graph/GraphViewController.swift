@@ -70,6 +70,11 @@ extension GraphViewController: UITableViewDataSource {
         DispatchQueue.main.async {
             cell.configure(record: newRecord)
         }
+        cell.onSegmentedControlEvent = {
+            self.tableView.reloadRows(at: [IndexPath(row: indexPath.row,
+                                                     section: indexPath.section)],
+                                      with: .automatic)
+        }
         return cell
     }
     
