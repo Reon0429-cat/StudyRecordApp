@@ -145,6 +145,7 @@
 		ABFAB21026E63A830095EC20 /* GraphRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAB20F26E63A830095EC20 /* GraphRepository.swift */; };
 		ABFAB21226E63B350095EC20 /* GraphUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAB21126E63B350095EC20 /* GraphUseCase.swift */; };
 		ABFAB21426E67A2E0095EC20 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAB21326E67A2E0095EC20 /* Alert.swift */; };
+		ABFAB21626E6AD780095EC20 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAB21526E6AD780095EC20 /* CustomSegmentedControl.swift */; };
 		D14EABCB62E5596481983E6D /* Pods_StudyRecordApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7ADEAD2199951B48FEFB0D8 /* Pods_StudyRecordApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -289,6 +290,7 @@
 		ABFAB20F26E63A830095EC20 /* GraphRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphRepository.swift; sourceTree = "<group>"; };
 		ABFAB21126E63B350095EC20 /* GraphUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphUseCase.swift; sourceTree = "<group>"; };
 		ABFAB21326E67A2E0095EC20 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		ABFAB21526E6AD780095EC20 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		B7ADEAD2199951B48FEFB0D8 /* Pods_StudyRecordApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudyRecordApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F080AD4E0F25E92F286ED79A /* Pods-StudyRecordApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyRecordApp.debug.xcconfig"; path = "Target Support Files/Pods-StudyRecordApp/Pods-StudyRecordApp.debug.xcconfig"; sourceTree = "<group>"; };
 		F4A1350DA353A8FEAF4BEEB3 /* Pods-StudyRecordApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyRecordApp.release.xcconfig"; path = "Target Support Files/Pods-StudyRecordApp/Pods-StudyRecordApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -423,6 +425,7 @@
 				AB16308326CEABD400111F55 /* NavigationButton.xib */,
 				AB16308126CEAB9300111F55 /* NavigationButton.swift */,
 				ABFAB15426DF802A0095EC20 /* PriorityStackView.swift */,
+				ABFAB21526E6AD780095EC20 /* CustomSegmentedControl.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -998,6 +1001,7 @@
 				AB2B5B8E26A2D106009BD3C7 /* UITableViewCell+Extension.swift in Sources */,
 				AB13ED4926BB8128002F56FF /* RealmRecordDataStore.swift in Sources */,
 				AB9B4FD626D771C5001A7BAB /* UITextField+Extension.swift in Sources */,
+				ABFAB21626E6AD780095EC20 /* CustomSegmentedControl.swift in Sources */,
 				AB13EE6A26CB6965002F56FF /* RippleView.swift in Sources */,
 				AB86A85E26D4915700EA990A /* HalfModalPresentationController.swift in Sources */,
 				AB2B5B8626A2D0FD009BD3C7 /* NSObjectProtocol+Extension.swift in Sources */,

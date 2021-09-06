@@ -49,7 +49,7 @@ final class ThemeColorViewController: UIViewController {
     @IBOutlet private weak var mainColorView: ThemeColorView!
     @IBOutlet private weak var subColorView: ThemeColorView!
     @IBOutlet private weak var accentColorView: ThemeColorView!
-    @IBOutlet private weak var segmentedControl: UISegmentedControl!
+    @IBOutlet private weak var segmentedControl: CustomSegmentedControl!
     @IBOutlet private weak var segmentedControlBackView: UIView!
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var colorChoicesConceptContainerView: UIView!

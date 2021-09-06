@@ -14,7 +14,7 @@ protocol GoalPriorityVCDelegate: AnyObject {
 final class GoalPriorityViewController: UIViewController {
     
     @IBOutlet private weak var contentView: UIView!
-    @IBOutlet private weak var segmentedControl: UISegmentedControl!
+    @IBOutlet private weak var segmentedControl: CustomSegmentedControl!
     @IBOutlet private weak var pickerView: UIPickerView!
     
     weak var delegate: GoalPriorityVCDelegate?
