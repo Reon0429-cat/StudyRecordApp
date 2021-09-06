@@ -114,11 +114,11 @@ final class SettingViewController: UIViewController {
                         }
                     case .success:
                         self.indicator.flash(.success) {
-                            let loginAndSignUpVC = LoginAndSignUpViewController.instantiate()
-                            loginAndSignUpVC.modalPresentationStyle = .fullScreen
-                            self.present(loginAndSignUpVC, animated: true) {
-                                self.delegate?.loginAndSignUpVCDidShowed()
-                            }
+                            self.present(LoginAndSignUpViewController.self,
+                                         modalPresentationStyle: .fullScreen,
+                                         completion: {
+                                            self.delegate?.loginAndSignUpVCDidShowed()
+                                         })
                         }
                 }
             }
