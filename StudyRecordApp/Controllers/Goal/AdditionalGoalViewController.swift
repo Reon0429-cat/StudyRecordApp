@@ -14,7 +14,7 @@ final class AdditionalGoalViewController: UIViewController {
     @IBOutlet private weak var saveButton: NavigationButton!
     @IBOutlet private weak var tableView: UITableView!
     
-    private enum RowType: Int, CaseIterable {
+    enum RowType: Int, CaseIterable {
         case title
         case category
         case memo
@@ -40,8 +40,7 @@ final class AdditionalGoalViewController: UIViewController {
     private var inputtedMemo = ""
     private var inputtedImageData: Data?
     private var inputtedPriority = Priority(mark: .star, number: .one)
-    private var inputtedCreatedDate = Date()
-    private var inputtedDueDate = Date()
+    private var inputtedDate = (created: Date(), due: Date())
     private var halfModalPresenter = HalfModalPresenter()
     private var isMandatoryItemFilled: Bool {
         !inputtedTitle.isEmpty
@@ -51,6 +50,20 @@ final class AdditionalGoalViewController: UIViewController {
             dataStore: RealmGoalDataStore()
         )
     )
+    private func getDateType(type: RowType) -> GoalDateType {
+        switch type {
+            case .createdDate: return .created
+            case .dueDate: return .due
+            default: fatalError("typeが不適")
+        }
+    }
+    private func getDate(type: RowType) -> Date {
+        switch type {
+            case .createdDate: return inputtedDate.created
+            case .dueDate: return inputtedDate.due
+            default: fatalError("typeが不適")
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,8 +113,8 @@ private extension AdditionalGoalViewController {
                         category: Category(title: "カテゴリー"),
                         memo: inputtedMemo,
                         priority: inputtedPriority,
-                        dueDate: inputtedDueDate,
-                        createdDate: inputtedCreatedDate,
+                        dueDate: inputtedDate.due,
+                        createdDate: inputtedDate.created,
                         imageData: inputtedImageData)
         goalUseCase.create(goal: goal)
     }
@@ -118,34 +131,29 @@ private extension AdditionalGoalViewController {
     }
     
     func presentStudyRecordMemoVC() {
-        let studyRecordMemoVC = StudyRecordMemoViewController.instantiate()
-        studyRecordMemoVC.modalPresentationStyle = .overCurrentContext
-        studyRecordMemoVC.modalTransitionStyle = .crossDissolve
-        studyRecordMemoVC.inputtedMemo = inputtedMemo
-        studyRecordMemoVC.delegate = self
-        present(studyRecordMemoVC, animated: true, completion: nil)
+        present(StudyRecordMemoViewController.self,
+                modalPresentationStyle: .overCurrentContext,
+                modalTransitionStyle: .crossDissolve) { vc in
+            vc.inputtedMemo = self.inputtedMemo
+            vc.delegate = self
+        }
     }
     
     func presentGoalPriorityVC() {
-        let goalPriorityVC = GoalPriorityViewController.instantiate()
-        goalPriorityVC.delegate = self
-        goalPriorityVC.inputtedPriority = inputtedPriority
-        halfModalPresenter.viewController = goalPriorityVC
-        present(goalPriorityVC, animated: true, completion: nil)
+        present(GoalPriorityViewController.self) { vc in
+            vc.delegate = self
+            vc.inputtedPriority = self.inputtedPriority
+            self.halfModalPresenter.viewController = vc
+        }
     }
     
-    func presentGoalTimeVC(dateType: GoalDateType) {
-        let goalTimeVC = GoalTimeViewController.instantiate()
-        goalTimeVC.dateType = dateType
-        goalTimeVC.delegate = self
-        switch dateType {
-            case .created:
-                goalTimeVC.inputtedDate = inputtedCreatedDate
-            case .due:
-                goalTimeVC.inputtedDate = inputtedDueDate
+    func presentGoalTimeVC(rowType: RowType) {
+        present(GoalTimeViewController.self) { vc in
+            vc.delegate = self
+            vc.dateType = self.getDateType(type: rowType)
+            self.halfModalPresenter.viewController = vc
+            vc.inputtedDate = self.getDate(type: rowType)
         }
-        halfModalPresenter.viewController = goalTimeVC
-        present(goalTimeVC, animated: true, completion: nil)
     }
     
     func presentPhotoActionSheet(row: Int) {
@@ -189,15 +197,14 @@ extension AdditionalGoalViewController: UITableViewDelegate {
         switch rowType {
             case .title:
                 presentAlertWithTextField()
-            case .category: break
+            case .category:
+                break
             case .memo:
                 presentStudyRecordMemoVC()
             case .priority:
                 presentGoalPriorityVC()
-            case .dueDate:
-                presentGoalTimeVC(dateType: .due)
-            case .createdDate:
-                presentGoalTimeVC(dateType: .created)
+            case .dueDate, .createdDate:
+                presentGoalTimeVC(rowType: rowType)
             case .photo:
                 presentPhotoActionSheet(row: indexPath.row)
         }
@@ -243,7 +250,8 @@ extension AdditionalGoalViewController: UITableViewDataSource {
                                mandatoryIsHidden: false,
                                auxiliaryText: inputtedTitle)
                 return cell
-            case .category: return UITableViewCell()
+            case .category:
+                return UITableViewCell()
             case .memo:
                 let cell = tableView.dequeueReusableCustomCell(with: StudyRecordCustomTableViewCell.self)
                 cell.configure(titleText: rowType.title,
@@ -257,7 +265,7 @@ extension AdditionalGoalViewController: UITableViewDataSource {
                 return cell
             case .createdDate, .dueDate:
                 let cell = tableView.dequeueReusableCustomCell(with: StudyRecordCustomTableViewCell.self)
-                let inputtedDate = (rowType == .createdDate) ? inputtedCreatedDate : inputtedDueDate
+                let inputtedDate = getDate(type: rowType)
                 let auxiliaryText = Converter.convertToString(from: inputtedDate,
                                                               format: "yyyy年M月d日")
                 cell.configure(titleText: rowType.title,
@@ -311,9 +319,9 @@ extension AdditionalGoalViewController: GoalTimeVCDelegate {
     func saveButtonDidTapped(date: Date, dateType: GoalDateType) {
         switch dateType {
             case .created:
-                inputtedCreatedDate = date
+                inputtedDate.created = date
             case .due:
-                inputtedDueDate = date
+                inputtedDate.due = date
         }
         tableView.reloadData()
     }
