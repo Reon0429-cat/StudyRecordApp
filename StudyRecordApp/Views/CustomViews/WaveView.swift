@@ -138,11 +138,16 @@ private extension UIView {
                                      y: 0,
                                      width: self.frame.width,
                                      height: self.frame.height + info.marginY)
-        gradientLayer.colors = [UIColor.black.cgColor,
+        gradientLayer.colors = [UIColor.black.withAlphaComponent(0.8).cgColor,
                                 UIColor.white.cgColor]
         gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
         gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
         self.layer.addSublayer(gradientLayer)
+        
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset = CGSize(width: 3, height: 3)
+        self.layer.shadowOpacity = 0.8
+        self.layer.shadowRadius = 20
         
         gradientLayer.mask = layer
     }
