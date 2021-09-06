@@ -109,9 +109,10 @@ extension GraphTableViewCell: ScrollableGraphViewDataSource {
     
     func value(forPlot plot: Plot,
                atIndex pointIndex: Int) -> Double {
-        let identifier = lineData[pointIndex].identifier
         let selectedYear = years[segmentedControl.selectedSegmentIndex]
+        let filteredLineData = lineData.filter { $0.identifier.hasPrefix("\(selectedYear)") }
         let filteredSumData = sumData.filter { $0.key.hasPrefix("\(selectedYear)") }
+        let identifier = filteredLineData[pointIndex].identifier
         guard let sumData = filteredSumData[identifier] else { return 0.0 }
         let hour = Double(sumData / 60)
         let minutes = Double(Int(sumData) % 60 / 60)
