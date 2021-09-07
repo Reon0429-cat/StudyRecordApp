@@ -20,28 +20,40 @@ enum VibrateAction {
 extension UIView {
     
     func setFade(_ fadeType: FadeType) {
-        let duration = 0.2
         switch fadeType {
             case .out:
-                UIView.animate(withDuration: duration,
-                               delay: 0,
-                               options: .curveEaseIn) {
+                animate {
                     self.alpha = 0
-                } completion: { _ in
+                } completion: {
                     self.isHidden = true
                 }
             case .in:
-                UIView.animate(withDuration: duration,
-                               delay: 0,
-                               options: .curveEaseIn) {
+                animate {
                     self.isHidden = false
-                } completion: { _ in
-                    UIView.animate(withDuration: duration,
-                                   delay: 0,
-                                   options: .curveEaseIn) {
-                        self.alpha = 1
-                    }
+                } completion: {
+                    self.alpha = 1
                 }
+        }
+    }
+    
+    private func animate(animations: @escaping () -> Void,
+                         completion: @escaping () -> Void) {
+        UIView.animate(withDuration: 0.2,
+                       delay: 0,
+                       options: .curveEaseIn) {
+            animations()
+        } completion: { _ in
+            UIView.animate(withDuration: 0.2) {
+                completion()
+            }
+        }
+    }
+    
+    func toggleFade() {
+        if self.isHidden {
+            self.setFade(.in)
+        } else {
+            self.setFade(.out)
         }
     }
     
@@ -84,6 +96,32 @@ extension UIView {
                 animation()
             }
         }
+    }
+    
+    func setShadow(color: UIColor = .black,
+                   radius: CGFloat = 2,
+                   opacity: Float = 0.8,
+                   width: Double = 2,
+                   height: Double = 2,
+                   rect: (distance: CGFloat,
+                          height: CGFloat)? = nil) {
+        self.layer.shadowColor = color.cgColor
+        self.layer.shadowOffset = CGSize(width: width, height: height)
+        self.layer.shadowRadius = radius
+        self.layer.shadowOpacity = opacity
+        guard let rect = rect else {
+            self.layer.shadowPath = nil
+            return
+        }
+        let height: CGFloat = rect.height
+        let distance: CGFloat = rect.distance
+        let _rect = CGRect(
+            x: 0,
+            y: self.frame.height - distance,
+            width: self.frame.width,
+            height: height
+        )
+        self.layer.shadowPath = UIBezierPath(ovalIn: _rect).cgPath
     }
     
 }

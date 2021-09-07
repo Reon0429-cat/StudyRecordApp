@@ -8,13 +8,13 @@
 import UIKit
 
 protocol CountDownVCDelegate: AnyObject {
-    func viewWillAppear(index: Int)
+    func screenDidPresented(index: Int)
 }
 
 final class CountDownViewController: UIViewController {
     
     weak var delegate: CountDownVCDelegate?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,8 +23,8 @@ final class CountDownViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        delegate?.viewWillAppear(index: self.view.tag)
-
+        delegate?.screenDidPresented(index: self.view.tag)
+        
     }
     
 }

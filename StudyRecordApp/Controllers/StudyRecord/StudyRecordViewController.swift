@@ -13,9 +13,10 @@ import UIKit
 
 protocol StudyRecordVCDelegate: AnyObject {
     var isEdit: Bool { get }
-    func viewWillAppear(records: [Record], index: Int)
+    func viewWillAppear(records: [Record])
     func deleteButtonDidTappped(records: [Record])
     func baseViewLongPressDidRecognized()
+    func screenDidPresented(index: Int)
 }
 
 final class StudyRecordViewController: UIViewController {
@@ -42,7 +43,8 @@ final class StudyRecordViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        delegate?.viewWillAppear(records: records, index: self.view.tag)
+        delegate?.viewWillAppear(records: records)
+        delegate?.screenDidPresented(index: self.view.tag)
         tableView.reloadData()
         
     }

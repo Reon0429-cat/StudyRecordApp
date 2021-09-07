@@ -53,7 +53,7 @@ private enum RowType {
 }
 
 protocol SettingVCDelegate: AnyObject {
-    func viewWillAppear(index: Int)
+    func screenDidPresented(index: Int)
     func loginAndSignUpVCDidShowed()
 }
 
@@ -86,7 +86,7 @@ final class SettingViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        delegate?.viewWillAppear(index: self.view.tag)
+        delegate?.screenDidPresented(index: self.view.tag)
         
     }
     
