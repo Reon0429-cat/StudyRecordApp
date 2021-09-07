@@ -21,10 +21,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="203" height="157"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タイトル" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWF-D8-tLE">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タイトル" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="UWF-D8-tLE">
                         <rect key="frame" x="0.0" y="0.0" width="203" height="157"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -45,6 +45,7 @@
             </constraints>
             <size key="customSize" width="203" height="157"/>
             <connections>
+                <outlet property="rippleView" destination="auN-33-wld" id="wtT-eG-DpI"/>
                 <outlet property="titleLabel" destination="UWF-D8-tLE" id="NSZ-Zh-u11"/>
             </connections>
             <point key="canvasLocation" x="248.55072463768118" y="169.75446428571428"/>

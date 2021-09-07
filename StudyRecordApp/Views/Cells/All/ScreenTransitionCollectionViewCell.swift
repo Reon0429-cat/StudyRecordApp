@@ -10,18 +10,18 @@ import UIKit
 final class ScreenTransitionCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var rippleView: RippleView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        layer.cornerRadius = 20
-        layer.borderWidth = 1
-        layer.borderColor = UIColor.black.cgColor
         
     }
     
     func configure(title: String) {
         titleLabel.text = title
+        titleLabel.textColor = .white
+        rippleView.layer.cornerRadius = 20
+        rippleView.setGradation()
     }
 
 }

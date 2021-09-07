@@ -133,23 +133,22 @@ private extension UIView {
         }
         self.layer.addSublayer(layer)
         
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = CGRect(x: 0,
-                                     y: 0,
-                                     width: self.frame.width,
-                                     height: self.frame.height + info.marginY)
-        gradientLayer.colors = [UIColor.black.withAlphaComponent(0.8).cgColor,
-                                UIColor.white.cgColor]
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
-        gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
-        self.layer.addSublayer(gradientLayer)
+        self.setGradation(frame: CGRect(x: 0,
+                                        y: 0,
+                                        width: self.frame.width,
+                                        height: self.frame.height + info.marginY),
+                          colors: [.black, .white],
+                          startPoint: (x: 0, y: 0.5),
+                          endPoint: (x: 1, y: 0.5),
+                          locations: [0, 0.9],
+                          masksToBounds: false,
+                          layer: layer)
         
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOffset = CGSize(width: 3, height: 3)
         self.layer.shadowOpacity = 0.8
         self.layer.shadowRadius = 20
         
-        gradientLayer.mask = layer
     }
     
     private func createPath(layer: CAShapeLayer, info: WaveViewInfo) -> CGPath {

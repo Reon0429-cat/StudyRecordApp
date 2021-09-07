@@ -124,4 +124,32 @@ extension UIView {
         self.layer.shadowPath = UIBezierPath(ovalIn: _rect).cgPath
     }
     
+    func setGradation(frame: CGRect? = nil,
+                      colors: [UIColor] = [.gray, .black],
+                      startPoint: (x: CGFloat, y: CGFloat) = (x: 0.5, y: 0),
+                      endPoint: (x: CGFloat, y: CGFloat) = (x: 0.5, y: 1),
+                      locations: [NSNumber] = [0, 0.6],
+                      masksToBounds: Bool = true,
+                      layer: CAShapeLayer? = nil) {
+        let gradientLayer = CAGradientLayer()
+        let _frame: CGRect = {
+            if let frame = frame {
+                return frame
+            } else {
+                return CGRect(x: 0,
+                              y: 0,
+                              width: self.frame.width,
+                              height: self.frame.height)
+            }
+        }()
+        gradientLayer.frame = _frame
+        gradientLayer.colors = colors.map { $0.cgColor }
+        gradientLayer.startPoint = CGPoint(x: startPoint.x, y: startPoint.y)
+        gradientLayer.endPoint = CGPoint(x: endPoint.x, y: endPoint.y)
+        gradientLayer.locations = locations
+        self.layer.insertSublayer(gradientLayer, at: 0)
+        self.layer.masksToBounds = masksToBounds
+        gradientLayer.mask = layer
+    }
+    
 }

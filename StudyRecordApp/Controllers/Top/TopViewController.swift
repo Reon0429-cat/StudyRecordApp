@@ -52,6 +52,7 @@ final class TopViewController: UIViewController {
         setupTabBarCollectionView()
         setupPageViews()
         setupTitleLabel()
+        setupAddButton()
         setupEditButton()
         setupSortButton()
         setAnimation()
@@ -341,6 +342,12 @@ private extension TopViewController {
         titleLabel.text = screenType.title
     }
     
+    func setupAddButton() {
+        let image = UIImage(systemName: "plus")!.setColor(.white)
+        addButton.setImage(image)
+        addButton.setGradation(locations: [0, 0.9])
+    }
+    
     func setupEditButton() {
         editButton.delegate = self
         editButton.backgroundColor = .clear
@@ -380,23 +387,12 @@ private extension TopViewController {
     
     func setupAddButtonLayout() {
         addButton.layer.cornerRadius = addButton.frame.height / 2
-        addButton.layer.borderWidth = 1
-        addButton.layer.borderColor = UIColor.black.cgColor
-        addButton.setShadow()
     }
     
     func setupSeparatorViewLayout() {
-        let gradientLayer = CAGradientLayer()
-        let frame = CGRect(x: 0,
-                           y: 0,
-                           width: verticalSeparatorView.frame.width,
-                           height: verticalSeparatorView.frame.height)
-        gradientLayer.frame = frame
-        gradientLayer.colors = [UIColor.white.cgColor,
-                                UIColor.black.cgColor]
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-        gradientLayer.endPoint = CGPoint(x: 1, y: 1)
-        verticalSeparatorView.layer.addSublayer(gradientLayer)
+        verticalSeparatorView.setGradation(colors: [.white, .black],
+                                           startPoint: (x: 0, y: 0),
+                                           endPoint: (x: 1, y: 1))
     }
     
 }
