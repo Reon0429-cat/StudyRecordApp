@@ -7,6 +7,12 @@
 
 import ScrollableGraphView
 
+enum SelectedGraphType: Int, CaseIterable {
+    case line
+    case bar
+    case dot
+}
+
 protocol CustomScrollableGraphViewDelegate: AnyObject {
     func value(at index: Int) -> Double
     func label(at index: Int) -> String
@@ -45,11 +51,27 @@ final class CustomScrollableGraphView: UIView {
         ])
     }
     
-    func createLineDot(color: UIColor, identifier: String) {
-        let linePlot = createLine(color: color, identifier: identifier)
-        let dotPlot = createDot(color: color, identifier: identifier)
-        graphView.addPlot(plot: linePlot)
-        graphView.addPlot(plot: dotPlot)
+    func create(color: UIColor, identifier: String, graph: Graph) {
+        switch graph.selectedType {
+            case .line:
+                createLine(color: color,
+                           isFilled: graph.line.isFilled,
+                           isSmooth: graph.line.isSmooth,
+                           identifier: identifier)
+                if graph.line.withDots {
+                    createDot(color: color,
+                              isSquare: graph.dot.isSquare,
+                              identifier: identifier)
+                }
+            case .bar:
+                createBar(color: color,
+                          width: CGFloat(graph.bar.width),
+                          identifier: identifier)
+            case .dot:
+                createDot(color: color,
+                          isSquare: graph.dot.isSquare,
+                          identifier: identifier)
+        }
     }
     
 }
@@ -85,22 +107,46 @@ private extension CustomScrollableGraphView {
         graphView.addReferenceLines(referenceLines: referenceLines)
     }
     
-    func createLine(color: UIColor, identifier: String) -> LinePlot {
+    func createLine(color: UIColor, isFilled: Bool, isSmooth: Bool, identifier: String) {
         let linePlot = LinePlot(identifier: identifier)
         linePlot.lineColor = color
         linePlot.adaptAnimationType = .easeOut
         linePlot.animationDuration = 0.1
-        return linePlot
+        if isFilled {
+            linePlot.fillColor = color
+            linePlot.shouldFill = true
+        }
+        if isSmooth {
+            linePlot.lineStyle = .smooth
+            linePlot.fillType = .gradient
+            linePlot.fillGradientType = .linear
+            linePlot.fillGradientStartColor = color
+            linePlot.fillGradientEndColor = color.withAlphaComponent(0.6)
+        }
+        graphView.addPlot(plot: linePlot)
     }
     
-    func createDot(color: UIColor, identifier: String) -> DotPlot {
+    func createDot(color: UIColor, isSquare: Bool, identifier: String) {
         let dotPlot = DotPlot(identifier: identifier)
         dotPlot.dataPointType = .circle
         dotPlot.dataPointSize = 5
         dotPlot.dataPointFillColor = color
         dotPlot.adaptAnimationType = .easeOut
         dotPlot.animationDuration = 0.1
-        return dotPlot
+        if isSquare {
+            dotPlot.dataPointType = .square
+        }
+        graphView.addPlot(plot: dotPlot)
+    }
+    
+    func createBar(color: UIColor, width: CGFloat, identifier: String) {
+        let barPlot = BarPlot(identifier: identifier)
+        barPlot.adaptAnimationType = .easeOut
+        barPlot.animationDuration = 0.1
+        barPlot.barWidth = width
+        barPlot.barLineWidth = 2
+        barPlot.barColor = color
+        barPlot.barLineColor = color.withAlphaComponent(0.6)
     }
     
 }

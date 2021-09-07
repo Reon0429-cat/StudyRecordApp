@@ -28,7 +28,7 @@ final class GraphTableViewCell: UITableViewCell {
     private var segmentedControlSelectedIndexID = ""
     var onSegmentedControlEvent: (() -> Void)?
     
-    func configure(record: Record) {
+    func configure(record: Record, graph: Graph) {
         setupTitleLabel(record: record)
         segmentedControlSelectedIndexID = record.yearID
         setupSegmentedControl(record: record)
@@ -36,7 +36,7 @@ final class GraphTableViewCell: UITableViewCell {
         lineData.removeAll()
         sumData.removeAll()
         beforeYear = 0
-        setupLineData(record: record)
+        setupLineData(record: record, graph: graph)
         myGraphView.subviews.forEach { $0.removeFromSuperview() }
         graphView.set(to: myGraphView)
     }
@@ -115,7 +115,7 @@ private extension GraphTableViewCell {
         segmentedControl.selectedSegmentIndex = index
     }
     
-    func setupLineData(record: Record) {
+    func setupLineData(record: Record, graph: Graph) {
         guard let histories = record.histories else { return }
         histories.forEach { historiy in
             let identifier = "\(historiy.year)-\(historiy.month)-\(historiy.day)"
@@ -130,7 +130,9 @@ private extension GraphTableViewCell {
             lineData.append((color: UIColor(record: record),
                              identifier: identifier,
                              xTitle: "\(historiy.month)/\(historiy.day)"))
-            graphView.createLineDot(color: UIColor(record: record), identifier: identifier)
+            graphView.create(color: UIColor(record: record),
+                             identifier: identifier,
+                             graph: graph)
         }
     }
     

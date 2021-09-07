@@ -21,6 +21,11 @@ final class GraphViewController: UIViewController {
             dataStore: RealmRecordDataStore()
         )
     )
+    private var graphUseCase = GraphUseCase(
+        repository: GraphRepository(
+            dataStore: RealmGraphDataStore()
+        )
+    )
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,8 +73,9 @@ extension GraphViewController: UITableViewDataSource {
                                memo: record.memo,
                                yearID: record.yearID,
                                order: record.order)
+        let graph = graphUseCase.graph
         DispatchQueue.main.async {
-            cell.configure(record: newRecord)
+            cell.configure(record: newRecord, graph: graph) 
         }
         cell.onSegmentedControlEvent = {
             self.tableView.reloadRows(at: [IndexPath(row: indexPath.row,
