@@ -146,6 +146,8 @@
 		ABFAB21226E63B350095EC20 /* GraphUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAB21126E63B350095EC20 /* GraphUseCase.swift */; };
 		ABFAB21426E67A2E0095EC20 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAB21326E67A2E0095EC20 /* Alert.swift */; };
 		ABFAB21626E6AD780095EC20 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAB21526E6AD780095EC20 /* CustomSegmentedControl.swift */; };
+		ABFAB21826E779BC0095EC20 /* TabBarCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABFAB21726E779BC0095EC20 /* TabBarCollectionView.xib */; };
+		ABFAB21A26E779CE0095EC20 /* TabBarCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAB21926E779CE0095EC20 /* TabBarCollectionView.swift */; };
 		D14EABCB62E5596481983E6D /* Pods_StudyRecordApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7ADEAD2199951B48FEFB0D8 /* Pods_StudyRecordApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -291,6 +293,8 @@
 		ABFAB21126E63B350095EC20 /* GraphUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphUseCase.swift; sourceTree = "<group>"; };
 		ABFAB21326E67A2E0095EC20 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		ABFAB21526E6AD780095EC20 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
+		ABFAB21726E779BC0095EC20 /* TabBarCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarCollectionView.xib; sourceTree = "<group>"; };
+		ABFAB21926E779CE0095EC20 /* TabBarCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCollectionView.swift; sourceTree = "<group>"; };
 		B7ADEAD2199951B48FEFB0D8 /* Pods_StudyRecordApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudyRecordApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F080AD4E0F25E92F286ED79A /* Pods-StudyRecordApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyRecordApp.debug.xcconfig"; path = "Target Support Files/Pods-StudyRecordApp/Pods-StudyRecordApp.debug.xcconfig"; sourceTree = "<group>"; };
 		F4A1350DA353A8FEAF4BEEB3 /* Pods-StudyRecordApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyRecordApp.release.xcconfig"; path = "Target Support Files/Pods-StudyRecordApp/Pods-StudyRecordApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -417,6 +421,8 @@
 		AB16304D26CD68A200111F55 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				ABFAB21726E779BC0095EC20 /* TabBarCollectionView.xib */,
+				ABFAB21926E779CE0095EC20 /* TabBarCollectionView.swift */,
 				AB13EE6926CB6965002F56FF /* RippleView.swift */,
 				ABA056FE26B50CC700E3DF01 /* GraphColorTileView.xib */,
 				ABA0570026B50D1900E3DF01 /* GraphColorTileView.swift */,
@@ -855,6 +861,7 @@
 				ABA056F726B4C7D800E3DF01 /* StudyRecordGraphColorTableViewCell.xib in Resources */,
 				AB93C2C5266BC2D600C3AE8F /* EditStudyRecord.storyboard in Resources */,
 				AB8B705E26D6AD950069FF67 /* LoginAndSignUp.storyboard in Resources */,
+				ABFAB21826E779BC0095EC20 /* TabBarCollectionView.xib in Resources */,
 				AB13EDB126BFAA7D002F56FF /* StudyRecordSort.storyboard in Resources */,
 				AB16308426CEABD400111F55 /* NavigationButton.xib in Resources */,
 				ABFAB20926E394A60095EC20 /* GraphTableViewCell.xib in Resources */,
@@ -1015,6 +1022,7 @@
 				AB2B5BB926A2D2C2009BD3C7 /* AccordionColorTableViewCell.swift in Sources */,
 				AB86A85B26D4915700EA990A /* HalfModalDismissAnimatedTransition.swift in Sources */,
 				AB4397FD26DE0DB8008C8CA8 /* RealmGoalDataStore.swift in Sources */,
+				ABFAB21A26E779CE0095EC20 /* TabBarCollectionView.swift in Sources */,
 				AB13EDB426BFAB8B002F56FF /* StudyRecordSortTableViewCell.swift in Sources */,
 				AB43980426DE1DD6008C8CA8 /* GoalTableViewCell.swift in Sources */,
 				AB13ED1826B8F5EA002F56FF /* StudyRecordMemoViewController.swift in Sources */,

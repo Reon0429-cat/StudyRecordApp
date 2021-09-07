@@ -9,7 +9,7 @@ import UIKit
 
 final class TopViewController: UIViewController {
     
-    @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var tabBarCollectionView: TabBarCollectionView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var titleLabelLeftConstraint: NSLayoutConstraint!
     @IBOutlet private weak var sortButton: UIButton!
@@ -49,8 +49,8 @@ final class TopViewController: UIViewController {
         super.viewDidLoad()
         
         setupPageViewController()
+        setupTabBarCollectionView()
         setupPageViews()
-        setupCollectionView()
         setupTitleLabel()
         setupEditButton()
         setupSortButton()
@@ -139,19 +139,12 @@ private extension TopViewController {
     
     func screenDidChanged(item: Int) {
         screenType = ScreenType.allCases[item]
-        scrollCollectionViewItem(at: item)
+        tabBarCollectionView.scroll(at: item)
         UIView.animate(withDuration: 0) {
             self.setTitleLabelAnimation(index: item)
         } completion: { _ in
             self.currentPageIndex = item
         }
-    }
-    
-    func scrollCollectionViewItem(at item: Int) {
-        collectionView.scrollToItem(at: IndexPath(item: item,
-                                                  section: 0),
-                                    at: .centeredHorizontally,
-                                    animated: true)
     }
     
     func setTitleLabelAnimation(index: Int) {
@@ -187,57 +180,6 @@ private extension TopViewController {
     
 }
 
-// MARK: - UICollectionViewDelegate
-extension TopViewController: UICollectionViewDelegate {
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        didSelectItemAt indexPath: IndexPath) {
-        pageVCSetVC(at: indexPath.item,
-                    direction: currentPageIndex < indexPath.item ? .forward : .reverse)
-    }
-    
-}
-
-// MARK: - UICollectionViewDataSource
-extension TopViewController: UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        numberOfItemsInSection section: Int) -> Int {
-        return ScreenType.allCases.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCustomCell(with: ScreenTransitionCollectionViewCell.self,
-                                                            indexPath: indexPath)
-        let screenType = ScreenType.allCases[indexPath.row]
-        cell.configure(title: screenType.title)
-        return cell
-    }
-    
-}
-
-// MARK: - UICollectionViewDelegateFlowLayout
-extension TopViewController: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let horizontalSpace: CGFloat = 15
-        let verticalSpace: CGFloat = 15
-        let width = collectionView.frame.size.width / 2 - horizontalSpace * 2
-        let height = collectionView.frame.size.height - verticalSpace * 2
-        return CGSize(width: width, height: height)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 15
-    }
-    
-}
-
 // MARK: - UIPageViewControllerDataSource
 extension TopViewController: UIPageViewControllerDataSource {
     
@@ -257,6 +199,16 @@ extension TopViewController: UIPageViewControllerDataSource {
         guard let index = viewControllers.firstIndex(of: viewController),
               viewControllers.count - 1 > index else { return nil }
         return viewControllers[index + 1]
+    }
+    
+}
+
+// MARK: - TabBarCollectionViewDelegate
+extension TopViewController: TabBarCollectionViewDelegate {
+    
+    func collectionViewDidTapped(index: Int) {
+        pageVCSetVC(at: index,
+                    direction: currentPageIndex < index ? .forward : .reverse)
     }
     
 }
@@ -359,6 +311,10 @@ private extension TopViewController {
         pageViewController.dataSource = self
     }
     
+    func setupTabBarCollectionView() {
+        tabBarCollectionView.delegate = self
+    }
+    
     func setupPageViews() {
         let studyRecordVC = StudyRecordViewController.instantiate()
         studyRecordVC.delegate = self
@@ -376,18 +332,6 @@ private extension TopViewController {
                                               direction: .forward,
                                               animated: true,
                                               completion: nil)
-    }
-    
-    func setupCollectionView() {
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.registerCustomCell(ScreenTransitionCollectionViewCell.self)
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.showsHorizontalScrollIndicator = false
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
-        collectionView.collectionViewLayout = layout
     }
     
     func setupTitleLabel() {
