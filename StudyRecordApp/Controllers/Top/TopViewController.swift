@@ -28,18 +28,7 @@ final class TopViewController: UIViewController {
         static let editButtonRight: CGFloat = 70
         static let addButtonRight: CGFloat = 50
     }
-    private var navigationButtonType: NavigationButtonType = .edit {
-        didSet {
-            editButton.type = navigationButtonType
-        }
-    }
     private var screenType: ScreenType = .record
-    private func getScreenType(item: Int) -> ScreenType {
-        guard let screenType = ScreenType(rawValue: item) else {
-            fatalError("予期しないitemです。")
-        }
-        return screenType
-    }
     private var userUseCase = UserUseCase(
         repository: UserRepository(
             dataStore: FirebaseUserDataStore()
@@ -48,7 +37,6 @@ final class TopViewController: UIViewController {
     private var pageViewController: UIPageViewController!
     private var viewControllers = [UIViewController]()
     private var currentPageIndex = 0
-    private var isEditMode = true
     
     override func loadView() {
         super.loadView()
@@ -111,13 +99,29 @@ private extension TopViewController {
             case .goal:
                 present(AdditionalGoalViewController.self,
                         modalPresentationStyle: .fullScreen)
-            default: break
+            case .graph:
+                break
+            case .countDown:
+                break
+            case .setting:
+                break
         }
     }
     
     @IBAction func sortButtonDidTapped(_ sender: Any) {
-        present(StudyRecordSortViewController.self,
-                modalPresentationStyle: .fullScreen)
+        switch screenType {
+            case .record:
+                present(StudyRecordSortViewController.self,
+                        modalPresentationStyle: .fullScreen)
+            case .goal:
+                break
+            case .graph:
+                break
+            case .countDown:
+                break
+            case .setting:
+                break
+        }
     }
     
 }
@@ -126,16 +130,15 @@ private extension TopViewController {
 private extension TopViewController {
     
     func changeEditMode(type: NavigationButtonType) {
-        navigationButtonType = (navigationButtonType == .edit) ? .completion : .edit
+        editButton.changeType(to: type)
         if let studyRecordVC = viewControllers.first as? StudyRecordViewController {
             studyRecordVC.reloadTableView()
         }
-        sortButton.setFade(isEditMode ? .in : .out)
-        isEditMode.toggle()
+        sortButton.toggleFade()
     }
     
     func screenDidChanged(item: Int) {
-        screenType = getScreenType(item: item)
+        screenType = ScreenType.allCases[item]
         scrollCollectionViewItem(at: item)
         UIView.animate(withDuration: 0) {
             self.setTitleLabelAnimation(index: item)
@@ -175,7 +178,7 @@ private extension TopViewController {
         }
     }
     
-    func pageVCSetVCs(at item: Int, direction: UIPageViewController.NavigationDirection) {
+    func pageVCSetVC(at item: Int, direction: UIPageViewController.NavigationDirection) {
         pageViewController.setViewControllers([viewControllers[item]],
                                               direction: direction,
                                               animated: true,
@@ -189,8 +192,8 @@ extension TopViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
-        pageVCSetVCs(at: indexPath.item,
-                     direction: currentPageIndex < indexPath.item ? .forward : .reverse)
+        pageVCSetVC(at: indexPath.item,
+                    direction: currentPageIndex < indexPath.item ? .forward : .reverse)
     }
     
 }
@@ -207,7 +210,7 @@ extension TopViewController: UICollectionViewDataSource {
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCustomCell(with: ScreenTransitionCollectionViewCell.self,
                                                             indexPath: indexPath)
-        let screenType = getScreenType(item: indexPath.item)
+        let screenType = ScreenType.allCases[indexPath.row]
         cell.configure(title: screenType.title)
         return cell
     }
@@ -258,33 +261,8 @@ extension TopViewController: UIPageViewControllerDataSource {
     
 }
 
-// MARK: - StudyRecordVCDelegate
-extension TopViewController: StudyRecordVCDelegate {
-    
-    var isEdit: Bool {
-        navigationButtonType == .completion
-    }
-    
-    func viewWillAppear(records: [Record]) {
-        editButton.isEnabled(!records.isEmpty)
-    }
-    
-    func deleteButtonDidTappped(records: [Record]) {
-        if records.isEmpty {
-            changeEditMode(type: .edit)
-        }
-        editButton.isEnabled(!records.isEmpty)
-    }
-    
-    func baseViewLongPressDidRecognized() {
-        if navigationButtonType == .edit {
-            changeEditMode(type: navigationButtonType)
-        }
-    }
-    
-}
-
-extension TopViewController: GoalVCDelegate, GraphVCDelegate, CountDownVCDelegate {
+// MARK: - 共通のdelegate
+extension TopViewController {
     
     func screenDidPresented(index: Int) {
         screenDidChanged(item: index)
@@ -309,11 +287,52 @@ extension TopViewController: GoalVCDelegate, GraphVCDelegate, CountDownVCDelegat
     
 }
 
+// MARK: - StudyRecordVCDelegate
+extension TopViewController: StudyRecordVCDelegate {
+    
+    var isEdit: Bool {
+        editButton.isType(.completion)
+    }
+    
+    func viewWillAppear(records: [Record]) {
+        editButton.isEnabled(!records.isEmpty)
+    }
+    
+    func deleteButtonDidTappped(records: [Record]) {
+        if records.isEmpty {
+            changeEditMode(type: .edit)
+        }
+        editButton.isEnabled(!records.isEmpty)
+    }
+    
+    func baseViewLongPressDidRecognized() {
+        if editButton.isType(.edit) {
+            changeEditMode(type: .completion)
+        }
+    }
+    
+}
+
+// MARK: - GoalVCDelegate
+extension TopViewController: GoalVCDelegate {
+    
+}
+
+// MARK: - GraphVCDelegate
+extension TopViewController: GraphVCDelegate {
+    
+}
+
+// MARK: - CountDownVCDelegate
+extension TopViewController: CountDownVCDelegate {
+    
+}
+
 // MARK: - SettingVCDelegate
 extension TopViewController: SettingVCDelegate {
     
     func loginAndSignUpVCDidShowed() {
-        pageVCSetVCs(at: 0, direction: .reverse)
+        pageVCSetVC(at: 0, direction: .reverse)
         screenDidChanged(item: 0)
     }
     
@@ -323,7 +342,12 @@ extension TopViewController: SettingVCDelegate {
 extension TopViewController: NavigationButtonDelegate {
     
     func titleButtonDidTapped(type: NavigationButtonType) {
-        changeEditMode(type: type)
+        changeEditMode(type: {
+            switch type {
+                case .edit: return .completion
+                default: return .edit
+            }
+        }())
     }
     
 }

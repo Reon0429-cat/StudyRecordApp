@@ -56,6 +56,14 @@ final class NavigationButton: UIButton {
         bottomView.backgroundColor = bool ? .black : .gray
     }
     
+    func changeType(to type: NavigationButtonType) {
+        self.type = type
+    }
+    
+    func isType(_ type: NavigationButtonType) -> Bool {
+        self.type == type
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadNib()

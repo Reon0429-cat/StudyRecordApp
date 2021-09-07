@@ -20,28 +20,40 @@ enum VibrateAction {
 extension UIView {
     
     func setFade(_ fadeType: FadeType) {
-        let duration = 0.2
         switch fadeType {
             case .out:
-                UIView.animate(withDuration: duration,
-                               delay: 0,
-                               options: .curveEaseIn) {
+                animate {
                     self.alpha = 0
-                } completion: { _ in
+                } completion: {
                     self.isHidden = true
                 }
             case .in:
-                UIView.animate(withDuration: duration,
-                               delay: 0,
-                               options: .curveEaseIn) {
+                animate {
                     self.isHidden = false
-                } completion: { _ in
-                    UIView.animate(withDuration: duration,
-                                   delay: 0,
-                                   options: .curveEaseIn) {
-                        self.alpha = 1
-                    }
+                } completion: {
+                    self.alpha = 1
                 }
+        }
+    }
+    
+    private func animate(animations: @escaping () -> Void,
+                         completion: @escaping () -> Void) {
+        UIView.animate(withDuration: 0.2,
+                       delay: 0,
+                       options: .curveEaseIn) {
+            animations()
+        } completion: { _ in
+            UIView.animate(withDuration: 0.2) {
+                completion()
+            }
+        }
+    }
+    
+    func toggleFade() {
+        if self.isHidden {
+            self.setFade(.in)
+        } else {
+            self.setFade(.out)
         }
     }
     
