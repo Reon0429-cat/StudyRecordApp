@@ -9,7 +9,6 @@ import UIKit
 
 final class TopViewController: UIViewController {
     
-    @IBOutlet private weak var tabBarCollectionView: TabBarCollectionView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var titleLabelLeftConstraint: NSLayoutConstraint!
     @IBOutlet private weak var sortButton: UIButton!
@@ -35,6 +34,7 @@ final class TopViewController: UIViewController {
         )
     )
     private var pageViewController: UIPageViewController!
+    private var tabBarCollectionVC: TabBarCollectionViewController!
     private var viewControllers = [UIViewController]()
     private var currentPageIndex = 0
     
@@ -83,6 +83,9 @@ final class TopViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let pageViewController = segue.destination as? UIPageViewController {
             self.pageViewController = pageViewController
+        }
+        if let tabBarCollectionVC = segue.destination as? TabBarCollectionViewController {
+            self.tabBarCollectionVC = tabBarCollectionVC
         }
     }
     
@@ -139,7 +142,7 @@ private extension TopViewController {
     
     func screenDidChanged(item: Int) {
         screenType = ScreenType.allCases[item]
-        tabBarCollectionView.scroll(at: item)
+        tabBarCollectionVC.scroll(at: item)
         UIView.animate(withDuration: 0) {
             self.setTitleLabelAnimation(index: item)
         } completion: { _ in
@@ -204,7 +207,7 @@ extension TopViewController: UIPageViewControllerDataSource {
 }
 
 // MARK: - TabBarCollectionViewDelegate
-extension TopViewController: TabBarCollectionViewDelegate {
+extension TopViewController: TabBarCollectionVCDelegate {
     
     func collectionViewDidTapped(index: Int) {
         pageVCSetVC(at: index,
@@ -312,7 +315,7 @@ private extension TopViewController {
     }
     
     func setupTabBarCollectionView() {
-        tabBarCollectionView.delegate = self
+        tabBarCollectionVC.delegate = self
     }
     
     func setupPageViews() {

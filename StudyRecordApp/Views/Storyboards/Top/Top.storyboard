@@ -101,11 +101,24 @@
                                     <action selector="sortButtonDidTapped:" destination="gDA-S7-B4I" eventType="touchUpInside" id="jIp-9z-3WA"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kRt-lZ-Y0n" customClass="TabBarCollectionView" customModule="StudyRecordApp" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kRt-lZ-Y0n">
                                 <rect key="frame" x="0.0" y="752" width="301" height="110"/>
+                                <subviews>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1zi-JH-gcu">
+                                        <rect key="frame" x="0.0" y="0.0" width="301" height="110"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <segue destination="xR7-ze-SAZ" kind="embed" id="eGU-ll-9V6"/>
+                                        </connections>
+                                    </containerView>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="1zi-JH-gcu" secondAttribute="trailing" id="N0v-CM-OO7"/>
                                     <constraint firstAttribute="height" constant="110" id="TUz-xP-2h3"/>
+                                    <constraint firstAttribute="bottom" secondItem="1zi-JH-gcu" secondAttribute="bottom" id="avv-b2-PNY"/>
+                                    <constraint firstItem="1zi-JH-gcu" firstAttribute="top" secondItem="kRt-lZ-Y0n" secondAttribute="top" id="dWZ-3U-mpC"/>
+                                    <constraint firstItem="1zi-JH-gcu" firstAttribute="leading" secondItem="kRt-lZ-Y0n" secondAttribute="leading" id="p2i-Wv-9GH"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -154,7 +167,6 @@
                         <outlet property="editButtonRightConstraint" destination="BkV-mg-PQ5" id="uON-xO-a2l"/>
                         <outlet property="middleWaveView" destination="8Bf-hN-dBB" id="H40-si-Q0w"/>
                         <outlet property="sortButton" destination="i73-vd-DE0" id="0wB-r1-8Ku"/>
-                        <outlet property="tabBarCollectionView" destination="kRt-lZ-Y0n" id="XuC-ss-W5H"/>
                         <outlet property="titleLabel" destination="JvU-rz-cMR" id="adk-KU-6WE"/>
                         <outlet property="titleLabelLeftConstraint" destination="8Ry-6W-LOA" id="xSe-49-VeP"/>
                         <outlet property="topWaveView" destination="K0S-IG-iAg" id="KXP-5M-V0k"/>
@@ -171,7 +183,44 @@
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Ct8-C7-lT7" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lqe-Mg-yM4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2567" y="413"/>
+            <point key="canvasLocation" x="2620" y="413"/>
+        </scene>
+        <!--Tab Bar Collection View Controller-->
+        <scene sceneID="y4W-tT-h3D">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="paz-SE-vXL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController id="xR7-ze-SAZ" customClass="TabBarCollectionViewController" customModule="StudyRecordApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IlH-bx-wif">
+                        <rect key="frame" x="0.0" y="0.0" width="301" height="110"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yKl-UI-Kjm">
+                                <rect key="frame" x="0.0" y="0.0" width="301" height="110"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Os0-hB-d40">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Q1v-B4-ETq"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="yKl-UI-Kjm" firstAttribute="top" secondItem="IlH-bx-wif" secondAttribute="top" id="AL8-bd-CRA"/>
+                            <constraint firstAttribute="trailing" secondItem="yKl-UI-Kjm" secondAttribute="trailing" id="CHV-oA-U6F"/>
+                            <constraint firstAttribute="bottom" secondItem="yKl-UI-Kjm" secondAttribute="bottom" id="VXu-dw-tIu"/>
+                            <constraint firstItem="yKl-UI-Kjm" firstAttribute="leading" secondItem="IlH-bx-wif" secondAttribute="leading" id="w4c-jx-sn1"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="yKl-UI-Kjm" id="DHi-RO-WxG"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1780" y="863"/>
         </scene>
     </scenes>
     <resources>
