@@ -7,12 +7,6 @@
 
 import ScrollableGraphView
 
-enum SelectedGraphType: Int, CaseIterable {
-    case line
-    case bar
-    case dot
-}
-
 protocol CustomScrollableGraphViewDelegate: AnyObject {
     func value(at index: Int) -> Double
     func label(at index: Int) -> String

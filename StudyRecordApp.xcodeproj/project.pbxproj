@@ -54,6 +54,8 @@
 		AB16308426CEABD400111F55 /* NavigationButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB16308326CEABD400111F55 /* NavigationButton.xib */; };
 		AB20F80C26E7B50D00564B14 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB20F80B26E7B50D00564B14 /* UIImage+Extension.swift */; };
 		AB20F80E26E7CBAE00564B14 /* ScrollableGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB20F80D26E7CBAE00564B14 /* ScrollableGraphView.swift */; };
+		AB20F81026E7F3DB00564B14 /* GraphKindSelecting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB20F80F26E7F3DB00564B14 /* GraphKindSelecting.storyboard */; };
+		AB20F81226E7F3E100564B14 /* GraphKindSelectingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB20F81126E7F3E100564B14 /* GraphKindSelectingViewController.swift */; };
 		AB275FFE26DCAA56009F63B3 /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB275FFD26DCAA56009F63B3 /* Indicator.swift */; };
 		AB2B5B8326A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B7E26A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift */; };
 		AB2B5B8426A2D0FD009BD3C7 /* NotificationName+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B7F26A2D0FD009BD3C7 /* NotificationName+Extension.swift */; };
@@ -200,6 +202,8 @@
 		AB16308326CEABD400111F55 /* NavigationButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavigationButton.xib; sourceTree = "<group>"; };
 		AB20F80B26E7B50D00564B14 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		AB20F80D26E7CBAE00564B14 /* ScrollableGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableGraphView.swift; sourceTree = "<group>"; };
+		AB20F80F26E7F3DB00564B14 /* GraphKindSelecting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GraphKindSelecting.storyboard; sourceTree = "<group>"; };
+		AB20F81126E7F3E100564B14 /* GraphKindSelectingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphKindSelectingViewController.swift; sourceTree = "<group>"; };
 		AB275FFD26DCAA56009F63B3 /* Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
 		AB2B5B7E26A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
 		AB2B5B7F26A2D0FD009BD3C7 /* NotificationName+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotificationName+Extension.swift"; sourceTree = "<group>"; };
@@ -372,6 +376,7 @@
 			isa = PBXGroup;
 			children = (
 				AB13EDFB26C8C596002F56FF /* GraphViewController.swift */,
+				AB20F81126E7F3E100564B14 /* GraphKindSelectingViewController.swift */,
 			);
 			path = Graph;
 			sourceTree = "<group>";
@@ -399,6 +404,7 @@
 			isa = PBXGroup;
 			children = (
 				AB13EDF526C8BAB7002F56FF /* Graph.storyboard */,
+				AB20F80F26E7F3DB00564B14 /* GraphKindSelecting.storyboard */,
 			);
 			path = Graph;
 			sourceTree = "<group>";
@@ -853,6 +859,7 @@
 				AB8B705026D62FA90069FF67 /* Login.storyboard in Resources */,
 				AB8B704C26D600500069FF67 /* GoogleService-Info.plist in Resources */,
 				ABFAB1E526E11FF80095EC20 /* GoalTime.storyboard in Resources */,
+				AB20F81026E7F3DB00564B14 /* GraphKindSelecting.storyboard in Resources */,
 				AB43980526DE1DD6008C8CA8 /* GoalTableViewCell.xib in Resources */,
 				AB13ED7E26BE7061002F56FF /* StudyRecordHistoryTableViewCell.xib in Resources */,
 				AB2B5BB826A2D2C2009BD3C7 /* AccordionColorTableViewCell.xib in Resources */,
@@ -989,6 +996,7 @@
 				AB2B5BC726A2D36F009BD3C7 /* ColorChoicesConceptViewController.swift in Sources */,
 				AB2B5BB726A2D2C2009BD3C7 /* ColorConceptTableViewCell.swift in Sources */,
 				AB2B5B8326A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift in Sources */,
+				AB20F81226E7F3E100564B14 /* GraphKindSelectingViewController.swift in Sources */,
 				AB93C268266A7DFF00C3AE8F /* AdditionalStudyRecordViewController.swift in Sources */,
 				ABFAB20E26E638390095EC20 /* RealmGraphDataStore.swift in Sources */,
 				AB2B5B9E26A2D1B7009BD3C7 /* NaturalConcept.swift in Sources */,
