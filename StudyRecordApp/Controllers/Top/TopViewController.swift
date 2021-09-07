@@ -68,7 +68,6 @@ final class TopViewController: UIViewController {
         setupSortButton()
         setAnimation()
         setupWaveViews()
-        setupSeparatorView()
         
     }
     
@@ -87,7 +86,9 @@ final class TopViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        setupAddButton()
+        setupAddButtonLayout()
+        setupTitleLabelLayout()
+        setupSeparatorViewLayout()
         
     }
     
@@ -136,7 +137,6 @@ private extension TopViewController {
     func screenDidChanged(item: Int) {
         screenType = getScreenType(item: item)
         scrollCollectionViewItem(at: item)
-        reloadViews(index: item)
         UIView.animate(withDuration: 0) {
             self.setTitleLabelAnimation(index: item)
         } completion: { _ in
@@ -149,21 +149,6 @@ private extension TopViewController {
                                                   section: 0),
                                     at: .centeredHorizontally,
                                     animated: true)
-    }
-    
-    func reloadViews(index: Int) {
-        if screenType == .setting {
-            editButton.isHidden = true
-            addButton.isHidden = true
-        } else {
-            editButton.isHidden = false
-            addButton.isHidden = false
-        }
-        if screenType == .countDown {
-            titleLabel.font = .boldSystemFont(ofSize: 30)
-        } else {
-            titleLabel.font = .boldSystemFont(ofSize: 40)
-        }
     }
     
     func setTitleLabelAnimation(index: Int) {
@@ -280,9 +265,8 @@ extension TopViewController: StudyRecordVCDelegate {
         navigationButtonType == .completion
     }
     
-    func viewWillAppear(records: [Record], index: Int) {
+    func viewWillAppear(records: [Record]) {
         editButton.isEnabled(!records.isEmpty)
-        screenDidChanged(item: index)
     }
     
     func deleteButtonDidTappped(records: [Record]) {
@@ -302,8 +286,25 @@ extension TopViewController: StudyRecordVCDelegate {
 
 extension TopViewController: GoalVCDelegate, GraphVCDelegate, CountDownVCDelegate {
     
-    func viewWillAppear(index: Int) {
+    func screenDidPresented(index: Int) {
         screenDidChanged(item: index)
+        switch screenType {
+            case .record:
+                editButton.setFade(.in)
+                addButton.setFade(.in)
+            case .goal:
+                editButton.setFade(.in)
+                addButton.setFade(.in)
+            case .graph:
+                editButton.setFade(.in)
+                addButton.setFade(.in)
+            case .countDown:
+                editButton.setFade(.in)
+                addButton.setFade(.in)
+            case .setting:
+                editButton.setFade(.out)
+                addButton.setFade(.out)
+        }
     }
     
 }
@@ -369,12 +370,6 @@ private extension TopViewController {
         titleLabel.text = screenType.title
     }
     
-    func setupAddButton() {
-        addButton.layer.cornerRadius = addButton.frame.height / 2
-        addButton.layer.borderWidth = 1
-        addButton.layer.borderColor = UIColor.black.cgColor
-    }
-    
     func setupEditButton() {
         editButton.delegate = self
         editButton.backgroundColor = .clear
@@ -392,7 +387,34 @@ private extension TopViewController {
         bottomWaveView.create(isFill: false, marginY: 23)
     }
     
-    func setupSeparatorView() {
+    func setupAnimation() {
+        titleLabelLeftConstraint.constant -= LayoutConstant.titleLabelLeft
+        titleLabel.alpha = 0
+        
+        editButtonRightConstraint.constant -= LayoutConstant.editButtonRight
+        editButton.alpha = 0
+        
+        addButtonRightConstraint.constant -= LayoutConstant.addButtonRight
+        addButton.alpha = 0
+    }
+    
+}
+
+// MARK: - setup layout
+private extension TopViewController {
+    
+    func setupTitleLabelLayout() {
+        titleLabel.setShadow(rect: (distance: 10, height: 5))
+    }
+    
+    func setupAddButtonLayout() {
+        addButton.layer.cornerRadius = addButton.frame.height / 2
+        addButton.layer.borderWidth = 1
+        addButton.layer.borderColor = UIColor.black.cgColor
+        addButton.setShadow()
+    }
+    
+    func setupSeparatorViewLayout() {
         let gradientLayer = CAGradientLayer()
         let frame = CGRect(x: 0,
                            y: 0,
@@ -404,17 +426,6 @@ private extension TopViewController {
         gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         gradientLayer.endPoint = CGPoint(x: 1, y: 1)
         verticalSeparatorView.layer.addSublayer(gradientLayer)
-    }
-    
-    func setupAnimation() {
-        titleLabelLeftConstraint.constant -= LayoutConstant.titleLabelLeft
-        titleLabel.alpha = 0
-        
-        editButtonRightConstraint.constant -= LayoutConstant.editButtonRight
-        editButton.alpha = 0
-        
-        addButtonRightConstraint.constant -= LayoutConstant.addButtonRight
-        addButton.alpha = 0
     }
     
 }
@@ -442,4 +453,3 @@ private extension TopViewController {
     }
     
 }
-

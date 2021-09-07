@@ -83,6 +83,7 @@ final class NavigationButton: UIButton {
     
     private func setup() {
         bottomView.backgroundColor = .black
+        self.setShadow()
         titleButton.setTitle(type?.title ?? "")
     }
     

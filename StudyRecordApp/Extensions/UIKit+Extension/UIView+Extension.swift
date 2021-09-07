@@ -86,4 +86,30 @@ extension UIView {
         }
     }
     
+    func setShadow(color: UIColor = .black,
+                   radius: CGFloat = 2,
+                   opacity: Float = 0.8,
+                   width: Double = 2,
+                   height: Double = 2,
+                   rect: (distance: CGFloat,
+                          height: CGFloat)? = nil) {
+        self.layer.shadowColor = color.cgColor
+        self.layer.shadowOffset = CGSize(width: width, height: height)
+        self.layer.shadowRadius = radius
+        self.layer.shadowOpacity = opacity
+        guard let rect = rect else {
+            self.layer.shadowPath = nil
+            return
+        }
+        let height: CGFloat = rect.height
+        let distance: CGFloat = rect.distance
+        let _rect = CGRect(
+            x: 0,
+            y: self.frame.height - distance,
+            width: self.frame.width,
+            height: height
+        )
+        self.layer.shadowPath = UIBezierPath(ovalIn: _rect).cgPath
+    }
+    
 }
