@@ -6,12 +6,10 @@
 //
 
 import UIKit
-import ScrollableGraphView
 
 // MARK: - ToDo 今日が一番右にスクロールされるようのする
 // MARK: - ToDo 編集で間を0で埋めるかどうかを選択できるようにする
 // MARK: - ToDo セグメントを編集の方に移動させる
-// MARK: - ToDo セグメントを共通化する
 // MARK: - ToDo データがないときに、データがないよラベルを表示させる
 
 final class GraphTableViewCell: UITableViewCell {
@@ -21,7 +19,7 @@ final class GraphTableViewCell: UITableViewCell {
     @IBOutlet private weak var myGraphViewRightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var segmentedControl: CustomSegmentedControl!
     
-    private var graphView: ScrollableGraphView!
+    private var graphView: CustomScrollableGraphView!
     private var lineData = [(color: UIColor, identifier: String, xTitle: String)]()
     private var sumData = [String: Double]()
     private var beforeIdentifier = ""
@@ -34,96 +32,46 @@ final class GraphTableViewCell: UITableViewCell {
         setupTitleLabel(record: record)
         segmentedControlSelectedIndexID = record.yearID
         setupSegmentedControl(record: record)
-        createGraphView()
+        setupGraphView()
         lineData.removeAll()
         sumData.removeAll()
         beforeYear = 0
         setupLineData(record: record)
-        createReferenceLines()
         myGraphView.subviews.forEach { $0.removeFromSuperview() }
-        myGraphView.addSubview(graphView)
+        graphView.set(to: myGraphView)
     }
     
-    @IBAction private func segmentedControlDidSelected(_ sender: UISegmentedControl) {
+}
+
+// MARK: - IBAction func
+private extension GraphTableViewCell {
+    
+    @IBAction func segmentedControlDidSelected(_ sender: UISegmentedControl) {
         UserDefaults.standard.set(sender.selectedSegmentIndex,
                                   forKey: segmentedControlSelectedIndexID)
         onSegmentedControlEvent?()
     }
     
-    private func createGraphView() {
-        let frame = CGRect(x: 0,
-                           y: 0,
-                           width: myGraphView.frame.width,
-                           height: myGraphView.frame.height)
-        graphView = ScrollableGraphView(frame: frame, dataSource: self)
-        graphView.rangeMin = 24
-        graphView.rangeMax = 0
-        graphView.rightmostPointPadding = 20
-        graphView.backgroundFillColor = .clear
-        graphView.shouldAnimateOnStartup = true
-        graphView.shouldAdaptRange = true
-        graphView.shouldRangeAlwaysStartAtZero = true
-        graphView.topMargin = 10
-        graphView.dataPointSpacing = 30
-    }
-    
-    private func createReferenceLines() {
-        let referenceLines = ReferenceLines()
-        referenceLines.referenceLineLabelFont = .boldSystemFont(ofSize: 10)
-        referenceLines.dataPointLabelFont = .boldSystemFont(ofSize: 10)
-        referenceLines.referenceLineColor = .black
-        referenceLines.includeMinMax = false
-        referenceLines.positionType = .absolute
-        referenceLines.absolutePositions = [Int](0...24).map { Double($0) }
-        graphView.addReferenceLines(referenceLines: referenceLines)
-    }
-    
-    private func createLineDot(color: UIColor, identifier: String) {
-        let linePlot = createLine(color: color, identifier: identifier)
-        let dotPlot = createDot(color: color, identifier: identifier)
-        graphView.addPlot(plot: linePlot)
-        graphView.addPlot(plot: dotPlot)
-    }
-    
-    private func createLine(color: UIColor, identifier: String) -> LinePlot {
-        let linePlot = LinePlot(identifier: identifier)
-        linePlot.lineColor = color
-        linePlot.adaptAnimationType = .easeOut
-        linePlot.animationDuration = 0.1
-        return linePlot
-    }
-    
-    private func createDot(color: UIColor, identifier: String) -> DotPlot {
-        let dotPlot = DotPlot(identifier: identifier)
-        dotPlot.dataPointType = .circle
-        dotPlot.dataPointSize = 5
-        dotPlot.dataPointFillColor = color
-        dotPlot.adaptAnimationType = .easeOut
-        dotPlot.animationDuration = 0.1
-        return dotPlot
-    }
-    
 }
 
-// MARK: - ScrollableGraphViewDataSource
-extension GraphTableViewCell: ScrollableGraphViewDataSource {
+// MARK: - CustomScrollableGraphViewDelegate
+extension GraphTableViewCell: CustomScrollableGraphViewDelegate {
     
-    func value(forPlot plot: Plot,
-               atIndex pointIndex: Int) -> Double {
+    func value(at index: Int) -> Double {
         let selectedYear = years[segmentedControl.selectedSegmentIndex]
         let filteredLineData = lineData.filter { $0.identifier.hasPrefix("\(selectedYear)") }
         let filteredSumData = sumData.filter { $0.key.hasPrefix("\(selectedYear)") }
-        let identifier = filteredLineData[pointIndex].identifier
+        let identifier = filteredLineData[index].identifier
         guard let sumData = filteredSumData[identifier] else { return 0.0 }
         let hour = Double(sumData / 60)
         let minutes = Double(Int(sumData) % 60 / 60)
         return hour + minutes
     }
     
-    func label(atIndex pointIndex: Int) -> String {
+    func label(at index: Int) -> String {
         let selectedYear = years[segmentedControl.selectedSegmentIndex]
         let filteredLineData = lineData.filter { $0.identifier.hasPrefix("\(selectedYear)") }
-        return filteredLineData[pointIndex].xTitle
+        return filteredLineData[index].xTitle
     }
     
     func numberOfPoints() -> Int {
@@ -141,6 +89,11 @@ extension GraphTableViewCell: ScrollableGraphViewDataSource {
 // MARK: - setup
 private extension GraphTableViewCell {
     
+    func setupGraphView() {
+        graphView = CustomScrollableGraphView()
+        graphView.delegate = self
+    }
+    
     func setupTitleLabel(record: Record) {
         titleLabel.text = record.title
     }
@@ -155,7 +108,8 @@ private extension GraphTableViewCell {
         }
         segmentedControl.removeAllSegments()
         years.enumerated().forEach { index, year in
-            segmentedControl.insertSegment(withTitle: "\(year)", at: index, animated: false)
+            segmentedControl.insertSegment(withTitle: "\(year)",
+                                           at: index, animated: false)
         }
         let index = UserDefaults.standard.integer(forKey: segmentedControlSelectedIndexID)
         segmentedControl.selectedSegmentIndex = index
@@ -176,7 +130,7 @@ private extension GraphTableViewCell {
             lineData.append((color: UIColor(record: record),
                              identifier: identifier,
                              xTitle: "\(historiy.month)/\(historiy.day)"))
-            createLineDot(color: UIColor(record: record), identifier: identifier)
+            graphView.createLineDot(color: UIColor(record: record), identifier: identifier)
         }
     }
     

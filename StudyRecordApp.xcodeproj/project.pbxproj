@@ -53,6 +53,7 @@
 		AB16308226CEAB9300111F55 /* NavigationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB16308126CEAB9300111F55 /* NavigationButton.swift */; };
 		AB16308426CEABD400111F55 /* NavigationButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB16308326CEABD400111F55 /* NavigationButton.xib */; };
 		AB20F80C26E7B50D00564B14 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB20F80B26E7B50D00564B14 /* UIImage+Extension.swift */; };
+		AB20F80E26E7CBAE00564B14 /* ScrollableGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB20F80D26E7CBAE00564B14 /* ScrollableGraphView.swift */; };
 		AB275FFE26DCAA56009F63B3 /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB275FFD26DCAA56009F63B3 /* Indicator.swift */; };
 		AB2B5B8326A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B7E26A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift */; };
 		AB2B5B8426A2D0FD009BD3C7 /* NotificationName+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B7F26A2D0FD009BD3C7 /* NotificationName+Extension.swift */; };
@@ -198,6 +199,7 @@
 		AB16308126CEAB9300111F55 /* NavigationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationButton.swift; sourceTree = "<group>"; };
 		AB16308326CEABD400111F55 /* NavigationButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavigationButton.xib; sourceTree = "<group>"; };
 		AB20F80B26E7B50D00564B14 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		AB20F80D26E7CBAE00564B14 /* ScrollableGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableGraphView.swift; sourceTree = "<group>"; };
 		AB275FFD26DCAA56009F63B3 /* Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
 		AB2B5B7E26A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
 		AB2B5B7F26A2D0FD009BD3C7 /* NotificationName+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotificationName+Extension.swift"; sourceTree = "<group>"; };
@@ -770,6 +772,7 @@
 		ABFAB20A26E394B10095EC20 /* Graph */ = {
 			isa = PBXGroup;
 			children = (
+				AB20F80D26E7CBAE00564B14 /* ScrollableGraphView.swift */,
 				ABFAB20626E394A60095EC20 /* GraphTableViewCell.swift */,
 				ABFAB20726E394A60095EC20 /* GraphTableViewCell.xib */,
 			);
@@ -1001,6 +1004,7 @@
 				AB2B5BA126A2D1B7009BD3C7 /* SeasonConcept.swift in Sources */,
 				AB2B5B8526A2D0FD009BD3C7 /* UIColor+Extension.swift in Sources */,
 				AB4397F326DD3B32008C8CA8 /* GoalPriorityViewController.swift in Sources */,
+				AB20F80E26E7CBAE00564B14 /* ScrollableGraphView.swift in Sources */,
 				AB2B5BBA26A2D2C2009BD3C7 /* SectionHeaderView.swift in Sources */,
 				AB13EDFA26C8C585002F56FF /* GoalViewController.swift in Sources */,
 				AB4397F526DD57B9008C8CA8 /* Goal.swift in Sources */,
