@@ -101,12 +101,14 @@ extension UIView {
     func setShadow(color: UIColor = .black,
                    radius: CGFloat = 2,
                    opacity: Float = 0.8,
-                   width: Double = 2,
-                   height: Double = 2,
+                   size: (width: Double,
+                          height: Double) = (width: 2,
+                                             height: 2),
                    rect: (distance: CGFloat,
                           height: CGFloat)? = nil) {
         self.layer.shadowColor = color.cgColor
-        self.layer.shadowOffset = CGSize(width: width, height: height)
+        self.layer.shadowOffset = CGSize(width: size.width,
+                                         height: size.height)
         self.layer.shadowRadius = radius
         self.layer.shadowOpacity = opacity
         guard let rect = rect else {

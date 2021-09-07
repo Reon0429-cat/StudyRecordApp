@@ -144,11 +144,7 @@ private extension UIView {
                           masksToBounds: false,
                           layer: layer)
         
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOffset = CGSize(width: 3, height: 3)
-        self.layer.shadowOpacity = 0.8
-        self.layer.shadowRadius = 20
-        
+        self.setShadow(radius: 20, size: (width: 3, height: 3))
     }
     
     private func createPath(layer: CAShapeLayer, info: WaveViewInfo) -> CGPath {
@@ -174,5 +170,3 @@ private extension UIView {
     }
     
 }
-
-
