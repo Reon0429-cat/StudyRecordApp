@@ -31,4 +31,14 @@ final class CustomSegmentedControl: UISegmentedControl {
         selectedSegmentTintColor = .black
     }
     
+    func create(_ titles: [String], selectedIndex: Int) {
+        removeAllSegments()
+        titles.enumerated().forEach { index, title in
+            insertSegment(withTitle: title,
+                          at: index,
+                          animated: false)
+        }
+        selectedSegmentIndex = selectedIndex
+    }
+    
 }

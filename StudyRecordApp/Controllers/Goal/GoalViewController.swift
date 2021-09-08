@@ -31,6 +31,7 @@ final class GoalViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
+        setupSegmentedControl()
         
     }
     
@@ -99,6 +100,11 @@ private extension GoalViewController {
         tableView.dataSource = self
         tableView.registerCustomCell(GoalTableViewCell.self)
         tableView.tableFooterView = UIView()
+    }
+    
+    func setupSegmentedControl() {
+        let index = 0
+        segmentedControl.create(["カテゴリ", "シンプル"], selectedIndex: index)
     }
     
 }

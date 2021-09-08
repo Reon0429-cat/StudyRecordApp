@@ -106,13 +106,8 @@ private extension GraphTableViewCell {
                 beforeYear = history.year
             }
         }
-        segmentedControl.removeAllSegments()
-        years.enumerated().forEach { index, year in
-            segmentedControl.insertSegment(withTitle: "\(year)",
-                                           at: index, animated: false)
-        }
         let index = UserDefaults.standard.integer(forKey: segmentedControlSelectedIndexID)
-        segmentedControl.selectedSegmentIndex = index
+        segmentedControl.create(years.map { String($0) }, selectedIndex: index)
     }
     
     func setupLineData(record: Record, graph: Graph) {

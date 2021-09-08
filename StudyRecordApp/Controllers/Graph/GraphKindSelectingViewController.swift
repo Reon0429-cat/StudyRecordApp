@@ -146,13 +146,9 @@ private extension GraphKindSelectingViewController {
 private extension GraphKindSelectingViewController {
     
     func setupSegmentedControl() {
-        segmentedControl.removeAllSegments()
-        SelectedGraphType.allCases.enumerated().forEach { index, graphType in
-            segmentedControl.insertSegment(withTitle: graphType.title,
-                                           at: index,
-                                           animated: false)
-        }
-        segmentedControl.selectedSegmentIndex = graphUseCase.graph.selectedType.rawValue
+        let titles = SelectedGraphType.allCases.map { $0.title }
+        let index = graphUseCase.graph.selectedType.rawValue
+        segmentedControl.create(titles, selectedIndex: index)
     }
     
     func setupStackView() {
