@@ -9,7 +9,6 @@ import UIKit
 
 final class CustomSegmentedControl: UISegmentedControl {
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         

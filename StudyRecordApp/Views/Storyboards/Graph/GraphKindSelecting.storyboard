@@ -42,7 +42,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fXj-bp-wsW">
                                                 <rect key="frame" x="157" y="0.0" width="80" height="50"/>
                                                 <subviews>
-                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ig5-Rf-pN5">
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ig5-Rf-pN5" customClass="CustomSwitch" customModule="StudyRecordApp" customModuleProvider="target">
                                                         <rect key="frame" x="15.5" y="9.5" width="51" height="31"/>
                                                         <connections>
                                                             <action selector="lineShapeSwitchDidToggled:" destination="Y6W-OH-hqX" eventType="valueChanged" id="29I-Ud-wzv"/>
@@ -64,6 +64,7 @@
                                             </label>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="mq7-dU-XgL"/>
                                             <constraint firstItem="F0F-0S-A4f" firstAttribute="width" secondItem="5K3-nE-cqR" secondAttribute="width" id="tiF-IH-SpB"/>
                                         </constraints>
                                     </stackView>
@@ -79,7 +80,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="byA-6E-TH0">
                                                 <rect key="frame" x="157" y="0.0" width="80" height="50"/>
                                                 <subviews>
-                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y6d-T1-Kqd">
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y6d-T1-Kqd" customClass="CustomSwitch" customModule="StudyRecordApp" customModuleProvider="target">
                                                         <rect key="frame" x="15.5" y="9.5" width="51" height="31"/>
                                                         <connections>
                                                             <action selector="fillAreaSwitchDidToggled:" destination="Y6W-OH-hqX" eventType="valueChanged" id="msY-ME-g8D"/>
@@ -102,6 +103,7 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="Jag-x2-gPI" firstAttribute="width" secondItem="dm2-Zv-bG3" secondAttribute="width" id="6mP-e0-bHK"/>
+                                            <constraint firstAttribute="height" constant="50" id="Iw0-Th-ghc"/>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zVH-AS-Drw">
@@ -116,7 +118,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pAi-YS-KiE">
                                                 <rect key="frame" x="157" y="0.0" width="80" height="50"/>
                                                 <subviews>
-                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xk9-iq-15h">
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xk9-iq-15h" customClass="CustomSwitch" customModule="StudyRecordApp" customModuleProvider="target">
                                                         <rect key="frame" x="15.5" y="9.5" width="51" height="31"/>
                                                         <connections>
                                                             <action selector="addDotsSwitchDidToggled:" destination="Y6W-OH-hqX" eventType="valueChanged" id="zl0-Bd-F0a"/>
@@ -139,6 +141,7 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="DgC-yz-Cch" firstAttribute="width" secondItem="dib-vA-Iv7" secondAttribute="width" id="jY8-Y6-BQf"/>
+                                            <constraint firstAttribute="height" constant="50" id="lCI-Yw-9gA"/>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n7b-Jf-6oA">
@@ -153,7 +156,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pcm-F1-JTJ">
                                                 <rect key="frame" x="157" y="0.0" width="80" height="50"/>
                                                 <subviews>
-                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="taz-3Z-Fyf">
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="taz-3Z-Fyf" customClass="CustomSwitch" customModule="StudyRecordApp" customModuleProvider="target">
                                                         <rect key="frame" x="15.5" y="9.5" width="51" height="31"/>
                                                         <connections>
                                                             <action selector="dotShapeSwitchDidToggled:" destination="Y6W-OH-hqX" eventType="valueChanged" id="W03-Za-iyK"/>
@@ -176,22 +179,32 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="P0z-Xk-R8O" firstAttribute="width" secondItem="P43-i5-CA1" secondAttribute="width" id="JCW-Jz-8Xd"/>
+                                            <constraint firstAttribute="height" constant="50" id="kti-hZ-SkI"/>
                                         </constraints>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lk9-gJ-LJf">
                                         <rect key="frame" x="0.0" y="200" width="394" height="50"/>
                                         <subviews>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="gKW-yN-c5Q">
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="5" maxValue="30" translatesAutoresizingMaskIntoConstraints="NO" id="gKW-yN-c5Q" customClass="CustomSlider" customModule="StudyRecordApp" customModuleProvider="target">
                                                 <rect key="frame" x="98" y="10" width="198" height="31"/>
                                                 <connections>
                                                     <action selector="widthSliderValueDidChanged:" destination="Y6W-OH-hqX" eventType="valueChanged" id="Km5-H7-okW"/>
                                                 </connections>
                                             </slider>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="snk-4q-WgS">
+                                                <rect key="frame" x="294" y="15" width="100" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
+                                            <constraint firstItem="snk-4q-WgS" firstAttribute="leading" secondItem="gKW-yN-c5Q" secondAttribute="trailing" id="0aj-ee-LbU"/>
                                             <constraint firstItem="gKW-yN-c5Q" firstAttribute="centerX" secondItem="Lk9-gJ-LJf" secondAttribute="centerX" id="6Oj-mA-12G"/>
+                                            <constraint firstItem="snk-4q-WgS" firstAttribute="centerY" secondItem="gKW-yN-c5Q" secondAttribute="centerY" id="7e6-jy-c0l"/>
                                             <constraint firstAttribute="trailing" secondItem="gKW-yN-c5Q" secondAttribute="trailing" constant="100" id="Dbs-oV-f06"/>
+                                            <constraint firstAttribute="trailing" secondItem="snk-4q-WgS" secondAttribute="trailing" id="HKE-kV-Ojh"/>
                                             <constraint firstAttribute="height" constant="50" id="SHY-ho-aW3"/>
                                             <constraint firstItem="gKW-yN-c5Q" firstAttribute="centerY" secondItem="Lk9-gJ-LJf" secondAttribute="centerY" id="vh4-HA-o5Y"/>
                                         </constraints>
@@ -224,6 +237,8 @@
                         <outlet property="fillAreaSwitch" destination="y6d-T1-Kqd" id="cYZ-bf-pjI"/>
                         <outlet property="lineShapeSwitch" destination="ig5-Rf-pN5" id="eqi-MO-hdv"/>
                         <outlet property="segmentedControl" destination="L0G-qn-hIK" id="yCS-uF-N66"/>
+                        <outlet property="sliderLabel" destination="snk-4q-WgS" id="XMW-da-LLD"/>
+                        <outlet property="stackView" destination="YAb-5i-HEQ" id="ZbU-c1-2W2"/>
                         <outlet property="widthSlider" destination="gKW-yN-c5Q" id="74Y-Gg-1EZ"/>
                     </connections>
                 </viewController>

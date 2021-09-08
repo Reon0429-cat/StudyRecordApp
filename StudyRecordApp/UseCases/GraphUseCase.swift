@@ -28,4 +28,8 @@ final class GraphUseCase {
         return repository.read(at: 0)
     }
     
+    func update(graph: Graph) {
+        repository.update(graph: graph, at: 0)
+    }
+    
 }
