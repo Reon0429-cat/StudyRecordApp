@@ -36,9 +36,6 @@ enum StackViewSubViewType: CaseIterable {
     case width
 }
 
-// MARK: - ToDo 動作確認
-// MARK: - ToDo 動作確認OKならこの画面のデザインを考える
-
 final class GraphKindSelectingViewController: UIViewController {
     
     @IBOutlet private weak var segmentedControl: CustomSegmentedControl!
@@ -102,6 +99,8 @@ private extension GraphKindSelectingViewController {
                           bar: Bar(width: width),
                           dot: Dot(isSquare: isSquare))
         graphUseCase.update(graph: graph)
+        NotificationCenter.default.post(name: .graphSaveButtonDidTappped, object: nil)
+        dismiss(animated: true)
     }
     
     @IBAction func lineShapeSwitchDidToggled(_ sender: UISwitch) {

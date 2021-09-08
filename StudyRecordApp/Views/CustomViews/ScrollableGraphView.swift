@@ -79,8 +79,8 @@ private extension CustomScrollableGraphView {
                            width: self.frame.width,
                            height: self.frame.height)
         graphView = ScrollableGraphView(frame: frame, dataSource: self)
-        graphView.rangeMin = 24
-        graphView.rangeMax = 0
+        graphView.rangeMin = 0
+        graphView.rangeMax = 24
         graphView.rightmostPointPadding = 20
         graphView.backgroundFillColor = .clear
         graphView.shouldAnimateOnStartup = true
@@ -107,15 +107,17 @@ private extension CustomScrollableGraphView {
         linePlot.adaptAnimationType = .easeOut
         linePlot.animationDuration = 0.1
         if isFilled {
-            linePlot.fillColor = color
             linePlot.shouldFill = true
+            linePlot.fillType = .gradient
+            linePlot.fillColor = color
+            linePlot.fillGradientType = .linear
+            linePlot.fillGradientStartColor = color
+            linePlot.fillGradientEndColor = .white
         }
         if isSmooth {
             linePlot.lineStyle = .smooth
-            linePlot.fillType = .gradient
-            linePlot.fillGradientType = .linear
-            linePlot.fillGradientStartColor = color
-            linePlot.fillGradientEndColor = color.withAlphaComponent(0.6)
+        } else {
+            linePlot.lineStyle = .straight
         }
         graphView.addPlot(plot: linePlot)
     }
@@ -129,6 +131,8 @@ private extension CustomScrollableGraphView {
         dotPlot.animationDuration = 0.1
         if isSquare {
             dotPlot.dataPointType = .square
+        } else {
+            dotPlot.dataPointType = .circle
         }
         graphView.addPlot(plot: dotPlot)
     }
@@ -136,11 +140,12 @@ private extension CustomScrollableGraphView {
     func createBar(color: UIColor, width: CGFloat, identifier: String) {
         let barPlot = BarPlot(identifier: identifier)
         barPlot.adaptAnimationType = .easeOut
-        barPlot.animationDuration = 0.1
+        barPlot.animationDuration = 0.3
         barPlot.barWidth = width
-        barPlot.barLineWidth = 2
+        barPlot.barLineWidth = 3
         barPlot.barColor = color
         barPlot.barLineColor = color.withAlphaComponent(0.6)
+        graphView.addPlot(plot: barPlot)
     }
     
 }

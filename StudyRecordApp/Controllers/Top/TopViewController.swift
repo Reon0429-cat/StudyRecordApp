@@ -309,7 +309,7 @@ extension TopViewController: NavigationButtonDelegate {
             case .goal:
                 break
             case .graph:
-                break
+                present(GraphKindSelectingViewController.self)
             case .countDown:
                 break
             case .setting:

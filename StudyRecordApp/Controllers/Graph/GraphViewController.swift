@@ -31,6 +31,7 @@ final class GraphViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
+        setObserver()
         
     }
     
@@ -40,6 +41,23 @@ final class GraphViewController: UIViewController {
         delegate?.screenDidPresented(index: self.view.tag)
         tableView.reloadData()
         
+    }
+    
+}
+
+// MARK: - func
+private extension GraphViewController {
+    
+    func setObserver() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(cameBackFromEditScreen),
+                                               name: .graphSaveButtonDidTappped,
+                                               object: nil)
+    }
+    
+    @objc
+    func cameBackFromEditScreen() {
+        tableView.reloadData()
     }
     
 }

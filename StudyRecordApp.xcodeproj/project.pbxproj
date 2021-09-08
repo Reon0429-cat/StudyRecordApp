@@ -435,6 +435,7 @@
 			isa = PBXGroup;
 			children = (
 				AB13EE6926CB6965002F56FF /* RippleView.swift */,
+				AB20F80D26E7CBAE00564B14 /* ScrollableGraphView.swift */,
 				ABA056FE26B50CC700E3DF01 /* GraphColorTileView.xib */,
 				ABA0570026B50D1900E3DF01 /* GraphColorTileView.swift */,
 				AB16304E26CD6AF400111F55 /* WaveView.xib */,
@@ -784,7 +785,6 @@
 		ABFAB20A26E394B10095EC20 /* Graph */ = {
 			isa = PBXGroup;
 			children = (
-				AB20F80D26E7CBAE00564B14 /* ScrollableGraphView.swift */,
 				ABFAB20626E394A60095EC20 /* GraphTableViewCell.swift */,
 				ABFAB20726E394A60095EC20 /* GraphTableViewCell.xib */,
 			);
