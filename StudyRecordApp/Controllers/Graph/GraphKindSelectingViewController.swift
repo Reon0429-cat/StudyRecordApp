@@ -7,10 +7,6 @@
 
 import UIKit
 
-// MARK: - ToDo この画面リファクタリング
-// MARK: - ToDo 動作確認
-// MARK: - ToDo 動作確認OKならこの画面のデザインを考える
-
 enum SelectedGraphType: Int, CaseIterable {
     case line
     case bar
@@ -23,7 +19,25 @@ enum SelectedGraphType: Int, CaseIterable {
             case .dot: return "ドット"
         }
     }
+    var stackViewSubViewTypes: [StackViewSubViewType] {
+        switch self {
+            case .line: return [.lineShape, .fillArea, .addDots, .dotShape]
+            case .bar: return [.width]
+            case .dot: return [.dotShape]
+        }
+    }
 }
+
+enum StackViewSubViewType: CaseIterable {
+    case lineShape
+    case fillArea
+    case addDots
+    case dotShape
+    case width
+}
+
+// MARK: - ToDo 動作確認
+// MARK: - ToDo 動作確認OKならこの画面のデザインを考える
 
 final class GraphKindSelectingViewController: UIViewController {
     
@@ -118,31 +132,12 @@ private extension GraphKindSelectingViewController {
     
     func filterStackView(index: Int) {
         let graphType = SelectedGraphType.allCases[index]
-        switch graphType {
-            case .line:
-                stackView.arrangedSubviews.enumerated().forEach { index, view in
-                    if index == 4 {
-                        view.isHidden = true
-                    } else {
-                        view.isHidden = false
-                    }
-                }
-            case .bar:
-                stackView.arrangedSubviews.enumerated().forEach { index, view in
-                    if index == 4 {
-                        view.isHidden = false
-                    } else {
-                        view.isHidden = true
-                    }
-                }
-            case .dot:
-                stackView.arrangedSubviews.enumerated().forEach { index, view in
-                    if index == 3 {
-                        view.isHidden = false
-                    } else {
-                        view.isHidden = true
-                    }
-                }
+        StackViewSubViewType.allCases.enumerated().forEach { index, stackViewSubViewType in
+            if graphType.stackViewSubViewTypes.contains(stackViewSubViewType) {
+                stackView.arrangedSubviews[index].isHidden = false
+            } else {
+                stackView.arrangedSubviews[index].isHidden = true
+            }
         }
     }
     
@@ -178,6 +173,11 @@ private extension GraphKindSelectingViewController {
         widthSlider.value = width
         sliderLabel.text = String(Int(width))
     }
+    
+}
+
+// MARK: - setup layout
+private extension GraphKindSelectingViewController {
     
     func setupSwitchLayout() {
         lineShapeSwitch.setCircle()
