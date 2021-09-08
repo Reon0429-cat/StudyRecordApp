@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oWx-kP-IUO">
-                                <rect key="frame" x="0.0" y="114" width="414" height="748"/>
+                                <rect key="frame" x="0.0" y="114" width="414" height="782"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rU8-3L-yix" customClass="WaveView" customModule="StudyRecordApp" customModuleProvider="target">
@@ -74,11 +74,11 @@
                             <constraint firstItem="L4F-Wp-KvU" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="daQ-J3-nVP"/>
                             <constraint firstAttribute="trailing" secondItem="rU8-3L-yix" secondAttribute="trailing" constant="-5" id="eva-Td-pIz"/>
                             <constraint firstItem="L4F-Wp-KvU" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="hMf-oP-Ad7"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="oWx-kP-IUO" secondAttribute="bottom" id="hmD-zP-iI0"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="KMx-Wz-brP" secondAttribute="trailing" constant="-5" id="jHX-YZ-Nst"/>
                             <constraint firstItem="KMx-Wz-brP" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="-5" id="mmI-81-b20"/>
                             <constraint firstItem="rU8-3L-yix" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="-5" id="puH-Gq-nt5"/>
                             <constraint firstItem="70P-GE-O5D" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="rVN-74-Pbm"/>
+                            <constraint firstAttribute="bottom" secondItem="oWx-kP-IUO" secondAttribute="bottom" id="ylz-Gt-g2O"/>
                         </constraints>
                     </view>
                     <toolbarItems/>

@@ -164,13 +164,9 @@ extension EditStudyRecordViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row > CellType.allCases.count + 2 {
-            let indexPath = IndexPath(row: indexPath.row, section: 0)
-            let tableBottomMaxY = tableView.rectForRow(at: indexPath).maxY
-            let shouldHideWave = bottomWaveView.frame.minY - bottomWaveView.frame.height < tableBottomMaxY
-            tableView.isScrollEnabled = shouldHideWave
-            bottomWaveView.isHidden = shouldHideWave
-        }
+        let isEnabled = (rowCount > 7)
+        tableView.isScrollEnabled = isEnabled
+        bottomWaveView.isHidden = isEnabled
         
         let cellType = getCellType(row: indexPath.row)
         switch cellType {
@@ -281,12 +277,20 @@ extension EditStudyRecordViewController: StudyRecordTimeRecordVCDelegate {
                     hour += 1
                     minutes -= 60
                 }
-                let history = History(year: history.year,
-                                      month: history.month,
-                                      day: history.day,
-                                      hour: hour,
-                                      minutes: minutes)
-                selectedRecord.histories?[index] = history
+                if hour >= 24 {
+                    let alert = Alert.create(title: "\(history.year)年\(history.month)月\(history.day)日の記録時間が24時間以上になってしまいます。")
+                        .addAction(title: "閉じる")
+                    dismiss(animated: true) {
+                        self.present(alert, animated: true)
+                    }
+                } else {
+                    let history = History(year: history.year,
+                                          month: history.month,
+                                          day: history.day,
+                                          hour: hour,
+                                          minutes: minutes)
+                    selectedRecord.histories?[index] = history
+                }
                 return true
             }
         }
