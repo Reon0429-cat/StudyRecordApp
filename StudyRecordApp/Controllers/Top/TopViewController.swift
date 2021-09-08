@@ -354,8 +354,8 @@ private extension TopViewController {
     }
     
     func setupAddButton() {
-        let image = UIImage(systemName: "plus")!.setColor(.white)
-        addButton.setImage(image)
+        guard let image = UIImage(systemName: "plus") else { return }
+        addButton.setImage(image.setColor(.white))
         addButton.setGradation(locations: [0, 0.9])
     }
     
@@ -397,7 +397,7 @@ private extension TopViewController {
     }
     
     func setupAddButtonLayout() {
-        addButton.setCircle()
+        addButton.cutToCircle()
     }
     
     func setupSeparatorViewLayout() {

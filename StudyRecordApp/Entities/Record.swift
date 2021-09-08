@@ -7,6 +7,8 @@
 
 import RealmSwift
 
+// MARK: - ToDo Realmのプロパティを増やしたときに、リリース後に落ちる対策をする
+
 // 共通の型
 struct Record: Equatable {
     var title: String

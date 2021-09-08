@@ -175,10 +175,10 @@ private extension GraphKindSelectingViewController {
 private extension GraphKindSelectingViewController {
     
     func setupSwitchLayout() {
-        lineShapeSwitch.setCircle()
-        fillAreaSwitch.setCircle()
-        addDotsSwitch.setCircle()
-        dotShapeSwitch.setCircle()
+        lineShapeSwitch.cutToCircle()
+        fillAreaSwitch.cutToCircle()
+        addDotsSwitch.cutToCircle()
+        dotShapeSwitch.cutToCircle()
     }
     
 }

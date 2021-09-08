@@ -79,12 +79,12 @@ extension UIView {
     }
     
     func cutToCircle(borderColor: UIColor?, width: CGFloat?) {
-        self.setCircle()
+        self.cutToCircle()
         self.layer.borderColor = borderColor?.cgColor ?? UIColor.clear.cgColor
         self.layer.borderWidth = width ?? 0
     }
     
-    func setCircle() {
+    func cutToCircle() {
         self.layer.cornerRadius = self.frame.height / 2
     }
     
@@ -141,12 +141,11 @@ extension UIView {
         let _frame: CGRect = {
             if let frame = frame {
                 return frame
-            } else {
-                return CGRect(x: 0,
-                              y: 0,
-                              width: self.frame.width,
-                              height: self.frame.height)
             }
+            return CGRect(x: 0,
+                          y: 0,
+                          width: self.frame.width,
+                          height: self.frame.height)
         }()
         gradientLayer.frame = _frame
         gradientLayer.colors = colors.map { $0.cgColor }
