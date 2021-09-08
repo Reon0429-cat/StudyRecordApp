@@ -92,9 +92,7 @@ extension GraphViewController: UITableViewDataSource {
                                yearID: record.yearID,
                                order: record.order)
         let graph = graphUseCase.graph
-        DispatchQueue.main.async {
-            cell.configure(record: newRecord, graph: graph) 
-        }
+        cell.configure(record: newRecord, graph: graph)
         cell.onSegmentedControlEvent = {
             self.tableView.reloadRows(at: [IndexPath(row: indexPath.row,
                                                      section: indexPath.section)],

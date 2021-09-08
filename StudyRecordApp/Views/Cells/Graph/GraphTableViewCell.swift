@@ -7,9 +7,7 @@
 
 import UIKit
 
-// MARK: - ToDo 今日が一番右にスクロールされるようのする
-// MARK: - ToDo 編集で間を0で埋めるかどうかを選択できるようにする
-// MARK: - ToDo セグメントを編集の方に移動させる
+// MARK: - ToDo 一番右にスクロールされるようのする
 // MARK: - ToDo データがないときに、データがないよラベルを表示させる
 
 final class GraphTableViewCell: UITableViewCell {
@@ -31,11 +29,13 @@ final class GraphTableViewCell: UITableViewCell {
     func configure(record: Record, graph: Graph) {
         setupTitleLabel(record: record)
         segmentedControlSelectedIndexID = record.yearID
-        setupSegmentedControl(record: record)
-        setupGraphView()
+        years.removeAll()
         lineData.removeAll()
         sumData.removeAll()
         beforeYear = 0
+        setYears(record: record)
+        setupSegmentedControl(record: record)
+        setupGraphView()
         setupLineData(record: record, graph: graph)
         myGraphView.subviews.forEach { $0.removeFromSuperview() }
         graphView.set(to: myGraphView)
@@ -50,6 +50,20 @@ private extension GraphTableViewCell {
         UserDefaults.standard.set(sender.selectedSegmentIndex,
                                   forKey: segmentedControlSelectedIndexID)
         onSegmentedControlEvent?()
+    }
+    
+}
+
+// MARK: - func
+private extension GraphTableViewCell {
+    
+    func setYears(record: Record) {
+        record.histories?.forEach { history in
+            if beforeYear != history.year {
+                years.append(history.year)
+                beforeYear = history.year
+            }
+        }
     }
     
 }
@@ -99,13 +113,6 @@ private extension GraphTableViewCell {
     }
     
     func setupSegmentedControl(record: Record) {
-        years.removeAll()
-        record.histories?.forEach { history in
-            if beforeYear != history.year {
-                years.append(history.year)
-                beforeYear = history.year
-            }
-        }
         let index = UserDefaults.standard.integer(forKey: segmentedControlSelectedIndexID)
         segmentedControl.create(years.map { String($0) }, selectedIndex: index)
     }
@@ -125,10 +132,8 @@ private extension GraphTableViewCell {
             lineData.append((color: UIColor(record: record),
                              identifier: identifier,
                              xTitle: "\(historiy.month)/\(historiy.day)"))
-            graphView.create(color: UIColor(record: record),
-                             identifier: identifier,
-                             graph: graph)
         }
+        graphView.create(color: UIColor(record: record), graph: graph)
     }
     
 }

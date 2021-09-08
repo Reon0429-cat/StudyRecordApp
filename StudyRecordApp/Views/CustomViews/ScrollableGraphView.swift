@@ -45,26 +45,22 @@ final class CustomScrollableGraphView: UIView {
         ])
     }
     
-    func create(color: UIColor, identifier: String, graph: Graph) {
+    func create(color: UIColor, graph: Graph) {
         switch graph.selectedType {
             case .line:
                 createLine(color: color,
                            isFilled: graph.line.isFilled,
-                           isSmooth: graph.line.isSmooth,
-                           identifier: identifier)
+                           isSmooth: graph.line.isSmooth)
                 if graph.line.withDots {
                     createDot(color: color,
-                              isSquare: graph.dot.isSquare,
-                              identifier: identifier)
+                              isSquare: graph.dot.isSquare)
                 }
             case .bar:
                 createBar(color: color,
-                          width: CGFloat(graph.bar.width),
-                          identifier: identifier)
+                          width: CGFloat(graph.bar.width))
             case .dot:
                 createDot(color: color,
-                          isSquare: graph.dot.isSquare,
-                          identifier: identifier)
+                          isSquare: graph.dot.isSquare)
         }
     }
     
@@ -101,8 +97,8 @@ private extension CustomScrollableGraphView {
         graphView.addReferenceLines(referenceLines: referenceLines)
     }
     
-    func createLine(color: UIColor, isFilled: Bool, isSmooth: Bool, identifier: String) {
-        let linePlot = LinePlot(identifier: identifier)
+    func createLine(color: UIColor, isFilled: Bool, isSmooth: Bool) {
+        let linePlot = LinePlot(identifier: "")
         linePlot.lineColor = color
         linePlot.adaptAnimationType = .easeOut
         linePlot.animationDuration = 0.1
@@ -122,8 +118,8 @@ private extension CustomScrollableGraphView {
         graphView.addPlot(plot: linePlot)
     }
     
-    func createDot(color: UIColor, isSquare: Bool, identifier: String) {
-        let dotPlot = DotPlot(identifier: identifier)
+    func createDot(color: UIColor, isSquare: Bool) {
+        let dotPlot = DotPlot(identifier: "")
         dotPlot.dataPointType = .circle
         dotPlot.dataPointSize = 5
         dotPlot.dataPointFillColor = color
@@ -137,8 +133,8 @@ private extension CustomScrollableGraphView {
         graphView.addPlot(plot: dotPlot)
     }
     
-    func createBar(color: UIColor, width: CGFloat, identifier: String) {
-        let barPlot = BarPlot(identifier: identifier)
+    func createBar(color: UIColor, width: CGFloat) {
+        let barPlot = BarPlot(identifier: "")
         barPlot.adaptAnimationType = .easeOut
         barPlot.animationDuration = 0.3
         barPlot.barWidth = width
