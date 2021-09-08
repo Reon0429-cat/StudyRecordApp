@@ -298,12 +298,23 @@ extension TopViewController: SettingVCDelegate {
 extension TopViewController: NavigationButtonDelegate {
     
     func titleButtonDidTapped(type: NavigationButtonType) {
-        changeEditMode(type: {
-            switch type {
-                case .edit: return .completion
-                default: return .edit
-            }
-        }())
+        switch screenType {
+            case .record:
+                changeEditMode(type: {
+                    switch type {
+                        case .edit: return .completion
+                        default: return .edit
+                    }
+                }())
+            case .goal:
+                break
+            case .graph:
+                break
+            case .countDown:
+                break
+            case .setting:
+                break
+        }
     }
     
 }
@@ -386,7 +397,7 @@ private extension TopViewController {
     }
     
     func setupAddButtonLayout() {
-        addButton.layer.cornerRadius = addButton.frame.height / 2
+        addButton.setCircle()
     }
     
     func setupSeparatorViewLayout() {

@@ -77,7 +77,7 @@ final class TileView: UIView {
                         self.layer.cornerRadius = 0
                         self.state = .square
                     case .square:
-                        self.layer.cornerRadius = self.frame.size.width / 2
+                        self.setCircle()
                         self.state = .circle
                 }
             }
@@ -136,7 +136,7 @@ private extension ColorChoicesTileViewController {
                     let sameColor = (tileView.backgroundColor == nextSelectedView.backgroundColor)
                     let sameAlpha = (tileView.alpha == nextSelectedView.alpha)
                     if sameColor && sameAlpha {
-                        tileView.layer.cornerRadius = tileView.frame.size.width / 2
+                        tileView.setCircle()
                         self.selectedTileView = tileView
                     }
                 }

@@ -79,9 +79,13 @@ extension UIView {
     }
     
     func cutToCircle(borderColor: UIColor?, width: CGFloat?) {
-        self.layer.cornerRadius = self.frame.height / 2
+        self.setCircle()
         self.layer.borderColor = borderColor?.cgColor ?? UIColor.clear.cgColor
         self.layer.borderWidth = width ?? 0
+    }
+    
+    func setCircle() {
+        self.layer.cornerRadius = self.frame.height / 2
     }
     
     static func animate(deadlineFromNow: Double,
