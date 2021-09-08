@@ -38,6 +38,7 @@ enum StackViewSubViewType: CaseIterable {
 
 final class GraphKindSelectingViewController: UIViewController {
     
+    @IBOutlet private weak var contentView: UIView!
     @IBOutlet private weak var segmentedControl: CustomSegmentedControl!
     @IBOutlet private weak var stackView: UIStackView!
     @IBOutlet private weak var lineShapeSwitch: CustomSwitch!
@@ -138,6 +139,15 @@ private extension GraphKindSelectingViewController {
                 stackView.arrangedSubviews[index].isHidden = true
             }
         }
+    }
+    
+}
+
+// MARK: - HalfModalPresenterDelegate
+extension GraphKindSelectingViewController: HalfModalPresenterDelegate {
+    
+    var halfModalContentHeight: CGFloat {
+        return contentView.frame.height
     }
     
 }

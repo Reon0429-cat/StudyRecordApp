@@ -37,6 +37,7 @@ final class TopViewController: UIViewController {
     private var tabBarCollectionVC: TabBarCollectionViewController!
     private var viewControllers = [UIViewController]()
     private var currentPageIndex = 0
+    private var halfModalPresenter = HalfModalPresenter()
     
     override func loadView() {
         super.loadView()
@@ -182,6 +183,17 @@ private extension TopViewController {
                                               completion: nil)
     }
     
+    func changeAddButton(isEnabled: Bool) {
+        guard let xmarkImage = UIImage(systemName: "xmark"),
+              let plusImage = UIImage(systemName: "plus") else { return }
+        addButton.isEnabled = isEnabled
+        if isEnabled {
+            addButton.setImage(plusImage.setColor(.white))
+        } else {
+            addButton.setImage(xmarkImage.setColor(.systemRed))
+        }
+    }
+    
 }
 
 // MARK: - UIPageViewControllerDataSource
@@ -225,19 +237,23 @@ extension TopViewController {
         switch screenType {
             case .record:
                 editButton.setFade(.in)
-                addButton.setFade(.in)
+                editButton.changeTitle("編集")
+                changeAddButton(isEnabled: true)
             case .goal:
                 editButton.setFade(.in)
-                addButton.setFade(.in)
+                editButton.changeTitle("編集")
+                changeAddButton(isEnabled: true)
             case .graph:
                 editButton.setFade(.in)
-                addButton.setFade(.in)
+                editButton.changeTitle("設定")
+                changeAddButton(isEnabled: false)
             case .countDown:
                 editButton.setFade(.in)
-                addButton.setFade(.in)
+                editButton.changeTitle("編集")
+                changeAddButton(isEnabled: true)
             case .setting:
                 editButton.setFade(.out)
-                addButton.setFade(.out)
+                changeAddButton(isEnabled: false)
         }
     }
     
@@ -309,7 +325,9 @@ extension TopViewController: NavigationButtonDelegate {
             case .goal:
                 break
             case .graph:
-                present(GraphKindSelectingViewController.self)
+                present(GraphKindSelectingViewController.self) { vc in
+                    self.halfModalPresenter.viewController = vc
+                }
             case .countDown:
                 break
             case .setting:
