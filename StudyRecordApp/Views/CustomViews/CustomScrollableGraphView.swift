@@ -15,35 +15,49 @@ protocol CustomScrollableGraphViewDelegate: AnyObject {
 
 final class CustomScrollableGraphView: UIView {
     
-    private var graphView: ScrollableGraphView!
+    @IBOutlet private weak var graphView: ScrollableGraphView!
+    
     weak var delegate: CustomScrollableGraphViewDelegate!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        createGraphView()
-        createReferenceLines()
-        
+        loadNib()
     }
     
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        
-        createGraphView()
-        createReferenceLines()
-        
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        loadNib()
     }
     
-    func set(to view: UIView) {
-        graphView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(graphView)
-        NSLayoutConstraint.activate([
-            graphView.topAnchor.constraint(equalTo: view.topAnchor),
-            graphView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            graphView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            graphView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-        ])
+    private func loadNib() {
+        guard let view = UINib(nibName: String(describing: type(of: self)),
+                               bundle: nil)
+                .instantiate(withOwner: self,
+                             options: nil)
+                .first as? UIView else {
+            return
+        }
+        view.frame = self.bounds
+        self.addSubview(view)
+        createGraphView()
+        createReferenceLines()
     }
+    
+//    func set(to view: UIView) {
+//        graphView.translatesAutoresizingMaskIntoConstraints = false
+//        view.addSubview(graphView)
+//        NSLayoutConstraint.activate([
+//            graphView.topAnchor.constraint(equalTo: view.topAnchor),
+//            graphView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+//            graphView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+//            graphView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+//        ])
+//    }
+//
+//    func scrollToRight(width: CGFloat) {
+//        let offset = CGPoint(x: width, y: 0)
+//        self.graphView.setContentOffset(offset, animated: true)
+//    }
     
     func create(color: UIColor, graph: Graph) {
         switch graph.selectedType {
@@ -70,11 +84,7 @@ final class CustomScrollableGraphView: UIView {
 private extension CustomScrollableGraphView {
     
     func createGraphView() {
-        let frame = CGRect(x: 0,
-                           y: 0,
-                           width: self.frame.width,
-                           height: self.frame.height)
-        graphView = ScrollableGraphView(frame: frame, dataSource: self)
+        graphView.dataSource = self
         graphView.rangeMin = 0
         graphView.rangeMax = 24
         graphView.rightmostPointPadding = 20
