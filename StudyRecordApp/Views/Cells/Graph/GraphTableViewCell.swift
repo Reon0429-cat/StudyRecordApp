@@ -10,6 +10,11 @@ import UIKit
 // MARK: - ToDo 年度を違うところに移動させ、表示させる月が選択できるようにする
 // MARK: - ToDo グラフまたは記録データがないときに、それぞれボタンを配置してタップすると登録画面に遷移させる
 
+protocol GraphTableViewCellDelegate: AnyObject {
+    func segmentedControlDidTapped(index: Int)
+    func registerButtonDidTapped(index: Int)
+}
+
 final class GraphTableViewCell: UITableViewCell {
     
     @IBOutlet private weak var titleLabel: UILabel!
@@ -18,6 +23,7 @@ final class GraphTableViewCell: UITableViewCell {
     @IBOutlet private weak var segmentedControl: CustomSegmentedControl!
     @IBOutlet private weak var yAxisLabel: UILabel!
     @IBOutlet private weak var noGraphDataLabel: UILabel!
+    @IBOutlet private weak var registerButton: UIButton!
     
     private var graphView: CustomScrollableGraphView!
     private var indicator: UIActivityIndicatorView!
@@ -27,7 +33,7 @@ final class GraphTableViewCell: UITableViewCell {
     private var beforeYear = 0
     private var years = [Int]()
     private var segmentedControlSelectedIndexID = ""
-    var onSegmentedControlEvent: (() -> Void)?
+    weak var delegate: GraphTableViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -52,6 +58,7 @@ final class GraphTableViewCell: UITableViewCell {
         setupIndicatorLayout()
         setupLineData(record: record, graph: graph)
         setupIfNoGraphData(record: record)
+        setupRegisterButton()
     }
     
     override func layoutSubviews() {
@@ -69,7 +76,11 @@ private extension GraphTableViewCell {
     @IBAction func segmentedControlDidSelected(_ sender: UISegmentedControl) {
         UserDefaults.standard.set(sender.selectedSegmentIndex,
                                   forKey: segmentedControlSelectedIndexID)
-        onSegmentedControlEvent?()
+        delegate?.segmentedControlDidTapped(index: self.tag)
+    }
+    
+    @IBAction func registerButtonDidTapped(_ sender: Any) {
+        delegate?.registerButtonDidTapped(index: self.tag)
     }
     
 }
@@ -184,12 +195,19 @@ private extension GraphTableViewCell {
         graphView.create(color: UIColor(record: record), graph: graph)
     }
     
+    
+    func setupRegisterButton() {
+        registerButton.layer.cornerRadius = 10
+    }
+    
     func setupIfNoGraphData(record: Record) {
         if record.histories?.isEmpty ?? true {
             noGraphDataLabel.isHidden = false
+            registerButton.isHidden = false
             yAxisLabel.isHidden = true
         } else {
             noGraphDataLabel.isHidden = true
+            registerButton.isHidden = true
             yAxisLabel.isHidden = false
         }
     }
@@ -215,7 +233,7 @@ extension GraphTableViewCell {
         indicator.translatesAutoresizingMaskIntoConstraints = false
         graphView.addSubview(indicator)
         NSLayoutConstraint.activate([
-            indicator.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            indicator.centerYAnchor.constraint(equalTo: graphBaseView.centerYAnchor),
             indicator.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             indicator.widthAnchor.constraint(equalTo: self.widthAnchor),
             indicator.heightAnchor.constraint(equalTo: self.heightAnchor)

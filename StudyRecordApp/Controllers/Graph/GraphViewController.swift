@@ -7,13 +7,14 @@
 
 import UIKit
 
-protocol GraphVCDelegate: AnyObject {
-    func screenDidPresented(index: Int)
+protocol GraphVCDelegate: ScreenPresentationDelegate {
+    
 }
 
 final class GraphViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var registerButton: UIButton!
     
     weak var delegate: GraphVCDelegate?
     private var recordUseCase = RecordUseCase(
@@ -31,6 +32,7 @@ final class GraphViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
+        setupRegisterButton()
         setObserver()
         
     }
@@ -38,10 +40,23 @@ final class GraphViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        showNoRecordDataLabel(recordUseCase.records.isEmpty)
-        delegate?.screenDidPresented(index: self.view.tag)
+        tableView(isHidden: recordUseCase.records.isEmpty)
+        delegate?.screenDidPresented(screenType: .graph)
         tableView.reloadData()
         
+    }
+    
+}
+
+// MARK: - IBAction func
+private extension GraphViewController {
+    
+    @IBAction func registerButtonDidTapped(_ sender: Any) {
+        delegate?.scroll(sourceScreenType: .graph,
+                         destinationScreenType: .record) {
+            self.present(AdditionalStudyRecordViewController.self,
+                         modalPresentationStyle: .fullScreen)
+        }
     }
     
 }
@@ -49,8 +64,8 @@ final class GraphViewController: UIViewController {
 // MARK: - func
 private extension GraphViewController {
     
-    func showNoRecordDataLabel(_ isShowed: Bool) {
-        tableView.backgroundColor = isShowed ? .clear : .white
+    func tableView(isHidden: Bool) {
+        tableView.isHidden = isHidden
     }
     
     func setObserver() {
@@ -110,12 +125,29 @@ extension GraphViewController: UITableViewDataSource {
                                order: record.order)
         let graph = graphUseCase.graph
         cell.configure(record: newRecord, graph: graph)
-        cell.onSegmentedControlEvent = {
-            self.tableView.reloadRows(at: [IndexPath(row: indexPath.row,
-                                                     section: indexPath.section)],
-                                      with: .automatic)
-        }
+        cell.delegate = self
+        cell.tag = indexPath.row
         return cell
+    }
+    
+}
+
+extension GraphViewController: GraphTableViewCellDelegate {
+    
+    func segmentedControlDidTapped(index: Int) {
+        tableView.reloadRows(at: [IndexPath(row: index,
+                                            section: 0)],
+                             with: .automatic)
+    }
+    
+    func registerButtonDidTapped(index: Int) {
+        delegate?.scroll(sourceScreenType: .graph,
+                         destinationScreenType: .record) {
+            self.present(EditStudyRecordViewController.self,
+                         modalPresentationStyle: .fullScreen) { vc in
+                vc.selectedRow = index
+            }
+                         }
     }
     
 }
@@ -128,6 +160,10 @@ private extension GraphViewController {
         tableView.dataSource = self
         tableView.registerCustomCell(GraphTableViewCell.self)
         tableView.tableFooterView = UIView()
+    }
+    
+    func setupRegisterButton() {
+        registerButton.layer.cornerRadius = 10
     }
     
 }

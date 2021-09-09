@@ -176,13 +176,6 @@ private extension TopViewController {
         }
     }
     
-    func pageVCSetVC(at item: Int, direction: UIPageViewController.NavigationDirection) {
-        pageViewController.setViewControllers([viewControllers[item]],
-                                              direction: direction,
-                                              animated: true,
-                                              completion: nil)
-    }
-    
     func changeAddButton(isEnabled: Bool) {
         guard let xmarkImage = UIImage(systemName: "xmark"),
               let plusImage = UIImage(systemName: "plus") else { return }
@@ -192,6 +185,17 @@ private extension TopViewController {
         } else {
             addButton.setImage(xmarkImage.setColor(.systemRed))
         }
+    }
+    
+    func pageVCSet(to screenType: ScreenType?,
+                   completion: ((Bool) -> Void)? = nil) {
+        guard let screenType = screenType else { return }
+        pageViewController.setViewControllers(
+            [viewControllers[screenType.rawValue]],
+            direction: currentPageIndex < screenType.rawValue ? .forward : .reverse,
+            animated: true,
+            completion: completion
+        )
     }
     
 }
@@ -222,18 +226,18 @@ extension TopViewController: UIPageViewControllerDataSource {
 // MARK: - TabBarCollectionViewDelegate
 extension TopViewController: TabBarCollectionVCDelegate {
     
-    func collectionViewDidTapped(index: Int) {
-        pageVCSetVC(at: index,
-                    direction: currentPageIndex < index ? .forward : .reverse)
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
+        pageVCSet(to: ScreenType(rawValue: indexPath.row))
     }
     
 }
 
-// MARK: - 共通のdelegate
+// MARK: - ScreenPresentationDelegate
 extension TopViewController {
     
-    func screenDidPresented(index: Int) {
-        screenDidChanged(item: index)
+    func screenDidPresented(screenType: ScreenType) {
+        screenDidChanged(item: screenType.rawValue)
         switch screenType {
             case .record:
                 editButton.setFade(.in)
@@ -254,6 +258,14 @@ extension TopViewController {
             case .setting:
                 editButton.setFade(.out)
                 changeAddButton(isEnabled: false)
+        }
+    }
+    
+    func scroll(sourceScreenType: ScreenType,
+                destinationScreenType: ScreenType,
+                completion: (() -> Void)?) {
+        pageVCSet(to: destinationScreenType) { _ in
+            completion?()
         }
     }
     
@@ -302,11 +314,6 @@ extension TopViewController: CountDownVCDelegate {
 
 // MARK: - SettingVCDelegate
 extension TopViewController: SettingVCDelegate {
-    
-    func loginAndSignUpVCDidShowed() {
-        pageVCSetVC(at: 0, direction: .reverse)
-        screenDidChanged(item: 0)
-    }
     
 }
 
@@ -360,7 +367,6 @@ private extension TopViewController {
         let settingVC = SettingViewController.instantiate()
         settingVC.delegate = self
         viewControllers = [studyRecordVC, goalVC, graphVC, countDownVC, settingVC]
-        viewControllers.enumerated().forEach { $1.view.tag = $0 }
         pageViewController.setViewControllers([viewControllers[0]],
                                               direction: .forward,
                                               animated: true,

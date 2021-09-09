@@ -42,13 +42,27 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3SA-z1-iLV">
-                        <rect key="frame" x="122" y="157.5" width="165.5" height="43"/>
+                        <rect key="frame" x="122" y="127.5" width="165.5" height="43"/>
                         <string key="text">グラフデータが
 登録されていません</string>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zGD-LQ-k1B">
+                        <rect key="frame" x="159.5" y="186.5" width="90" height="45"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="90" id="RU9-0p-kpx"/>
+                            <constraint firstAttribute="height" constant="45" id="Ung-Wr-AO5"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <state key="normal" title="登録する"/>
+                        <connections>
+                            <action selector="registerButtonDidTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="TLn-0h-0rF"/>
+                        </connections>
+                    </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="時間" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZyS-oE-sQZ">
                         <rect key="frame" x="13" y="67" width="22.5" height="10"/>
                         <constraints>
@@ -60,9 +74,10 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="3SA-z1-iLV" firstAttribute="centerY" secondItem="iG7-E6-k4J" secondAttribute="centerY" id="0Oa-f8-MkK"/>
+                    <constraint firstItem="3SA-z1-iLV" firstAttribute="centerY" secondItem="iG7-E6-k4J" secondAttribute="centerY" constant="-30" id="0Oa-f8-MkK"/>
                     <constraint firstAttribute="trailing" secondItem="iG7-E6-k4J" secondAttribute="trailing" constant="10" id="2fn-I6-hAv"/>
                     <constraint firstItem="sNK-SC-fH8" firstAttribute="top" secondItem="KmU-DN-1q2" secondAttribute="bottom" constant="5" id="9LS-Wp-OVJ"/>
+                    <constraint firstItem="zGD-LQ-k1B" firstAttribute="centerX" secondItem="iG7-E6-k4J" secondAttribute="centerX" id="CQl-F4-3HT"/>
                     <constraint firstItem="ZyS-oE-sQZ" firstAttribute="top" secondItem="sNK-SC-fH8" secondAttribute="bottom" constant="3" id="EVu-te-MkY"/>
                     <constraint firstItem="KmU-DN-1q2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="HIh-7m-z1r"/>
                     <constraint firstAttribute="trailing" secondItem="KmU-DN-1q2" secondAttribute="trailing" constant="10" id="Jmk-Ur-GBx"/>
@@ -70,6 +85,7 @@
                     <constraint firstItem="iG7-E6-k4J" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="RPw-gI-p1A"/>
                     <constraint firstAttribute="bottom" secondItem="iG7-E6-k4J" secondAttribute="bottom" constant="10" id="dU4-A1-Y99"/>
                     <constraint firstItem="ZyS-oE-sQZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="13" id="fCx-Kx-1je"/>
+                    <constraint firstItem="zGD-LQ-k1B" firstAttribute="centerY" secondItem="iG7-E6-k4J" secondAttribute="centerY" constant="30" id="fp4-1y-GFr"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="sNK-SC-fH8" secondAttribute="trailing" constant="10" id="jzU-Bi-UEm"/>
                     <constraint firstItem="KmU-DN-1q2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="nqH-2E-jZq"/>
                     <constraint firstItem="3SA-z1-iLV" firstAttribute="centerX" secondItem="iG7-E6-k4J" secondAttribute="centerX" id="png-DL-ey2"/>
@@ -81,6 +97,7 @@
                 <outlet property="graphBaseView" destination="iG7-E6-k4J" id="krf-DD-Bbq"/>
                 <outlet property="myGraphViewRightConstraint" destination="2fn-I6-hAv" id="5bw-tV-t1t"/>
                 <outlet property="noGraphDataLabel" destination="3SA-z1-iLV" id="sxV-pE-bOo"/>
+                <outlet property="registerButton" destination="zGD-LQ-k1B" id="GBT-vZ-B7I"/>
                 <outlet property="segmentedControl" destination="KmU-DN-1q2" id="BkB-mL-jbk"/>
                 <outlet property="titleLabel" destination="sNK-SC-fH8" id="25y-9G-n88"/>
                 <outlet property="yAxisLabel" destination="ZyS-oE-sQZ" id="s3J-qL-8Tj"/>
