@@ -65,7 +65,6 @@ final class GraphTableViewCell: UITableViewCell {
         setupLineData(record: record, graph: graph)
         setupIfNoGraphData(record: record)
         setupRegisterButton()
-        setLabelIfNoData()
         setupSimpleNoGraphDataLabel()
         setupSimpleNoGraphDataLabelLayout()
     }
@@ -125,10 +124,20 @@ private extension GraphTableViewCell {
     }
     
     func setLabelIfNoData() {
-        let selectedYear = years[yearSegmentedControl.selectedSegmentIndex]
-        let selectedMonth = months[monthSegmentedControl.selectedSegmentIndex]
+        let year: Int = {
+            if years.isEmpty {
+                return 0
+            }
+            return years[yearSegmentedControl.selectedSegmentIndex]
+        }()
+        let month: Int = {
+            if months.isEmpty {
+                return 0
+            }
+            return months[monthSegmentedControl.selectedSegmentIndex]
+        }()
         let filteredSumData = sumData.filter {
-            $0.key.hasPrefix("\(selectedYear)-\(selectedMonth)")
+            $0.key.hasPrefix("\(year)-\(month)")
         }
         if filteredSumData.isEmpty {
             simpleNoGraphDataLabel.isHidden = false
@@ -266,10 +275,13 @@ private extension GraphTableViewCell {
             noGraphDataLabel.isHidden = false
             registerButton.isHidden = false
             yAxisLabel.isHidden = true
+            simpleNoGraphDataLabel.isHidden = true
         } else {
             noGraphDataLabel.isHidden = true
             registerButton.isHidden = true
             yAxisLabel.isHidden = false
+            simpleNoGraphDataLabel.isHidden = false
+            setLabelIfNoData()
         }
     }
     
