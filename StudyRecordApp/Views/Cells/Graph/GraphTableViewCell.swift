@@ -12,6 +12,8 @@ protocol GraphTableViewCellDelegate: AnyObject {
     func registerButtonDidTapped(index: Int)
 }
 
+// MARK: - ToDo 月のセグメントにはAllを追加する
+
 final class GraphTableViewCell: UITableViewCell {
     
     @IBOutlet private weak var titleLabel: UILabel!
@@ -28,14 +30,29 @@ final class GraphTableViewCell: UITableViewCell {
     private var lineData = [(color: UIColor, identifier: String, xTitle: String)]()
     private var sumData = [String: Double]()
     private var beforeIdentifier = ""
-    private var beforeYear = 0
     private var years = [Int]()
     private var yearSegmentedControlID = ""
-    private var beforeMonth = 0
     private var months = [Int]()
     private var monthSegmentedControlID = ""
     private var simpleNoGraphDataLabel = UILabel()
-    
+    private var selectedYear: Int {
+        if years.isEmpty {
+            return 0
+        }
+        return years[yearSegmentedControl.selectedSegmentIndex]
+    }
+    private var selectedMonth: Int {
+        if months.isEmpty {
+            return 0
+        }
+        return months[monthSegmentedControl.selectedSegmentIndex]
+    }
+    private var filteredLineData: [(color: UIColor, identifier: String, xTitle: String)] {
+        lineData.filter { $0.identifier.hasPrefix("\(selectedYear)-\(selectedMonth)") }
+    }
+    private var filteredSumData: [String: Double] {
+        sumData.filter { $0.key.hasPrefix("\(selectedYear)-\(selectedMonth)") }
+    }
     weak var delegate: GraphTableViewCellDelegate?
     
     override func awakeFromNib() {
@@ -46,27 +63,22 @@ final class GraphTableViewCell: UITableViewCell {
     }
     
     func configure(record: Record, graph: Graph) {
-        setupTitleLabel(record: record)
-        yearSegmentedControlID = record.yearID
-        monthSegmentedControlID = record.monthID
         years.removeAll()
         months.removeAll()
         lineData.removeAll()
         sumData.removeAll()
+        setupTitleLabel(record: record)
+        yearSegmentedControlID = record.yearID
+        monthSegmentedControlID = record.monthID
         setupGraphBaseView()
-        setYears(record: record)
-        setMonths(record: record)
-        setupYearSegmentedControl(record: record)
-        setupMonthSegmentedControl(record: record)
+        setupBeforeYearAndMonth(record: record)
+        setupSegmentedControl(record: record)
         setupGraphView()
-        setupGraphViewLayout()
         setupIndicator(record: record)
-        setupIndicatorLayout()
         setupLineData(record: record, graph: graph)
         setupIfNoGraphData(record: record)
         setupRegisterButton()
         setupSimpleNoGraphDataLabel()
-        setupSimpleNoGraphDataLabelLayout()
     }
     
     override func layoutSubviews() {
@@ -85,37 +97,33 @@ private extension GraphTableViewCell {
         UserDefaults.standard.set(sender.selectedSegmentIndex,
                                   forKey: yearSegmentedControlID)
         delegate?.segmentedControlDidTapped(index: self.tag)
-        setLabelIfNoData()
+        simpleNoGraphDataLabel(isHidden: !filteredSumData.isEmpty)
     }
     
     @IBAction func monthSegmentedControlDidSelected(_ sender: UISegmentedControl) {
         UserDefaults.standard.set(sender.selectedSegmentIndex,
                                   forKey: monthSegmentedControlID)
         delegate?.segmentedControlDidTapped(index: self.tag)
-        setLabelIfNoData()
+        simpleNoGraphDataLabel(isHidden: !filteredSumData.isEmpty)
     }
     
     @IBAction func registerButtonDidTapped(_ sender: Any) {
         delegate?.registerButtonDidTapped(index: self.tag)
     }
+    
 }
 
 // MARK: - func
 private extension GraphTableViewCell {
     
-    func setYears(record: Record) {
-        beforeYear = 0
+    func setupBeforeYearAndMonth(record: Record) {
+        var beforeYear = 0
+        var beforeMonth = 0
         record.histories?.forEach { history in
             if beforeYear != history.year {
                 years.append(history.year)
                 beforeYear = history.year
             }
-        }
-    }
-    
-    func setMonths(record: Record) {
-        beforeMonth = 0
-        record.histories?.forEach { history in
             if beforeMonth != history.month {
                 months.append(history.month)
                 beforeMonth = history.month
@@ -123,27 +131,8 @@ private extension GraphTableViewCell {
         }
     }
     
-    func setLabelIfNoData() {
-        let year: Int = {
-            if years.isEmpty {
-                return 0
-            }
-            return years[yearSegmentedControl.selectedSegmentIndex]
-        }()
-        let month: Int = {
-            if months.isEmpty {
-                return 0
-            }
-            return months[monthSegmentedControl.selectedSegmentIndex]
-        }()
-        let filteredSumData = sumData.filter {
-            $0.key.hasPrefix("\(year)-\(month)")
-        }
-        if filteredSumData.isEmpty {
-            simpleNoGraphDataLabel.isHidden = false
-        } else {
-            simpleNoGraphDataLabel.isHidden = true
-        }
+    func simpleNoGraphDataLabel(isHidden: Bool) {
+        simpleNoGraphDataLabel.isHidden = isHidden
     }
     
 }
@@ -152,14 +141,6 @@ private extension GraphTableViewCell {
 extension GraphTableViewCell: CustomScrollableGraphViewDelegate {
     
     func value(at index: Int) -> Double {
-        let selectedYear = years[yearSegmentedControl.selectedSegmentIndex]
-        let selectedMonth = months[monthSegmentedControl.selectedSegmentIndex]
-        let filteredLineData = lineData.filter {
-            $0.identifier.hasPrefix("\(selectedYear)-\(selectedMonth)")
-        }
-        let filteredSumData = sumData.filter {
-            $0.key.hasPrefix("\(selectedYear)-\(selectedMonth)")
-        }
         let identifier = filteredLineData[index].identifier
         guard let sumData = filteredSumData[identifier] else { return 0.0 }
         let hour = Double(sumData / 60)
@@ -168,24 +149,13 @@ extension GraphTableViewCell: CustomScrollableGraphViewDelegate {
     }
     
     func label(at index: Int) -> String {
-        let selectedYear = years[yearSegmentedControl.selectedSegmentIndex]
-        let selectedMonth = months[monthSegmentedControl.selectedSegmentIndex]
-        let filteredLineData = lineData.filter {
-            $0.identifier.hasPrefix("\(selectedYear)-\(selectedMonth)")
-        }
         return filteredLineData[index].xTitle
     }
     
     func numberOfPoints() -> Int {
-        if sumData.isEmpty {
-            return 0
-        }
-        guard yearSegmentedControl.selectedSegmentIndex != -1 else { return 0 }
-        let selectedYear = years[yearSegmentedControl.selectedSegmentIndex]
-        let selectedMonth = months[monthSegmentedControl.selectedSegmentIndex]
-        let filteredSumData = sumData.filter {
-            $0.key.hasPrefix("\(selectedYear)-\(selectedMonth)")
-        }
+        guard !sumData.isEmpty,
+              yearSegmentedControl.selectedSegmentIndex != -1,
+              monthSegmentedControl.selectedSegmentIndex != -1 else { return 0 }
         return filteredSumData.count
     }
     
@@ -197,6 +167,7 @@ private extension GraphTableViewCell {
     func setupGraphView() {
         graphView = CustomScrollableGraphView()
         graphView.delegate = self
+        setupGraphViewLayout()
     }
     
     func setupGraphBaseView() {
@@ -208,33 +179,20 @@ private extension GraphTableViewCell {
         titleLabel.text = record.title
     }
     
-    func setupYearSegmentedControl(record: Record) {
-        let index = UserDefaults.standard.integer(forKey: yearSegmentedControlID)
-        yearSegmentedControl.create(years.map { String($0) }, selectedIndex: index)
-    }
-    
-    func setupMonthSegmentedControl(record: Record) {
-        let index = UserDefaults.standard.integer(forKey: monthSegmentedControlID)
-        monthSegmentedControl.create(months.map { String($0) }, selectedIndex: index)
+    func setupSegmentedControl(record: Record) {
+        let yearIndex = UserDefaults.standard.integer(forKey: yearSegmentedControlID)
+        yearSegmentedControl.create(years.map { String($0) }, selectedIndex: yearIndex)
+        let monthIndex = UserDefaults.standard.integer(forKey: monthSegmentedControlID)
+        monthSegmentedControl.create(months.map { String($0) }, selectedIndex: monthIndex)
     }
     
     func setupIndicator(record: Record) {
         indicator = UIActivityIndicatorView()
         indicator.style = .large
         indicator.color = .black
-        let year: Int = {
-            if years.isEmpty {
-                return 0
-            }
-            return years[yearSegmentedControl.selectedSegmentIndex]
-        }()
-        let month: Int = {
-            if months.isEmpty {
-                return 0
-            }
-            return months[monthSegmentedControl.selectedSegmentIndex]
-        }()
-        let filteredHistories = record.histories?.filter { $0.year == year && $0.month == month }
+        let filteredHistories = record.histories?.filter {
+            $0.year == selectedYear && $0.month == selectedMonth
+        }
         let time = min(Double(filteredHistories?.count ?? 0) * 0.15, 3)
         if time < 3 {
             indicator.startAnimating()
@@ -244,6 +202,7 @@ private extension GraphTableViewCell {
                 self.indicator.backgroundColor = .clear
             }
         }
+        setupIndicatorLayout()
     }
     
     func setupLineData(record: Record, graph: Graph) {
@@ -281,12 +240,13 @@ private extension GraphTableViewCell {
             registerButton.isHidden = true
             yAxisLabel.isHidden = false
             simpleNoGraphDataLabel.isHidden = false
-            setLabelIfNoData()
+            simpleNoGraphDataLabel(isHidden: !filteredSumData.isEmpty)
         }
     }
     
     func setupSimpleNoGraphDataLabel() {
         simpleNoGraphDataLabel.text = "データがありません"
+        setupSimpleNoGraphDataLabelLayout()
     }
     
 }
