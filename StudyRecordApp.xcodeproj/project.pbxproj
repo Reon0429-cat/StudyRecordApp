@@ -53,11 +53,12 @@
 		AB16308226CEAB9300111F55 /* NavigationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB16308126CEAB9300111F55 /* NavigationButton.swift */; };
 		AB16308426CEABD400111F55 /* NavigationButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB16308326CEABD400111F55 /* NavigationButton.xib */; };
 		AB20F80C26E7B50D00564B14 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB20F80B26E7B50D00564B14 /* UIImage+Extension.swift */; };
-		AB20F80E26E7CBAE00564B14 /* ScrollableGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB20F80D26E7CBAE00564B14 /* ScrollableGraphView.swift */; };
+		AB20F80E26E7CBAE00564B14 /* CustomScrollableGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB20F80D26E7CBAE00564B14 /* CustomScrollableGraphView.swift */; };
 		AB20F81026E7F3DB00564B14 /* GraphKindSelecting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB20F80F26E7F3DB00564B14 /* GraphKindSelecting.storyboard */; };
 		AB20F81226E7F3E100564B14 /* GraphKindSelectingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB20F81126E7F3E100564B14 /* GraphKindSelectingViewController.swift */; };
 		AB20F81426E809A200564B14 /* CustomSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB20F81326E809A200564B14 /* CustomSwitch.swift */; };
 		AB20F81626E80E1900564B14 /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB20F81526E80E1900564B14 /* CustomSlider.swift */; };
+		AB20F81826E949BE00564B14 /* CustomScrollableGraphView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB20F81726E949BE00564B14 /* CustomScrollableGraphView.xib */; };
 		AB275FFE26DCAA56009F63B3 /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB275FFD26DCAA56009F63B3 /* Indicator.swift */; };
 		AB2B5B8326A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B7E26A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift */; };
 		AB2B5B8426A2D0FD009BD3C7 /* NotificationName+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5B7F26A2D0FD009BD3C7 /* NotificationName+Extension.swift */; };
@@ -203,11 +204,12 @@
 		AB16308126CEAB9300111F55 /* NavigationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationButton.swift; sourceTree = "<group>"; };
 		AB16308326CEABD400111F55 /* NavigationButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavigationButton.xib; sourceTree = "<group>"; };
 		AB20F80B26E7B50D00564B14 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
-		AB20F80D26E7CBAE00564B14 /* ScrollableGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableGraphView.swift; sourceTree = "<group>"; };
+		AB20F80D26E7CBAE00564B14 /* CustomScrollableGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScrollableGraphView.swift; sourceTree = "<group>"; };
 		AB20F80F26E7F3DB00564B14 /* GraphKindSelecting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GraphKindSelecting.storyboard; sourceTree = "<group>"; };
 		AB20F81126E7F3E100564B14 /* GraphKindSelectingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphKindSelectingViewController.swift; sourceTree = "<group>"; };
 		AB20F81326E809A200564B14 /* CustomSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSwitch.swift; sourceTree = "<group>"; };
 		AB20F81526E80E1900564B14 /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
+		AB20F81726E949BE00564B14 /* CustomScrollableGraphView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomScrollableGraphView.xib; sourceTree = "<group>"; };
 		AB275FFD26DCAA56009F63B3 /* Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
 		AB2B5B7E26A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
 		AB2B5B7F26A2D0FD009BD3C7 /* NotificationName+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotificationName+Extension.swift"; sourceTree = "<group>"; };
@@ -435,7 +437,8 @@
 			isa = PBXGroup;
 			children = (
 				AB13EE6926CB6965002F56FF /* RippleView.swift */,
-				AB20F80D26E7CBAE00564B14 /* ScrollableGraphView.swift */,
+				AB20F81726E949BE00564B14 /* CustomScrollableGraphView.xib */,
+				AB20F80D26E7CBAE00564B14 /* CustomScrollableGraphView.swift */,
 				ABA056FE26B50CC700E3DF01 /* GraphColorTileView.xib */,
 				ABA0570026B50D1900E3DF01 /* GraphColorTileView.swift */,
 				AB16304E26CD6AF400111F55 /* WaveView.xib */,
@@ -853,6 +856,7 @@
 			files = (
 				AB93C247266A234C00C3AE8F /* LaunchScreen.storyboard in Resources */,
 				AB14B46426DB515D007A5F16 /* ResetingPassword.storyboard in Resources */,
+				AB20F81826E949BE00564B14 /* CustomScrollableGraphView.xib in Resources */,
 				AB4397EF26DD305B008C8CA8 /* AdditionalGoal.storyboard in Resources */,
 				AB43980926DE2D72008C8CA8 /* GoalPriorityTableViewCell.xib in Resources */,
 				AB2B5BBB26A2D2C2009BD3C7 /* ColorConceptTableViewCell.xib in Resources */,
@@ -1019,7 +1023,7 @@
 				AB2B5BA126A2D1B7009BD3C7 /* SeasonConcept.swift in Sources */,
 				AB2B5B8526A2D0FD009BD3C7 /* UIColor+Extension.swift in Sources */,
 				AB4397F326DD3B32008C8CA8 /* GoalPriorityViewController.swift in Sources */,
-				AB20F80E26E7CBAE00564B14 /* ScrollableGraphView.swift in Sources */,
+				AB20F80E26E7CBAE00564B14 /* CustomScrollableGraphView.swift in Sources */,
 				AB2B5BBA26A2D2C2009BD3C7 /* SectionHeaderView.swift in Sources */,
 				AB13EDFA26C8C585002F56FF /* GoalViewController.swift in Sources */,
 				AB4397F526DD57B9008C8CA8 /* Goal.swift in Sources */,

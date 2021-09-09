@@ -1,5 +1,5 @@
 //
-//  ScrollableGraphView.swift
+//  CustomScrollableGraphView.swift
 //  StudyRecordApp
 //
 //  Created by 大西玲音 on 2021/09/08.
@@ -43,21 +43,16 @@ final class CustomScrollableGraphView: UIView {
         createReferenceLines()
     }
     
-//    func set(to view: UIView) {
-//        graphView.translatesAutoresizingMaskIntoConstraints = false
-//        view.addSubview(graphView)
-//        NSLayoutConstraint.activate([
-//            graphView.topAnchor.constraint(equalTo: view.topAnchor),
-//            graphView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-//            graphView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            graphView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-//        ])
-//    }
-//
-//    func scrollToRight(width: CGFloat) {
-//        let offset = CGPoint(x: width, y: 0)
-//        self.graphView.setContentOffset(offset, animated: true)
-//    }
+    func scrollToRight() {
+        DispatchQueue.main.async {
+            let offset = CGPoint(x: max(-self.graphView.contentInset.left,
+                                        self.graphView.contentSize.width
+                                            - self.graphView.frame.width
+                                            + self.graphView.contentInset.right),
+                                 y: self.graphView.contentOffset.y)
+            self.graphView.setContentOffset(offset, animated: true)
+        }
+    }
     
     func create(color: UIColor, graph: Graph) {
         switch graph.selectedType {

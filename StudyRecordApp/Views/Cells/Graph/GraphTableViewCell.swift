@@ -7,13 +7,14 @@
 
 import UIKit
 
-// MARK: - ToDo 一番右にスクロールされるようのする
+// MARK: - ToDo 年度を違うところに移動させ、表示させる月が選択できるようにする
 // MARK: - ToDo データがないときに、データがないよラベルを表示させる
+// MARK: - ToDo インジケーターをロード中に表示させる
 
 final class GraphTableViewCell: UITableViewCell {
     
     @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var myGraphView: UIView!
+    @IBOutlet private weak var graphBaseView: UIView!
     @IBOutlet private weak var myGraphViewRightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var segmentedControl: CustomSegmentedControl!
     
@@ -37,8 +38,8 @@ final class GraphTableViewCell: UITableViewCell {
         setupSegmentedControl(record: record)
         setupGraphView()
         setupLineData(record: record, graph: graph)
-        myGraphView.subviews.forEach { $0.removeFromSuperview() }
-        graphView.set(to: myGraphView)
+        setupGraphViewLayout()
+        graphView.scrollToRight()
     }
     
 }
@@ -64,6 +65,18 @@ private extension GraphTableViewCell {
                 beforeYear = history.year
             }
         }
+    }
+    
+    func setupGraphViewLayout() {
+        graphBaseView.subviews.forEach { $0.removeFromSuperview() }
+        graphView.translatesAutoresizingMaskIntoConstraints = false
+        graphBaseView.addSubview(graphView)
+        NSLayoutConstraint.activate([
+            graphView.topAnchor.constraint(equalTo: graphBaseView.topAnchor),
+            graphView.bottomAnchor.constraint(equalTo: graphBaseView.bottomAnchor),
+            graphView.leadingAnchor.constraint(equalTo: graphBaseView.leadingAnchor),
+            graphView.trailingAnchor.constraint(equalTo: graphBaseView.trailingAnchor)
+        ])
     }
     
 }

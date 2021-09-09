@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="409" height="304"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iG7-E6-k4J">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iG7-E6-k4J" customClass="CustomScrollableGraphView" customModule="StudyRecordApp" customModuleProvider="target">
                         <rect key="frame" x="10" y="88.5" width="389" height="205.5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
@@ -65,7 +65,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="myGraphView" destination="iG7-E6-k4J" id="TJH-XC-YAt"/>
+                <outlet property="graphBaseView" destination="iG7-E6-k4J" id="krf-DD-Bbq"/>
                 <outlet property="myGraphViewRightConstraint" destination="2fn-I6-hAv" id="5bw-tV-t1t"/>
                 <outlet property="segmentedControl" destination="KmU-DN-1q2" id="BkB-mL-jbk"/>
                 <outlet property="titleLabel" destination="sNK-SC-fH8" id="25y-9G-n88"/>
