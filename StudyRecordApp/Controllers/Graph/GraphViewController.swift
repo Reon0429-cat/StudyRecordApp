@@ -122,6 +122,7 @@ extension GraphViewController: UITableViewDataSource {
                                graphColor: record.graphColor,
                                memo: record.memo,
                                yearID: record.yearID,
+                               monthID: record.monthID,
                                order: record.order)
         let graph = graphUseCase.graph
         cell.configure(record: newRecord, graph: graph)
@@ -147,7 +148,7 @@ extension GraphViewController: GraphTableViewCellDelegate {
                          modalPresentationStyle: .fullScreen) { vc in
                 vc.selectedRow = index
             }
-                         }
+        }
     }
     
 }

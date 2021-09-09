@@ -7,9 +7,6 @@
 
 import UIKit
 
-// MARK: - ToDo 年度を違うところに移動させ、表示させる月が選択できるようにする
-// MARK: - ToDo グラフまたは記録データがないときに、それぞれボタンを配置してタップすると登録画面に遷移させる
-
 protocol GraphTableViewCellDelegate: AnyObject {
     func segmentedControlDidTapped(index: Int)
     func registerButtonDidTapped(index: Int)
@@ -20,7 +17,8 @@ final class GraphTableViewCell: UITableViewCell {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var graphBaseView: UIView!
     @IBOutlet private weak var myGraphViewRightConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var segmentedControl: CustomSegmentedControl!
+    @IBOutlet private weak var yearSegmentedControl: CustomSegmentedControl!
+    @IBOutlet private weak var monthSegmentedControl: CustomSegmentedControl!
     @IBOutlet private weak var yAxisLabel: UILabel!
     @IBOutlet private weak var noGraphDataLabel: UILabel!
     @IBOutlet private weak var registerButton: UIButton!
@@ -32,7 +30,12 @@ final class GraphTableViewCell: UITableViewCell {
     private var beforeIdentifier = ""
     private var beforeYear = 0
     private var years = [Int]()
-    private var segmentedControlSelectedIndexID = ""
+    private var yearSegmentedControlID = ""
+    private var beforeMonth = 0
+    private var months = [Int]()
+    private var monthSegmentedControlID = ""
+    private var simpleNoGraphDataLabel = UILabel()
+    
     weak var delegate: GraphTableViewCellDelegate?
     
     override func awakeFromNib() {
@@ -44,14 +47,17 @@ final class GraphTableViewCell: UITableViewCell {
     
     func configure(record: Record, graph: Graph) {
         setupTitleLabel(record: record)
-        segmentedControlSelectedIndexID = record.yearID
+        yearSegmentedControlID = record.yearID
+        monthSegmentedControlID = record.monthID
         years.removeAll()
+        months.removeAll()
         lineData.removeAll()
         sumData.removeAll()
-        beforeYear = 0
         setupGraphBaseView()
         setYears(record: record)
-        setupSegmentedControl(record: record)
+        setMonths(record: record)
+        setupYearSegmentedControl(record: record)
+        setupMonthSegmentedControl(record: record)
         setupGraphView()
         setupGraphViewLayout()
         setupIndicator(record: record)
@@ -59,6 +65,9 @@ final class GraphTableViewCell: UITableViewCell {
         setupLineData(record: record, graph: graph)
         setupIfNoGraphData(record: record)
         setupRegisterButton()
+        setLabelIfNoData()
+        setupSimpleNoGraphDataLabel()
+        setupSimpleNoGraphDataLabelLayout()
     }
     
     override func layoutSubviews() {
@@ -73,27 +82,58 @@ final class GraphTableViewCell: UITableViewCell {
 // MARK: - IBAction func
 private extension GraphTableViewCell {
     
-    @IBAction func segmentedControlDidSelected(_ sender: UISegmentedControl) {
+    @IBAction func yearSegmentedControlDidSelected(_ sender: UISegmentedControl) {
         UserDefaults.standard.set(sender.selectedSegmentIndex,
-                                  forKey: segmentedControlSelectedIndexID)
+                                  forKey: yearSegmentedControlID)
         delegate?.segmentedControlDidTapped(index: self.tag)
+        setLabelIfNoData()
+    }
+    
+    @IBAction func monthSegmentedControlDidSelected(_ sender: UISegmentedControl) {
+        UserDefaults.standard.set(sender.selectedSegmentIndex,
+                                  forKey: monthSegmentedControlID)
+        delegate?.segmentedControlDidTapped(index: self.tag)
+        setLabelIfNoData()
     }
     
     @IBAction func registerButtonDidTapped(_ sender: Any) {
         delegate?.registerButtonDidTapped(index: self.tag)
     }
-    
 }
 
 // MARK: - func
 private extension GraphTableViewCell {
     
     func setYears(record: Record) {
+        beforeYear = 0
         record.histories?.forEach { history in
             if beforeYear != history.year {
                 years.append(history.year)
                 beforeYear = history.year
             }
+        }
+    }
+    
+    func setMonths(record: Record) {
+        beforeMonth = 0
+        record.histories?.forEach { history in
+            if beforeMonth != history.month {
+                months.append(history.month)
+                beforeMonth = history.month
+            }
+        }
+    }
+    
+    func setLabelIfNoData() {
+        let selectedYear = years[yearSegmentedControl.selectedSegmentIndex]
+        let selectedMonth = months[monthSegmentedControl.selectedSegmentIndex]
+        let filteredSumData = sumData.filter {
+            $0.key.hasPrefix("\(selectedYear)-\(selectedMonth)")
+        }
+        if filteredSumData.isEmpty {
+            simpleNoGraphDataLabel.isHidden = false
+        } else {
+            simpleNoGraphDataLabel.isHidden = true
         }
     }
     
@@ -103,9 +143,14 @@ private extension GraphTableViewCell {
 extension GraphTableViewCell: CustomScrollableGraphViewDelegate {
     
     func value(at index: Int) -> Double {
-        let selectedYear = years[segmentedControl.selectedSegmentIndex]
-        let filteredLineData = lineData.filter { $0.identifier.hasPrefix("\(selectedYear)") }
-        let filteredSumData = sumData.filter { $0.key.hasPrefix("\(selectedYear)") }
+        let selectedYear = years[yearSegmentedControl.selectedSegmentIndex]
+        let selectedMonth = months[monthSegmentedControl.selectedSegmentIndex]
+        let filteredLineData = lineData.filter {
+            $0.identifier.hasPrefix("\(selectedYear)-\(selectedMonth)")
+        }
+        let filteredSumData = sumData.filter {
+            $0.key.hasPrefix("\(selectedYear)-\(selectedMonth)")
+        }
         let identifier = filteredLineData[index].identifier
         guard let sumData = filteredSumData[identifier] else { return 0.0 }
         let hour = Double(sumData / 60)
@@ -114,8 +159,11 @@ extension GraphTableViewCell: CustomScrollableGraphViewDelegate {
     }
     
     func label(at index: Int) -> String {
-        let selectedYear = years[segmentedControl.selectedSegmentIndex]
-        let filteredLineData = lineData.filter { $0.identifier.hasPrefix("\(selectedYear)") }
+        let selectedYear = years[yearSegmentedControl.selectedSegmentIndex]
+        let selectedMonth = months[monthSegmentedControl.selectedSegmentIndex]
+        let filteredLineData = lineData.filter {
+            $0.identifier.hasPrefix("\(selectedYear)-\(selectedMonth)")
+        }
         return filteredLineData[index].xTitle
     }
     
@@ -123,9 +171,12 @@ extension GraphTableViewCell: CustomScrollableGraphViewDelegate {
         if sumData.isEmpty {
             return 0
         }
-        guard segmentedControl.selectedSegmentIndex != -1 else { return 0 }
-        let selectedYear = years[segmentedControl.selectedSegmentIndex]
-        let filteredSumData = sumData.filter { $0.key.hasPrefix("\(selectedYear)") }
+        guard yearSegmentedControl.selectedSegmentIndex != -1 else { return 0 }
+        let selectedYear = years[yearSegmentedControl.selectedSegmentIndex]
+        let selectedMonth = months[monthSegmentedControl.selectedSegmentIndex]
+        let filteredSumData = sumData.filter {
+            $0.key.hasPrefix("\(selectedYear)-\(selectedMonth)")
+        }
         return filteredSumData.count
     }
     
@@ -148,9 +199,14 @@ private extension GraphTableViewCell {
         titleLabel.text = record.title
     }
     
-    func setupSegmentedControl(record: Record) {
-        let index = UserDefaults.standard.integer(forKey: segmentedControlSelectedIndexID)
-        segmentedControl.create(years.map { String($0) }, selectedIndex: index)
+    func setupYearSegmentedControl(record: Record) {
+        let index = UserDefaults.standard.integer(forKey: yearSegmentedControlID)
+        yearSegmentedControl.create(years.map { String($0) }, selectedIndex: index)
+    }
+    
+    func setupMonthSegmentedControl(record: Record) {
+        let index = UserDefaults.standard.integer(forKey: monthSegmentedControlID)
+        monthSegmentedControl.create(months.map { String($0) }, selectedIndex: index)
     }
     
     func setupIndicator(record: Record) {
@@ -160,11 +216,16 @@ private extension GraphTableViewCell {
         let year: Int = {
             if years.isEmpty {
                 return 0
-            } else {
-                return years[segmentedControl.selectedSegmentIndex]
             }
+            return years[yearSegmentedControl.selectedSegmentIndex]
         }()
-        let filteredHistories = record.histories?.filter { $0.year == year }
+        let month: Int = {
+            if months.isEmpty {
+                return 0
+            }
+            return months[monthSegmentedControl.selectedSegmentIndex]
+        }()
+        let filteredHistories = record.histories?.filter { $0.year == year && $0.month == month }
         let time = min(Double(filteredHistories?.count ?? 0) * 0.15, 3)
         if time < 3 {
             indicator.startAnimating()
@@ -212,6 +273,10 @@ private extension GraphTableViewCell {
         }
     }
     
+    func setupSimpleNoGraphDataLabel() {
+        simpleNoGraphDataLabel.text = "データがありません"
+    }
+    
 }
 
 // MARK: - setup layout
@@ -240,4 +305,16 @@ extension GraphTableViewCell {
         ])
     }
     
+    func setupSimpleNoGraphDataLabelLayout() {
+        simpleNoGraphDataLabel.translatesAutoresizingMaskIntoConstraints = false
+        graphView.addSubview(simpleNoGraphDataLabel)
+        NSLayoutConstraint.activate([
+            simpleNoGraphDataLabel.centerXAnchor.constraint(equalTo: graphView.centerXAnchor),
+            simpleNoGraphDataLabel.centerYAnchor.constraint(equalTo: graphView.centerYAnchor)
+        ])
+    }
+    
 }
+
+
+
