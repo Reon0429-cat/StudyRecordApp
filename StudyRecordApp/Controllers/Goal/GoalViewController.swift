@@ -7,8 +7,8 @@
 
 import UIKit
 
-protocol GoalVCDelegate: AnyObject {
-    func screenDidPresented(index: Int)
+protocol GoalVCDelegate: ScreenPresentationDelegate {
+    
 }
 
 final class GoalViewController: UIViewController {
@@ -38,7 +38,7 @@ final class GoalViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        delegate?.screenDidPresented(index: self.view.tag)
+        delegate?.screenDidPresented(screenType: .goal)
         tableView.reloadData()
         
     }

@@ -7,8 +7,8 @@
 
 import UIKit
 
-protocol CountDownVCDelegate: AnyObject {
-    func screenDidPresented(index: Int)
+protocol CountDownVCDelegate: ScreenPresentationDelegate {
+    
 }
 
 final class CountDownViewController: UIViewController {
@@ -23,7 +23,7 @@ final class CountDownViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        delegate?.screenDidPresented(index: self.view.tag)
+        delegate?.screenDidPresented(screenType: .countDown)
         
     }
     

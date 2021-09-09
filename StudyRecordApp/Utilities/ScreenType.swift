@@ -7,6 +7,13 @@
 
 import Foundation
 
+protocol ScreenPresentationDelegate: AnyObject {
+    func screenDidPresented(screenType: ScreenType)
+    func scroll(sourceScreenType: ScreenType,
+                destinationScreenType: ScreenType,
+                completion: (() -> Void)?)
+}
+
 enum ScreenType: Int, CaseIterable {
     case record
     case goal

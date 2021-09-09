@@ -52,9 +52,8 @@ private enum RowType {
     }
 }
 
-protocol SettingVCDelegate: AnyObject {
-    func screenDidPresented(index: Int)
-    func loginAndSignUpVCDidShowed()
+protocol SettingVCDelegate: ScreenPresentationDelegate {
+    
 }
 
 final class SettingViewController: UIViewController {
@@ -86,7 +85,7 @@ final class SettingViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        delegate?.screenDidPresented(index: self.view.tag)
+        delegate?.screenDidPresented(screenType: .setting)
         
     }
     
@@ -118,8 +117,10 @@ private extension SettingViewController {
     
     func presentLoginAndSignUpVC() {
         present(LoginAndSignUpViewController.self,
-                modalPresentationStyle: .fullScreen) { _ in 
-                self.delegate?.loginAndSignUpVCDidShowed()
+                modalPresentationStyle: .fullScreen) { _ in
+            self.delegate?.scroll(sourceScreenType: .setting,
+                                  destinationScreenType: .record,
+                                  completion: nil)
         }
     }
     

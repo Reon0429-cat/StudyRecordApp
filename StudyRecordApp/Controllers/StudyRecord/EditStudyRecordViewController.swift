@@ -42,10 +42,10 @@ final class EditStudyRecordViewController: UIViewController {
     private var rowCount: Int {
         (CellType.allCases.count - 1) + (selectedRecord.histories?.count ?? 0)
     }
-    var selectedRow: Int!
     private var selectedRecord: Record!
     private var oldInputtedTitle: String = ""
     private var halfModalPresenter = HalfModalPresenter()
+    var selectedRow: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
