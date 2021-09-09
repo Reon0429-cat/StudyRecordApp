@@ -44,14 +44,12 @@ final class CustomScrollableGraphView: UIView {
     }
     
     func scrollToRight() {
-        DispatchQueue.main.async {
-            let offset = CGPoint(x: max(-self.graphView.contentInset.left,
-                                        self.graphView.contentSize.width
-                                            - self.graphView.frame.width
-                                            + self.graphView.contentInset.right),
-                                 y: self.graphView.contentOffset.y)
-            self.graphView.setContentOffset(offset, animated: true)
-        }
+        let offset = CGPoint(x: max(-graphView.contentInset.left,
+                                    graphView.contentSize.width
+                                        - graphView.frame.width
+                                        + graphView.contentInset.right),
+                             y: graphView.contentOffset.y)
+        graphView.setContentOffset(offset, animated: false)
     }
     
     func create(color: UIColor, graph: Graph) {
@@ -87,6 +85,7 @@ private extension CustomScrollableGraphView {
         graphView.shouldAnimateOnStartup = true
         graphView.shouldAdaptRange = true
         graphView.shouldRangeAlwaysStartAtZero = true
+        graphView.shouldAnimateOnAdapt = false
         graphView.topMargin = 10
         graphView.dataPointSpacing = 30
     }
@@ -105,8 +104,8 @@ private extension CustomScrollableGraphView {
     func createLine(color: UIColor, isFilled: Bool, isSmooth: Bool) {
         let linePlot = LinePlot(identifier: "")
         linePlot.lineColor = color
-        linePlot.adaptAnimationType = .easeOut
         linePlot.animationDuration = 0.1
+        linePlot.adaptAnimationType = .easeOut
         if isFilled {
             linePlot.shouldFill = true
             linePlot.fillType = .gradient
@@ -126,10 +125,10 @@ private extension CustomScrollableGraphView {
     func createDot(color: UIColor, isSquare: Bool) {
         let dotPlot = DotPlot(identifier: "")
         dotPlot.dataPointType = .circle
+        dotPlot.animationDuration = 0.1
+        dotPlot.adaptAnimationType = .easeOut
         dotPlot.dataPointSize = 5
         dotPlot.dataPointFillColor = color
-        dotPlot.adaptAnimationType = .easeOut
-        dotPlot.animationDuration = 0.1
         if isSquare {
             dotPlot.dataPointType = .square
         } else {
@@ -140,8 +139,8 @@ private extension CustomScrollableGraphView {
     
     func createBar(color: UIColor, width: CGFloat) {
         let barPlot = BarPlot(identifier: "")
+        barPlot.animationDuration = 0.1
         barPlot.adaptAnimationType = .easeOut
-        barPlot.animationDuration = 0.3
         barPlot.barWidth = width
         barPlot.barLineWidth = 3
         barPlot.barColor = color

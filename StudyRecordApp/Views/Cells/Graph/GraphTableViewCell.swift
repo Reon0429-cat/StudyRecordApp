@@ -19,6 +19,7 @@ final class GraphTableViewCell: UITableViewCell {
     @IBOutlet private weak var segmentedControl: CustomSegmentedControl!
     
     private var graphView: CustomScrollableGraphView!
+    private var indicator: UIActivityIndicatorView!
     private var lineData = [(color: UIColor, identifier: String, xTitle: String)]()
     private var sumData = [String: Double]()
     private var beforeIdentifier = ""
@@ -37,9 +38,17 @@ final class GraphTableViewCell: UITableViewCell {
         setYears(record: record)
         setupSegmentedControl(record: record)
         setupGraphView()
-        setupLineData(record: record, graph: graph)
         setupGraphViewLayout()
-        graphView.scrollToRight()
+        setupIndicator(record: record)
+        setupIndicatorLayout()
+        setupLineData(record: record, graph: graph)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        self.graphView.scrollToRight()
+        
     }
     
 }
@@ -65,18 +74,6 @@ private extension GraphTableViewCell {
                 beforeYear = history.year
             }
         }
-    }
-    
-    func setupGraphViewLayout() {
-        graphBaseView.subviews.forEach { $0.removeFromSuperview() }
-        graphView.translatesAutoresizingMaskIntoConstraints = false
-        graphBaseView.addSubview(graphView)
-        NSLayoutConstraint.activate([
-            graphView.topAnchor.constraint(equalTo: graphBaseView.topAnchor),
-            graphView.bottomAnchor.constraint(equalTo: graphBaseView.bottomAnchor),
-            graphView.leadingAnchor.constraint(equalTo: graphBaseView.leadingAnchor),
-            graphView.trailingAnchor.constraint(equalTo: graphBaseView.trailingAnchor)
-        ])
     }
     
 }
@@ -130,6 +127,23 @@ private extension GraphTableViewCell {
         segmentedControl.create(years.map { String($0) }, selectedIndex: index)
     }
     
+    func setupIndicator(record: Record) {
+        indicator = UIActivityIndicatorView()
+        indicator.style = .large
+        indicator.color = .black
+        let year = years[segmentedControl.selectedSegmentIndex]
+        let filteredHistories = record.histories?.filter { $0.year == year }
+        let time = min(Double(filteredHistories?.count ?? 0) * 0.15, 3)
+        if time < 3 {
+            indicator.startAnimating()
+            indicator.backgroundColor = .white
+            DispatchQueue.main.asyncAfter(deadline: .now() + time) {
+                self.indicator.stopAnimating()
+                self.indicator.backgroundColor = .clear
+            }
+        }
+    }
+    
     func setupLineData(record: Record, graph: Graph) {
         guard let histories = record.histories else { return }
         histories.forEach { historiy in
@@ -147,6 +161,34 @@ private extension GraphTableViewCell {
                              xTitle: "\(historiy.month)/\(historiy.day)"))
         }
         graphView.create(color: UIColor(record: record), graph: graph)
+    }
+    
+}
+
+// MARK: - setup layout
+extension GraphTableViewCell {
+    
+    func setupGraphViewLayout() {
+        graphBaseView.subviews.forEach { $0.removeFromSuperview() }
+        graphView.translatesAutoresizingMaskIntoConstraints = false
+        graphBaseView.addSubview(graphView)
+        NSLayoutConstraint.activate([
+            graphView.topAnchor.constraint(equalTo: graphBaseView.topAnchor),
+            graphView.bottomAnchor.constraint(equalTo: graphBaseView.bottomAnchor),
+            graphView.leadingAnchor.constraint(equalTo: graphBaseView.leadingAnchor),
+            graphView.trailingAnchor.constraint(equalTo: graphBaseView.trailingAnchor)
+        ])
+    }
+    
+    func setupIndicatorLayout() {
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        graphView.addSubview(indicator)
+        NSLayoutConstraint.activate([
+            indicator.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            indicator.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            indicator.widthAnchor.constraint(equalTo: self.widthAnchor),
+            indicator.heightAnchor.constraint(equalTo: self.heightAnchor)
+        ])
     }
     
 }
