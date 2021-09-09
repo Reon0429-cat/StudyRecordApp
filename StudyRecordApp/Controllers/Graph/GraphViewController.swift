@@ -38,6 +38,7 @@ final class GraphViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        showNoRecordDataLabel(recordUseCase.records.isEmpty)
         delegate?.screenDidPresented(index: self.view.tag)
         tableView.reloadData()
         
@@ -47,6 +48,10 @@ final class GraphViewController: UIViewController {
 
 // MARK: - func
 private extension GraphViewController {
+    
+    func showNoRecordDataLabel(_ isShowed: Bool) {
+        tableView.backgroundColor = isShowed ? .clear : .white
+    }
     
     func setObserver() {
         NotificationCenter.default.addObserver(self,

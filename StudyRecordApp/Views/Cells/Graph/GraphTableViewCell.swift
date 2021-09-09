@@ -8,8 +8,7 @@
 import UIKit
 
 // MARK: - ToDo 年度を違うところに移動させ、表示させる月が選択できるようにする
-// MARK: - ToDo データがないときに、データがないよラベルを表示させる
-// MARK: - ToDo インジケーターをロード中に表示させる
+// MARK: - ToDo グラフまたは記録データがないときに、それぞれボタンを配置してタップすると登録画面に遷移させる
 
 final class GraphTableViewCell: UITableViewCell {
     
@@ -17,6 +16,8 @@ final class GraphTableViewCell: UITableViewCell {
     @IBOutlet private weak var graphBaseView: UIView!
     @IBOutlet private weak var myGraphViewRightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var segmentedControl: CustomSegmentedControl!
+    @IBOutlet private weak var yAxisLabel: UILabel!
+    @IBOutlet private weak var noGraphDataLabel: UILabel!
     
     private var graphView: CustomScrollableGraphView!
     private var indicator: UIActivityIndicatorView!
@@ -28,6 +29,13 @@ final class GraphTableViewCell: UITableViewCell {
     private var segmentedControlSelectedIndexID = ""
     var onSegmentedControlEvent: (() -> Void)?
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        selectionStyle = .none
+        
+    }
+    
     func configure(record: Record, graph: Graph) {
         setupTitleLabel(record: record)
         segmentedControlSelectedIndexID = record.yearID
@@ -35,6 +43,7 @@ final class GraphTableViewCell: UITableViewCell {
         lineData.removeAll()
         sumData.removeAll()
         beforeYear = 0
+        setupGraphBaseView()
         setYears(record: record)
         setupSegmentedControl(record: record)
         setupGraphView()
@@ -42,6 +51,7 @@ final class GraphTableViewCell: UITableViewCell {
         setupIndicator(record: record)
         setupIndicatorLayout()
         setupLineData(record: record, graph: graph)
+        setupIfNoGraphData(record: record)
     }
     
     override func layoutSubviews() {
@@ -118,6 +128,11 @@ private extension GraphTableViewCell {
         graphView.delegate = self
     }
     
+    func setupGraphBaseView() {
+        graphBaseView.layer.borderColor = UIColor.black.cgColor
+        graphBaseView.layer.borderWidth = 2
+    }
+    
     func setupTitleLabel(record: Record) {
         titleLabel.text = record.title
     }
@@ -131,7 +146,13 @@ private extension GraphTableViewCell {
         indicator = UIActivityIndicatorView()
         indicator.style = .large
         indicator.color = .black
-        let year = years[segmentedControl.selectedSegmentIndex]
+        let year: Int = {
+            if years.isEmpty {
+                return 0
+            } else {
+                return years[segmentedControl.selectedSegmentIndex]
+            }
+        }()
         let filteredHistories = record.histories?.filter { $0.year == year }
         let time = min(Double(filteredHistories?.count ?? 0) * 0.15, 3)
         if time < 3 {
@@ -163,6 +184,16 @@ private extension GraphTableViewCell {
         graphView.create(color: UIColor(record: record), graph: graph)
     }
     
+    func setupIfNoGraphData(record: Record) {
+        if record.histories?.isEmpty ?? true {
+            noGraphDataLabel.isHidden = false
+            yAxisLabel.isHidden = true
+        } else {
+            noGraphDataLabel.isHidden = true
+            yAxisLabel.isHidden = false
+        }
+    }
+    
 }
 
 // MARK: - setup layout
@@ -173,7 +204,7 @@ extension GraphTableViewCell {
         graphView.translatesAutoresizingMaskIntoConstraints = false
         graphBaseView.addSubview(graphView)
         NSLayoutConstraint.activate([
-            graphView.topAnchor.constraint(equalTo: graphBaseView.topAnchor),
+            graphView.topAnchor.constraint(equalTo: graphBaseView.topAnchor, constant: 10),
             graphView.bottomAnchor.constraint(equalTo: graphBaseView.bottomAnchor),
             graphView.leadingAnchor.constraint(equalTo: graphBaseView.leadingAnchor),
             graphView.trailingAnchor.constraint(equalTo: graphBaseView.trailingAnchor)

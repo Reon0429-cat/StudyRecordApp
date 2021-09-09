@@ -17,6 +17,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tf6-df-FbL">
+                                <rect key="frame" x="115.5" y="424" width="183.5" height="48"/>
+                                <string key="text">記録データが
+登録されていません</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PJC-7m-StF">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -25,9 +33,12 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tf6-df-FbL" secondAttribute="trailing" constant="30" id="Je8-mV-UZg"/>
                             <constraint firstItem="PJC-7m-StF" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="K5b-4I-oKs"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="PJC-7m-StF" secondAttribute="bottom" id="OUg-aT-GjM"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="PJC-7m-StF" secondAttribute="trailing" id="eOi-Xc-nEn"/>
+                            <constraint firstItem="tf6-df-FbL" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="ldi-fw-A6L"/>
+                            <constraint firstItem="tf6-df-FbL" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="rTn-Uw-x0m"/>
                             <constraint firstItem="PJC-7m-StF" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="sxm-2J-ReA"/>
                         </constraints>
                     </view>
