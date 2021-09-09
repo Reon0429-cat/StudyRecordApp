@@ -139,7 +139,11 @@ private extension TopViewController {
         if let studyRecordVC = viewControllers.first as? StudyRecordViewController {
             studyRecordVC.reloadTableView()
         }
-        sortButton.toggleFade()
+        if editButton.isType(.edit) {
+            sortButton.setFade(.out)
+        } else {
+            sortButton.setFade(.in)
+        }
     }
     
     func screenDidChanged(item: Int) {
@@ -241,7 +245,7 @@ extension TopViewController {
         switch screenType {
             case .record:
                 editButton.setFade(.in)
-                editButton.changeTitle("編集")
+                editButton.changeTitle(editButton.type?.title ?? "編集")
                 changeAddButton(isEnabled: true)
             case .goal:
                 editButton.setFade(.in)

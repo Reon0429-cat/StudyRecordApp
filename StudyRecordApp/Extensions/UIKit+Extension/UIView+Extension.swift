@@ -49,14 +49,6 @@ extension UIView {
         }
     }
     
-    func toggleFade() {
-        if self.isHidden {
-            self.setFade(.in)
-        } else {
-            self.setFade(.out)
-        }
-    }
-    
     func vibrate(_ vibrateAction: VibrateAction, isEvenIndex: Bool = false) {
         let vibrateKey = "VibrateAnimationKey"
         let rotationKey = "transform.rotation"
