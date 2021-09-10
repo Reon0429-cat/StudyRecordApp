@@ -31,7 +31,7 @@ final class StudyRecordTimeRecordViewController: UIViewController {
         }
         var numbers: [Int] {
             switch self {
-                case .year: return [Int](2020...2030)
+                case .year: return [Int](2020...2025)
                 case .month: return [Int](1...12)
                 case .day: return [Int](1...31)
                 case .hour: return [Int](0...23)

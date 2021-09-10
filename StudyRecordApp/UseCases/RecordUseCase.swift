@@ -25,6 +25,7 @@ final class RecordUseCase {
                                graphColor: record.graphColor,
                                memo: record.memo,
                                yearID: record.yearID,
+                               monthID: record.monthID,
                                order: record.order)
         repository.update(record: newRecord, at: index)
     }

@@ -118,7 +118,7 @@ private extension RecordTableViewCell {
     
     func setupDeleteButton() {
         deleteButton.isHidden = true
-        deleteButton.layer.cornerRadius = deleteButton.frame.height / 2
+        deleteButton.cutToCircle()
         deleteButton.backgroundColor = .white
     }
     

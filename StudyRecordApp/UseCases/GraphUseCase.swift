@@ -14,8 +14,22 @@ final class GraphUseCase {
         self.repository = repository
     }
     
-    var graphs: [Graph] {
-        repository.readAll()
+    var graph: Graph {
+        if repository.readAll().isEmpty {
+            let graph = Graph(selectedType: .line,
+                              line: Line(isSmooth: false,
+                                         isFilled: false,
+                                         withDots: true),
+                              bar: Bar(width: 20),
+                              dot: Dot(isSquare: false))
+            repository.create(graph: graph)
+            return graph
+        }
+        return repository.read(at: 0)
+    }
+    
+    func update(graph: Graph) {
+        repository.update(graph: graph, at: 0)
     }
     
 }

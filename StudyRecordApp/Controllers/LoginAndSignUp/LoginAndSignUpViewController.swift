@@ -124,7 +124,7 @@ private extension LoginAndSignUpViewController {
 private extension LoginAndSignUpViewController {
     
     func setupBaseView() {
-        baseView.setShadow()
+        baseView.setShadow(radius: 5, opacity: 0.6, size: (width: 3, height: 3))
     }
     
     func setupLoginButton() {
@@ -165,13 +165,3 @@ extension LoginAndSignUpViewController: SignUpVCDelegate {
     
 }
 
-private extension UIView {
-    
-    func setShadow() {
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOffset = CGSize(width: 3, height: 3)
-        self.layer.shadowRadius = 5
-        self.layer.shadowOpacity = 0.6
-    }
-    
-}

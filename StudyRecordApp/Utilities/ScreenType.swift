@@ -7,19 +7,24 @@
 
 import Foundation
 
+protocol ScreenPresentationDelegate: AnyObject {
+    func screenDidPresented(screenType: ScreenType)
+    func scroll(sourceScreenType: ScreenType,
+                destinationScreenType: ScreenType,
+                completion: (() -> Void)?)
+}
+
 enum ScreenType: Int, CaseIterable {
     case record
-    case goal
     case graph
-    case countDown
+    case goal
     case setting
     
     var title: String {
         switch self {
             case .record: return "記録"
-            case .goal: return "目標"
             case .graph: return "グラフ"
-            case .countDown: return "カウント\nダウン"
+            case .goal: return "目標"
             case .setting: return "設定"
         }
     }

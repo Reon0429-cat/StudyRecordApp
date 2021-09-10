@@ -8,7 +8,8 @@
 import UIKit
 
 protocol TabBarCollectionVCDelegate: AnyObject {
-    func collectionViewDidTapped(index: Int)
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath)
 }
 
 final class TabBarCollectionViewController: UIViewController {
@@ -38,7 +39,8 @@ extension TabBarCollectionViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
-        delegate?.collectionViewDidTapped(index: indexPath.item)
+        delegate?.collectionView(collectionView,
+                                 didSelectItemAt: indexPath)
     }
     
 }

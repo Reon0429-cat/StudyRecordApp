@@ -7,6 +7,8 @@
 
 import RealmSwift
 
+// MARK: - ToDo Realmのプロパティを増やしたときに、リリース後に落ちる対策をする
+
 // 共通の型
 struct Record: Equatable {
     var title: String
@@ -15,6 +17,7 @@ struct Record: Equatable {
     var graphColor: GraphColor
     var memo: String
     var yearID: String
+    var monthID: String
     var order: Int
 }
 
@@ -41,6 +44,7 @@ final class RecordRealm: Object {
     @objc dynamic var graphColor: GraphColorRealm? = GraphColorRealm()
     @objc dynamic var memo: String = ""
     @objc dynamic var yearID: String = ""
+    @objc dynamic var monthID: String = ""
     @objc dynamic var order: Int = 0
 }
 
@@ -68,6 +72,7 @@ extension Record {
                   graphColor: record.graphColor,
                   memo: record.memo,
                   yearID: record.yearID,
+                  monthID: record.monthID,
                   order: record.order)
     }
     

@@ -7,8 +7,8 @@
 
 import UIKit
 
-protocol GoalVCDelegate: AnyObject {
-    func screenDidPresented(index: Int)
+protocol GoalVCDelegate: ScreenPresentationDelegate {
+    
 }
 
 final class GoalViewController: UIViewController {
@@ -31,13 +31,14 @@ final class GoalViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
+        setupSegmentedControl()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        delegate?.screenDidPresented(index: self.view.tag)
+        delegate?.screenDidPresented(screenType: .goal)
         tableView.reloadData()
         
     }
@@ -99,6 +100,11 @@ private extension GoalViewController {
         tableView.dataSource = self
         tableView.registerCustomCell(GoalTableViewCell.self)
         tableView.tableFooterView = UIView()
+    }
+    
+    func setupSegmentedControl() {
+        let index = 0
+        segmentedControl.create(["カテゴリ", "シンプル"], selectedIndex: index)
     }
     
 }

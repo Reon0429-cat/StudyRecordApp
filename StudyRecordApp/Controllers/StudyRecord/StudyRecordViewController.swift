@@ -11,12 +11,11 @@ import UIKit
 // MARK: - ToDo グラフカラー選択時に該当の色を丸くする(追加と編集画面でそれぞれ確認する)
 // MARK: - ToDo SwiftGenを導入する
 
-protocol StudyRecordVCDelegate: AnyObject {
+protocol StudyRecordVCDelegate: ScreenPresentationDelegate {
     var isEdit: Bool { get }
     func viewWillAppear(records: [Record])
     func deleteButtonDidTappped(records: [Record])
     func baseViewLongPressDidRecognized()
-    func screenDidPresented(index: Int)
 }
 
 final class StudyRecordViewController: UIViewController {
@@ -44,7 +43,7 @@ final class StudyRecordViewController: UIViewController {
         super.viewWillAppear(animated)
         
         delegate?.viewWillAppear(records: records)
-        delegate?.screenDidPresented(index: self.view.tag)
+        delegate?.screenDidPresented(screenType: .record)
         tableView.reloadData()
         
     }

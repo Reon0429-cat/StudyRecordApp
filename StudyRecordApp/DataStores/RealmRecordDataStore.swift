@@ -48,6 +48,7 @@ final class RealmRecordDataStore: RecordDataStoreProtocol {
                             graphColor: record.graphColor,
                             memo: record.memo,
                             yearID: record.yearID,
+                            monthID: record.monthID,
                             order: record.order)
         try! realm.write {
             object.title = record.title
@@ -60,6 +61,7 @@ final class RealmRecordDataStore: RecordDataStoreProtocol {
             object.graphColor?.alphaValue = Float(record.graphColor.alphaValue)
             object.memo = record.memo
             object.yearID = record.yearID
+            object.monthID = record.monthID
             object.order = record.order
         }
     }
@@ -107,6 +109,7 @@ private extension RecordRealm {
                             graphColor: record.graphColor,
                             memo: record.memo,
                             yearID: record.yearID,
+                            monthID: record.monthID,
                             order: record.order)
         self.title = record.title
         self.histories = record.historiesList
@@ -117,6 +120,7 @@ private extension RecordRealm {
         self.graphColor?.alphaValue = Float(record.graphColor.alphaValue)
         self.memo = record.memo
         self.yearID = record.yearID
+        self.monthID = record.monthID
         self.order = record.order
     }
     
@@ -132,6 +136,7 @@ private extension Record {
                             graphColor: GraphColor(record: record),
                             memo: record.memo,
                             yearID: record.yearID,
+                            monthID: record.monthID,
                             order: record.order)
         self.title = record.title
         self.histories = record.histories
@@ -139,6 +144,7 @@ private extension Record {
         self.graphColor = record.graphColor
         self.memo = record.memo
         self.yearID = record.yearID
+        self.monthID = record.monthID
         self.order = record.order
     }
     

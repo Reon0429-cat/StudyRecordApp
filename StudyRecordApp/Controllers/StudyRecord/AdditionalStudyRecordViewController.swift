@@ -60,6 +60,7 @@ private extension AdditionalStudyRecordViewController {
                             graphColor: GraphColor(color: selectedGraphColor),
                             memo: inputtedMemo,
                             yearID: UUID().uuidString,
+                            monthID: UUID().uuidString,
                             order: recordUseCase.records.count)
         recordUseCase.save(record: record)
     }

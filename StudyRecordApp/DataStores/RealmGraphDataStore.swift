@@ -39,9 +39,15 @@ final class RealmGraphDataStore: GraphDataStoreProtocol {
     
     func update(graph: Graph, at index: Int) {
         let object = objects[index]
-        let graph = Graph(test: graph.test)
+        let graph = Graph(selectedType: graph.selectedType,
+                          line: graph.line,
+                          bar: graph.bar,
+                          dot: graph.dot)
         try! realm.write {
-            object.test = graph.test
+            object.selectedType = graph.selectedType
+            object.line = LineRealm(graph: graph)
+            object.bar = BarRealm(graph: graph)
+            object.dot = DotRealm(graph: graph)
         }
     }
     
@@ -58,8 +64,43 @@ private extension GraphRealm {
     
     convenience init(graph: Graph) {
         self.init()
-        let graph = Graph(test: graph.test)
-        self.test = graph.test
+        let graph = Graph(selectedType: graph.selectedType,
+                          line: graph.line,
+                          bar: graph.bar,
+                          dot: graph.dot)
+        self.selectedType = graph.selectedType
+        self.line = LineRealm(graph: graph)
+        self.bar = BarRealm(graph: graph)
+        self.dot = DotRealm(graph: graph)
+    }
+    
+}
+
+private extension LineRealm {
+    
+    convenience init(graph: Graph) {
+        self.init()
+        self.isSmooth = graph.line.isSmooth
+        self.isFilled = graph.line.isFilled
+        self.withDots = graph.line.withDots
+    }
+    
+}
+
+private extension BarRealm {
+    
+    convenience init(graph: Graph) {
+        self.init()
+        self.width = graph.bar.width
+    }
+    
+}
+
+private extension DotRealm {
+    
+    convenience init(graph: Graph) {
+        self.init()
+        self.isSquare = graph.dot.isSquare
     }
     
 }
@@ -67,8 +108,36 @@ private extension GraphRealm {
 private extension Graph {
     
     init(graph: GraphRealm) {
-        let graph = Graph(test: graph.test)
-        self.test = graph.test
+        self.init(selectedType: graph.selectedType,
+                  line: Line(graph: graph),
+                  bar: Bar(graph: graph),
+                  dot: Dot(graph: graph))
+    }
+    
+}
+
+private extension Line {
+    
+    init(graph: GraphRealm) {
+        self.init(isSmooth: graph.line?.isSmooth ?? false,
+                  isFilled: graph.line?.isFilled ?? false,
+                  withDots: graph.line?.withDots ?? true)
+    }
+    
+}
+
+private extension Bar {
+    
+    init(graph: GraphRealm) {
+        self.init(width: graph.bar?.width ?? 20)
+    }
+    
+}
+
+private extension Dot {
+    
+    init(graph: GraphRealm) {
+        self.init(isSquare: graph.dot?.isSquare ?? false)
     }
     
 }

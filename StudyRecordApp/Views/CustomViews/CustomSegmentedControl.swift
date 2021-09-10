@@ -9,7 +9,6 @@ import UIKit
 
 final class CustomSegmentedControl: UISegmentedControl {
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -30,6 +29,16 @@ final class CustomSegmentedControl: UISegmentedControl {
         setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white],
                                for: .selected)
         selectedSegmentTintColor = .black
+    }
+    
+    func create(_ titles: [String], selectedIndex: Int) {
+        removeAllSegments()
+        titles.enumerated().forEach { index, title in
+            insertSegment(withTitle: title,
+                          at: index,
+                          animated: false)
+        }
+        selectedSegmentIndex = selectedIndex
     }
     
 }

@@ -37,6 +37,7 @@ final class TopViewController: UIViewController {
     private var tabBarCollectionVC: TabBarCollectionViewController!
     private var viewControllers = [UIViewController]()
     private var currentPageIndex = 0
+    private var halfModalPresenter = HalfModalPresenter()
     
     override func loadView() {
         super.loadView()
@@ -52,6 +53,7 @@ final class TopViewController: UIViewController {
         setupTabBarCollectionView()
         setupPageViews()
         setupTitleLabel()
+        setupAddButton()
         setupEditButton()
         setupSortButton()
         setAnimation()
@@ -99,13 +101,11 @@ private extension TopViewController {
             case .record:
                 present(AdditionalStudyRecordViewController.self,
                         modalPresentationStyle: .fullScreen)
+            case .graph:
+                break
             case .goal:
                 present(AdditionalGoalViewController.self,
                         modalPresentationStyle: .fullScreen)
-            case .graph:
-                break
-            case .countDown:
-                break
             case .setting:
                 break
         }
@@ -116,11 +116,9 @@ private extension TopViewController {
             case .record:
                 present(StudyRecordSortViewController.self,
                         modalPresentationStyle: .fullScreen)
-            case .goal:
-                break
             case .graph:
                 break
-            case .countDown:
+            case .goal:
                 break
             case .setting:
                 break
@@ -137,7 +135,11 @@ private extension TopViewController {
         if let studyRecordVC = viewControllers.first as? StudyRecordViewController {
             studyRecordVC.reloadTableView()
         }
-        sortButton.toggleFade()
+        if editButton.isType(.edit) {
+            sortButton.setFade(.out)
+        } else {
+            sortButton.setFade(.in)
+        }
     }
     
     func screenDidChanged(item: Int) {
@@ -174,11 +176,26 @@ private extension TopViewController {
         }
     }
     
-    func pageVCSetVC(at item: Int, direction: UIPageViewController.NavigationDirection) {
-        pageViewController.setViewControllers([viewControllers[item]],
-                                              direction: direction,
-                                              animated: true,
-                                              completion: nil)
+    func changeAddButton(isEnabled: Bool) {
+        guard let xmarkImage = UIImage(systemName: "xmark"),
+              let plusImage = UIImage(systemName: "plus") else { return }
+        addButton.isEnabled = isEnabled
+        if isEnabled {
+            addButton.setImage(plusImage.setColor(.white))
+        } else {
+            addButton.setImage(xmarkImage.setColor(.systemRed))
+        }
+    }
+    
+    func pageVCSet(to screenType: ScreenType?,
+                   completion: ((Bool) -> Void)? = nil) {
+        guard let screenType = screenType else { return }
+        pageViewController.setViewControllers(
+            [viewControllers[screenType.rawValue]],
+            direction: currentPageIndex < screenType.rawValue ? .forward : .reverse,
+            animated: true,
+            completion: completion
+        )
     }
     
 }
@@ -209,34 +226,42 @@ extension TopViewController: UIPageViewControllerDataSource {
 // MARK: - TabBarCollectionViewDelegate
 extension TopViewController: TabBarCollectionVCDelegate {
     
-    func collectionViewDidTapped(index: Int) {
-        pageVCSetVC(at: index,
-                    direction: currentPageIndex < index ? .forward : .reverse)
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
+        pageVCSet(to: ScreenType(rawValue: indexPath.row))
     }
     
 }
 
-// MARK: - 共通のdelegate
+// MARK: - ScreenPresentationDelegate
 extension TopViewController {
     
-    func screenDidPresented(index: Int) {
-        screenDidChanged(item: index)
+    func screenDidPresented(screenType: ScreenType) {
+        screenDidChanged(item: screenType.rawValue)
         switch screenType {
             case .record:
                 editButton.setFade(.in)
-                addButton.setFade(.in)
-            case .goal:
-                editButton.setFade(.in)
-                addButton.setFade(.in)
+                editButton.changeTitle(editButton.type?.title ?? "編集")
+                changeAddButton(isEnabled: true)
             case .graph:
                 editButton.setFade(.in)
-                addButton.setFade(.in)
-            case .countDown:
+                editButton.changeTitle("設定")
+                changeAddButton(isEnabled: false)
+            case .goal:
                 editButton.setFade(.in)
-                addButton.setFade(.in)
+                editButton.changeTitle("編集")
+                changeAddButton(isEnabled: true)
             case .setting:
                 editButton.setFade(.out)
-                addButton.setFade(.out)
+                changeAddButton(isEnabled: false)
+        }
+    }
+    
+    func scroll(sourceScreenType: ScreenType,
+                destinationScreenType: ScreenType,
+                completion: (() -> Void)?) {
+        pageVCSet(to: destinationScreenType) { _ in
+            completion?()
         }
     }
     
@@ -278,18 +303,8 @@ extension TopViewController: GraphVCDelegate {
     
 }
 
-// MARK: - CountDownVCDelegate
-extension TopViewController: CountDownVCDelegate {
-    
-}
-
 // MARK: - SettingVCDelegate
 extension TopViewController: SettingVCDelegate {
-    
-    func loginAndSignUpVCDidShowed() {
-        pageVCSetVC(at: 0, direction: .reverse)
-        screenDidChanged(item: 0)
-    }
     
 }
 
@@ -297,12 +312,23 @@ extension TopViewController: SettingVCDelegate {
 extension TopViewController: NavigationButtonDelegate {
     
     func titleButtonDidTapped(type: NavigationButtonType) {
-        changeEditMode(type: {
-            switch type {
-                case .edit: return .completion
-                default: return .edit
-            }
-        }())
+        switch screenType {
+            case .record:
+                changeEditMode(type: {
+                    switch type {
+                        case .edit: return .completion
+                        default: return .edit
+                    }
+                }())
+            case .graph:
+                present(GraphKindSelectingViewController.self) { vc in
+                    self.halfModalPresenter.viewController = vc
+                }
+            case .goal:
+                break
+            case .setting:
+                break
+        }
     }
     
 }
@@ -321,16 +347,13 @@ private extension TopViewController {
     func setupPageViews() {
         let studyRecordVC = StudyRecordViewController.instantiate()
         studyRecordVC.delegate = self
-        let goalVC = GoalViewController.instantiate()
-        goalVC.delegate = self
         let graphVC = GraphViewController.instantiate()
         graphVC.delegate = self
-        let countDownVC = CountDownViewController.instantiate()
-        countDownVC.delegate = self
+        let goalVC = GoalViewController.instantiate()
+        goalVC.delegate = self
         let settingVC = SettingViewController.instantiate()
         settingVC.delegate = self
-        viewControllers = [studyRecordVC, goalVC, graphVC, countDownVC, settingVC]
-        viewControllers.enumerated().forEach { $1.view.tag = $0 }
+        viewControllers = [studyRecordVC, graphVC, goalVC, settingVC]
         pageViewController.setViewControllers([viewControllers[0]],
                                               direction: .forward,
                                               animated: true,
@@ -339,6 +362,12 @@ private extension TopViewController {
     
     func setupTitleLabel() {
         titleLabel.text = screenType.title
+    }
+    
+    func setupAddButton() {
+        guard let image = UIImage(systemName: "plus") else { return }
+        addButton.setImage(image.setColor(.white))
+        addButton.setGradation(locations: [0, 0.9])
     }
     
     func setupEditButton() {
@@ -379,24 +408,13 @@ private extension TopViewController {
     }
     
     func setupAddButtonLayout() {
-        addButton.layer.cornerRadius = addButton.frame.height / 2
-        addButton.layer.borderWidth = 1
-        addButton.layer.borderColor = UIColor.black.cgColor
-        addButton.setShadow()
+        addButton.cutToCircle()
     }
     
     func setupSeparatorViewLayout() {
-        let gradientLayer = CAGradientLayer()
-        let frame = CGRect(x: 0,
-                           y: 0,
-                           width: verticalSeparatorView.frame.width,
-                           height: verticalSeparatorView.frame.height)
-        gradientLayer.frame = frame
-        gradientLayer.colors = [UIColor.white.cgColor,
-                                UIColor.black.cgColor]
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-        gradientLayer.endPoint = CGPoint(x: 1, y: 1)
-        verticalSeparatorView.layer.addSublayer(gradientLayer)
+        verticalSeparatorView.setGradation(colors: [.white, .black],
+                                           startPoint: (x: 0, y: 0),
+                                           endPoint: (x: 1, y: 1))
     }
     
 }

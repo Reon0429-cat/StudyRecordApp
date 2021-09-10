@@ -64,6 +64,10 @@ final class NavigationButton: UIButton {
         self.type == type
     }
     
+    func changeTitle(_ title: String) {
+        titleButton.setTitle(title)
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadNib()
