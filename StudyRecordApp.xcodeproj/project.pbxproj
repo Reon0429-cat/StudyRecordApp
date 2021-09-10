@@ -20,6 +20,8 @@
 		AB0C766726EBAF3400BF5B64 /* SettingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C766626EBAF3400BF5B64 /* SettingRepository.swift */; };
 		AB0C766926EBB10700BF5B64 /* SettingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C766826EBB10700BF5B64 /* SettingUseCase.swift */; };
 		AB0C767F26EBD5A700BF5B64 /* ThemeColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C767E26EBD5A700BF5B64 /* ThemeColorView.swift */; };
+		AB0C768126EBD9A800BF5B64 /* SubCustomNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB0C768026EBD9A800BF5B64 /* SubCustomNavigationBar.xib */; };
+		AB0C768326EBD9B900BF5B64 /* SubCustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C768226EBD9B900BF5B64 /* SubCustomNavigationBar.swift */; };
 		AB13ECD626B7AEA3002F56FF /* ColorChoicesConcept.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13ECD526B7AEA3002F56FF /* ColorChoicesConcept.storyboard */; };
 		AB13ECD826B7AF27002F56FF /* ColorChoicesTile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13ECD726B7AF27002F56FF /* ColorChoicesTile.storyboard */; };
 		AB13ECDA26B7AF6F002F56FF /* ColorChoicesSlider.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13ECD926B7AF6F002F56FF /* ColorChoicesSlider.storyboard */; };
@@ -91,14 +93,8 @@
 		AB2B5BAA26A2D244009BD3C7 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB2B5BA726A2D244009BD3C7 /* Setting.storyboard */; };
 		AB2B5BAB26A2D244009BD3C7 /* ColorConcept.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB2B5BA826A2D244009BD3C7 /* ColorConcept.storyboard */; };
 		AB2B5BAC26A2D244009BD3C7 /* ThemeColor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB2B5BA926A2D244009BD3C7 /* ThemeColor.storyboard */; };
-		AB2B5BB626A2D2C2009BD3C7 /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB2B5BAE26A2D2C1009BD3C7 /* SectionHeaderView.xib */; };
-		AB2B5BB726A2D2C2009BD3C7 /* ColorConceptTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5BAF26A2D2C1009BD3C7 /* ColorConceptTableViewCell.swift */; };
 		AB2B5BB826A2D2C2009BD3C7 /* AccordionColorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB2B5BB026A2D2C1009BD3C7 /* AccordionColorTableViewCell.xib */; };
 		AB2B5BB926A2D2C2009BD3C7 /* AccordionColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5BB126A2D2C2009BD3C7 /* AccordionColorTableViewCell.swift */; };
-		AB2B5BBA26A2D2C2009BD3C7 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5BB226A2D2C2009BD3C7 /* SectionHeaderView.swift */; };
-		AB2B5BBB26A2D2C2009BD3C7 /* ColorConceptTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB2B5BB326A2D2C2009BD3C7 /* ColorConceptTableViewCell.xib */; };
-		AB2B5BBC26A2D2C2009BD3C7 /* AccordionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5BB426A2D2C2009BD3C7 /* AccordionTableViewCell.swift */; };
-		AB2B5BBD26A2D2C2009BD3C7 /* AccordionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB2B5BB526A2D2C2009BD3C7 /* AccordionTableViewCell.xib */; };
 		AB2B5BC526A2D36F009BD3C7 /* ColorChoicesTileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5BBF26A2D36F009BD3C7 /* ColorChoicesTileViewController.swift */; };
 		AB2B5BC626A2D36F009BD3C7 /* ColorChoicesSliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5BC026A2D36F009BD3C7 /* ColorChoicesSliderViewController.swift */; };
 		AB2B5BC726A2D36F009BD3C7 /* ColorChoicesConceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5BC126A2D36F009BD3C7 /* ColorChoicesConceptViewController.swift */; };
@@ -182,6 +178,8 @@
 		AB0C766626EBAF3400BF5B64 /* SettingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRepository.swift; sourceTree = "<group>"; };
 		AB0C766826EBB10700BF5B64 /* SettingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingUseCase.swift; sourceTree = "<group>"; };
 		AB0C767E26EBD5A700BF5B64 /* ThemeColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColorView.swift; sourceTree = "<group>"; };
+		AB0C768026EBD9A800BF5B64 /* SubCustomNavigationBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubCustomNavigationBar.xib; sourceTree = "<group>"; };
+		AB0C768226EBD9B900BF5B64 /* SubCustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCustomNavigationBar.swift; sourceTree = "<group>"; };
 		AB13ECD526B7AEA3002F56FF /* ColorChoicesConcept.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ColorChoicesConcept.storyboard; sourceTree = "<group>"; };
 		AB13ECD726B7AF27002F56FF /* ColorChoicesTile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ColorChoicesTile.storyboard; sourceTree = "<group>"; };
 		AB13ECD926B7AF6F002F56FF /* ColorChoicesSlider.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ColorChoicesSlider.storyboard; sourceTree = "<group>"; };
@@ -253,14 +251,8 @@
 		AB2B5BA726A2D244009BD3C7 /* Setting.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		AB2B5BA826A2D244009BD3C7 /* ColorConcept.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ColorConcept.storyboard; sourceTree = "<group>"; };
 		AB2B5BA926A2D244009BD3C7 /* ThemeColor.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ThemeColor.storyboard; sourceTree = "<group>"; };
-		AB2B5BAE26A2D2C1009BD3C7 /* SectionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
-		AB2B5BAF26A2D2C1009BD3C7 /* ColorConceptTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorConceptTableViewCell.swift; sourceTree = "<group>"; };
 		AB2B5BB026A2D2C1009BD3C7 /* AccordionColorTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccordionColorTableViewCell.xib; sourceTree = "<group>"; };
 		AB2B5BB126A2D2C2009BD3C7 /* AccordionColorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccordionColorTableViewCell.swift; sourceTree = "<group>"; };
-		AB2B5BB226A2D2C2009BD3C7 /* SectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
-		AB2B5BB326A2D2C2009BD3C7 /* ColorConceptTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorConceptTableViewCell.xib; sourceTree = "<group>"; };
-		AB2B5BB426A2D2C2009BD3C7 /* AccordionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccordionTableViewCell.swift; sourceTree = "<group>"; };
-		AB2B5BB526A2D2C2009BD3C7 /* AccordionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccordionTableViewCell.xib; sourceTree = "<group>"; };
 		AB2B5BBF26A2D36F009BD3C7 /* ColorChoicesTileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorChoicesTileViewController.swift; sourceTree = "<group>"; };
 		AB2B5BC026A2D36F009BD3C7 /* ColorChoicesSliderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorChoicesSliderViewController.swift; sourceTree = "<group>"; };
 		AB2B5BC126A2D36F009BD3C7 /* ColorChoicesConceptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorChoicesConceptViewController.swift; sourceTree = "<group>"; };
@@ -459,6 +451,8 @@
 		AB16304D26CD68A200111F55 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				AB0C768026EBD9A800BF5B64 /* SubCustomNavigationBar.xib */,
+				AB0C768226EBD9B900BF5B64 /* SubCustomNavigationBar.swift */,
 				AB13EE6926CB6965002F56FF /* RippleView.swift */,
 				AB20F81726E949BE00564B14 /* CustomScrollableGraphView.xib */,
 				AB20F80D26E7CBAE00564B14 /* CustomScrollableGraphView.swift */,
@@ -525,8 +519,8 @@
 			isa = PBXGroup;
 			children = (
 				AB2B5BA726A2D244009BD3C7 /* Setting.storyboard */,
-				AB2B5BA826A2D244009BD3C7 /* ColorConcept.storyboard */,
 				AB2B5BA926A2D244009BD3C7 /* ThemeColor.storyboard */,
+				AB2B5BA826A2D244009BD3C7 /* ColorConcept.storyboard */,
 				AB13ECD526B7AEA3002F56FF /* ColorChoicesConcept.storyboard */,
 				AB13ECD726B7AF27002F56FF /* ColorChoicesTile.storyboard */,
 				AB13ECD926B7AF6F002F56FF /* ColorChoicesSlider.storyboard */,
@@ -537,14 +531,8 @@
 		AB2B5BAD26A2D2A8009BD3C7 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				AB2B5BB226A2D2C2009BD3C7 /* SectionHeaderView.swift */,
-				AB2B5BAE26A2D2C1009BD3C7 /* SectionHeaderView.xib */,
-				AB2B5BB426A2D2C2009BD3C7 /* AccordionTableViewCell.swift */,
-				AB2B5BB526A2D2C2009BD3C7 /* AccordionTableViewCell.xib */,
 				AB2B5BB126A2D2C2009BD3C7 /* AccordionColorTableViewCell.swift */,
 				AB2B5BB026A2D2C1009BD3C7 /* AccordionColorTableViewCell.xib */,
-				AB2B5BAF26A2D2C1009BD3C7 /* ColorConceptTableViewCell.swift */,
-				AB2B5BB326A2D2C2009BD3C7 /* ColorConceptTableViewCell.xib */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -884,7 +872,6 @@
 				AB20F81826E949BE00564B14 /* CustomScrollableGraphView.xib in Resources */,
 				AB4397EF26DD305B008C8CA8 /* AdditionalGoal.storyboard in Resources */,
 				AB43980926DE2D72008C8CA8 /* GoalPriorityTableViewCell.xib in Resources */,
-				AB2B5BBB26A2D2C2009BD3C7 /* ColorConceptTableViewCell.xib in Resources */,
 				AB13EDE126C64EBB002F56FF /* CustomTitleTableViewCell.xib in Resources */,
 				AB13ECDA26B7AF6F002F56FF /* ColorChoicesSlider.storyboard in Resources */,
 				AB13EDB526BFAB8B002F56FF /* StudyRecordSortTableViewCell.xib in Resources */,
@@ -909,8 +896,6 @@
 				AB13EDB126BFAA7D002F56FF /* StudyRecordSort.storyboard in Resources */,
 				AB16308426CEABD400111F55 /* NavigationButton.xib in Resources */,
 				ABFAB20926E394A60095EC20 /* GraphTableViewCell.xib in Resources */,
-				AB2B5BB626A2D2C2009BD3C7 /* SectionHeaderView.xib in Resources */,
-				AB2B5BBD26A2D2C2009BD3C7 /* AccordionTableViewCell.xib in Resources */,
 				AB13ECD626B7AEA3002F56FF /* ColorChoicesConcept.storyboard in Resources */,
 				AB2B5BAC26A2D244009BD3C7 /* ThemeColor.storyboard in Resources */,
 				AB8B705726D6AD1F0069FF67 /* SignUp.storyboard in Resources */,
@@ -921,6 +906,7 @@
 				AB0C765826EB8B4300BF5B64 /* CustomButtonTableViewCell.xib in Resources */,
 				AB13EDF426C8BAAC002F56FF /* Goal.storyboard in Resources */,
 				AB0C765426EB889100BF5B64 /* CustomSwitchTableViewCell.xib in Resources */,
+				AB0C768126EBD9A800BF5B64 /* SubCustomNavigationBar.xib in Resources */,
 				AB13ED1626B8F5D0002F56FF /* StudyRecordMemo.storyboard in Resources */,
 				AB13EDD326C29DAF002F56FF /* StudyRecordTimeRecord.storyboard in Resources */,
 				AB13EDF626C8BAB7002F56FF /* Graph.storyboard in Resources */,
@@ -1025,7 +1011,6 @@
 				AB16307B26CE123A00111F55 /* RecordTableViewCell.swift in Sources */,
 				AB2B5BA426A2D1B7009BD3C7 /* PopConcept.swift in Sources */,
 				AB20F81626E80E1900564B14 /* CustomSlider.swift in Sources */,
-				AB2B5BBC26A2D2C2009BD3C7 /* AccordionTableViewCell.swift in Sources */,
 				AB16308226CEAB9300111F55 /* NavigationButton.swift in Sources */,
 				AB14B46626DB516E007A5F16 /* ResetingPasswordViewController.swift in Sources */,
 				AB4397FB26DDF78A008C8CA8 /* HUDIndicator.swift in Sources */,
@@ -1033,7 +1018,6 @@
 				AB14B46226DA855F007A5F16 /* CommunicationStatus.swift in Sources */,
 				ABFAB15526DF802A0095EC20 /* PriorityStackView.swift in Sources */,
 				AB2B5BC726A2D36F009BD3C7 /* ColorChoicesConceptViewController.swift in Sources */,
-				AB2B5BB726A2D2C2009BD3C7 /* ColorConceptTableViewCell.swift in Sources */,
 				AB2B5B8326A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift in Sources */,
 				AB0C766526EBAD0E00BF5B64 /* RealmSettingDataStore.swift in Sources */,
 				AB20F81226E7F3E100564B14 /* GraphKindSelectingViewController.swift in Sources */,
@@ -1049,11 +1033,11 @@
 				ABFAB21026E63A830095EC20 /* GraphRepository.swift in Sources */,
 				AB2B5BA326A2D1B7009BD3C7 /* JapanConcept.swift in Sources */,
 				AB14B46026DA3381007A5F16 /* UserUseCase.swift in Sources */,
+				AB0C768326EBD9B900BF5B64 /* SubCustomNavigationBar.swift in Sources */,
 				AB2B5BA126A2D1B7009BD3C7 /* SeasonConcept.swift in Sources */,
 				AB2B5B8526A2D0FD009BD3C7 /* UIColor+Extension.swift in Sources */,
 				AB4397F326DD3B32008C8CA8 /* GoalPriorityViewController.swift in Sources */,
 				AB20F80E26E7CBAE00564B14 /* CustomScrollableGraphView.swift in Sources */,
-				AB2B5BBA26A2D2C2009BD3C7 /* SectionHeaderView.swift in Sources */,
 				AB0C765726EB8B4300BF5B64 /* CustomButtonTableViewCell.swift in Sources */,
 				AB13EDFA26C8C585002F56FF /* GoalViewController.swift in Sources */,
 				AB4397F526DD57B9008C8CA8 /* Goal.swift in Sources */,

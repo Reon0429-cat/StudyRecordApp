@@ -9,11 +9,9 @@ import UIKit
 
 final class AdditionalStudyRecordViewController: UIViewController {
     
-    @IBOutlet private weak var topWaveView: WaveView!
+    @IBOutlet private weak var subCustomNavigationBar: SubCustomNavigationBar!
     @IBOutlet private weak var bottomWaveView: WaveView!
     @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var saveButton: NavigationButton!
-    @IBOutlet private weak var dismissButton: NavigationButton!
     
     private enum CellType: Int, CaseIterable {
         case title
@@ -38,8 +36,8 @@ final class AdditionalStudyRecordViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
-        setupSaveButton()
-        setupDismissButton()
+        setupNavigationTopBar()
+        setupTapGesture()
         setupWaveView()
         
     }
@@ -50,7 +48,7 @@ final class AdditionalStudyRecordViewController: UIViewController {
 private extension AdditionalStudyRecordViewController {
     
     func controlSaveButton() {
-        saveButton.isEnabled(isMandatoryItemFilled)
+        subCustomNavigationBar.saveButton(isEnabled: isMandatoryItemFilled)
     }
     
     func saveRecord() {
@@ -126,18 +124,6 @@ extension AdditionalStudyRecordViewController: UITableViewDelegate {
         return 80
     }
     
-    func tableView(_ tableView: UITableView,
-                   heightForHeaderInSection section: Int) -> CGFloat {
-        return 30
-    }
-    
-    func tableView(_ tableView: UITableView,
-                   viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView()
-        view.backgroundColor = .clear
-        return view
-    }
-    
 }
 
 // MARK: - UITableViewDataSource
@@ -200,21 +186,24 @@ extension AdditionalStudyRecordViewController: UITextFieldDelegate {
     
 }
 
-// MARK: - NavigationButtonDelegate
-extension AdditionalStudyRecordViewController: NavigationButtonDelegate {
+// MARK: - SubCustomNavigationBarDelegate
+extension AdditionalStudyRecordViewController: SubCustomNavigationBarDelegate {
     
-    func titleButtonDidTapped(type: NavigationButtonType) {
-        if type == .save {
-            saveRecord()
+    func saveButtonDidTapped() {
+        saveRecord()
+        dismiss(animated: true)
+    }
+    
+    func dismissButtonDidTapped() {
+        if isMandatoryItemFilled {
+            showAlert()
+        } else {
             dismiss(animated: true)
         }
-        if type == .dismiss {
-            if isMandatoryItemFilled {
-                showAlert()
-            } else {
-                dismiss(animated: true)
-            }
-        }
+    }
+    
+    var navTitle: String {
+        return "追加"
     }
     
 }
@@ -230,15 +219,16 @@ private extension AdditionalStudyRecordViewController {
         tableView.tableFooterView = UIView()
     }
     
-    func setupSaveButton() {
+    func setupNavigationTopBar() {
+        subCustomNavigationBar.delegate = self
+        subCustomNavigationBar.saveButton(isEnabled: false)
+    }
+    
+    func setupTapGesture() {
         let tapGR = UITapGestureRecognizer(target: self,
                                            action: #selector(dismissKeyboard))
         tapGR.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tapGR)
-        saveButton.isEnabled(false)
-        saveButton.type = .save
-        saveButton.delegate = self
-        saveButton.backgroundColor = .clear
     }
     
     @objc
@@ -246,14 +236,7 @@ private extension AdditionalStudyRecordViewController {
         self.view.endEditing(true)
     }
     
-    func setupDismissButton() {
-        dismissButton.delegate = self
-        dismissButton.type = .dismiss
-        dismissButton.backgroundColor = .clear
-    }
-    
     func setupWaveView() {
-        topWaveView.create(isFill: true, marginY: 60)
         bottomWaveView.create(isFill: false, marginY: 30, isShuffled: true)
     }
     

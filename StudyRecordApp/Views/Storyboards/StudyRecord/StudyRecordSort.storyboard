@@ -21,28 +21,13 @@
                                 <rect key="frame" x="0.0" y="114" width="414" height="748"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Znk-iI-8D8" customClass="WaveView" customModule="StudyRecordApp" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Znk-iI-8D8" customClass="SubCustomNavigationBar" customModule="StudyRecordApp" customModuleProvider="target">
                                 <rect key="frame" x="-5" y="0.0" width="424" height="114"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="114" id="QrS-7C-knX"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nvu-7Z-d2P" customClass="NavigationButton" customModule="StudyRecordApp" customModuleProvider="target">
-                                <rect key="frame" x="20" y="44" width="55" height="55"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="nvu-7Z-d2P" secondAttribute="height" id="N4q-zH-hMK"/>
-                                    <constraint firstAttribute="width" constant="55" id="bdL-UZ-w8f"/>
-                                </constraints>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="並び替え" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Edh-k4-UYP">
-                                <rect key="frame" x="126.5" y="44" width="161" height="48"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FuA-44-4YE" customClass="WaveView" customModule="StudyRecordApp" customModuleProvider="target">
                                 <rect key="frame" x="-5" y="756" width="424" height="100"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -54,17 +39,12 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="nvu-7Z-d2P" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="0af-vf-fOO"/>
-                            <constraint firstItem="Edh-k4-UYP" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="8fc-jf-UzF"/>
                             <constraint firstItem="Znk-iI-8D8" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="90C-rT-ujU"/>
                             <constraint firstItem="FuA-44-4YE" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="-5" id="PPp-rk-yhY"/>
-                            <constraint firstItem="Edh-k4-UYP" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Q62-Q4-aKY"/>
-                            <constraint firstItem="Edh-k4-UYP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="nvu-7Z-d2P" secondAttribute="trailing" constant="10" id="QmN-zS-2eh"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Znk-iI-8D8" secondAttribute="trailing" constant="-5" id="Ws9-St-v9b"/>
                             <constraint firstItem="5MA-nG-lsj" firstAttribute="top" secondItem="Znk-iI-8D8" secondAttribute="bottom" id="X2l-sz-9td"/>
                             <constraint firstItem="5MA-nG-lsj" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="bSO-ef-TIL"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="5MA-nG-lsj" secondAttribute="bottom" id="kSG-PG-fe2"/>
-                            <constraint firstItem="nvu-7Z-d2P" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="lI8-yI-uXZ"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="5MA-nG-lsj" secondAttribute="trailing" id="mph-Um-mT6"/>
                             <constraint firstItem="Znk-iI-8D8" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="-5" id="plV-It-ZE0"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="FuA-44-4YE" secondAttribute="trailing" constant="-5" id="qe7-QV-O2k"/>
@@ -79,9 +59,8 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="bottomWaveView" destination="FuA-44-4YE" id="vxb-rH-EiJ"/>
-                        <outlet property="dismissButton" destination="nvu-7Z-d2P" id="Pdf-kY-p8E"/>
+                        <outlet property="subCustomNavigationBar" destination="Znk-iI-8D8" id="WTF-Yx-BLm"/>
                         <outlet property="tableView" destination="5MA-nG-lsj" id="vhu-DU-FXJ"/>
-                        <outlet property="topWaveView" destination="Znk-iI-8D8" id="Ink-Sc-cww"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

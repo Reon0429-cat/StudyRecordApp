@@ -52,6 +52,7 @@ enum TileColorType: Int {
 }
 
 // MARK: - ToDo タイルを選択した時のバグを直す
+// MARK: - ToDo 同じタイルを選択すると色をなくすようにする
 
 protocol TileViewDelegate: AnyObject {
     func tileViewDidTapped(selectedView: UIView)

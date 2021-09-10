@@ -28,66 +28,34 @@
                                     <constraint firstAttribute="height" constant="100" id="3RZ-yl-Oa2"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KMx-Wz-brP" customClass="WaveView" customModule="StudyRecordApp" customModuleProvider="target">
-                                <rect key="frame" x="-5" y="0.0" width="424" height="114"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L9E-vD-8eH" customClass="SubCustomNavigationBar" customModule="StudyRecordApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="114"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="114" id="6Rh-SB-OXN"/>
+                                    <constraint firstAttribute="height" constant="114" id="7aa-6b-wQx"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="編集" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L4F-Wp-KvU">
-                                <rect key="frame" x="166.5" y="54" width="81" height="48"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="70P-GE-O5D" customClass="NavigationButton" customModule="StudyRecordApp" customModuleProvider="target">
-                                <rect key="frame" x="339" y="44" width="55" height="55"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="55" id="IcB-np-I43"/>
-                                    <constraint firstAttribute="width" secondItem="70P-GE-O5D" secondAttribute="height" id="nME-fA-Jzj"/>
-                                </constraints>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cl5-GU-8cS" customClass="NavigationButton" customModule="StudyRecordApp" customModuleProvider="target">
-                                <rect key="frame" x="20" y="44" width="55" height="55"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Cl5-GU-8cS" secondAttribute="height" id="8Sy-4p-g3z"/>
-                                    <constraint firstAttribute="width" constant="55" id="nMW-2G-C2h"/>
-                                </constraints>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="70P-GE-O5D" secondAttribute="trailing" constant="20" id="54L-yv-CtO"/>
-                            <constraint firstItem="oWx-kP-IUO" firstAttribute="top" secondItem="KMx-Wz-brP" secondAttribute="bottom" id="DXV-M9-yUj"/>
+                            <constraint firstItem="L9E-vD-8eH" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="C6n-QW-odp"/>
                             <constraint firstAttribute="bottom" secondItem="rU8-3L-yix" secondAttribute="bottom" constant="40" id="Ne1-TH-XtJ"/>
                             <constraint firstItem="oWx-kP-IUO" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="P8i-Fk-mv1"/>
-                            <constraint firstItem="Cl5-GU-8cS" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="QI2-Cg-Q5W"/>
-                            <constraint firstItem="Cl5-GU-8cS" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="VVC-sZ-W7D"/>
-                            <constraint firstItem="KMx-Wz-brP" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="ZuS-dS-col"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="oWx-kP-IUO" secondAttribute="trailing" id="cOR-9e-EcM"/>
-                            <constraint firstItem="L4F-Wp-KvU" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="daQ-J3-nVP"/>
                             <constraint firstAttribute="trailing" secondItem="rU8-3L-yix" secondAttribute="trailing" constant="-5" id="eva-Td-pIz"/>
-                            <constraint firstItem="L4F-Wp-KvU" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="hMf-oP-Ad7"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="KMx-Wz-brP" secondAttribute="trailing" constant="-5" id="jHX-YZ-Nst"/>
-                            <constraint firstItem="KMx-Wz-brP" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="-5" id="mmI-81-b20"/>
+                            <constraint firstItem="oWx-kP-IUO" firstAttribute="top" secondItem="L9E-vD-8eH" secondAttribute="bottom" id="lsP-ZX-Ccl"/>
+                            <constraint firstItem="L9E-vD-8eH" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="nuM-Fw-keG"/>
                             <constraint firstItem="rU8-3L-yix" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="-5" id="puH-Gq-nt5"/>
-                            <constraint firstItem="70P-GE-O5D" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="rVN-74-Pbm"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="L9E-vD-8eH" secondAttribute="trailing" id="t5P-vC-KBh"/>
                             <constraint firstAttribute="bottom" secondItem="oWx-kP-IUO" secondAttribute="bottom" id="ylz-Gt-g2O"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <connections>
                         <outlet property="bottomWaveView" destination="rU8-3L-yix" id="wwl-9M-VYs"/>
-                        <outlet property="dismissButton" destination="Cl5-GU-8cS" id="jY9-iO-UHT"/>
-                        <outlet property="saveButton" destination="70P-GE-O5D" id="KnO-3I-iZ7"/>
+                        <outlet property="subCustomNavigationBar" destination="L9E-vD-8eH" id="8mj-vU-Tkf"/>
                         <outlet property="tableView" destination="oWx-kP-IUO" id="rgL-dN-baW"/>
-                        <outlet property="topWaveView" destination="KMx-Wz-brP" id="Yvw-NY-nVA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

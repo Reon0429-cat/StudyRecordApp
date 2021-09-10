@@ -9,11 +9,9 @@ import UIKit
 
 final class EditStudyRecordViewController: UIViewController {
     
+    @IBOutlet private weak var subCustomNavigationBar: SubCustomNavigationBar!
     @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var topWaveView: WaveView!
     @IBOutlet private weak var bottomWaveView: WaveView!
-    @IBOutlet private weak var saveButton: NavigationButton!
-    @IBOutlet private weak var dismissButton: NavigationButton!
     
     private enum CellType: Int, CaseIterable {
         case title
@@ -52,8 +50,7 @@ final class EditStudyRecordViewController: UIViewController {
         
         selectedRecord = recordUseCase.records[selectedRow]
         setupTableView()
-        setupSaveButton()
-        setupDismissButton()
+        setupSubCustomNavigationBar()
         setupWaveViews()
         
     }
@@ -75,7 +72,9 @@ private extension EditStudyRecordViewController {
             }
             .addAction(title: "編集する") {
                 self.oldInputtedTitle = self.selectedRecord.title
-                self.saveButton.isEnabled(!self.oldInputtedTitle.isEmpty)
+                self.subCustomNavigationBar.saveButton(
+                    isEnabled: !self.oldInputtedTitle.isEmpty
+                )
                 self.tableView.reloadData()
             }
         present(alert, animated: true)
@@ -233,7 +232,7 @@ extension EditStudyRecordViewController: StudyRecordGraphColorVCDelegate {
     
     func graphColorDidSelected(color: UIColor) {
         selectedRecord.graphColor = GraphColor(color: color)
-        saveButton.isEnabled(color != .white)
+        subCustomNavigationBar.saveButton(isEnabled: color != .white)
         tableView.reloadData()
     }
     
@@ -318,21 +317,24 @@ extension EditStudyRecordViewController: UITextFieldDelegate {
     
 }
 
-// MARK: - NavigationButtonDelegate
-extension EditStudyRecordViewController: NavigationButtonDelegate {
+// MARK: - SubCustomNavigationBarDelegate
+extension EditStudyRecordViewController: SubCustomNavigationBarDelegate {
     
-    func titleButtonDidTapped(type: NavigationButtonType) {
-        if type == .save {
-            recordUseCase.update(record: selectedRecord, at: selectedRow)
+    func saveButtonDidTapped() {
+        recordUseCase.update(record: selectedRecord, at: selectedRow)
+        dismiss(animated: true)
+    }
+    
+    func dismissButtonDidTapped() {
+        if selectedRecord == recordUseCase.records[selectedRow] {
             dismiss(animated: true)
+        } else {
+            showAlert()
         }
-        if type == .dismiss {
-            if selectedRecord == recordUseCase.records[selectedRow] {
-                dismiss(animated: true)
-            } else {
-                showAlert()
-            }
-        }
+    }
+    
+    var navTitle: String {
+        return "編集"
     }
     
 }
@@ -349,20 +351,11 @@ extension EditStudyRecordViewController {
         tableView.tableFooterView = UIView()
     }
     
-    func setupSaveButton() {
-        saveButton.delegate = self
-        saveButton.type = .save
-        saveButton.backgroundColor = .clear
-    }
-    
-    func setupDismissButton() {
-        dismissButton.delegate = self
-        dismissButton.type = .dismiss
-        dismissButton.backgroundColor = .clear
+    func setupSubCustomNavigationBar() {
+        subCustomNavigationBar.delegate = self
     }
     
     func setupWaveViews() {
-        topWaveView.create(isFill: true, marginY: 60)
         bottomWaveView.create(isFill: false, marginY: 30, isShuffled: true)
     }
     

@@ -18,29 +18,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mTo-6u-mP2">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="114" width="414" height="748"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vpj-uV-hx8" customClass="SubCustomNavigationBar" customModule="StudyRecordApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="114"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="114" id="45C-Bx-aPH"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="mTo-6u-mP2" secondAttribute="bottom" id="2LV-yE-jGc"/>
-                            <constraint firstItem="mTo-6u-mP2" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="gHb-cL-yQs"/>
+                            <constraint firstItem="vpj-uV-hx8" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="B4l-li-ab5"/>
+                            <constraint firstItem="mTo-6u-mP2" firstAttribute="top" secondItem="vpj-uV-hx8" secondAttribute="bottom" id="Nsh-Yq-cjP"/>
+                            <constraint firstItem="vpj-uV-hx8" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="Rb3-g1-guh"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="vpj-uV-hx8" secondAttribute="trailing" id="ZCG-Nv-Wx1"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="mTo-6u-mP2" secondAttribute="trailing" id="tKq-NV-wSU"/>
                             <constraint firstItem="mTo-6u-mP2" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="y0i-h9-3na"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="オススメ" id="zlJ-dS-oHK"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="subCustomNavigationBar" destination="vpj-uV-hx8" id="2SK-6T-uE8"/>
                         <outlet property="tableView" destination="mTo-6u-mP2" id="qfv-n1-PcF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="878" y="72"/>
+            <point key="canvasLocation" x="876.81159420289862" y="71.651785714285708"/>
         </scene>
     </scenes>
     <resources>

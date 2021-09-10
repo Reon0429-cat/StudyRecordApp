@@ -21,63 +21,29 @@
                                 <rect key="frame" x="0.0" y="114" width="414" height="748"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qvj-LK-pxQ" customClass="WaveView" customModule="StudyRecordApp" customModuleProvider="target">
-                                <rect key="frame" x="-5" y="0.0" width="424" height="114"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ctE-JO-BQo" customClass="SubCustomNavigationBar" customModule="StudyRecordApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="114"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="114" id="kgi-lE-Us2"/>
+                                    <constraint firstAttribute="height" constant="114" id="YOy-L9-aDc"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hQj-Ua-kyy" customClass="NavigationButton" customModule="StudyRecordApp" customModuleProvider="target">
-                                <rect key="frame" x="339" y="44" width="55" height="55"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="hQj-Ua-kyy" secondAttribute="height" id="iOM-Df-Ghk"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xlT-a1-9OO" customClass="NavigationButton" customModule="StudyRecordApp" customModuleProvider="target">
-                                <rect key="frame" x="20" y="44" width="55" height="55"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="55" id="03j-ha-DsZ"/>
-                                    <constraint firstAttribute="width" secondItem="xlT-a1-9OO" secondAttribute="height" id="GGH-8g-dqf"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="追加" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07B-Kh-ebH">
-                                <rect key="frame" x="166.5" y="54" width="81" height="48"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="ctE-JO-BQo" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="0Bt-34-mn4"/>
+                            <constraint firstItem="TrT-xu-cV2" firstAttribute="top" secondItem="ctE-JO-BQo" secondAttribute="bottom" id="5Jo-ru-gpG"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="TrT-xu-cV2" secondAttribute="trailing" id="6nM-KT-4YM"/>
-                            <constraint firstItem="hQj-Ua-kyy" firstAttribute="top" secondItem="xlT-a1-9OO" secondAttribute="top" id="Aze-TJ-2D8"/>
-                            <constraint firstItem="07B-Kh-ebH" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="Jv4-iW-71J"/>
                             <constraint firstItem="TrT-xu-cV2" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="KsB-hN-IpR"/>
-                            <constraint firstItem="qvj-LK-pxQ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="-5" id="O9a-Gf-XwM"/>
-                            <constraint firstItem="xlT-a1-9OO" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="SVO-Ot-Wcc"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ctE-JO-BQo" secondAttribute="trailing" id="Pwp-Cx-hrm"/>
+                            <constraint firstItem="ctE-JO-BQo" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="X2v-Wp-aqM"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="TrT-xu-cV2" secondAttribute="bottom" id="XSU-KG-3fH"/>
-                            <constraint firstItem="TrT-xu-cV2" firstAttribute="top" secondItem="qvj-LK-pxQ" secondAttribute="bottom" id="Xp0-yp-hEO"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="hQj-Ua-kyy" secondAttribute="trailing" constant="20" id="a8y-eq-Tal"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="qvj-LK-pxQ" secondAttribute="trailing" constant="-5" id="g0U-UG-wpj"/>
-                            <constraint firstItem="qvj-LK-pxQ" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="k7l-23-ZEw"/>
-                            <constraint firstItem="07B-Kh-ebH" firstAttribute="centerX" secondItem="qvj-LK-pxQ" secondAttribute="centerX" id="mZB-u9-8r0"/>
-                            <constraint firstItem="xlT-a1-9OO" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="uUg-IS-zSS"/>
-                            <constraint firstItem="hQj-Ua-kyy" firstAttribute="centerY" secondItem="xlT-a1-9OO" secondAttribute="centerY" id="xC3-1y-qxR"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="dismissButton" destination="xlT-a1-9OO" id="Giv-yD-r7f"/>
-                        <outlet property="saveButton" destination="hQj-Ua-kyy" id="eN1-ef-lo6"/>
+                        <outlet property="subCustomNavigationBar" destination="ctE-JO-BQo" id="gBL-BH-VJB"/>
                         <outlet property="tableView" destination="TrT-xu-cV2" id="JFJ-wV-0kz"/>
-                        <outlet property="topWaveView" destination="qvj-LK-pxQ" id="AE2-uA-J55"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

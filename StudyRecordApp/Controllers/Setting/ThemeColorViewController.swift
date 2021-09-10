@@ -9,10 +9,7 @@ import UIKit
 
 final class ThemeColorViewController: UIViewController {
     
-    @IBOutlet private weak var topWaveView: WaveView!
-    @IBOutlet private weak var dismissButton: NavigationButton!
-    @IBOutlet private weak var saveButton: NavigationButton!
-    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var subCustomNavigationBar: SubCustomNavigationBar!
     @IBOutlet private weak var mainColorView: ThemeColorView!
     @IBOutlet private weak var subColorView: ThemeColorView!
     @IBOutlet private weak var accentColorView: ThemeColorView!
@@ -35,7 +32,7 @@ final class ThemeColorViewController: UIViewController {
     }
     var containerType: ContainerType = .tile
     var colorConcept: ColorConcept?
-    var navTitle = ""
+    var navigationTitle = ""
     private var currentContainerView: UIView {
         switch containerType {
             case .concept: return colorChoicesConceptContainerView
@@ -50,13 +47,10 @@ final class ThemeColorViewController: UIViewController {
         super.viewDidLoad()
         
         containerView.bringSubviewToFront(currentContainerView)
-        setupTitleLabel()
-        setupWaveView()
-        setupSaveButton()
-        setupDismissButton()
         setupThemeColorViews()
         setupSegmentedControl()
         setupContainerViewControllers()
+        setupSubCustomNavigationBar()
         
     }
     
@@ -128,20 +122,26 @@ private extension ThemeColorViewController {
     
 }
 
-// MARK: - NavigationButtonDelegate
-extension ThemeColorViewController: NavigationButtonDelegate {
+// MARK: - SubCustomNavigationBarDelegate
+extension ThemeColorViewController: SubCustomNavigationBarDelegate {
     
-    func titleButtonDidTapped(type: NavigationButtonType) {
-        switch type {
-            case .save:
-                UserDefaults.standard.save(color: mainColorView.backgroundColor, .main)
-                UserDefaults.standard.save(color: subColorView.backgroundColor, .sub)
-                UserDefaults.standard.save(color: accentColorView.backgroundColor, .accent)
-                dismiss(animated: true)
-            case .dismiss:
-                dismiss(animated: true)
-            default: fatalError("予期せぬタイプ")
+    func saveButtonDidTapped() {
+        UserDefaults.standard.save(color: mainColorView.backgroundColor, .main)
+        UserDefaults.standard.save(color: subColorView.backgroundColor, .sub)
+        UserDefaults.standard.save(color: accentColorView.backgroundColor, .accent)
+        if containerType == .concept {
+            presentingViewController?.presentingViewController?.dismiss(animated: true)
+        } else {
+            dismiss(animated: true)
         }
+    }
+    
+    func dismissButtonDidTapped() {
+        dismiss(animated: true)
+    }
+    
+    var navTitle: String {
+        return navigationTitle
     }
     
 }
@@ -254,24 +254,8 @@ private extension ThemeColorViewController {
         setThemeSubViewColor(view: accentColorView)
     }
     
-    func setupTitleLabel() {
-        titleLabel.text = navTitle
-    }
-    
-    func setupWaveView() {
-        topWaveView.create(isFill: true, marginY: 60)
-    }
-    
-    func setupSaveButton() {
-        saveButton.type = .save
-        saveButton.delegate = self
-        saveButton.backgroundColor = .clear
-    }
-    
-    func setupDismissButton() {
-        dismissButton.type = .dismiss
-        dismissButton.delegate = self
-        dismissButton.backgroundColor = .clear
+    func setupSubCustomNavigationBar() {
+        subCustomNavigationBar.delegate = self
     }
     
 }
