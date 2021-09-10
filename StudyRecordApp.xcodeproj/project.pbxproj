@@ -12,6 +12,10 @@
 		AB0C765726EB8B4300BF5B64 /* CustomButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C765526EB8B4300BF5B64 /* CustomButtonTableViewCell.swift */; };
 		AB0C765826EB8B4300BF5B64 /* CustomButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB0C765626EB8B4300BF5B64 /* CustomButtonTableViewCell.xib */; };
 		AB0C765A26EBA91D00BF5B64 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C765926EBA91D00BF5B64 /* Setting.swift */; };
+		AB0C765C26EBABC200BF5B64 /* RecordRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C765B26EBABC200BF5B64 /* RecordRealm.swift */; };
+		AB0C765E26EBABDF00BF5B64 /* GoalRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C765D26EBABDF00BF5B64 /* GoalRealm.swift */; };
+		AB0C766026EBABE800BF5B64 /* GraphRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C765F26EBABE800BF5B64 /* GraphRealm.swift */; };
+		AB0C766226EBABEF00BF5B64 /* SettingRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C766126EBABEF00BF5B64 /* SettingRealm.swift */; };
 		AB13ECD626B7AEA3002F56FF /* ColorChoicesConcept.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13ECD526B7AEA3002F56FF /* ColorChoicesConcept.storyboard */; };
 		AB13ECD826B7AF27002F56FF /* ColorChoicesTile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13ECD726B7AF27002F56FF /* ColorChoicesTile.storyboard */; };
 		AB13ECDA26B7AF6F002F56FF /* ColorChoicesSlider.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13ECD926B7AF6F002F56FF /* ColorChoicesSlider.storyboard */; };
@@ -166,6 +170,10 @@
 		AB0C765526EB8B4300BF5B64 /* CustomButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonTableViewCell.swift; sourceTree = "<group>"; };
 		AB0C765626EB8B4300BF5B64 /* CustomButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomButtonTableViewCell.xib; sourceTree = "<group>"; };
 		AB0C765926EBA91D00BF5B64 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		AB0C765B26EBABC200BF5B64 /* RecordRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRealm.swift; sourceTree = "<group>"; };
+		AB0C765D26EBABDF00BF5B64 /* GoalRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalRealm.swift; sourceTree = "<group>"; };
+		AB0C765F26EBABE800BF5B64 /* GraphRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphRealm.swift; sourceTree = "<group>"; };
+		AB0C766126EBABEF00BF5B64 /* SettingRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRealm.swift; sourceTree = "<group>"; };
 		AB13ECD526B7AEA3002F56FF /* ColorChoicesConcept.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ColorChoicesConcept.storyboard; sourceTree = "<group>"; };
 		AB13ECD726B7AF27002F56FF /* ColorChoicesTile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ColorChoicesTile.storyboard; sourceTree = "<group>"; };
 		AB13ECD926B7AF6F002F56FF /* ColorChoicesSlider.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ColorChoicesSlider.storyboard; sourceTree = "<group>"; };
@@ -345,6 +353,17 @@
 				F4A1350DA353A8FEAF4BEEB3 /* Pods-StudyRecordApp.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		AB0C766326EBABF500BF5B64 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				AB0C765B26EBABC200BF5B64 /* RecordRealm.swift */,
+				AB0C765D26EBABDF00BF5B64 /* GoalRealm.swift */,
+				AB0C765F26EBABE800BF5B64 /* GraphRealm.swift */,
+				AB0C766126EBABEF00BF5B64 /* SettingRealm.swift */,
+			);
+			path = Realm;
 			sourceTree = "<group>";
 		};
 		AB13EDE626C78DD0002F56FF /* All */ = {
@@ -559,11 +578,12 @@
 		AB8B704726D5EF1B0069FF67 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				AB93C2BC266BABA900C3AE8F /* Record.swift */,
 				AB14B46B26DBA80A007A5F16 /* User.swift */,
+				AB93C2BC266BABA900C3AE8F /* Record.swift */,
 				AB4397F426DD57B9008C8CA8 /* Goal.swift */,
 				ABFAB20B26E62D0F0095EC20 /* Graph.swift */,
 				AB0C765926EBA91D00BF5B64 /* Setting.swift */,
+				AB0C766326EBABF500BF5B64 /* Realm */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -979,6 +999,7 @@
 				AB2B5B8C26A2D106009BD3C7 /* UITableViewHeaderFooterView+Extension.swift in Sources */,
 				ABA0570526B50F8100E3DF01 /* StudyRecordGraphColorViewController.swift in Sources */,
 				AB2B5B8426A2D0FD009BD3C7 /* NotificationName+Extension.swift in Sources */,
+				AB0C766026EBABE800BF5B64 /* GraphRealm.swift in Sources */,
 				AB93C2BD266BABA900C3AE8F /* Record.swift in Sources */,
 				AB86A85A26D4915700EA990A /* HalfModalDismissInteractiveTransition.swift in Sources */,
 				AB2B5BA026A2D1B7009BD3C7 /* ServiceConcept.swift in Sources */,
@@ -1009,6 +1030,7 @@
 				AB86A85C26D4915700EA990A /* HalfModalIndicatorView.swift in Sources */,
 				ABA0570126B50D1900E3DF01 /* GraphColorTileView.swift in Sources */,
 				ABFAB20C26E62D0F0095EC20 /* Graph.swift in Sources */,
+				AB0C765E26EBABDF00BF5B64 /* GoalRealm.swift in Sources */,
 				AB14B46826DBA4F9007A5F16 /* UserRepository.swift in Sources */,
 				AB13EDE426C78DB4002F56FF /* ScreenTransitionCollectionViewCell.swift in Sources */,
 				ABFAB21026E63A830095EC20 /* GraphRepository.swift in Sources */,
@@ -1028,6 +1050,7 @@
 				AB9B4FD626D771C5001A7BAB /* UITextField+Extension.swift in Sources */,
 				ABFAB21626E6AD780095EC20 /* CustomSegmentedControl.swift in Sources */,
 				AB13EE6A26CB6965002F56FF /* RippleView.swift in Sources */,
+				AB0C766226EBABEF00BF5B64 /* SettingRealm.swift in Sources */,
 				AB86A85E26D4915700EA990A /* HalfModalPresentationController.swift in Sources */,
 				AB2B5B8626A2D0FD009BD3C7 /* NSObjectProtocol+Extension.swift in Sources */,
 				AB2B5BC626A2D36F009BD3C7 /* ColorChoicesSliderViewController.swift in Sources */,
@@ -1039,6 +1062,7 @@
 				AB93C23B266A234800C3AE8F /* AppDelegate.swift in Sources */,
 				AB2B5BC926A2D36F009BD3C7 /* SettingViewController.swift in Sources */,
 				AB2B5BB926A2D2C2009BD3C7 /* AccordionColorTableViewCell.swift in Sources */,
+				AB0C765C26EBABC200BF5B64 /* RecordRealm.swift in Sources */,
 				AB86A85B26D4915700EA990A /* HalfModalDismissAnimatedTransition.swift in Sources */,
 				AB4397FD26DE0DB8008C8CA8 /* RealmGoalDataStore.swift in Sources */,
 				AB13EDB426BFAB8B002F56FF /* StudyRecordSortTableViewCell.swift in Sources */,
