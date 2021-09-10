@@ -34,6 +34,23 @@ final class ThemeColorView: UIView {
         return imageView
     }()
     
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+    
+    func setup() {
+        layer.cornerRadius = 10
+        layer.borderWidth = 1
+        layer.borderColor = UIColor.black.cgColor
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         delegate?.themeColorViewDidTapped(nextSelectedView: self)
     }
@@ -46,6 +63,10 @@ final class ThemeColorView: UIView {
 
 final class ThemeColorViewController: UIViewController {
     
+    @IBOutlet private weak var topWaveView: WaveView!
+    @IBOutlet private weak var dismissButton: NavigationButton!
+    @IBOutlet private weak var saveButton: NavigationButton!
+    @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var mainColorView: ThemeColorView!
     @IBOutlet private weak var subColorView: ThemeColorView!
     @IBOutlet private weak var accentColorView: ThemeColorView!
@@ -73,7 +94,10 @@ final class ThemeColorViewController: UIViewController {
         super.viewDidLoad()
         
         containerView.bringSubviewToFront(currentContainerView)
-        self.navigationItem.title = navTitle
+        setupTitleLabel()
+        setupWaveView()
+        setupSaveButton()
+        setupDismissButton()
         setupThemeColorViews()
         setupSegmentedControl()
         setupContainerViewControllers()
@@ -90,22 +114,6 @@ final class ThemeColorViewController: UIViewController {
         
     }
     
-    private func setThemeSubViewColor(view: ThemeColorView?) {
-        guard let color = view?.backgroundColor else { return }
-        view?.subviews.forEach { view in
-            let shouldWhite = (color.redValue < 0.4
-                                && color.greenValue < 0.4
-                                && color.blueValue < 0.4
-                                && color.alphaValue > 0.5)
-            if let imageView = view as? UIImageView {
-                imageView.tintColor = { shouldWhite ? .white : .black }()
-            }
-            if let label = view as? UILabel {
-                label.textColor = { shouldWhite ? .white : .black }()
-            }
-        }
-    }
-    
 }
 
 // MARK: - IBAction func
@@ -120,13 +128,6 @@ private extension ThemeColorViewController {
                                             userInfo: ["selectedView": lastSelectedThemeColorView!])
         }
         containerView.bringSubviewToFront(currentContainerView)
-    }
-    
-    @IBAction func saveButtonDidTapped(_ sender: Any) {
-        UserDefaults.standard.save(color: mainColorView.backgroundColor, .main)
-        UserDefaults.standard.save(color: subColorView.backgroundColor, .sub)
-        UserDefaults.standard.save(color: accentColorView.backgroundColor, .accent)
-        self.navigationController?.popToRootViewController(animated: true)
     }
     
 }
@@ -150,6 +151,40 @@ private extension ThemeColorViewController {
             case nil:
                 lastSelectedThemeColorView = mainColorView
                 self.scheme = .main
+        }
+    }
+    
+    func setThemeSubViewColor(view: ThemeColorView?) {
+        guard let color = view?.backgroundColor else { return }
+        view?.subviews.forEach { view in
+            let shouldWhite = (color.redValue < 0.4
+                                && color.greenValue < 0.4
+                                && color.blueValue < 0.4
+                                && color.alphaValue > 0.5)
+            if let imageView = view as? UIImageView {
+                imageView.tintColor = { shouldWhite ? .white : .black }()
+            }
+            if let label = view as? UILabel {
+                label.textColor = { shouldWhite ? .white : .black }()
+            }
+        }
+    }
+    
+}
+
+// MARK: - NavigationButtonDelegate
+extension ThemeColorViewController: NavigationButtonDelegate {
+    
+    func titleButtonDidTapped(type: NavigationButtonType) {
+        switch type {
+            case .save:
+                UserDefaults.standard.save(color: mainColorView.backgroundColor, .main)
+                UserDefaults.standard.save(color: subColorView.backgroundColor, .sub)
+                UserDefaults.standard.save(color: accentColorView.backgroundColor, .accent)
+                dismiss(animated: true)
+            case .dismiss:
+                dismiss(animated: true)
+            default: fatalError("予期せぬタイプ")
         }
     }
     
@@ -261,6 +296,26 @@ private extension ThemeColorViewController {
         setThemeSubViewColor(view: mainColorView)
         setThemeSubViewColor(view: subColorView)
         setThemeSubViewColor(view: accentColorView)
+    }
+    
+    func setupTitleLabel() {
+        titleLabel.text = navTitle
+    }
+    
+    func setupWaveView() {
+        topWaveView.create(isFill: true, marginY: 60)
+    }
+    
+    func setupSaveButton() {
+        saveButton.type = .save
+        saveButton.delegate = self
+        saveButton.backgroundColor = .clear
+    }
+    
+    func setupDismissButton() {
+        dismissButton.type = .dismiss
+        dismissButton.delegate = self
+        dismissButton.backgroundColor = .clear
     }
     
     func setupImageView(view: ThemeColorView) {

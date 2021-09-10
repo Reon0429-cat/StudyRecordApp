@@ -120,7 +120,7 @@ private extension SettingViewController {
                              modalPresentationStyle: .fullScreen) { vc in
                     vc.colorConcept = nil
                     vc.containerType = .tile
-                    vc.navTitle = "セルフ"
+                    vc.navTitle = "カスタム"
                 }
             }
             .addAction(title: "オススメ") {
