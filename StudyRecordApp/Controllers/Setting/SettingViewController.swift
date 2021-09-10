@@ -8,46 +8,54 @@
 import UIKit
 
 private enum SectionType: CaseIterable {
-    case a
     case themeColor
-    case b
+    case darkMode
+    case passcode
+    case pushNotification
+    case multilingual
+    case evaluationApp
+    case shareApp
+    case reports
+    case howToUseApp
+    case backup
+    case privacyPolicy
+    case logout
     
     var title: String {
         switch self {
-            case .a: return "サンプルA"
             case .themeColor: return "テーマカラー"
-            case .b: return "サンプルB"
+            case .darkMode: return "ダークモード"
+            case .passcode: return "パスコード"
+            case .pushNotification: return "プッシュ通知"
+            case .multilingual: return "言語"
+            case .howToUseApp: return "アプリの使い方"
+            case .evaluationApp: return "アプリを評価する"
+            case .shareApp: return "アプリを共有する"
+            case .reports: return "ご意見、ご要望、不具合の報告"
+            case .backup: return "バックアップ"
+            case .privacyPolicy: return "プライバシーポリシー"
+            case .logout: return "ログアウト"
+                
         }
     }
     var rowTypes: [RowType] {
         switch self {
-            case .a: return [.sample1, .sample2]
             case .themeColor: return [.default, .custom, .recommend]
-            case .b: return [.sample100]
+            default: return []
         }
     }
 }
 
 private enum RowType {
-    case sample1
-    case sample2
-    
     case `default`
     case custom
     case recommend
     
-    case sample100
-    
     var title: String {
         switch self {
-            case .sample1: return "サンプル１"
-            case .sample2: return "サンプル２"
-                
             case .default: return "デフォルト"
             case .custom: return "カスタム"
             case .recommend: return "オススメ"
-                
-            case .sample100: return "サンプル100"
         }
     }
 }
@@ -60,6 +68,7 @@ final class SettingViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
     
+    weak var delegate: SettingVCDelegate?
     private var tables: [(sectionType: SectionType, isExpanded: Bool)] = {
         var tables = [(sectionType: SectionType, isExpanded: Bool)]()
         SectionType.allCases.forEach { sectionType in
@@ -67,7 +76,6 @@ final class SettingViewController: UIViewController {
         }
         return tables
     }()
-    weak var delegate: SettingVCDelegate?
     private var userUseCase = UserUseCase(
         repository: UserRepository(
             dataStore: FirebaseUserDataStore()
@@ -94,26 +102,26 @@ final class SettingViewController: UIViewController {
 // MARK: - IBAction func
 private extension SettingViewController {
     
-    @IBAction func logoutButtonDidTapped(_ sender: Any) {
-        let alert = Alert.create(title: "本当にログアウトしてもよろしいですか")
-            .addAction(title: "ログアウト", style: .destructive) {
-                self.indicator.show(.progress)
-                self.userUseCase.logout { result in
-                    switch result {
-                        case .failure(let title):
-                            self.indicator.flash(.error) {
-                                self.showErrorAlert(title: title)
-                            }
-                        case .success:
-                            self.indicator.flash(.success) {
-                                self.presentLoginAndSignUpVC()
-                            }
-                    }
-                }
-            }
-            .addAction(title: "閉じる")
-        present(alert, animated: true)
-    }
+//    @IBAction func logoutButtonDidTapped(_ sender: Any) {
+//        let alert = Alert.create(title: "本当にログアウトしてもよろしいですか")
+//            .addAction(title: "ログアウト", style: .destructive) {
+//                self.indicator.show(.progress)
+//                self.userUseCase.logout { result in
+//                    switch result {
+//                        case .failure(let title):
+//                            self.indicator.flash(.error) {
+//                                self.showErrorAlert(title: title)
+//                            }
+//                        case .success:
+//                            self.indicator.flash(.success) {
+//                                self.presentLoginAndSignUpVC()
+//                            }
+//                    }
+//                }
+//            }
+//            .addAction(title: "閉じる")
+//        present(alert, animated: true)
+//    }
     
     func presentLoginAndSignUpVC() {
         present(LoginAndSignUpViewController.self,
@@ -139,7 +147,8 @@ private extension SettingViewController {
     func expand(section: Int) {
         tables[section].isExpanded.toggle()
         tableView.beginUpdates()
-        tableView.reloadRows(at: [IndexPath(row: 0, section: section)],
+        tableView.reloadRows(at: [IndexPath(row: 0,
+                                            section: section)],
                              with: .automatic)
         tableView.endUpdates()
     }
@@ -152,10 +161,6 @@ extension SettingViewController: UITableViewDelegate {
                    didSelectRowAt indexPath: IndexPath) {
         let rowType = tables[indexPath.section].sectionType.rowTypes[indexPath.row]
         switch rowType {
-            case .sample1:
-                break
-            case .sample2:
-                break
             case .default:
                 showAlert(section: indexPath.section)
             case .custom:
@@ -168,8 +173,6 @@ extension SettingViewController: UITableViewDelegate {
             case .recommend:
                 present(ColorConceptViewController.self,
                         modalPresentationStyle: .fullScreen)
-            case .sample100:
-                break
         }
     }
     
@@ -189,11 +192,9 @@ extension SettingViewController: UITableViewDelegate {
         headerView.configure(title: tables[section].sectionType.title) { [weak self] in
             guard let self = self else { return }
             switch self.tables[section].sectionType {
-                case .a:
-                    break
                 case .themeColor:
                     self.expand(section: section)
-                case .b:
+                default:
                     break
             }
         }
