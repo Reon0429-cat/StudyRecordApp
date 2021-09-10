@@ -101,13 +101,11 @@ private extension TopViewController {
             case .record:
                 present(AdditionalStudyRecordViewController.self,
                         modalPresentationStyle: .fullScreen)
+            case .graph:
+                break
             case .goal:
                 present(AdditionalGoalViewController.self,
                         modalPresentationStyle: .fullScreen)
-            case .graph:
-                break
-            case .countDown:
-                break
             case .setting:
                 break
         }
@@ -118,11 +116,9 @@ private extension TopViewController {
             case .record:
                 present(StudyRecordSortViewController.self,
                         modalPresentationStyle: .fullScreen)
-            case .goal:
-                break
             case .graph:
                 break
-            case .countDown:
+            case .goal:
                 break
             case .setting:
                 break
@@ -247,15 +243,11 @@ extension TopViewController {
                 editButton.setFade(.in)
                 editButton.changeTitle(editButton.type?.title ?? "編集")
                 changeAddButton(isEnabled: true)
-            case .goal:
-                editButton.setFade(.in)
-                editButton.changeTitle("編集")
-                changeAddButton(isEnabled: true)
             case .graph:
                 editButton.setFade(.in)
                 editButton.changeTitle("設定")
                 changeAddButton(isEnabled: false)
-            case .countDown:
+            case .goal:
                 editButton.setFade(.in)
                 editButton.changeTitle("編集")
                 changeAddButton(isEnabled: true)
@@ -311,11 +303,6 @@ extension TopViewController: GraphVCDelegate {
     
 }
 
-// MARK: - CountDownVCDelegate
-extension TopViewController: CountDownVCDelegate {
-    
-}
-
 // MARK: - SettingVCDelegate
 extension TopViewController: SettingVCDelegate {
     
@@ -333,13 +320,11 @@ extension TopViewController: NavigationButtonDelegate {
                         default: return .edit
                     }
                 }())
-            case .goal:
-                break
             case .graph:
                 present(GraphKindSelectingViewController.self) { vc in
                     self.halfModalPresenter.viewController = vc
                 }
-            case .countDown:
+            case .goal:
                 break
             case .setting:
                 break
@@ -362,15 +347,13 @@ private extension TopViewController {
     func setupPageViews() {
         let studyRecordVC = StudyRecordViewController.instantiate()
         studyRecordVC.delegate = self
-        let goalVC = GoalViewController.instantiate()
-        goalVC.delegate = self
         let graphVC = GraphViewController.instantiate()
         graphVC.delegate = self
-        let countDownVC = CountDownViewController.instantiate()
-        countDownVC.delegate = self
+        let goalVC = GoalViewController.instantiate()
+        goalVC.delegate = self
         let settingVC = SettingViewController.instantiate()
         settingVC.delegate = self
-        viewControllers = [studyRecordVC, goalVC, graphVC, countDownVC, settingVC]
+        viewControllers = [studyRecordVC, graphVC, goalVC, settingVC]
         pageViewController.setViewControllers([viewControllers[0]],
                                               direction: .forward,
                                               animated: true,

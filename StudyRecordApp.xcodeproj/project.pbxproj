@@ -32,10 +32,8 @@
 		AB13EDEB26C7C556002F56FF /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EDEA26C7C556002F56FF /* TopViewController.swift */; };
 		AB13EDF426C8BAAC002F56FF /* Goal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13EDF326C8BAAC002F56FF /* Goal.storyboard */; };
 		AB13EDF626C8BAB7002F56FF /* Graph.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13EDF526C8BAB7002F56FF /* Graph.storyboard */; };
-		AB13EDF826C8BAC1002F56FF /* CountDown.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13EDF726C8BAC1002F56FF /* CountDown.storyboard */; };
 		AB13EDFA26C8C585002F56FF /* GoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EDF926C8C585002F56FF /* GoalViewController.swift */; };
 		AB13EDFC26C8C596002F56FF /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EDFB26C8C596002F56FF /* GraphViewController.swift */; };
-		AB13EDFE26C8C59B002F56FF /* CountDownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EDFD26C8C59B002F56FF /* CountDownViewController.swift */; };
 		AB13EE6626CAC98A002F56FF /* ScreenType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EE6526CAC989002F56FF /* ScreenType.swift */; };
 		AB13EE6826CACB16002F56FF /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EE6726CACB16002F56FF /* UIView+Extension.swift */; };
 		AB13EE6A26CB6965002F56FF /* RippleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EE6926CB6965002F56FF /* RippleView.swift */; };
@@ -183,10 +181,8 @@
 		AB13EDEA26C7C556002F56FF /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		AB13EDF326C8BAAC002F56FF /* Goal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Goal.storyboard; sourceTree = "<group>"; };
 		AB13EDF526C8BAB7002F56FF /* Graph.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Graph.storyboard; sourceTree = "<group>"; };
-		AB13EDF726C8BAC1002F56FF /* CountDown.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CountDown.storyboard; sourceTree = "<group>"; };
 		AB13EDF926C8C585002F56FF /* GoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalViewController.swift; sourceTree = "<group>"; };
 		AB13EDFB26C8C596002F56FF /* GraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
-		AB13EDFD26C8C59B002F56FF /* CountDownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownViewController.swift; sourceTree = "<group>"; };
 		AB13EE6526CAC989002F56FF /* ScreenType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenType.swift; sourceTree = "<group>"; };
 		AB13EE6726CACB16002F56FF /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		AB13EE6926CB6965002F56FF /* RippleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleView.swift; sourceTree = "<group>"; };
@@ -387,14 +383,6 @@
 			path = Graph;
 			sourceTree = "<group>";
 		};
-		AB13EDEF26C8BA20002F56FF /* CountDown */ = {
-			isa = PBXGroup;
-			children = (
-				AB13EDFD26C8C59B002F56FF /* CountDownViewController.swift */,
-			);
-			path = CountDown;
-			sourceTree = "<group>";
-		};
 		AB13EDF026C8BA80002F56FF /* Goal */ = {
 			isa = PBXGroup;
 			children = (
@@ -413,14 +401,6 @@
 				AB20F80F26E7F3DB00564B14 /* GraphKindSelecting.storyboard */,
 			);
 			path = Graph;
-			sourceTree = "<group>";
-		};
-		AB13EDF226C8BA8D002F56FF /* CountDown */ = {
-			isa = PBXGroup;
-			children = (
-				AB13EDF726C8BAC1002F56FF /* CountDown.storyboard */,
-			);
-			path = CountDown;
 			sourceTree = "<group>";
 		};
 		AB13EDFF26C8E0E9002F56FF /* Setting */ = {
@@ -698,7 +678,6 @@
 				AB93C2C6266BC4B000C3AE8F /* StudyRecord */,
 				AB13EDED26C8BA0F002F56FF /* Goal */,
 				AB13EDEE26C8BA18002F56FF /* Graph */,
-				AB13EDEF26C8BA20002F56FF /* CountDown */,
 				AB2B5BBE26A2D352009BD3C7 /* Setting */,
 			);
 			path = Controllers;
@@ -712,7 +691,6 @@
 				AB93C2C7266BC4F000C3AE8F /* StudyRecord */,
 				AB13EDF026C8BA80002F56FF /* Goal */,
 				AB13EDF126C8BA88002F56FF /* Graph */,
-				AB13EDF226C8BA8D002F56FF /* CountDown */,
 				AB2B5BA626A2D232009BD3C7 /* Setting */,
 			);
 			path = Storyboards;
@@ -893,7 +871,6 @@
 				AB13EDE926C7C4C0002F56FF /* Top.storyboard in Resources */,
 				AB13EDE526C78DB4002F56FF /* ScreenTransitionCollectionViewCell.xib in Resources */,
 				AB93C266266A7DEB00C3AE8F /* AdditionalStudyRecord.storyboard in Resources */,
-				AB13EDF826C8BAC1002F56FF /* CountDown.storyboard in Resources */,
 				AB13EDF426C8BAAC002F56FF /* Goal.storyboard in Resources */,
 				AB13ED1626B8F5D0002F56FF /* StudyRecordMemo.storyboard in Resources */,
 				AB13EDD326C29DAF002F56FF /* StudyRecordTimeRecord.storyboard in Resources */,
@@ -1013,7 +990,6 @@
 				AB2B5B9E26A2D1B7009BD3C7 /* NaturalConcept.swift in Sources */,
 				AB86A85C26D4915700EA990A /* HalfModalIndicatorView.swift in Sources */,
 				ABA0570126B50D1900E3DF01 /* GraphColorTileView.swift in Sources */,
-				AB13EDFE26C8C59B002F56FF /* CountDownViewController.swift in Sources */,
 				ABFAB20C26E62D0F0095EC20 /* Graph.swift in Sources */,
 				AB14B46826DBA4F9007A5F16 /* UserRepository.swift in Sources */,
 				AB13EDE426C78DB4002F56FF /* ScreenTransitionCollectionViewCell.swift in Sources */,
