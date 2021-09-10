@@ -25,8 +25,15 @@ final class CustomSwitch: UISwitch {
     
     func setup() {
         thumbTintColor = .white
-        backgroundColor = .black
-        onTintColor = .clear
+        backgroundColor = .clear
+        onTintColor = .black
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        self.cutToCircle()
+        
     }
     
 }

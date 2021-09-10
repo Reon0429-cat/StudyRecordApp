@@ -36,6 +36,8 @@ enum StackViewSubViewType: CaseIterable {
     case width
 }
 
+// MARK: - ToDo スイッチを他のものに変える
+
 final class GraphKindSelectingViewController: UIViewController {
     
     @IBOutlet private weak var contentView: UIView!
@@ -72,13 +74,6 @@ final class GraphKindSelectingViewController: UIViewController {
         setupStackView()
         setupSlider()
         setupSwitch()
-        
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        setupSwitchLayout()
         
     }
     
@@ -180,16 +175,3 @@ private extension GraphKindSelectingViewController {
     }
     
 }
-
-// MARK: - setup layout
-private extension GraphKindSelectingViewController {
-    
-    func setupSwitchLayout() {
-        lineShapeSwitch.cutToCircle()
-        fillAreaSwitch.cutToCircle()
-        addDotsSwitch.cutToCircle()
-        dotShapeSwitch.cutToCircle()
-    }
-    
-}
-

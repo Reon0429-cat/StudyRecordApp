@@ -7,17 +7,25 @@
 
 import UIKit
 
-class CustomSwitchTableViewCell: UITableViewCell {
-
+final class CustomSwitchTableViewCell: UITableViewCell {
+    
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var customSwitch: CustomSwitch!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        selectionStyle = .none
+        
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    func configure(title: String, isOn: Bool) {
+        titleLabel.text = title
+        customSwitch.isOn = isOn
+    }
+    
+    @IBAction private func customSwitchDidSelected(_ sender: Any) {
+        
     }
     
 }

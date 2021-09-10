@@ -7,17 +7,25 @@
 
 import UIKit
 
-class CustomButtonTableViewCell: UITableViewCell {
-
+final class CustomButtonTableViewCell: UITableViewCell {
+    
+    @IBOutlet private weak var button: UIButton!
+    
+    var onTapEvent: (() -> Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        selectionStyle = .none
+        
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    func configure(title: String) {
+        button.setTitle(title)
+    }
+    
+    @IBAction private func buttonDidTapped(_ sender: Any) {
+        onTapEvent?()
     }
     
 }

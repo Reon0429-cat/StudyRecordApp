@@ -171,7 +171,7 @@ extension EditStudyRecordViewController: UITableViewDataSource {
         let cellType = getCellType(row: indexPath.row)
         switch cellType {
             case .title:
-                let cell = tableView.dequeueReusableCustomCell(with: StudyRecordCustomTableViewCell.self)
+                let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
                 cell.configure(titleText: "タイトル",
                                mandatoryIsHidden: false,
                                auxiliaryText: selectedRecord.title)
@@ -182,13 +182,13 @@ extension EditStudyRecordViewController: UITableViewDataSource {
                 cell.configure(color: color)
                 return cell
             case .memo:
-                let cell = tableView.dequeueReusableCustomCell(with: StudyRecordCustomTableViewCell.self)
+                let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
                 cell.configure(titleText: "メモ",
                                mandatoryIsHidden: true,
                                auxiliaryText: selectedRecord.memo)
                 return cell
             case .timeRecord:
-                let cell = tableView.dequeueReusableCustomCell(with: StudyRecordCustomTableViewCell.self)
+                let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
                 cell.configure(titleText: "時間を記録する",
                                mandatoryIsHidden: true,
                                auxiliaryText: "")
@@ -343,7 +343,7 @@ extension EditStudyRecordViewController {
     func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.registerCustomCell(StudyRecordCustomTableViewCell.self)
+        tableView.registerCustomCell(CustomTitleTableViewCell.self)
         tableView.registerCustomCell(StudyRecordGraphColorTableViewCell.self)
         tableView.registerCustomCell(StudyRecordHistoryTableViewCell.self)
         tableView.tableFooterView = UIView()

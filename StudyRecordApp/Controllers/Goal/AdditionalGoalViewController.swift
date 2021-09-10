@@ -240,7 +240,7 @@ extension AdditionalGoalViewController: UITableViewDataSource {
         let rowType = RowType.allCases[indexPath.row]
         switch rowType {
             case .title:
-                let cell = tableView.dequeueReusableCustomCell(with: StudyRecordCustomTableViewCell.self)
+                let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
                 cell.configure(titleText: rowType.title,
                                mandatoryIsHidden: false,
                                auxiliaryText: inputtedTitle)
@@ -248,7 +248,7 @@ extension AdditionalGoalViewController: UITableViewDataSource {
             case .category:
                 return UITableViewCell()
             case .memo:
-                let cell = tableView.dequeueReusableCustomCell(with: StudyRecordCustomTableViewCell.self)
+                let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
                 cell.configure(titleText: rowType.title,
                                mandatoryIsHidden: true,
                                auxiliaryText: inputtedMemo)
@@ -259,7 +259,7 @@ extension AdditionalGoalViewController: UITableViewDataSource {
                                priority: inputtedPriority)
                 return cell
             case .createdDate, .dueDate:
-                let cell = tableView.dequeueReusableCustomCell(with: StudyRecordCustomTableViewCell.self)
+                let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
                 let inputtedDate = getDate(type: rowType)
                 let auxiliaryText = Converter.convertToString(from: inputtedDate,
                                                               format: "yyyy年M月d日")
@@ -366,7 +366,7 @@ private extension AdditionalGoalViewController {
     func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.registerCustomCell(StudyRecordCustomTableViewCell.self)
+        tableView.registerCustomCell(CustomTitleTableViewCell.self)
         tableView.registerCustomCell(GoalPriorityTableViewCell.self)
         tableView.registerCustomCell(GoalPhotoTableViewCell.self)
         tableView.rowHeight = UITableView.automaticDimension

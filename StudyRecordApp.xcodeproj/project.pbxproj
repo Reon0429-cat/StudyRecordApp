@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB0C765326EB889100BF5B64 /* CustomSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C765126EB889100BF5B64 /* CustomSwitchTableViewCell.swift */; };
+		AB0C765426EB889100BF5B64 /* CustomSwitchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB0C765226EB889100BF5B64 /* CustomSwitchTableViewCell.xib */; };
+		AB0C765726EB8B4300BF5B64 /* CustomButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C765526EB8B4300BF5B64 /* CustomButtonTableViewCell.swift */; };
+		AB0C765826EB8B4300BF5B64 /* CustomButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB0C765626EB8B4300BF5B64 /* CustomButtonTableViewCell.xib */; };
 		AB13ECD626B7AEA3002F56FF /* ColorChoicesConcept.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13ECD526B7AEA3002F56FF /* ColorChoicesConcept.storyboard */; };
 		AB13ECD826B7AF27002F56FF /* ColorChoicesTile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13ECD726B7AF27002F56FF /* ColorChoicesTile.storyboard */; };
 		AB13ECDA26B7AF6F002F56FF /* ColorChoicesSlider.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13ECD926B7AF6F002F56FF /* ColorChoicesSlider.storyboard */; };
@@ -24,8 +28,8 @@
 		AB13EDD126C29D9E002F56FF /* StudyRecordTimeRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EDD026C29D9E002F56FF /* StudyRecordTimeRecordViewController.swift */; };
 		AB13EDD326C29DAF002F56FF /* StudyRecordTimeRecord.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13EDD226C29DAF002F56FF /* StudyRecordTimeRecord.storyboard */; };
 		AB13EDDB26C3C163002F56FF /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EDDA26C3C163002F56FF /* Converter.swift */; };
-		AB13EDE026C64EBB002F56FF /* StudyRecordCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EDDE26C64EBB002F56FF /* StudyRecordCustomTableViewCell.swift */; };
-		AB13EDE126C64EBB002F56FF /* StudyRecordCustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB13EDDF26C64EBB002F56FF /* StudyRecordCustomTableViewCell.xib */; };
+		AB13EDE026C64EBB002F56FF /* CustomTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EDDE26C64EBB002F56FF /* CustomTitleTableViewCell.swift */; };
+		AB13EDE126C64EBB002F56FF /* CustomTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB13EDDF26C64EBB002F56FF /* CustomTitleTableViewCell.xib */; };
 		AB13EDE426C78DB4002F56FF /* ScreenTransitionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EDE226C78DB4002F56FF /* ScreenTransitionCollectionViewCell.swift */; };
 		AB13EDE526C78DB4002F56FF /* ScreenTransitionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB13EDE326C78DB4002F56FF /* ScreenTransitionCollectionViewCell.xib */; };
 		AB13EDE926C7C4C0002F56FF /* Top.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13EDE826C7C4C0002F56FF /* Top.storyboard */; };
@@ -156,6 +160,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AB0C765126EB889100BF5B64 /* CustomSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSwitchTableViewCell.swift; sourceTree = "<group>"; };
+		AB0C765226EB889100BF5B64 /* CustomSwitchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomSwitchTableViewCell.xib; sourceTree = "<group>"; };
+		AB0C765526EB8B4300BF5B64 /* CustomButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonTableViewCell.swift; sourceTree = "<group>"; };
+		AB0C765626EB8B4300BF5B64 /* CustomButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomButtonTableViewCell.xib; sourceTree = "<group>"; };
 		AB13ECD526B7AEA3002F56FF /* ColorChoicesConcept.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ColorChoicesConcept.storyboard; sourceTree = "<group>"; };
 		AB13ECD726B7AF27002F56FF /* ColorChoicesTile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ColorChoicesTile.storyboard; sourceTree = "<group>"; };
 		AB13ECD926B7AF6F002F56FF /* ColorChoicesSlider.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ColorChoicesSlider.storyboard; sourceTree = "<group>"; };
@@ -173,8 +181,8 @@
 		AB13EDD026C29D9E002F56FF /* StudyRecordTimeRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRecordTimeRecordViewController.swift; sourceTree = "<group>"; };
 		AB13EDD226C29DAF002F56FF /* StudyRecordTimeRecord.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StudyRecordTimeRecord.storyboard; sourceTree = "<group>"; };
 		AB13EDDA26C3C163002F56FF /* Converter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
-		AB13EDDE26C64EBB002F56FF /* StudyRecordCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRecordCustomTableViewCell.swift; sourceTree = "<group>"; };
-		AB13EDDF26C64EBB002F56FF /* StudyRecordCustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudyRecordCustomTableViewCell.xib; sourceTree = "<group>"; };
+		AB13EDDE26C64EBB002F56FF /* CustomTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTitleTableViewCell.swift; sourceTree = "<group>"; };
+		AB13EDDF26C64EBB002F56FF /* CustomTitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTitleTableViewCell.xib; sourceTree = "<group>"; };
 		AB13EDE226C78DB4002F56FF /* ScreenTransitionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTransitionCollectionViewCell.swift; sourceTree = "<group>"; };
 		AB13EDE326C78DB4002F56FF /* ScreenTransitionCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScreenTransitionCollectionViewCell.xib; sourceTree = "<group>"; };
 		AB13EDE826C7C4C0002F56FF /* Top.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Top.storyboard; sourceTree = "<group>"; };
@@ -342,6 +350,12 @@
 			children = (
 				AB13EDE226C78DB4002F56FF /* ScreenTransitionCollectionViewCell.swift */,
 				AB13EDE326C78DB4002F56FF /* ScreenTransitionCollectionViewCell.xib */,
+				AB13EDDE26C64EBB002F56FF /* CustomTitleTableViewCell.swift */,
+				AB13EDDF26C64EBB002F56FF /* CustomTitleTableViewCell.xib */,
+				AB0C765126EB889100BF5B64 /* CustomSwitchTableViewCell.swift */,
+				AB0C765226EB889100BF5B64 /* CustomSwitchTableViewCell.xib */,
+				AB0C765526EB8B4300BF5B64 /* CustomButtonTableViewCell.swift */,
+				AB0C765626EB8B4300BF5B64 /* CustomButtonTableViewCell.xib */,
 			);
 			path = All;
 			sourceTree = "<group>";
@@ -741,8 +755,6 @@
 			children = (
 				AB16307926CE123A00111F55 /* RecordTableViewCell.swift */,
 				AB16307A26CE123A00111F55 /* RecordTableViewCell.xib */,
-				AB13EDDE26C64EBB002F56FF /* StudyRecordCustomTableViewCell.swift */,
-				AB13EDDF26C64EBB002F56FF /* StudyRecordCustomTableViewCell.xib */,
 				ABA056F426B4C7D800E3DF01 /* StudyRecordGraphColorTableViewCell.swift */,
 				ABA056F526B4C7D800E3DF01 /* StudyRecordGraphColorTableViewCell.xib */,
 				AB13ED7B26BE7061002F56FF /* StudyRecordHistoryTableViewCell.swift */,
@@ -838,7 +850,7 @@
 				AB4397EF26DD305B008C8CA8 /* AdditionalGoal.storyboard in Resources */,
 				AB43980926DE2D72008C8CA8 /* GoalPriorityTableViewCell.xib in Resources */,
 				AB2B5BBB26A2D2C2009BD3C7 /* ColorConceptTableViewCell.xib in Resources */,
-				AB13EDE126C64EBB002F56FF /* StudyRecordCustomTableViewCell.xib in Resources */,
+				AB13EDE126C64EBB002F56FF /* CustomTitleTableViewCell.xib in Resources */,
 				AB13ECDA26B7AF6F002F56FF /* ColorChoicesSlider.storyboard in Resources */,
 				AB13EDB526BFAB8B002F56FF /* StudyRecordSortTableViewCell.xib in Resources */,
 				AB93C251266A27B900C3AE8F /* StudyRecord.storyboard in Resources */,
@@ -871,7 +883,9 @@
 				AB13EDE926C7C4C0002F56FF /* Top.storyboard in Resources */,
 				AB13EDE526C78DB4002F56FF /* ScreenTransitionCollectionViewCell.xib in Resources */,
 				AB93C266266A7DEB00C3AE8F /* AdditionalStudyRecord.storyboard in Resources */,
+				AB0C765826EB8B4300BF5B64 /* CustomButtonTableViewCell.xib in Resources */,
 				AB13EDF426C8BAAC002F56FF /* Goal.storyboard in Resources */,
+				AB0C765426EB889100BF5B64 /* CustomSwitchTableViewCell.xib in Resources */,
 				AB13ED1626B8F5D0002F56FF /* StudyRecordMemo.storyboard in Resources */,
 				AB13EDD326C29DAF002F56FF /* StudyRecordTimeRecord.storyboard in Resources */,
 				AB13EDF626C8BAB7002F56FF /* Graph.storyboard in Resources */,
@@ -949,7 +963,7 @@
 				AB86A85D26D4915700EA990A /* HalfModalOverlayView.swift in Sources */,
 				AB2B5B9F26A2D1B7009BD3C7 /* OverseasConcept.swift in Sources */,
 				AB13EE6626CAC98A002F56FF /* ScreenType.swift in Sources */,
-				AB13EDE026C64EBB002F56FF /* StudyRecordCustomTableViewCell.swift in Sources */,
+				AB13EDE026C64EBB002F56FF /* CustomTitleTableViewCell.swift in Sources */,
 				ABFAB21426E67A2E0095EC20 /* Alert.swift in Sources */,
 				AB13EDDB26C3C163002F56FF /* Converter.swift in Sources */,
 				AB2B5BC526A2D36F009BD3C7 /* ColorChoicesTileViewController.swift in Sources */,
@@ -967,6 +981,7 @@
 				AB2B5BA026A2D1B7009BD3C7 /* ServiceConcept.swift in Sources */,
 				AB13EDEB26C7C556002F56FF /* TopViewController.swift in Sources */,
 				AB13ED4D26BB9241002F56FF /* RecordUseCase.swift in Sources */,
+				AB0C765326EB889100BF5B64 /* CustomSwitchTableViewCell.swift in Sources */,
 				AB16305126CD6B1400111F55 /* WaveView.swift in Sources */,
 				AB2B5B8726A2D0FD009BD3C7 /* UICollectionView+Extension.swift in Sources */,
 				AB86A85F26D4915700EA990A /* HalfModalPresenter.swift in Sources */,
@@ -1001,6 +1016,7 @@
 				AB4397F326DD3B32008C8CA8 /* GoalPriorityViewController.swift in Sources */,
 				AB20F80E26E7CBAE00564B14 /* CustomScrollableGraphView.swift in Sources */,
 				AB2B5BBA26A2D2C2009BD3C7 /* SectionHeaderView.swift in Sources */,
+				AB0C765726EB8B4300BF5B64 /* CustomButtonTableViewCell.swift in Sources */,
 				AB13EDFA26C8C585002F56FF /* GoalViewController.swift in Sources */,
 				AB4397F526DD57B9008C8CA8 /* Goal.swift in Sources */,
 				AB2B5B8E26A2D106009BD3C7 /* UITableViewCell+Extension.swift in Sources */,
