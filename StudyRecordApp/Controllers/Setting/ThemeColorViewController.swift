@@ -7,60 +7,6 @@
 
 import UIKit
 
-enum ContainerType: Int {
-    case concept
-    case tile
-    case slider
-}
-
-enum ColorSchemeType {
-    case main
-    case sub
-    case accent
-}
-
-protocol ThemeColorViewDelegate: AnyObject {
-    func themeColorViewDidTapped(nextSelectedView: UIView)
-}
-
-final class ThemeColorView: UIView {
-    
-    weak var delegate: ThemeColorViewDelegate?
-    var imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "eyedropper")
-        imageView.tintColor = .black
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-    
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
-    }
-    
-    func setup() {
-        layer.cornerRadius = 10
-        layer.borderWidth = 1
-        layer.borderColor = UIColor.black.cgColor
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        delegate?.themeColorViewDidTapped(nextSelectedView: self)
-    }
-    
-    func hideImage(_ isHidden: Bool) {
-        imageView.isHidden = isHidden
-    }
-    
-}
-
 final class ThemeColorViewController: UIViewController {
     
     @IBOutlet private weak var topWaveView: WaveView!
@@ -77,6 +23,16 @@ final class ThemeColorViewController: UIViewController {
     @IBOutlet private weak var colorChoicesTileContainerView: UIView!
     @IBOutlet private weak var colorChoicesSliderContainerView: UIView!
     
+    enum ContainerType: Int {
+        case concept
+        case tile
+        case slider
+    }
+    enum ColorSchemeType {
+        case main
+        case sub
+        case accent
+    }
     var containerType: ContainerType = .tile
     var colorConcept: ColorConcept?
     var navTitle = ""
@@ -219,8 +175,8 @@ extension ThemeColorViewController: ColorChoicesConceptVCDelegate {
         lastSelectedThemeColorView?.backgroundColor = view.backgroundColor
         lastSelectedThemeColorView?.alpha = view.alpha
         mainColorView.hideImage(true)
-        subColorView.hideImage({ scheme != .main }())
-        accentColorView.hideImage({ scheme != .sub }())
+        subColorView.hideImage(scheme != .main)
+        accentColorView.hideImage(scheme != .sub)
         switchTheme(scheme: scheme)
     }
     
@@ -276,9 +232,9 @@ private extension ThemeColorViewController {
             subColorView.isUserInteractionEnabled = false
             accentColorView.isUserInteractionEnabled = false
         }
-        setupImageView(view: mainColorView)
-        setupImageView(view: subColorView)
-        setupImageView(view: accentColorView)
+        setupImageViewLayout(view: mainColorView)
+        setupImageViewLayout(view: subColorView)
+        setupImageViewLayout(view: accentColorView)
         mainColorView.hideImage(false)
         lastSelectedThemeColorView = mainColorView
     }
@@ -318,7 +274,12 @@ private extension ThemeColorViewController {
         dismissButton.backgroundColor = .clear
     }
     
-    func setupImageView(view: ThemeColorView) {
+}
+
+// MARK: - setup layout
+private extension ThemeColorViewController {
+    
+    func setupImageViewLayout(view: ThemeColorView) {
         view.addSubview(view.imageView)
         NSLayoutConstraint.activate([
             view.imageView.heightAnchor.constraint(equalToConstant: 40),
