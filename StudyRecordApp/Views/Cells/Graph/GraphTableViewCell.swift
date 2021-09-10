@@ -48,10 +48,10 @@ final class GraphTableViewCell: UITableViewCell {
         return months[monthSegmentedControl.selectedSegmentIndex]
     }
     private var filteredLineData: [(color: UIColor, identifier: String, xTitle: String)] {
-        lineData.filter { $0.identifier.hasPrefix("\(selectedYear)-\(selectedMonth)") }
+        lineData.filter { $0.identifier.hasPrefix("\(selectedYear)-\(selectedMonth)-") }
     }
     private var filteredSumData: [String: Double] {
-        sumData.filter { $0.key.hasPrefix("\(selectedYear)-\(selectedMonth)") }
+        sumData.filter { $0.key.hasPrefix("\(selectedYear)-\(selectedMonth)-") }
     }
     weak var delegate: GraphTableViewCellDelegate?
     
@@ -117,16 +117,14 @@ private extension GraphTableViewCell {
 private extension GraphTableViewCell {
     
     func setupBeforeYearAndMonth(record: Record) {
-        var beforeYear = 0
-        var beforeMonth = 0
         record.histories?.forEach { history in
-            if beforeYear != history.year {
+            if !years.contains(history.year) {
                 years.append(history.year)
-                beforeYear = history.year
+                years.sort(by: <)
             }
-            if beforeMonth != history.month {
+            if !months.contains(history.month) {
                 months.append(history.month)
-                beforeMonth = history.month
+                months.sort(by: <)
             }
         }
     }
