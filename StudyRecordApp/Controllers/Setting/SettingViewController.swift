@@ -54,6 +54,11 @@ final class SettingViewController: UIViewController {
             dataStore: FirebaseUserDataStore()
         )
     )
+    private var settingUseCase = SettingUseCase(
+        repository: SettingRepository(
+            dataStore: RealmSettingDataStore()
+        )
+    )
     private let indicator = Indicator(kinds: PKHUDIndicator())
     
     override func viewDidLoad() {
@@ -215,6 +220,7 @@ extension SettingViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let setting = settingUseCase.setting
         let rowType = RowType.allCases[indexPath.row]
         switch rowType {
             case .themeColor,
@@ -228,11 +234,20 @@ extension SettingViewController: UITableViewDataSource {
                 let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
                 cell.configure(titleText: rowType.title)
                 return cell
-            case .darkMode,
-                 .passcode,
-                 .pushNotification:
+            case .darkMode:
                 let cell = tableView.dequeueReusableCustomCell(with: CustomSwitchTableViewCell.self)
-                cell.configure(title: rowType.title, isOn: true)
+                cell.configure(title: rowType.title, isOn: setting.isDarkMode)
+                cell.switchDidSelected = { self.settingUseCase.change(isDarkMode: $0) }
+                return cell
+            case .passcode:
+                let cell = tableView.dequeueReusableCustomCell(with: CustomSwitchTableViewCell.self)
+                cell.configure(title: rowType.title, isOn: setting.isPasscodeSetted)
+                cell.switchDidSelected = { self.settingUseCase.change(isPasscodeSetted: $0) }
+                return cell
+            case .pushNotification:
+                let cell = tableView.dequeueReusableCustomCell(with: CustomSwitchTableViewCell.self)
+                cell.configure(title: rowType.title, isOn: setting.isPushNotificationSetted)
+                cell.switchDidSelected = { self.settingUseCase.change(isPushNotificationSetted: $0) }
                 return cell
             case .logout:
                 let cell = tableView.dequeueReusableCustomCell(with: CustomButtonTableViewCell.self)

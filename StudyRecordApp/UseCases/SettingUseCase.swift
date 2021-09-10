@@ -30,4 +30,36 @@ final class SettingUseCase {
         repository.update(setting: setting, at: 0)
     }
     
+    func change(isDarkMode: Bool) {
+        let newSetting = Setting(isDarkMode: isDarkMode,
+                                 isPasscodeSetted: setting.isPasscodeSetted,
+                                 isPushNotificationSetted: setting.isPushNotificationSetted,
+                                 language: setting.language)
+        repository.update(setting: newSetting, at: 0)
+    }
+    
+    func change(isPasscodeSetted: Bool) {
+        let newSetting = Setting(isDarkMode: setting.isDarkMode,
+                                 isPasscodeSetted: isPasscodeSetted,
+                                 isPushNotificationSetted: setting.isPushNotificationSetted,
+                                 language: setting.language)
+        repository.update(setting: newSetting, at: 0)
+    }
+    
+    func change(isPushNotificationSetted: Bool) {
+        let newSetting = Setting(isDarkMode: setting.isDarkMode,
+                                 isPasscodeSetted: setting.isPasscodeSetted,
+                                 isPushNotificationSetted: isPushNotificationSetted,
+                                 language: setting.language)
+        repository.update(setting: newSetting, at: 0)
+    }
+    
+    func change(language: Language) {
+        let newSetting = Setting(isDarkMode: setting.isDarkMode,
+                                 isPasscodeSetted: setting.isPasscodeSetted,
+                                 isPushNotificationSetted: setting.isPushNotificationSetted,
+                                 language: language)
+        repository.update(setting: newSetting, at: 0)
+    }
+    
 }

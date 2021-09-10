@@ -12,6 +12,8 @@ final class CustomSwitchTableViewCell: UITableViewCell {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var customSwitch: CustomSwitch!
     
+    var switchDidSelected: ((Bool) -> Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -24,8 +26,8 @@ final class CustomSwitchTableViewCell: UITableViewCell {
         customSwitch.isOn = isOn
     }
     
-    @IBAction private func customSwitchDidSelected(_ sender: Any) {
-        
+    @IBAction private func customSwitchDidSelected(_ sender: UISwitch) {
+        switchDidSelected?(sender.isOn)
     }
     
 }
