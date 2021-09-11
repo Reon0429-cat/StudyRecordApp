@@ -27,7 +27,7 @@ final class TileView: UIView {
     }
     private var state: State = .square {
         didSet {
-            switch self.state {
+            switch state {
                 case .circle:
                     self.cutToCircle()
                 case .square:

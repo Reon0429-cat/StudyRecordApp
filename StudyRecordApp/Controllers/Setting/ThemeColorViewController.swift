@@ -149,9 +149,15 @@ extension ThemeColorViewController: SubCustomNavigationBarDelegate {
 // MARK: - ColorChoicesTileVCDelegate
 extension ThemeColorViewController: ColorChoicesTileVCDelegate {
     
-    func tileViewDidTapped(selectedView: UIView) {
-        lastSelectedThemeColorView?.backgroundColor = selectedView.backgroundColor
-        lastSelectedThemeColorView?.alpha = selectedView.alpha
+    func tileViewDidTapped(selectedView: UIView,
+                           isSameView: Bool) {
+        let isWhite = lastSelectedThemeColorView?.backgroundColor == .white
+        if isSameView && !isWhite {
+            lastSelectedThemeColorView?.backgroundColor = .white
+        } else {
+            lastSelectedThemeColorView?.backgroundColor = selectedView.backgroundColor
+            lastSelectedThemeColorView?.alpha = selectedView.alpha
+        }
         setThemeSubViewColor(view: lastSelectedThemeColorView)
     }
     
@@ -193,9 +199,9 @@ extension ThemeColorViewController: ColorChoicesConceptVCDelegate {
 extension ThemeColorViewController: ThemeColorViewDelegate {
     
     func themeColorViewDidTapped(nextSelectedView: UIView) {
-        let isSameViewDidTapped = (lastSelectedThemeColorView == nextSelectedView)
+        let isSameView = (lastSelectedThemeColorView == nextSelectedView)
         let _nextSelectedView = (nextSelectedView as! ThemeColorView)
-        if !isSameViewDidTapped {
+        if !isSameView {
             _nextSelectedView.hideImage(false)
             lastSelectedThemeColorView?.hideImage(true)
             NotificationCenter.default.post(name: .themeColor,

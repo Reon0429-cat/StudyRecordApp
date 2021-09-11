@@ -52,10 +52,9 @@ enum TileColorType: Int {
 }
 
 // MARK: - ToDo タイルを選択した時のバグを直す
-// MARK: - ToDo 同じタイルを選択すると色をなくすようにする
 
 protocol ColorChoicesTileVCDelegate: AnyObject {
-    func tileViewDidTapped(selectedView: UIView)
+    func tileViewDidTapped(selectedView: UIView, isSameView: Bool)
 }
 
 final class ColorChoicesTileViewController: UIViewController {
@@ -66,7 +65,7 @@ final class ColorChoicesTileViewController: UIViewController {
     private var tileStackViews: [UIStackView] {
         themeColorStackView.arrangedSubviews.map { $0 as! UIStackView }
     }
-    private var selectedTileView: UIView?
+    private var lastSelectedTileView: TileView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,7 +94,7 @@ private extension ColorChoicesTileViewController {
     @objc
     func findSameColorTileView(notification: Notification) {
         let nextSelectedView = notification.userInfo!["selectedView"] as! UIView
-        selectedTileView?.layer.cornerRadius = 0
+        lastSelectedTileView?.change(state: .square)
         tileStackViews.forEach { stackView in
             stackView.arrangedSubviews
                 .map { $0 as! TileView }
@@ -103,8 +102,8 @@ private extension ColorChoicesTileViewController {
                     let sameColor = (tileView.backgroundColor == nextSelectedView.backgroundColor)
                     let sameAlpha = (tileView.alpha == nextSelectedView.alpha)
                     if sameColor && sameAlpha {
-                        tileView.cutToCircle()
-                        self.selectedTileView = tileView
+                        tileView.change(state: .circle)
+                        self.lastSelectedTileView = tileView
                     }
                 }
         }
@@ -112,7 +111,7 @@ private extension ColorChoicesTileViewController {
     
     @objc
     func initTileView() {
-        selectedTileView?.layer.cornerRadius = 0
+        lastSelectedTileView?.change(state: .square)
     }
     
 }
@@ -121,13 +120,15 @@ private extension ColorChoicesTileViewController {
 extension ColorChoicesTileViewController: TileViewDelegate {
     
     func tileViewDidTapped(selectedView: TileView) {
-        delegate?.tileViewDidTapped(selectedView: selectedView)
+        let isSameView = lastSelectedTileView == selectedView
+        delegate?.tileViewDidTapped(selectedView: selectedView,
+                                    isSameView: isSameView)
         UIView.animate(withDuration: 0.1) {
-            if self.selectedTileView != selectedView {
-                self.selectedTileView?.layer.cornerRadius = 0
+            if !isSameView {
+                self.lastSelectedTileView?.change(state: .square)
             }
         }
-        self.selectedTileView = selectedView
+        self.lastSelectedTileView = selectedView
     }
     
 }
