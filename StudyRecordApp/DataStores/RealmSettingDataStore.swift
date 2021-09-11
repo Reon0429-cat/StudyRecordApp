@@ -41,11 +41,13 @@ final class RealmSettingDataStore: SettingDataStoreProtocol {
         let object = objects[index]
         let setting = Setting(isDarkMode: setting.isDarkMode,
                               isPasscodeSetted: setting.isPasscodeSetted,
+                              passcode: setting.passcode,
                               isPushNotificationSetted: setting.isPushNotificationSetted,
                               language: setting.language)
         try! realm.write {
             object.isDarkMode = setting.isDarkMode
             object.isPasscodeSetted = setting.isPasscodeSetted
+            object.passcode = setting.passcode
             object.isPushNotificationSetted = setting.isPushNotificationSetted
             object.language = setting.language
         }
@@ -66,10 +68,12 @@ private extension SettingRealm {
         self.init()
         let setting = Setting(isDarkMode: setting.isDarkMode,
                               isPasscodeSetted: setting.isPasscodeSetted,
+                              passcode: setting.passcode,
                               isPushNotificationSetted: setting.isPushNotificationSetted,
                               language: setting.language)
         self.isDarkMode = setting.isDarkMode
         self.isPasscodeSetted = setting.isPasscodeSetted
+        self.passcode = setting.passcode
         self.isPushNotificationSetted = setting.isPushNotificationSetted
         self.language = setting.language
     }
@@ -81,6 +85,7 @@ private extension Setting {
     init(setting: SettingRealm) {
         self.init(isDarkMode: setting.isDarkMode,
                   isPasscodeSetted: setting.isPasscodeSetted,
+                  passcode: setting.passcode,
                   isPushNotificationSetted: setting.isPushNotificationSetted,
                   language: setting.language)
     }

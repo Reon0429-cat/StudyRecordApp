@@ -625,8 +625,8 @@
 		AB8B704A26D5EF3F0069FF67 /* DataStores */ = {
 			isa = PBXGroup;
 			children = (
-				AB13ED4826BB8128002F56FF /* RealmRecordDataStore.swift */,
 				AB14B46926DBA653007A5F16 /* FirebaseUserDataStore.swift */,
+				AB13ED4826BB8128002F56FF /* RealmRecordDataStore.swift */,
 				AB4397FC26DE0DB8008C8CA8 /* RealmGoalDataStore.swift */,
 				ABFAB20D26E638390095EC20 /* RealmGraphDataStore.swift */,
 				AB0C766426EBAD0E00BF5B64 /* RealmSettingDataStore.swift */,

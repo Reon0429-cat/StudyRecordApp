@@ -9,10 +9,11 @@ import Foundation
 
 // 共通の型
 struct Setting {
-    var isDarkMode: Bool
-    var isPasscodeSetted: Bool
-    var isPushNotificationSetted: Bool
-    var language: Language
+    let isDarkMode: Bool
+    let isPasscodeSetted: Bool
+    let passcode: String
+    let isPushNotificationSetted: Bool
+    let language: Language
 }
 
 enum Language: Int {

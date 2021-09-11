@@ -8,7 +8,7 @@
 import UIKit
 
 protocol PasscodeViewDelegate: AnyObject {
-    func validate(inputtedNumbers: [Int])
+    func validate(passcode: String)
 }
 
 final class PasscodeView: UIView {
@@ -22,7 +22,7 @@ final class PasscodeView: UIView {
     
     weak var delegate: PasscodeViewDelegate?
     private var tappedCount = 0
-    private var inputtedNumbers = [Int]()
+    private var inputtedPasscode = ""
     private enum State: Int {
         case first
         case second
@@ -61,7 +61,7 @@ final class PasscodeView: UIView {
     
     func failure() {
         tappedCount = 0
-        inputtedNumbers.removeAll()
+        inputtedPasscode = ""
         firstLabel.text = "◯"
         secondLabel.text = "◯"
         thirdLabel.text = "◯"
@@ -74,7 +74,7 @@ final class PasscodeView: UIView {
 private extension PasscodeView {
     
     @IBAction func keyboardButtonDidTapped(_ sender: UIButton) {
-        inputtedNumbers.append(sender.tag)
+        inputtedPasscode += String(sender.tag)
         let state = State(rawValue: tappedCount) ?? .first
         switch state {
             case .first:
@@ -85,7 +85,7 @@ private extension PasscodeView {
                 thirdLabel.text = "●"
             case .fourth:
                 fourthLabel.text = "●"
-                delegate?.validate(inputtedNumbers: inputtedNumbers)
+                delegate?.validate(passcode: inputtedPasscode)
         }
         tappedCount += 1
     }

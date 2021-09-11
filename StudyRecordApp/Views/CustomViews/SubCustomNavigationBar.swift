@@ -64,6 +64,10 @@ final class SubCustomNavigationBar: UIView {
         saveButton.isHidden = isHidden
     }
     
+    func dismissButton(isHidden: Bool) {
+        dismissButton.isHidden = isHidden
+    }
+    
 }
 
 // MARK: - NavigationButtonDelegate

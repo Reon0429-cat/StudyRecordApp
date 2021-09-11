@@ -21,23 +21,34 @@
                                 <rect key="frame" x="50" y="144" width="314" height="608"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wvr-TZ-YEX" customClass="SubCustomNavigationBar" customModule="StudyRecordApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="114"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="114" id="TI8-Aj-19D"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Z53-yC-Ehw" firstAttribute="top" secondItem="wvr-TZ-YEX" secondAttribute="bottom" constant="30" id="CzM-2p-MKQ"/>
+                            <constraint firstItem="wvr-TZ-YEX" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="GuE-hb-TYE"/>
+                            <constraint firstItem="wvr-TZ-YEX" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="Ike-vk-rNo"/>
                             <constraint firstItem="Z53-yC-Ehw" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="LI8-EA-wp8"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Z53-yC-Ehw" secondAttribute="trailing" priority="900" constant="50" id="PCW-tX-Ws9"/>
+                            <constraint firstItem="wvr-TZ-YEX" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="VSM-PP-Xsr"/>
                             <constraint firstItem="Z53-yC-Ehw" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="mj2-xu-Dl2"/>
-                            <constraint firstItem="Z53-yC-Ehw" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="100" id="sfr-wP-8RA"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="passcodeView" destination="Z53-yC-Ehw" id="Hbg-fU-EJJ"/>
+                        <outlet property="subCustomNavigationBar" destination="wvr-TZ-YEX" id="gRH-4y-rdA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="101"/>
+            <point key="canvasLocation" x="137.68115942028987" y="100.44642857142857"/>
         </scene>
     </scenes>
     <resources>
