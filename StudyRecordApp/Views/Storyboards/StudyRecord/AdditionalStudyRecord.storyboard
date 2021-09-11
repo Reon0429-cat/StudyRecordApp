@@ -21,38 +21,6 @@
                                 <rect key="frame" x="0.0" y="114" width="414" height="748"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PtW-9I-bBT" customClass="WaveView" customModule="StudyRecordApp" customModuleProvider="target">
-                                <rect key="frame" x="-5" y="0.0" width="424" height="114"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="114" id="Wc6-ic-kxI"/>
-                                </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="追加" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PvQ-cR-IQc">
-                                <rect key="frame" x="167" y="54" width="80.5" height="48"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKj-xC-yzJ" customClass="NavigationButton" customModule="StudyRecordApp" customModuleProvider="target">
-                                <rect key="frame" x="339" y="44" width="55" height="55"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="CKj-xC-yzJ" secondAttribute="height" id="Agx-pI-Mpv"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WaU-0M-EIH" customClass="NavigationButton" customModule="StudyRecordApp" customModuleProvider="target">
-                                <rect key="frame" x="20" y="44" width="55" height="55"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="WaU-0M-EIH" secondAttribute="height" id="O7g-EN-DbG"/>
-                                    <constraint firstAttribute="width" constant="55" id="jKA-0R-CtL"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="epS-Lu-8du" customClass="WaveView" customModule="StudyRecordApp" customModuleProvider="target">
                                 <rect key="frame" x="-5" y="756" width="424" height="100"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -60,36 +28,34 @@
                                     <constraint firstAttribute="height" constant="100" id="UVT-i1-aZD"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xaM-j7-Oo3" customClass="SubCustomNavigationBar" customModule="StudyRecordApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="114"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="114" id="XfF-lD-3vO"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="epS-Lu-8du" secondAttribute="bottom" constant="40" id="1IL-Xm-F11"/>
-                            <constraint firstItem="bIv-uz-tFw" firstAttribute="top" secondItem="PtW-9I-bBT" secondAttribute="bottom" id="3jN-3j-eKT"/>
-                            <constraint firstItem="PvQ-cR-IQc" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Bb3-O9-H9g"/>
-                            <constraint firstItem="WaU-0M-EIH" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="Bjw-ZQ-cwY"/>
-                            <constraint firstItem="CKj-xC-yzJ" firstAttribute="top" secondItem="WaU-0M-EIH" secondAttribute="top" id="Doe-qn-7I6"/>
-                            <constraint firstItem="WaU-0M-EIH" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="QOH-Zb-uNe"/>
+                            <constraint firstItem="xaM-j7-Oo3" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="3Pb-yI-3SQ"/>
+                            <constraint firstItem="xaM-j7-Oo3" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="CRg-Fq-TAd"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="xaM-j7-Oo3" secondAttribute="trailing" id="PXL-uC-PCz"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="bIv-uz-tFw" secondAttribute="trailing" id="S23-fF-pWb"/>
-                            <constraint firstItem="PtW-9I-bBT" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="-5" id="Tbe-2A-9aj"/>
-                            <constraint firstItem="PvQ-cR-IQc" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="ZRv-AN-skH"/>
                             <constraint firstItem="epS-Lu-8du" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="-5" id="Zd3-P1-KGQ"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="epS-Lu-8du" secondAttribute="trailing" constant="-5" id="bub-EP-c4X"/>
-                            <constraint firstItem="PtW-9I-bBT" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="cbH-KM-mN1"/>
-                            <constraint firstItem="CKj-xC-yzJ" firstAttribute="centerY" secondItem="WaU-0M-EIH" secondAttribute="centerY" id="g4w-HE-VOL"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="CKj-xC-yzJ" secondAttribute="trailing" constant="20" id="gEV-ll-pAb"/>
                             <constraint firstItem="bIv-uz-tFw" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="gdw-UV-rx7"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="bIv-uz-tFw" secondAttribute="bottom" id="hHy-Fm-c5I"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="PtW-9I-bBT" secondAttribute="trailing" constant="-5" id="yVQ-BO-WhY"/>
+                            <constraint firstItem="bIv-uz-tFw" firstAttribute="top" secondItem="xaM-j7-Oo3" secondAttribute="bottom" id="l11-sw-4kb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="追加" id="5nr-dQ-S8A"/>
                     <connections>
                         <outlet property="bottomWaveView" destination="epS-Lu-8du" id="4PJ-Zm-sNL"/>
-                        <outlet property="dismissButton" destination="WaU-0M-EIH" id="LKi-n8-jYI"/>
-                        <outlet property="saveButton" destination="CKj-xC-yzJ" id="RvG-xg-tJX"/>
+                        <outlet property="subCustomNavigationBar" destination="xaM-j7-Oo3" id="E6X-SU-3J7"/>
                         <outlet property="tableView" destination="bIv-uz-tFw" id="6sr-OU-sAj"/>
-                        <outlet property="topWaveView" destination="PtW-9I-bBT" id="NZO-sS-dZx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

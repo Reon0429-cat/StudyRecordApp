@@ -16,7 +16,7 @@ final class StudyRecordGraphColorViewController: UIViewController {
     @IBOutlet private weak var graphColorView: UIView!
     @IBOutlet private weak var graphColorTileView: GraphColorTileView!
     
-    private var selectedTileView: UIView?
+    private var selectedTileView: TileView?
     weak var delegate: StudyRecordGraphColorVCDelegate?
     
     override func viewDidLoad() {
@@ -47,26 +47,23 @@ private extension StudyRecordGraphColorViewController {
 // MARK: - GraphColorTileViewDelegate
 extension StudyRecordGraphColorViewController: GraphColorTileViewDelegate {
     
-    func findSameColor(selectedView: UIView) {
+    func findSameColor(selectedView: TileView) {
         self.selectedTileView = selectedView
     }
     
-    func tileViewDidTapped(selectedView: UIView) {
+    func tileViewDidTapped(selectedView: TileView) {
         if self.selectedTileView != selectedView {
             UIView.animate(withDuration: 0.1) {
-                if let selectedTileView = self.selectedTileView as? TileView {
-                    selectedTileView.layer.cornerRadius = 0
-                    selectedTileView.state = .square
+                if let selectedTileView = self.selectedTileView {
+                    selectedTileView.change(state: .square)
                 }
             }
         }
-        if let selectedTileView = selectedView as? TileView {
-            switch selectedTileView.state {
-                case .circle:
-                    self.selectedTileView = nil
-                case .square:
-                    self.selectedTileView = selectedView
-            }
+        switch selectedView.getState() {
+            case .circle:
+                self.selectedTileView = nil
+            case .square:
+                self.selectedTileView = selectedView
         }
     }
     

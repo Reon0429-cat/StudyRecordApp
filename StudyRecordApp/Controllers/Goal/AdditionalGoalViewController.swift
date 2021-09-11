@@ -9,9 +9,7 @@ import UIKit
 
 final class AdditionalGoalViewController: UIViewController {
     
-    @IBOutlet private weak var topWaveView: WaveView!
-    @IBOutlet private weak var dismissButton: NavigationButton!
-    @IBOutlet private weak var saveButton: NavigationButton!
+    @IBOutlet private weak var subCustomNavigationBar: SubCustomNavigationBar!
     @IBOutlet private weak var tableView: UITableView!
     
     enum RowType: Int, CaseIterable {
@@ -69,9 +67,7 @@ final class AdditionalGoalViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
-        setupSaveButton()
-        setupDismissButton()
-        setupWaveView()
+        setupSubCustomNavigationBar()
         
     }
     
@@ -240,7 +236,7 @@ extension AdditionalGoalViewController: UITableViewDataSource {
         let rowType = RowType.allCases[indexPath.row]
         switch rowType {
             case .title:
-                let cell = tableView.dequeueReusableCustomCell(with: StudyRecordCustomTableViewCell.self)
+                let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
                 cell.configure(titleText: rowType.title,
                                mandatoryIsHidden: false,
                                auxiliaryText: inputtedTitle)
@@ -248,7 +244,7 @@ extension AdditionalGoalViewController: UITableViewDataSource {
             case .category:
                 return UITableViewCell()
             case .memo:
-                let cell = tableView.dequeueReusableCustomCell(with: StudyRecordCustomTableViewCell.self)
+                let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
                 cell.configure(titleText: rowType.title,
                                mandatoryIsHidden: true,
                                auxiliaryText: inputtedMemo)
@@ -259,7 +255,7 @@ extension AdditionalGoalViewController: UITableViewDataSource {
                                priority: inputtedPriority)
                 return cell
             case .createdDate, .dueDate:
-                let cell = tableView.dequeueReusableCustomCell(with: StudyRecordCustomTableViewCell.self)
+                let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
                 let inputtedDate = getDate(type: rowType)
                 let auxiliaryText = Converter.convertToString(from: inputtedDate,
                                                               format: "yyyy年M月d日")
@@ -283,7 +279,7 @@ extension AdditionalGoalViewController: UITextFieldDelegate {
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
         inputtedTitle = textField.text ?? ""
-        saveButton.isEnabled(isMandatoryItemFilled)
+        subCustomNavigationBar.saveButton(isEnabled: isMandatoryItemFilled)
     }
     
 }
@@ -323,22 +319,24 @@ extension AdditionalGoalViewController: GoalTimeVCDelegate {
     
 }
 
-
-// MARK: - NavigationButtonDelegate
-extension AdditionalGoalViewController: NavigationButtonDelegate {
+// MARK: - SubCustomNavigationBarDelegate
+extension AdditionalGoalViewController: SubCustomNavigationBarDelegate {
     
-    func titleButtonDidTapped(type: NavigationButtonType) {
-        if type == .save {
-            saveGoal()
+    func saveButtonDidTapped() {
+        saveGoal()
+        dismiss(animated: true)
+    }
+    
+    func dismissButtonDidTapped() {
+        if isMandatoryItemFilled {
+            showAlert()
+        } else {
             dismiss(animated: true)
         }
-        if type == .dismiss {
-            if isMandatoryItemFilled {
-                showAlert()
-            } else {
-                dismiss(animated: true)
-            }
-        }
+    }
+    
+    var navTitle: String {
+        return "追加"
     }
     
 }
@@ -366,28 +364,16 @@ private extension AdditionalGoalViewController {
     func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.registerCustomCell(StudyRecordCustomTableViewCell.self)
+        tableView.registerCustomCell(CustomTitleTableViewCell.self)
         tableView.registerCustomCell(GoalPriorityTableViewCell.self)
         tableView.registerCustomCell(GoalPhotoTableViewCell.self)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.tableFooterView = UIView()
     }
     
-    func setupSaveButton() {
-        saveButton.delegate = self
-        saveButton.type = .save
-        saveButton.isEnabled(false)
-        saveButton.backgroundColor = .clear
-    }
-    
-    func setupDismissButton() {
-        dismissButton.delegate = self
-        dismissButton.type = .dismiss
-        dismissButton.backgroundColor = .clear
-    }
-    
-    func setupWaveView() {
-        topWaveView.create(isFill: true, marginY: 60)
+    func setupSubCustomNavigationBar() {
+        subCustomNavigationBar.delegate = self
+        subCustomNavigationBar.saveButton(isEnabled: false)
     }
     
 }

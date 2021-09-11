@@ -9,10 +9,9 @@ import UIKit
 
 final class StudyRecordSortViewController: UIViewController {
     
+    @IBOutlet private weak var subCustomNavigationBar: SubCustomNavigationBar!
     @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var topWaveView: WaveView!
     @IBOutlet private weak var bottomWaveView: WaveView!
-    @IBOutlet private weak var dismissButton: NavigationButton!
     
     private let recordUseCase = RecordUseCase(
         repository: RecordRepository(
@@ -27,8 +26,8 @@ final class StudyRecordSortViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
+        setupSubCustomNavigationBar()
         setupWaveViews()
-        setupDismissButton()
         
     }
     
@@ -119,13 +118,17 @@ extension StudyRecordSortViewController: UITableViewDropDelegate {
     
 }
 
-// MARK: - NavigationButtonDelegate
-extension StudyRecordSortViewController: NavigationButtonDelegate {
+// MARK: - SubCustomNavigationBarDelegate
+extension StudyRecordSortViewController: SubCustomNavigationBarDelegate {
     
-    func titleButtonDidTapped(type: NavigationButtonType) {
-        if type == .dismiss {
-            dismiss(animated: true)
-        }
+    func saveButtonDidTapped() { }
+    
+    func dismissButtonDidTapped() {
+        dismiss(animated: true)
+    }
+    
+    var navTitle: String {
+        return "並び替え"
     }
     
 }
@@ -143,15 +146,13 @@ private extension StudyRecordSortViewController {
         tableView.tableFooterView = UIView()
     }
     
-    func setupWaveViews() {
-        topWaveView.create(isFill: true, marginY: 60)
-        bottomWaveView.create(isFill: false, marginY: 30, isShuffled: true)
+    func setupSubCustomNavigationBar() {
+        subCustomNavigationBar.delegate = self
+        subCustomNavigationBar.saveButton(isHidden: true)
     }
     
-    func setupDismissButton() {
-        dismissButton.type = .dismiss
-        dismissButton.delegate = self
-        dismissButton.backgroundColor = .clear
+    func setupWaveViews() {
+        bottomWaveView.create(isFill: false, marginY: 30, isShuffled: true)
     }
     
 }

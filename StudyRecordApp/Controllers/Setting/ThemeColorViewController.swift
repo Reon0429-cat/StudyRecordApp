@@ -7,45 +7,9 @@
 
 import UIKit
 
-enum ContainerType: Int {
-    case concept
-    case tile
-    case slider
-}
-
-enum ColorSchemeType {
-    case main
-    case sub
-    case accent
-}
-
-protocol ThemeColorViewDelegate: AnyObject {
-    func themeColorViewDidTapped(nextSelectedView: UIView)
-}
-
-final class ThemeColorView: UIView {
-    
-    weak var delegate: ThemeColorViewDelegate?
-    var imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "eyedropper")
-        imageView.tintColor = .black
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        delegate?.themeColorViewDidTapped(nextSelectedView: self)
-    }
-    
-    func hideImage(_ isHidden: Bool) {
-        imageView.isHidden = isHidden
-    }
-    
-}
-
 final class ThemeColorViewController: UIViewController {
     
+    @IBOutlet private weak var subCustomNavigationBar: SubCustomNavigationBar!
     @IBOutlet private weak var mainColorView: ThemeColorView!
     @IBOutlet private weak var subColorView: ThemeColorView!
     @IBOutlet private weak var accentColorView: ThemeColorView!
@@ -56,9 +20,19 @@ final class ThemeColorViewController: UIViewController {
     @IBOutlet private weak var colorChoicesTileContainerView: UIView!
     @IBOutlet private weak var colorChoicesSliderContainerView: UIView!
     
+    enum ContainerType: Int {
+        case concept
+        case tile
+        case slider
+    }
+    enum ColorSchemeType {
+        case main
+        case sub
+        case accent
+    }
     var containerType: ContainerType = .tile
     var colorConcept: ColorConcept?
-    var navTitle = ""
+    var navigationTitle = ""
     private var currentContainerView: UIView {
         switch containerType {
             case .concept: return colorChoicesConceptContainerView
@@ -73,10 +47,10 @@ final class ThemeColorViewController: UIViewController {
         super.viewDidLoad()
         
         containerView.bringSubviewToFront(currentContainerView)
-        self.navigationItem.title = navTitle
         setupThemeColorViews()
         setupSegmentedControl()
         setupContainerViewControllers()
+        setupSubCustomNavigationBar()
         
     }
     
@@ -88,22 +62,6 @@ final class ThemeColorViewController: UIViewController {
                                         object: nil,
                                         userInfo: ["selectedView": mainColorView!])
         
-    }
-    
-    private func setThemeSubViewColor(view: ThemeColorView?) {
-        guard let color = view?.backgroundColor else { return }
-        view?.subviews.forEach { view in
-            let shouldWhite = (color.redValue < 0.4
-                                && color.greenValue < 0.4
-                                && color.blueValue < 0.4
-                                && color.alphaValue > 0.5)
-            if let imageView = view as? UIImageView {
-                imageView.tintColor = { shouldWhite ? .white : .black }()
-            }
-            if let label = view as? UILabel {
-                label.textColor = { shouldWhite ? .white : .black }()
-            }
-        }
     }
     
 }
@@ -120,13 +78,6 @@ private extension ThemeColorViewController {
                                             userInfo: ["selectedView": lastSelectedThemeColorView!])
         }
         containerView.bringSubviewToFront(currentContainerView)
-    }
-    
-    @IBAction func saveButtonDidTapped(_ sender: Any) {
-        UserDefaults.standard.save(color: mainColorView.backgroundColor, .main)
-        UserDefaults.standard.save(color: subColorView.backgroundColor, .sub)
-        UserDefaults.standard.save(color: accentColorView.backgroundColor, .accent)
-        self.navigationController?.popToRootViewController(animated: true)
     }
     
 }
@@ -153,14 +104,60 @@ private extension ThemeColorViewController {
         }
     }
     
+    func setThemeSubViewColor(view: ThemeColorView?) {
+        guard let color = view?.backgroundColor else { return }
+        view?.subviews.forEach { view in
+            let shouldWhite = (color.redValue < 0.4
+                                && color.greenValue < 0.4
+                                && color.blueValue < 0.4
+                                && color.alphaValue > 0.5)
+            if let imageView = view as? UIImageView {
+                imageView.tintColor = { shouldWhite ? .white : .black }()
+            }
+            if let label = view as? UILabel {
+                label.textColor = { shouldWhite ? .white : .black }()
+            }
+        }
+    }
+    
+}
+
+// MARK: - SubCustomNavigationBarDelegate
+extension ThemeColorViewController: SubCustomNavigationBarDelegate {
+    
+    func saveButtonDidTapped() {
+        UserDefaults.standard.save(color: mainColorView.backgroundColor, .main)
+        UserDefaults.standard.save(color: subColorView.backgroundColor, .sub)
+        UserDefaults.standard.save(color: accentColorView.backgroundColor, .accent)
+        if containerType == .concept {
+            presentingViewController?.presentingViewController?.dismiss(animated: true)
+        } else {
+            dismiss(animated: true)
+        }
+    }
+    
+    func dismissButtonDidTapped() {
+        dismiss(animated: true)
+    }
+    
+    var navTitle: String {
+        return navigationTitle
+    }
+    
 }
 
 // MARK: - ColorChoicesTileVCDelegate
 extension ThemeColorViewController: ColorChoicesTileVCDelegate {
     
-    func tileViewDidTapped(selectedView: UIView) {
-        lastSelectedThemeColorView?.backgroundColor = selectedView.backgroundColor
-        lastSelectedThemeColorView?.alpha = selectedView.alpha
+    func tileViewDidTapped(selectedView: UIView,
+                           isSameView: Bool) {
+        let isWhite = lastSelectedThemeColorView?.backgroundColor == .white
+        if isSameView && !isWhite {
+            lastSelectedThemeColorView?.backgroundColor = .white
+        } else {
+            lastSelectedThemeColorView?.backgroundColor = selectedView.backgroundColor
+            lastSelectedThemeColorView?.alpha = selectedView.alpha
+        }
         setThemeSubViewColor(view: lastSelectedThemeColorView)
     }
     
@@ -184,8 +181,8 @@ extension ThemeColorViewController: ColorChoicesConceptVCDelegate {
         lastSelectedThemeColorView?.backgroundColor = view.backgroundColor
         lastSelectedThemeColorView?.alpha = view.alpha
         mainColorView.hideImage(true)
-        subColorView.hideImage({ scheme != .main }())
-        accentColorView.hideImage({ scheme != .sub }())
+        subColorView.hideImage(scheme != .main)
+        accentColorView.hideImage(scheme != .sub)
         switchTheme(scheme: scheme)
     }
     
@@ -202,9 +199,9 @@ extension ThemeColorViewController: ColorChoicesConceptVCDelegate {
 extension ThemeColorViewController: ThemeColorViewDelegate {
     
     func themeColorViewDidTapped(nextSelectedView: UIView) {
-        let isSameViewDidTapped = (lastSelectedThemeColorView == nextSelectedView)
+        let isSameView = (lastSelectedThemeColorView == nextSelectedView)
         let _nextSelectedView = (nextSelectedView as! ThemeColorView)
-        if !isSameViewDidTapped {
+        if !isSameView {
             _nextSelectedView.hideImage(false)
             lastSelectedThemeColorView?.hideImage(true)
             NotificationCenter.default.post(name: .themeColor,
@@ -241,9 +238,9 @@ private extension ThemeColorViewController {
             subColorView.isUserInteractionEnabled = false
             accentColorView.isUserInteractionEnabled = false
         }
-        setupImageView(view: mainColorView)
-        setupImageView(view: subColorView)
-        setupImageView(view: accentColorView)
+        setupImageViewLayout(view: mainColorView)
+        setupImageViewLayout(view: subColorView)
+        setupImageViewLayout(view: accentColorView)
         mainColorView.hideImage(false)
         lastSelectedThemeColorView = mainColorView
     }
@@ -263,7 +260,16 @@ private extension ThemeColorViewController {
         setThemeSubViewColor(view: accentColorView)
     }
     
-    func setupImageView(view: ThemeColorView) {
+    func setupSubCustomNavigationBar() {
+        subCustomNavigationBar.delegate = self
+    }
+    
+}
+
+// MARK: - setup layout
+private extension ThemeColorViewController {
+    
+    func setupImageViewLayout(view: ThemeColorView) {
         view.addSubview(view.imageView)
         NSLayoutConstraint.activate([
             view.imageView.heightAnchor.constraint(equalToConstant: 40),
