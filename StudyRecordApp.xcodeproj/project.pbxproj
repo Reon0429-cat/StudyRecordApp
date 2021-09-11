@@ -23,6 +23,10 @@
 		AB0C768126EBD9A800BF5B64 /* SubCustomNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB0C768026EBD9A800BF5B64 /* SubCustomNavigationBar.xib */; };
 		AB0C768326EBD9B900BF5B64 /* SubCustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C768226EBD9B900BF5B64 /* SubCustomNavigationBar.swift */; };
 		AB0C768526ECB63C00BF5B64 /* TileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C768426ECB63C00BF5B64 /* TileView.swift */; };
+		AB0C768726ECD98E00BF5B64 /* PasscodeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB0C768626ECD98E00BF5B64 /* PasscodeView.xib */; };
+		AB0C768926ECD9C400BF5B64 /* PasscodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C768826ECD9C400BF5B64 /* PasscodeView.swift */; };
+		AB0C76B326ED254C00BF5B64 /* Passcode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB0C76B226ED254C00BF5B64 /* Passcode.storyboard */; };
+		AB0C76B526ED256000BF5B64 /* PasscodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C76B426ED256000BF5B64 /* PasscodeViewController.swift */; };
 		AB13ECD626B7AEA3002F56FF /* ColorChoicesConcept.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13ECD526B7AEA3002F56FF /* ColorChoicesConcept.storyboard */; };
 		AB13ECD826B7AF27002F56FF /* ColorChoicesTile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13ECD726B7AF27002F56FF /* ColorChoicesTile.storyboard */; };
 		AB13ECDA26B7AF6F002F56FF /* ColorChoicesSlider.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13ECD926B7AF6F002F56FF /* ColorChoicesSlider.storyboard */; };
@@ -182,6 +186,10 @@
 		AB0C768026EBD9A800BF5B64 /* SubCustomNavigationBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubCustomNavigationBar.xib; sourceTree = "<group>"; };
 		AB0C768226EBD9B900BF5B64 /* SubCustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCustomNavigationBar.swift; sourceTree = "<group>"; };
 		AB0C768426ECB63C00BF5B64 /* TileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileView.swift; sourceTree = "<group>"; };
+		AB0C768626ECD98E00BF5B64 /* PasscodeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PasscodeView.xib; sourceTree = "<group>"; };
+		AB0C768826ECD9C400BF5B64 /* PasscodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeView.swift; sourceTree = "<group>"; };
+		AB0C76B226ED254C00BF5B64 /* Passcode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Passcode.storyboard; sourceTree = "<group>"; };
+		AB0C76B426ED256000BF5B64 /* PasscodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeViewController.swift; sourceTree = "<group>"; };
 		AB13ECD526B7AEA3002F56FF /* ColorChoicesConcept.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ColorChoicesConcept.storyboard; sourceTree = "<group>"; };
 		AB13ECD726B7AF27002F56FF /* ColorChoicesTile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ColorChoicesTile.storyboard; sourceTree = "<group>"; };
 		AB13ECD926B7AF6F002F56FF /* ColorChoicesSlider.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ColorChoicesSlider.storyboard; sourceTree = "<group>"; };
@@ -462,6 +470,8 @@
 				ABA0570026B50D1900E3DF01 /* GraphColorTileView.swift */,
 				AB16304E26CD6AF400111F55 /* WaveView.xib */,
 				AB16305026CD6B1400111F55 /* WaveView.swift */,
+				AB0C768626ECD98E00BF5B64 /* PasscodeView.xib */,
+				AB0C768826ECD9C400BF5B64 /* PasscodeView.swift */,
 				AB16308326CEABD400111F55 /* NavigationButton.xib */,
 				AB16308126CEAB9300111F55 /* NavigationButton.swift */,
 				ABFAB15426DF802A0095EC20 /* PriorityStackView.swift */,
@@ -526,6 +536,7 @@
 				AB13ECD526B7AEA3002F56FF /* ColorChoicesConcept.storyboard */,
 				AB13ECD726B7AF27002F56FF /* ColorChoicesTile.storyboard */,
 				AB13ECD926B7AF6F002F56FF /* ColorChoicesSlider.storyboard */,
+				AB0C76B226ED254C00BF5B64 /* Passcode.storyboard */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -548,6 +559,7 @@
 				AB2B5BC126A2D36F009BD3C7 /* ColorChoicesConceptViewController.swift */,
 				AB2B5BBF26A2D36F009BD3C7 /* ColorChoicesTileViewController.swift */,
 				AB2B5BC026A2D36F009BD3C7 /* ColorChoicesSliderViewController.swift */,
+				AB0C76B426ED256000BF5B64 /* PasscodeViewController.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -908,10 +920,12 @@
 				AB93C266266A7DEB00C3AE8F /* AdditionalStudyRecord.storyboard in Resources */,
 				AB0C765826EB8B4300BF5B64 /* CustomButtonTableViewCell.xib in Resources */,
 				AB13EDF426C8BAAC002F56FF /* Goal.storyboard in Resources */,
+				AB0C768726ECD98E00BF5B64 /* PasscodeView.xib in Resources */,
 				AB0C765426EB889100BF5B64 /* CustomSwitchTableViewCell.xib in Resources */,
 				AB0C768126EBD9A800BF5B64 /* SubCustomNavigationBar.xib in Resources */,
 				AB13ED1626B8F5D0002F56FF /* StudyRecordMemo.storyboard in Resources */,
 				AB13EDD326C29DAF002F56FF /* StudyRecordTimeRecord.storyboard in Resources */,
+				AB0C76B326ED254C00BF5B64 /* Passcode.storyboard in Resources */,
 				AB13EDF626C8BAB7002F56FF /* Graph.storyboard in Resources */,
 				AB2B5BAA26A2D244009BD3C7 /* Setting.storyboard in Resources */,
 				AB13ECD826B7AF27002F56FF /* ColorChoicesTile.storyboard in Resources */,
@@ -1050,6 +1064,7 @@
 				AB13ED4926BB8128002F56FF /* RealmRecordDataStore.swift in Sources */,
 				AB9B4FD626D771C5001A7BAB /* UITextField+Extension.swift in Sources */,
 				ABFAB21626E6AD780095EC20 /* CustomSegmentedControl.swift in Sources */,
+				AB0C768926ECD9C400BF5B64 /* PasscodeView.swift in Sources */,
 				AB13EE6A26CB6965002F56FF /* RippleView.swift in Sources */,
 				AB0C766226EBABEF00BF5B64 /* SettingRealm.swift in Sources */,
 				AB86A85E26D4915700EA990A /* HalfModalPresentationController.swift in Sources */,
@@ -1071,6 +1086,7 @@
 				AB43980426DE1DD6008C8CA8 /* GoalTableViewCell.swift in Sources */,
 				AB13ED1826B8F5EA002F56FF /* StudyRecordMemoViewController.swift in Sources */,
 				AB0C765A26EBA91D00BF5B64 /* Setting.swift in Sources */,
+				AB0C76B526ED256000BF5B64 /* PasscodeViewController.swift in Sources */,
 				AB93C2C3266BC28E00C3AE8F /* EditStudyRecordViewController.swift in Sources */,
 				AB0C768526ECB63C00BF5B64 /* TileView.swift in Sources */,
 				AB4397ED26DD3051008C8CA8 /* AdditionalGoalViewController.swift in Sources */,
