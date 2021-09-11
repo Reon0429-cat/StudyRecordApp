@@ -8,7 +8,7 @@
 import UIKit
 
 protocol AccordionColorTableViewCellDelegate: AnyObject {
-    func tileViewDidTapped(selectedView: UIView)
+    func tileViewDidTapped(selectedView: TileView)
     func titleViewDidTapped(index: Int)
 }
 
@@ -19,13 +19,6 @@ final class AccordionColorTableViewCell: UITableViewCell {
     @IBOutlet private weak var stackView: UIStackView!
     
     weak var delegate: AccordionColorTableViewCellDelegate?
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        
-        stackView.arrangedSubviews.forEach { $0.layer.cornerRadius = 0 }
-        
-    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,9 +31,12 @@ final class AccordionColorTableViewCell: UITableViewCell {
     
     func configure(title: String, colors: [UIColor]) {
         titleLabel.text = title
-        stackView.arrangedSubviews.enumerated()
-            .forEach { index, view in
-                view.backgroundColor = colors[index]
+        stackView.arrangedSubviews
+            .map { $0 as! TileView }
+            .enumerated()
+            .forEach { index, tileView in
+                tileView.change(state: .square)
+                tileView.change(color: colors[index])
             }
     }
     
@@ -49,7 +45,7 @@ final class AccordionColorTableViewCell: UITableViewCell {
 // MARK: - TileViewDelegate
 extension AccordionColorTableViewCell: TileViewDelegate {
     
-    func tileViewDidTapped(selectedView: UIView) {
+    func tileViewDidTapped(selectedView: TileView) {
         delegate?.tileViewDidTapped(selectedView: selectedView)
     }
     

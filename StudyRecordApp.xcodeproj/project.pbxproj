@@ -22,6 +22,7 @@
 		AB0C767F26EBD5A700BF5B64 /* ThemeColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C767E26EBD5A700BF5B64 /* ThemeColorView.swift */; };
 		AB0C768126EBD9A800BF5B64 /* SubCustomNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB0C768026EBD9A800BF5B64 /* SubCustomNavigationBar.xib */; };
 		AB0C768326EBD9B900BF5B64 /* SubCustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C768226EBD9B900BF5B64 /* SubCustomNavigationBar.swift */; };
+		AB0C768526ECB63C00BF5B64 /* TileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C768426ECB63C00BF5B64 /* TileView.swift */; };
 		AB13ECD626B7AEA3002F56FF /* ColorChoicesConcept.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13ECD526B7AEA3002F56FF /* ColorChoicesConcept.storyboard */; };
 		AB13ECD826B7AF27002F56FF /* ColorChoicesTile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13ECD726B7AF27002F56FF /* ColorChoicesTile.storyboard */; };
 		AB13ECDA26B7AF6F002F56FF /* ColorChoicesSlider.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13ECD926B7AF6F002F56FF /* ColorChoicesSlider.storyboard */; };
@@ -180,6 +181,7 @@
 		AB0C767E26EBD5A700BF5B64 /* ThemeColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColorView.swift; sourceTree = "<group>"; };
 		AB0C768026EBD9A800BF5B64 /* SubCustomNavigationBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubCustomNavigationBar.xib; sourceTree = "<group>"; };
 		AB0C768226EBD9B900BF5B64 /* SubCustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCustomNavigationBar.swift; sourceTree = "<group>"; };
+		AB0C768426ECB63C00BF5B64 /* TileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileView.swift; sourceTree = "<group>"; };
 		AB13ECD526B7AEA3002F56FF /* ColorChoicesConcept.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ColorChoicesConcept.storyboard; sourceTree = "<group>"; };
 		AB13ECD726B7AF27002F56FF /* ColorChoicesTile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ColorChoicesTile.storyboard; sourceTree = "<group>"; };
 		AB13ECD926B7AF6F002F56FF /* ColorChoicesSlider.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ColorChoicesSlider.storyboard; sourceTree = "<group>"; };
@@ -691,6 +693,7 @@
 				AB13EE6526CAC989002F56FF /* ScreenType.swift */,
 				AB13EDDA26C3C163002F56FF /* Converter.swift */,
 				AB0C767E26EBD5A700BF5B64 /* ThemeColorView.swift */,
+				AB0C768426ECB63C00BF5B64 /* TileView.swift */,
 				AB13EDFF26C8E0E9002F56FF /* Setting */,
 			);
 			path = Utilities;
@@ -1069,6 +1072,7 @@
 				AB13ED1826B8F5EA002F56FF /* StudyRecordMemoViewController.swift in Sources */,
 				AB0C765A26EBA91D00BF5B64 /* Setting.swift in Sources */,
 				AB93C2C3266BC28E00C3AE8F /* EditStudyRecordViewController.swift in Sources */,
+				AB0C768526ECB63C00BF5B64 /* TileView.swift in Sources */,
 				AB4397ED26DD3051008C8CA8 /* AdditionalGoalViewController.swift in Sources */,
 				AB8B703F26D4A2410069FF67 /* UIViewController+Extension.swift in Sources */,
 				AB20F81426E809A200564B14 /* CustomSwitch.swift in Sources */,

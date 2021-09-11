@@ -124,6 +124,18 @@ extension AdditionalStudyRecordViewController: UITableViewDelegate {
         return 80
     }
     
+    func tableView(_ tableView: UITableView,
+                   heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
+    }
+    
 }
 
 // MARK: - UITableViewDataSource

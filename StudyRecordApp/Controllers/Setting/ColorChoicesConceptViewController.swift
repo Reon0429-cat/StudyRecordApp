@@ -12,8 +12,6 @@ protocol ColorChoicesConceptVCDelegate: AnyObject {
     func subConceptTitleDidTapped(isExpanded: Bool)
 }
 
-// MARK: - ToDo タイルが丸くならないバグをなおす
-
 final class ColorChoicesConceptViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
@@ -98,7 +96,7 @@ extension ColorChoicesConceptViewController: AccordionColorTableViewCellDelegate
         delegate?.subConceptTitleDidTapped(isExpanded: isExpanded)
     }
     
-    func tileViewDidTapped(selectedView: UIView) {
+    func tileViewDidTapped(selectedView: TileView) {
         delegate?.subConceptTileViewDidTapped(view: selectedView)
     }
     

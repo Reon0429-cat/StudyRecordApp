@@ -54,40 +54,6 @@ enum TileColorType: Int {
 // MARK: - ToDo タイルを選択した時のバグを直す
 // MARK: - ToDo 同じタイルを選択すると色をなくすようにする
 
-protocol TileViewDelegate: AnyObject {
-    func tileViewDidTapped(selectedView: UIView)
-}
-
-final class TileView: UIView {
-    
-    weak var delegate: TileViewDelegate?
-    enum State {
-        case circle
-        case square
-    }
-    var state: State = .square
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        UIView.animate(withDuration: 0, animations: {
-            self.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
-        }, completion: { _ in
-            UIView.animate(withDuration: 0.1) {
-                self.transform = .identity
-                switch self.state {
-                    case .circle:
-                        self.layer.cornerRadius = 0
-                        self.state = .square
-                    case .square:
-                        self.cutToCircle()
-                        self.state = .circle
-                }
-            }
-        })
-        delegate?.tileViewDidTapped(selectedView: self)
-    }
-    
-}
-
 protocol ColorChoicesTileVCDelegate: AnyObject {
     func tileViewDidTapped(selectedView: UIView)
 }
@@ -154,7 +120,7 @@ private extension ColorChoicesTileViewController {
 // MARK: - TileViewDelegate
 extension ColorChoicesTileViewController: TileViewDelegate {
     
-    func tileViewDidTapped(selectedView: UIView) {
+    func tileViewDidTapped(selectedView: TileView) {
         delegate?.tileViewDidTapped(selectedView: selectedView)
         UIView.animate(withDuration: 0.1) {
             if self.selectedTileView != selectedView {

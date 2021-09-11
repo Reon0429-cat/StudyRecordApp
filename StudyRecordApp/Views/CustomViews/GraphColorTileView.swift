@@ -8,8 +8,8 @@
 import UIKit
 
 protocol GraphColorTileViewDelegate: AnyObject {
-    func tileViewDidTapped(selectedView: UIView)
-    func findSameColor(selectedView: UIView)
+    func tileViewDidTapped(selectedView: TileView)
+    func findSameColor(selectedView: TileView)
 }
 
 final class GraphColorTileView: UIView {
@@ -61,7 +61,7 @@ final class GraphColorTileView: UIView {
 
 extension GraphColorTileView: TileViewDelegate {
     
-    func tileViewDidTapped(selectedView: UIView) {
+    func tileViewDidTapped(selectedView: TileView) {
         delegate?.tileViewDidTapped(selectedView: selectedView)
     }
     
