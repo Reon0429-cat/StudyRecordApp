@@ -8,7 +8,7 @@
 import UIKit
 
 protocol AccordionColorTableViewCellDelegate: AnyObject {
-    func tileViewDidTapped(selectedView: TileView)
+    func tileViewDidTapped(selectedView: TileView, isLast: Bool, index: Int)
     func titleViewDidTapped(index: Int)
 }
 
@@ -19,6 +19,7 @@ final class AccordionColorTableViewCell: UITableViewCell {
     @IBOutlet private weak var stackView: UIStackView!
     
     weak var delegate: AccordionColorTableViewCellDelegate?
+    private var selectingCount = 0
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,6 +31,7 @@ final class AccordionColorTableViewCell: UITableViewCell {
     }
     
     func configure(title: String, colors: [UIColor]) {
+        selectingCount = 0
         titleLabel.text = title
         stackView.arrangedSubviews
             .map { $0 as! TileView }
@@ -46,7 +48,13 @@ final class AccordionColorTableViewCell: UITableViewCell {
 extension AccordionColorTableViewCell: TileViewDelegate {
     
     func tileViewDidTapped(selectedView: TileView) {
-        delegate?.tileViewDidTapped(selectedView: selectedView)
+        if selectedView.getState() == .square {
+            selectingCount += 1
+        }
+        let isLast = (selectingCount == stackView.arrangedSubviews.count)
+        delegate?.tileViewDidTapped(selectedView: selectedView,
+                                    isLast: isLast,
+                                    index: self.tag)
     }
     
 }

@@ -96,8 +96,19 @@ extension ColorChoicesConceptViewController: AccordionColorTableViewCellDelegate
         delegate?.subConceptTitleDidTapped(isExpanded: isExpanded)
     }
     
-    func tileViewDidTapped(selectedView: TileView) {
-        delegate?.subConceptTileViewDidTapped(view: selectedView)
+    func tileViewDidTapped(selectedView: TileView, isLast: Bool, index: Int) {
+        switch selectedView.getState() {
+            case .circle:
+                selectedView.change(state: .square)
+            case .square:
+                delegate?.subConceptTileViewDidTapped(view: selectedView)
+        }
+        if isLast {
+            delegate?.subConceptTitleDidTapped(isExpanded: true)
+            tableView.reloadRows(at: [IndexPath(row: index,
+                                                section: 0)],
+                                 with: .automatic)
+        }
     }
     
 }
