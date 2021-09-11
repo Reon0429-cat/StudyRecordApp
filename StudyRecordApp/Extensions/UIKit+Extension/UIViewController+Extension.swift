@@ -28,6 +28,13 @@ extension UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    func changeRootVC<T: UIViewController>(_ ViewControllerType: T.Type) {
+        let connectedScenes = UIApplication.shared.connectedScenes
+        guard let sceneDelegate = connectedScenes.first?.delegate as? SceneDelegate else { return }
+        let vc = ViewControllerType.instantiate()
+        sceneDelegate.window?.rootViewController = vc
+    }
+    
     static func instantiate() -> Self {
         var storyboardName = String(describing: self)
         if let result = storyboardName.range(of: "ViewController") {

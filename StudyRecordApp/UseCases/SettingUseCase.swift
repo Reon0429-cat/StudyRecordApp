@@ -67,8 +67,12 @@ final class SettingUseCase {
         repository.update(setting: newSetting, at: 0)
     }
     
-    var passcodeIsEmpty: Bool {
-        return setting.passcode.isEmpty
+    var isPasscodeCreated: Bool {
+        return !setting.passcode.isEmpty
+    }
+    
+    func isSame(passcode: String) -> Bool {
+        return setting.passcode == passcode
     }
     
     func create(passcode: String) {

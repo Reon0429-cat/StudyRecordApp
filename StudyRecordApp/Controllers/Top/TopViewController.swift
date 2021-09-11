@@ -28,11 +28,6 @@ final class TopViewController: UIViewController {
         static let addButtonRight: CGFloat = 50
     }
     private var screenType: ScreenType = .record
-    private var userUseCase = UserUseCase(
-        repository: UserRepository(
-            dataStore: FirebaseUserDataStore()
-        )
-    )
     private var pageViewController: UIPageViewController!
     private var tabBarCollectionVC: TabBarCollectionViewController!
     private var viewControllers = [UIViewController]()
@@ -58,18 +53,6 @@ final class TopViewController: UIViewController {
         setupSortButton()
         setAnimation()
         setupWaveViews()
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        DispatchQueue.main.async {
-            if !self.userUseCase.isLoggedIn {
-                self.present(LoginAndSignUpViewController.self,
-                             modalPresentationStyle: .fullScreen)
-            }
-        }
         
     }
     

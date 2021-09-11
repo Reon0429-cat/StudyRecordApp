@@ -246,7 +246,7 @@ extension SettingViewController: UITableViewDataSource {
                 cell.configure(title: rowType.title,
                                isOn: setting.isPasscodeSetted) { isOn in
                     self.settingUseCase.change(isPasscodeSetted: isOn)
-                    if self.settingUseCase.passcodeIsEmpty && isOn {
+                    if !self.settingUseCase.isPasscodeCreated && isOn {
                         self.present(PasscodeViewController.self,
                                      modalPresentationStyle: .fullScreen) { vc in
                             vc.passcodeMode = .create

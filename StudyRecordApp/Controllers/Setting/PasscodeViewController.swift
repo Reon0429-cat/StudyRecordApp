@@ -24,6 +24,7 @@ enum PasscodeMode {
 }
 
 // MARK: - ToDo パスコード、変更、忘れた時の対処
+// MARK: - ToDo　認証が失敗したときにバイブレーション
 
 final class PasscodeViewController: UIViewController {
     
@@ -31,7 +32,6 @@ final class PasscodeViewController: UIViewController {
     @IBOutlet private weak var passcodeView: PasscodeView!
     
     private let indicator = Indicator(kinds: PKHUDIndicator())
-    private let testPasscode = "1234"
     private var settingUseCase = SettingUseCase(
         repository: SettingRepository(
             dataStore: RealmSettingDataStore()
@@ -56,9 +56,9 @@ extension PasscodeViewController: PasscodeViewDelegate {
     func validate(passcode: String) {
         switch passcodeMode {
             case .authentication:
-                if passcode == testPasscode {
+                if settingUseCase.isSame(passcode: passcode) {
                     indicator.flash(.success) {
-                        self.dismiss(animated: true)
+                        self.changeRootVC(TopViewController.self)
                     }
                 } else {
                     indicator.flash(.error) {

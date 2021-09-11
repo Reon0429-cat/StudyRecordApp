@@ -146,10 +146,6 @@ extension LoginAndSignUpViewController: LoginVCDelegate {
         viewType = .signUp
     }
     
-    func loginDidSuccessed() {
-        dismiss(animated: true)
-    }
-    
 }
 
 // MARK: - SignUpVCDelegate
@@ -157,10 +153,6 @@ extension LoginAndSignUpViewController: SignUpVCDelegate {
     
     func rightSwipeDid() {
         viewType = .login
-    }
-    
-    func signUpDidSuccessed() {
-        dismiss(animated: true)
     }
     
 }
