@@ -138,7 +138,7 @@ opt_in_rules:
     - operator_usage_whitespace
     - overridden_super_call
     - override_in_extension
-    - pattern_matching_keywords
+#    - pattern_matching_keywords
     #- prefixed_toplevel_constant
     - private_action
     - private_outlet

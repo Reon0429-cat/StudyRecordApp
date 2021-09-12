@@ -72,6 +72,7 @@ final class SettingViewController: UIViewController {
         super.viewWillAppear(animated)
         
         delegate?.screenDidPresented(screenType: .setting)
+        tableView.reloadData()
         
     }
     
@@ -236,18 +237,30 @@ extension SettingViewController: UITableViewDataSource {
                 return cell
             case .darkMode:
                 let cell = tableView.dequeueReusableCustomCell(with: CustomSwitchTableViewCell.self)
-                cell.configure(title: rowType.title, isOn: setting.isDarkMode)
-                cell.switchDidSelected = { self.settingUseCase.change(isDarkMode: $0) }
+                cell.configure(title: rowType.title,
+                               isOn: setting.isDarkMode) { isOn in
+                    self.settingUseCase.change(isDarkMode: isOn)
+                }
                 return cell
             case .passcode:
                 let cell = tableView.dequeueReusableCustomCell(with: CustomSwitchTableViewCell.self)
-                cell.configure(title: rowType.title, isOn: setting.isPasscodeSetted)
-                cell.switchDidSelected = { self.settingUseCase.change(isPasscodeSetted: $0) }
+                cell.configure(title: rowType.title,
+                               isOn: setting.isPasscodeSetted) { isOn in
+                    self.settingUseCase.change(isPasscodeSetted: isOn)
+                    if !self.settingUseCase.isPasscodeCreated && isOn {
+                        self.present(PasscodeViewController.self,
+                                     modalPresentationStyle: .fullScreen) { vc in
+                            vc.passcodeMode = .create
+                        }
+                    }
+                }
                 return cell
             case .pushNotification:
                 let cell = tableView.dequeueReusableCustomCell(with: CustomSwitchTableViewCell.self)
-                cell.configure(title: rowType.title, isOn: setting.isPushNotificationSetted)
-                cell.switchDidSelected = { self.settingUseCase.change(isPushNotificationSetted: $0) }
+                cell.configure(title: rowType.title,
+                               isOn: setting.isPushNotificationSetted) { isOn in
+                    self.settingUseCase.change(isPushNotificationSetted: isOn)
+                }
                 return cell
             case .logout:
                 let cell = tableView.dequeueReusableCustomCell(with: CustomButtonTableViewCell.self)

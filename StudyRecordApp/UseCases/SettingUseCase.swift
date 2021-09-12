@@ -18,6 +18,7 @@ final class SettingUseCase {
         if repository.readAll().isEmpty {
             let setting = Setting(isDarkMode: false,
                                   isPasscodeSetted: false,
+                                  passcode: "",
                                   isPushNotificationSetted: true,
                                   language: .japanese)
             repository.create(setting: setting)
@@ -33,6 +34,7 @@ final class SettingUseCase {
     func change(isDarkMode: Bool) {
         let newSetting = Setting(isDarkMode: isDarkMode,
                                  isPasscodeSetted: setting.isPasscodeSetted,
+                                 passcode: setting.passcode,
                                  isPushNotificationSetted: setting.isPushNotificationSetted,
                                  language: setting.language)
         repository.update(setting: newSetting, at: 0)
@@ -41,6 +43,7 @@ final class SettingUseCase {
     func change(isPasscodeSetted: Bool) {
         let newSetting = Setting(isDarkMode: setting.isDarkMode,
                                  isPasscodeSetted: isPasscodeSetted,
+                                 passcode: setting.passcode,
                                  isPushNotificationSetted: setting.isPushNotificationSetted,
                                  language: setting.language)
         repository.update(setting: newSetting, at: 0)
@@ -49,6 +52,7 @@ final class SettingUseCase {
     func change(isPushNotificationSetted: Bool) {
         let newSetting = Setting(isDarkMode: setting.isDarkMode,
                                  isPasscodeSetted: setting.isPasscodeSetted,
+                                 passcode: setting.passcode,
                                  isPushNotificationSetted: isPushNotificationSetted,
                                  language: setting.language)
         repository.update(setting: newSetting, at: 0)
@@ -57,8 +61,34 @@ final class SettingUseCase {
     func change(language: Language) {
         let newSetting = Setting(isDarkMode: setting.isDarkMode,
                                  isPasscodeSetted: setting.isPasscodeSetted,
+                                 passcode: setting.passcode,
                                  isPushNotificationSetted: setting.isPushNotificationSetted,
                                  language: language)
+        repository.update(setting: newSetting, at: 0)
+    }
+    
+    var isPasscodeCreated: Bool {
+        return !setting.passcode.isEmpty
+    }
+    
+    func isSame(passcode: String) -> Bool {
+        return setting.passcode == passcode
+    }
+    
+    func create(passcode: String) {
+        updatePasscode(passcode: passcode)
+    }
+    
+    func update(passcode: String) {
+        updatePasscode(passcode: passcode)
+    }
+    
+    private func updatePasscode(passcode: String) {
+        let newSetting = Setting(isDarkMode: setting.isDarkMode,
+                                 isPasscodeSetted: setting.isPasscodeSetted,
+                                 passcode: passcode,
+                                 isPushNotificationSetted: setting.isPushNotificationSetted,
+                                 language: setting.language)
         repository.update(setting: newSetting, at: 0)
     }
     

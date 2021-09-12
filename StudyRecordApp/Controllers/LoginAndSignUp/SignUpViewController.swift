@@ -9,7 +9,6 @@ import UIKit
 
 protocol SignUpVCDelegate: AnyObject {
     func rightSwipeDid()
-    func signUpDidSuccessed()
 }
 
 final class SignUpViewController: UIViewController {
@@ -126,7 +125,7 @@ private extension SignUpViewController {
                     }
                 case .success:
                     self.indicator.flash(.success) {
-                        self.delegate?.signUpDidSuccessed()
+                        self.changeRootVC(TopViewController.self)
                     }
             }
         }
