@@ -67,8 +67,18 @@ final class PasscodeView: UIView {
         
     }
     
-    func resetLabel(inputCountLabelText: String) {
-        inputCountLabel.text = inputCountLabelText
+    func changeInputLabelText(_ text: String) {
+        inputCountLabel.text = text
+        clearInputLabel()
+    }
+    
+    func clearAll() {
+        labelType = .first("")
+        inputState = .first("")
+        clearInputLabel()
+    }
+    
+    private func clearInputLabel() {
         firstLabel.text = "◯"
         secondLabel.text = "◯"
         thirdLabel.text = "◯"
@@ -86,6 +96,7 @@ private extension PasscodeView {
                 firstLabel.text = "●"
                 labelType = .second("\(sender.tag)")
             case .second(let firstText):
+                firstLabel.text = "●"
                 secondLabel.text = "●"
                 labelType = .third(firstText + "\(sender.tag)")
             case .third(let secondText):

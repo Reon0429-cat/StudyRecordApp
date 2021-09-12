@@ -48,6 +48,13 @@ final class PasscodeViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        passcodeView.clearAll()
+        
+    }
+    
 }
 
 // MARK: - IBAction func
@@ -73,9 +80,9 @@ private extension PasscodeViewController {
                         self.changeRootVC(TopViewController.self)
                     }
                 } else {
-                    // バイブレーション
+                    setVibration()
                     indicator.flash(.error) {
-                        self.passcodeView.resetLabel(inputCountLabelText: "")
+                        self.passcodeView.changeInputLabelText("")
                     }
                 }
             case .confirmation(_, let twicePasscode):
@@ -84,9 +91,9 @@ private extension PasscodeViewController {
                         self.changeRootVC(TopViewController.self)
                     }
                 } else {
-                    // バイブレーション
+                    setVibration()
                     indicator.flash(.error) {
-                        self.passcodeView.resetLabel(inputCountLabelText: "")
+                        self.passcodeView.changeInputLabelText("")
                     }
                 }
         }
@@ -97,7 +104,7 @@ private extension PasscodeViewController {
         switch inputState {
             case .first:
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                    self.passcodeView.resetLabel(inputCountLabelText: "残り１回")
+                    self.passcodeView.changeInputLabelText("残り１回")
                 }
             case .confirmation(let oncePasscode, let twicePasscode):
                 if oncePasscode == twicePasscode {
@@ -106,9 +113,10 @@ private extension PasscodeViewController {
                         self.dismiss(animated: true)
                     }
                 } else {
-                    // バイブレーション, アラート
+                    // アラート
+                    setVibration()
                     indicator.flash(.error) {
-                        self.passcodeView.resetLabel(inputCountLabelText: "残り２回")
+                        self.passcodeView.changeInputLabelText("残り２回")
                     }
                 }
         }
@@ -118,7 +126,7 @@ private extension PasscodeViewController {
         switch inputState {
             case .first:
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                    self.passcodeView.resetLabel(inputCountLabelText: "残り１回")
+                    self.passcodeView.changeInputLabelText("残り１回")
                 }
             case .confirmation(let oncePasscode, let twicePasscode):
                 if oncePasscode == twicePasscode {
@@ -127,9 +135,10 @@ private extension PasscodeViewController {
                         self.changeRootVC(TopViewController.self)
                     }
                 } else {
-                    // バイブレーション, アラート
+                    // アラート
+                    setVibration()
                     indicator.flash(.error) {
-                        self.passcodeView.resetLabel(inputCountLabelText: "新しいパスコードを\n入力してください")
+                        self.passcodeView.changeInputLabelText("新しいパスコードを\n入力してください")
                     }
                 }
         }
@@ -146,9 +155,9 @@ private extension PasscodeViewController {
                         }
                     }
                 } else {
-                    // バイブレーション
+                    setVibration()
                     indicator.flash(.error) {
-                        self.passcodeView.resetLabel(inputCountLabelText: "現在のパスコードを\n入力してください")
+                        self.passcodeView.changeInputLabelText("現在のパスコードを\n入力してください")
                     }
                 }
             case .confirmation(_, let twicePasscode):
@@ -160,12 +169,16 @@ private extension PasscodeViewController {
                         }
                     }
                 } else {
-                    // バイブレーション
+                    setVibration()
                     indicator.flash(.error) {
-                        self.passcodeView.resetLabel(inputCountLabelText: "現在のパスコードを\n入力してください")
+                        self.passcodeView.changeInputLabelText("現在のパスコードを\n入力してください")
                     }
                 }
         }
+    }
+    
+    func setVibration() {
+        
     }
     
 }
@@ -198,11 +211,11 @@ extension PasscodeViewController: SubCustomNavigationBarDelegate {
             case .authentication:
                 settingUseCase.change(isPasscodeSetted: true)
             case .create:
-                settingUseCase.change(isPasscodeSetted: true)
+                settingUseCase.change(isPasscodeSetted: false)
             case .change:
-                settingUseCase.change(isPasscodeSetted: false)
+                settingUseCase.change(isPasscodeSetted: true)
             case .changeAuthentication:
-                settingUseCase.change(isPasscodeSetted: false)
+                settingUseCase.change(isPasscodeSetted: true)
         }
         dismiss(animated: true)
     }
@@ -228,19 +241,20 @@ private extension PasscodeViewController {
     func setup() {
         switch passcodeMode {
             case .authentication:
-                passcodeView.resetLabel(inputCountLabelText: "")
+                passcodeView.changeInputLabelText("")
                 subCustomNavigationBar.dismissButton(isHidden: true)
                 changePasscodeButton.isHidden = false
             case .create:
-                passcodeView.resetLabel(inputCountLabelText: "残り２回")
+                passcodeView.changeInputLabelText("残り２回")
+                
                 subCustomNavigationBar.dismissButton(isHidden: false)
                 changePasscodeButton.isHidden = true
             case .change:
-                passcodeView.resetLabel(inputCountLabelText: "新しいパスコードを\n入力してください")
+                passcodeView.changeInputLabelText("新しいパスコードを\n入力してください")
                 subCustomNavigationBar.dismissButton(isHidden: false)
                 changePasscodeButton.isHidden = true
             case .changeAuthentication:
-                passcodeView.resetLabel(inputCountLabelText: "現在のパスコードを\n入力してください")
+                passcodeView.changeInputLabelText("現在のパスコードを\n入力してください")
                 subCustomNavigationBar.dismissButton(isHidden: false)
                 changePasscodeButton.isHidden = true
         }
