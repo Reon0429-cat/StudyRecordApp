@@ -20,8 +20,8 @@ final class LoginViewController: UIViewController {
     @IBOutlet private weak var mailAddressTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     @IBOutlet private weak var passwordSecureButton: UIButton!
-    @IBOutlet private weak var loginButton: UIButton!
-    @IBOutlet private weak var passwordForgotButton: UIButton!
+    @IBOutlet private weak var loginButton: CustomButton!
+    @IBOutlet private weak var passwordForgotButton: CustomButton!
     
     weak var delegate: LoginVCDelegate?
     private var isPasswordHidden = true
@@ -41,7 +41,6 @@ final class LoginViewController: UIViewController {
         setupPasswordTextField()
         setupLoginButton()
         setupPasswordSecureButton()
-        setupPasswordForgotButton()
         setupKeyboardObserver()
         
     }
@@ -161,16 +160,11 @@ private extension LoginViewController {
     }
     
     func setupLoginButton() {
-        loginButton.layer.cornerRadius = 10
         changeLoginButtonState(isEnabled: false)
     }
     
     func setupPasswordSecureButton() {
         changePasswordSecureButtonImage(isSlash: false)
-    }
-    
-    func setupPasswordForgotButton() {
-        passwordForgotButton.layer.cornerRadius = 10
     }
     
     func setupKeyboardObserver() {

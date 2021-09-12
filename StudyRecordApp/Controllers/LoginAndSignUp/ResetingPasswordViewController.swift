@@ -12,7 +12,7 @@ import UIKit
 final class ResetingPasswordViewController: UIViewController {
     
     @IBOutlet private weak var mailAddressTextField: UITextField!
-    @IBOutlet private weak var sendButton: UIButton!
+    @IBOutlet private weak var sendButton: CustomButton!
     @IBOutlet private weak var stackViewTopConstraint: NSLayoutConstraint!
     
     private var userUseCase = UserUseCase(
