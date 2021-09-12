@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="firstLabel" destination="CHA-SG-8W5" id="IjG-YJ-R2s"/>
                 <outlet property="fourthLabel" destination="GsL-4z-gaH" id="uuF-NG-r9d"/>
+                <outlet property="inputCountLabel" destination="jbX-bV-dNY" id="kBD-f5-r6G"/>
                 <outlet property="keyboardStackView" destination="WYv-9i-ZX2" id="aH5-2K-UBW"/>
                 <outlet property="secondLabel" destination="znG-cG-2JN" id="CWS-d6-oqF"/>
                 <outlet property="thirdLabel" destination="tSm-PE-lbs" id="m2m-7C-e8m"/>
@@ -372,13 +373,23 @@
                         <constraint firstItem="GSW-iS-aLc" firstAttribute="width" secondItem="GSW-iS-aLc" secondAttribute="height" id="ycg-1b-Hjo"/>
                     </constraints>
                 </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="残り２回" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jbX-bV-dNY">
+                    <rect key="frame" x="222" y="0.0" width="69.5" height="50"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="m0t-O2-loH" firstAttribute="top" secondItem="jbX-bV-dNY" secondAttribute="bottom" id="3mV-xh-bjv"/>
                 <constraint firstItem="m0t-O2-loH" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="LxG-6w-dTG"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="jbX-bV-dNY" secondAttribute="trailing" constant="50" id="aB2-5Y-DgW"/>
                 <constraint firstItem="m0t-O2-loH" firstAttribute="width" secondItem="WYv-9i-ZX2" secondAttribute="width" multiplier="0.8" id="bSJ-T4-f2D"/>
+                <constraint firstItem="jbX-bV-dNY" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="bd3-K8-a2z"/>
                 <constraint firstItem="m0t-O2-loH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="50" id="irl-hS-7jh"/>
+                <constraint firstItem="jbX-bV-dNY" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="qX3-nB-SXY"/>
                 <constraint firstItem="WYv-9i-ZX2" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="tLU-H4-7nj"/>
                 <constraint firstItem="WYv-9i-ZX2" firstAttribute="top" secondItem="m0t-O2-loH" secondAttribute="bottom" constant="50" id="tuq-5H-zLA"/>
                 <constraint firstAttribute="bottom" secondItem="WYv-9i-ZX2" secondAttribute="bottom" constant="50" id="uXc-O4-7ao"/>

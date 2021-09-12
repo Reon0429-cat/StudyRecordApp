@@ -7,8 +7,14 @@
 
 import UIKit
 
+enum PasscodeInputState {
+    case first(_ onceInputPasscode: String)
+    case confirmation(_ onceInputPasscode: String,
+                      _ twiceInputPasscode: String)
+}
+
 protocol PasscodeViewDelegate: AnyObject {
-    func validate(passcode: String)
+    func input(inputState: PasscodeInputState)
 }
 
 final class PasscodeView: UIView {
@@ -19,16 +25,18 @@ final class PasscodeView: UIView {
     @IBOutlet private weak var thirdLabel: UILabel!
     @IBOutlet private weak var fourthLabel: UILabel!
     @IBOutlet private var keyboardButtons: [UIButton]!
-    
+    @IBOutlet private weak var inputCountLabel: UILabel!
+
     weak var delegate: PasscodeViewDelegate?
-    private var tappedCount = 0
-    private var inputtedPasscode = ""
-    private enum State: Int {
-        case first
-        case second
-        case third
-        case fourth
+    private enum LabelType {
+        case first(_ text: String)
+        case second(_ text: String)
+        case third(_ text: String)
+        case fourth(_ text: String)
     }
+    private var labelType: LabelType = .first("")
+    private var inputState: PasscodeInputState = .first("")
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadNib()
@@ -59,9 +67,8 @@ final class PasscodeView: UIView {
         
     }
     
-    func failure() {
-        tappedCount = 0
-        inputtedPasscode = ""
+    func resetLabel(inputCountLabelText: String) {
+        inputCountLabel.text = inputCountLabelText
         firstLabel.text = "◯"
         secondLabel.text = "◯"
         thirdLabel.text = "◯"
@@ -74,20 +81,30 @@ final class PasscodeView: UIView {
 private extension PasscodeView {
     
     @IBAction func keyboardButtonDidTapped(_ sender: UIButton) {
-        inputtedPasscode += String(sender.tag)
-        let state = State(rawValue: tappedCount) ?? .first
-        switch state {
+        switch labelType {
             case .first:
                 firstLabel.text = "●"
-            case .second:
+                labelType = .second("\(sender.tag)")
+            case .second(let firstText):
                 secondLabel.text = "●"
-            case .third:
+                labelType = .third(firstText + "\(sender.tag)")
+            case .third(let secondText):
                 thirdLabel.text = "●"
-            case .fourth:
+                labelType = .fourth(secondText + "\(sender.tag)")
+            case .fourth(let thirdText):
                 fourthLabel.text = "●"
-                delegate?.validate(passcode: inputtedPasscode)
+                labelType = .first("")
+                let inputtedPasscode = thirdText + "\(sender.tag)"
+                switch inputState {
+                    case .first:
+                        delegate?.input(inputState: .first(inputtedPasscode))
+                        inputState = .confirmation(inputtedPasscode, "")
+                    case .confirmation(let oncePasscode, _):
+                        delegate?.input(inputState: .confirmation(oncePasscode,
+                                                                  inputtedPasscode))
+                        inputState = .first("")
+                }
         }
-        tappedCount += 1
     }
     
 }

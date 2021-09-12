@@ -28,20 +28,33 @@
                                     <constraint firstAttribute="height" constant="114" id="TI8-Aj-19D"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1gA-l2-2cQ">
+                                <rect key="frame" x="145.5" y="782" width="123" height="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="パスコードを変更"/>
+                                <connections>
+                                    <action selector="changePasscodeButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="7qc-3D-EXE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Z53-yC-Ehw" firstAttribute="top" secondItem="wvr-TZ-YEX" secondAttribute="bottom" constant="30" id="CzM-2p-MKQ"/>
+                            <constraint firstItem="Z53-yC-Ehw" firstAttribute="top" secondItem="wvr-TZ-YEX" secondAttribute="bottom" priority="900" constant="30" id="CzM-2p-MKQ"/>
                             <constraint firstItem="wvr-TZ-YEX" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="GuE-hb-TYE"/>
                             <constraint firstItem="wvr-TZ-YEX" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="Ike-vk-rNo"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="1gA-l2-2cQ" secondAttribute="bottom" constant="30" id="KrK-vP-o8T"/>
+                            <constraint firstItem="1gA-l2-2cQ" firstAttribute="top" secondItem="Z53-yC-Ehw" secondAttribute="bottom" constant="30" id="L9E-Mk-wIE"/>
                             <constraint firstItem="Z53-yC-Ehw" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="LI8-EA-wp8"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Z53-yC-Ehw" secondAttribute="trailing" priority="900" constant="50" id="PCW-tX-Ws9"/>
+                            <constraint firstItem="1gA-l2-2cQ" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="SkT-x2-gPB"/>
                             <constraint firstItem="wvr-TZ-YEX" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="VSM-PP-Xsr"/>
                             <constraint firstItem="Z53-yC-Ehw" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="mj2-xu-Dl2"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1gA-l2-2cQ" secondAttribute="trailing" constant="30" id="rH8-Jw-9n3"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="changePasscodeButton" destination="1gA-l2-2cQ" id="avG-sC-mrK"/>
                         <outlet property="passcodeView" destination="Z53-yC-Ehw" id="Hbg-fU-EJJ"/>
                         <outlet property="subCustomNavigationBar" destination="wvr-TZ-YEX" id="gRH-4y-rdA"/>
                     </connections>

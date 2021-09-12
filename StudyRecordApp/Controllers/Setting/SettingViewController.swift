@@ -72,6 +72,7 @@ final class SettingViewController: UIViewController {
         super.viewWillAppear(animated)
         
         delegate?.screenDidPresented(screenType: .setting)
+        tableView.reloadData()
         
     }
     

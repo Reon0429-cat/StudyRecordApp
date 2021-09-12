@@ -76,6 +76,14 @@ final class SettingUseCase {
     }
     
     func create(passcode: String) {
+        updatePasscode(passcode: passcode)
+    }
+    
+    func update(passcode: String) {
+        updatePasscode(passcode: passcode)
+    }
+    
+    private func updatePasscode(passcode: String) {
         let newSetting = Setting(isDarkMode: setting.isDarkMode,
                                  isPasscodeSetted: setting.isPasscodeSetted,
                                  passcode: passcode,
