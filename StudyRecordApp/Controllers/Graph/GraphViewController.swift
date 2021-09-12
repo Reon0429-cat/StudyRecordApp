@@ -14,7 +14,7 @@ protocol GraphVCDelegate: ScreenPresentationDelegate {
 final class GraphViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var registerButton: UIButton!
+    @IBOutlet private weak var registerButton: CustomButton!
     
     weak var delegate: GraphVCDelegate?
     private var recordUseCase = RecordUseCase(
@@ -32,7 +32,6 @@ final class GraphViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
-        setupRegisterButton()
         setObserver()
         
     }
@@ -161,10 +160,6 @@ private extension GraphViewController {
         tableView.dataSource = self
         tableView.registerCustomCell(GraphTableViewCell.self)
         tableView.tableFooterView = UIView()
-    }
-    
-    func setupRegisterButton() {
-        registerButton.layer.cornerRadius = 10
     }
     
 }

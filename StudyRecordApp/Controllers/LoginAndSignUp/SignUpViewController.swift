@@ -19,7 +19,7 @@ final class SignUpViewController: UIViewController {
     @IBOutlet private weak var passwordSecureButton: UIButton!
     @IBOutlet private weak var passwordConfirmationTextField: UITextField!
     @IBOutlet private weak var passwordConfirmationSecureButton: UIButton!
-    @IBOutlet private weak var signUpButton: UIButton!
+    @IBOutlet private weak var signUpButton: CustomButton!
     @IBOutlet private weak var signUpButtonTopConstraint: NSLayoutConstraint!
     
     weak var delegate: SignUpVCDelegate?

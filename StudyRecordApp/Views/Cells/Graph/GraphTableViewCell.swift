@@ -23,7 +23,7 @@ final class GraphTableViewCell: UITableViewCell {
     @IBOutlet private weak var monthSegmentedControl: CustomSegmentedControl!
     @IBOutlet private weak var yAxisLabel: UILabel!
     @IBOutlet private weak var noGraphDataLabel: UILabel!
-    @IBOutlet private weak var registerButton: UIButton!
+    @IBOutlet private weak var registerButton: CustomButton!
     
     private var graphView: CustomScrollableGraphView!
     private var indicator: UIActivityIndicatorView!
@@ -77,7 +77,6 @@ final class GraphTableViewCell: UITableViewCell {
         setupIndicator(record: record)
         setupLineData(record: record, graph: graph)
         setupIfNoGraphData(record: record)
-        setupRegisterButton()
         setupSimpleNoGraphDataLabel()
     }
     
@@ -220,11 +219,6 @@ private extension GraphTableViewCell {
                              xTitle: "\(historiy.month)/\(historiy.day)"))
         }
         graphView.create(color: UIColor(record: record), graph: graph)
-    }
-    
-    
-    func setupRegisterButton() {
-        registerButton.layer.cornerRadius = 10
     }
     
     func setupIfNoGraphData(record: Record) {
