@@ -126,6 +126,7 @@ private extension PasscodeView {
     func setupKeyboardButtons() {
         keyboardButtons.forEach { button in
             button.cutToCircle()
+            button.setGradation()
         }
     }
     

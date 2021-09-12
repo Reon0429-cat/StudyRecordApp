@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 enum PasscodeMode {
     case authentication
@@ -23,7 +24,7 @@ enum PasscodeMode {
     }
 }
 
-// MARK: - ToDo パスコード, アニメーション, バイブレーション
+// MARK: - ToDo RootVC アニメーション
 
 final class PasscodeViewController: UIViewController {
     
@@ -174,7 +175,7 @@ private extension PasscodeViewController {
     }
     
     func setVibration() {
-        
+        AudioServicesPlaySystemSound(1102)
     }
     
 }
