@@ -113,11 +113,9 @@ private extension PasscodeViewController {
                         self.dismiss(animated: true)
                     }
                 } else {
-                    // アラート
                     setVibration()
-                    indicator.flash(.error) {
-                        self.passcodeView.changeInputLabelText("残り２回")
-                    }
+                    showErrorAlert(title: "パスコードが一致しません")
+                    passcodeView.changeInputLabelText("残り２回")
                 }
         }
     }
@@ -135,11 +133,9 @@ private extension PasscodeViewController {
                         self.changeRootVC(TopViewController.self)
                     }
                 } else {
-                    // アラート
                     setVibration()
-                    indicator.flash(.error) {
-                        self.passcodeView.changeInputLabelText("新しいパスコードを\n入力してください")
-                    }
+                    showErrorAlert(title: "パスコードが一致しません")
+                    passcodeView.changeInputLabelText("新しいパスコードを\n入力してください")
                 }
         }
     }
