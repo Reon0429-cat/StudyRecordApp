@@ -22,9 +22,7 @@ enum PasscodeMode {
             case .changeAuthentication: return "認証"
         }
     }
-}
-
-// MARK: - ToDo RootVC アニメーション
+} 
 
 final class PasscodeViewController: UIViewController {
     
