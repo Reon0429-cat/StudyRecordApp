@@ -8,8 +8,85 @@
 
 // Japanese
 
+"languageCode" = "ja_JP";
+"theEmailAddressFormatContainsAnError" = "メールアドレスの形式に誤りが含まれます。";
+"pleaseEnterThePasswordWithAtLeast6Characters" = "パスワードは６文字以上で入力してください。";
+"thePasswordIsIncorrect" = "パスワードに誤りがあります。";
+"thisEmailAddressIsNotRegistered" = "こちらのメールアドレスは登録されていません。";
+"thisEmailAddressIsAlreadyRegistered" = "こちらのメールアドレスは既に登録されています。";
+"loginFailed" = "ログインに失敗しました";
+"anUnknownErrorHasOccurred" = "不明なエラーが発生しました。";
 
+"record" = "記録";
+"graph" = "グラフ";
+"goal" = "目標";
+"setting" = "設定";
 
+"natural" = "ナチュラル";
+"pop" = "ポップ";
+"elegant" = "エレガント";
+"season" = "シーズン";
+"japan" = "ジャパン";
+"overseas" = "オーバーシーズ";
+"service" = "サービス";
+"adultColor" = "アダルトカラー";
+"gorgeous" = "ゴージャス";
+"art" = "アート";
+"intelligence" = "インテリジェンス";
+"beautiful" = "華やか";
+"tradition" = "伝統";
+"moist" = "しっとり";
+"relax" = "リラックス";
+"feminine" = "フェミニン";
+"organic" = "オーガニック";
+"craft" = "クラフト";
+"living" = "リビング";
+"botanical" = "ボタニカル";
+"foreignCountries" = "外国";
+"journey" = "旅行";
+"mysterious" = "不思議";
+"colorful" = "カラフル";
+"retro" = "レトロ";
+"kids" = "キッズ";
+"girly" = "ガーリー";
+"active" = "アクティブ";
+"catchu" = "キャッチュ";
+"happy" = "ハッピー";
+"spring" = "春";
+"summer" = "夏";
+"autumn" = "秋";
+"winter" = "冬";
+"business" = "ビジネス";
+"digital" = "デジタル";
+"shop" = "ショップ";
+
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
 
 
 

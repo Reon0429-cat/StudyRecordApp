@@ -17,9 +17,12 @@ extension OverseasConcept {
     
     var title: String {
         switch self {
-            case .foreignCountries: return "外国"
-            case .journey: return "旅行"
-            case .mysterious: return "不思議"
+            case .foreignCountries:
+                return LocalizeKey.foreignCountries.localizedString()
+            case .journey:
+                return LocalizeKey.journey.localizedString()
+            case .mysterious:
+                return LocalizeKey.mysterious.localizedString()
         }
     }
     var colors: [UIColor] {

@@ -21,13 +21,20 @@ extension PopConcept {
     
     var title: String {
         switch self {
-            case .colorful: return "カラフル"
-            case .retro: return "レトロ"
-            case .kids: return "キッズ"
-            case .girly: return "ガーリー"
-            case .active: return "アクティブ"
-            case .catchu: return "キャッチュ"
-            case .happy: return "ハッピー"
+            case .colorful:
+                return LocalizeKey.colorful.localizedString()
+            case .retro:
+                return LocalizeKey.retro.localizedString()
+            case .kids:
+                return LocalizeKey.kids.localizedString()
+            case .girly:
+                return LocalizeKey.girly.localizedString()
+            case .active:
+                return LocalizeKey.active.localizedString()
+            case .catchu:
+                return LocalizeKey.catchu.localizedString()
+            case .happy:
+                return LocalizeKey.happy.localizedString()
         }
     }
     var colors: [UIColor] {

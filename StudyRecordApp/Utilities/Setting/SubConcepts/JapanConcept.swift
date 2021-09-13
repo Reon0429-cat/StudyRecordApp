@@ -17,9 +17,12 @@ extension JapanConcept {
     
     var title: String {
         switch self {
-            case .beautiful: return "華やか"
-            case .tradition: return "伝統"
-            case .moist: return "しっとり"
+            case .beautiful:
+                return LocalizeKey.beautiful.localizedString()
+            case .tradition:
+                return LocalizeKey.tradition.localizedString()
+            case .moist:
+                return LocalizeKey.moist.localizedString()
         }
     }
     var colors: [UIColor] {

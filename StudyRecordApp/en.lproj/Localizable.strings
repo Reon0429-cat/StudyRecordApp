@@ -8,8 +8,81 @@
 
 // English
 
+"languageCode" = "en";
+"theEmailAddressFormatContainsAnError" = "The email address format contains an error";
+"pleaseEnterThePasswordWithAtLeast6Characters" = "Please enter the password with at least 6 characters";
+"thePasswordIsIncorrect" = "The password is incorrect";
+"thisEmailAddressIsNotRegistered" = "This email address is not registered";
+"thisEmailAddressIsAlreadyRegistered" = "This email address is already registered";
+"loginFailed" = "Login failed";
+"anUnknownErrorHasOccurred" = "An unknown error has occurred";
 
+"record" = "Record";
+"graph" = "Graph";
+"goal" = "Goal";
+"setting" = "Setting";
 
+"natural" = "Natural";
+"pop" = "Pop";
+"elegant" = "Elegant";
+"season" = "Season";
+"japan" = "Japan";
+"overseas" = "Overseas";
+"service" = "Service";
+"adultColor" = "AdultColor";
+"gorgeous" = "Gorgeous";
+"art" = "Art";
+"intelligence" = "Intelligence";
+"beautiful" = "Beautiful";
+"tradition" = "Tradition";
+"moist" = "Moist";
+"relax" = "Relax";
+"feminine" = "Feminine";
+"organic" = "Organic";
+"craft" = "Craft";
+"living" = "Living";
+"botanical" = "Botanical";
+"foreignCountries" = "ForeignCountries";
+"journey" = "Journey";
+"mysterious" = "Mysterious";
+"colorful" = "Colorful";
+"retro" = "Retro";
+"kids" = "Kids";
+"girly" = "Girly";
+"active" = "Active";
+"catchu" = "Catchu";
+"happy" = "Happy";
+"spring" = "Spring";
+"summer" = "Summer";
+"autumn" = "Autumn";
+"winter" = "Winter";
+"business" = "Business";
+"digital" = "Digital";
+"shop" = "Shop";
+
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
 
 
 
