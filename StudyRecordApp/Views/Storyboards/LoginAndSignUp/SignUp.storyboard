@@ -160,9 +160,12 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="mailAddressLabel" destination="mVY-Qg-5YY" id="txG-qi-Vdl"/>
                         <outlet property="mailAddressTextField" destination="AVF-2V-ebq" id="fuF-oj-bjY"/>
+                        <outlet property="passwordConfirmationLabel" destination="nC5-EJ-5N9" id="OZw-0N-DTL"/>
                         <outlet property="passwordConfirmationSecureButton" destination="TuE-hR-DD0" id="zQF-yY-Tnx"/>
                         <outlet property="passwordConfirmationTextField" destination="VJy-FT-IPP" id="H7B-zu-yHG"/>
+                        <outlet property="passwordLabel" destination="MhI-wU-cZa" id="T7H-Om-6Qg"/>
                         <outlet property="passwordSecureButton" destination="2yc-xT-gBp" id="AbK-W9-UAj"/>
                         <outlet property="passwordTextField" destination="4zx-Mw-kMb" id="QcO-c6-zO4"/>
                         <outlet property="signUpButton" destination="unj-IW-pzZ" id="r5t-G2-cs2"/>

@@ -11,8 +11,11 @@ import UIKit
 
 final class ResetingPasswordViewController: UIViewController {
     
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var mailAddressLabel: UILabel!
     @IBOutlet private weak var mailAddressTextField: UITextField!
     @IBOutlet private weak var sendButton: CustomButton!
+    @IBOutlet private weak var detailLabel: UILabel!
     @IBOutlet private weak var stackViewTopConstraint: NSLayoutConstraint!
     
     private var userUseCase = UserUseCase(
@@ -26,6 +29,9 @@ final class ResetingPasswordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupTitleLabel()
+        setupMailAddressLabel()
+        setupDetailLabel()
         setupSendButton()
         setupMailAddressTextField()
         setupKeyboardObserver()
@@ -98,12 +104,25 @@ private extension ResetingPasswordViewController {
     func setupSendButton() {
         sendButton.layer.cornerRadius = 10
         changeSendButtonState(isEnabled: false)
+        sendButton.setTitle(LocalizeKey.send.localizedString())
     }
     
     func setupMailAddressTextField() {
         mailAddressTextField.delegate = self
         mailAddressTextField.keyboardType = .emailAddress
         mailAddressTextField.setUnderLine()
+    }
+    
+    func setupTitleLabel() {
+        titleLabel.text = LocalizeKey.passwordForgotTitle.localizedString()
+    }
+    
+    func setupMailAddressLabel() {
+        mailAddressLabel.text = LocalizeKey.mailAddress.localizedString()
+    }
+    
+    func setupDetailLabel() {
+        detailLabel.text = LocalizeKey.passwordForgotDetail.localizedString()
     }
     
     func setupKeyboardObserver() {

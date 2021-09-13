@@ -14,9 +14,12 @@ protocol SignUpVCDelegate: AnyObject {
 final class SignUpViewController: UIViewController {
     
     @IBOutlet private weak var stackView: UIStackView!
+    @IBOutlet private weak var mailAddressLabel: UILabel!
     @IBOutlet private weak var mailAddressTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
+    @IBOutlet private weak var passwordLabel: UILabel!
     @IBOutlet private weak var passwordSecureButton: UIButton!
+    @IBOutlet private weak var passwordConfirmationLabel: UILabel!
     @IBOutlet private weak var passwordConfirmationTextField: UITextField!
     @IBOutlet private weak var passwordConfirmationSecureButton: UIButton!
     @IBOutlet private weak var signUpButton: CustomButton!
@@ -43,6 +46,9 @@ final class SignUpViewController: UIViewController {
         setupPasswordSecureButton()
         setupPasswordConfirmationSecureButton()
         setupSignUpButton()
+        setupMailAddressLabel()
+        setupPasswordLabel()
+        setupPasswordConfirmationLabel()
         setupKeyboardObserver()
         
     }
@@ -83,11 +89,11 @@ private extension SignUpViewController {
               let password = passwordTextField.text,
               let passwordConfirmation = passwordConfirmationTextField.text else { return }
         if CommunicationStatus().unstable() {
-            showErrorAlert(title: "通信環境が良くありません")
+            showErrorAlert(title: LocalizeKey.communicationEnvironmentIsNotGood.localizedString())
             return
         }
         if password != passwordConfirmation {
-            showErrorAlert(title: "パスワードが一致しません")
+            showErrorAlert(title: LocalizeKey.passwordsDoNotMatch.localizedString())
             return
         }
         indicator.show(.progress)
@@ -213,6 +219,18 @@ private extension SignUpViewController {
     func setupSignUpButton() {
         signUpButton.layer.cornerRadius = 10
         changeSignUpButtonState(isEnabled: false)
+    }
+    
+    func setupMailAddressLabel() {
+        mailAddressLabel.text = LocalizeKey.mailAddress.localizedString()
+    }
+    
+    func setupPasswordLabel() {
+        passwordLabel.text = LocalizeKey.password.localizedString()
+    }
+    
+    func setupPasswordConfirmationLabel() {
+        passwordConfirmationLabel.text = LocalizeKey.passwordConfirmation.localizedString()
     }
     
     func setupKeyboardObserver() {

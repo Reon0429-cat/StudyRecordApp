@@ -65,6 +65,23 @@ enum LocalizeKey: String {
     case edit
     case completion
     
+    case login
+    case signUp
+    
+    case mailAddress
+    case password
+    case passwordConfirmation
+    case passwordForgot
+    case here
+    
+    case communicationEnvironmentIsNotGood
+    
+    case passwordsDoNotMatch
+    
+    case send
+    case passwordForgotDetail
+    case passwordForgotTitle
+    
     
     
     

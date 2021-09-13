@@ -130,11 +130,13 @@ private extension LoginAndSignUpViewController {
     func setupLoginButton() {
         loginButton.layer.cornerRadius = cornerRadiusConstant
         loginButton.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        loginButton.setTitle(LocalizeKey.login.localizedString())
     }
     
     func setupSignUpButton() {
         signUpButton.layer.cornerRadius = cornerRadiusConstant
         signUpButton.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        signUpButton.setTitle(LocalizeKey.signUp.localizedString())
     }
     
 }
