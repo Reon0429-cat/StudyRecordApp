@@ -128,7 +128,7 @@ extension StudyRecordSortViewController: SubCustomNavigationBarDelegate {
     }
     
     var navTitle: String {
-        return "並び替え"
+        return LocalizeKey.Sort.localizedString()
     }
     
 }

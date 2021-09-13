@@ -144,14 +144,14 @@ extension StudyRecordViewController: RecordTableViewCellDelegate {
     }
     
     func deleteButtonDidTappped(row: Int) {
-        let alert = Alert.create(title: "本当に削除しますか")
-            .addAction(title: "削除", style: .destructive) {
+        let alert = Alert.create(title: LocalizeKey.doYouReallyWantToDeleteThis.localizedString())
+            .addAction(title: LocalizeKey.delete.localizedString(), style: .destructive) {
                 self.recordUseCase.delete(at: row)
                 self.tableView.reloadData()
                 self.delegate?.deleteButtonDidTappped(records: self.records)
                 self.dismiss(animated: true)
             }
-            .addAction(title: "閉じる") {
+            .addAction(title: LocalizeKey.close.localizedString()) {
                 self.dismiss(animated: true)
             }
         present(alert, animated: true)

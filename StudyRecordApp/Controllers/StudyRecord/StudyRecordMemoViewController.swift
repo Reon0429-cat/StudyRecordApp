@@ -13,6 +13,9 @@ protocol StudyRecordMemoVCDelegate: AnyObject {
 
 final class StudyRecordMemoViewController: UIViewController {
     
+    @IBOutlet private weak var dismissButton: UIButton!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var decisionButton: UIButton!
     @IBOutlet private weak var baseView: UIView!
     @IBOutlet private weak var textView: UITextView!
     
@@ -25,6 +28,9 @@ final class StudyRecordMemoViewController: UIViewController {
         
         setupTextView()
         setupBaseView()
+        setupTitleLabel()
+        setupDidmissButton()
+        setupDecisionButton()
         oldInputtedMemo = inputtedMemo
         
     }
@@ -53,11 +59,11 @@ private extension StudyRecordMemoViewController {
 private extension StudyRecordMemoViewController {
     
     func showAlert() {
-        let alert = Alert.create(title: "保存せずにメモを閉じますか")
-            .addAction(title: "閉じる", style: .destructive) {
+        let alert = Alert.create(title: LocalizeKey.doYouWantToCloseTheNoteWithoutSaving.localizedString())
+            .addAction(title: LocalizeKey.close.localizedString(), style: .destructive) {
                 self.dismiss(animated: true)
             }
-            .addAction(title: "保存する") {
+            .addAction(title: LocalizeKey.save.localizedString()) {
                 self.delegate?.savedMemo(memo: self.inputtedMemo)
                 self.dismiss(animated: true)
             }
@@ -90,6 +96,18 @@ private extension StudyRecordMemoViewController {
     
     func setupBaseView() {
         baseView.layer.cornerRadius = 10
+    }
+    
+    func setupDidmissButton() {
+        dismissButton.setTitle(LocalizeKey.close.localizedString())
+    }
+    
+    func setupTitleLabel() {
+        titleLabel.text = LocalizeKey.graphColor.localizedString()
+    }
+    
+    func setupDecisionButton() {
+        decisionButton.setTitle(LocalizeKey.decision.localizedString())
     }
     
 }

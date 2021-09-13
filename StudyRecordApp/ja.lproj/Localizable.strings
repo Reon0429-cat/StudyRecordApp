@@ -63,7 +63,21 @@
 "save" = "保存";
 "close" = "閉じる";
 "edit" = "編集";
+"Edit" = "編集";
 "completion" = "完了";
+"delete" = "削除";
+"title" = "タイトル";
+"Title" = "タイトル";
+"add" = "追加";
+"Add" = "追加";
+"memo" = "メモ";
+"Memo" = "メモ";
+"graphColor" = "グラフカラー";
+"decision" = "決定";
+"Sort" = "並び替え";
+"discard" = "破棄する";
+"recordTime" = "時間を記録する";
+"send" = "送信";
 
 "login" = "ログイン";
 "signUp" = "サインアップ";
@@ -75,22 +89,39 @@
 "here" = "こちら";
 
 "communicationEnvironmentIsNotGood" = "通信環境が良くありません";
-
 "passwordsDoNotMatch" = "パスワードが一致しません";
-
-"send" = "送信";
-"passwordForgotDetail" = "上記のメールアドレスにパスワード
-再設定用のURLを送信します。";
+"passwordForgotDetail" = "上記のメールアドレスにパスワード\n再設定用のURLを送信します。";
 "passwordForgotTitle" = "パスワードをお忘れの場合";
+"doYouWantToCloseTheNoteWithoutSaving" = "保存せずにメモを閉じますか";
+"doYouReallyWantToDeleteThis" = "本当に削除しますか";
+"doYouWantToCloseWithoutSaving" = "保存せずに閉じますか";
+"doYouWantToDiscardYourEdits" = "編集内容を破棄しますか？";
+"moreThan24Hours" = "%1$@年%2$@%3$@日の記録時間が24時間以上です。";
 
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
+"january" = "1月";
+"february" = "2月";
+"march" = "3月";
+"april" = "4月";
+"may" = "5月";
+"june" = "6月";
+"july" = "7月";
+"august" = "8月";
+"september" = "9月";
+"october" = "10月";
+"november" = "11月";
+"december" = "12月";
+
+"category" = "カテゴリ";
+"Category" = "カテゴリ";
+"simple" = "シンプル";
+"priority" = "優先度";
+"dueDate" = "期日";
+"createdDate" = "作成日";
+"photo" = "写真";
+"takeAPhoto" = "写真を撮る";
+"selectFromLibrary" = "ライブラリから選択する";
+"deletePhoto" = "写真を削除する";
+
 "" = "";
 "" = "";
 "" = "";

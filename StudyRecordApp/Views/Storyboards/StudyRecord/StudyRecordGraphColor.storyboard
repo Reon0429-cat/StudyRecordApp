@@ -82,8 +82,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="decisionButton" destination="6mD-gX-e3L" id="Lvn-Sd-4KY"/>
+                        <outlet property="dismissButton" destination="2oh-FR-9Cx" id="d2g-Pi-mOf"/>
                         <outlet property="graphColorTileView" destination="HfY-uk-yVf" id="Pmz-te-UaI"/>
                         <outlet property="graphColorView" destination="cr2-82-OhB" id="clc-Wj-5Pc"/>
+                        <outlet property="titleLabel" destination="ho8-97-egC" id="rvN-0C-S1B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

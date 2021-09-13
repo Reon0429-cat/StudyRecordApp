@@ -13,6 +13,9 @@ protocol StudyRecordGraphColorVCDelegate: AnyObject {
 
 final class StudyRecordGraphColorViewController: UIViewController {
     
+    @IBOutlet private weak var dismissButton: UIButton!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var decisionButton: UIButton!
     @IBOutlet private weak var graphColorView: UIView!
     @IBOutlet private weak var graphColorTileView: GraphColorTileView!
     
@@ -24,6 +27,10 @@ final class StudyRecordGraphColorViewController: UIViewController {
         
         setupGraphColorView()
         setupGraphColorTileView()
+        setupDidmissButton()
+        setupTitleLabel()
+        setupDidmissButton()
+        setupDecisionButton()
         
     }
     
@@ -78,6 +85,18 @@ private extension StudyRecordGraphColorViewController {
     
     func setupGraphColorTileView() {
         graphColorTileView.delegate = self
+    }
+    
+    func setupDidmissButton() {
+        dismissButton.setTitle(LocalizeKey.close.localizedString())
+    }
+    
+    func setupTitleLabel() {
+        titleLabel.text = LocalizeKey.graphColor.localizedString()
+    }
+    
+    func setupDecisionButton() {
+        decisionButton.setTitle(LocalizeKey.decision.localizedString())
     }
     
 }

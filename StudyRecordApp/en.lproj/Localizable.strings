@@ -63,7 +63,20 @@
 "save" = "save";
 "close" = "close";
 "edit" = "edit";
+"Edit" = "Edit";
 "completion" = "completion";
+"title" = "title";
+"Title" = "Title";
+"add" = "add";
+"Add" = "Add";
+"memo" = "memo";
+"Memo" = "Memo";
+"graphColor" = "Graph Color";
+"Sort" = "Sort";
+"send" = "Send";
+"delete" = "delete";
+"decision" = "decision";
+"discard" = "Discard";
 
 "login" = "Login";
 "signUp" = "SignUp";
@@ -76,27 +89,40 @@
 
 "communicationEnvironmentIsNotGood" = "Communication environment is not good";
 "passwordsDoNotMatch" = "Passwords do not match";
-
-"send" = "Send";
-"passwordForgotDetail" = "Password to the above email address
-Send the URL for resetting.";
+"passwordForgotDetail" = "Password to the above email address\nSend the URL for resetting.";
 "passwordForgotTitle" = "If you forget your password";
+"doYouReallyWantToDeleteThis" = "Do you really want to delete this";
+"doYouWantToCloseWithoutSaving" = "Do you want to close without saving";
+"doYouWantToDiscardYourEdits" = "Do you want to discard your edits?";
+"doYouWantToCloseTheNoteWithoutSaving" = "Do you want to close the note without saving";
+"recordTime" = "Record time";
+"moreThan24Hours" = "The recording time on %2$@ %3$@, %1$@ will be more than 24 hours.";
 
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
+"january" = "January";
+"february" = "February";
+"march" = "March";
+"april" = "April";
+"may" = "May";
+"june" = "June";
+"july" = "July";
+"august" = "August";
+"september" = "September";
+"october" = "October";
+"november" = "November";
+"december" = "December";
+"category" = "category";
+"Category" = "Category";
+"simple" = "simple";
+
+"priority" = "Priority";
+"dueDate" = "Due Date";
+"createdDate" = "Created Date";
+"photo" = "Photo";
+"takeAPhoto" = "Take a photo";
+"selectFromLibrary" = "Select from library";
+"deletePhoto" = "Delete photo";
+
+
 "" = "";
 "" = "";
 "" = "";

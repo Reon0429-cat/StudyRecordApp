@@ -64,11 +64,12 @@ private extension AdditionalStudyRecordViewController {
     }
     
     func showAlert() {
-        let alert = Alert.create(title: "保存せずに閉じますか")
-            .addAction(title: "閉じる", style: .destructive) {
+        let alert = Alert.create(title: LocalizeKey.doYouWantToCloseWithoutSaving.localizedString())
+            .addAction(title: LocalizeKey.close.localizedString(),
+                       style: .destructive) {
                 self.dismiss(animated: true)
             }
-            .addAction(title: "保存する") {
+            .addAction(title: LocalizeKey.save.localizedString()) {
                 self.saveRecord()
                 self.dismiss(animated: true)
             }
@@ -76,15 +77,16 @@ private extension AdditionalStudyRecordViewController {
     }
     
     func showAlertWithTextField() {
-        let alert = Alert.create(title: "タイトル")
+        let alert = Alert.create(title: LocalizeKey.Title.localizedString())
             .setTextField { textField in
                 textField.text = self.inputtedTitle
                 textField.delegate = self
             }
-            .addAction(title: "閉じる", style: .destructive) {
+            .addAction(title: LocalizeKey.close.localizedString(),
+                       style: .destructive) {
                 self.inputtedTitle = self.oldInputtedTitle
             }
-            .addAction(title: "追加") {
+            .addAction(title: LocalizeKey.add.localizedString()) {
                 self.oldInputtedTitle = self.inputtedTitle
                 self.tableView.reloadData()
             }
@@ -152,7 +154,9 @@ extension AdditionalStudyRecordViewController: UITableViewDataSource {
         switch cellType {
             case .title:
                 let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
-                cell.configure(titleText: "タイトル", mandatoryIsHidden: false, auxiliaryText: inputtedTitle)
+                cell.configure(titleText: LocalizeKey.Title.localizedString(),
+                               mandatoryIsHidden: false,
+                               auxiliaryText: inputtedTitle)
                 return cell
             case .graphColor:
                 let cell = tableView.dequeueReusableCustomCell(with: StudyRecordGraphColorTableViewCell.self)
@@ -160,7 +164,9 @@ extension AdditionalStudyRecordViewController: UITableViewDataSource {
                 return cell
             case .memo:
                 let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
-                cell.configure(titleText: "メモ", mandatoryIsHidden: true, auxiliaryText: inputtedMemo)
+                cell.configure(titleText: LocalizeKey.Memo.localizedString(),
+                               mandatoryIsHidden: true,
+                               auxiliaryText: inputtedMemo)
                 return cell
         }
     }
@@ -215,7 +221,7 @@ extension AdditionalStudyRecordViewController: SubCustomNavigationBarDelegate {
     }
     
     var navTitle: String {
-        return "追加"
+        return LocalizeKey.Add.localizedString()
     }
     
 }
