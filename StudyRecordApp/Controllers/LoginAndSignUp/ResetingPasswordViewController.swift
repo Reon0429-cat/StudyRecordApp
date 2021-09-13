@@ -12,8 +12,9 @@ import UIKit
 final class ResetingPasswordViewController: UIViewController {
     
     @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var mailAddressImage: UIImageView!
     @IBOutlet private weak var mailAddressLabel: UILabel!
-    @IBOutlet private weak var mailAddressTextField: UITextField!
+    @IBOutlet private weak var mailAddressTextField: CustomTextField!
     @IBOutlet private weak var sendButton: CustomButton!
     @IBOutlet private weak var detailLabel: UILabel!
     @IBOutlet private weak var stackViewTopConstraint: NSLayoutConstraint!
@@ -31,11 +32,16 @@ final class ResetingPasswordViewController: UIViewController {
         
         setupTitleLabel()
         setupMailAddressLabel()
+        setupMailAddressImage()
         setupDetailLabel()
-        setupSendButton()
         setupMailAddressTextField()
         setupKeyboardObserver()
+        setupSendButton()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>,
@@ -102,7 +108,6 @@ extension ResetingPasswordViewController: UITextFieldDelegate {
 private extension ResetingPasswordViewController {
     
     func setupSendButton() {
-        sendButton.layer.cornerRadius = 10
         changeSendButtonState(isEnabled: false)
         sendButton.setTitle(LocalizeKey.send.localizedString())
     }
@@ -119,6 +124,11 @@ private extension ResetingPasswordViewController {
     
     func setupMailAddressLabel() {
         mailAddressLabel.text = LocalizeKey.mailAddress.localizedString()
+    }
+    
+    func setupMailAddressImage() {
+        guard let image = UIImage(systemName: "envelope") else { return }
+        mailAddressImage.image = image.setColor(.dynamicColor(light: .black, dark: .white))
     }
     
     func setupDetailLabel() {

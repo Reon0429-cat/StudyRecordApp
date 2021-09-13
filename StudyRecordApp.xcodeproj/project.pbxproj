@@ -30,6 +30,7 @@
 		AB0C76C026EE9B4600BF5B64 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C76BF26EE9B4600BF5B64 /* CustomButton.swift */; };
 		AB0C76CC26EEA8C500BF5B64 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AB0C76CE26EEA8C500BF5B64 /* Localizable.strings */; };
 		AB0C76D526EEAF0100BF5B64 /* LocalizeKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C76D426EEAF0100BF5B64 /* LocalizeKey.swift */; };
+		AB0C76D726EFE38A00BF5B64 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C76D626EFE38A00BF5B64 /* CustomTextField.swift */; };
 		AB13ECD626B7AEA3002F56FF /* ColorChoicesConcept.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13ECD526B7AEA3002F56FF /* ColorChoicesConcept.storyboard */; };
 		AB13ECD826B7AF27002F56FF /* ColorChoicesTile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13ECD726B7AF27002F56FF /* ColorChoicesTile.storyboard */; };
 		AB13ECDA26B7AF6F002F56FF /* ColorChoicesSlider.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13ECD926B7AF6F002F56FF /* ColorChoicesSlider.storyboard */; };
@@ -198,6 +199,7 @@
 		AB0C76CD26EEA8C500BF5B64 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AB0C76CF26EEA8D200BF5B64 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AB0C76D426EEAF0100BF5B64 /* LocalizeKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizeKey.swift; sourceTree = "<group>"; };
+		AB0C76D626EFE38A00BF5B64 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		AB13ECD526B7AEA3002F56FF /* ColorChoicesConcept.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ColorChoicesConcept.storyboard; sourceTree = "<group>"; };
 		AB13ECD726B7AF27002F56FF /* ColorChoicesTile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ColorChoicesTile.storyboard; sourceTree = "<group>"; };
 		AB13ECD926B7AF6F002F56FF /* ColorChoicesSlider.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ColorChoicesSlider.storyboard; sourceTree = "<group>"; };
@@ -487,6 +489,7 @@
 				AB20F81326E809A200564B14 /* CustomSwitch.swift */,
 				AB20F81526E80E1900564B14 /* CustomSlider.swift */,
 				AB0C76BF26EE9B4600BF5B64 /* CustomButton.swift */,
+				AB0C76D626EFE38A00BF5B64 /* CustomTextField.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -1015,6 +1018,7 @@
 				AB0C76D526EEAF0100BF5B64 /* LocalizeKey.swift in Sources */,
 				AB2B5B9F26A2D1B7009BD3C7 /* OverseasConcept.swift in Sources */,
 				AB13EE6626CAC98A002F56FF /* ScreenType.swift in Sources */,
+				AB0C76D726EFE38A00BF5B64 /* CustomTextField.swift in Sources */,
 				AB13EDE026C64EBB002F56FF /* CustomTitleTableViewCell.swift in Sources */,
 				ABFAB21426E67A2E0095EC20 /* Alert.swift in Sources */,
 				AB0C76C026EE9B4600BF5B64 /* CustomButton.swift in Sources */,

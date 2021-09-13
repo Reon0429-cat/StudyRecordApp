@@ -14,13 +14,16 @@ protocol SignUpVCDelegate: AnyObject {
 final class SignUpViewController: UIViewController {
     
     @IBOutlet private weak var stackView: UIStackView!
+    @IBOutlet private weak var mailAddressImage: UIImageView!
     @IBOutlet private weak var mailAddressLabel: UILabel!
-    @IBOutlet private weak var mailAddressTextField: UITextField!
-    @IBOutlet private weak var passwordTextField: UITextField!
+    @IBOutlet private weak var mailAddressTextField: CustomTextField!
+    @IBOutlet private weak var passwordTextField: CustomTextField!
+    @IBOutlet private weak var passwordImage: UIImageView!
     @IBOutlet private weak var passwordLabel: UILabel!
     @IBOutlet private weak var passwordSecureButton: UIButton!
+    @IBOutlet private weak var passwordConfirmationImage: UIImageView!
     @IBOutlet private weak var passwordConfirmationLabel: UILabel!
-    @IBOutlet private weak var passwordConfirmationTextField: UITextField!
+    @IBOutlet private weak var passwordConfirmationTextField: CustomTextField!
     @IBOutlet private weak var passwordConfirmationSecureButton: UIButton!
     @IBOutlet private weak var signUpButton: CustomButton!
     @IBOutlet private weak var signUpButtonTopConstraint: NSLayoutConstraint!
@@ -47,18 +50,14 @@ final class SignUpViewController: UIViewController {
         setupPasswordConfirmationSecureButton()
         setupSignUpButton()
         setupMailAddressLabel()
+        setupMailAddressImage()
         setupPasswordLabel()
+        setupPasswordImage()
         setupPasswordConfirmationLabel()
+        setupPasswordConfirmationImage()
         setupKeyboardObserver()
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        mailAddressTextField.setUnderLine()
-        passwordTextField.setUnderLine()
-        passwordConfirmationTextField.setUnderLine()
+        self.view.backgroundColor = .dynamicColor(light: .white,
+                                                  dark: .secondarySystemBackground)
         
     }
     
@@ -210,10 +209,12 @@ private extension SignUpViewController {
     
     func setupPasswordSecureButton() {
         changePasswordSecureButtonImage(isSlash: false)
+        passwordSecureButton.tintColor = .dynamicColor(light: .black, dark: .white)
     }
     
     func setupPasswordConfirmationSecureButton() {
         changePasswordConfirmationSecureButtonImage(isSlash: false)
+        passwordConfirmationSecureButton.tintColor = .dynamicColor(light: .black, dark: .white)
     }
     
     func setupSignUpButton() {
@@ -224,14 +225,32 @@ private extension SignUpViewController {
     
     func setupMailAddressLabel() {
         mailAddressLabel.text = LocalizeKey.mailAddress.localizedString()
+        mailAddressLabel.textColor = .dynamicColor(light: .black, dark: .white)
+    }
+    
+    func setupMailAddressImage() {
+        guard let image = UIImage(systemName: "envelope") else { return }
+        mailAddressImage.image = image.setColor(.dynamicColor(light: .black, dark: .white))
     }
     
     func setupPasswordLabel() {
         passwordLabel.text = LocalizeKey.password.localizedString()
+        passwordLabel.textColor = .dynamicColor(light: .black, dark: .white)
+    }
+    
+    func setupPasswordImage() {
+        guard let image = UIImage(systemName: "lock") else { return }
+        passwordImage.image = image.setColor(.dynamicColor(light: .black, dark: .white))
     }
     
     func setupPasswordConfirmationLabel() {
         passwordConfirmationLabel.text = LocalizeKey.passwordConfirmation.localizedString()
+        passwordConfirmationLabel.textColor = .dynamicColor(light: .black, dark: .white)
+    }
+    
+    func setupPasswordConfirmationImage() {
+        guard let image = UIImage(systemName: "lock") else { return }
+        passwordConfirmationImage.image = image.setColor(.dynamicColor(light: .black, dark: .white))
     }
     
     func setupKeyboardObserver() {

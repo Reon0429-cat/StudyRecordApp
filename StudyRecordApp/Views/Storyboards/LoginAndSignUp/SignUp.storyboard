@@ -32,7 +32,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AVF-2V-ebq">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AVF-2V-ebq" customClass="CustomTextField" customModule="StudyRecordApp" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="30" width="314" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -48,7 +48,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4zx-Mw-kMb">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4zx-Mw-kMb" customClass="CustomTextField" customModule="StudyRecordApp" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="30" width="314" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -64,7 +64,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VJy-FT-IPP">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VJy-FT-IPP" customClass="CustomTextField" customModule="StudyRecordApp" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="30" width="314" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -160,11 +160,14 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="mailAddressImage" destination="xan-pL-kZd" id="GYy-h1-B0t"/>
                         <outlet property="mailAddressLabel" destination="mVY-Qg-5YY" id="txG-qi-Vdl"/>
                         <outlet property="mailAddressTextField" destination="AVF-2V-ebq" id="fuF-oj-bjY"/>
+                        <outlet property="passwordConfirmationImage" destination="a9k-bA-YKK" id="f9Y-Ve-fIu"/>
                         <outlet property="passwordConfirmationLabel" destination="nC5-EJ-5N9" id="OZw-0N-DTL"/>
                         <outlet property="passwordConfirmationSecureButton" destination="TuE-hR-DD0" id="zQF-yY-Tnx"/>
                         <outlet property="passwordConfirmationTextField" destination="VJy-FT-IPP" id="H7B-zu-yHG"/>
+                        <outlet property="passwordImage" destination="KDq-eX-Hdg" id="aoI-Ph-th1"/>
                         <outlet property="passwordLabel" destination="MhI-wU-cZa" id="T7H-Om-6Qg"/>
                         <outlet property="passwordSecureButton" destination="2yc-xT-gBp" id="AbK-W9-UAj"/>
                         <outlet property="passwordTextField" destination="4zx-Mw-kMb" id="QcO-c6-zO4"/>

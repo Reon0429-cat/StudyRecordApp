@@ -24,7 +24,8 @@ final class CustomButton: UIButton {
     }
     
     func setup() {
-        setGradation()
+        setGradation(colors: [.gray, .black],
+                     locations: [0.1, 0.9])
         layer.cornerRadius = 10
     }
     

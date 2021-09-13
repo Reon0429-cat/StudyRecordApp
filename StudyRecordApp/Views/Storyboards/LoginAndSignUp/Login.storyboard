@@ -32,7 +32,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S80-2s-Ve2">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S80-2s-Ve2" customClass="CustomTextField" customModule="StudyRecordApp" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="30" width="314" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -48,7 +48,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fy8-UG-gHq">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fy8-UG-gHq" customClass="CustomTextField" customModule="StudyRecordApp" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="30" width="314" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -152,10 +152,12 @@
                     </view>
                     <connections>
                         <outlet property="loginButton" destination="jTw-3S-5KP" id="GKu-Ia-MIl"/>
+                        <outlet property="mailAddressImage" destination="E1T-9B-WQm" id="TeJ-IJ-pP2"/>
                         <outlet property="mailAddressLabel" destination="YJL-yu-W81" id="zvt-Sh-Oac"/>
                         <outlet property="mailAddressTextField" destination="S80-2s-Ve2" id="ZiO-Q9-7s6"/>
                         <outlet property="passwordForgotButton" destination="EYA-AQ-VMN" id="uvd-KU-NoC"/>
                         <outlet property="passwordForgotLabel" destination="sTT-7f-ND3" id="vpT-fl-ubT"/>
+                        <outlet property="passwordImage" destination="oit-PF-ZG4" id="NO2-Ln-BC0"/>
                         <outlet property="passwordLabel" destination="euz-71-knd" id="IaL-f6-Oqa"/>
                         <outlet property="passwordSecureButton" destination="gbF-C3-DJA" id="cpY-l1-t77"/>
                         <outlet property="passwordTextField" destination="Fy8-UG-gHq" id="xY8-An-dZN"/>

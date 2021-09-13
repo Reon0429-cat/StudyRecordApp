@@ -96,15 +96,15 @@ private extension LoginAndSignUpViewController {
     func setToggleViewColor() {
         switch viewType {
             case .login:
-                loginButton.backgroundColor = .white
-                signUpButton.backgroundColor = .clear
-                loginButton.tintColor = .black
-                signUpButton.tintColor = .gray
+                loginButton.backgroundColor = .dynamicColor(light: .white, dark: .secondarySystemBackground)
+                signUpButton.backgroundColor = .dynamicColor(light: .clear, dark: .clear)
+                loginButton.tintColor = .dynamicColor(light: .black, dark: .white)
+                signUpButton.tintColor = .dynamicColor(light: .gray, dark: .gray)
             case .signUp:
-                loginButton.backgroundColor = .clear
-                signUpButton.backgroundColor = .white
-                loginButton.tintColor = .gray
-                signUpButton.tintColor = .black
+                loginButton.backgroundColor = .dynamicColor(light: .clear, dark: .clear)
+                signUpButton.backgroundColor = .dynamicColor(light: .white, dark: .secondarySystemBackground)
+                loginButton.tintColor = .dynamicColor(light: .gray, dark: .gray)
+                signUpButton.tintColor = .dynamicColor(light: .black, dark: .white)
         }
     }
     
@@ -165,12 +165,15 @@ private extension LoginAndSignUpViewController {
         loginButton.layer.cornerRadius = cornerRadiusConstant
         loginButton.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         loginButton.setTitle(LocalizeKey.login.localizedString())
+        loginButton.backgroundColor = .dynamicColor(light: .white,
+                                                    dark: .secondarySystemBackground)
     }
     
     func setupSignUpButton() {
         signUpButton.layer.cornerRadius = cornerRadiusConstant
         signUpButton.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         signUpButton.setTitle(LocalizeKey.signUp.localizedString())
+        signUpButton.backgroundColor = .clear
     }
     
 }
