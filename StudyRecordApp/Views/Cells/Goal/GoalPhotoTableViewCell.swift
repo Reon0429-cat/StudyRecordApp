@@ -15,14 +15,9 @@ final class GoalPhotoTableViewCell: UITableViewCell {
     
     func configure(title: String, image: UIImage?) {
         titleLabel.text = title
-        
-        if image == nil {
-            unselectedLabel.isHidden = false
-            photoImageView.image = nil
-        } else {
-            unselectedLabel.isHidden = true
-            photoImageView.image = image
-        }
+        photoImageView.image = image
+        unselectedLabel.text = LocalizeKey.unselected.localizedString()
+        unselectedLabel.isHidden = image != nil
         unselectedLabel.layer.cornerRadius = 10
         unselectedLabel.layer.borderWidth = 0.5
         unselectedLabel.layer.borderColor = UIColor.gray.cgColor

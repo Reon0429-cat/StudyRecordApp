@@ -167,15 +167,16 @@ enum LocalizeKey: String {
     case changePasscode
     
     case mandatory
+    case unselected
     
     case hour
     case minute
     case total
-    
     case shortHour
     case shortMinute
     
-    
+    case thereIsNoData
+    case graphDataIsNotRegistered
     
     
     

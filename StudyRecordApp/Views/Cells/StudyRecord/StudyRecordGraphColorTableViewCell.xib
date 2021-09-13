@@ -75,6 +75,7 @@
             <connections>
                 <outlet property="graphColorView" destination="yBE-kM-0ed" id="mod-0Z-hR9"/>
                 <outlet property="mandatoryLabel" destination="2F9-ws-4Iv" id="pTx-AQ-gcI"/>
+                <outlet property="titleLabel" destination="EVI-V5-Vsa" id="9M4-nZ-nd3"/>
                 <outlet property="unselectedLabel" destination="jW5-PK-wbL" id="MvV-rh-az8"/>
             </connections>
             <point key="canvasLocation" x="178.98550724637681" y="124.88839285714285"/>

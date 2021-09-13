@@ -9,6 +9,7 @@ import UIKit
 
 final class StudyRecordGraphColorTableViewCell: UITableViewCell {
     
+    @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var graphColorView: UIView!
     @IBOutlet private weak var unselectedLabel: UILabel!
     @IBOutlet private weak var mandatoryLabel: UILabel!
@@ -32,11 +33,10 @@ final class StudyRecordGraphColorTableViewCell: UITableViewCell {
             && color.greenValue == 1.0
             && color.blueValue == 1.0
             && color.alphaValue == 1.0
-        if isWhite {
-            unselectedLabel.isHidden = false
-        } else {
-            unselectedLabel.isHidden = true
-        }
+        unselectedLabel.isHidden = !isWhite
+        unselectedLabel.text = LocalizeKey.unselected.localizedString()
+        mandatoryLabel.text = LocalizeKey.mandatory.localizedString()
+        titleLabel.text = LocalizeKey.graphColor.localizedString()
     }
     
 }

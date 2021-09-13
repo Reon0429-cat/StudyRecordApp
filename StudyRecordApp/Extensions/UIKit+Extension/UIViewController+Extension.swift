@@ -51,7 +51,8 @@ extension UIViewController {
     
     func showErrorAlert(title: String, message: String? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "閉じる", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: LocalizeKey.close.localizedString(),
+                                      style: .default))
         present(alert, animated: true)
     }
     

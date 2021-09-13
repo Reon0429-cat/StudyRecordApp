@@ -178,6 +178,7 @@
 "changePasscode" = "Change passcode";
 
 "mandatory" = "mandatory";
+"unselected" = "unselected";
 
 "hour" = "hour";
 "minute" = "minute";
@@ -185,8 +186,8 @@
 "shortHour" = "h";
 "shortMinute" = "m";
 
-"" = "";
-"" = "";
+"thereIsNoData" = "there is no data";
+"graphDataIsNotRegistered" = "Graph data is not registered";
 "" = "";
 "" = "";
 "" = "";

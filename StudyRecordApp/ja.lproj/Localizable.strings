@@ -179,6 +179,7 @@
 "changePasscode" = "パスコードを変更";
 
 "mandatory" = "必須";
+"unselected" = "未選択";
 
 "hour" = "時間";
 "minute" = "分";
@@ -186,8 +187,8 @@
 "shortHour" = "分";
 "shortMinute" = "時間";
 
-"" = "";
-"" = "";
+"thereIsNoData" = "データがありません";
+"graphDataIsNotRegistered" = "グラフデータが登録されていません";
 "" = "";
 "" = "";
 "" = "";
