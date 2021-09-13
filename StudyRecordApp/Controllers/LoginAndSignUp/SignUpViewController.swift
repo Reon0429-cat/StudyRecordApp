@@ -218,6 +218,7 @@ private extension SignUpViewController {
     
     func setupSignUpButton() {
         signUpButton.layer.cornerRadius = 10
+        signUpButton.setTitle(LocalizeKey.signUp.localizedString())
         changeSignUpButtonState(isEnabled: false)
     }
     
