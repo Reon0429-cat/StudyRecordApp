@@ -64,6 +64,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addButton" destination="cHw-gE-9TX" id="Kn1-7c-zMH"/>
                         <outlet property="contentView" destination="ubk-xT-TfJ" id="GsB-c2-awO"/>
                         <outlet property="pickerView" destination="J2F-xZ-f21" id="dtJ-5C-Tlm"/>
                         <outlet property="segmentedControl" destination="BYL-No-bro" id="sxJ-vS-8ks"/>

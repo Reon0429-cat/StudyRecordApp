@@ -113,7 +113,7 @@ enum LocalizeKey: String {
     case takeAPhoto
     case selectFromLibrary
     case deletePhoto
-    
+    case today
     
     
     

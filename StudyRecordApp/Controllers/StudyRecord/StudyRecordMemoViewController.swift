@@ -103,7 +103,7 @@ private extension StudyRecordMemoViewController {
     }
     
     func setupTitleLabel() {
-        titleLabel.text = LocalizeKey.graphColor.localizedString()
+        titleLabel.text = LocalizeKey.Memo.localizedString()
     }
     
     func setupDecisionButton() {

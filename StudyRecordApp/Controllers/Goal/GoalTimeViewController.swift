@@ -16,6 +16,8 @@ protocol GoalTimeVCDelegate: AnyObject {
     func saveButtonDidTapped(date: Date, dateType: GoalDateType)
 }
 
+// MARK: - ToDo ローカライズする
+
 final class GoalTimeViewController: UIViewController {
     
     @IBOutlet private weak var pickerView: UIPickerView!
@@ -65,6 +67,9 @@ final class GoalTimeViewController: UIViewController {
         super.viewDidLoad()
         
         setupPickerView()
+        setupTodayButton()
+        setupSaveButton()
+        setupDismissButton()
         
     }
     
@@ -177,6 +182,18 @@ private extension GoalTimeViewController {
         selectingRowsAndComponents.forEach {
             pickerView.selectRow($0.row, inComponent: $0.component, animated: true)
         }
+    }
+    
+    func setupTodayButton() {
+        todayButton.setTitle(LocalizeKey.today.localizedString())
+    }
+    
+    func setupSaveButton() {
+        saveButton.setTitle(LocalizeKey.save.localizedString())
+    }
+    
+    func setupDismissButton() {
+        dismissButton.setTitle(LocalizeKey.close.localizedString())
     }
     
 }
