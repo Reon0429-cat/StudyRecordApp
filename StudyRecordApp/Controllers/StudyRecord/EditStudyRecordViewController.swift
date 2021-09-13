@@ -64,6 +64,7 @@ private extension EditStudyRecordViewController {
         oldInputtedTitle = selectedRecord.title
         let alert = Alert.create(title: LocalizeKey.Title.localizedString())
             .setTextField { textField in
+                textField.tintColor = .dynamicColor(light: .black, dark: .white)
                 textField.text = self.selectedRecord.title
                 textField.delegate = self
             }
@@ -234,7 +235,7 @@ extension EditStudyRecordViewController: StudyRecordGraphColorVCDelegate {
     
     func graphColorDidSelected(color: UIColor) {
         selectedRecord.graphColor = GraphColor(color: color)
-        subCustomNavigationBar.saveButton(isEnabled: color != .white)
+        subCustomNavigationBar.saveButton(isEnabled: color != .clear)
         tableView.reloadData()
     }
     

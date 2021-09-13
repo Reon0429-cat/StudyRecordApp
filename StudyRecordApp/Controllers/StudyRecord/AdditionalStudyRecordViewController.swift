@@ -26,10 +26,10 @@ final class AdditionalStudyRecordViewController: UIViewController {
     )
     private var inputtedTitle = ""
     private var oldInputtedTitle = ""
-    private var selectedGraphColor: UIColor = .white
+    private var selectedGraphColor: UIColor = .clear
     private var inputtedMemo = ""
     private var isMandatoryItemFilled: Bool {
-        !inputtedTitle.isEmpty && selectedGraphColor != .white
+        !inputtedTitle.isEmpty && selectedGraphColor != .clear
     }
     
     override func viewDidLoad() {
@@ -79,6 +79,7 @@ private extension AdditionalStudyRecordViewController {
     func showAlertWithTextField() {
         let alert = Alert.create(title: LocalizeKey.Title.localizedString())
             .setTextField { textField in
+                textField.tintColor = .dynamicColor(light: .black, dark: .white)
                 textField.text = self.inputtedTitle
                 textField.delegate = self
             }

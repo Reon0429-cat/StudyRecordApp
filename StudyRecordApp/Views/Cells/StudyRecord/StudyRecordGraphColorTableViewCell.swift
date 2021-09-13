@@ -21,22 +21,35 @@ final class StudyRecordGraphColorTableViewCell: UITableViewCell {
         
     }
     
-    private func setupGraphColor() {
-        graphColorView.layer.cornerRadius = 10
-        graphColorView.layer.borderWidth = 0.5
-        graphColorView.layer.borderColor = UIColor.gray.cgColor
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        guard let traitCollection = previousTraitCollection else { return }
+        if traitCollection.hasDifferentColorAppearance(comparedTo: self.traitCollection) {
+            setupBorderColor()
+        }
     }
     
     func configure(color: UIColor) {
         graphColorView.backgroundColor = color
-        let isWhite = color.redValue == 1.0
-            && color.greenValue == 1.0
-            && color.blueValue == 1.0
-            && color.alphaValue == 1.0
-        unselectedLabel.isHidden = !isWhite
+        unselectedLabel.isHidden = color.alphaValue != 0
+        unselectedLabel.textColor = .dynamicColor(light: .black, dark: .white)
         unselectedLabel.text = LocalizeKey.unselected.localizedString()
         mandatoryLabel.text = LocalizeKey.mandatory.localizedString()
         titleLabel.text = LocalizeKey.graphColor.localizedString()
+    }
+    
+}
+
+// MARK: - setup
+private extension StudyRecordGraphColorTableViewCell {
+    
+    func setupGraphColor() {
+        graphColorView.layer.cornerRadius = 10
+        graphColorView.layer.borderWidth = 0.5
+        setupBorderColor()
+    }
+    
+    func setupBorderColor() {
+        graphColorView.layer.borderColor = UIColor.dynamicColor(light: .black, dark: .white).cgColor
     }
     
 }
