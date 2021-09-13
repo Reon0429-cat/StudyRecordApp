@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bIv-uz-tFw">
-                                <rect key="frame" x="0.0" y="114" width="414" height="748"/>
+                                <rect key="frame" x="0.0" y="114" width="414" height="782"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="epS-Lu-8du" customClass="WaveView" customModule="StudyRecordApp" customModuleProvider="target">
@@ -42,12 +42,12 @@
                             <constraint firstAttribute="bottom" secondItem="epS-Lu-8du" secondAttribute="bottom" constant="40" id="1IL-Xm-F11"/>
                             <constraint firstItem="xaM-j7-Oo3" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="3Pb-yI-3SQ"/>
                             <constraint firstItem="xaM-j7-Oo3" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="CRg-Fq-TAd"/>
+                            <constraint firstAttribute="bottom" secondItem="bIv-uz-tFw" secondAttribute="bottom" id="Ev3-st-F2H"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="xaM-j7-Oo3" secondAttribute="trailing" id="PXL-uC-PCz"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="bIv-uz-tFw" secondAttribute="trailing" id="S23-fF-pWb"/>
                             <constraint firstItem="epS-Lu-8du" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="-5" id="Zd3-P1-KGQ"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="epS-Lu-8du" secondAttribute="trailing" constant="-5" id="bub-EP-c4X"/>
                             <constraint firstItem="bIv-uz-tFw" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="gdw-UV-rx7"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="bIv-uz-tFw" secondAttribute="bottom" id="hHy-Fm-c5I"/>
                             <constraint firstItem="bIv-uz-tFw" firstAttribute="top" secondItem="xaM-j7-Oo3" secondAttribute="bottom" id="l11-sw-4kb"/>
                         </constraints>
                     </view>

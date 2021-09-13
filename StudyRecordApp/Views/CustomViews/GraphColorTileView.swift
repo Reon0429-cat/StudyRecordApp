@@ -26,6 +26,8 @@ final class GraphColorTileView: UIView {
         
         loadNib()
         setupTileViews()
+        tileStackView.backgroundColor = .dynamicColor(light: .white,
+                                                      dark: .systemGroupedBackground)
         
     }
     
