@@ -13,6 +13,7 @@ protocol GraphVCDelegate: ScreenPresentationDelegate {
 
 final class GraphViewController: UIViewController {
     
+    @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var registerButton: CustomButton!
     
@@ -31,6 +32,8 @@ final class GraphViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupRegisterButton()
+        setupDescriptionLabel()
         setupTableView()
         setObserver()
         
@@ -160,6 +163,14 @@ private extension GraphViewController {
         tableView.dataSource = self
         tableView.registerCustomCell(GraphTableViewCell.self)
         tableView.tableFooterView = UIView()
+    }
+    
+    func setupRegisterButton() {
+        registerButton.setTitle(LocalizeKey.Register.localizedString())
+    }
+    
+    func setupDescriptionLabel() {
+        descriptionLabel.text = LocalizeKey.recordedDataIsNotRegistered.localizedString()
     }
     
 }

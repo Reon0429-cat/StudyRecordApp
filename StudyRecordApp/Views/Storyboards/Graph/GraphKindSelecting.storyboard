@@ -244,11 +244,20 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addDotsLabel" destination="dib-vA-Iv7" id="Sqr-WP-nuO"/>
+                        <outlet property="addDotsNotLabel" destination="DgC-yz-Cch" id="v2z-1a-hz5"/>
                         <outlet property="addDotsSwitch" destination="Xk9-iq-15h" id="XB9-3e-A6c"/>
                         <outlet property="contentView" destination="lCr-qa-LeZ" id="3jP-Oy-Ksc"/>
+                        <outlet property="dotShapeCircleLabel" destination="P0z-Xk-R8O" id="Cdc-fH-xhm"/>
+                        <outlet property="dotShapeSquareLabel" destination="P43-i5-CA1" id="cxW-9p-U7W"/>
                         <outlet property="dotShapeSwitch" destination="taz-3Z-Fyf" id="ASs-DU-SSP"/>
+                        <outlet property="fillAreaLabel" destination="dm2-Zv-bG3" id="ngE-Fk-ybK"/>
+                        <outlet property="fillAreaNotLabel" destination="Jag-x2-gPI" id="aT8-iv-Vh3"/>
                         <outlet property="fillAreaSwitch" destination="y6d-T1-Kqd" id="cYZ-bf-pjI"/>
+                        <outlet property="lineShapeSmoothLabel" destination="5K3-nE-cqR" id="xjb-kn-VdZ"/>
+                        <outlet property="lineShapeStraightLabel" destination="F0F-0S-A4f" id="uFw-dT-mrL"/>
                         <outlet property="lineShapeSwitch" destination="ig5-Rf-pN5" id="eqi-MO-hdv"/>
+                        <outlet property="saveButton" destination="7G7-oi-Mrn" id="sGm-sl-DqH"/>
                         <outlet property="segmentedControl" destination="L0G-qn-hIK" id="yCS-uF-N66"/>
                         <outlet property="sliderLabel" destination="snk-4q-WgS" id="XMW-da-LLD"/>
                         <outlet property="stackView" destination="YAb-5i-HEQ" id="ZbU-c1-2W2"/>

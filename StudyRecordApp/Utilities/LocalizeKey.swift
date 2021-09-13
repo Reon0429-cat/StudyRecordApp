@@ -114,7 +114,19 @@ enum LocalizeKey: String {
     case selectFromLibrary
     case deletePhoto
     case today
-    
+    case recordedDataIsNotRegistered
+    case Register
+    case Line
+    case Bar
+    case Dot
+    case straight
+    case smooth
+    case notFill
+    case fill
+    case addNotDot
+    case addDot
+    case circleDot
+    case squareDot
     
     
     

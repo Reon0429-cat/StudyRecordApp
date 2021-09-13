@@ -123,8 +123,22 @@
 "deletePhoto" = "写真を削除する";
 
 "today" = "今日";
-"" = "";
-"" = "";
+"recordedDataIsNotRegistered" = "記録データが\n登録されていません";
+"Register" = "登録";
+
+"Line" = "ライン";
+"Bar" = "バー";
+"Dot" = "ドット";
+
+"straight" = "直線";
+"smooth" = "なめらか";
+"notFill" = "塗りつぶさない";
+"fill" = "塗りつぶす";
+"addNotDot" = "ドットをつけない";
+"addDot" = "ドットをつける";
+"circleDot" = "丸いドット";
+"squareDot" = "四角いドット";
+
 "" = "";
 "" = "";
 "" = "";

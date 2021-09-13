@@ -59,6 +59,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="descriptionLabel" destination="tf6-df-FbL" id="uMO-Vn-xud"/>
                         <outlet property="registerButton" destination="t5h-VA-sUh" id="nc4-hj-edq"/>
                         <outlet property="tableView" destination="zX2-YS-CfG" id="jro-v7-8XI"/>
                     </connections>

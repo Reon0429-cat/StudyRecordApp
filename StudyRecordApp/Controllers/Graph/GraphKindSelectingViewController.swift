@@ -14,9 +14,9 @@ enum SelectedGraphType: Int, CaseIterable {
     
     var title: String {
         switch self {
-            case .line: return "ライン"
-            case .bar: return "バー"
-            case .dot: return "ドット"
+            case .line: return LocalizeKey.Line.localizedString()
+            case .bar: return LocalizeKey.Bar.localizedString()
+            case .dot: return LocalizeKey.Dot.localizedString()
         }
     }
     var stackViewSubViewTypes: [StackViewSubViewType] {
@@ -41,6 +41,15 @@ enum StackViewSubViewType: CaseIterable {
 final class GraphKindSelectingViewController: UIViewController {
     
     @IBOutlet private weak var contentView: UIView!
+    @IBOutlet private weak var saveButton: UIButton!
+    @IBOutlet private weak var lineShapeStraightLabel: UILabel!
+    @IBOutlet private weak var lineShapeSmoothLabel: UILabel!
+    @IBOutlet private weak var fillAreaNotLabel: UILabel!
+    @IBOutlet private weak var fillAreaLabel: UILabel!
+    @IBOutlet private weak var addDotsNotLabel: UILabel!
+    @IBOutlet private weak var addDotsLabel: UILabel!
+    @IBOutlet private weak var dotShapeCircleLabel: UILabel!
+    @IBOutlet private weak var dotShapeSquareLabel: UILabel!
     @IBOutlet private weak var segmentedControl: CustomSegmentedControl!
     @IBOutlet private weak var stackView: UIStackView!
     @IBOutlet private weak var lineShapeSwitch: CustomSwitch!
@@ -70,6 +79,8 @@ final class GraphKindSelectingViewController: UIViewController {
         isSquare = graphUseCase.graph.dot.isSquare
         width = graphUseCase.graph.bar.width
         
+        setupLabels()
+        setupSaveButton()
         setupSegmentedControl()
         setupStackView()
         setupSlider()
@@ -160,6 +171,21 @@ private extension GraphKindSelectingViewController {
         let index = graphUseCase.graph.selectedType.rawValue
         filterStackView(index: index)
         segmentedControl.selectedSegmentIndex = index
+    }
+    
+    func setupLabels() {
+        lineShapeStraightLabel.text = LocalizeKey.straight.localizedString()
+        lineShapeSmoothLabel.text = LocalizeKey.smooth.localizedString()
+        fillAreaNotLabel.text = LocalizeKey.notFill.localizedString()
+        fillAreaLabel.text = LocalizeKey.fill.localizedString()
+        addDotsNotLabel.text = LocalizeKey.addNotDot.localizedString()
+        addDotsLabel.text = LocalizeKey.addDot.localizedString()
+        dotShapeCircleLabel.text = LocalizeKey.circleDot.localizedString()
+        dotShapeSquareLabel.text = LocalizeKey.squareDot.localizedString()
+    }
+    
+    func setupSaveButton() {
+        saveButton.setTitle(LocalizeKey.save.localizedString())
     }
     
     func setupSwitch() {

@@ -123,28 +123,46 @@
 "deletePhoto" = "Delete photo";
 "today" = "Today";
 
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
+"recordedDataIsNotRegistered" = "Recorded data is not registered.";
+"Register" = "Register";
 
+"Line" = "Line";
+"Bar" = "Bar";
+"Dot" = "Dot";
+
+"straight" = "Straight line";
+"smooth" = "Smooth";
+"notFill" = "Do not fill";
+"fill" = "Fill";
+"addNotDot" = "Do not add dotsAdd dots";
+"addDot" = "Add dots";
+"circleDot" = "Round dots";
+"squareDot" = "Square dot";
+
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
 
 
 
