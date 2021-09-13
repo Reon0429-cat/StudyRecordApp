@@ -139,32 +139,82 @@
 "circleDot" = "Round dots";
 "squareDot" = "Square dot";
 
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
+"themeColor" = "Theme Color";
+"darkMode" = "Dark Mode";
+"passcode" = "Passcode";
+"pushNotification" = "Push Notification";
+"multilingual" = "Multilingual";
+"howToUseApp" = "How To Use App";
+"evaluationApp" = "Evaluation App";
+"shareApp" = "Share App";
+"reports" = "Reports";
+"backup" = "Backup";
+"privacyPolicy" = "Privacy policy";
+"logout" = "Logout";
 
+"areYouSureYouWantToLogOut" = "Are you sure you want to log out?";
+"default" = "default";
+"custom" = "custom";
+"recommendation" = "recommendation";
+"yes" = "Yes";
+"no" = "No";
+"doYouWantTheDefaultColor" = "Do you want the default color?";
 
+"main" = "Main";
+"sub" = "Sub";
+"accent" = "Accent";
+"tile" = "tile";
+"slider" = "slider";
+
+"certification" = "Certification";
+"create" = "Create";
+"change" = "Change";
+
+"oneTimeLeft" = "1 time left";
+"twoTimeLeft" = "2 time left";
+
+"pleaseEnterANewPasscode" = "Please enter a new passcode";
+"pleaseEnterYourCurrentPasscode" = "Please enter your current passcode";
+"changePasscode" = "Change passcode";
+
+"mandatory" = "mandatory";
+
+"hour" = "hour";
+"minute" = "minute";
+"total" = "Total";
+"shortHour" = "h";
+"shortMinute" = "m";
+
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
 
 
 

@@ -18,6 +18,7 @@ final class CustomTitleTableViewCell: UITableViewCell {
                    auxiliaryText: String = "") {
         titleLabel.text = titleText
         mandatoryLabel.isHidden = mandatoryIsHidden
+        mandatoryLabel.text = LocalizeKey.mandatory.localizedString()
         auxiliaryLabel.text = auxiliaryText
     }
     

@@ -139,17 +139,53 @@
 "circleDot" = "丸いドット";
 "squareDot" = "四角いドット";
 
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
-"" = "";
+"themeColor" = "テーマカラー";
+"darkMode" = "ダークモード";
+"passcode" = "パスコード";
+"pushNotification" = "プッシュ通知";
+"multilingual" = "言語";
+"howToUseApp" = "アプリの使い方";
+"evaluationApp" = "アプリを評価する";
+"shareApp" = "アプリを共有する";
+"reports" = "ご意見、ご要望、不具合の報告";
+"backup" = "バックアップ";
+"privacyPolicy" = "プライバシーポリシー";
+"logout" = "ログアウト";
+
+"areYouSureYouWantToLogOut" = "本当にログアウトしてもよろしいですか";
+
+"default" = "デフォルト";
+"custom" = "カスタム";
+"recommendation" = "オススメ";
+"yes" = "はい";
+"no" = "いいえ";
+
+"doYouWantTheDefaultColor" = "デフォルトカラーにしますか？";
+
+"main" = "メイン";
+"sub" = "サブ";
+"accent" = "アクセント";
+"tile" = "タイル";
+"slider" = "スライダー";
+
+"certification" = "認証";
+"create" = "作成";
+"change" = "変更";
+
+"oneTimeLeft" = "残り１回";
+"twoTimeLeft" = "残り２回";
+"pleaseEnterANewPasscode" = "新しいパスコードを\n入力してください";
+"pleaseEnterYourCurrentPasscode" = "現在のパスコードを\n入力してください";
+"changePasscode" = "パスコードを変更";
+
+"mandatory" = "必須";
+
+"hour" = "時間";
+"minute" = "分";
+"total" = "合計";
+"shortHour" = "分";
+"shortMinute" = "時間";
+
 "" = "";
 "" = "";
 "" = "";

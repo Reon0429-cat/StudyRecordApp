@@ -9,17 +9,21 @@ import UIKit
 import AudioToolbox
 
 enum PasscodeMode {
-    case authentication
+    case certification
     case create
     case change
-    case changeAuthentication
+    case changeCertification
     
     var title: String {
         switch self {
-            case .authentication: return "認証"
-            case .create: return "作成"
-            case .change: return "変更"
-            case .changeAuthentication: return "認証"
+            case .certification:
+                return LocalizeKey.certification.localizedString()
+            case .create:
+                return LocalizeKey.create.localizedString()
+            case .change:
+                return LocalizeKey.change.localizedString()
+            case .changeCertification:
+                return LocalizeKey.certification.localizedString()
         }
     }
 } 
@@ -62,7 +66,7 @@ private extension PasscodeViewController {
     @IBAction func changePasscodeButtonDidTapped(_ sender: Any) {
         present(PasscodeViewController.self,
                 modalPresentationStyle: .fullScreen) { vc in
-            vc.passcodeMode = .changeAuthentication
+            vc.passcodeMode = .changeCertification
         }
     }
     
@@ -71,7 +75,7 @@ private extension PasscodeViewController {
 // MARK: - func
 private extension PasscodeViewController {
     
-    func validateAuthentication(inputState: PasscodeInputState) {
+    func validateCertification(inputState: PasscodeInputState) {
         switch inputState {
             case .first(let oncePasscode):
                 if settingUseCase.isSame(passcode: oncePasscode) {
@@ -103,7 +107,7 @@ private extension PasscodeViewController {
         switch inputState {
             case .first:
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                    self.passcodeView.changeInputLabelText("残り１回")
+                    self.passcodeView.changeInputLabelText(LocalizeKey.oneTimeLeft.localizedString())
                 }
             case .confirmation(let oncePasscode, let twicePasscode):
                 if oncePasscode == twicePasscode {
@@ -113,8 +117,8 @@ private extension PasscodeViewController {
                     }
                 } else {
                     setVibration()
-                    showErrorAlert(title: "パスコードが一致しません")
-                    passcodeView.changeInputLabelText("残り２回")
+                    showErrorAlert(title: LocalizeKey.passwordsDoNotMatch.localizedString())
+                    passcodeView.changeInputLabelText(LocalizeKey.twoTimeLeft.localizedString())
                 }
         }
     }
@@ -123,7 +127,7 @@ private extension PasscodeViewController {
         switch inputState {
             case .first:
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                    self.passcodeView.changeInputLabelText("残り１回")
+                    self.passcodeView.changeInputLabelText(LocalizeKey.oneTimeLeft.localizedString())
                 }
             case .confirmation(let oncePasscode, let twicePasscode):
                 if oncePasscode == twicePasscode {
@@ -133,13 +137,13 @@ private extension PasscodeViewController {
                     }
                 } else {
                     setVibration()
-                    showErrorAlert(title: "パスコードが一致しません")
-                    passcodeView.changeInputLabelText("新しいパスコードを\n入力してください")
+                    showErrorAlert(title: LocalizeKey.passwordsDoNotMatch.localizedString())
+                    passcodeView.changeInputLabelText(LocalizeKey.pleaseEnterANewPasscode.localizedString())
                 }
         }
     }
     
-    func validateChangeAuthentication(inputState: PasscodeInputState) {
+    func validateChangeCertification(inputState: PasscodeInputState) {
         switch inputState {
             case .first(let oncePasscode):
                 if settingUseCase.isSame(passcode: oncePasscode) {
@@ -152,7 +156,7 @@ private extension PasscodeViewController {
                 } else {
                     setVibration()
                     indicator.flash(.error) {
-                        self.passcodeView.changeInputLabelText("現在のパスコードを\n入力してください")
+                        self.passcodeView.changeInputLabelText(LocalizeKey.pleaseEnterYourCurrentPasscode.localizedString())
                     }
                 }
             case .confirmation(_, let twicePasscode):
@@ -166,7 +170,7 @@ private extension PasscodeViewController {
                 } else {
                     setVibration()
                     indicator.flash(.error) {
-                        self.passcodeView.changeInputLabelText("現在のパスコードを\n入力してください")
+                        self.passcodeView.changeInputLabelText(LocalizeKey.pleaseEnterYourCurrentPasscode.localizedString())
                     }
                 }
         }
@@ -183,14 +187,14 @@ extension PasscodeViewController: PasscodeViewDelegate {
     
     func input(inputState: PasscodeInputState) {
         switch passcodeMode {
-            case .authentication:
-                validateAuthentication(inputState: inputState)
+            case .certification:
+                validateCertification(inputState: inputState)
             case .create:
                 validateCreate(inputState: inputState)
             case .change:
                 validateChange(inputState: inputState)
-            case .changeAuthentication:
-                validateChangeAuthentication(inputState: inputState)
+            case .changeCertification:
+                validateChangeCertification(inputState: inputState)
         }
     }
     
@@ -203,13 +207,13 @@ extension PasscodeViewController: SubCustomNavigationBarDelegate {
     
     func dismissButtonDidTapped() {
         switch passcodeMode {
-            case .authentication:
+            case .certification:
                 settingUseCase.change(isPasscodeSetted: true)
             case .create:
                 settingUseCase.change(isPasscodeSetted: false)
             case .change:
                 settingUseCase.change(isPasscodeSetted: true)
-            case .changeAuthentication:
+            case .changeCertification:
                 settingUseCase.change(isPasscodeSetted: true)
         }
         dismiss(animated: true)
@@ -234,22 +238,23 @@ private extension PasscodeViewController {
     }
     
     func setup() {
+        changePasscodeButton.setTitle(LocalizeKey.changePasscode.localizedString())
         switch passcodeMode {
-            case .authentication:
+            case .certification:
                 passcodeView.changeInputLabelText("")
                 subCustomNavigationBar.dismissButton(isHidden: true)
                 changePasscodeButton.isHidden = false
             case .create:
-                passcodeView.changeInputLabelText("残り２回")
+                passcodeView.changeInputLabelText(LocalizeKey.twoTimeLeft.localizedString())
                 
                 subCustomNavigationBar.dismissButton(isHidden: false)
                 changePasscodeButton.isHidden = true
             case .change:
-                passcodeView.changeInputLabelText("新しいパスコードを\n入力してください")
+                passcodeView.changeInputLabelText(LocalizeKey.pleaseEnterANewPasscode.localizedString())
                 subCustomNavigationBar.dismissButton(isHidden: false)
                 changePasscodeButton.isHidden = true
-            case .changeAuthentication:
-                passcodeView.changeInputLabelText("現在のパスコードを\n入力してください")
+            case .changeCertification:
+                passcodeView.changeInputLabelText(LocalizeKey.pleaseEnterYourCurrentPasscode.localizedString())
                 subCustomNavigationBar.dismissButton(isHidden: false)
                 changePasscodeButton.isHidden = true
         }

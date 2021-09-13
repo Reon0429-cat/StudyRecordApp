@@ -23,18 +23,30 @@ private enum RowType: Int, CaseIterable {
     
     var title: String {
         switch self {
-            case .themeColor: return "テーマカラー"
-            case .darkMode: return "ダークモード"
-            case .passcode: return "パスコード"
-            case .pushNotification: return "プッシュ通知"
-            case .multilingual: return "言語"
-            case .howToUseApp: return "アプリの使い方"
-            case .evaluationApp: return "アプリを評価する"
-            case .shareApp: return "アプリを共有する"
-            case .reports: return "ご意見、ご要望、不具合の報告"
-            case .backup: return "バックアップ"
-            case .privacyPolicy: return "プライバシーポリシー"
-            case .logout: return "ログアウト"
+            case .themeColor:
+                return LocalizeKey.themeColor.localizedString()
+            case .darkMode:
+                return LocalizeKey.darkMode.localizedString()
+            case .passcode:
+                return LocalizeKey.passcode.localizedString()
+            case .pushNotification:
+                return LocalizeKey.pushNotification.localizedString()
+            case .multilingual:
+                return LocalizeKey.multilingual.localizedString()
+            case .howToUseApp:
+                return LocalizeKey.howToUseApp.localizedString()
+            case .evaluationApp:
+                return LocalizeKey.evaluationApp.localizedString()
+            case .shareApp:
+                return LocalizeKey.shareApp.localizedString()
+            case .reports:
+                return LocalizeKey.reports.localizedString()
+            case .backup:
+                return LocalizeKey.backup.localizedString()
+            case .privacyPolicy:
+                return LocalizeKey.privacyPolicy.localizedString()
+            case .logout:
+                return LocalizeKey.logout.localizedString()
                 
         }
     }
@@ -82,8 +94,9 @@ final class SettingViewController: UIViewController {
 private extension SettingViewController {
     
     func presentLogoutAlert() {
-        let alert = Alert.create(title: "本当にログアウトしてもよろしいですか")
-            .addAction(title: "ログアウト", style: .destructive) {
+        let alert = Alert.create(title: LocalizeKey.areYouSureYouWantToLogOut.localizedString())
+            .addAction(title: LocalizeKey.logout.localizedString(),
+                       style: .destructive) {
                 self.indicator.show(.progress)
                 self.userUseCase.logout { result in
                     switch result {
@@ -98,7 +111,7 @@ private extension SettingViewController {
                     }
                 }
             }
-            .addAction(title: "閉じる")
+            .addAction(title: LocalizeKey.close.localizedString())
         present(alert, animated: true)
     }
     
@@ -113,29 +126,30 @@ private extension SettingViewController {
     
     func presentThemeColorActionSheet() {
         let alert = Alert.create(preferredStyle: .alert)
-            .addAction(title: "デフォルト") {
+            .addAction(title: LocalizeKey.default.localizedString()) {
                 self.presentDefaultAlert()
             }
-            .addAction(title: "カスタム") {
+            .addAction(title: LocalizeKey.custom.localizedString()) {
                 self.present(ThemeColorViewController.self,
                              modalPresentationStyle: .fullScreen) { vc in
                     vc.colorConcept = nil
                     vc.containerType = .tile
-                    vc.navigationTitle = "カスタム"
+                    vc.navigationTitle = LocalizeKey.custom.localizedString()
                 }
             }
-            .addAction(title: "オススメ") {
+            .addAction(title: LocalizeKey.recommendation.localizedString()) {
                 self.present(ColorConceptViewController.self,
                              modalPresentationStyle: .fullScreen)
             }
-            .addAction(title: "閉じる", style: .cancel)
+            .addAction(title: LocalizeKey.close.localizedString(),
+                       style: .cancel)
         present(alert, animated: true)
     }
     
     func presentDefaultAlert() {
-        let alert = Alert.create(title: "デフォルトカラーにしますか？")
-            .addAction(title: "いいえ")
-            .addAction(title: "はい") {
+        let alert = Alert.create(title: LocalizeKey.doYouWantTheDefaultColor.localizedString())
+            .addAction(title: LocalizeKey.no.localizedString())
+            .addAction(title: LocalizeKey.yes.localizedString()) {
                 UserDefaults.standard.save(color: nil, .main)
                 UserDefaults.standard.save(color: nil, .sub)
                 UserDefaults.standard.save(color: nil, .accent)

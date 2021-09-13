@@ -31,7 +31,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if userUseCase.isLoggedIn {
             if settingUseCase.setting.isPasscodeSetted {
                 window.setRootVC(PasscodeViewController.self) { vc in
-                    vc.passcodeMode = .authentication
+                    vc.passcodeMode = .certification
                 }
             } else {
                 window.setRootVC(TopViewController.self)
@@ -45,7 +45,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if userUseCase.isLoggedIn {
             if settingUseCase.setting.isPasscodeSetted {
                 self.window?.setRootVC(PasscodeViewController.self) { vc in
-                    vc.passcodeMode = .authentication
+                    vc.passcodeMode = .certification
                 }
             }
         } else {

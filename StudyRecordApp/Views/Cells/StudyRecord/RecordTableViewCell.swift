@@ -30,8 +30,8 @@ final class RecordTableViewCell: UITableViewCell {
         case shrinked
         var title: String {
             switch self {
-                case .expanded: return "▲ メモ"
-                case .shrinked: return "▼ メモ"
+                case .expanded: return "▲ " + LocalizeKey.memo.localizedString()
+                case .shrinked: return "▼ " + LocalizeKey.memo.localizedString()
             }
         }
         mutating func toggle() {
@@ -82,6 +82,7 @@ final class RecordTableViewCell: UITableViewCell {
     }
     
     private func isToday(_ history: History) -> Bool {
+        // MARK: - ToDo ローカライズする
         let historyDate = "\(history.year)年\(history.month)月\(history.day)日"
         let today = Converter.convertToString(from: Date(), format: "yyyy年M月d日")
         return historyDate == today
@@ -127,6 +128,10 @@ private extension RecordTableViewCell {
     }
     
     func setupTimeLabel(record: Record) {
+        let todayText = LocalizeKey.today.localizedString()
+        let hourText = LocalizeKey.shortHour.localizedString()
+        let minuteText = LocalizeKey.shortMinute.localizedString()
+        let totalText = LocalizeKey.total.localizedString()
         var today: Int = {
             record.histories?.forEach { history in
                 if isToday(history) {
@@ -137,9 +142,9 @@ private extension RecordTableViewCell {
         }()
         todayStudyTimeLabel.text = {
             if today >= 60 {
-                return "今日: \(today / 60)時間"
+                return todayText + ": " + "\(today / 60) " + hourText
             }
-            return "今日: \(today)分"
+            return todayText + ": " + "\(today / 60) " + minuteText
         }()
         var total: Int = {
             record.histories?.forEach { history in
@@ -149,9 +154,9 @@ private extension RecordTableViewCell {
         }()
         totalStudyTimeLabel.text = {
             if total >= 60 {
-                return "合計: \(total / 60)時間"
+                return totalText + ": " + "\(total / 60) " + hourText
             }
-            return "合計: \(total)分"
+            return totalText + ": " + "\(total / 60) " + minuteText
         }()
     }
     

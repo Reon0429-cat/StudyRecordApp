@@ -128,6 +128,60 @@ enum LocalizeKey: String {
     case circleDot
     case squareDot
     
+    case themeColor
+    case darkMode
+    case passcode
+    case pushNotification
+    case multilingual
+    case howToUseApp
+    case evaluationApp
+    case shareApp
+    case reports
+    case backup
+    case privacyPolicy
+    case logout
+    
+    case areYouSureYouWantToLogOut
+    
+    case `default`
+    case custom
+    case recommendation
+    case yes
+    case no
+    case doYouWantTheDefaultColor
+    
+    case main
+    case sub
+    case accent
+    case tile
+    case slider
+    
+    case certification
+    case create
+    case change
+    
+    case oneTimeLeft
+    case twoTimeLeft
+    case pleaseEnterANewPasscode
+    case pleaseEnterYourCurrentPasscode
+    case changePasscode
+    
+    case mandatory
+    
+    case hour
+    case minute
+    case total
+    
+    case shortHour
+    case shortMinute
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
