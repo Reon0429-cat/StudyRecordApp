@@ -52,6 +52,9 @@ private enum RowType: Int, CaseIterable {
     }
 }
 
+// MARK: - ToDo 言語を日本語と英語で切り替えられるように
+// MARK: - ToDo アニメーション付きでダークモードを切り替えられるように
+
 protocol SettingVCDelegate: ScreenPresentationDelegate {
     
 }

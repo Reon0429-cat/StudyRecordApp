@@ -59,6 +59,13 @@ final class LoginAndSignUpViewController: UIViewController {
         }
     }
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        guard let traitCollection = previousTraitCollection else { return }
+        if traitCollection.hasDifferentColorAppearance(comparedTo: self.traitCollection) {
+            setBaseViewLayerColor()
+        }
+    }
+    
 }
 
 // MARK: - IBAction func
@@ -118,25 +125,13 @@ private extension LoginAndSignUpViewController {
         }
     }
     
-}
-
-// MARK: - setup
-private extension LoginAndSignUpViewController {
-    
-    func setupBaseView() {
-        baseView.setShadow(radius: 5, opacity: 0.6, size: (width: 3, height: 3))
-    }
-    
-    func setupLoginButton() {
-        loginButton.layer.cornerRadius = cornerRadiusConstant
-        loginButton.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        loginButton.setTitle(LocalizeKey.login.localizedString())
-    }
-    
-    func setupSignUpButton() {
-        signUpButton.layer.cornerRadius = cornerRadiusConstant
-        signUpButton.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        signUpButton.setTitle(LocalizeKey.signUp.localizedString())
+    func setBaseViewLayerColor() {
+        baseView.setShadow(color: .dynamicColor(light: .black,
+                                                dark: .white),
+                           radius: 5,
+                           opacity: 0.6,
+                           size: (width: 3,
+                                  height: 3))
     }
     
 }
@@ -159,3 +154,23 @@ extension LoginAndSignUpViewController: SignUpVCDelegate {
     
 }
 
+// MARK: - setup
+private extension LoginAndSignUpViewController {
+    
+    func setupBaseView() {
+        setBaseViewLayerColor()
+    }
+    
+    func setupLoginButton() {
+        loginButton.layer.cornerRadius = cornerRadiusConstant
+        loginButton.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        loginButton.setTitle(LocalizeKey.login.localizedString())
+    }
+    
+    func setupSignUpButton() {
+        signUpButton.layer.cornerRadius = cornerRadiusConstant
+        signUpButton.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        signUpButton.setTitle(LocalizeKey.signUp.localizedString())
+    }
+    
+}
