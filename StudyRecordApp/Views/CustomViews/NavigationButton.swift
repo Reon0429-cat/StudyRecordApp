@@ -15,10 +15,14 @@ enum NavigationButtonType {
     
     var title: String {
         switch self {
-            case .save: return "保存"
-            case .dismiss: return "閉じる"
-            case .edit: return "編集"
-            case .completion: return "完了"
+            case .save:
+                return LocalizeKey.save.localizedString()
+            case .dismiss:
+                return LocalizeKey.close.localizedString()
+            case .edit:
+                return LocalizeKey.edit.localizedString()
+            case .completion:
+                return LocalizeKey.completion.localizedString()
         }
     }
 }
@@ -37,8 +41,6 @@ final class NavigationButton: UIButton {
         didSet {
             if let type = type {
                 titleButton.setTitle(type.title)
-            } else {
-                fatalError("typeを設定していない")
             }
         }
     }
@@ -46,8 +48,6 @@ final class NavigationButton: UIButton {
     @IBAction private func titleButtonDidTapped(_ sender: Any) {
         if let type = type {
             delegate?.titleButtonDidTapped(type: type)
-        } else {
-            fatalError("typeを設定していない")
         }
     }
     

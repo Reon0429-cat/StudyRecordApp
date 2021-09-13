@@ -60,8 +60,10 @@ enum LocalizeKey: String {
     case digital
     case shop
     
-    
-    
+    case save
+    case close
+    case edit
+    case completion
     
     
     

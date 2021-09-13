@@ -60,8 +60,11 @@
 "digital" = "Digital";
 "shop" = "Shop";
 
-"" = "";
-"" = "";
+"save" = "save";
+"close" = "close";
+"edit" = "edit";
+"completion" = "completion";
+
 "" = "";
 "" = "";
 "" = "";
