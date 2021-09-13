@@ -22,10 +22,14 @@ enum ScreenType: Int, CaseIterable {
     
     var title: String {
         switch self {
-            case .record: return "記録"
-            case .graph: return "グラフ"
-            case .goal: return "目標"
-            case .setting: return "設定"
+            case .record:
+                return LocalizeKey.record.localizedString()
+            case .graph:
+                return LocalizeKey.graph.localizedString()
+            case .goal:
+                return LocalizeKey.goal.localizedString()
+            case .setting:
+                return LocalizeKey.setting.localizedString()
         }
     }
 }

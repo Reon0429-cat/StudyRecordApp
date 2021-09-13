@@ -23,13 +23,20 @@ final class AdditionalGoalViewController: UIViewController {
         
         var title: String {
             switch self {
-                case .title: return "タイトル"
-                case .category: return "カテゴリー"
-                case .memo: return "メモ"
-                case .priority: return "優先度"
-                case .dueDate: return "期日"
-                case .createdDate: return "作成日"
-                case .photo: return "写真"
+                case .title:
+                    return LocalizeKey.Title.localizedString()
+                case .category:
+                    return LocalizeKey.Category.localizedString()
+                case .memo:
+                    return LocalizeKey.Memo.localizedString()
+                case .priority:
+                    return LocalizeKey.Priority.localizedString()
+                case .dueDate:
+                    return LocalizeKey.dueDate.localizedString()
+                case .createdDate:
+                    return LocalizeKey.createdDate.localizedString()
+                case .photo:
+                    return LocalizeKey.photo.localizedString()
             }
         }
     }
@@ -77,15 +84,16 @@ final class AdditionalGoalViewController: UIViewController {
 private extension AdditionalGoalViewController {
     
     func showAlertWithTextField() {
-        let alert = Alert.create(title: "タイトル")
+        let alert = Alert.create(title: LocalizeKey.Title.localizedString())
             .setTextField { textField in
                 textField.text = self.inputtedTitle
                 textField.delegate = self
             }
-            .addAction(title: "閉じる", style: .destructive) {
+            .addAction(title: LocalizeKey.close.localizedString(),
+                       style: .destructive) {
                 self.inputtedTitle = self.oldInputtedTitle
             }
-            .addAction(title: "追加") {
+            .addAction(title: LocalizeKey.add.localizedString()) {
                 self.oldInputtedTitle = self.inputtedTitle
                 self.tableView.reloadData()
             }
@@ -93,11 +101,11 @@ private extension AdditionalGoalViewController {
     }
     
     func showAlert() {
-        let alert = Alert.create(title: "保存せずに閉じますか")
-            .addAction(title: "閉じる", style: .destructive) {
+        let alert = Alert.create(title: LocalizeKey.doYouWantToCloseWithoutSaving.localizedString())
+            .addAction(title: LocalizeKey.close.localizedString(), style: .destructive) {
                 self.dismiss(animated: true)
             }
-            .addAction(title: "保存する") {
+            .addAction(title: LocalizeKey.save.localizedString()) {
                 self.saveGoal()
                 self.dismiss(animated: true)
             }
@@ -106,7 +114,7 @@ private extension AdditionalGoalViewController {
     
     func saveGoal() {
         let goal = Goal(title: inputtedTitle,
-                        category: Category(title: "カテゴリー"),
+                        category: Category(title: ""),
                         memo: inputtedMemo,
                         priority: inputtedPriority,
                         dueDate: inputtedDate.due,
@@ -154,14 +162,15 @@ private extension AdditionalGoalViewController {
     
     func presentPhotoActionSheet(row: Int) {
         var alert = Alert.create(preferredStyle: .actionSheet)
-            .addAction(title: "写真を撮る") {
+            .addAction(title: LocalizeKey.takeAPhoto.localizedString()) {
                 self.presentTo(.camera)
             }
-            .addAction(title: "ライブラリから選択する") {
+            .addAction(title: LocalizeKey.selectFromLibrary.localizedString()) {
                 self.presentTo(.photoLibrary)
             }
         if inputtedImageData != nil {
-            alert = alert.addAction(title: "写真を削除する", style: .destructive) {
+            alert = alert.addAction(title: LocalizeKey.deletePhoto.localizedString(),
+                                    style: .destructive) {
                 self.inputtedImageData = nil
                 DispatchQueue.main.async {
                     self.tableView.beginUpdates()
@@ -172,7 +181,8 @@ private extension AdditionalGoalViewController {
                 }
             }
         }
-        alert = alert.addAction(title: "閉じる", style: .cancel)
+        alert = alert.addAction(title: LocalizeKey.close.localizedString(),
+                                style: .cancel)
         present(alert, animated: true)
     }
     
@@ -257,6 +267,7 @@ extension AdditionalGoalViewController: UITableViewDataSource {
             case .createdDate, .dueDate:
                 let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
                 let inputtedDate = getDate(type: rowType)
+                // MARK: - ToDo ローカライズする
                 let auxiliaryText = Converter.convertToString(from: inputtedDate,
                                                               format: "yyyy年M月d日")
                 cell.configure(titleText: rowType.title,
@@ -336,7 +347,7 @@ extension AdditionalGoalViewController: SubCustomNavigationBarDelegate {
     }
     
     var navTitle: String {
-        return "追加"
+        return LocalizeKey.Add.localizedString()
     }
     
 }

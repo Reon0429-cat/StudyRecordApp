@@ -171,15 +171,18 @@
                     <navigationItem key="navigationItem" id="4qa-kh-Jya"/>
                     <connections>
                         <outlet property="accentColorView" destination="a42-HT-Y4I" id="2LU-cL-gEa"/>
+                        <outlet property="accentLabel" destination="pj4-cc-bc6" id="XTg-MW-3dS"/>
                         <outlet property="colorChoicesConceptContainerView" destination="SbM-lS-eo1" id="T1e-oC-Kan"/>
                         <outlet property="colorChoicesSliderContainerView" destination="v5W-Jl-Mit" id="sKj-eu-Mub"/>
                         <outlet property="colorChoicesTileContainerView" destination="ouo-Yb-FbD" id="hsH-xA-EIy"/>
                         <outlet property="containerView" destination="4Qc-0K-WqC" id="gCN-Ay-oOO"/>
                         <outlet property="mainColorView" destination="nfI-wP-0hj" id="pjb-u9-409"/>
+                        <outlet property="mainLabel" destination="Jxd-4T-Mob" id="KuS-aO-IsO"/>
                         <outlet property="segmentedControl" destination="9lA-YX-AM8" id="oVf-G7-f0P"/>
                         <outlet property="segmentedControlBackView" destination="ZKJ-me-7A8" id="LLX-8O-wR3"/>
                         <outlet property="subColorView" destination="FWq-zr-HV0" id="8cc-Sa-sKA"/>
                         <outlet property="subCustomNavigationBar" destination="dWy-qz-cyU" id="JBv-rS-l2p"/>
+                        <outlet property="subLabel" destination="tuj-bU-ebL" id="lwu-1U-7IP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

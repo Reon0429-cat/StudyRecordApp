@@ -13,6 +13,7 @@ protocol GoalPriorityVCDelegate: AnyObject {
 
 final class GoalPriorityViewController: UIViewController {
     
+    @IBOutlet private weak var addButton: UIButton!
     @IBOutlet private weak var contentView: UIView!
     @IBOutlet private weak var segmentedControl: CustomSegmentedControl!
     @IBOutlet private weak var pickerView: UIPickerView!
@@ -25,6 +26,7 @@ final class GoalPriorityViewController: UIViewController {
         
         setupPickerView()
         setupSegmentedControl()
+        setupAddButton()
         
     }
     
@@ -110,6 +112,10 @@ private extension GoalPriorityViewController {
     
     func setupSegmentedControl() {
         segmentedControl.selectedSegmentIndex = inputtedPriority.mark.rawValue
+    }
+    
+    func setupAddButton() {
+        addButton.setTitle(LocalizeKey.add.localizedString())
     }
     
 }

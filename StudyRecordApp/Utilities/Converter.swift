@@ -7,6 +7,8 @@
 
 import UIKit
 
+// MARK: - ToDo ローカライズする
+
 struct Converter {
     
     static func convertToString(from date: Date, format: String) -> String {

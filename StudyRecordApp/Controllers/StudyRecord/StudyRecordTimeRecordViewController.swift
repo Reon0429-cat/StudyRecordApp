@@ -7,6 +7,8 @@
 
 import UIKit
 
+// MARK: - ToDo ローカライズする
+
 protocol StudyRecordTimeRecordVCDelegate: AnyObject {
     func saveButtonDidTapped(history: History, isHistory: Bool)
     func deleteButtonDidTapped(index: Int)

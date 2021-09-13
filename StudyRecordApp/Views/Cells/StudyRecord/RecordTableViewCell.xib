@@ -26,7 +26,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="445-9j-MLR">
-                            <rect key="frame" x="0.0" y="65" width="70" height="35"/>
+                            <rect key="frame" x="5" y="65" width="70" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="70" id="5SP-fn-Jsv"/>
                                 <constraint firstAttribute="height" constant="35" id="oKK-yk-qys"/>
@@ -65,7 +65,7 @@
                         <constraint firstItem="ZFW-wG-ole" firstAttribute="top" secondItem="XF1-Gs-Il9" secondAttribute="top" constant="20" id="IFk-w5-87l"/>
                         <constraint firstItem="445-9j-MLR" firstAttribute="top" relation="greaterThanOrEqual" secondItem="yWN-gs-jsp" secondAttribute="bottom" id="KgY-bU-3Ys"/>
                         <constraint firstAttribute="height" constant="100" id="NlF-YC-ZRR"/>
-                        <constraint firstItem="445-9j-MLR" firstAttribute="leading" secondItem="XF1-Gs-Il9" secondAttribute="leading" id="SU8-3p-Hyc"/>
+                        <constraint firstItem="445-9j-MLR" firstAttribute="leading" secondItem="XF1-Gs-Il9" secondAttribute="leading" constant="5" id="SU8-3p-Hyc"/>
                         <constraint firstAttribute="bottom" secondItem="445-9j-MLR" secondAttribute="bottom" id="UTQ-sS-z6C"/>
                         <constraint firstItem="yWN-gs-jsp" firstAttribute="top" secondItem="XF1-Gs-Il9" secondAttribute="top" constant="5" id="VcH-En-Odd"/>
                         <constraint firstItem="ZFW-wG-ole" firstAttribute="centerY" secondItem="XF1-Gs-Il9" secondAttribute="centerY" id="VmG-te-zqU"/>

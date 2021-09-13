@@ -82,6 +82,7 @@ extension GoalViewController: UITableViewDataSource {
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCustomCell(with: GoalTableViewCell.self)
         let goal = goalUseCase.goals[indexPath.row]
+        // MARK: - ToDo ローカライズする
         let createdDateString = Converter.convertToString(from: goal.createdDate, format: "yyyy年M月d日")
         let dueDateString = Converter.convertToString(from: goal.dueDate, format: "yyyy年M月d日")
         let title = "\(createdDateString), \(dueDateString)"
@@ -104,7 +105,9 @@ private extension GoalViewController {
     
     func setupSegmentedControl() {
         let index = 0
-        segmentedControl.create(["カテゴリ", "シンプル"], selectedIndex: index)
+        segmentedControl.create([LocalizeKey.category.localizedString(),
+                                 LocalizeKey.simple.localizedString()],
+                                selectedIndex: index)
     }
     
 }

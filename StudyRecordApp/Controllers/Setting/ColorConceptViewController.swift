@@ -82,7 +82,7 @@ extension ColorConceptViewController: SubCustomNavigationBarDelegate {
     }
     
     var navTitle: String {
-        return "オススメ"
+        return LocalizeKey.recommendation.localizedString()
     }
     
 }

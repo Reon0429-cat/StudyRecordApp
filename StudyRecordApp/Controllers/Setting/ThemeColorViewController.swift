@@ -10,6 +10,10 @@ import UIKit
 final class ThemeColorViewController: UIViewController {
     
     @IBOutlet private weak var subCustomNavigationBar: SubCustomNavigationBar!
+    
+    @IBOutlet private weak var mainLabel: UILabel!
+    @IBOutlet private weak var subLabel: UILabel!
+    @IBOutlet private weak var accentLabel: UILabel!
     @IBOutlet private weak var mainColorView: ThemeColorView!
     @IBOutlet private weak var subColorView: ThemeColorView!
     @IBOutlet private weak var accentColorView: ThemeColorView!
@@ -49,6 +53,7 @@ final class ThemeColorViewController: UIViewController {
         containerView.bringSubviewToFront(currentContainerView)
         setupThemeColorViews()
         setupSegmentedControl()
+        setupColorViewLabels()
         setupContainerViewControllers()
         setupSubCustomNavigationBar()
         
@@ -249,6 +254,15 @@ private extension ThemeColorViewController {
         if containerType == .concept {
             segmentedControlBackView.isHidden = true
         }
+        segmentedControl.create([LocalizeKey.tile.localizedString(),
+                                 LocalizeKey.slider.localizedString()],
+                                selectedIndex: 0)
+    }
+    
+    func setupColorViewLabels() {
+        mainLabel.text = LocalizeKey.main.localizedString()
+        subLabel.text = LocalizeKey.sub.localizedString()
+        accentLabel.text = LocalizeKey.accent.localizedString()
     }
     
     func setupThemeColorViewColor() {

@@ -45,7 +45,7 @@
                                             <constraint firstAttribute="width" constant="35" id="r5N-mK-h1l"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <state key="normal" title="保存"/>
+                                        <state key="normal" title="決定"/>
                                         <connections>
                                             <action selector="saveButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Lb8-lg-IBO"/>
                                         </connections>
@@ -84,7 +84,10 @@
                     </view>
                     <connections>
                         <outlet property="baseView" destination="Shj-RL-QBm" id="1FY-wZ-Kah"/>
+                        <outlet property="decisionButton" destination="Gvh-Br-hui" id="dJN-vz-ey7"/>
+                        <outlet property="dismissButton" destination="W1R-OW-vqt" id="JQm-9L-Zv3"/>
                         <outlet property="textView" destination="K2K-9p-S3w" id="5eu-fX-1mK"/>
+                        <outlet property="titleLabel" destination="WKY-Pj-XCM" id="JUP-qx-biC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

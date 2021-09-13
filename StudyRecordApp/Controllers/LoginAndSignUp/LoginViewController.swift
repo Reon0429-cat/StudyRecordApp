@@ -17,11 +17,14 @@ protocol LoginVCDelegate: AnyObject {
 final class LoginViewController: UIViewController {
     
     @IBOutlet private weak var stackViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var mailAddressLabel: UILabel!
     @IBOutlet private weak var mailAddressTextField: UITextField!
+    @IBOutlet private weak var passwordLabel: UILabel!
     @IBOutlet private weak var passwordTextField: UITextField!
     @IBOutlet private weak var passwordSecureButton: UIButton!
     @IBOutlet private weak var loginButton: CustomButton!
     @IBOutlet private weak var passwordForgotButton: CustomButton!
+    @IBOutlet private weak var passwordForgotLabel: UILabel!
     
     weak var delegate: LoginVCDelegate?
     private var isPasswordHidden = true
@@ -41,6 +44,10 @@ final class LoginViewController: UIViewController {
         setupPasswordTextField()
         setupLoginButton()
         setupPasswordSecureButton()
+        setupPasswordLabel()
+        setupMailAddressLabel()
+        setupPasswordForgotLabel()
+        setupPasswordForgotButton()
         setupKeyboardObserver()
         
     }
@@ -73,7 +80,7 @@ private extension LoginViewController {
         guard let email = mailAddressTextField.text,
               let password = passwordTextField.text else { return }
         if CommunicationStatus().unstable() {
-            showErrorAlert(title: "通信環境が良くありません")
+            showErrorAlert(title: LocalizeKey.communicationEnvironmentIsNotGood.localizedString())
             return
         }
         indicator.show(.progress)
@@ -148,9 +155,17 @@ private extension LoginViewController {
         delegate?.leftSwipeDid()
     }
     
+    func setupMailAddressLabel() {
+        mailAddressLabel.text = LocalizeKey.mailAddress.localizedString()
+    }
+    
     func setupMailAddressTextField() {
         mailAddressTextField.delegate = self
         mailAddressTextField.keyboardType = .URL
+    }
+    
+    func setupPasswordLabel() {
+        passwordLabel.text = LocalizeKey.password.localizedString()
     }
     
     func setupPasswordTextField() {
@@ -160,11 +175,21 @@ private extension LoginViewController {
     }
     
     func setupLoginButton() {
+        loginButton.setTitle(LocalizeKey.login.localizedString())
         changeLoginButtonState(isEnabled: false)
     }
     
     func setupPasswordSecureButton() {
         changePasswordSecureButtonImage(isSlash: false)
+    }
+    
+    func setupPasswordForgotLabel() {
+        passwordForgotLabel.text = LocalizeKey.passwordForgot.localizedString()
+    }
+    
+    func setupPasswordForgotButton() {
+        print(Locale.preferredLanguages)
+        passwordForgotButton.setTitle(LocalizeKey.here.localizedString())
     }
     
     func setupKeyboardObserver() {

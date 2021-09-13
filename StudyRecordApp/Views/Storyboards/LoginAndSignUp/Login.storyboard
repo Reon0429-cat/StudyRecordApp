@@ -152,8 +152,11 @@
                     </view>
                     <connections>
                         <outlet property="loginButton" destination="jTw-3S-5KP" id="GKu-Ia-MIl"/>
+                        <outlet property="mailAddressLabel" destination="YJL-yu-W81" id="zvt-Sh-Oac"/>
                         <outlet property="mailAddressTextField" destination="S80-2s-Ve2" id="ZiO-Q9-7s6"/>
                         <outlet property="passwordForgotButton" destination="EYA-AQ-VMN" id="uvd-KU-NoC"/>
+                        <outlet property="passwordForgotLabel" destination="sTT-7f-ND3" id="vpT-fl-ubT"/>
+                        <outlet property="passwordLabel" destination="euz-71-knd" id="IaL-f6-Oqa"/>
                         <outlet property="passwordSecureButton" destination="gbF-C3-DJA" id="cpY-l1-t77"/>
                         <outlet property="passwordTextField" destination="Fy8-UG-gHq" id="xY8-An-dZN"/>
                         <outlet property="stackViewTopConstraint" destination="qf3-rk-Gj4" id="UiM-Kn-zth"/>

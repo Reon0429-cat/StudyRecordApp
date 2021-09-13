@@ -18,10 +18,14 @@ extension SeasonConcept {
     
     var title: String {
         switch self {
-            case .spring: return "春"
-            case .summer: return "夏"
-            case .autumn: return "秋"
-            case .winter: return "冬"
+            case .spring:
+                return LocalizeKey.spring.localizedString()
+            case .summer:
+                return LocalizeKey.summer.localizedString()
+            case .autumn:
+                return LocalizeKey.autumn.localizedString()
+            case .winter:
+                return LocalizeKey.winter.localizedString()
         }
     }
     var colors: [UIColor] {

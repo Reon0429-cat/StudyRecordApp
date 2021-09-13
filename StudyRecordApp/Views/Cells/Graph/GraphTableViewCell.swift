@@ -78,6 +78,9 @@ final class GraphTableViewCell: UITableViewCell {
         setupLineData(record: record, graph: graph)
         setupIfNoGraphData(record: record)
         setupSimpleNoGraphDataLabel()
+        setupYAxisLabel()
+        setupRegisterButton()
+        setupNoGraphDataLabel()
     }
     
     override func layoutSubviews() {
@@ -237,8 +240,20 @@ private extension GraphTableViewCell {
     }
     
     func setupSimpleNoGraphDataLabel() {
-        simpleNoGraphDataLabel.text = "データがありません"
+        simpleNoGraphDataLabel.text = LocalizeKey.thereIsNoData.localizedString()
         setupSimpleNoGraphDataLabelLayout()
+    }
+    
+    func setupYAxisLabel() {
+        yAxisLabel.text = LocalizeKey.hour.localizedString()
+    }
+    
+    func setupRegisterButton() {
+        registerButton.setTitle(LocalizeKey.Register.localizedString())
+    }
+    
+    func setupNoGraphDataLabel() {
+        noGraphDataLabel.text = LocalizeKey.graphDataIsNotRegistered.localizedString()
     }
     
 }
