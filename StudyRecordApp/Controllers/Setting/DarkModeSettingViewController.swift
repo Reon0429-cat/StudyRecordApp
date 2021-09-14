@@ -10,9 +10,13 @@ import UIKit
 final class DarkModeSettingViewController: UIViewController {
     
     @IBOutlet private weak var contentView: UIView!
+    @IBOutlet private weak var stackView: UIStackView!
+    @IBOutlet private weak var darkModeBaseView: UIView!
     @IBOutlet private weak var settingAppLabel: UILabel!
+    @IBOutlet private weak var settingDarkModeLabel: UILabel!
     @IBOutlet private weak var settingAutoLabel: UILabel!
     @IBOutlet private weak var settingAppSwitch: CustomSwitch!
+    @IBOutlet private weak var settingDarkModeSwitch: CustomSwitch!
     @IBOutlet private weak var settingAutoSwitch: CustomSwitch!
     
     private var settingUseCase = SettingUseCase(
@@ -25,19 +29,27 @@ final class DarkModeSettingViewController: UIViewController {
         super.viewDidLoad()
         
         setupSettingAppLabel()
+        setupDarkModeLabel()
         setupSettingAutoLabel()
         setupSettingAppSwitch()
+        setupDarkModeSwitch()
         setupSettingAutoSwitch()
         setupContentView()
+        setupDarkModeBaseView()
         
     }
     
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        guard let traitCollection = previousTraitCollection else { return }
-        if traitCollection.hasDifferentColorAppearance(comparedTo: self.traitCollection) {
-            
-        }
-    }
+//    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+//        guard let traitCollection = previousTraitCollection else { return }
+//        if traitCollection.hasDifferentColorAppearance(comparedTo: self.traitCollection) {
+//            if settingAutoSwitch.isOn {
+//                let mode: UIUserInterfaceStyle = UITraitCollection.current.userInterfaceStyle
+//                NotificationCenter.default.post(name: .brightnessDidChanged,
+//                                                object: nil,
+//                                                userInfo: ["mode": mode])
+//            }
+//        }
+//    }
     
 }
 
@@ -48,8 +60,27 @@ private extension DarkModeSettingViewController {
         settingAutoSwitch.isOn.toggle()
         if settingAppSwitch.isOn {
             settingUseCase.change(darkModeSettingType: .app)
+            darkModeBaseView.isHidden = false
+        } else {
+            settingUseCase.change(darkModeSettingType: .auto)
+            darkModeBaseView.isHidden = true
         }
-        let mode: UIUserInterfaceStyle = settingAppSwitch.isOn ? .dark : .light
+        if settingAppSwitch.isOn {
+            let mode: UIUserInterfaceStyle = settingDarkModeSwitch.isOn ? .dark : .light
+            NotificationCenter.default.post(name: .brightnessDidChanged,
+                                            object: nil,
+                                            userInfo: ["mode": mode])
+        } else {
+            let mode: UIUserInterfaceStyle = UITraitCollection.current.userInterfaceStyle
+            NotificationCenter.default.post(name: .brightnessDidChanged,
+                                            object: nil,
+                                            userInfo: ["mode": mode])
+        }
+    }
+    
+    @IBAction func settingDarkModeSwitchValueDidChanged(_ settingDarkModeSwitch: UISwitch) {
+        settingUseCase.change(isDarkMode: settingDarkModeSwitch.isOn)
+        let mode: UIUserInterfaceStyle = settingDarkModeSwitch.isOn ? .dark : .light
         NotificationCenter.default.post(name: .brightnessDidChanged,
                                         object: nil,
                                         userInfo: ["mode": mode])
@@ -59,11 +90,25 @@ private extension DarkModeSettingViewController {
         settingAppSwitch.isOn.toggle()
         if settingAutoSwitch.isOn {
             settingUseCase.change(darkModeSettingType: .auto)
+            let isDarkMode = UITraitCollection.current.userInterfaceStyle == .dark
+            settingUseCase.change(isDarkMode: isDarkMode)
+            darkModeBaseView.isHidden = true
+        } else {
+            settingUseCase.change(darkModeSettingType: .app)
+            settingUseCase.change(isDarkMode: settingDarkModeSwitch.isOn)
+            darkModeBaseView.isHidden = false
         }
-        let mode: UIUserInterfaceStyle = settingAutoSwitch.isOn ? .dark : .light
-        NotificationCenter.default.post(name: .brightnessDidChanged,
-                                        object: nil,
-                                        userInfo: ["mode": mode])
+        if settingAutoSwitch.isOn {
+            let mode: UIUserInterfaceStyle = UITraitCollection.current.userInterfaceStyle
+            NotificationCenter.default.post(name: .brightnessDidChanged,
+                                            object: nil,
+                                            userInfo: ["mode": mode])
+        } else {
+            let mode: UIUserInterfaceStyle = settingDarkModeSwitch.isOn ? .dark : .light
+            NotificationCenter.default.post(name: .brightnessDidChanged,
+                                            object: nil,
+                                            userInfo: ["mode": mode])
+        }
     }
     
 }
@@ -89,6 +134,10 @@ private extension DarkModeSettingViewController {
         settingAppLabel.text = LocalizeKey.darkModeSettingApp.localizedString()
     }
     
+    func setupDarkModeLabel() {
+        settingDarkModeLabel.text = LocalizeKey.darkMode.localizedString()
+    }
+    
     func setupSettingAutoLabel() {
         settingAutoLabel.text = LocalizeKey.darkModeSettingAuto.localizedString()
     }
@@ -97,8 +146,16 @@ private extension DarkModeSettingViewController {
         settingAppSwitch.isOn = settingUseCase.setting.darkModeSettingType == .app
     }
     
+    func setupDarkModeSwitch() {
+        settingDarkModeSwitch.isOn = settingUseCase.setting.isDarkMode
+    }
+    
     func setupSettingAutoSwitch() {
         settingAutoSwitch.isOn = settingUseCase.setting.darkModeSettingType == .auto
+    }
+    
+    func setupDarkModeBaseView() {
+        darkModeBaseView.isHidden = !settingAppSwitch.isOn
     }
     
 }

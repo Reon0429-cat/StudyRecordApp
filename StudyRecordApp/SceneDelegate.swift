@@ -47,6 +47,16 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func sceneWillEnterForeground(_ scene: UIScene) {
+        
+        switch settingUseCase.setting.darkModeSettingType {
+            case .app:
+                let mode: UIUserInterfaceStyle = settingUseCase.setting.isDarkMode ? .dark : .light
+                self.window?.overrideUserInterfaceStyle = mode
+            case .auto:
+                let mode = UITraitCollection.current.userInterfaceStyle
+                self.window?.overrideUserInterfaceStyle = mode
+        }
+        
         if userUseCase.isLoggedIn {
             if settingUseCase.setting.isPasscodeSetted {
                 self.window?.setRootVC(PasscodeViewController.self) { vc in

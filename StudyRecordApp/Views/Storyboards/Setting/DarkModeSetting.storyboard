@@ -12,7 +12,7 @@
         <!--Dark Mode Setting View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="DarkModeViewController" id="Y6W-OH-hqX" customClass="DarkModeSettingViewController" customModule="StudyRecordApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DarkModeSettingViewController" id="Y6W-OH-hqX" customClass="DarkModeSettingViewController" customModule="StudyRecordApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,19 +21,19 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="220"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="W5V-Ez-giW">
-                                        <rect key="frame" x="0.0" y="50" width="414" height="120"/>
+                                        <rect key="frame" x="0.0" y="30" width="414" height="160"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FZd-u5-lDK">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="55"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="46.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="このアプリで設定する" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FRZ-OR-Kgh">
-                                                        <rect key="frame" x="20" y="17.5" width="173.5" height="20.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="このアプリ内で設定する" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FRZ-OR-Kgh">
+                                                        <rect key="frame" x="20" y="13" width="191" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u7u-wC-g8T" customClass="CustomSwitch" customModule="StudyRecordApp" customModuleProvider="target">
-                                                        <rect key="frame" x="345" y="12" width="51" height="31"/>
+                                                        <rect key="frame" x="345" y="8" width="51" height="31"/>
                                                         <connections>
                                                             <action selector="settingAppSwitchValueDidChanged:" destination="Y6W-OH-hqX" eventType="valueChanged" id="2Pa-h5-rTU"/>
                                                         </connections>
@@ -48,17 +48,42 @@
                                                     <constraint firstItem="u7u-wC-g8T" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="FRZ-OR-Kgh" secondAttribute="trailing" constant="20" id="j7F-rn-OWT"/>
                                                 </constraints>
                                             </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X4C-Ye-guB">
+                                                <rect key="frame" x="0.0" y="56.5" width="414" height="47"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ダークモード" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="pFO-u6-Ics">
+                                                        <rect key="frame" x="20" y="13.5" width="104" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X1U-bK-UsW" customClass="CustomSwitch" customModule="StudyRecordApp" customModuleProvider="target">
+                                                        <rect key="frame" x="345" y="8" width="51" height="31"/>
+                                                        <connections>
+                                                            <action selector="settingDarkModeSwitchValueDidChanged:" destination="Y6W-OH-hqX" eventType="valueChanged" id="8IN-2t-eyM"/>
+                                                        </connections>
+                                                    </switch>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="pFO-u6-Ics" firstAttribute="centerY" secondItem="X4C-Ye-guB" secondAttribute="centerY" id="ALA-Dl-aN1"/>
+                                                    <constraint firstItem="X1U-bK-UsW" firstAttribute="centerY" secondItem="X4C-Ye-guB" secondAttribute="centerY" id="WrY-Sa-qX8"/>
+                                                    <constraint firstItem="pFO-u6-Ics" firstAttribute="leading" secondItem="X4C-Ye-guB" secondAttribute="leading" constant="20" id="asX-N6-9kf"/>
+                                                    <constraint firstAttribute="trailing" secondItem="X1U-bK-UsW" secondAttribute="trailing" constant="20" id="i2u-4r-VFi"/>
+                                                    <constraint firstItem="X1U-bK-UsW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pFO-u6-Ics" secondAttribute="trailing" constant="20" id="vAn-7k-RR1"/>
+                                                </constraints>
+                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P1X-Dj-8pI">
-                                                <rect key="frame" x="0.0" y="65" width="414" height="55"/>
+                                                <rect key="frame" x="0.0" y="113.5" width="414" height="46.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="自動で設定する" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="tbE-9c-GNs">
-                                                        <rect key="frame" x="20" y="17.5" width="121.5" height="20.5"/>
+                                                        <rect key="frame" x="20" y="13" width="121.5" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zOD-GZ-GvT" customClass="CustomSwitch" customModule="StudyRecordApp" customModuleProvider="target">
-                                                        <rect key="frame" x="345" y="12" width="51" height="31"/>
+                                                        <rect key="frame" x="345" y="7.5" width="51" height="31"/>
                                                         <connections>
                                                             <action selector="settingAutoSwitchValueDidChanged:" destination="Y6W-OH-hqX" eventType="valueChanged" id="Sb8-LJ-PDg"/>
                                                         </connections>
@@ -78,7 +103,7 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="W5V-Ez-giW" firstAttribute="top" secondItem="oLn-85-5Ai" secondAttribute="top" constant="50" id="Yhw-KJ-hLG"/>
+                                    <constraint firstItem="W5V-Ez-giW" firstAttribute="top" secondItem="oLn-85-5Ai" secondAttribute="top" constant="30" id="Yhw-KJ-hLG"/>
                                     <constraint firstAttribute="trailing" secondItem="W5V-Ez-giW" secondAttribute="trailing" id="dk3-XT-rBi"/>
                                     <constraint firstItem="W5V-Ez-giW" firstAttribute="leading" secondItem="oLn-85-5Ai" secondAttribute="leading" id="gOr-sc-XxD"/>
                                     <constraint firstItem="W5V-Ez-giW" firstAttribute="centerY" secondItem="oLn-85-5Ai" secondAttribute="centerY" id="jm3-mQ-mMw"/>
@@ -96,10 +121,14 @@
                     </view>
                     <connections>
                         <outlet property="contentView" destination="oLn-85-5Ai" id="d5J-A2-tT2"/>
+                        <outlet property="darkModeBaseView" destination="X4C-Ye-guB" id="nrl-63-ehw"/>
                         <outlet property="settingAppLabel" destination="FRZ-OR-Kgh" id="lpx-V9-BjG"/>
-                        <outlet property="settingAppSwitch" destination="u7u-wC-g8T" id="XX3-p2-fQJ"/>
+                        <outlet property="settingAppSwitch" destination="u7u-wC-g8T" id="4uy-Vb-PDk"/>
                         <outlet property="settingAutoLabel" destination="tbE-9c-GNs" id="KNZ-b1-Uhq"/>
-                        <outlet property="settingAutoSwitch" destination="zOD-GZ-GvT" id="xbb-Fv-gis"/>
+                        <outlet property="settingAutoSwitch" destination="zOD-GZ-GvT" id="RB0-vc-0OC"/>
+                        <outlet property="settingDarkModeLabel" destination="pFO-u6-Ics" id="F2Q-ah-NMt"/>
+                        <outlet property="settingDarkModeSwitch" destination="X1U-bK-UsW" id="32v-aM-CLv"/>
+                        <outlet property="stackView" destination="W5V-Ez-giW" id="9df-LM-8g2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

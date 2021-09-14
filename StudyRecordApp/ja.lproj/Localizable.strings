@@ -189,6 +189,10 @@
 
 "thereIsNoData" = "データがありません";
 "graphDataIsNotRegistered" = "グラフデータが登録されていません";
+
+"darkModeSettingApp" = "このアプリで設定する";
+"darkModeSettingAuto" = "自動で設定する";
+
 "" = "";
 "" = "";
 "" = "";

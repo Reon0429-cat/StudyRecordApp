@@ -76,6 +76,7 @@ final class SettingViewController: UIViewController {
         )
     )
     private let indicator = Indicator(kinds: PKHUDIndicator())
+    private var halfModalPresenter = HalfModalPresenter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,17 +91,6 @@ final class SettingViewController: UIViewController {
         delegate?.screenDidPresented(screenType: .setting)
         tableView.reloadData()
         
-    }
-    
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        guard let traitCollection = previousTraitCollection else { return }
-        if traitCollection.hasDifferentColorAppearance(comparedTo: self.traitCollection) {
-            let isDarkMode = UITraitCollection.current.userInterfaceStyle == .dark
-            settingUseCase.change(isDarkMode: isDarkMode)
-            tableView.reloadRows(at: [IndexPath(row: RowType.darkMode.rawValue,
-                                                section: 0)],
-                                 with: .automatic)
-        }
     }
     
 }
@@ -185,7 +175,9 @@ extension SettingViewController: UITableViewDelegate {
             case .themeColor:
                 presentThemeColorActionSheet()
             case .darkMode:
-                break
+                present(DarkModeSettingViewController.self) { vc in
+                    self.halfModalPresenter.viewController = vc
+                }
             case .passcode:
                 break
             case .pushNotification:
@@ -256,6 +248,7 @@ extension SettingViewController: UITableViewDataSource {
             case .themeColor,
                  .multilingual,
                  .evaluationApp,
+                 .darkMode,
                  .shareApp,
                  .reports,
                  .howToUseApp,
@@ -263,17 +256,6 @@ extension SettingViewController: UITableViewDataSource {
                  .privacyPolicy:
                 let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
                 cell.configure(titleText: rowType.title)
-                return cell
-            case .darkMode:
-                let cell = tableView.dequeueReusableCustomCell(with: CustomSwitchTableViewCell.self)
-                cell.configure(title: rowType.title,
-                               isOn: setting.isDarkMode) { isOn in
-                    self.settingUseCase.change(isDarkMode: isOn)
-                    let mode: UIUserInterfaceStyle = isOn ? .dark : .light
-                    NotificationCenter.default.post(name: .brightnessDidChanged,
-                                                    object: nil,
-                                                    userInfo: ["mode": mode])
-                }
                 return cell
             case .passcode:
                 let cell = tableView.dequeueReusableCustomCell(with: CustomSwitchTableViewCell.self)

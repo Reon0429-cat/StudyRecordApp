@@ -188,6 +188,12 @@
 
 "thereIsNoData" = "there is no data";
 "graphDataIsNotRegistered" = "Graph data is not registered";
+
+"darkModeSettingApp" = "Set with this app";
+"darkModeSettingAuto" = "Set automatically";
+
+
+
 "" = "";
 "" = "";
 "" = "";

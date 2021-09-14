@@ -17,6 +17,7 @@ final class SettingUseCase {
     var setting: Setting {
         if repository.readAll().isEmpty {
             let setting = Setting(isDarkMode: false,
+                                  darkModeSettingType: .app,
                                   isPasscodeSetted: false,
                                   passcode: "",
                                   isPushNotificationSetted: true,
@@ -33,6 +34,17 @@ final class SettingUseCase {
     
     func change(isDarkMode: Bool) {
         let newSetting = Setting(isDarkMode: isDarkMode,
+                                 darkModeSettingType: setting.darkModeSettingType,
+                                 isPasscodeSetted: setting.isPasscodeSetted,
+                                 passcode: setting.passcode,
+                                 isPushNotificationSetted: setting.isPushNotificationSetted,
+                                 language: setting.language)
+        repository.update(setting: newSetting, at: 0)
+    }
+    
+    func change(darkModeSettingType: DarkModeSettingType) {
+        let newSetting = Setting(isDarkMode: setting.isDarkMode,
+                                 darkModeSettingType: darkModeSettingType,
                                  isPasscodeSetted: setting.isPasscodeSetted,
                                  passcode: setting.passcode,
                                  isPushNotificationSetted: setting.isPushNotificationSetted,
@@ -42,6 +54,7 @@ final class SettingUseCase {
     
     func change(isPasscodeSetted: Bool) {
         let newSetting = Setting(isDarkMode: setting.isDarkMode,
+                                 darkModeSettingType: setting.darkModeSettingType,
                                  isPasscodeSetted: isPasscodeSetted,
                                  passcode: setting.passcode,
                                  isPushNotificationSetted: setting.isPushNotificationSetted,
@@ -51,6 +64,7 @@ final class SettingUseCase {
     
     func change(isPushNotificationSetted: Bool) {
         let newSetting = Setting(isDarkMode: setting.isDarkMode,
+                                 darkModeSettingType: setting.darkModeSettingType,
                                  isPasscodeSetted: setting.isPasscodeSetted,
                                  passcode: setting.passcode,
                                  isPushNotificationSetted: isPushNotificationSetted,
@@ -60,6 +74,7 @@ final class SettingUseCase {
     
     func change(language: Language) {
         let newSetting = Setting(isDarkMode: setting.isDarkMode,
+                                 darkModeSettingType: setting.darkModeSettingType,
                                  isPasscodeSetted: setting.isPasscodeSetted,
                                  passcode: setting.passcode,
                                  isPushNotificationSetted: setting.isPushNotificationSetted,
@@ -85,6 +100,7 @@ final class SettingUseCase {
     
     private func updatePasscode(passcode: String) {
         let newSetting = Setting(isDarkMode: setting.isDarkMode,
+                                 darkModeSettingType: setting.darkModeSettingType,
                                  isPasscodeSetted: setting.isPasscodeSetted,
                                  passcode: passcode,
                                  isPushNotificationSetted: setting.isPushNotificationSetted,

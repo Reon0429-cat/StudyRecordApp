@@ -31,6 +31,8 @@
 		AB0C76CC26EEA8C500BF5B64 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AB0C76CE26EEA8C500BF5B64 /* Localizable.strings */; };
 		AB0C76D526EEAF0100BF5B64 /* LocalizeKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C76D426EEAF0100BF5B64 /* LocalizeKey.swift */; };
 		AB0C76D726EFE38A00BF5B64 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C76D626EFE38A00BF5B64 /* CustomTextField.swift */; };
+		AB0C76D926F0A06300BF5B64 /* DarkModeSetting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB0C76D826F0A06300BF5B64 /* DarkModeSetting.storyboard */; };
+		AB0C76DB26F0A06F00BF5B64 /* DarkModeSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C76DA26F0A06F00BF5B64 /* DarkModeSettingViewController.swift */; };
 		AB13ECD626B7AEA3002F56FF /* ColorChoicesConcept.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13ECD526B7AEA3002F56FF /* ColorChoicesConcept.storyboard */; };
 		AB13ECD826B7AF27002F56FF /* ColorChoicesTile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13ECD726B7AF27002F56FF /* ColorChoicesTile.storyboard */; };
 		AB13ECDA26B7AF6F002F56FF /* ColorChoicesSlider.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13ECD926B7AF6F002F56FF /* ColorChoicesSlider.storyboard */; };
@@ -200,6 +202,8 @@
 		AB0C76CF26EEA8D200BF5B64 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AB0C76D426EEAF0100BF5B64 /* LocalizeKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizeKey.swift; sourceTree = "<group>"; };
 		AB0C76D626EFE38A00BF5B64 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		AB0C76D826F0A06300BF5B64 /* DarkModeSetting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DarkModeSetting.storyboard; sourceTree = "<group>"; };
+		AB0C76DA26F0A06F00BF5B64 /* DarkModeSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeSettingViewController.swift; sourceTree = "<group>"; };
 		AB13ECD526B7AEA3002F56FF /* ColorChoicesConcept.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ColorChoicesConcept.storyboard; sourceTree = "<group>"; };
 		AB13ECD726B7AF27002F56FF /* ColorChoicesTile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ColorChoicesTile.storyboard; sourceTree = "<group>"; };
 		AB13ECD926B7AF6F002F56FF /* ColorChoicesSlider.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ColorChoicesSlider.storyboard; sourceTree = "<group>"; };
@@ -549,6 +553,7 @@
 				AB13ECD726B7AF27002F56FF /* ColorChoicesTile.storyboard */,
 				AB13ECD926B7AF6F002F56FF /* ColorChoicesSlider.storyboard */,
 				AB0C76B226ED254C00BF5B64 /* Passcode.storyboard */,
+				AB0C76D826F0A06300BF5B64 /* DarkModeSetting.storyboard */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -572,6 +577,7 @@
 				AB2B5BBF26A2D36F009BD3C7 /* ColorChoicesTileViewController.swift */,
 				AB2B5BC026A2D36F009BD3C7 /* ColorChoicesSliderViewController.swift */,
 				AB0C76B426ED256000BF5B64 /* PasscodeViewController.swift */,
+				AB0C76DA26F0A06F00BF5B64 /* DarkModeSettingViewController.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -944,6 +950,7 @@
 				AB0C76B326ED254C00BF5B64 /* Passcode.storyboard in Resources */,
 				AB13EDF626C8BAB7002F56FF /* Graph.storyboard in Resources */,
 				AB2B5BAA26A2D244009BD3C7 /* Setting.storyboard in Resources */,
+				AB0C76D926F0A06300BF5B64 /* DarkModeSetting.storyboard in Resources */,
 				AB13ECD826B7AF27002F56FF /* ColorChoicesTile.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1039,6 +1046,7 @@
 				AB2B5BA026A2D1B7009BD3C7 /* ServiceConcept.swift in Sources */,
 				AB13EDEB26C7C556002F56FF /* TopViewController.swift in Sources */,
 				AB13ED4D26BB9241002F56FF /* RecordUseCase.swift in Sources */,
+				AB0C76DB26F0A06F00BF5B64 /* DarkModeSettingViewController.swift in Sources */,
 				AB0C765326EB889100BF5B64 /* CustomSwitchTableViewCell.swift in Sources */,
 				AB16305126CD6B1400111F55 /* WaveView.swift in Sources */,
 				AB2B5B8726A2D0FD009BD3C7 /* UICollectionView+Extension.swift in Sources */,
