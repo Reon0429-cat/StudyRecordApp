@@ -18,22 +18,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oLn-85-5Ai">
-                                <rect key="frame" x="0.0" y="44" width="414" height="220"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="250"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="W5V-Ez-giW">
-                                        <rect key="frame" x="0.0" y="30" width="414" height="160"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="W5V-Ez-giW">
+                                        <rect key="frame" x="0.0" y="30" width="414" height="190"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FZd-u5-lDK">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="46.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="53"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="このアプリ内で設定する" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FRZ-OR-Kgh">
-                                                        <rect key="frame" x="20" y="13" width="191" height="20.5"/>
+                                                        <rect key="frame" x="20" y="16.5" width="191" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u7u-wC-g8T" customClass="CustomSwitch" customModule="StudyRecordApp" customModuleProvider="target">
-                                                        <rect key="frame" x="345" y="8" width="51" height="31"/>
+                                                        <rect key="frame" x="345" y="11" width="51" height="31"/>
                                                         <connections>
                                                             <action selector="settingAppSwitchValueDidChanged:" destination="Y6W-OH-hqX" eventType="valueChanged" id="2Pa-h5-rTU"/>
                                                         </connections>
@@ -49,16 +49,16 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X4C-Ye-guB">
-                                                <rect key="frame" x="0.0" y="56.5" width="414" height="47"/>
+                                                <rect key="frame" x="0.0" y="63" width="414" height="53"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ダークモード" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="pFO-u6-Ics">
-                                                        <rect key="frame" x="20" y="13.5" width="104" height="20.5"/>
+                                                        <rect key="frame" x="20" y="16.5" width="104" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X1U-bK-UsW" customClass="CustomSwitch" customModule="StudyRecordApp" customModuleProvider="target">
-                                                        <rect key="frame" x="345" y="8" width="51" height="31"/>
+                                                        <rect key="frame" x="345" y="11" width="51" height="31"/>
                                                         <connections>
                                                             <action selector="settingDarkModeSwitchValueDidChanged:" destination="Y6W-OH-hqX" eventType="valueChanged" id="8IN-2t-eyM"/>
                                                         </connections>
@@ -73,17 +73,34 @@
                                                     <constraint firstItem="X1U-bK-UsW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pFO-u6-Ics" secondAttribute="trailing" constant="20" id="vAn-7k-RR1"/>
                                                 </constraints>
                                             </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ivb-aF-oPY">
+                                                <rect key="frame" x="0.0" y="126" width="414" height="1"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bqc-kh-BU7">
+                                                        <rect key="frame" x="20" y="0.0" width="374" height="1"/>
+                                                        <color key="backgroundColor" systemColor="labelColor"/>
+                                                    </view>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="bqc-kh-BU7" secondAttribute="bottom" id="4mQ-ng-FfK"/>
+                                                    <constraint firstItem="bqc-kh-BU7" firstAttribute="centerX" secondItem="Ivb-aF-oPY" secondAttribute="centerX" id="GvW-Of-Tx0"/>
+                                                    <constraint firstItem="bqc-kh-BU7" firstAttribute="top" secondItem="Ivb-aF-oPY" secondAttribute="top" id="J2o-c6-IPF"/>
+                                                    <constraint firstAttribute="height" constant="1" id="LHa-Iw-JY1"/>
+                                                    <constraint firstAttribute="trailing" secondItem="bqc-kh-BU7" secondAttribute="trailing" constant="20" id="bQV-pP-sw2"/>
+                                                </constraints>
+                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P1X-Dj-8pI">
-                                                <rect key="frame" x="0.0" y="113.5" width="414" height="46.5"/>
+                                                <rect key="frame" x="0.0" y="137" width="414" height="53"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="自動で設定する" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="tbE-9c-GNs">
-                                                        <rect key="frame" x="20" y="13" width="121.5" height="20.5"/>
+                                                        <rect key="frame" x="20" y="16.5" width="121.5" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zOD-GZ-GvT" customClass="CustomSwitch" customModule="StudyRecordApp" customModuleProvider="target">
-                                                        <rect key="frame" x="345" y="7.5" width="51" height="31"/>
+                                                        <rect key="frame" x="345" y="11" width="51" height="31"/>
                                                         <connections>
                                                             <action selector="settingAutoSwitchValueDidChanged:" destination="Y6W-OH-hqX" eventType="valueChanged" id="Sb8-LJ-PDg"/>
                                                         </connections>
@@ -99,15 +116,20 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="FZd-u5-lDK" firstAttribute="height" secondItem="X4C-Ye-guB" secondAttribute="height" id="2MX-t2-kKs"/>
+                                            <constraint firstItem="X4C-Ye-guB" firstAttribute="height" secondItem="P1X-Dj-8pI" secondAttribute="height" id="qe3-G8-zge"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="W5V-Ez-giW" firstAttribute="top" secondItem="oLn-85-5Ai" secondAttribute="top" constant="30" id="Yhw-KJ-hLG"/>
                                     <constraint firstAttribute="trailing" secondItem="W5V-Ez-giW" secondAttribute="trailing" id="dk3-XT-rBi"/>
                                     <constraint firstItem="W5V-Ez-giW" firstAttribute="leading" secondItem="oLn-85-5Ai" secondAttribute="leading" id="gOr-sc-XxD"/>
                                     <constraint firstItem="W5V-Ez-giW" firstAttribute="centerY" secondItem="oLn-85-5Ai" secondAttribute="centerY" id="jm3-mQ-mMw"/>
-                                    <constraint firstAttribute="height" constant="220" id="tqk-Os-FQa"/>
+                                    <constraint firstAttribute="height" constant="250" id="tqk-Os-FQa"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -137,6 +159,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

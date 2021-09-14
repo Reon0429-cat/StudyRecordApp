@@ -39,11 +39,6 @@ final class DarkModeSettingViewController: UIViewController {
         
     }
     
-    func notifyBrightnessDidChanged(mode: UIUserInterfaceStyle) {
-        NotificationCenter.default.post(name: .brightnessDidChanged,
-                                        object: nil,
-                                        userInfo: ["mode": mode])
-    }
 }
 
 // MARK: - IBAction func
@@ -84,6 +79,17 @@ private extension DarkModeSettingViewController {
             let mode: UIUserInterfaceStyle = settingDarkModeSwitch.isOn ? .dark : .light
             notifyBrightnessDidChanged(mode: mode)
         }
+    }
+    
+}
+
+// MARK: - func
+private extension DarkModeSettingViewController {
+    
+    func notifyBrightnessDidChanged(mode: UIUserInterfaceStyle) {
+        NotificationCenter.default.post(name: .brightnessDidChanged,
+                                        object: nil,
+                                        userInfo: ["mode": mode])
     }
     
 }

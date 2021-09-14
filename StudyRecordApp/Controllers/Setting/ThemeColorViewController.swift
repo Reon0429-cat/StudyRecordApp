@@ -9,8 +9,10 @@ import UIKit
 
 final class ThemeColorViewController: UIViewController {
     
+    @IBOutlet private weak var mainColorBaseView: UIView!
+    @IBOutlet private weak var subColorBaseView: UIView!
+    @IBOutlet private weak var accentColorBaseView: UIView!
     @IBOutlet private weak var subCustomNavigationBar: SubCustomNavigationBar!
-    
     @IBOutlet private weak var mainLabel: UILabel!
     @IBOutlet private weak var subLabel: UILabel!
     @IBOutlet private weak var accentLabel: UILabel!
@@ -51,11 +53,13 @@ final class ThemeColorViewController: UIViewController {
         super.viewDidLoad()
         
         containerView.bringSubviewToFront(currentContainerView)
+        self.view.backgroundColor = .dynamicColor(light: .white, dark: .black)
         setupThemeColorViews()
         setupSegmentedControl()
         setupColorViewLabels()
         setupContainerViewControllers()
         setupSubCustomNavigationBar()
+        setupBaseViews()
         
     }
     
@@ -276,6 +280,12 @@ private extension ThemeColorViewController {
     
     func setupSubCustomNavigationBar() {
         subCustomNavigationBar.delegate = self
+    }
+    
+    func setupBaseViews() {
+        mainColorBaseView.layer.cornerRadius = 10
+        subColorBaseView.layer.cornerRadius = 10
+        accentColorBaseView.layer.cornerRadius = 10
     }
     
 }

@@ -24,7 +24,9 @@ final class CustomSegmentedControl: UISegmentedControl {
     }
     
     func setup() {
-        setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black],
+        setTitleTextAttributes([NSAttributedString.Key.foregroundColor:
+                                    UIColor.dynamicColor(light: .black,
+                                                         dark: .white)],
                                for: .normal)
         setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white],
                                for: .selected)
