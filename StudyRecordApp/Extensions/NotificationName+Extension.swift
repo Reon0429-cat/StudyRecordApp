@@ -12,6 +12,7 @@ extension Notification.Name {
     static let themeColor = Notification.Name("themeColor")
     static let initTileView = Notification.Name("initTileView")
     static let graphSaveButtonDidTappped = Notification.Name("graphSaveButtonDidTappped")
+    static let brightnessDidChanged = Notification.Name("BrightnessDidChanged")
 
 }
 

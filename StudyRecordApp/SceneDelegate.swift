@@ -39,6 +39,11 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         } else {
             window.setRootVC(LoginAndSignUpViewController.self)
         }
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(brightnessDidChanged),
+                                               name: .brightnessDidChanged,
+                                               object: nil)
     }
     
     func sceneWillEnterForeground(_ scene: UIScene) {
@@ -51,6 +56,12 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         } else {
             self.window?.setRootVC(LoginAndSignUpViewController.self)
         }
+    }
+    
+    @objc
+    private func brightnessDidChanged(notification: Notification) {
+        guard let mode = notification.userInfo?["mode"] as? UIUserInterfaceStyle else { return }
+        self.window?.overrideUserInterfaceStyle = mode
     }
     
 }

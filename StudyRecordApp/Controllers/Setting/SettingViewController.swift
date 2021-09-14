@@ -54,6 +54,7 @@ private enum RowType: Int, CaseIterable {
 
 // MARK: - ToDo 言語を日本語と英語で切り替えられるように
 // MARK: - ToDo アニメーション付きでダークモードを切り替えられるように
+// MARK: - ToDo ダークモード端末とアプリでそれぞれ別々に選択できるようにする
 
 protocol SettingVCDelegate: ScreenPresentationDelegate {
     
@@ -89,6 +90,17 @@ final class SettingViewController: UIViewController {
         delegate?.screenDidPresented(screenType: .setting)
         tableView.reloadData()
         
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        guard let traitCollection = previousTraitCollection else { return }
+        if traitCollection.hasDifferentColorAppearance(comparedTo: self.traitCollection) {
+            let isDarkMode = UITraitCollection.current.userInterfaceStyle == .dark
+            settingUseCase.change(isDarkMode: isDarkMode)
+            tableView.reloadRows(at: [IndexPath(row: RowType.darkMode.rawValue,
+                                                section: 0)],
+                                 with: .automatic)
+        }
     }
     
 }
@@ -257,6 +269,10 @@ extension SettingViewController: UITableViewDataSource {
                 cell.configure(title: rowType.title,
                                isOn: setting.isDarkMode) { isOn in
                     self.settingUseCase.change(isDarkMode: isOn)
+                    let mode: UIUserInterfaceStyle = isOn ? .dark : .light
+                    NotificationCenter.default.post(name: .brightnessDidChanged,
+                                                    object: nil,
+                                                    userInfo: ["mode": mode])
                 }
                 return cell
             case .passcode:
