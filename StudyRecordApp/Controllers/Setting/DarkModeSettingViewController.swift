@@ -39,18 +39,11 @@ final class DarkModeSettingViewController: UIViewController {
         
     }
     
-//    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-//        guard let traitCollection = previousTraitCollection else { return }
-//        if traitCollection.hasDifferentColorAppearance(comparedTo: self.traitCollection) {
-//            if settingAutoSwitch.isOn {
-//                let mode: UIUserInterfaceStyle = UITraitCollection.current.userInterfaceStyle
-//                NotificationCenter.default.post(name: .brightnessDidChanged,
-//                                                object: nil,
-//                                                userInfo: ["mode": mode])
-//            }
-//        }
-//    }
-    
+    func notifyBrightnessDidChanged(mode: UIUserInterfaceStyle) {
+        NotificationCenter.default.post(name: .brightnessDidChanged,
+                                        object: nil,
+                                        userInfo: ["mode": mode])
+    }
 }
 
 // MARK: - IBAction func
@@ -58,56 +51,38 @@ private extension DarkModeSettingViewController {
     
     @IBAction func settingAppSwitchValueDidChanged(_ settingAppSwitch: UISwitch) {
         settingAutoSwitch.isOn.toggle()
+        darkModeBaseView.isHidden.toggle()
         if settingAppSwitch.isOn {
             settingUseCase.change(darkModeSettingType: .app)
-            darkModeBaseView.isHidden = false
+            let mode: UIUserInterfaceStyle = settingDarkModeSwitch.isOn ? .dark : .light
+            notifyBrightnessDidChanged(mode: mode)
         } else {
             settingUseCase.change(darkModeSettingType: .auto)
-            darkModeBaseView.isHidden = true
-        }
-        if settingAppSwitch.isOn {
-            let mode: UIUserInterfaceStyle = settingDarkModeSwitch.isOn ? .dark : .light
-            NotificationCenter.default.post(name: .brightnessDidChanged,
-                                            object: nil,
-                                            userInfo: ["mode": mode])
-        } else {
             let mode: UIUserInterfaceStyle = UITraitCollection.current.userInterfaceStyle
-            NotificationCenter.default.post(name: .brightnessDidChanged,
-                                            object: nil,
-                                            userInfo: ["mode": mode])
+            notifyBrightnessDidChanged(mode: mode)
         }
     }
     
     @IBAction func settingDarkModeSwitchValueDidChanged(_ settingDarkModeSwitch: UISwitch) {
         settingUseCase.change(isDarkMode: settingDarkModeSwitch.isOn)
         let mode: UIUserInterfaceStyle = settingDarkModeSwitch.isOn ? .dark : .light
-        NotificationCenter.default.post(name: .brightnessDidChanged,
-                                        object: nil,
-                                        userInfo: ["mode": mode])
+        notifyBrightnessDidChanged(mode: mode)
     }
     
     @IBAction func settingAutoSwitchValueDidChanged(_ settingAutoSwitch: UISwitch) {
         settingAppSwitch.isOn.toggle()
+        darkModeBaseView.isHidden.toggle()
         if settingAutoSwitch.isOn {
             settingUseCase.change(darkModeSettingType: .auto)
             let isDarkMode = UITraitCollection.current.userInterfaceStyle == .dark
             settingUseCase.change(isDarkMode: isDarkMode)
-            darkModeBaseView.isHidden = true
+            let mode: UIUserInterfaceStyle = UITraitCollection.current.userInterfaceStyle
+            notifyBrightnessDidChanged(mode: mode)
         } else {
             settingUseCase.change(darkModeSettingType: .app)
             settingUseCase.change(isDarkMode: settingDarkModeSwitch.isOn)
-            darkModeBaseView.isHidden = false
-        }
-        if settingAutoSwitch.isOn {
-            let mode: UIUserInterfaceStyle = UITraitCollection.current.userInterfaceStyle
-            NotificationCenter.default.post(name: .brightnessDidChanged,
-                                            object: nil,
-                                            userInfo: ["mode": mode])
-        } else {
             let mode: UIUserInterfaceStyle = settingDarkModeSwitch.isOn ? .dark : .light
-            NotificationCenter.default.post(name: .brightnessDidChanged,
-                                            object: nil,
-                                            userInfo: ["mode": mode])
+            notifyBrightnessDidChanged(mode: mode)
         }
     }
     
