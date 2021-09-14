@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Dark Mode Setting View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="DarkModeViewController" id="Y6W-OH-hqX" customClass="DarkModeSettingViewController" customModule="StudyRecordApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oLn-85-5Ai">
+                                <rect key="frame" x="0.0" y="44" width="414" height="220"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="W5V-Ez-giW">
+                                        <rect key="frame" x="0.0" y="50" width="414" height="120"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FZd-u5-lDK">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="55"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="このアプリで設定する" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FRZ-OR-Kgh">
+                                                        <rect key="frame" x="20" y="17.5" width="173.5" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u7u-wC-g8T" customClass="CustomSwitch" customModule="StudyRecordApp" customModuleProvider="target">
+                                                        <rect key="frame" x="345" y="12" width="51" height="31"/>
+                                                        <connections>
+                                                            <action selector="settingAppSwitchValueDidChanged:" destination="Y6W-OH-hqX" eventType="valueChanged" id="2Pa-h5-rTU"/>
+                                                        </connections>
+                                                    </switch>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="FRZ-OR-Kgh" firstAttribute="centerY" secondItem="FZd-u5-lDK" secondAttribute="centerY" id="Gza-D5-s9y"/>
+                                                    <constraint firstAttribute="trailing" secondItem="u7u-wC-g8T" secondAttribute="trailing" constant="20" id="T0P-Em-Kw8"/>
+                                                    <constraint firstItem="u7u-wC-g8T" firstAttribute="centerY" secondItem="FZd-u5-lDK" secondAttribute="centerY" id="ViC-5A-xOD"/>
+                                                    <constraint firstItem="FRZ-OR-Kgh" firstAttribute="leading" secondItem="FZd-u5-lDK" secondAttribute="leading" constant="20" id="faF-Qh-w3U"/>
+                                                    <constraint firstItem="u7u-wC-g8T" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="FRZ-OR-Kgh" secondAttribute="trailing" constant="20" id="j7F-rn-OWT"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P1X-Dj-8pI">
+                                                <rect key="frame" x="0.0" y="65" width="414" height="55"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="自動で設定する" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="tbE-9c-GNs">
+                                                        <rect key="frame" x="20" y="17.5" width="121.5" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zOD-GZ-GvT" customClass="CustomSwitch" customModule="StudyRecordApp" customModuleProvider="target">
+                                                        <rect key="frame" x="345" y="12" width="51" height="31"/>
+                                                        <connections>
+                                                            <action selector="settingAutoSwitchValueDidChanged:" destination="Y6W-OH-hqX" eventType="valueChanged" id="Sb8-LJ-PDg"/>
+                                                        </connections>
+                                                    </switch>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="tbE-9c-GNs" firstAttribute="leading" secondItem="P1X-Dj-8pI" secondAttribute="leading" constant="20" id="5gR-Na-y2h"/>
+                                                    <constraint firstItem="zOD-GZ-GvT" firstAttribute="centerY" secondItem="P1X-Dj-8pI" secondAttribute="centerY" id="NgZ-ig-6wf"/>
+                                                    <constraint firstItem="tbE-9c-GNs" firstAttribute="centerY" secondItem="P1X-Dj-8pI" secondAttribute="centerY" id="Pek-L3-tTM"/>
+                                                    <constraint firstAttribute="trailing" secondItem="zOD-GZ-GvT" secondAttribute="trailing" constant="20" id="RKz-oc-Eeu"/>
+                                                    <constraint firstItem="zOD-GZ-GvT" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tbE-9c-GNs" secondAttribute="trailing" constant="20" id="YLO-WK-QBo"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="W5V-Ez-giW" firstAttribute="top" secondItem="oLn-85-5Ai" secondAttribute="top" constant="50" id="Yhw-KJ-hLG"/>
+                                    <constraint firstAttribute="trailing" secondItem="W5V-Ez-giW" secondAttribute="trailing" id="dk3-XT-rBi"/>
+                                    <constraint firstItem="W5V-Ez-giW" firstAttribute="leading" secondItem="oLn-85-5Ai" secondAttribute="leading" id="gOr-sc-XxD"/>
+                                    <constraint firstItem="W5V-Ez-giW" firstAttribute="centerY" secondItem="oLn-85-5Ai" secondAttribute="centerY" id="jm3-mQ-mMw"/>
+                                    <constraint firstAttribute="height" constant="220" id="tqk-Os-FQa"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="oLn-85-5Ai" secondAttribute="trailing" id="Bfe-4Z-27e"/>
+                            <constraint firstItem="oLn-85-5Ai" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="G64-Z0-Pt5"/>
+                            <constraint firstItem="oLn-85-5Ai" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="w2A-ze-X34"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="contentView" destination="oLn-85-5Ai" id="d5J-A2-tT2"/>
+                        <outlet property="settingAppLabel" destination="FRZ-OR-Kgh" id="lpx-V9-BjG"/>
+                        <outlet property="settingAppSwitch" destination="u7u-wC-g8T" id="XX3-p2-fQJ"/>
+                        <outlet property="settingAutoLabel" destination="tbE-9c-GNs" id="KNZ-b1-Uhq"/>
+                        <outlet property="settingAutoSwitch" destination="zOD-GZ-GvT" id="xbb-Fv-gis"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="141" y="100"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
