@@ -55,6 +55,7 @@ private enum RowType: Int, CaseIterable {
 // MARK: - ToDo 言語を日本語と英語で切り替えられるように
 // MARK: - ToDo アニメーション付きでダークモードを切り替えられるように
 // MARK: - ToDo ダークモード端末とアプリでそれぞれ別々に選択できるようにする
+// MARK: - ToDo 言語セルはいらないので、消す
 
 protocol SettingVCDelegate: ScreenPresentationDelegate {
     
@@ -162,6 +163,20 @@ private extension SettingViewController {
         present(alert, animated: true)
     }
     
+    func presentActivityVC() {
+        // MARK: - ToDo 決まり次第、テキストとimageを切り替える
+        let text = "テストテキスト"
+        guard let image = UIImage(systemName: "star") else { return }
+        let activityVC = UIActivityViewController(activityItems: [text, image],
+                                                  applicationActivities: nil)
+        activityVC.excludedActivityTypes = [
+            .saveToCameraRoll,
+            .message,
+            .print
+        ]
+        present(activityVC, animated: true)
+    }
+    
 }
 
 // MARK: - UITableViewDelegate
@@ -187,7 +202,7 @@ extension SettingViewController: UITableViewDelegate {
             case .evaluationApp:
                 break
             case .shareApp:
-                break
+                presentActivityVC()
             case .reports:
                 break
             case .howToUseApp:
