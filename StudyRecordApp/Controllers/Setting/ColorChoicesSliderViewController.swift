@@ -33,6 +33,7 @@ final class ColorChoicesSliderViewController: UIViewController {
         super.viewDidLoad()
         
         setObserver()
+        setupAlphaSlider()
         
     }
     
@@ -102,6 +103,11 @@ private extension ColorChoicesSliderViewController {
         greenSlider.value = Float(greenValue)
         blueSlider.value = Float(blueValue)
         alphaSlider.value = Float(alphaValue)
+    }
+    
+    func setupAlphaSlider() {
+        alphaSlider.thumbTintColor = .dynamicColor(light: .black, dark: .white)
+        alphaSlider.minimumTrackTintColor = .dynamicColor(light: .black, dark: .white)
     }
     
 }

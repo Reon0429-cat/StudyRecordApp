@@ -40,7 +40,7 @@ final class StudyRecordGraphColorViewController: UIViewController {
 private extension StudyRecordGraphColorViewController {
     
     @IBAction func saveButtonDidTapped(_ sender: Any) {
-        let color = selectedTileView?.backgroundColor ?? .white
+        let color = selectedTileView?.backgroundColor ?? .clear
         delegate?.graphColorDidSelected(color: color)
         dismiss(animated: true)
     }
@@ -81,6 +81,8 @@ private extension StudyRecordGraphColorViewController {
     
     func setupGraphColorView() {
         graphColorView.layer.cornerRadius = 10
+        graphColorView.backgroundColor = .dynamicColor(light: .white,
+                                                       dark: .secondarySystemGroupedBackground)
     }
     
     func setupGraphColorTileView() {

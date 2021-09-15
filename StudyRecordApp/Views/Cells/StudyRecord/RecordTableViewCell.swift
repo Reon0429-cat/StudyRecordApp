@@ -51,7 +51,15 @@ final class RecordTableViewCell: UITableViewCell {
         
         setupBaseView()
         setupDeleteButton()
+        setBorderColor()
         
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        guard let traitCollection = previousTraitCollection else { return }
+        if traitCollection.hasDifferentColorAppearance(comparedTo: self.traitCollection) {
+            setBorderColor()
+        }
     }
     
     @IBAction private func memoButtonDidTapped(_ sender: Any) {
@@ -102,8 +110,6 @@ private extension RecordTableViewCell {
                                                        action: #selector(baseViewLongPressDidRecognized))
         longPressGR.minimumPressDuration = 1
         baseView.addGestureRecognizer(longPressGR)
-        baseView.backgroundColor = .white
-        baseView.layer.borderColor = UIColor.black.cgColor
         baseView.layer.borderWidth = 1
     }
     
@@ -120,7 +126,8 @@ private extension RecordTableViewCell {
     func setupDeleteButton() {
         deleteButton.isHidden = true
         deleteButton.cutToCircle()
-        deleteButton.backgroundColor = .white
+        guard let image = UIImage(systemName: "xmark.circle.fill") else { return }
+        deleteButton.setImage(image.setColor(.dynamicColor(light: .black, dark: .white)))
     }
     
     func setupTitleLabel(record: Record) {
@@ -175,8 +182,12 @@ private extension RecordTableViewCell {
         memoTextView.isEditable = false
         memoTextView.backgroundColor = .clear
         memoTextView.layer.borderWidth = 1
-        memoTextView.layer.borderColor = UIColor.black.cgColor
         memoTextView.text = record.memo
+    }
+    
+    func setBorderColor() {
+        memoTextView.layer.borderColor = UIColor.dynamicColor(light: .black, dark: .white).cgColor
+        baseView.layer.borderColor = UIColor.dynamicColor(light: .black, dark: .white).cgColor
     }
     
 }

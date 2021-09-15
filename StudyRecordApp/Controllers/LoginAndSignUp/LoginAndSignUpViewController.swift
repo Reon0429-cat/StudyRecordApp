@@ -59,6 +59,13 @@ final class LoginAndSignUpViewController: UIViewController {
         }
     }
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        guard let traitCollection = previousTraitCollection else { return }
+        if traitCollection.hasDifferentColorAppearance(comparedTo: self.traitCollection) {
+            setBaseViewLayerColor()
+        }
+    }
+    
 }
 
 // MARK: - IBAction func
@@ -89,15 +96,15 @@ private extension LoginAndSignUpViewController {
     func setToggleViewColor() {
         switch viewType {
             case .login:
-                loginButton.backgroundColor = .white
-                signUpButton.backgroundColor = .clear
-                loginButton.tintColor = .black
-                signUpButton.tintColor = .gray
+                loginButton.backgroundColor = .dynamicColor(light: .white, dark: .secondarySystemBackground)
+                signUpButton.backgroundColor = .dynamicColor(light: .clear, dark: .clear)
+                loginButton.tintColor = .dynamicColor(light: .black, dark: .white)
+                signUpButton.tintColor = .dynamicColor(light: .gray, dark: .gray)
             case .signUp:
-                loginButton.backgroundColor = .clear
-                signUpButton.backgroundColor = .white
-                loginButton.tintColor = .gray
-                signUpButton.tintColor = .black
+                loginButton.backgroundColor = .dynamicColor(light: .clear, dark: .clear)
+                signUpButton.backgroundColor = .dynamicColor(light: .white, dark: .secondarySystemBackground)
+                loginButton.tintColor = .dynamicColor(light: .gray, dark: .gray)
+                signUpButton.tintColor = .dynamicColor(light: .black, dark: .white)
         }
     }
     
@@ -118,25 +125,13 @@ private extension LoginAndSignUpViewController {
         }
     }
     
-}
-
-// MARK: - setup
-private extension LoginAndSignUpViewController {
-    
-    func setupBaseView() {
-        baseView.setShadow(radius: 5, opacity: 0.6, size: (width: 3, height: 3))
-    }
-    
-    func setupLoginButton() {
-        loginButton.layer.cornerRadius = cornerRadiusConstant
-        loginButton.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        loginButton.setTitle(LocalizeKey.login.localizedString())
-    }
-    
-    func setupSignUpButton() {
-        signUpButton.layer.cornerRadius = cornerRadiusConstant
-        signUpButton.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        signUpButton.setTitle(LocalizeKey.signUp.localizedString())
+    func setBaseViewLayerColor() {
+        baseView.setShadow(color: .dynamicColor(light: .black,
+                                                dark: .white),
+                           radius: 5,
+                           opacity: 0.6,
+                           size: (width: 3,
+                                  height: 3))
     }
     
 }
@@ -159,3 +154,26 @@ extension LoginAndSignUpViewController: SignUpVCDelegate {
     
 }
 
+// MARK: - setup
+private extension LoginAndSignUpViewController {
+    
+    func setupBaseView() {
+        setBaseViewLayerColor()
+    }
+    
+    func setupLoginButton() {
+        loginButton.layer.cornerRadius = cornerRadiusConstant
+        loginButton.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        loginButton.setTitle(LocalizeKey.login.localizedString())
+        loginButton.backgroundColor = .dynamicColor(light: .white,
+                                                    dark: .secondarySystemBackground)
+    }
+    
+    func setupSignUpButton() {
+        signUpButton.layer.cornerRadius = cornerRadiusConstant
+        signUpButton.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        signUpButton.setTitle(LocalizeKey.signUp.localizedString())
+        signUpButton.backgroundColor = .clear
+    }
+    
+}

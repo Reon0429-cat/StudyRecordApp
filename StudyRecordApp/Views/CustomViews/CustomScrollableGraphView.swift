@@ -88,6 +88,7 @@ private extension CustomScrollableGraphView {
         graphView.shouldAnimateOnAdapt = false
         graphView.topMargin = 10
         graphView.dataPointSpacing = 30
+        graphView.backgroundColor = .clear
     }
     
     func createReferenceLines() {
@@ -95,6 +96,8 @@ private extension CustomScrollableGraphView {
         referenceLines.referenceLineLabelFont = .boldSystemFont(ofSize: 10)
         referenceLines.dataPointLabelFont = .boldSystemFont(ofSize: 10)
         referenceLines.referenceLineColor = .black
+        referenceLines.dataPointLabelColor = .black
+        referenceLines.referenceLineLabelColor = .black
         referenceLines.includeMinMax = false
         referenceLines.positionType = .absolute
         referenceLines.absolutePositions = [Int](0...24).map { Double($0) }

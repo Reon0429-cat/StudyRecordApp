@@ -52,6 +52,10 @@ private enum RowType: Int, CaseIterable {
     }
 }
 
+// MARK: - ToDo 言語を日本語と英語で切り替えられるように
+// MARK: - ToDo アニメーション付きでダークモードを切り替えられるように
+// MARK: - ToDo ダークモード端末とアプリでそれぞれ別々に選択できるようにする
+
 protocol SettingVCDelegate: ScreenPresentationDelegate {
     
 }
@@ -72,6 +76,7 @@ final class SettingViewController: UIViewController {
         )
     )
     private let indicator = Indicator(kinds: PKHUDIndicator())
+    private var halfModalPresenter = HalfModalPresenter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -170,7 +175,9 @@ extension SettingViewController: UITableViewDelegate {
             case .themeColor:
                 presentThemeColorActionSheet()
             case .darkMode:
-                break
+                present(DarkModeSettingViewController.self) { vc in
+                    self.halfModalPresenter.viewController = vc
+                }
             case .passcode:
                 break
             case .pushNotification:
@@ -241,6 +248,7 @@ extension SettingViewController: UITableViewDataSource {
             case .themeColor,
                  .multilingual,
                  .evaluationApp,
+                 .darkMode,
                  .shareApp,
                  .reports,
                  .howToUseApp,
@@ -248,13 +256,6 @@ extension SettingViewController: UITableViewDataSource {
                  .privacyPolicy:
                 let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
                 cell.configure(titleText: rowType.title)
-                return cell
-            case .darkMode:
-                let cell = tableView.dequeueReusableCustomCell(with: CustomSwitchTableViewCell.self)
-                cell.configure(title: rowType.title,
-                               isOn: setting.isDarkMode) { isOn in
-                    self.settingUseCase.change(isDarkMode: isOn)
-                }
                 return cell
             case .passcode:
                 let cell = tableView.dequeueReusableCustomCell(with: CustomSwitchTableViewCell.self)

@@ -10,6 +10,15 @@ import RealmSwift
 // Realmに依存した型
 final class SettingRealm: Object {
     @objc dynamic var isDarkMode: Bool = false
+    @objc private dynamic var darkModeSettingTypeRawValue = 0
+    var darkModeSettingType: DarkModeSettingType {
+        get {
+            return DarkModeSettingType(rawValue: darkModeSettingTypeRawValue) ?? .app
+        }
+        set {
+            darkModeSettingTypeRawValue = newValue.rawValue
+        }
+    }
     @objc dynamic var isPasscodeSetted: Bool = false
     @objc dynamic var passcode: String = ""
     @objc dynamic var isPushNotificationSetted: Bool = true

@@ -114,7 +114,7 @@
 "category" = "カテゴリ";
 "Category" = "カテゴリ";
 "simple" = "シンプル";
-"priority" = "優先度";
+"Priority" = "優先度";
 "dueDate" = "期日";
 "createdDate" = "作成日";
 "photo" = "写真";
@@ -189,6 +189,10 @@
 
 "thereIsNoData" = "データがありません";
 "graphDataIsNotRegistered" = "グラフデータが登録されていません";
+
+"darkModeSettingApp" = "このアプリで設定する";
+"darkModeSettingAuto" = "自動で設定する";
+
 "" = "";
 "" = "";
 "" = "";

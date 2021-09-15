@@ -40,12 +40,14 @@ final class RealmSettingDataStore: SettingDataStoreProtocol {
     func update(setting: Setting, at index: Int) {
         let object = objects[index]
         let setting = Setting(isDarkMode: setting.isDarkMode,
+                              darkModeSettingType: setting.darkModeSettingType,
                               isPasscodeSetted: setting.isPasscodeSetted,
                               passcode: setting.passcode,
                               isPushNotificationSetted: setting.isPushNotificationSetted,
                               language: setting.language)
         try! realm.write {
             object.isDarkMode = setting.isDarkMode
+            object.darkModeSettingType = setting.darkModeSettingType
             object.isPasscodeSetted = setting.isPasscodeSetted
             object.passcode = setting.passcode
             object.isPushNotificationSetted = setting.isPushNotificationSetted
@@ -67,11 +69,12 @@ private extension SettingRealm {
     convenience init(setting: Setting) {
         self.init()
         let setting = Setting(isDarkMode: setting.isDarkMode,
+                              darkModeSettingType: setting.darkModeSettingType,
                               isPasscodeSetted: setting.isPasscodeSetted,
                               passcode: setting.passcode,
                               isPushNotificationSetted: setting.isPushNotificationSetted,
                               language: setting.language)
-        self.isDarkMode = setting.isDarkMode
+        self.darkModeSettingType = setting.darkModeSettingType
         self.isPasscodeSetted = setting.isPasscodeSetted
         self.passcode = setting.passcode
         self.isPushNotificationSetted = setting.isPushNotificationSetted
@@ -84,6 +87,7 @@ private extension Setting {
     
     init(setting: SettingRealm) {
         self.init(isDarkMode: setting.isDarkMode,
+                  darkModeSettingType: setting.darkModeSettingType,
                   isPasscodeSetted: setting.isPasscodeSetted,
                   passcode: setting.passcode,
                   isPushNotificationSetted: setting.isPushNotificationSetted,

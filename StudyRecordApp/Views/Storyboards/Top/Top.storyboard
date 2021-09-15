@@ -188,7 +188,6 @@
         <!--Tab Bar Collection View Controller-->
         <scene sceneID="y4W-tT-h3D">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="paz-SE-vXL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="xR7-ze-SAZ" customClass="TabBarCollectionViewController" customModule="StudyRecordApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IlH-bx-wif">
                         <rect key="frame" x="0.0" y="0.0" width="301" height="110"/>
@@ -219,6 +218,7 @@
                         <outlet property="collectionView" destination="yKl-UI-Kjm" id="DHi-RO-WxG"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="paz-SE-vXL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1780" y="863"/>
         </scene>

@@ -35,6 +35,13 @@ final class StudyRecordMemoViewController: UIViewController {
         
     }
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        guard let traitCollection = previousTraitCollection else { return }
+        if traitCollection.hasDifferentColorAppearance(comparedTo: self.traitCollection) {
+            setBorderColor()
+        }
+    }
+    
 }
 
 // MARK: - IBAction func
@@ -87,11 +94,16 @@ private extension StudyRecordMemoViewController {
     func setupTextView() {
         textView.text = inputtedMemo
         textView.delegate = self
-        textView.backgroundColor = .white
+        textView.backgroundColor = .clear
+        textView.textColor = .dynamicColor(light: .black, dark: .white)
+        textView.tintColor = .dynamicColor(light: .black, dark: .white)
         textView.layer.borderWidth = 1
-        textView.layer.borderColor = UIColor.black.cgColor
         textView.layer.cornerRadius = 10
         textView.becomeFirstResponder()
+    }
+    
+    func setBorderColor() {
+        textView.layer.borderColor = UIColor.dynamicColor(light: .black, dark: .white).cgColor
     }
     
     func setupBaseView() {

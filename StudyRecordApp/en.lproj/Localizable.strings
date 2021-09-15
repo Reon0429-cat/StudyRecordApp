@@ -114,7 +114,7 @@
 "Category" = "Category";
 "simple" = "simple";
 
-"priority" = "Priority";
+"Priority" = "Priority";
 "dueDate" = "Due Date";
 "createdDate" = "Created Date";
 "photo" = "Photo";
@@ -188,6 +188,12 @@
 
 "thereIsNoData" = "there is no data";
 "graphDataIsNotRegistered" = "Graph data is not registered";
+
+"darkModeSettingApp" = "Set with this app";
+"darkModeSettingAuto" = "Set automatically";
+
+
+
 "" = "";
 "" = "";
 "" = "";

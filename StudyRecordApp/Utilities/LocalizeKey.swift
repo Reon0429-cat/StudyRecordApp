@@ -178,7 +178,8 @@ enum LocalizeKey: String {
     case thereIsNoData
     case graphDataIsNotRegistered
     
-    
+    case darkModeSettingApp
+    case darkModeSettingAuto
     
     
     

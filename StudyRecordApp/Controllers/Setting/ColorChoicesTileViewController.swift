@@ -72,7 +72,15 @@ final class ColorChoicesTileViewController: UIViewController {
         
         setupTileViews()
         setObserver()
+        setupThemeColorStackView()
         
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        guard let traitCollection = previousTraitCollection else { return }
+        if traitCollection.hasDifferentColorAppearance(comparedTo: self.traitCollection) {
+            setBorder()
+        }
     }
     
 }
@@ -150,6 +158,17 @@ private extension ColorChoicesTileViewController {
                         tileView.backgroundColor = color
                     }
             }
+    }
+    
+    func setupThemeColorStackView() {
+        themeColorStackView.layer.borderWidth = 1
+        setBorder()
+    }
+    
+    func setBorder() {
+        themeColorStackView.layer.borderColor = UIColor.dynamicColor(light: .clear,
+                                                                     dark: .white).cgColor
+        themeColorStackView.backgroundColor = .dynamicColor(light: .clear, dark: .white)
     }
     
 }

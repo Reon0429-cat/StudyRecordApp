@@ -1,13 +1,13 @@
 //
-//  CustomButton.swift
+//  CustomTextField.swift
 //  StudyRecordApp
 //
-//  Created by 大西玲音 on 2021/09/13.
+//  Created by 大西玲音 on 2021/09/14.
 //
 
 import UIKit
 
-final class CustomButton: UIButton {
+final class CustomTextField: UITextField {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,10 +24,9 @@ final class CustomButton: UIButton {
     }
     
     func setup() {
-        setGradation(colors: [.gray, .black],
-                     locations: [0.1, 0.9])
-        layer.cornerRadius = 10
+        tintColor = .dynamicColor(light: .black,
+                                  dark: .white)
+        setUnderLine()
     }
     
 }
-

@@ -69,6 +69,7 @@ final class StudyRecordTimeRecordViewController: UIViewController {
         
         setupPickerView()
         setupDeleteButton()
+        setupContentView()
         
     }
     
@@ -205,6 +206,11 @@ private extension StudyRecordTimeRecordViewController {
     
     func setupDeleteButton() {
         deleteButton.isHidden = !isHistoryDidTapped
+    }
+    
+    func setupContentView() {
+        contentView.backgroundColor = .dynamicColor(light: .white,
+                                                    dark: .secondarySystemGroupedBackground)
     }
     
 }

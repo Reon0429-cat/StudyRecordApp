@@ -20,63 +20,100 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="3GF-Pr-HSp">
                                 <rect key="frame" x="5" y="144" width="404" height="160"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nfI-wP-0hj" customClass="ThemeColorView" customModule="StudyRecordApp" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gAg-NN-uTV">
                                         <rect key="frame" x="0.0" y="0.0" width="199.5" height="160"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="メイン" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jxd-4T-Mob">
-                                                <rect key="frame" x="5" y="5" width="64.5" height="25.5"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nfI-wP-0hj" customClass="ThemeColorView" customModule="StudyRecordApp" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="199.5" height="160"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="メイン" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jxd-4T-Mob">
+                                                        <rect key="frame" x="5" y="5" width="64.5" height="25.5"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstItem="Jxd-4T-Mob" firstAttribute="top" secondItem="nfI-wP-0hj" secondAttribute="top" constant="5" id="NPI-pG-KWz"/>
+                                                    <constraint firstItem="Jxd-4T-Mob" firstAttribute="leading" secondItem="nfI-wP-0hj" secondAttribute="leading" constant="5" id="tNz-UR-rIX"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
-                                        <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="Jxd-4T-Mob" firstAttribute="top" secondItem="nfI-wP-0hj" secondAttribute="top" constant="5" id="NPI-pG-KWz"/>
-                                            <constraint firstItem="Jxd-4T-Mob" firstAttribute="leading" secondItem="nfI-wP-0hj" secondAttribute="leading" constant="5" id="tNz-UR-rIX"/>
+                                            <constraint firstAttribute="trailing" secondItem="nfI-wP-0hj" secondAttribute="trailing" id="agu-el-1XG"/>
+                                            <constraint firstAttribute="bottom" secondItem="nfI-wP-0hj" secondAttribute="bottom" id="dJI-AB-Iqd"/>
+                                            <constraint firstItem="nfI-wP-0hj" firstAttribute="leading" secondItem="gAg-NN-uTV" secondAttribute="leading" id="m3w-uu-IHp"/>
+                                            <constraint firstItem="nfI-wP-0hj" firstAttribute="top" secondItem="gAg-NN-uTV" secondAttribute="top" id="yIh-dI-dVz"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="qa5-1L-qPS">
                                         <rect key="frame" x="204.5" y="0.0" width="199.5" height="160"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FWq-zr-HV0" customClass="ThemeColorView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LHx-de-Yib">
                                                 <rect key="frame" x="0.0" y="0.0" width="199.5" height="97"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="サブ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tuj-bU-ebL">
-                                                        <rect key="frame" x="5" y="5" width="37" height="21.5"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FWq-zr-HV0" customClass="ThemeColorView" customModule="StudyRecordApp" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="199.5" height="97"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="サブ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tuj-bU-ebL">
+                                                                <rect key="frame" x="5" y="5" width="37" height="21.5"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstItem="tuj-bU-ebL" firstAttribute="top" secondItem="FWq-zr-HV0" secondAttribute="top" constant="5" id="P2h-FA-Qn9"/>
+                                                            <constraint firstItem="tuj-bU-ebL" firstAttribute="leading" secondItem="FWq-zr-HV0" secondAttribute="leading" constant="5" id="Z5w-8b-gOv"/>
+                                                        </constraints>
+                                                    </view>
                                                 </subviews>
-                                                <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstItem="tuj-bU-ebL" firstAttribute="top" secondItem="FWq-zr-HV0" secondAttribute="top" constant="5" id="P2h-FA-Qn9"/>
-                                                    <constraint firstItem="tuj-bU-ebL" firstAttribute="leading" secondItem="FWq-zr-HV0" secondAttribute="leading" constant="5" id="Z5w-8b-gOv"/>
+                                                    <constraint firstItem="FWq-zr-HV0" firstAttribute="top" secondItem="LHx-de-Yib" secondAttribute="top" id="AkW-QD-pol"/>
+                                                    <constraint firstAttribute="trailing" secondItem="FWq-zr-HV0" secondAttribute="trailing" id="GpI-eW-XY3"/>
+                                                    <constraint firstAttribute="bottom" secondItem="FWq-zr-HV0" secondAttribute="bottom" id="Hg9-vD-Ehd"/>
+                                                    <constraint firstItem="FWq-zr-HV0" firstAttribute="leading" secondItem="LHx-de-Yib" secondAttribute="leading" id="Nvv-CO-BjN"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a42-HT-Y4I" customClass="ThemeColorView" customModule="StudyRecordApp" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="trt-1D-dPU">
                                                 <rect key="frame" x="0.0" y="102" width="199.5" height="58"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="アクセント" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pj4-cc-bc6">
-                                                        <rect key="frame" x="5" y="5" width="82" height="19.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a42-HT-Y4I" customClass="ThemeColorView" customModule="StudyRecordApp" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="199.5" height="58"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="アクセント" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pj4-cc-bc6">
+                                                                <rect key="frame" x="5" y="5" width="82" height="19.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstItem="pj4-cc-bc6" firstAttribute="leading" secondItem="a42-HT-Y4I" secondAttribute="leading" constant="5" id="aec-1F-je6"/>
+                                                            <constraint firstItem="pj4-cc-bc6" firstAttribute="top" secondItem="a42-HT-Y4I" secondAttribute="top" constant="5" id="isi-TE-K0R"/>
+                                                        </constraints>
+                                                    </view>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstItem="pj4-cc-bc6" firstAttribute="leading" secondItem="a42-HT-Y4I" secondAttribute="leading" constant="5" id="aec-1F-je6"/>
-                                                    <constraint firstItem="pj4-cc-bc6" firstAttribute="top" secondItem="a42-HT-Y4I" secondAttribute="top" constant="5" id="isi-TE-K0R"/>
+                                                    <constraint firstItem="a42-HT-Y4I" firstAttribute="leading" secondItem="trt-1D-dPU" secondAttribute="leading" id="1xC-t4-qEg"/>
+                                                    <constraint firstAttribute="trailing" secondItem="a42-HT-Y4I" secondAttribute="trailing" id="6pw-Zm-7ie"/>
+                                                    <constraint firstAttribute="bottom" secondItem="a42-HT-Y4I" secondAttribute="bottom" id="dR6-S6-VVf"/>
+                                                    <constraint firstItem="a42-HT-Y4I" firstAttribute="top" secondItem="trt-1D-dPU" secondAttribute="top" id="fOy-Md-Gpl"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="FWq-zr-HV0" firstAttribute="height" secondItem="a42-HT-Y4I" secondAttribute="height" multiplier="5:3" id="JXS-gb-9rY"/>
+                                            <constraint firstItem="LHx-de-Yib" firstAttribute="height" secondItem="trt-1D-dPU" secondAttribute="height" multiplier="5:3" id="DHk-aG-xvs"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="160" id="Kfx-H0-Lbx"/>
                                 </constraints>
@@ -98,7 +135,7 @@
                                                 </connections>
                                             </segmentedControl>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="9lA-YX-AM8" firstAttribute="centerX" secondItem="ZKJ-me-7A8" secondAttribute="centerX" id="7Ke-N9-kqG"/>
                                             <constraint firstItem="9lA-YX-AM8" firstAttribute="top" secondItem="ZKJ-me-7A8" secondAttribute="top" constant="5" id="BpX-47-GNE"/>
@@ -170,16 +207,19 @@
                     </view>
                     <navigationItem key="navigationItem" id="4qa-kh-Jya"/>
                     <connections>
+                        <outlet property="accentColorBaseView" destination="trt-1D-dPU" id="ckw-FO-2CO"/>
                         <outlet property="accentColorView" destination="a42-HT-Y4I" id="2LU-cL-gEa"/>
                         <outlet property="accentLabel" destination="pj4-cc-bc6" id="XTg-MW-3dS"/>
                         <outlet property="colorChoicesConceptContainerView" destination="SbM-lS-eo1" id="T1e-oC-Kan"/>
                         <outlet property="colorChoicesSliderContainerView" destination="v5W-Jl-Mit" id="sKj-eu-Mub"/>
                         <outlet property="colorChoicesTileContainerView" destination="ouo-Yb-FbD" id="hsH-xA-EIy"/>
                         <outlet property="containerView" destination="4Qc-0K-WqC" id="gCN-Ay-oOO"/>
+                        <outlet property="mainColorBaseView" destination="gAg-NN-uTV" id="wBs-wO-MhX"/>
                         <outlet property="mainColorView" destination="nfI-wP-0hj" id="pjb-u9-409"/>
                         <outlet property="mainLabel" destination="Jxd-4T-Mob" id="KuS-aO-IsO"/>
                         <outlet property="segmentedControl" destination="9lA-YX-AM8" id="oVf-G7-f0P"/>
                         <outlet property="segmentedControlBackView" destination="ZKJ-me-7A8" id="LLX-8O-wR3"/>
+                        <outlet property="subColorBaseView" destination="LHx-de-Yib" id="BsZ-I4-M7Q"/>
                         <outlet property="subColorView" destination="FWq-zr-HV0" id="8cc-Sa-sKA"/>
                         <outlet property="subCustomNavigationBar" destination="dWy-qz-cyU" id="JBv-rS-l2p"/>
                         <outlet property="subLabel" destination="tuj-bU-ebL" id="lwu-1U-7IP"/>

@@ -53,6 +53,8 @@ final class TopViewController: UIViewController {
         setupSortButton()
         setAnimation()
         setupWaveViews()
+        self.view.backgroundColor = .dynamicColor(light: .white,
+                                                  dark: .black)
         
     }
     
@@ -344,6 +346,7 @@ private extension TopViewController {
     }
     
     func setupTitleLabel() {
+        titleLabel.textColor = .black
         titleLabel.text = screenType.title
     }
     
@@ -362,6 +365,10 @@ private extension TopViewController {
     func setupSortButton() {
         sortButton.isHidden = true
         sortButton.alpha = 0
+        guard let image = UIImage(systemName: "arrow.up.arrow.down.circle.fill") else { return }
+        sortButton.setImage(image.setColor(.dynamicColor(light: .black, dark: .white)))
+        let config = UIImage.SymbolConfiguration(pointSize: 30)
+        sortButton.setPreferredSymbolConfiguration(config, forImageIn: .normal)
     }
     
     func setupWaveViews() {

@@ -17,10 +17,12 @@ protocol LoginVCDelegate: AnyObject {
 final class LoginViewController: UIViewController {
     
     @IBOutlet private weak var stackViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var mailAddressImage: UIImageView!
     @IBOutlet private weak var mailAddressLabel: UILabel!
-    @IBOutlet private weak var mailAddressTextField: UITextField!
+    @IBOutlet private weak var mailAddressTextField: CustomTextField!
+    @IBOutlet private weak var passwordImage: UIImageView!
     @IBOutlet private weak var passwordLabel: UILabel!
-    @IBOutlet private weak var passwordTextField: UITextField!
+    @IBOutlet private weak var passwordTextField: CustomTextField!
     @IBOutlet private weak var passwordSecureButton: UIButton!
     @IBOutlet private weak var loginButton: CustomButton!
     @IBOutlet private weak var passwordForgotButton: CustomButton!
@@ -44,19 +46,15 @@ final class LoginViewController: UIViewController {
         setupPasswordTextField()
         setupLoginButton()
         setupPasswordSecureButton()
+        setupMailAddressImage()
+        setupPasswordImage()
         setupPasswordLabel()
         setupMailAddressLabel()
         setupPasswordForgotLabel()
         setupPasswordForgotButton()
         setupKeyboardObserver()
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        mailAddressTextField.setUnderLine()
-        passwordTextField.setUnderLine()
+        self.view.backgroundColor = .dynamicColor(light: .white,
+                                                  dark: .secondarySystemBackground)
         
     }
     
@@ -157,6 +155,7 @@ private extension LoginViewController {
     
     func setupMailAddressLabel() {
         mailAddressLabel.text = LocalizeKey.mailAddress.localizedString()
+        mailAddressLabel.textColor = .dynamicColor(light: .black, dark: .white)
     }
     
     func setupMailAddressTextField() {
@@ -166,12 +165,18 @@ private extension LoginViewController {
     
     func setupPasswordLabel() {
         passwordLabel.text = LocalizeKey.password.localizedString()
+        passwordLabel.textColor = .dynamicColor(light: .black, dark: .white)
     }
     
     func setupPasswordTextField() {
         passwordTextField.delegate = self
         passwordTextField.isSecureTextEntry = true
         passwordTextField.textContentType = .newPassword
+    }
+    
+    func setupMailAddressImage() {
+        guard let image = UIImage(systemName: "envelope") else { return }
+        mailAddressImage.image = image.setColor(.dynamicColor(light: .black, dark: .white))
     }
     
     func setupLoginButton() {
@@ -181,15 +186,21 @@ private extension LoginViewController {
     
     func setupPasswordSecureButton() {
         changePasswordSecureButtonImage(isSlash: false)
+        passwordSecureButton.tintColor = .dynamicColor(light: .black, dark: .white)
     }
     
     func setupPasswordForgotLabel() {
         passwordForgotLabel.text = LocalizeKey.passwordForgot.localizedString()
+        passwordForgotLabel.textColor = .dynamicColor(light: .black, dark: .white)
     }
     
     func setupPasswordForgotButton() {
-        print(Locale.preferredLanguages)
         passwordForgotButton.setTitle(LocalizeKey.here.localizedString())
+    }
+    
+    func setupPasswordImage() {
+        guard let image = UIImage(systemName: "lock") else { return }
+        passwordImage.image = image.setColor(.dynamicColor(light: .black, dark: .white))
     }
     
     func setupKeyboardObserver() {
