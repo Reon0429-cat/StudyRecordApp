@@ -25,7 +25,7 @@ final class PriorityStackView: UIStackView {
         self.axis = .horizontal
         (0...priority.number.rawValue).forEach { _ in
             let imageView = UIImageView()
-            imageView.tintColor = .black
+            imageView.tintColor = .dynamicColor(light: .black, dark: .white)
             imageView.preferredSymbolConfiguration = .init(pointSize: 20)
             imageView.image = UIImage(systemName: priority.mark.imageName)
             self.addArrangedSubview(imageView)
