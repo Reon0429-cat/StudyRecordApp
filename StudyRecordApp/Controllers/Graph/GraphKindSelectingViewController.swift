@@ -197,6 +197,10 @@ private extension GraphKindSelectingViewController {
     
     func setupSlider() {
         widthSlider.value = width
+        widthSlider.minimumTrackTintColor = .dynamicColor(light: .black,
+                                                          dark: .white)
+        widthSlider.thumbTintColor = .dynamicColor(light: .black,
+                                                   dark: .white)
         sliderLabel.text = String(Int(width))
     }
     

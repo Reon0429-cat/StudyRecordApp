@@ -13,6 +13,7 @@ protocol GraphTableViewCellDelegate: AnyObject {
 }
 
 // MARK: - ToDo 月のセグメントにはAllを追加する
+// MARK: - ToDo セグメントをUIMenuにする（月と年でそれぞれ）
 
 final class GraphTableViewCell: UITableViewCell {
     
@@ -88,6 +89,13 @@ final class GraphTableViewCell: UITableViewCell {
         
         self.graphView.scrollToRight()
         
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        guard let traitCollection = previousTraitCollection else { return }
+        if traitCollection.hasDifferentColorAppearance(comparedTo: self.traitCollection) {
+            setBorder()
+        }
     }
     
 }
@@ -171,8 +179,14 @@ private extension GraphTableViewCell {
     }
     
     func setupGraphBaseView() {
-        graphBaseView.layer.borderColor = UIColor.black.cgColor
-        graphBaseView.layer.borderWidth = 2
+        setBorder()
+        graphBaseView.layer.borderWidth = 1
+        graphBaseView.backgroundColor = .dynamicColor(light: .white,
+                                                      dark: .secondarySystemGroupedBackground)
+    }
+    
+    func setBorder() {
+        graphBaseView.layer.borderColor = UIColor.dynamicColor(light: .black, dark: .white).cgColor
     }
     
     func setupTitleLabel(record: Record) {
@@ -189,14 +203,16 @@ private extension GraphTableViewCell {
     func setupIndicator(record: Record) {
         indicator = UIActivityIndicatorView()
         indicator.style = .large
-        indicator.color = .black
+        indicator.color = .dynamicColor(light: .black,
+                                        dark: .white)
         let filteredHistories = record.histories?.filter {
             $0.year == selectedYear && $0.month == selectedMonth
         }
         let time = min(Double(filteredHistories?.count ?? 0) * 0.15, 3)
         if time < 3 {
             indicator.startAnimating()
-            indicator.backgroundColor = .white
+            indicator.backgroundColor = .dynamicColor(light: .white,
+                                                      dark: .black)
             DispatchQueue.main.asyncAfter(deadline: .now() + time) {
                 self.indicator.stopAnimating()
                 self.indicator.backgroundColor = .clear
