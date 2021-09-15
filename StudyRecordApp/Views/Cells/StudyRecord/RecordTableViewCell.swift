@@ -25,23 +25,6 @@ final class RecordTableViewCell: UITableViewCell {
     @IBOutlet private weak var deleteButton: UIButton!
     @IBOutlet private weak var memoTextView: UITextView!
     
-    private enum MemoState {
-        case expanded
-        case shrinked
-        var title: String {
-            switch self {
-                case .expanded: return "▲ " + LocalizeKey.memo.localizedString()
-                case .shrinked: return "▼ " + LocalizeKey.memo.localizedString()
-            }
-        }
-        mutating func toggle() {
-            switch self {
-                case .expanded: self = .shrinked
-                case .shrinked: self = .expanded
-            }
-        }
-    }
-    private var memoState: MemoState = .shrinked
     weak var delegate: RecordTableViewCellDelegate?
     
     override func awakeFromNib() {
@@ -62,16 +45,6 @@ final class RecordTableViewCell: UITableViewCell {
         }
     }
     
-    @IBAction private func memoButtonDidTapped(_ sender: Any) {
-        memoState.toggle()
-        memoButton.setTitle(memoState.title)
-        delegate?.memoButtonDidTapped(row: self.tag)
-    }
-    
-    @IBAction private func deleteButtonDidTappped(_ sender: Any) {
-        delegate?.deleteButtonDidTappped(row: self.tag)
-    }
-    
     func configure(record: Record,
                    studyTime: (todayText: String,
                                totalText: String)) {
@@ -90,6 +63,19 @@ final class RecordTableViewCell: UITableViewCell {
             deleteButton.setFade(.out)
             baseView.vibrate(.stop)
         }
+    }
+    
+}
+
+// MARK: - IBAction func
+private extension RecordTableViewCell {
+    
+    @IBAction func memoButtonDidTapped(_ sender: Any) {
+        delegate?.memoButtonDidTapped(row: self.tag)
+    }
+    
+    @IBAction func deleteButtonDidTappped(_ sender: Any) {
+        delegate?.deleteButtonDidTappped(row: self.tag)
     }
     
 }
@@ -138,8 +124,8 @@ private extension RecordTableViewCell {
     }
     
     func setupMemoButton(record: Record) {
-        memoState = record.isExpanded ? .expanded : .shrinked
-        memoButton.setTitle(memoState.title)
+        let titleTriangle = record.isExpanded ?  "▲ " : "▼ "
+        memoButton.setTitle(titleTriangle + LocalizeKey.memo.localizedString())
         memoButton.isHidden = record.memo.isEmpty
     }
     
