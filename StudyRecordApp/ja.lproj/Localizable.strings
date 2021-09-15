@@ -184,8 +184,8 @@
 "hour" = "時間";
 "minute" = "分";
 "total" = "合計";
-"shortHour" = "分";
-"shortMinute" = "時間";
+"shortMinute" = "分";
+"shortHour" = "時間";
 
 "thereIsNoData" = "データがありません";
 "graphDataIsNotRegistered" = "グラフデータが登録されていません";

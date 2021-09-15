@@ -72,9 +72,12 @@ final class RecordTableViewCell: UITableViewCell {
         delegate?.deleteButtonDidTappped(row: self.tag)
     }
     
-    func configure(record: Record) {
+    func configure(record: Record,
+                   studyTime: (todayText: String,
+                               totalText: String)) {
         setupTitleLabel(record: record)
-        setupTimeLabel(record: record)
+        setupTimeLabel(record: record,
+                       studyTime: studyTime)
         setupMemoButton(record: record)
         setupMemoTextView(record: record)
     }
@@ -87,13 +90,6 @@ final class RecordTableViewCell: UITableViewCell {
             deleteButton.setFade(.out)
             baseView.vibrate(.stop)
         }
-    }
-    
-    private func isToday(_ history: History) -> Bool {
-        // MARK: - ToDo ローカライズする
-        let historyDate = "\(history.year)年\(history.month)月\(history.day)日"
-        let today = Converter.convertToString(from: Date(), format: "yyyy年M月d日")
-        return historyDate == today
     }
     
 }
@@ -134,47 +130,17 @@ private extension RecordTableViewCell {
         titleLabel.text = record.title
     }
     
-    func setupTimeLabel(record: Record) {
-        let todayText = LocalizeKey.today.localizedString()
-        let hourText = LocalizeKey.shortHour.localizedString()
-        let minuteText = LocalizeKey.shortMinute.localizedString()
-        let totalText = LocalizeKey.total.localizedString()
-        var today: Int = {
-            record.histories?.forEach { history in
-                if isToday(history) {
-                    today += (history.hour * 60 + history.minutes)
-                }
-            }
-            return today
-        }()
-        todayStudyTimeLabel.text = {
-            if today >= 60 {
-                return todayText + ": " + "\(today / 60) " + hourText
-            }
-            return todayText + ": " + "\(today / 60) " + minuteText
-        }()
-        var total: Int = {
-            record.histories?.forEach { history in
-                total += (history.hour * 60 + history.minutes)
-            }
-            return total
-        }()
-        totalStudyTimeLabel.text = {
-            if total >= 60 {
-                return totalText + ": " + "\(total / 60) " + hourText
-            }
-            return totalText + ": " + "\(total / 60) " + minuteText
-        }()
+    func setupTimeLabel(record: Record,
+                        studyTime: (todayText: String,
+                                    totalText: String)) {
+        todayStudyTimeLabel.text = studyTime.todayText
+        totalStudyTimeLabel.text = studyTime.totalText
     }
     
     func setupMemoButton(record: Record) {
         memoState = record.isExpanded ? .expanded : .shrinked
         memoButton.setTitle(memoState.title)
-        if record.memo.isEmpty {
-            memoButton.isHidden = true
-        } else {
-            memoButton.isHidden = false
-        }
+        memoButton.isHidden = record.memo.isEmpty
     }
     
     func setupMemoTextView(record: Record) {

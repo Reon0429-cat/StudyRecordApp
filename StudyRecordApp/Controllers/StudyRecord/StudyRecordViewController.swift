@@ -93,12 +93,14 @@ extension StudyRecordViewController: UITableViewDataSource {
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCustomCell(with: RecordTableViewCell.self)
         let record = records[indexPath.row]
+        let studyTime = recordUseCase.getStudyTime(at: indexPath.row)
         let isEdit = delegate?.isEdit ?? false
-        cell.tag = indexPath.row
-        cell.delegate = self
-        cell.configure(record: record)
+        cell.configure(record: record,
+                       studyTime: studyTime)
         cell.changeMode(isEdit: isEdit,
                         isEvenIndex: indexPath.row.isMultiple(of: 2))
+        cell.tag = indexPath.row
+        cell.delegate = self
         return cell
     }
     
