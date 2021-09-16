@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="i3d-9F-Unj">
-                        <rect key="frame" x="455" y="0.0" width="126" height="126"/>
+                        <rect key="frame" x="465" y="10" width="106" height="106"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="i3d-9F-Unj" secondAttribute="height" id="hiv-Id-XSV"/>
                         </constraints>
@@ -31,11 +31,11 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="i3d-9F-Unj" firstAttribute="leading" secondItem="kB6-Ko-reZ" secondAttribute="trailing" id="7Nc-5H-afI"/>
-                    <constraint firstAttribute="trailing" secondItem="i3d-9F-Unj" secondAttribute="trailing" id="Kgd-AC-I8o"/>
-                    <constraint firstAttribute="bottom" secondItem="i3d-9F-Unj" secondAttribute="bottom" id="LPB-zJ-UaJ"/>
+                    <constraint firstItem="i3d-9F-Unj" firstAttribute="leading" secondItem="kB6-Ko-reZ" secondAttribute="trailing" constant="10" id="7Nc-5H-afI"/>
+                    <constraint firstItem="i3d-9F-Unj" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="CRN-MM-R6q"/>
+                    <constraint firstAttribute="trailing" secondItem="i3d-9F-Unj" secondAttribute="trailing" constant="10" id="Kgd-AC-I8o"/>
                     <constraint firstItem="kB6-Ko-reZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="SFH-P3-7VF"/>
-                    <constraint firstItem="i3d-9F-Unj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="TZY-Pl-roG"/>
+                    <constraint firstItem="i3d-9F-Unj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="TZY-Pl-roG"/>
                     <constraint firstAttribute="bottom" secondItem="kB6-Ko-reZ" secondAttribute="bottom" id="dpt-3A-N5q"/>
                     <constraint firstItem="kB6-Ko-reZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="sRn-RY-zHI"/>
                 </constraints>
