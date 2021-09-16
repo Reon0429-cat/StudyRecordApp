@@ -159,6 +159,9 @@ private extension SettingViewController {
                 UserDefaults.standard.save(color: nil, .main)
                 UserDefaults.standard.save(color: nil, .sub)
                 UserDefaults.standard.save(color: nil, .accent)
+                NotificationCenter.default.post(name: .changedThemeColor,
+                                                object: nil,
+                                                userInfo: nil)
             }
         present(alert, animated: true)
     }

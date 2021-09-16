@@ -44,7 +44,7 @@ final class WaveView: UIView {
     }
     
     func create(isFill: Bool, marginY: CGFloat, isShuffled: Bool = false) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.cutToWaveView(isFill: isFill, marginY: marginY, isShuffled: isShuffled)
         }
     }
@@ -55,24 +55,21 @@ final class WaveView: UIView {
         let maths: [Math] = isShuffled ? Math.random() : [.plusSin, .plusCos, .minusCos]
         let topInfo = WaveViewInfo(waveCount: 1,
                                    amplitude: 1,
-                                   gradient: Gradient(leftColor: .black.withAlphaComponent(alpha - alphaMargin),
-                                                      rightColor: .white.withAlphaComponent(alpha - alphaMargin)),
+                                   gradient: Gradient(color: .black.withAlphaComponent(alpha - alphaMargin)),
                                    math: maths[0],
                                    marginY: marginY,
                                    isFill: isFill)
         topView.cutView(info: topInfo)
         let middleInfo = WaveViewInfo(waveCount: 1.5,
                                       amplitude: 1.3,
-                                      gradient: Gradient(leftColor: .black.withAlphaComponent(alpha),
-                                                         rightColor: .white.withAlphaComponent(alpha)),
+                                      gradient: Gradient(color: .black.withAlphaComponent(alpha)),
                                       math: maths[1],
                                       marginY: marginY,
                                       isFill: isFill)
         middleView.cutView(info: middleInfo)
         let bottomInfo = WaveViewInfo(waveCount: 1,
                                       amplitude: 1.5,
-                                      gradient: Gradient(leftColor: .black.withAlphaComponent(alpha + alphaMargin),
-                                                         rightColor: .white.withAlphaComponent(alpha + alphaMargin)),
+                                      gradient: Gradient(color: .black.withAlphaComponent(alpha + alphaMargin)),
                                       math: maths[2],
                                       marginY: marginY,
                                       isFill: isFill)
@@ -91,8 +88,7 @@ struct WaveViewInfo {
 }
 
 struct Gradient {
-    let leftColor: UIColor
-    let rightColor: UIColor
+    let color: UIColor
 }
 
 enum Math: CaseIterable {
@@ -123,9 +119,9 @@ private extension UIView {
                              y: 0,
                              width: self.frame.width,
                              height: self.frame.height)
-        let fillColor: UIColor = info.isFill ? info.gradient.leftColor : .clear
+        let fillColor: UIColor = info.isFill ? info.gradient.color : .clear
         layer.fillColor = fillColor.cgColor
-        layer.strokeColor = info.gradient.leftColor.cgColor
+        layer.strokeColor = info.gradient.color.cgColor
         layer.lineWidth = 3
         layer.path = createPath(layer: layer, info: info)
         if let layer = self.layer.sublayers?.first {
@@ -137,14 +133,17 @@ private extension UIView {
                                         y: 0,
                                         width: self.frame.width,
                                         height: self.frame.height + info.marginY),
-                          colors: [.black, .white],
+                          colors: [.mainColor ?? .black, .white],
                           startPoint: (x: 0, y: 0.5),
                           endPoint: (x: 1, y: 0.5),
                           locations: [0, 0.9],
                           masksToBounds: false,
                           layer: layer)
         
-        self.setShadow(radius: 20, size: (width: 3, height: 3))
+        self.setShadow(color: .subColor ?? .black,
+                       radius: 10,
+                       size: (width: 3,
+                              height: 3))
     }
     
     private func createPath(layer: CAShapeLayer, info: WaveViewInfo) -> CGPath {
