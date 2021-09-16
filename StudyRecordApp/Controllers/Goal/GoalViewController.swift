@@ -26,6 +26,9 @@ final class GoalViewController: UIViewController {
             dataStore: RealmGoalDataStore()
         )
     )
+    private var goals: [Goal] {
+        return goalUseCase.goals
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,8 +67,25 @@ private extension GoalViewController {
 extension GoalViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
+                   estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return goals[indexPath.row].isExpanded ? tableView.rowHeight : 200
+    }
+    
+    func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
+        return goals[indexPath.row].isExpanded ? tableView.rowHeight : 200
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   heightForFooterInSection section: Int) -> CGFloat {
+        return 30
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   viewForFooterInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
     }
     
 }
@@ -75,20 +95,47 @@ extension GoalViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        return goalUseCase.goals.count
+        return goals.count
     }
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCustomCell(with: GoalTableViewCell.self)
-        let goal = goalUseCase.goals[indexPath.row]
-        // MARK: - ToDo ローカライズする
-        let createdDateString = Converter.convertToString(from: goal.createdDate, format: "yyyy年M月d日")
-        let dueDateString = Converter.convertToString(from: goal.dueDate, format: "yyyy年M月d日")
-        let title = "\(createdDateString), \(dueDateString)"
-        let image = Converter.convertToImage(from: goal.imageData)
-        cell.configure(title: title, image: image)
+        let goal = goals[indexPath.row]
+        cell.configure(goal: goal)
+        cell.tag = indexPath.row
+        cell.delegate = self
         return cell
+    }
+    
+}
+
+// MARK: - GoalTableViewCellDelegate
+extension GoalViewController: GoalTableViewCellDelegate {
+    
+    func memoButtonDidTapped(index: Int) {
+        goalUseCase.toggleIsExpanded(at: index)
+        DispatchQueue.main.async {
+            self.tableView.beginUpdates()
+            self.tableView.reloadRows(at: [IndexPath(row: index, section: 0)],
+                                      with: .automatic)
+            self.tableView.endUpdates()
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+            let cell = self.tableView.cellForRow(
+                at: IndexPath(row: index, section: 0)
+            ) as? GoalTableViewCell
+            let isExpanded = self.goals[index].isExpanded
+            let isLastRow = (index == self.goals.count - 1)
+            let isManyMemo = (cell?.frame.height ?? 0.0 > self.tableView.frame.height / 2)
+            let isCellNil = (cell == nil)
+            let shouldScrollToTop = isExpanded && (isManyMemo || isLastRow || isCellNil)
+            if shouldScrollToTop {
+                self.tableView.scrollToRow(at: IndexPath(row: index, section: 0),
+                                           at: .top,
+                                           animated: true)
+            }
+        }
     }
     
 }
@@ -100,6 +147,7 @@ private extension GoalViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.registerCustomCell(GoalTableViewCell.self)
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.tableFooterView = UIView()
     }
     

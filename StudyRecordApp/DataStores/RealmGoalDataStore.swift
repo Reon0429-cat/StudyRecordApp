@@ -42,6 +42,7 @@ final class RealmGoalDataStore: GoalDataStoreProtocol {
         let goal = Goal(title: goal.title,
                         category: goal.category,
                         memo: goal.memo,
+                        isExpanded: goal.isExpanded,
                         priority: goal.priority,
                         dueDate: goal.dueDate,
                         createdDate: goal.createdDate,
@@ -50,6 +51,7 @@ final class RealmGoalDataStore: GoalDataStoreProtocol {
             object.title = goal.title
             object.category = CategoryRealm(goal: goal)
             object.memo = goal.memo
+            object.isExpanded = goal.isExpanded
             object.priority = PriorityRealm(goal: goal)
             object.dueDate = goal.dueDate
             object.createdDate = goal.createdDate
@@ -72,6 +74,7 @@ private extension Goal {
         self.title = goal.title
         self.category = Category(goal: goal)
         self.memo = goal.memo
+        self.isExpanded = goal.isExpanded
         self.priority = Priority(goal: goal)
         self.dueDate = goal.dueDate
         self.createdDate = goal.createdDate
@@ -107,6 +110,7 @@ private extension GoalRealm {
         let goal = Goal(title: goal.title,
                         category: goal.category,
                         memo: goal.memo,
+                        isExpanded: goal.isExpanded,
                         priority: goal.priority,
                         dueDate: goal.dueDate,
                         createdDate: goal.createdDate,
@@ -114,6 +118,7 @@ private extension GoalRealm {
         self.title = goal.title
         self.category = CategoryRealm(goal: goal)
         self.memo = goal.memo
+        self.isExpanded = goal.isExpanded
         self.priority = PriorityRealm(goal: goal)
         self.dueDate = goal.dueDate
         self.createdDate = goal.createdDate

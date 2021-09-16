@@ -138,6 +138,7 @@ private extension AdditionalGoalViewController {
         let goal = Goal(title: inputtedTitle,
                         category: Category(title: inputtedCategoryTitle),
                         memo: inputtedMemo,
+                        isExpanded: false,
                         priority: inputtedPriority,
                         dueDate: inputtedDate.due,
                         createdDate: inputtedDate.created,

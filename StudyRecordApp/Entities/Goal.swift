@@ -12,6 +12,7 @@ struct Goal {
     var title: String
     var category: Category
     var memo: String
+    var isExpanded: Bool
     var priority: Priority
     var dueDate: Date
     var createdDate: Date

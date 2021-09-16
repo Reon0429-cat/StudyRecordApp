@@ -22,4 +22,17 @@ final class GoalUseCase {
         repository.create(goal: goal)
     }
     
+    func toggleIsExpanded(at index: Int) {
+        let goal = repository.read(at: index)
+        let newGoal = Goal(title: goal.title,
+                           category: goal.category,
+                           memo: goal.memo,
+                           isExpanded: !goal.isExpanded,
+                           priority: goal.priority,
+                           dueDate: goal.dueDate,
+                           createdDate: goal.createdDate,
+                           imageData: goal.imageData)
+        repository.update(goal: newGoal, at: index)
+    }
+    
 }
