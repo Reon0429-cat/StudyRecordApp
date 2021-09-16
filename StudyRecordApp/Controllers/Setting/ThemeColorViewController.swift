@@ -135,9 +135,21 @@ private extension ThemeColorViewController {
 extension ThemeColorViewController: SubCustomNavigationBarDelegate {
     
     func saveButtonDidTapped() {
-        UserDefaults.standard.save(color: mainColorView.backgroundColor, .main)
-        UserDefaults.standard.save(color: subColorView.backgroundColor, .sub)
-        UserDefaults.standard.save(color: accentColorView.backgroundColor, .accent)
+        if mainColorView.backgroundColor == .white {
+            UserDefaults.standard.save(color: nil, .main)
+        } else {
+            UserDefaults.standard.save(color: mainColorView.backgroundColor, .main)
+        }
+        if subColorView.backgroundColor == .white {
+            UserDefaults.standard.save(color: nil, .sub)
+        } else {
+            UserDefaults.standard.save(color: subColorView.backgroundColor, .sub)
+        }
+        if accentColorView.backgroundColor == .white {
+            UserDefaults.standard.save(color: nil, .accent)
+        } else {
+            UserDefaults.standard.save(color: accentColorView.backgroundColor, .accent)
+        }
         if containerType == .concept {
             presentingViewController?.presentingViewController?.dismiss(animated: true)
         } else {

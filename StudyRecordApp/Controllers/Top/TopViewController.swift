@@ -52,9 +52,15 @@ final class TopViewController: UIViewController {
         setupEditButton()
         setupSortButton()
         setAnimation()
-        setupWaveViews()
         self.view.backgroundColor = .dynamicColor(light: .white,
                                                   dark: .black)
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        setupWaveViews()
         
     }
     

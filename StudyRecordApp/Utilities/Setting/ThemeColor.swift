@@ -48,3 +48,19 @@ extension UserDefaults {
     }
     
 }
+
+extension UIColor {
+    
+    static var mainColor: UIColor? {
+        return UserDefaults.standard.loadColor(.main)
+    }
+    
+    static var subColor: UIColor? {
+        return UserDefaults.standard.loadColor(.sub)
+    }
+
+    static var accentColor: UIColor? {
+        return UserDefaults.standard.loadColor(.accent)
+    }
+    
+}
