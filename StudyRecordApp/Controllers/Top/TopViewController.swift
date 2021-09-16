@@ -46,6 +46,7 @@ final class TopViewController: UIViewController {
         
         setupPageViewController()
         setupTabBarCollectionView()
+        setupWaveViews()
         setupPageViews()
         setupTitleLabel()
         setupAddButton()
@@ -55,13 +56,6 @@ final class TopViewController: UIViewController {
         setupObserver()
         self.view.backgroundColor = .dynamicColor(light: .white,
                                                   dark: .black)
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        changeThemeColor()
         
     }
     
@@ -402,7 +396,7 @@ private extension TopViewController {
     func setupObserver() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(changeToDefaultColor),
-                                               name: .changeToDefaultColor,
+                                               name: .changedThemeColor,
                                                object: nil)
     }
 

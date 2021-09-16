@@ -13,6 +13,7 @@ final class CustomSwitch: UISwitch {
         super.init(frame: frame)
         
         setup()
+        setObserver()
         
     }
     
@@ -20,13 +21,30 @@ final class CustomSwitch: UISwitch {
         super.init(coder: aDecoder)
         
         setup()
+        setObserver()
         
     }
     
-    func setup() {
+    private func setObserver() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(changedThemeColor),
+                                               name: .changedThemeColor,
+                                               object: nil)
+    }
+    
+    @objc
+    private func changedThemeColor() {
+        setupColor()
+    }
+    
+    private func setup() {
+        setupColor()
+    }
+    
+    private func setupColor() {
         thumbTintColor = .white
         backgroundColor = .clear
-        onTintColor = .black
+        onTintColor = .accentColor ?? .black
     }
     
     override func layoutSubviews() {

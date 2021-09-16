@@ -13,6 +13,7 @@ final class CustomSlider: UISlider {
         super.init(frame: frame)
         
         setup()
+        setObserver()
         
     }
     
@@ -20,13 +21,40 @@ final class CustomSlider: UISlider {
         super.init(coder: aDecoder)
         
         setup()
+        setObserver()
         
     }
     
-    func setup() {
-        thumbTintColor = .white
+    private func setObserver() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(changedThemeColor),
+                                               name: .changedThemeColor,
+                                               object: nil)
+    }
+    
+    @objc
+    private func changedThemeColor() {
+        setupColor()
+    }
+    
+    private func setup() {
+        setupColor()
+    }
+    
+    private func setupColor() {
         backgroundColor = .clear
         tintColor = .black
+        minimumTrackTintColor = .dynamicColor(light: .black,
+                                              dark: .white)
+        thumbTintColor = .dynamicColor(light: .black,
+                                       dark: .white)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        self.cutToCircle()
+        
     }
     
 }

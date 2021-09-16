@@ -13,6 +13,7 @@ final class CustomSegmentedControl: UISegmentedControl {
         super.init(frame: frame)
         
         setup()
+        setObserver()
         
     }
     
@@ -20,17 +21,34 @@ final class CustomSegmentedControl: UISegmentedControl {
         super.init(coder: aDecoder)
         
         setup()
+        setObserver()
         
     }
     
-    func setup() {
+    private func setObserver() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(changedThemeColor),
+                                               name: .changedThemeColor,
+                                               object: nil)
+    }
+    
+    @objc
+    private func changedThemeColor() {
+        setupColor()
+    }
+    
+    private func setup() {
+        setupColor()
+    }
+    
+    private func setupColor() {
         setTitleTextAttributes([NSAttributedString.Key.foregroundColor:
                                     UIColor.dynamicColor(light: .black,
                                                          dark: .white)],
                                for: .normal)
         setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white],
                                for: .selected)
-        selectedSegmentTintColor = .black
+        selectedSegmentTintColor = .accentColor ?? .black
     }
     
     func create(_ titles: [String], selectedIndex: Int) {

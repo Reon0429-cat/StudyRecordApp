@@ -150,6 +150,9 @@ extension ThemeColorViewController: SubCustomNavigationBarDelegate {
         } else {
             UserDefaults.standard.save(color: accentColorView.backgroundColor, .accent)
         }
+        NotificationCenter.default.post(name: .changedThemeColor,
+                                        object: nil,
+                                        userInfo: nil)
         if containerType == .concept {
             presentingViewController?.presentingViewController?.dismiss(animated: true)
         } else {

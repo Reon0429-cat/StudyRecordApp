@@ -44,7 +44,7 @@ final class WaveView: UIView {
     }
     
     func create(isFill: Bool, marginY: CGFloat, isShuffled: Bool = false) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.cutToWaveView(isFill: isFill, marginY: marginY, isShuffled: isShuffled)
         }
     }
@@ -140,7 +140,10 @@ private extension UIView {
                           masksToBounds: false,
                           layer: layer)
         
-        self.setShadow(radius: 20, size: (width: 3, height: 3))
+        self.setShadow(color: .subColor ?? .black,
+                       radius: 10,
+                       size: (width: 3,
+                              height: 3))
     }
     
     private func createPath(layer: CAShapeLayer, info: WaveViewInfo) -> CGPath {
