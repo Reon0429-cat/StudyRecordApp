@@ -155,8 +155,8 @@ private extension AdditionalGoalViewController {
         present(GoalTimeViewController.self) { vc in
             vc.delegate = self
             vc.dateType = self.getDateType(type: rowType)
-            self.halfModalPresenter.viewController = vc
             vc.inputtedDate = self.getDate(type: rowType)
+            self.halfModalPresenter.viewController = vc
         }
     }
     
