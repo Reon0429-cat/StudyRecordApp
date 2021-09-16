@@ -19,6 +19,7 @@ final class GoalTableViewCell: UITableViewCell {
     @IBOutlet private weak var dueDateLabel: UILabel!
     @IBOutlet private weak var createdDateLabel: UILabel!
     @IBOutlet private weak var myImageView: UIImageView!
+    @IBOutlet private weak var imageViewBaseView: UIView!
     @IBOutlet private weak var memoButton: UIButton!
     @IBOutlet private weak var memoTextView: UITextView!
     
@@ -58,6 +59,7 @@ final class GoalTableViewCell: UITableViewCell {
         createdDateLabel.text = "作成日: " + createdDateString
         dueDateLabel.text = "期日: " + dueDateString
         myImageView.image = Converter.convertToImage(from: goal.imageData)
+        imageViewBaseView.isHidden = (goal.imageData == nil)
         setupBaseView()
         setupMemoTextView(goal: goal)
     }
