@@ -52,6 +52,7 @@ final class TopViewController: UIViewController {
         setupEditButton()
         setupSortButton()
         setAnimation()
+        setupObserver()
         self.view.backgroundColor = .dynamicColor(light: .white,
                                                   dark: .black)
         
@@ -60,7 +61,7 @@ final class TopViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        setupWaveViews()
+        changeThemeColor()
         
     }
     
@@ -187,6 +188,10 @@ private extension TopViewController {
             animated: true,
             completion: completion
         )
+    }
+    
+    func changeThemeColor() {
+        setupWaveViews()
     }
     
 }
@@ -392,6 +397,18 @@ private extension TopViewController {
         
         addButtonRightConstraint.constant -= LayoutConstant.addButtonRight
         addButton.alpha = 0
+    }
+    
+    func setupObserver() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(changeToDefaultColor),
+                                               name: .changeToDefaultColor,
+                                               object: nil)
+    }
+
+    @objc
+    func changeToDefaultColor() {
+        changeThemeColor()
     }
     
 }
