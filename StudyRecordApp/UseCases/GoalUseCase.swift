@@ -22,8 +22,8 @@ final class GoalUseCase {
         repository.create(category: category)
     }
     
-    func toggleIsExpanded(at indexPath: IndexPath) {
-        let category = repository.read(at: indexPath) 
+    func toggleGoalIsExpanded(at indexPath: IndexPath) {
+        let category = repository.read(at: indexPath.section)
         let goal = category.goals[indexPath.row]
         let newGoal = Category.Goal(title: goal.title,
                                     memo: goal.memo,
@@ -37,7 +37,15 @@ final class GoalUseCase {
         let newCategory = Category(title: category.title,
                                    isExpanded: category.isExpanded,
                                    goals: newGoals)
-        repository.update(category: newCategory, at: indexPath)
+        repository.update(category: newCategory, at: indexPath.section)
+    }
+    
+    func toggleCategoryIsExpanded(at section: Int) {
+        let category = repository.readAll()[section]
+        let newCategory = Category(title: category.title,
+                                   isExpanded: !category.isExpanded,
+                                   goals: category.goals)
+        repository.update(category: newCategory, at: section)
     }
     
 }

@@ -58,14 +58,22 @@ extension GoalViewController: UITableViewDelegate, UITableViewDataSource {
                    estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         let category = categories[indexPath.section]
         let goal = category.goals[indexPath.row]
-        return goal.isExpanded ? tableView.rowHeight : 200
+        if category.isExpanded {
+            return goal.isExpanded ? tableView.rowHeight : 200
+        } else {
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
         let category = categories[indexPath.section]
         let goal = category.goals[indexPath.row]
-        return goal.isExpanded ? tableView.rowHeight : 200
+        if category.isExpanded {
+            return goal.isExpanded ? tableView.rowHeight : 200
+        } else {
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView,
@@ -81,6 +89,8 @@ extension GoalViewController: UITableViewDelegate, UITableViewDataSource {
         let headerView = tableView.dequeueReusableCustomHeaderFooterView(with: GoalHeaderView.self)
         let category = categories[section]
         headerView.configure(category: category)
+        headerView.delegate = self
+        headerView.tag = section
         return headerView
     }
     
@@ -102,9 +112,32 @@ extension GoalViewController: UITableViewDelegate, UITableViewDataSource {
         let category = categories[indexPath.section]
         let goal = category.goals[indexPath.row]
         cell.configure(goal: goal)
+        cell.isHidden = !category.isExpanded
         cell.indexPath = indexPath
         cell.delegate = self
         return cell
+    }
+    
+}
+
+// MARK: - GoalHeaderViewDelegate
+extension GoalViewController: GoalHeaderViewDelegate {
+    
+    func addButtonDidTapped(section: Int) {
+        print(#function, section)
+    }
+    
+    func foldingButtonDidTapped(section: Int) {
+        goalUseCase.toggleCategoryIsExpanded(at: section)
+        DispatchQueue.main.async {
+            self.tableView.beginUpdates()
+            (0..<self.goalUseCase.categories[section].goals.count).forEach {
+                self.tableView.reloadRows(at: [IndexPath(row: $0, section: section)],
+                                          with: .automatic)
+                self.tableView.reloadSections([section], with: .automatic)
+            }
+            self.tableView.endUpdates()
+        }
     }
     
 }
@@ -113,7 +146,7 @@ extension GoalViewController: UITableViewDelegate, UITableViewDataSource {
 extension GoalViewController: GoalTableViewCellDelegate {
     
     func memoButtonDidTapped(indexPath: IndexPath) {
-        goalUseCase.toggleIsExpanded(at: indexPath)
+        goalUseCase.toggleGoalIsExpanded(at: indexPath)
         DispatchQueue.main.async {
             self.tableView.beginUpdates()
             self.tableView.reloadRows(at: [indexPath],

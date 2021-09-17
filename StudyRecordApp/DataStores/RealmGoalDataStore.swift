@@ -9,10 +9,10 @@ import RealmSwift
 
 protocol GoalDataStoreProtocol {
     func create(category: Category)
-    func read(at indexPath: IndexPath) -> Category
+    func read(at index: Int) -> Category
     func readAll() -> [Category]
-    func update(category: Category, at indexPath: IndexPath)
-    func delete(at indexPath: IndexPath)
+    func update(category: Category, at index: Int)
+    func delete(at index: Int)
 }
 
 final class RealmGoalDataStore: GoalDataStoreProtocol {
@@ -29,16 +29,16 @@ final class RealmGoalDataStore: GoalDataStoreProtocol {
         }
     }
     
-    func read(at indexPath: IndexPath) -> Category {
-        return Category(category: objects[indexPath.section])
+    func read(at index: Int) -> Category {
+        return Category(category: objects[index])
     }
     
     func readAll() -> [Category] {
         return objects.map { Category(category: $0) }
     }
     
-    func update(category: Category, at indexPath: IndexPath) {
-        let object = objects[indexPath.section]
+    func update(category: Category, at index: Int) {
+        let object = objects[index]
         let category = Category(title: category.title,
                                 isExpanded: category.isExpanded,
                                 goals: category.goals)
@@ -50,8 +50,8 @@ final class RealmGoalDataStore: GoalDataStoreProtocol {
         }
     }
     
-    func delete(at indexPath: IndexPath) {
-        let object = objects[indexPath.section]
+    func delete(at index: Int) {
+        let object = objects[index]
         try! realm.write {
             realm.delete(object)
         }
