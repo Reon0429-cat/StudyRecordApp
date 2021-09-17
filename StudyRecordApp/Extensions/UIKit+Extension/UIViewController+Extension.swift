@@ -35,6 +35,15 @@ extension UIViewController {
         sceneDelegate.window?.rootViewController = vc
     }
     
+    func getPresentedVC() -> UIViewController? {
+        let window = UIApplication.shared.windows.first { $0.isKeyWindow }
+        guard var vc = window?.rootViewController else { return nil }
+        while let presentedViewController = vc.presentedViewController {
+            vc = presentedViewController
+        }
+        return vc
+    }
+    
     static func instantiate() -> Self {
         var storyboardName = String(describing: self)
         if let result = storyboardName.range(of: "ViewController") {

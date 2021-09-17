@@ -116,6 +116,12 @@ private extension AdditionalGoalViewController {
                     textField.text = self.inputtedCategoryTitle
                     textField.tag = rowType.rawValue
                     textField.delegate = self
+                    let keyboardView = CategoryKeyboardView(frame: CGRect(x: 0,
+                                                                          y: 0,
+                                                                          width: self.view.frame.width,
+                                                                          height: 45))
+                    keyboardView.delegate = self
+                    textField.inputAccessoryView = keyboardView
                 }
                 .addAction(title: LocalizeKey.close.localizedString(),
                            style: .destructive) {
@@ -409,6 +415,19 @@ extension AdditionalGoalViewController: SubCustomNavigationBarDelegate {
     
     var navTitle: String {
         return LocalizeKey.Add.localizedString()
+    }
+    
+}
+
+// MARK: - CategoryKeyboardViewDelegate
+extension AdditionalGoalViewController: CategoryKeyboardViewDelegate {
+    
+    func categoryButtonDidTapped() {
+        if let alert = getPresentedVC() as? UIAlertController {
+            alert.dismiss(animated: true) {
+                self.present(AdditionalCategoryViewController.self)
+            }
+        }
     }
     
 }
