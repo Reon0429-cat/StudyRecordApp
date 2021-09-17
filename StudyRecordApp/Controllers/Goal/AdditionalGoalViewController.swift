@@ -419,13 +419,29 @@ extension AdditionalGoalViewController: SubCustomNavigationBarDelegate {
     
 }
 
+// MARK: - AdditionalCategoryVCDelegate
+extension AdditionalGoalViewController: AdditionalCategoryVCDelegate {
+    
+    func saveButtonDidTapped(at index: Int?) {
+        if let index = index {
+            let category = goalUseCase.categories[index]
+            inputtedCategoryTitle = category.title
+            selectedSection = index
+            tableView.reloadData()
+        }
+    }
+    
+}
+
 // MARK: - CategoryKeyboardViewDelegate
 extension AdditionalGoalViewController: CategoryKeyboardViewDelegate {
     
     func categoryButtonDidTapped() {
         if let alert = getPresentedVC() as? UIAlertController {
             alert.dismiss(animated: true) {
-                self.present(AdditionalCategoryViewController.self)
+                self.present(AdditionalCategoryViewController.self) { vc in
+                    vc.delegate = self
+                }
             }
         }
     }

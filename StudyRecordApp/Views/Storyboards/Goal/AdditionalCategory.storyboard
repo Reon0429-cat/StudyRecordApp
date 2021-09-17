@@ -16,9 +16,47 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JiB-og-6gY">
+                                <rect key="frame" x="0.0" y="97" width="414" height="765"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MTF-bg-KHP">
+                                <rect key="frame" x="349" y="54" width="35" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="決定"/>
+                                <connections>
+                                    <action selector="saveButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="hZq-SV-t3D"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xA4-99-ilv">
+                                <rect key="frame" x="30" y="54" width="52" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="tintColor" systemColor="systemRedColor"/>
+                                <state key="normal" title="閉じる"/>
+                                <connections>
+                                    <action selector="closeButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="oCl-tK-JsC"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="JiB-og-6gY" firstAttribute="top" secondItem="xA4-99-ilv" secondAttribute="bottom" constant="10" id="7AS-Kq-16i"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="JiB-og-6gY" secondAttribute="bottom" id="CHA-im-jaY"/>
+                            <constraint firstItem="xA4-99-ilv" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="DuN-GN-yyL"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="JiB-og-6gY" secondAttribute="trailing" id="FX8-6Q-5yL"/>
+                            <constraint firstItem="xA4-99-ilv" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="e1N-Cn-fZb"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="MTF-bg-KHP" secondAttribute="trailing" constant="30" id="gHA-XH-1OK"/>
+                            <constraint firstItem="MTF-bg-KHP" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="mHy-9k-4H8"/>
+                            <constraint firstItem="JiB-og-6gY" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="r7Y-QX-n3p"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dismissButton" destination="xA4-99-ilv" id="Oc3-84-HiO"/>
+                        <outlet property="saveButton" destination="MTF-bg-KHP" id="KFx-KX-Spr"/>
+                        <outlet property="tableView" destination="JiB-og-6gY" id="Bfs-34-T0d"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -28,6 +66,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

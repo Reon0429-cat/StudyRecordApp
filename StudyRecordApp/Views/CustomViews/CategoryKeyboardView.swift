@@ -30,7 +30,8 @@ final class CategoryKeyboardView: UIView {
     }
     
     private func setup() {
-        backgroundColor = .white
+        backgroundColor = .dynamicColor(light: .white,
+                                        dark: .secondarySystemGroupedBackground)
         
         let categoryButton = UIButton()
         categoryButton.setTitle(LocalizeKey.category.localizedString() + " >")
@@ -38,7 +39,8 @@ final class CategoryKeyboardView: UIView {
         categoryButton.addTarget(self,
                                  action: #selector(categoryButtonDidTapped),
                                  for: .touchUpInside)
-        categoryButton.setTitleColor(.black, for: .normal)
+        categoryButton.setTitleColor(.dynamicColor(light: .black, dark: .white),
+                                     for: .normal)
         categoryButton.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(categoryButton)
         NSLayoutConstraint.activate([
