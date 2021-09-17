@@ -10,7 +10,37 @@ import UIKit
 enum GoalScreenType {
     case add
     case sectionAdd
+    case categoryAdd
     case edit
+}
+
+enum AddAndEditGoalRowType: Int, CaseIterable {
+    case title
+    case category
+    case memo
+    case priority
+    case dueDate
+    case createdDate
+    case photo
+    
+    var title: String {
+        switch self {
+            case .title:
+                return LocalizeKey.Title.localizedString()
+            case .category:
+                return LocalizeKey.Category.localizedString()
+            case .memo:
+                return LocalizeKey.Memo.localizedString()
+            case .priority:
+                return LocalizeKey.Priority.localizedString()
+            case .dueDate:
+                return LocalizeKey.dueDate.localizedString()
+            case .createdDate:
+                return LocalizeKey.createdDate.localizedString()
+            case .photo:
+                return LocalizeKey.photo.localizedString()
+        }
+    }
 }
 
 final class AddAndEditGoalViewController: UIViewController {
@@ -18,34 +48,6 @@ final class AddAndEditGoalViewController: UIViewController {
     @IBOutlet private weak var subCustomNavigationBar: SubCustomNavigationBar!
     @IBOutlet private weak var tableView: UITableView!
     
-    enum RowType: Int, CaseIterable {
-        case title
-        case category
-        case memo
-        case priority
-        case dueDate
-        case createdDate
-        case photo
-        
-        var title: String {
-            switch self {
-                case .title:
-                    return LocalizeKey.Title.localizedString()
-                case .category:
-                    return LocalizeKey.Category.localizedString()
-                case .memo:
-                    return LocalizeKey.Memo.localizedString()
-                case .priority:
-                    return LocalizeKey.Priority.localizedString()
-                case .dueDate:
-                    return LocalizeKey.dueDate.localizedString()
-                case .createdDate:
-                    return LocalizeKey.createdDate.localizedString()
-                case .photo:
-                    return LocalizeKey.photo.localizedString()
-            }
-        }
-    }
     var goalScreenType: GoalScreenType?
     var selectedIndexPath: IndexPath?
     private var inputtedTitle = ""
@@ -65,14 +67,14 @@ final class AddAndEditGoalViewController: UIViewController {
             dataStore: RealmGoalDataStore()
         )
     )
-    private func getDateType(type: RowType) -> GoalDateType {
+    private func getDateType(type: AddAndEditGoalRowType) -> GoalDateType {
         switch type {
             case .createdDate: return .created
             case .dueDate: return .due
             default: fatalError("typeが不適")
         }
     }
-    private func getDate(type: RowType) -> Date {
+    private func getDate(type: AddAndEditGoalRowType) -> Date {
         switch type {
             case .createdDate: return inputtedDate.created
             case .dueDate: return inputtedDate.due
@@ -83,27 +85,7 @@ final class AddAndEditGoalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let goalScreenType = goalScreenType else { return }
-        switch goalScreenType {
-            case .add:
-                break
-            case .sectionAdd:
-                guard let indexPath = selectedIndexPath else { return }
-                inputtedCategoryTitle = goalUseCase.categories[indexPath.section].title
-            case .edit:
-                
-                guard let indexPath = selectedIndexPath else { return }
-                let category = goalUseCase.categories[indexPath.section]
-                let goal = category.goals[indexPath.row]
-                inputtedTitle = goal.title
-                inputtedCategoryTitle = category.title
-                inputtedMemo = goal.memo
-                inputtedPriority = goal.priority
-                inputtedDate.due = goal.dueDate
-                inputtedDate.created = goal.createdDate
-                inputtedImageData = goal.imageData
-        }
-        
+        setupInputItems()
         setupTableView()
         setupSubCustomNavigationBar()
         
@@ -114,7 +96,7 @@ final class AddAndEditGoalViewController: UIViewController {
 // MARK: - func
 private extension AddAndEditGoalViewController {
     
-    func showAlertWithTextField(rowType: RowType) {
+    func showAlertWithTextField(rowType: AddAndEditGoalRowType) {
         if rowType == .title {
             let alert = Alert.create(title: LocalizeKey.Title.localizedString())
                 .setTextField { textField in
@@ -190,7 +172,7 @@ private extension AddAndEditGoalViewController {
                                         isExpanded: true,
                                         goals: [goal])
                 goalUseCase.save(category: category)
-            case .sectionAdd:
+            case .sectionAdd, .categoryAdd:
                 guard let indexPath = selectedIndexPath else { return }
                 goalUseCase.save(goal: goal, section: indexPath.section)
             case .edit:
@@ -227,7 +209,7 @@ private extension AddAndEditGoalViewController {
         }
     }
     
-    func presentGoalTimeVC(rowType: RowType) {
+    func presentGoalTimeVC(rowType: AddAndEditGoalRowType) {
         present(GoalTimeViewController.self) { vc in
             vc.delegate = self
             vc.dateType = self.getDateType(type: rowType)
@@ -270,7 +252,7 @@ extension AddAndEditGoalViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let rowType = RowType.allCases[indexPath.row]
+        let rowType = AddAndEditGoalRowType.allCases[indexPath.row]
         switch rowType {
             case .title:
                 showAlertWithTextField(rowType: rowType)
@@ -292,7 +274,7 @@ extension AddAndEditGoalViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if RowType(rawValue: indexPath.row) == .photo && inputtedImageData != nil {
+        if AddAndEditGoalRowType(rawValue: indexPath.row) == .photo && inputtedImageData != nil {
             return tableView.rowHeight
         }
         return 80
@@ -317,61 +299,25 @@ extension AddAndEditGoalViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        return RowType.allCases.count
+        return AddAndEditGoalRowType.allCases.count
     }
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let rowType = RowType.allCases[indexPath.row]
+        let rowType = AddAndEditGoalRowType.allCases[indexPath.row]
         switch rowType {
             case .title:
-                let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
-                cell.configure(titleText: rowType.title,
-                               mandatoryIsHidden: false,
-                               auxiliaryText: inputtedTitle)
-                return cell
+                return configureTitleCell(rowType: rowType)
             case .category:
-                let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
-                guard let goalScreenType = goalScreenType else { abort() }
-                switch goalScreenType {
-                    case .add:
-                        cell.configure(titleText: rowType.title,
-                                       mandatoryIsHidden: true,
-                                       auxiliaryText: inputtedCategoryTitle)
-                    case .sectionAdd, .edit:
-                        cell.configure(titleText: rowType.title,
-                                       mandatoryText: LocalizeKey.fixed.localizedString(),
-                                       mandatoryIsHidden: false,
-                                       auxiliaryText: inputtedCategoryTitle)
-                }
-                return cell
+                return configureCategoryCell(rowType: rowType)
             case .memo:
-                let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
-                cell.configure(titleText: rowType.title,
-                               mandatoryIsHidden: true,
-                               auxiliaryText: inputtedMemo)
-                return cell
+                return configureMemoCell(rowType: rowType)
             case .priority:
-                let cell = tableView.dequeueReusableCustomCell(with: GoalPriorityTableViewCell.self)
-                cell.configure(title: rowType.title,
-                               priority: inputtedPriority)
-                return cell
+                return configurePriorityCell(rowType: rowType)
             case .createdDate, .dueDate:
-                let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
-                let inputtedDate = getDate(type: rowType)
-                // MARK: - ToDo ローカライズする
-                let auxiliaryText = Converter.convertToString(from: inputtedDate,
-                                                              format: "yyyy年M月d日")
-                cell.configure(titleText: rowType.title,
-                               mandatoryIsHidden: true,
-                               auxiliaryText: auxiliaryText)
-                return cell
+                return configureDateCell(rowType: rowType)
             case .photo:
-                let cell = tableView.dequeueReusableCustomCell(with: GoalPhotoTableViewCell.self)
-                let image = Converter.convertToImage(from: inputtedImageData)
-                cell.configure(title: rowType.title,
-                               image: image)
-                return cell
+                return configurePhotoCell(rowType: rowType)
         }
     }
     
@@ -381,7 +327,7 @@ extension AddAndEditGoalViewController: UITableViewDataSource {
 extension AddAndEditGoalViewController: UITextFieldDelegate {
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        let rowType = RowType(rawValue: textField.tag)
+        let rowType = AddAndEditGoalRowType(rawValue: textField.tag)
         if rowType == .title {
             inputtedTitle = textField.text ?? ""
         }
@@ -462,7 +408,9 @@ extension AddAndEditGoalViewController: AdditionalCategoryVCDelegate {
         if let index = index {
             let category = goalUseCase.categories[index]
             inputtedCategoryTitle = category.title
-            selectedIndexPath = IndexPath(row: 0, section: index)
+            let row = category.goals.count - 1
+            selectedIndexPath = IndexPath(row: row, section: index)
+            goalScreenType = .categoryAdd
             tableView.reloadData()
         }
     }
@@ -501,8 +449,94 @@ extension AddAndEditGoalViewController: UIImagePickerControllerDelegate,
     
 }
 
+// MARK: - configure cell
+private extension AddAndEditGoalViewController {
+    
+    func configureTitleCell(rowType: AddAndEditGoalRowType) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
+        cell.configure(titleText: rowType.title,
+                       mandatoryIsHidden: false,
+                       auxiliaryText: inputtedTitle)
+        return cell
+    }
+    
+    func configureCategoryCell(rowType: AddAndEditGoalRowType) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
+        guard let goalScreenType = goalScreenType else { abort() }
+        switch goalScreenType {
+            case .add, .categoryAdd:
+                cell.configure(titleText: rowType.title,
+                               mandatoryIsHidden: true,
+                               auxiliaryText: inputtedCategoryTitle)
+            case .sectionAdd, .edit:
+                cell.configure(titleText: rowType.title,
+                               mandatoryText: LocalizeKey.fixed.localizedString(),
+                               mandatoryIsHidden: false,
+                               auxiliaryText: inputtedCategoryTitle)
+        }
+        return cell
+    }
+    
+    func configureMemoCell(rowType: AddAndEditGoalRowType) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
+        cell.configure(titleText: rowType.title,
+                       mandatoryIsHidden: true,
+                       auxiliaryText: inputtedMemo)
+        return cell
+    }
+    
+    func configurePriorityCell(rowType: AddAndEditGoalRowType) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCustomCell(with: GoalPriorityTableViewCell.self)
+        cell.configure(title: rowType.title,
+                       priority: inputtedPriority)
+        return cell
+    }
+    
+    func configureDateCell(rowType: AddAndEditGoalRowType) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
+        let inputtedDate = getDate(type: rowType)
+        // MARK: - ToDo ローカライズする
+        let auxiliaryText = Converter.convertToString(from: inputtedDate,
+                                                      format: "yyyy年M月d日")
+        cell.configure(titleText: rowType.title,
+                       mandatoryIsHidden: true,
+                       auxiliaryText: auxiliaryText)
+        return cell
+    }
+    
+    func configurePhotoCell(rowType: AddAndEditGoalRowType) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCustomCell(with: GoalPhotoTableViewCell.self)
+        let image = Converter.convertToImage(from: inputtedImageData)
+        cell.configure(title: rowType.title,
+                       image: image)
+        return cell
+    }
+    
+}
+
 // MARK: - setup
 private extension AddAndEditGoalViewController {
+    
+    func setupInputItems() {
+        guard let goalScreenType = goalScreenType,
+              let indexPath = selectedIndexPath else { return }
+        switch goalScreenType {
+            case .add, .categoryAdd:
+                break
+            case .sectionAdd:
+                inputtedCategoryTitle = goalUseCase.categories[indexPath.section].title
+            case .edit:
+                let category = goalUseCase.categories[indexPath.section]
+                let goal = category.goals[indexPath.row]
+                inputtedTitle = goal.title
+                inputtedCategoryTitle = category.title
+                inputtedMemo = goal.memo
+                inputtedPriority = goal.priority
+                inputtedDate.due = goal.dueDate
+                inputtedDate.created = goal.createdDate
+                inputtedImageData = goal.imageData
+        }
+    }
     
     func setupTableView() {
         tableView.delegate = self
