@@ -14,32 +14,46 @@ protocol GoalVCDelegate: ScreenPresentationDelegate {
 final class GoalViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var segmentedControl: CustomSegmentedControl!
     
     weak var delegate: GoalVCDelegate?
-    private enum SegmentType: Int {
-        case category
-        case simple
-    }
     private var goalUseCase = GoalUseCase(
         repository: GoalRepository(
             dataStore: RealmGoalDataStore()
         )
     )
-    private var goals: [Goal] {
-        return goalUseCase.goals
-    }
+    private var goals = [[Goal]]()
+    private var sectionTitles = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTableView()
-        setupSegmentedControl()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        let categoryTitles = goalUseCase.goals
+            .map { $0.category.title }
+        sectionTitles = NSOrderedSet(array: categoryTitles).array as! [String]
+        if sectionTitles.contains("") {
+            let index = sectionTitles.firstIndex(of: "") ?? 0
+            sectionTitles.remove(at: index)
+            sectionTitles.append("未分類")
+        }
+        goals.removeAll()
+        sectionTitles.forEach { _ in
+            goals.append([])
+        }
+        goalUseCase.goals.forEach { goal in
+            for i in 0..<sectionTitles.count {
+                if goal.category.title == sectionTitles[i] {
+                    goals[i].append(goal)
+                }
+            }
+        }
+        
         
         delegate?.screenDidPresented(screenType: .goal)
         tableView.reloadData()
@@ -51,40 +65,39 @@ final class GoalViewController: UIViewController {
 // MARK: - IBAction func
 private extension GoalViewController {
     
-    @IBAction func segmentedControlDidSelected(_ sender: UISegmentedControl) {
-        guard let segmentType = SegmentType(rawValue: sender.selectedSegmentIndex) else { return }
-        switch segmentType {
-            case .category:
-                break
-            case .simple:
-                break
-        }
-    }
-    
 }
 
 // MARK: - UITableViewDelegate
 extension GoalViewController: UITableViewDelegate {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sectionTitles.count
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   titleForHeaderInSection section: Int) -> String? {
+        return sectionTitles[section]
+    }
+    
     func tableView(_ tableView: UITableView,
                    estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return goals[indexPath.row].isExpanded ? tableView.rowHeight : 200
+        return goals[indexPath.section][indexPath.row].isExpanded ? tableView.rowHeight : 200
     }
     
     func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return goals[indexPath.row].isExpanded ? tableView.rowHeight : 200
+        return goals[indexPath.section][indexPath.row].isExpanded ? tableView.rowHeight : 200
     }
     
     func tableView(_ tableView: UITableView,
-                   heightForFooterInSection section: Int) -> CGFloat {
+                   heightForHeaderInSection section: Int) -> CGFloat {
         return 30
     }
     
     func tableView(_ tableView: UITableView,
-                   viewForFooterInSection section: Int) -> UIView? {
+                   viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
-        view.backgroundColor = .clear
+        view.backgroundColor = .red
         return view
     }
     
@@ -95,15 +108,15 @@ extension GoalViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        return goals.count
+        return goals[section].count
     }
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCustomCell(with: GoalTableViewCell.self)
-        let goal = goals[indexPath.row]
+        let goal = goals[indexPath.section][indexPath.row]
         cell.configure(goal: goal)
-        cell.tag = indexPath.row
+        cell.indexPath = indexPath
         cell.delegate = self
         return cell
     }
@@ -113,27 +126,28 @@ extension GoalViewController: UITableViewDataSource {
 // MARK: - GoalTableViewCellDelegate
 extension GoalViewController: GoalTableViewCellDelegate {
     
-    func memoButtonDidTapped(index: Int) {
+    func memoButtonDidTapped(indexPath: IndexPath) {
+        let goals = goalUseCase.goals
+            .filter { $0.category.title == sectionTitles[indexPath.section] }
+        let goal = goals[indexPath.row]
+        let index = goalUseCase.goals.firstIndex { $0 == goal } ?? 0
         goalUseCase.toggleIsExpanded(at: index)
+        self.goals[indexPath.section][indexPath.row].isExpanded.toggle()
         DispatchQueue.main.async {
             self.tableView.beginUpdates()
-            self.tableView.reloadRows(at: [IndexPath(row: index, section: 0)],
+            self.tableView.reloadRows(at: [indexPath],
                                       with: .automatic)
             self.tableView.endUpdates()
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-            let cell = self.tableView.cellForRow(
-                at: IndexPath(row: index, section: 0)
-            ) as? GoalTableViewCell
-            let isExpanded = self.goals[index].isExpanded
-            let isLastRow = (index == self.goals.count - 1)
+            let cell = self.tableView.cellForRow(at: indexPath) as? GoalTableViewCell
+            let isExpanded = self.goals[indexPath.section][indexPath.row].isExpanded
+            let isLastRow = (indexPath.row == self.goals.count - 1)
             let isManyMemo = (cell?.frame.height ?? 0.0 > self.tableView.frame.height / 2)
             let isCellNil = (cell == nil)
             let shouldScrollToTop = isExpanded && (isManyMemo || isLastRow || isCellNil)
             if shouldScrollToTop {
-                self.tableView.scrollToRow(at: IndexPath(row: index, section: 0),
-                                           at: .top,
-                                           animated: true)
+                self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
             }
         }
     }
@@ -149,13 +163,6 @@ private extension GoalViewController {
         tableView.registerCustomCell(GoalTableViewCell.self)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.tableFooterView = UIView()
-    }
-    
-    func setupSegmentedControl() {
-        let index = 0
-        segmentedControl.create([LocalizeKey.category.localizedString(),
-                                 LocalizeKey.simple.localizedString()],
-                                selectedIndex: index)
     }
     
 }

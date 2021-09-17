@@ -8,7 +8,7 @@
 import UIKit
 
 protocol GoalTableViewCellDelegate: AnyObject {
-    func memoButtonDidTapped(index: Int)
+    func memoButtonDidTapped(indexPath: IndexPath)
 }
 
 final class GoalTableViewCell: UITableViewCell {
@@ -25,6 +25,7 @@ final class GoalTableViewCell: UITableViewCell {
     
     weak var delegate: GoalTableViewCellDelegate?
     private var priorityStackView = UIStackView()
+    var indexPath: IndexPath?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -65,7 +66,8 @@ final class GoalTableViewCell: UITableViewCell {
     }
     
     @IBAction private func memoButtonDidTapped(_ sender: Any) {
-        delegate?.memoButtonDidTapped(index: self.tag)
+        guard let indexPath = indexPath else { return }
+        delegate?.memoButtonDidTapped(indexPath: indexPath)
     }
     
 }

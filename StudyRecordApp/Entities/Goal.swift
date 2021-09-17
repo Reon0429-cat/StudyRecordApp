@@ -8,7 +8,7 @@
 import Foundation
 
 // 共通の型
-struct Goal {
+struct Goal: Equatable {
     var title: String
     var category: Category
     var memo: String
@@ -19,11 +19,11 @@ struct Goal {
     var imageData: Data?
 }
 
-struct Category {
+struct Category: Equatable {
     var title: String
 }
 
-struct Priority {
+struct Priority: Equatable {
     var mark: PriorityMark
     var number: PriorityNumber
 }
