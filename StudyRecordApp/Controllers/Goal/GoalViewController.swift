@@ -124,9 +124,11 @@ extension GoalViewController: UITableViewDelegate, UITableViewDataSource {
 extension GoalViewController: GoalHeaderViewDelegate {
     
     func addButtonDidTapped(section: Int) {
-        present(AdditionalGoalViewController.self,
+        present(AddAndEditGoalViewController.self,
                 modalPresentationStyle: .fullScreen) { vc in
-            vc.selectedSection = section
+            let row = self.categories[section].goals.count - 1
+            vc.selectedIndexPath = IndexPath(row: row, section: section)
+            vc.goalScreenType = .sectionAdd
         }
     }
     
@@ -155,6 +157,14 @@ extension GoalViewController: GoalTableViewCellDelegate {
             self.tableView.reloadRows(at: [indexPath],
                                       with: .automatic)
             self.tableView.endUpdates()
+        }
+    }
+    
+    func goalViewDidTapped(indexPath: IndexPath) {
+        present(AddAndEditGoalViewController.self,
+                modalPresentationStyle: .fullScreen) { vc in
+            vc.selectedIndexPath = indexPath
+            vc.goalScreenType = .edit
         }
     }
     
