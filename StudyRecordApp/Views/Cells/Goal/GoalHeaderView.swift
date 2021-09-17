@@ -45,7 +45,7 @@ private extension GoalHeaderView {
 private extension GoalHeaderView {
     
     func setupTitleLabel(category: Category) {
-        titleLabel.text = category.title
+        titleLabel.text = category.title + " (\(category.goals.count))"
     }
     
     func setupFoldingButton(category: Category) {
