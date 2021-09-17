@@ -8,38 +8,38 @@
 import Foundation
 
 protocol GoalRepositoryProtocol {
-    func create(goal: Goal)
-    func read(at index: Int) -> Goal
-    func readAll() -> [Goal]
-    func update(goal: Goal, at index: Int)
-    func delete(at index: Int)
+    func create(category: Category)
+    func read(at indexPath: IndexPath) -> Category
+    func readAll() -> [Category]
+    func update(category: Category, at indexPath: IndexPath)
+    func delete(at indexPath: IndexPath)
 }
 
-final class GoalRepository: GoalRepositoryProtocol { 
+final class GoalRepository: GoalRepositoryProtocol {
     
     private var dataStore: GoalDataStoreProtocol
     init(dataStore: GoalDataStoreProtocol) {
         self.dataStore = dataStore
     }
     
-    func create(goal: Goal) {
-        dataStore.create(goal: goal)
+    func create(category: Category) {
+        dataStore.create(category: category)
     }
     
-    func read(at index: Int) -> Goal {
-        return dataStore.read(at: index)
+    func read(at indexPath: IndexPath) -> Category {
+        return dataStore.read(at: indexPath)
     }
     
-    func readAll() -> [Goal] {
+    func readAll() -> [Category] {
         return dataStore.readAll()
     }
     
-    func update(goal: Goal, at index: Int) {
-        dataStore.update(goal: goal, at: index)
+    func update(category: Category, at indexPath: IndexPath) {
+        dataStore.update(category: category, at: indexPath)
     }
     
-    func delete(at index: Int) {
-        dataStore.delete(at: index)
+    func delete(at indexPath: IndexPath) {
+        dataStore.delete(at: indexPath)
     }
     
 }

@@ -49,7 +49,7 @@ final class GoalTableViewCell: UITableViewCell {
         }
     }
     
-    func configure(goal: Goal) {
+    func configure(goal: Category.Goal) {
         setupMemoButton(goal: goal)
         setupPriorityStackView(goal: goal)
         titleLabel.text = goal.title
@@ -76,13 +76,13 @@ final class GoalTableViewCell: UITableViewCell {
 // MARK: - setup
 private extension GoalTableViewCell {
     
-    func setupMemoButton(goal: Goal) {
+    func setupMemoButton(goal: Category.Goal) {
         let titleTriangle = goal.isExpanded ?  "▲ " : "▼ "
         memoButton.setTitle(titleTriangle + LocalizeKey.memo.localizedString())
         memoButton.isHidden = goal.memo.isEmpty
     }
     
-    func setupPriorityStackView(goal: Goal) {
+    func setupPriorityStackView(goal: Category.Goal) {
         self.priorityStackView.removeFromSuperview()
         let priorityStackView = PriorityStackView(priority: goal.priority,
                                                   imageSize: 15)
@@ -102,7 +102,7 @@ private extension GoalTableViewCell {
         baseView.setBorder()
     }
     
-    func setupMemoTextView(goal: Goal) {
+    func setupMemoTextView(goal: Category.Goal) {
         memoTextView.text = goal.memo
         memoTextView.setBorder()
     }

@@ -14,25 +14,30 @@ final class GoalUseCase {
         self.repository = repository
     }
     
-    var goals: [Goal] {
-        repository.readAll()
+    var categories: [Category] {
+        return repository.readAll()
     }
     
-    func create(goal: Goal) {
-        repository.create(goal: goal)
+    func save(category: Category) {
+        repository.create(category: category)
     }
     
-    func toggleIsExpanded(at index: Int) {
-        let goal = repository.read(at: index)
-        let newGoal = Goal(title: goal.title,
-                           category: goal.category,
-                           memo: goal.memo,
-                           isExpanded: !goal.isExpanded,
-                           priority: goal.priority,
-                           dueDate: goal.dueDate,
-                           createdDate: goal.createdDate,
-                           imageData: goal.imageData)
-        repository.update(goal: newGoal, at: index)
+    func toggleIsExpanded(at indexPath: IndexPath) {
+        let category = repository.read(at: indexPath) 
+        let goal = category.goals[indexPath.row]
+        let newGoal = Category.Goal(title: goal.title,
+                                    memo: goal.memo,
+                                    isExpanded: !goal.isExpanded,
+                                    priority: goal.priority,
+                                    dueDate: goal.dueDate,
+                                    createdDate: goal.createdDate,
+                                    imageData: goal.imageData)
+        var newGoals = category.goals
+        newGoals[indexPath.row] = newGoal
+        let newCategory = Category(title: category.title,
+                                   isExpanded: category.isExpanded,
+                                   goals: newGoals)
+        repository.update(category: newCategory, at: indexPath)
     }
     
 }

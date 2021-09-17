@@ -8,7 +8,7 @@
 import UIKit
 
 protocol GoalPriorityVCDelegate: AnyObject {
-    func addButtonDidTapped(priority: Priority)
+    func addButtonDidTapped(priority: Category.Goal.Priority)
 }
 
 final class GoalPriorityViewController: UIViewController {
@@ -19,7 +19,7 @@ final class GoalPriorityViewController: UIViewController {
     @IBOutlet private weak var pickerView: UIPickerView!
     
     weak var delegate: GoalPriorityVCDelegate?
-    var inputtedPriority = Priority(mark: .star, number: .one)
+    var inputtedPriority = Category.Goal.Priority(mark: .star, number: .one)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +37,7 @@ private extension GoalPriorityViewController {
     
     @IBAction func segmentedControlDidSelected(_ sender: UISegmentedControl) {
         guard let mark = PriorityMark(rawValue: sender.selectedSegmentIndex) else { return }
-        inputtedPriority = Priority(mark: mark, number: inputtedPriority.number)
+        inputtedPriority = Category.Goal.Priority(mark: mark, number: inputtedPriority.number)
         pickerView.reloadComponent(0)
     }
     
@@ -55,7 +55,7 @@ extension GoalPriorityViewController: UIPickerViewDelegate {
                     didSelectRow row: Int,
                     inComponent component: Int) {
         guard let number = PriorityNumber(rawValue: row) else { return }
-        inputtedPriority = Priority(mark: inputtedPriority.mark, number: number)
+        inputtedPriority = Category.Goal.Priority(mark: inputtedPriority.mark, number: number)
     }
     
     func pickerView(_ pickerView: UIPickerView,
@@ -63,7 +63,7 @@ extension GoalPriorityViewController: UIPickerViewDelegate {
                     forComponent component: Int,
                     reusing view: UIView?) -> UIView {
         let view = UIView()
-        let priority = Priority(mark: inputtedPriority.mark,
+        let priority = Category.Goal.Priority(mark: inputtedPriority.mark,
                                 number: PriorityNumber(rawValue: row) ?? .one)
         let priorityStackView = PriorityStackView(priority: priority)
         view.addSubview(priorityStackView)

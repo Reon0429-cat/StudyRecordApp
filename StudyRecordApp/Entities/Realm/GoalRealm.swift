@@ -8,19 +8,20 @@
 import RealmSwift
 
 // Realmに依存した型
+final class CategoryRealm: Object {
+    @objc dynamic var title: String = ""
+    @objc dynamic var isExpanded: Bool = false
+    var goals = List<GoalRealm>()
+}
+
 final class GoalRealm: Object {
     @objc dynamic var title: String = ""
-    @objc dynamic var category: CategoryRealm? = CategoryRealm()
     @objc dynamic var memo: String = ""
     @objc dynamic var isExpanded: Bool = false
     @objc dynamic var priority: PriorityRealm? = PriorityRealm()
     @objc dynamic var dueDate: Date = Date()
     @objc dynamic var createdDate: Date = Date()
     @objc dynamic var imageData: Data?
-}
-
-final class CategoryRealm: Object {
-    @objc dynamic var title: String = ""
 }
 
 final class PriorityRealm: Object {

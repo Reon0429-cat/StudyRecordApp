@@ -14,8 +14,8 @@ final class GoalHeaderView: UITableViewHeaderFooterView {
     
     static let height: CGFloat = 40
     
-    func configure(title: String) {
-        titleLabel.text = title
+    func configure(category: Category) {
+        titleLabel.text = category.title
     }
 
     @IBAction private func addButtonDidTapped(_ sender: Any) {

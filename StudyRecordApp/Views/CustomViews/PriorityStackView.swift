@@ -10,7 +10,7 @@ import UIKit
 final class PriorityStackView: UIStackView {
     
     convenience init(frame: CGRect = .zero,
-                     priority: Priority,
+                     priority: Category.Goal.Priority,
                      imageSize: CGFloat = 20) {
         self.init()
         
@@ -19,7 +19,7 @@ final class PriorityStackView: UIStackView {
         
     }
     
-    private func setup(priority: Priority,
+    private func setup(priority: Category.Goal.Priority,
                        imageSize: CGFloat) {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.distribution = .fillEqually

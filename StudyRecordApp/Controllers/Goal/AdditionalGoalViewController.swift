@@ -48,7 +48,7 @@ final class AdditionalGoalViewController: UIViewController {
     private var oldInputtedCategoryTitle = ""
     private var inputtedMemo = ""
     private var inputtedImageData: Data?
-    private var inputtedPriority = Priority(mark: .star, number: .one)
+    private var inputtedPriority = Category.Goal.Priority(mark: .star, number: .one)
     private var inputtedDate = (created: Date(), due: Date())
     private var halfModalPresenter = HalfModalPresenter()
     private var isMandatoryItemFilled: Bool {
@@ -143,15 +143,17 @@ private extension AdditionalGoalViewController {
             }
             return inputtedCategoryTitle
         }()
-        let goal = Goal(title: inputtedTitle,
-                        category: Category(title: categoryTitle),
-                        memo: inputtedMemo,
-                        isExpanded: false,
-                        priority: inputtedPriority,
-                        dueDate: inputtedDate.due,
-                        createdDate: inputtedDate.created,
-                        imageData: inputtedImageData)
-        goalUseCase.create(goal: goal)
+        let goal = Category.Goal(title: inputtedTitle,
+                                 memo: inputtedMemo,
+                                 isExpanded: false,
+                                 priority: inputtedPriority,
+                                 dueDate: inputtedDate.due,
+                                 createdDate: inputtedDate.created,
+                                 imageData: inputtedImageData)
+        let category = Category(title: categoryTitle,
+                                isExpanded: false,
+                                goals: [goal])
+        goalUseCase.save(category: category)
     }
     
     func presentTo(_ sourceType: UIImagePickerController.SourceType) {
@@ -338,7 +340,7 @@ extension AdditionalGoalViewController: UITextFieldDelegate {
 // MARK: - GoalPriorityVCDelegate
 extension AdditionalGoalViewController: GoalPriorityVCDelegate {
     
-    func addButtonDidTapped(priority: Priority) {
+    func addButtonDidTapped(priority: Category.Goal.Priority) {
         inputtedPriority = priority
         tableView.reloadData()
     }
