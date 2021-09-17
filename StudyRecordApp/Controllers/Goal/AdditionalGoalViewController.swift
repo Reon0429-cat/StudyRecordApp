@@ -42,8 +42,7 @@ final class AdditionalGoalViewController: UIViewController {
             }
         }
     }
-    var isCategoryAdd: Bool = false
-    var selectedSection = 0
+    var selectedSection: Int?
     private var inputtedTitle = ""
     private var oldInputtedTitle = ""
     private var inputtedCategoryTitle = ""
@@ -79,8 +78,8 @@ final class AdditionalGoalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if isCategoryAdd {
-            inputtedCategoryTitle = goalUseCase.categories[selectedSection].title
+        if let section = selectedSection {
+            inputtedCategoryTitle = goalUseCase.categories[section].title
         }
         
         setupTableView()
@@ -159,8 +158,8 @@ private extension AdditionalGoalViewController {
         let category = Category(title: categoryTitle,
                                 isExpanded: false,
                                 goals: [goal])
-        if isCategoryAdd {
-            goalUseCase.save(goal: goal, section: selectedSection)
+        if let section = selectedSection {
+            goalUseCase.save(goal: goal, section: section)
         } else {
             goalUseCase.save(category: category)
         }
@@ -242,7 +241,7 @@ extension AdditionalGoalViewController: UITableViewDelegate {
             case .title:
                 showAlertWithTextField(rowType: rowType)
             case .category:
-                if !isCategoryAdd {
+                if selectedSection == nil {
                     showAlertWithTextField(rowType: rowType)
                 }
             case .memo:
@@ -298,14 +297,14 @@ extension AdditionalGoalViewController: UITableViewDataSource {
                 return cell
             case .category:
                 let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
-                if isCategoryAdd {
+                if selectedSection == nil {
                     cell.configure(titleText: rowType.title,
-                                   mandatoryText: LocalizeKey.fixed.localizedString(),
-                                   mandatoryIsHidden: false,
+                                   mandatoryIsHidden: true,
                                    auxiliaryText: inputtedCategoryTitle)
                 } else {
                     cell.configure(titleText: rowType.title,
-                                   mandatoryIsHidden: true,
+                                   mandatoryText: LocalizeKey.fixed.localizedString(),
+                                   mandatoryIsHidden: false,
                                    auxiliaryText: inputtedCategoryTitle)
                 }
                 return cell

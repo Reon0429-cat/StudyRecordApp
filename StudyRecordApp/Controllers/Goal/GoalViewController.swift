@@ -126,7 +126,6 @@ extension GoalViewController: GoalHeaderViewDelegate {
         present(AdditionalGoalViewController.self,
                 modalPresentationStyle: .fullScreen) { vc in
             vc.selectedSection = section
-            vc.isCategoryAdd = true
         }
     }
     
