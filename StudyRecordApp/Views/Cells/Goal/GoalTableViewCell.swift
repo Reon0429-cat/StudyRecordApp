@@ -30,6 +30,7 @@ final class GoalTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        backgroundColor = .clear
         selectionStyle = .none
         myImageView.layer.cornerRadius = 10
         baseView.backgroundColor = .dynamicColor(light: .white,

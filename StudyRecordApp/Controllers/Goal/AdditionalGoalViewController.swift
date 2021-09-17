@@ -7,6 +7,8 @@
 
 import UIKit
 
+// MARK: - ToDo カテゴリを既存のものを選択できるようにする
+
 final class AdditionalGoalViewController: UIViewController {
     
     @IBOutlet private weak var subCustomNavigationBar: SubCustomNavigationBar!
@@ -135,8 +137,14 @@ private extension AdditionalGoalViewController {
     }
     
     func saveGoal() {
+        let categoryTitle: String = {
+            if inputtedCategoryTitle.isEmpty {
+                return LocalizeKey.uncategorized.localizedString()
+            }
+            return inputtedCategoryTitle
+        }()
         let goal = Goal(title: inputtedTitle,
-                        category: Category(title: inputtedCategoryTitle),
+                        category: Category(title: categoryTitle),
                         memo: inputtedMemo,
                         isExpanded: false,
                         priority: inputtedPriority,

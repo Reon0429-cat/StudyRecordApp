@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="GoalHeaderView" customModule="StudyRecordApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="412" height="74"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タイトル" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="eMJ-8x-gJ6">
+                    <rect key="frame" x="20" y="37.5" width="73.5" height="21.5"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k48-II-Fb6">
+                    <rect key="frame" x="382" y="42" width="20" height="22"/>
+                    <state key="normal" image="plus.circle.fill" catalog="system"/>
+                    <connections>
+                        <action selector="addButtonDidTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="Eaq-SJ-36O"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="An1-rD-gK8">
+                    <rect key="frame" x="10" y="73" width="392" height="1"/>
+                    <color key="backgroundColor" systemColor="labelColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="qNE-fP-Cz7"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="k48-II-Fb6" secondAttribute="bottom" constant="10" id="67g-3h-xHd"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="k48-II-Fb6" secondAttribute="trailing" constant="10" id="7Qe-jG-ENh"/>
+                <constraint firstAttribute="bottom" secondItem="eMJ-8x-gJ6" secondAttribute="bottom" constant="15" id="8nx-kD-tEG"/>
+                <constraint firstItem="eMJ-8x-gJ6" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="EyA-z6-9vF"/>
+                <constraint firstItem="An1-rD-gK8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="alR-Po-XeA"/>
+                <constraint firstItem="eMJ-8x-gJ6" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="fWM-8k-a5t"/>
+                <constraint firstItem="k48-II-Fb6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eMJ-8x-gJ6" secondAttribute="trailing" constant="10" id="ks5-cE-sZW"/>
+                <constraint firstAttribute="bottom" secondItem="An1-rD-gK8" secondAttribute="bottom" id="qHa-Yq-bhl"/>
+                <constraint firstItem="An1-rD-gK8" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="w8M-or-8Wt"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="addButton" destination="k48-II-Fb6" id="aZe-YF-Kh3"/>
+                <outlet property="titleLabel" destination="eMJ-8x-gJ6" id="fTM-y7-A40"/>
+            </connections>
+            <point key="canvasLocation" x="-179.71014492753625" y="-219.64285714285714"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

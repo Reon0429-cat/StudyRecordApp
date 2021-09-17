@@ -34,26 +34,19 @@ final class GoalViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let categoryTitles = goalUseCase.goals
-            .map { $0.category.title }
+        var categoryTitles = goalUseCase.goals.map { $0.category.title }
+        if let index = categoryTitles.firstIndex(of: LocalizeKey.uncategorized.localizedString()) {
+            categoryTitles.remove(at: index)
+            categoryTitles.append(LocalizeKey.uncategorized.localizedString())
+        }
         sectionTitles = NSOrderedSet(array: categoryTitles).array as! [String]
-        if sectionTitles.contains("") {
-            let index = sectionTitles.firstIndex(of: "") ?? 0
-            sectionTitles.remove(at: index)
-            sectionTitles.append("未分類")
-        }
-        goals.removeAll()
-        sectionTitles.forEach { _ in
-            goals.append([])
-        }
+        goals = sectionTitles.map { _ in [] }
         goalUseCase.goals.forEach { goal in
-            for i in 0..<sectionTitles.count {
-                if goal.category.title == sectionTitles[i] {
-                    goals[i].append(goal)
-                }
+            for i in 0..<sectionTitles.count
+            where goal.category.title == sectionTitles[i] {
+                goals[i].append(goal)
             }
         }
-        
         
         delegate?.screenDidPresented(screenType: .goal)
         tableView.reloadData()
@@ -67,16 +60,11 @@ private extension GoalViewController {
     
 }
 
-// MARK: - UITableViewDelegate
-extension GoalViewController: UITableViewDelegate {
+// MARK: - UITableViewDelegate, UITableViewDataSource
+extension GoalViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return sectionTitles.count
-    }
-    
-    func tableView(_ tableView: UITableView,
-                   titleForHeaderInSection section: Int) -> String? {
-        return sectionTitles[section]
     }
     
     func tableView(_ tableView: UITableView,
@@ -91,20 +79,25 @@ extension GoalViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
                    heightForHeaderInSection section: Int) -> CGFloat {
-        return 30
+        if section == 0 {
+            return GoalHeaderView.height + 30
+        }
+        return GoalHeaderView.height
     }
     
     func tableView(_ tableView: UITableView,
                    viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView()
-        view.backgroundColor = .red
-        return view
+        let headerView = tableView.dequeueReusableCustomHeaderFooterView(with: GoalHeaderView.self)
+        let title = sectionTitles[section]
+        headerView.configure(title: title)
+        return headerView
     }
     
-}
-
-// MARK: - UITableViewDataSource
-extension GoalViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView,
+                   willDisplayHeaderView view: UIView,
+                   forSection section: Int) {
+        view.tintColor = .dynamicColor(light: .black, dark: .white)
+    }
     
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
@@ -161,6 +154,7 @@ private extension GoalViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.registerCustomCell(GoalTableViewCell.self)
+        tableView.registerCustomCell(GoalHeaderView.self)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.tableFooterView = UIView()
     }

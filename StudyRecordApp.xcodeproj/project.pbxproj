@@ -158,6 +158,8 @@
 		ABA0570126B50D1900E3DF01 /* GraphColorTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA0570026B50D1900E3DF01 /* GraphColorTileView.swift */; };
 		ABA0570326B50F7100E3DF01 /* StudyRecordGraphColor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABA0570226B50F7100E3DF01 /* StudyRecordGraphColor.storyboard */; };
 		ABA0570526B50F8100E3DF01 /* StudyRecordGraphColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA0570426B50F8100E3DF01 /* StudyRecordGraphColorViewController.swift */; };
+		ABAE84DF26F414BB00A93A7F /* GoalHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAE84DE26F414BB00A93A7F /* GoalHeaderView.swift */; };
+		ABAE84E126F414CF00A93A7F /* GoalHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABAE84E026F414CF00A93A7F /* GoalHeaderView.xib */; };
 		ABDF66BE26E79543000D9FD5 /* TabBarCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDF66BD26E79543000D9FD5 /* TabBarCollectionViewController.swift */; };
 		ABFAB15526DF802A0095EC20 /* PriorityStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAB15426DF802A0095EC20 /* PriorityStackView.swift */; };
 		ABFAB15826DF86920095EC20 /* GoalPhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAB15626DF86920095EC20 /* GoalPhotoTableViewCell.swift */; };
@@ -331,6 +333,8 @@
 		ABA0570026B50D1900E3DF01 /* GraphColorTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphColorTileView.swift; sourceTree = "<group>"; };
 		ABA0570226B50F7100E3DF01 /* StudyRecordGraphColor.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StudyRecordGraphColor.storyboard; sourceTree = "<group>"; };
 		ABA0570426B50F8100E3DF01 /* StudyRecordGraphColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRecordGraphColorViewController.swift; sourceTree = "<group>"; };
+		ABAE84DE26F414BB00A93A7F /* GoalHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalHeaderView.swift; sourceTree = "<group>"; };
+		ABAE84E026F414CF00A93A7F /* GoalHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoalHeaderView.xib; sourceTree = "<group>"; };
 		ABDF66BD26E79543000D9FD5 /* TabBarCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCollectionViewController.swift; sourceTree = "<group>"; };
 		ABFAB15426DF802A0095EC20 /* PriorityStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityStackView.swift; sourceTree = "<group>"; };
 		ABFAB15626DF86920095EC20 /* GoalPhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPhotoTableViewCell.swift; sourceTree = "<group>"; };
@@ -503,6 +507,8 @@
 			children = (
 				AB43980226DE1DD6008C8CA8 /* GoalTableViewCell.swift */,
 				AB43980326DE1DD6008C8CA8 /* GoalTableViewCell.xib */,
+				ABAE84DE26F414BB00A93A7F /* GoalHeaderView.swift */,
+				ABAE84E026F414CF00A93A7F /* GoalHeaderView.xib */,
 				AB43980626DE2D72008C8CA8 /* GoalPriorityTableViewCell.swift */,
 				AB43980726DE2D72008C8CA8 /* GoalPriorityTableViewCell.xib */,
 				ABFAB15626DF86920095EC20 /* GoalPhotoTableViewCell.swift */,
@@ -933,6 +939,7 @@
 				AB13EDB126BFAA7D002F56FF /* StudyRecordSort.storyboard in Resources */,
 				AB16308426CEABD400111F55 /* NavigationButton.xib in Resources */,
 				ABFAB20926E394A60095EC20 /* GraphTableViewCell.xib in Resources */,
+				ABAE84E126F414CF00A93A7F /* GoalHeaderView.xib in Resources */,
 				AB13ECD626B7AEA3002F56FF /* ColorChoicesConcept.storyboard in Resources */,
 				AB2B5BAC26A2D244009BD3C7 /* ThemeColor.storyboard in Resources */,
 				AB8B705726D6AD1F0069FF67 /* SignUp.storyboard in Resources */,
@@ -1086,6 +1093,7 @@
 				AB13EDFA26C8C585002F56FF /* GoalViewController.swift in Sources */,
 				AB4397F526DD57B9008C8CA8 /* Goal.swift in Sources */,
 				AB0C766926EBB10700BF5B64 /* SettingUseCase.swift in Sources */,
+				ABAE84DF26F414BB00A93A7F /* GoalHeaderView.swift in Sources */,
 				AB2B5B8E26A2D106009BD3C7 /* UITableViewCell+Extension.swift in Sources */,
 				AB20F80C26E7B50D00564B14 /* UIImage+Extension.swift in Sources */,
 				AB13ED4926BB8128002F56FF /* RealmRecordDataStore.swift in Sources */,
