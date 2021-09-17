@@ -17,13 +17,15 @@ final class GoalHeaderView: UITableViewHeaderFooterView {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var addButton: UIButton!
     @IBOutlet private weak var foldingButton: UIButton!
+    @IBOutlet private weak var separatorView: UIView!
     
-    static let height: CGFloat = 40
+    static let height: CGFloat = 50
     weak var delegate: GoalHeaderViewDelegate?
     
     func configure(category: Category) {
         setupTitleLabel(category: category)
         setupFoldingButton(category: category)
+        separatorView.backgroundColor = .separatorColor
     }
     
 }

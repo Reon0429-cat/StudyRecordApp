@@ -85,4 +85,9 @@ extension UIColor {
         return light
     }
     
+    static var separatorColor: UIColor {
+        return .dynamicColor(light: .black.withAlphaComponent(0.2),
+                             dark: .gray.withAlphaComponent(0.5))
+    }
+    
 }

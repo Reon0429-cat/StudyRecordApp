@@ -22,18 +22,19 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="An1-rD-gK8">
-                    <rect key="frame" x="10" y="73" width="392" height="1"/>
+                    <rect key="frame" x="10" y="73.5" width="392" height="0.5"/>
                     <color key="backgroundColor" systemColor="labelColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="1" id="qNE-fP-Cz7"/>
+                        <constraint firstAttribute="height" constant="0.5" id="qNE-fP-Cz7"/>
                     </constraints>
                 </view>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="3ok-9z-DFn">
-                    <rect key="frame" x="332" y="38" width="60" height="30"/>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="3ok-9z-DFn">
+                    <rect key="frame" x="329" y="38.5" width="63" height="30"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hhz-An-bon">
                             <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                            <inset key="contentEdgeInsets" minX="0.0" minY="3" maxX="0.0" maxY="0.0"/>
                             <state key="normal" title="▼">
                                 <color key="titleColor" systemColor="labelColor"/>
                             </state>
@@ -42,11 +43,11 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k48-II-Fb6">
-                            <rect key="frame" x="30" y="0.0" width="30" height="30"/>
+                            <rect key="frame" x="33" y="0.0" width="30" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="k48-II-Fb6" secondAttribute="height" id="Gx3-yA-Xu0"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
                             <state key="normal" title="+">
                                 <color key="titleColor" systemColor="labelColor"/>
                             </state>
@@ -78,6 +79,7 @@
             <connections>
                 <outlet property="addButton" destination="k48-II-Fb6" id="aZe-YF-Kh3"/>
                 <outlet property="foldingButton" destination="hhz-An-bon" id="U4w-Lz-Jie"/>
+                <outlet property="separatorView" destination="An1-rD-gK8" id="Nz8-BA-v3e"/>
                 <outlet property="titleLabel" destination="eMJ-8x-gJ6" id="fTM-y7-A40"/>
             </connections>
             <point key="canvasLocation" x="-179.71014492753625" y="-219.64285714285714"/>
