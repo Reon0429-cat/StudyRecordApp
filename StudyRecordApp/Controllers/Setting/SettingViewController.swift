@@ -89,7 +89,8 @@ final class SettingViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        delegate?.screenDidPresented(screenType: .setting)
+        delegate?.screenDidPresented(screenType: .setting,
+                                     isEnabledNavigationButton: true)
         tableView.reloadData()
         
     }

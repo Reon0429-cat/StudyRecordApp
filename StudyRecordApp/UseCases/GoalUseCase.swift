@@ -14,12 +14,47 @@ final class GoalUseCase {
         self.repository = repository
     }
     
-    var goals: [Goal] {
-        repository.readAll()
+    var categories: [Category] {
+        return repository.readAll()
     }
     
-    func create(goal: Goal) {
-        repository.create(goal: goal)
+    func save(category: Category) {
+        repository.create(category: category)
+    }
+    
+    func save(goal: Category.Goal, section: Int) {
+        let category = repository.read(at: section)
+        let newGoals = category.goals + [goal]
+        let newCategory = Category(title: category.title,
+                                   isExpanded: category.isExpanded,
+                                   goals: newGoals)
+        repository.update(category: newCategory, at: section)
+    }
+    
+    func toggleGoalIsExpanded(at indexPath: IndexPath) {
+        let category = repository.read(at: indexPath.section)
+        let goal = category.goals[indexPath.row]
+        let newGoal = Category.Goal(title: goal.title,
+                                    memo: goal.memo,
+                                    isExpanded: !goal.isExpanded,
+                                    priority: goal.priority,
+                                    dueDate: goal.dueDate,
+                                    createdDate: goal.createdDate,
+                                    imageData: goal.imageData)
+        var newGoals = category.goals
+        newGoals[indexPath.row] = newGoal
+        let newCategory = Category(title: category.title,
+                                   isExpanded: category.isExpanded,
+                                   goals: newGoals)
+        repository.update(category: newCategory, at: indexPath.section)
+    }
+    
+    func toggleCategoryIsExpanded(at section: Int) {
+        let category = repository.readAll()[section]
+        let newCategory = Category(title: category.title,
+                                   isExpanded: !category.isExpanded,
+                                   goals: category.goals)
+        repository.update(category: newCategory, at: section)
     }
     
 }

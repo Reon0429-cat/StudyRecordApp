@@ -8,52 +8,45 @@
 import RealmSwift
 
 protocol GoalDataStoreProtocol {
-    func create(goal: Goal)
-    func read(at index: Int) -> Goal
-    func readAll() -> [Goal]
-    func update(goal: Goal, at index: Int)
+    func create(category: Category)
+    func read(at index: Int) -> Category
+    func readAll() -> [Category]
+    func update(category: Category, at index: Int)
     func delete(at index: Int)
 }
 
 final class RealmGoalDataStore: GoalDataStoreProtocol {
     
     private let realm = try! Realm()
-    private var objects: Results<GoalRealm> {
-        realm.objects(GoalRealm.self)
+    private var objects: Results<CategoryRealm> {
+        realm.objects(CategoryRealm.self)
     }
     
-    func create(goal: Goal) {
-        let goalRealm = GoalRealm(goal: goal)
+    func create(category: Category) {
+        let categoryRealm = CategoryRealm(category: category)
         try! realm.write {
-            realm.add(goalRealm)
+            realm.add(categoryRealm)
         }
     }
     
-    func read(at index: Int) -> Goal {
-        return Goal(goal: objects[index])
+    func read(at index: Int) -> Category {
+        return Category(category: objects[index])
     }
     
-    func readAll() -> [Goal] {
-        return objects.map { Goal(goal: $0) }
+    func readAll() -> [Category] {
+        return objects.map { Category(category: $0) }
     }
     
-    func update(goal: Goal, at index: Int) {
+    func update(category: Category, at index: Int) {
         let object = objects[index]
-        let goal = Goal(title: goal.title,
-                        category: goal.category,
-                        memo: goal.memo,
-                        priority: goal.priority,
-                        dueDate: goal.dueDate,
-                        createdDate: goal.createdDate,
-                        imageData: goal.imageData)
+        let category = Category(title: category.title,
+                                isExpanded: category.isExpanded,
+                                goals: category.goals)
         try! realm.write {
-            object.title = goal.title
-            object.category = CategoryRealm(goal: goal)
-            object.memo = goal.memo
-            object.priority = PriorityRealm(goal: goal)
-            object.dueDate = goal.dueDate
-            object.createdDate = goal.createdDate
-            object.imageData = goal.imageData
+            object.title = category.title
+            object.isExpanded = category.isExpanded
+            object.goals.removeAll()
+            object.goals.append(objectsIn: category.realmGoals)
         }
     }
     
@@ -66,80 +59,120 @@ final class RealmGoalDataStore: GoalDataStoreProtocol {
     
 }
 
-private extension Goal {
-    
-    init(goal: GoalRealm) {
-        self.title = goal.title
-        self.category = Category(goal: goal)
-        self.memo = goal.memo
-        self.priority = Priority(goal: goal)
-        self.dueDate = goal.dueDate
-        self.createdDate = goal.createdDate
-        self.imageData = goal.imageData
-    }
-    
-}
-
 private extension Category {
     
-    init(goal: GoalRealm) {
-        let category = Category(title: goal.category?.title ?? "")
+    init(category: CategoryRealm) {
         self.title = category.title
-    }
-    
-}
-
-private extension Priority {
-    
-    init(goal: GoalRealm) {
-        let priority = Priority(mark: goal.priority?.mark ?? .star,
-                                number: goal.priority?.number ?? .one)
-        self.mark = priority.mark
-        self.number = priority.number
-    }
-    
-}
-
-private extension GoalRealm {
-    
-    convenience init(goal: Goal) {
-        self.init()
-        let goal = Goal(title: goal.title,
-                        category: goal.category,
-                        memo: goal.memo,
-                        priority: goal.priority,
-                        dueDate: goal.dueDate,
-                        createdDate: goal.createdDate,
-                        imageData: goal.imageData)
-        self.title = goal.title
-        self.category = CategoryRealm(goal: goal)
-        self.memo = goal.memo
-        self.priority = PriorityRealm(goal: goal)
-        self.dueDate = goal.dueDate
-        self.createdDate = goal.createdDate
-        self.imageData = goal.imageData
+        self.isExpanded = category.isExpanded
+        self.goals = category.commonGoals
     }
     
 }
 
 private extension CategoryRealm {
     
-    convenience init(goal: Goal) {
+    convenience init(category: Category) {
         self.init()
-        let category = Category(title: goal.category.title)
+        let category = Category(title: category.title,
+                                isExpanded: category.isExpanded,
+                                goals: category.goals)
         self.title = category.title
+        self.isExpanded = category.isExpanded
+        self.goals = category.realmGoals
+    }
+    
+}
+
+private extension Category {
+    
+    var realmGoals: List<GoalRealm> {
+        let goals = List<GoalRealm>()
+        self.goals.forEach { goal in
+            let goalRealm = GoalRealm(goal: goal)
+            goals.append(goalRealm)
+        }
+        return goals
+    }
+    
+}
+
+private extension Category.Goal {
+    
+    init(goal: GoalRealm) {
+        self.init(title: goal.title,
+                  memo: goal.memo,
+                  isExpanded: goal.isExpanded,
+                  priority: goal.priority?.toCommon
+                    ?? Priority(mark: .star, number: .one),
+                  dueDate: goal.dueDate,
+                  createdDate: goal.createdDate,
+                  imageData: goal.imageData)
     }
     
 }
 
 private extension PriorityRealm {
     
-    convenience init(goal: Goal) {
+    var toCommon: Category.Goal.Priority {
+        let priority = Category.Goal.Priority(mark: self.mark,
+                                              number: self.number)
+        return priority
+    }
+    
+}
+
+private extension CategoryRealm {
+    
+    var commonGoals: [Category.Goal] {
+        var goals = [Category.Goal]()
+        self.goals.forEach { goal in
+            let goal = Category.Goal(goal: goal)
+            goals.append(goal)
+        }
+        return goals
+    }
+    
+}
+
+private extension GoalRealm {
+    
+    convenience init(goal: Category.Goal) {
         self.init()
-        let priority = Priority(mark: goal.priority.mark,
-                                number: goal.priority.number)
+        let goal = Category.Goal(title: goal.title,
+                                 memo: goal.memo,
+                                 isExpanded: goal.isExpanded,
+                                 priority: goal.priority,
+                                 dueDate: goal.dueDate,
+                                 createdDate: goal.createdDate,
+                                 imageData: goal.imageData)
+        self.title = goal.title
+        self.memo = goal.memo
+        self.isExpanded = goal.isExpanded
+        self.priority = goal.realmPriority
+        self.dueDate = goal.dueDate
+        self.createdDate = goal.createdDate
+        self.imageData = goal.imageData
+    }
+    
+}
+
+private extension Category.Goal {
+    
+    var realmPriority: PriorityRealm {
+        return PriorityRealm(priority: self.priority)
+    }
+    
+}
+
+private extension PriorityRealm {
+    
+    convenience init(priority: Category.Goal.Priority) {
+        self.init()
+        let priority = Category.Goal.Priority(mark: self.mark,
+                                              number: self.number)
         self.mark = priority.mark
         self.number = priority.number
     }
     
 }
+

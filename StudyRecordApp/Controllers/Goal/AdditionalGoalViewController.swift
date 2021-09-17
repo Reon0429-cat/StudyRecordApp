@@ -7,6 +7,8 @@
 
 import UIKit
 
+// MARK: - ToDo カテゴリを既存のものを選択できるようにする
+
 final class AdditionalGoalViewController: UIViewController {
     
     @IBOutlet private weak var subCustomNavigationBar: SubCustomNavigationBar!
@@ -40,11 +42,14 @@ final class AdditionalGoalViewController: UIViewController {
             }
         }
     }
+    var selectedSection: Int?
     private var inputtedTitle = ""
     private var oldInputtedTitle = ""
+    private var inputtedCategoryTitle = ""
+    private var oldInputtedCategoryTitle = ""
     private var inputtedMemo = ""
     private var inputtedImageData: Data?
-    private var inputtedPriority = Priority(mark: .star, number: .one)
+    private var inputtedPriority = Category.Goal.Priority(mark: .star, number: .one)
     private var inputtedDate = (created: Date(), due: Date())
     private var halfModalPresenter = HalfModalPresenter()
     private var isMandatoryItemFilled: Bool {
@@ -73,6 +78,10 @@ final class AdditionalGoalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let section = selectedSection {
+            inputtedCategoryTitle = goalUseCase.categories[section].title
+        }
+        
         setupTableView()
         setupSubCustomNavigationBar()
         
@@ -83,21 +92,47 @@ final class AdditionalGoalViewController: UIViewController {
 // MARK: - func
 private extension AdditionalGoalViewController {
     
-    func showAlertWithTextField() {
-        let alert = Alert.create(title: LocalizeKey.Title.localizedString())
-            .setTextField { textField in
-                textField.text = self.inputtedTitle
-                textField.delegate = self
-            }
-            .addAction(title: LocalizeKey.close.localizedString(),
-                       style: .destructive) {
-                self.inputtedTitle = self.oldInputtedTitle
-            }
-            .addAction(title: LocalizeKey.add.localizedString()) {
-                self.oldInputtedTitle = self.inputtedTitle
-                self.tableView.reloadData()
-            }
-        present(alert, animated: true)
+    func showAlertWithTextField(rowType: RowType) {
+        if rowType == .title {
+            let alert = Alert.create(title: LocalizeKey.Title.localizedString())
+                .setTextField { textField in
+                    textField.text = self.inputtedTitle
+                    textField.tag = rowType.rawValue
+                    textField.delegate = self
+                }
+                .addAction(title: LocalizeKey.close.localizedString(),
+                           style: .destructive) {
+                    self.inputtedTitle = self.oldInputtedTitle
+                }
+                .addAction(title: LocalizeKey.add.localizedString()) {
+                    self.oldInputtedTitle = self.inputtedTitle
+                    self.tableView.reloadData()
+                }
+            present(alert, animated: true)
+        }
+        if rowType == .category {
+            let alert = Alert.create(title: LocalizeKey.Category.localizedString())
+                .setTextField { textField in
+                    textField.text = self.inputtedCategoryTitle
+                    textField.tag = rowType.rawValue
+                    textField.delegate = self
+                    let keyboardView = CategoryKeyboardView(frame: CGRect(x: 0,
+                                                                          y: 0,
+                                                                          width: self.view.frame.width,
+                                                                          height: 45))
+                    keyboardView.delegate = self
+                    textField.inputAccessoryView = keyboardView
+                }
+                .addAction(title: LocalizeKey.close.localizedString(),
+                           style: .destructive) {
+                    self.inputtedCategoryTitle = self.oldInputtedCategoryTitle
+                }
+                .addAction(title: LocalizeKey.add.localizedString()) {
+                    self.oldInputtedCategoryTitle = self.inputtedCategoryTitle
+                    self.tableView.reloadData()
+                }
+            present(alert, animated: true)
+        }
     }
     
     func showAlert() {
@@ -113,14 +148,27 @@ private extension AdditionalGoalViewController {
     }
     
     func saveGoal() {
-        let goal = Goal(title: inputtedTitle,
-                        category: Category(title: ""),
-                        memo: inputtedMemo,
-                        priority: inputtedPriority,
-                        dueDate: inputtedDate.due,
-                        createdDate: inputtedDate.created,
-                        imageData: inputtedImageData)
-        goalUseCase.create(goal: goal)
+        let categoryTitle: String = {
+            if inputtedCategoryTitle.isEmpty {
+                return LocalizeKey.uncategorized.localizedString()
+            }
+            return inputtedCategoryTitle
+        }()
+        let goal = Category.Goal(title: inputtedTitle,
+                                 memo: inputtedMemo,
+                                 isExpanded: false,
+                                 priority: inputtedPriority,
+                                 dueDate: inputtedDate.due,
+                                 createdDate: inputtedDate.created,
+                                 imageData: inputtedImageData)
+        let category = Category(title: categoryTitle,
+                                isExpanded: false,
+                                goals: [goal])
+        if let section = selectedSection {
+            goalUseCase.save(goal: goal, section: section)
+        } else {
+            goalUseCase.save(category: category)
+        }
     }
     
     func presentTo(_ sourceType: UIImagePickerController.SourceType) {
@@ -155,8 +203,8 @@ private extension AdditionalGoalViewController {
         present(GoalTimeViewController.self) { vc in
             vc.delegate = self
             vc.dateType = self.getDateType(type: rowType)
-            self.halfModalPresenter.viewController = vc
             vc.inputtedDate = self.getDate(type: rowType)
+            self.halfModalPresenter.viewController = vc
         }
     }
     
@@ -197,9 +245,11 @@ extension AdditionalGoalViewController: UITableViewDelegate {
         let rowType = RowType.allCases[indexPath.row]
         switch rowType {
             case .title:
-                showAlertWithTextField()
+                showAlertWithTextField(rowType: rowType)
             case .category:
-                break
+                if selectedSection == nil {
+                    showAlertWithTextField(rowType: rowType)
+                }
             case .memo:
                 presentStudyRecordMemoVC()
             case .priority:
@@ -252,7 +302,18 @@ extension AdditionalGoalViewController: UITableViewDataSource {
                                auxiliaryText: inputtedTitle)
                 return cell
             case .category:
-                return UITableViewCell()
+                let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
+                if selectedSection == nil {
+                    cell.configure(titleText: rowType.title,
+                                   mandatoryIsHidden: true,
+                                   auxiliaryText: inputtedCategoryTitle)
+                } else {
+                    cell.configure(titleText: rowType.title,
+                                   mandatoryText: LocalizeKey.fixed.localizedString(),
+                                   mandatoryIsHidden: false,
+                                   auxiliaryText: inputtedCategoryTitle)
+                }
+                return cell
             case .memo:
                 let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
                 cell.configure(titleText: rowType.title,
@@ -289,7 +350,13 @@ extension AdditionalGoalViewController: UITableViewDataSource {
 extension AdditionalGoalViewController: UITextFieldDelegate {
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        inputtedTitle = textField.text ?? ""
+        let rowType = RowType(rawValue: textField.tag)
+        if rowType == .title {
+            inputtedTitle = textField.text ?? ""
+        }
+        if rowType == .category {
+            inputtedCategoryTitle = textField.text ?? ""
+        }
         subCustomNavigationBar.saveButton(isEnabled: isMandatoryItemFilled)
     }
     
@@ -298,7 +365,7 @@ extension AdditionalGoalViewController: UITextFieldDelegate {
 // MARK: - GoalPriorityVCDelegate
 extension AdditionalGoalViewController: GoalPriorityVCDelegate {
     
-    func addButtonDidTapped(priority: Priority) {
+    func addButtonDidTapped(priority: Category.Goal.Priority) {
         inputtedPriority = priority
         tableView.reloadData()
     }
@@ -348,6 +415,35 @@ extension AdditionalGoalViewController: SubCustomNavigationBarDelegate {
     
     var navTitle: String {
         return LocalizeKey.Add.localizedString()
+    }
+    
+}
+
+// MARK: - AdditionalCategoryVCDelegate
+extension AdditionalGoalViewController: AdditionalCategoryVCDelegate {
+    
+    func saveButtonDidTapped(at index: Int?) {
+        if let index = index {
+            let category = goalUseCase.categories[index]
+            inputtedCategoryTitle = category.title
+            selectedSection = index
+            tableView.reloadData()
+        }
+    }
+    
+}
+
+// MARK: - CategoryKeyboardViewDelegate
+extension AdditionalGoalViewController: CategoryKeyboardViewDelegate {
+    
+    func categoryButtonDidTapped() {
+        if let alert = getPresentedVC() as? UIAlertController {
+            alert.dismiss(animated: true) {
+                self.present(AdditionalCategoryViewController.self) { vc in
+                    vc.delegate = self
+                }
+            }
+        }
     }
     
 }

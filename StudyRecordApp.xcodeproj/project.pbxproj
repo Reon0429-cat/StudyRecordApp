@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB00DDC726F4E75E008CC3F1 /* CategoryKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00DDC626F4E75E008CC3F1 /* CategoryKeyboardView.swift */; };
+		AB00DDC926F4EEC3008CC3F1 /* AdditionalCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00DDC826F4EEC3008CC3F1 /* AdditionalCategoryViewController.swift */; };
+		AB00DDCB26F4EECA008CC3F1 /* AdditionalCategory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB00DDCA26F4EECA008CC3F1 /* AdditionalCategory.storyboard */; };
 		AB0C765326EB889100BF5B64 /* CustomSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C765126EB889100BF5B64 /* CustomSwitchTableViewCell.swift */; };
 		AB0C765426EB889100BF5B64 /* CustomSwitchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB0C765226EB889100BF5B64 /* CustomSwitchTableViewCell.xib */; };
 		AB0C765726EB8B4300BF5B64 /* CustomButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C765526EB8B4300BF5B64 /* CustomButtonTableViewCell.swift */; };
@@ -158,6 +161,8 @@
 		ABA0570126B50D1900E3DF01 /* GraphColorTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA0570026B50D1900E3DF01 /* GraphColorTileView.swift */; };
 		ABA0570326B50F7100E3DF01 /* StudyRecordGraphColor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABA0570226B50F7100E3DF01 /* StudyRecordGraphColor.storyboard */; };
 		ABA0570526B50F8100E3DF01 /* StudyRecordGraphColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA0570426B50F8100E3DF01 /* StudyRecordGraphColorViewController.swift */; };
+		ABAE84DF26F414BB00A93A7F /* GoalHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAE84DE26F414BB00A93A7F /* GoalHeaderView.swift */; };
+		ABAE84E126F414CF00A93A7F /* GoalHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABAE84E026F414CF00A93A7F /* GoalHeaderView.xib */; };
 		ABDF66BE26E79543000D9FD5 /* TabBarCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDF66BD26E79543000D9FD5 /* TabBarCollectionViewController.swift */; };
 		ABFAB15526DF802A0095EC20 /* PriorityStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAB15426DF802A0095EC20 /* PriorityStackView.swift */; };
 		ABFAB15826DF86920095EC20 /* GoalPhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAB15626DF86920095EC20 /* GoalPhotoTableViewCell.swift */; };
@@ -176,6 +181,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AB00DDC626F4E75E008CC3F1 /* CategoryKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryKeyboardView.swift; sourceTree = "<group>"; };
+		AB00DDC826F4EEC3008CC3F1 /* AdditionalCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalCategoryViewController.swift; sourceTree = "<group>"; };
+		AB00DDCA26F4EECA008CC3F1 /* AdditionalCategory.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AdditionalCategory.storyboard; sourceTree = "<group>"; };
 		AB0C765126EB889100BF5B64 /* CustomSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSwitchTableViewCell.swift; sourceTree = "<group>"; };
 		AB0C765226EB889100BF5B64 /* CustomSwitchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomSwitchTableViewCell.xib; sourceTree = "<group>"; };
 		AB0C765526EB8B4300BF5B64 /* CustomButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonTableViewCell.swift; sourceTree = "<group>"; };
@@ -331,6 +339,8 @@
 		ABA0570026B50D1900E3DF01 /* GraphColorTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphColorTileView.swift; sourceTree = "<group>"; };
 		ABA0570226B50F7100E3DF01 /* StudyRecordGraphColor.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StudyRecordGraphColor.storyboard; sourceTree = "<group>"; };
 		ABA0570426B50F8100E3DF01 /* StudyRecordGraphColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRecordGraphColorViewController.swift; sourceTree = "<group>"; };
+		ABAE84DE26F414BB00A93A7F /* GoalHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalHeaderView.swift; sourceTree = "<group>"; };
+		ABAE84E026F414CF00A93A7F /* GoalHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoalHeaderView.xib; sourceTree = "<group>"; };
 		ABDF66BD26E79543000D9FD5 /* TabBarCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCollectionViewController.swift; sourceTree = "<group>"; };
 		ABFAB15426DF802A0095EC20 /* PriorityStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityStackView.swift; sourceTree = "<group>"; };
 		ABFAB15626DF86920095EC20 /* GoalPhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPhotoTableViewCell.swift; sourceTree = "<group>"; };
@@ -427,6 +437,7 @@
 			children = (
 				AB13EDF926C8C585002F56FF /* GoalViewController.swift */,
 				AB4397EC26DD3051008C8CA8 /* AdditionalGoalViewController.swift */,
+				AB00DDC826F4EEC3008CC3F1 /* AdditionalCategoryViewController.swift */,
 				AB4397F226DD3B32008C8CA8 /* GoalPriorityViewController.swift */,
 				ABFAB1E226E11FEC0095EC20 /* GoalTimeViewController.swift */,
 			);
@@ -447,6 +458,7 @@
 			children = (
 				AB13EDF326C8BAAC002F56FF /* Goal.storyboard */,
 				AB4397EE26DD305B008C8CA8 /* AdditionalGoal.storyboard */,
+				AB00DDCA26F4EECA008CC3F1 /* AdditionalCategory.storyboard */,
 				AB4397F026DD3B2A008C8CA8 /* GoalPriority.storyboard */,
 				ABFAB1E426E11FF80095EC20 /* GoalTime.storyboard */,
 			);
@@ -494,6 +506,7 @@
 				AB20F81526E80E1900564B14 /* CustomSlider.swift */,
 				AB0C76BF26EE9B4600BF5B64 /* CustomButton.swift */,
 				AB0C76D626EFE38A00BF5B64 /* CustomTextField.swift */,
+				AB00DDC626F4E75E008CC3F1 /* CategoryKeyboardView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -503,6 +516,8 @@
 			children = (
 				AB43980226DE1DD6008C8CA8 /* GoalTableViewCell.swift */,
 				AB43980326DE1DD6008C8CA8 /* GoalTableViewCell.xib */,
+				ABAE84DE26F414BB00A93A7F /* GoalHeaderView.swift */,
+				ABAE84E026F414CF00A93A7F /* GoalHeaderView.xib */,
 				AB43980626DE2D72008C8CA8 /* GoalPriorityTableViewCell.swift */,
 				AB43980726DE2D72008C8CA8 /* GoalPriorityTableViewCell.xib */,
 				ABFAB15626DF86920095EC20 /* GoalPhotoTableViewCell.swift */,
@@ -933,6 +948,7 @@
 				AB13EDB126BFAA7D002F56FF /* StudyRecordSort.storyboard in Resources */,
 				AB16308426CEABD400111F55 /* NavigationButton.xib in Resources */,
 				ABFAB20926E394A60095EC20 /* GraphTableViewCell.xib in Resources */,
+				ABAE84E126F414CF00A93A7F /* GoalHeaderView.xib in Resources */,
 				AB13ECD626B7AEA3002F56FF /* ColorChoicesConcept.storyboard in Resources */,
 				AB2B5BAC26A2D244009BD3C7 /* ThemeColor.storyboard in Resources */,
 				AB8B705726D6AD1F0069FF67 /* SignUp.storyboard in Resources */,
@@ -943,6 +959,7 @@
 				AB0C765826EB8B4300BF5B64 /* CustomButtonTableViewCell.xib in Resources */,
 				AB13EDF426C8BAAC002F56FF /* Goal.storyboard in Resources */,
 				AB0C768726ECD98E00BF5B64 /* PasscodeView.xib in Resources */,
+				AB00DDCB26F4EECA008CC3F1 /* AdditionalCategory.storyboard in Resources */,
 				AB0C765426EB889100BF5B64 /* CustomSwitchTableViewCell.xib in Resources */,
 				AB0C768126EBD9A800BF5B64 /* SubCustomNavigationBar.xib in Resources */,
 				AB13ED1626B8F5D0002F56FF /* StudyRecordMemo.storyboard in Resources */,
@@ -1086,6 +1103,7 @@
 				AB13EDFA26C8C585002F56FF /* GoalViewController.swift in Sources */,
 				AB4397F526DD57B9008C8CA8 /* Goal.swift in Sources */,
 				AB0C766926EBB10700BF5B64 /* SettingUseCase.swift in Sources */,
+				ABAE84DF26F414BB00A93A7F /* GoalHeaderView.swift in Sources */,
 				AB2B5B8E26A2D106009BD3C7 /* UITableViewCell+Extension.swift in Sources */,
 				AB20F80C26E7B50D00564B14 /* UIImage+Extension.swift in Sources */,
 				AB13ED4926BB8128002F56FF /* RealmRecordDataStore.swift in Sources */,
@@ -1102,7 +1120,9 @@
 				AB0C767F26EBD5A700BF5B64 /* ThemeColorView.swift in Sources */,
 				AB14B46A26DBA653007A5F16 /* FirebaseUserDataStore.swift in Sources */,
 				AB13ED7D26BE7061002F56FF /* StudyRecordHistoryTableViewCell.swift in Sources */,
+				AB00DDC926F4EEC3008CC3F1 /* AdditionalCategoryViewController.swift in Sources */,
 				AB14B46C26DBA80A007A5F16 /* User.swift in Sources */,
+				AB00DDC726F4E75E008CC3F1 /* CategoryKeyboardView.swift in Sources */,
 				AB93C23B266A234800C3AE8F /* AppDelegate.swift in Sources */,
 				AB2B5BC926A2D36F009BD3C7 /* SettingViewController.swift in Sources */,
 				AB2B5BB926A2D2C2009BD3C7 /* AccordionColorTableViewCell.swift in Sources */,

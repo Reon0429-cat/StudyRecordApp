@@ -13,7 +13,6 @@ import UIKit
 
 protocol StudyRecordVCDelegate: ScreenPresentationDelegate {
     var isEdit: Bool { get }
-    func viewWillAppear(records: [Record])
     func deleteButtonDidTappped(records: [Record])
     func baseViewLongPressDidRecognized()
 }
@@ -42,8 +41,8 @@ final class StudyRecordViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        delegate?.viewWillAppear(records: records)
-        delegate?.screenDidPresented(screenType: .record)
+        delegate?.screenDidPresented(screenType: .record,
+                                     isEnabledNavigationButton: !records.isEmpty)
         tableView.reloadData()
         
     }
@@ -69,7 +68,7 @@ extension StudyRecordViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
                    heightForHeaderInSection section: Int) -> CGFloat {
-        return 30
+        return 20
     }
     
     func tableView(_ tableView: UITableView,

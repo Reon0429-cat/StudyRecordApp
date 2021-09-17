@@ -181,9 +181,9 @@ enum LocalizeKey: String {
     case darkModeSettingApp
     case darkModeSettingAuto
     
+    case uncategorized
     
-    
-    
+    case fixed
     
     
     

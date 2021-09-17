@@ -14,12 +14,12 @@ final class GoalPriorityTableViewCell: UITableViewCell {
     
     private var stackView = UIStackView()
     
-    func configure(title: String, priority: Priority) {
+    func configure(title: String, priority: Category.Goal.Priority) {
         titleLabel.text = title
         setupStackView(priority: priority)
     }
     
-    private func setupStackView(priority: Priority) {
+    private func setupStackView(priority: Category.Goal.Priority) {
         self.stackView.removeFromSuperview()
         let priorityStackView = PriorityStackView(priority: priority)
         self.addSubview(priorityStackView)

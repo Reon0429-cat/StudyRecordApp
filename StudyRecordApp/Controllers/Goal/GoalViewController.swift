@@ -14,31 +14,29 @@ protocol GoalVCDelegate: ScreenPresentationDelegate {
 final class GoalViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var segmentedControl: CustomSegmentedControl!
     
     weak var delegate: GoalVCDelegate?
-    private enum SegmentType: Int {
-        case category
-        case simple
-    }
     private var goalUseCase = GoalUseCase(
         repository: GoalRepository(
             dataStore: RealmGoalDataStore()
         )
     )
+    private var categories: [Category] {
+        return goalUseCase.categories
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTableView()
-        setupSegmentedControl()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        delegate?.screenDidPresented(screenType: .goal)
+        delegate?.screenDidPresented(screenType: .goal,
+                                     isEnabledNavigationButton: !categories.isEmpty)
         tableView.reloadData()
         
     }
@@ -48,47 +46,116 @@ final class GoalViewController: UIViewController {
 // MARK: - IBAction func
 private extension GoalViewController {
     
-    @IBAction func segmentedControlDidSelected(_ sender: UISegmentedControl) {
-        guard let segmentType = SegmentType(rawValue: sender.selectedSegmentIndex) else { return }
-        switch segmentType {
-            case .category:
-                break
-            case .simple:
-                break
-        }
+}
+
+private extension GoalViewController {
+    
+    func getRowHeight(at indexPath: IndexPath) -> CGFloat {
+        let category = categories[indexPath.section]
+        guard category.isExpanded else { return 0 }
+        let goal = category.goals[indexPath.row]
+        return goal.isExpanded ? tableView.rowHeight : 200
     }
     
 }
 
-// MARK: - UITableViewDelegate
-extension GoalViewController: UITableViewDelegate {
+// MARK: - UITableViewDelegate, UITableViewDataSource
+extension GoalViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return categories.count
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return getRowHeight(at: indexPath)
+    }
     
     func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return getRowHeight(at: indexPath)
     }
     
-}
-
-// MARK: - UITableViewDataSource
-extension GoalViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView,
+                   heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return GoalHeaderView.height + 35
+        }
+        return GoalHeaderView.height
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = tableView.dequeueReusableCustomHeaderFooterView(with: GoalHeaderView.self)
+        let category = categories[section]
+        headerView.configure(category: category)
+        headerView.delegate = self
+        headerView.tag = section
+        return headerView
+    }
     
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        return goalUseCase.goals.count
+        let category = categories[section]
+        return category.goals.count
     }
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCustomCell(with: GoalTableViewCell.self)
-        let goal = goalUseCase.goals[indexPath.row]
-        // MARK: - ToDo ローカライズする
-        let createdDateString = Converter.convertToString(from: goal.createdDate, format: "yyyy年M月d日")
-        let dueDateString = Converter.convertToString(from: goal.dueDate, format: "yyyy年M月d日")
-        let title = "\(createdDateString), \(dueDateString)"
-        let image = Converter.convertToImage(from: goal.imageData)
-        cell.configure(title: title, image: image)
+        let category = categories[indexPath.section]
+        let goal = category.goals[indexPath.row]
+        cell.configure(goal: goal)
+        cell.isHidden(!category.isExpanded)
+        cell.indexPath = indexPath
+        cell.delegate = self
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   willDisplayHeaderView view: UIView,
+                   forSection section: Int) {
+        view.tintColor = .dynamicColor(light: .black, dark: .white)
+    }
+    
+}
+
+// MARK: - GoalHeaderViewDelegate
+extension GoalViewController: GoalHeaderViewDelegate {
+    
+    func addButtonDidTapped(section: Int) {
+        present(AdditionalGoalViewController.self,
+                modalPresentationStyle: .fullScreen) { vc in
+            vc.selectedSection = section
+        }
+    }
+    
+    func foldingButtonDidTapped(section: Int) {
+        goalUseCase.toggleCategoryIsExpanded(at: section)
+        DispatchQueue.main.async {
+            self.tableView.beginUpdates()
+            (0..<self.goalUseCase.categories[section].goals.count).forEach {
+                self.tableView.reloadRows(at: [IndexPath(row: $0, section: section)],
+                                          with: .automatic)
+            }
+            self.tableView.reloadSections([section], with: .automatic)
+            self.tableView.endUpdates()
+        }
+    }
+    
+}
+
+// MARK: - GoalTableViewCellDelegate
+extension GoalViewController: GoalTableViewCellDelegate {
+    
+    func memoButtonDidTapped(indexPath: IndexPath) {
+        goalUseCase.toggleGoalIsExpanded(at: indexPath)
+        DispatchQueue.main.async {
+            self.tableView.beginUpdates()
+            self.tableView.reloadRows(at: [indexPath],
+                                      with: .automatic)
+            self.tableView.endUpdates()
+        }
     }
     
 }
@@ -100,14 +167,9 @@ private extension GoalViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.registerCustomCell(GoalTableViewCell.self)
+        tableView.registerCustomCell(GoalHeaderView.self)
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.tableFooterView = UIView()
-    }
-    
-    func setupSegmentedControl() {
-        let index = 0
-        segmentedControl.create([LocalizeKey.category.localizedString(),
-                                 LocalizeKey.simple.localizedString()],
-                                selectedIndex: index)
     }
     
 }

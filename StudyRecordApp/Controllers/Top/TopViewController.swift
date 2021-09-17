@@ -226,8 +226,11 @@ extension TopViewController: TabBarCollectionVCDelegate {
 // MARK: - ScreenPresentationDelegate
 extension TopViewController {
     
-    func screenDidPresented(screenType: ScreenType) {
+    func screenDidPresented(screenType: ScreenType,
+                            isEnabledNavigationButton: Bool) {
         screenDidChanged(item: screenType.rawValue)
+        editButton.isEnabled(isEnabledNavigationButton)
+        changeEditMode(type: .edit)
         switch screenType {
             case .record:
                 editButton.setFade(.in)
@@ -262,10 +265,6 @@ extension TopViewController: StudyRecordVCDelegate {
     
     var isEdit: Bool {
         editButton.isType(.completion)
-    }
-    
-    func viewWillAppear(records: [Record]) {
-        editButton.isEnabled(!records.isEmpty)
     }
     
     func deleteButtonDidTappped(records: [Record]) {

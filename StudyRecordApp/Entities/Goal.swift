@@ -8,23 +8,25 @@
 import Foundation
 
 // 共通の型
-struct Goal {
-    var title: String
-    var category: Category
-    var memo: String
-    var priority: Priority
-    var dueDate: Date
-    var createdDate: Date
-    var imageData: Data?
-}
-
 struct Category {
-    var title: String
-}
-
-struct Priority {
-    var mark: PriorityMark
-    var number: PriorityNumber
+    let title: String
+    let isExpanded: Bool
+    let goals: [Goal]
+    
+    struct Goal {
+        var title: String
+        var memo: String
+        var isExpanded: Bool
+        var priority: Priority
+        var dueDate: Date
+        var createdDate: Date
+        var imageData: Data?
+        
+        struct Priority {
+            var mark: PriorityMark
+            var number: PriorityNumber
+        }
+    }
 }
 
 enum PriorityMark: Int {
