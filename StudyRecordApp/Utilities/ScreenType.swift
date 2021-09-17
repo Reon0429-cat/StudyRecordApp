@@ -8,7 +8,8 @@
 import Foundation
 
 protocol ScreenPresentationDelegate: AnyObject {
-    func screenDidPresented(screenType: ScreenType)
+    func screenDidPresented(screenType: ScreenType,
+                            isEnabledNavigationButton: Bool)
     func scroll(sourceScreenType: ScreenType,
                 destinationScreenType: ScreenType,
                 completion: (() -> Void)?)

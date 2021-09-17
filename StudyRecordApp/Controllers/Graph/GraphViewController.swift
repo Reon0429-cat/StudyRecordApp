@@ -43,7 +43,8 @@ final class GraphViewController: UIViewController {
         super.viewWillAppear(animated)
         
         tableView(isHidden: recordUseCase.records.isEmpty)
-        delegate?.screenDidPresented(screenType: .graph)
+        delegate?.screenDidPresented(screenType: .graph,
+                                     isEnabledNavigationButton: !recordUseCase.records.isEmpty)
         tableView.reloadData()
         
     }

@@ -35,7 +35,8 @@ final class GoalViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        delegate?.screenDidPresented(screenType: .goal)
+        delegate?.screenDidPresented(screenType: .goal,
+                                     isEnabledNavigationButton: !categories.isEmpty)
         tableView.reloadData()
         
     }
@@ -78,7 +79,7 @@ extension GoalViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
-            return GoalHeaderView.height + 30
+            return GoalHeaderView.height + 35
         }
         return GoalHeaderView.height
     }
