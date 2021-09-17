@@ -47,6 +47,17 @@ private extension GoalViewController {
     
 }
 
+private extension GoalViewController {
+    
+    func getRowHeight(at indexPath: IndexPath) -> CGFloat {
+        let category = categories[indexPath.section]
+        guard category.isExpanded else { return 0 }
+        let goal = category.goals[indexPath.row]
+        return goal.isExpanded ? tableView.rowHeight : 200
+    }
+    
+}
+
 // MARK: - UITableViewDelegate, UITableViewDataSource
 extension GoalViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -56,24 +67,12 @@ extension GoalViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        let category = categories[indexPath.section]
-        let goal = category.goals[indexPath.row]
-        if category.isExpanded {
-            return goal.isExpanded ? tableView.rowHeight : 200
-        } else {
-            return 0
-        }
+        return getRowHeight(at: indexPath)
     }
     
     func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let category = categories[indexPath.section]
-        let goal = category.goals[indexPath.row]
-        if category.isExpanded {
-            return goal.isExpanded ? tableView.rowHeight : 200
-        } else {
-            return 0
-        }
+        return getRowHeight(at: indexPath)
     }
     
     func tableView(_ tableView: UITableView,
@@ -95,12 +94,6 @@ extension GoalViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView,
-                   willDisplayHeaderView view: UIView,
-                   forSection section: Int) {
-        view.tintColor = .dynamicColor(light: .black, dark: .white)
-    }
-    
-    func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
         let category = categories[section]
         return category.goals.count
@@ -112,10 +105,16 @@ extension GoalViewController: UITableViewDelegate, UITableViewDataSource {
         let category = categories[indexPath.section]
         let goal = category.goals[indexPath.row]
         cell.configure(goal: goal)
-        cell.isHidden = !category.isExpanded
+        cell.isHidden(!category.isExpanded)
         cell.indexPath = indexPath
         cell.delegate = self
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   willDisplayHeaderView view: UIView,
+                   forSection section: Int) {
+        view.tintColor = .dynamicColor(light: .black, dark: .white)
     }
     
 }
@@ -124,7 +123,11 @@ extension GoalViewController: UITableViewDelegate, UITableViewDataSource {
 extension GoalViewController: GoalHeaderViewDelegate {
     
     func addButtonDidTapped(section: Int) {
-        print(#function, section)
+        present(AdditionalGoalViewController.self,
+                modalPresentationStyle: .fullScreen) { vc in
+            vc.selectedSection = section
+            vc.isCategoryAdd = true
+        }
     }
     
     func foldingButtonDidTapped(section: Int) {
@@ -134,8 +137,8 @@ extension GoalViewController: GoalHeaderViewDelegate {
             (0..<self.goalUseCase.categories[section].goals.count).forEach {
                 self.tableView.reloadRows(at: [IndexPath(row: $0, section: section)],
                                           with: .automatic)
-                self.tableView.reloadSections([section], with: .automatic)
             }
+            self.tableView.reloadSections([section], with: .automatic)
             self.tableView.endUpdates()
         }
     }
@@ -152,18 +155,6 @@ extension GoalViewController: GoalTableViewCellDelegate {
             self.tableView.reloadRows(at: [indexPath],
                                       with: .automatic)
             self.tableView.endUpdates()
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-            let cell = self.tableView.cellForRow(at: indexPath) as? GoalTableViewCell
-            let goals = self.categories[indexPath.section].goals
-            let isExpanded = goals[indexPath.row].isExpanded
-            let isLastRow = (indexPath.row == goals.count - 1)
-            let isManyMemo = (cell?.frame.height ?? 0.0 > self.tableView.frame.height / 2)
-            let isCellNil = (cell == nil)
-            let shouldScrollToTop = isExpanded && (isManyMemo || isLastRow || isCellNil)
-            if shouldScrollToTop {
-                self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
-            }
         }
     }
     

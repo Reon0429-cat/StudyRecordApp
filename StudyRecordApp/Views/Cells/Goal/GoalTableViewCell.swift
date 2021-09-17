@@ -66,6 +66,10 @@ final class GoalTableViewCell: UITableViewCell {
         setupMemoTextView(goal: goal)
     }
     
+    func isHidden(_ isHidden: Bool) {
+        self.isHidden = isHidden
+    }
+    
     @IBAction private func memoButtonDidTapped(_ sender: Any) {
         guard let indexPath = indexPath else { return }
         delegate?.memoButtonDidTapped(indexPath: indexPath)

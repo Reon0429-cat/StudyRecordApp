@@ -42,6 +42,8 @@ final class AdditionalGoalViewController: UIViewController {
             }
         }
     }
+    var isCategoryAdd: Bool = false
+    var selectedSection = 0
     private var inputtedTitle = ""
     private var oldInputtedTitle = ""
     private var inputtedCategoryTitle = ""
@@ -76,6 +78,10 @@ final class AdditionalGoalViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if isCategoryAdd {
+            inputtedCategoryTitle = goalUseCase.categories[selectedSection].title
+        }
         
         setupTableView()
         setupSubCustomNavigationBar()
@@ -153,7 +159,11 @@ private extension AdditionalGoalViewController {
         let category = Category(title: categoryTitle,
                                 isExpanded: false,
                                 goals: [goal])
-        goalUseCase.save(category: category)
+        if isCategoryAdd {
+            goalUseCase.save(goal: goal, section: selectedSection)
+        } else {
+            goalUseCase.save(category: category)
+        }
     }
     
     func presentTo(_ sourceType: UIImagePickerController.SourceType) {
@@ -229,9 +239,12 @@ extension AdditionalGoalViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         let rowType = RowType.allCases[indexPath.row]
         switch rowType {
-            case .title,
-                 .category:
+            case .title:
                 showAlertWithTextField(rowType: rowType)
+            case .category:
+                if !isCategoryAdd {
+                    showAlertWithTextField(rowType: rowType)
+                }
             case .memo:
                 presentStudyRecordMemoVC()
             case .priority:
@@ -285,9 +298,16 @@ extension AdditionalGoalViewController: UITableViewDataSource {
                 return cell
             case .category:
                 let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
-                cell.configure(titleText: rowType.title,
-                               mandatoryIsHidden: true,
-                               auxiliaryText: inputtedCategoryTitle)
+                if isCategoryAdd {
+                    cell.configure(titleText: rowType.title,
+                                   mandatoryText: LocalizeKey.fixed.localizedString(),
+                                   mandatoryIsHidden: false,
+                                   auxiliaryText: inputtedCategoryTitle)
+                } else {
+                    cell.configure(titleText: rowType.title,
+                                   mandatoryIsHidden: true,
+                                   auxiliaryText: inputtedCategoryTitle)
+                }
                 return cell
             case .memo:
                 let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)

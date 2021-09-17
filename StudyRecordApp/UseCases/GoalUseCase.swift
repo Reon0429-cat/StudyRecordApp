@@ -22,6 +22,15 @@ final class GoalUseCase {
         repository.create(category: category)
     }
     
+    func save(goal: Category.Goal, section: Int) {
+        let category = repository.read(at: section)
+        let newGoals = category.goals + [goal]
+        let newCategory = Category(title: category.title,
+                                   isExpanded: category.isExpanded,
+                                   goals: newGoals)
+        repository.update(category: newCategory, at: section)
+    }
+    
     func toggleGoalIsExpanded(at indexPath: IndexPath) {
         let category = repository.read(at: indexPath.section)
         let goal = category.goals[indexPath.row]
