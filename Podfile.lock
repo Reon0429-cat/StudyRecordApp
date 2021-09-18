@@ -482,6 +482,12 @@ PODS:
   - Realm/Headers (10.14.0)
   - RealmSwift (10.14.0):
     - Realm (= 10.14.0)
+  - RxCocoa (6.2.0):
+    - RxRelay (= 6.2.0)
+    - RxSwift (= 6.2.0)
+  - RxRelay (6.2.0):
+    - RxSwift (= 6.2.0)
+  - RxSwift (6.2.0)
   - ScrollableGraphView (4.0.6)
 
 DEPENDENCIES:
@@ -491,6 +497,8 @@ DEPENDENCIES:
   - PKHUD (~> 5.0)
   - ReachabilitySwift
   - RealmSwift
+  - RxCocoa
+  - RxSwift
   - ScrollableGraphView
 
 SPEC REPOS:
@@ -517,6 +525,9 @@ SPEC REPOS:
     - ReachabilitySwift
     - Realm
     - RealmSwift
+    - RxCocoa
+    - RxRelay
+    - RxSwift
     - ScrollableGraphView
 
 SPEC CHECKSUMS:
@@ -542,8 +553,11 @@ SPEC CHECKSUMS:
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   Realm: 95a120db10fa66d0f1d10bee4ce828177ae00090
   RealmSwift: 4937e1b6f9b87bc25dc23883198807bf69e8cb76
+  RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
+  RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
+  RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
   ScrollableGraphView: 4af35d4ea9ecdec665d34a74da51da161ddff8ac
 
-PODFILE CHECKSUM: a2ad66cf086131f1f019096fc36c69cac0cd94f5
+PODFILE CHECKSUM: fdbbe621a266644026b842d530bbdebebe7723ba
 
 COCOAPODS: 1.10.2

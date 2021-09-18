@@ -13,6 +13,8 @@ target 'StudyRecordApp' do
    pod 'Firebase/Analytics'
    pod 'Firebase/Auth'
    pod 'Firebase/Firestore'
+   pod 'RxSwift'
+   pod 'RxCocoa'
    
 end
 
