@@ -10,6 +10,7 @@
 		AB00DDC726F4E75E008CC3F1 /* CategoryKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00DDC626F4E75E008CC3F1 /* CategoryKeyboardView.swift */; };
 		AB00DDC926F4EEC3008CC3F1 /* AdditionalCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00DDC826F4EEC3008CC3F1 /* AdditionalCategoryViewController.swift */; };
 		AB00DDCB26F4EECA008CC3F1 /* AdditionalCategory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB00DDCA26F4EECA008CC3F1 /* AdditionalCategory.storyboard */; };
+		AB00DE1026F64576008CC3F1 /* StudyRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00DE0F26F64576008CC3F1 /* StudyRecordViewModel.swift */; };
 		AB0C765326EB889100BF5B64 /* CustomSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C765126EB889100BF5B64 /* CustomSwitchTableViewCell.swift */; };
 		AB0C765426EB889100BF5B64 /* CustomSwitchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB0C765226EB889100BF5B64 /* CustomSwitchTableViewCell.xib */; };
 		AB0C765726EB8B4300BF5B64 /* CustomButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C765526EB8B4300BF5B64 /* CustomButtonTableViewCell.swift */; };
@@ -184,6 +185,7 @@
 		AB00DDC626F4E75E008CC3F1 /* CategoryKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryKeyboardView.swift; sourceTree = "<group>"; };
 		AB00DDC826F4EEC3008CC3F1 /* AdditionalCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalCategoryViewController.swift; sourceTree = "<group>"; };
 		AB00DDCA26F4EECA008CC3F1 /* AdditionalCategory.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AdditionalCategory.storyboard; sourceTree = "<group>"; };
+		AB00DE0F26F64576008CC3F1 /* StudyRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRecordViewModel.swift; sourceTree = "<group>"; };
 		AB0C765126EB889100BF5B64 /* CustomSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSwitchTableViewCell.swift; sourceTree = "<group>"; };
 		AB0C765226EB889100BF5B64 /* CustomSwitchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomSwitchTableViewCell.xib; sourceTree = "<group>"; };
 		AB0C765526EB8B4300BF5B64 /* CustomButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonTableViewCell.swift; sourceTree = "<group>"; };
@@ -387,6 +389,22 @@
 				F4A1350DA353A8FEAF4BEEB3 /* Pods-StudyRecordApp.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		AB00DE0C26F64544008CC3F1 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				AB00DE0D26F64557008CC3F1 /* StudyRecord */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		AB00DE0D26F64557008CC3F1 /* StudyRecord */ = {
+			isa = PBXGroup;
+			children = (
+				AB00DE0F26F64576008CC3F1 /* StudyRecordViewModel.swift */,
+			);
+			path = StudyRecord;
 			sourceTree = "<group>";
 		};
 		AB0C766326EBABF500BF5B64 /* Realm */ = {
@@ -717,6 +735,7 @@
 				AB93C25A266A5A0D00C3AE8F /* Utilities */,
 				AB93C25B266A5A2800C3AE8F /* Views */,
 				AB93C25C266A5A2C00C3AE8F /* Controllers */,
+				AB00DE0C26F64544008CC3F1 /* ViewModels */,
 				AB93C2CB266C84CA00C3AE8F /* Extensions */,
 				AB0C76CE26EEA8C500BF5B64 /* Localizable.strings */,
 				AB93C23A266A234800C3AE8F /* AppDelegate.swift */,
@@ -1143,6 +1162,7 @@
 				AB8B704E26D62F800069FF67 /* LoginViewController.swift in Sources */,
 				ABA056F626B4C7D800E3DF01 /* StudyRecordGraphColorTableViewCell.swift in Sources */,
 				AB13ED4B26BB9155002F56FF /* RecordRepository.swift in Sources */,
+				AB00DE1026F64576008CC3F1 /* StudyRecordViewModel.swift in Sources */,
 				AB2B5B8D26A2D106009BD3C7 /* UITableView+Extension.swift in Sources */,
 				AB13EDD126C29D9E002F56FF /* StudyRecordTimeRecordViewController.swift in Sources */,
 				AB275FFE26DCAA56009F63B3 /* Indicator.swift in Sources */,

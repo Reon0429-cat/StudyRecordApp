@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 // MARK: - ToDo リアルタイムで同期して更新する処理も実装する(realm)
 // MARK: - ToDo グラフカラー選択時に該当の色を丸くする(追加と編集画面でそれぞれ確認する)
@@ -21,19 +23,17 @@ final class StudyRecordViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
     
-    private let recordUseCase = RecordUseCase(
-        repository: RecordRepository(
-            dataStore: RealmRecordDataStore()
-        )
-    )
-    private var records: [Record] {
-        recordUseCase.records
-    }
     weak var delegate: StudyRecordVCDelegate?
+    private var records: [Record] {
+        viewModel.outputs.records
+    }
+    private let viewModel: StudyRecordViewModelType = StudyRecordViewModel()
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupBindings()
         setupTableView()
         
     }
@@ -41,14 +41,90 @@ final class StudyRecordViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        delegate?.screenDidPresented(screenType: .record,
-                                     isEnabledNavigationButton: !records.isEmpty)
-        tableView.reloadData()
+        viewModel.inputs.viewWillAppear()
         
+    }
+    
+    private func setupBindings() {
+        viewModel.outputs.event
+            .drive { [weak self] event in
+                guard let self = self else { return }
+                switch event {
+                    case .notifyDisplayed:
+                        self.delegate?.screenDidPresented(screenType: .record,
+                                                          isEnabledNavigationButton: !self.records.isEmpty)
+                    case .reloadData:
+                        self.tableView.reloadData()
+                    case .presentEditStudyRecordVC(let row):
+                        self.presentEditStudyRecordVC(row: row)
+                    case .notifyLongPress:
+                        self.delegate?.baseViewLongPressDidRecognized()
+                    case .reloadRows(let row):
+                        self.reloadRows(row: row)
+                    case .scrollToRow(let row):
+                        self.scrollToRow(row: row)
+                    case .presentAlert(let row):
+                        self.presentAlert(row: row)
+                }
+            }
+            .disposed(by: disposeBag)
     }
     
     func reloadTableView() {
         tableView.reloadData()
+    }
+    
+}
+
+// MARK: - func
+private extension StudyRecordViewController {
+    
+    func presentEditStudyRecordVC(row: Int) {
+        present(EditStudyRecordViewController.self,
+                modalPresentationStyle: .fullScreen) { vc in
+            vc.selectedRow = row
+        }
+    }
+    
+    func reloadRows(row: Int) {
+        DispatchQueue.main.async {
+            self.tableView.beginUpdates()
+            self.tableView.reloadRows(at: [IndexPath(row: row, section: 0)],
+                                      with: .automatic)
+            self.tableView.endUpdates()
+        }
+    }
+    
+    func scrollToRow(row: Int) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+            let cell = self.tableView.cellForRow(
+                at: IndexPath(row: row, section: 0)
+            ) as? RecordTableViewCell
+            let isExpanded = self.records[row].isExpanded
+            let isLastRow = (row == self.records.count - 1)
+            let isManyMemo = (cell?.frame.height ?? 0.0 > self.tableView.frame.height / 2)
+            let isCellNil = (cell == nil)
+            let shouldScrollToTop = isExpanded && (isManyMemo || isLastRow || isCellNil)
+            if shouldScrollToTop {
+                self.tableView.scrollToRow(at: IndexPath(row: row, section: 0),
+                                           at: .top,
+                                           animated: true)
+            }
+        }
+    }
+    
+    func presentAlert(row: Int) {
+        let alert = Alert.create(title: LocalizeKey.doYouReallyWantToDeleteThis.localizedString())
+            .addAction(title: LocalizeKey.delete.localizedString(), style: .destructive) {
+                self.viewModel.inputs.deleteRecord(row: row)
+                self.tableView.reloadData()
+                self.delegate?.deleteButtonDidTappped(records: self.records)
+                self.dismiss(animated: true)
+            }
+            .addAction(title: LocalizeKey.close.localizedString()) {
+                self.dismiss(animated: true)
+            }
+        self.present(alert, animated: true)
     }
     
 }
@@ -92,7 +168,7 @@ extension StudyRecordViewController: UITableViewDataSource {
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCustomCell(with: RecordTableViewCell.self)
         let record = records[indexPath.row]
-        let studyTime = recordUseCase.getStudyTime(at: indexPath.row)
+        let studyTime = viewModel.outputs.getStudyTime(at: indexPath.row)
         let isEdit = delegate?.isEdit ?? false
         cell.configure(record: record,
                        studyTime: studyTime)
@@ -109,53 +185,19 @@ extension StudyRecordViewController: UITableViewDataSource {
 extension StudyRecordViewController: RecordTableViewCellDelegate {
     
     func baseViewTapDidRecognized(row: Int) {
-        present(EditStudyRecordViewController.self,
-                modalPresentationStyle: .fullScreen) { vc in
-            vc.selectedRow = row
-        }
+        viewModel.inputs.baseViewTapDidRecognized(row: row)
     }
     
     func baseViewLongPressDidRecognized() {
-        delegate?.baseViewLongPressDidRecognized()
+        viewModel.inputs.baseViewLongPressDidRecognized()
     }
     
     func memoButtonDidTapped(row: Int) {
-        recordUseCase.changeOpeningAndClosing(at: row)
-        DispatchQueue.main.async {
-            self.tableView.beginUpdates()
-            self.tableView.reloadRows(at: [IndexPath(row: row, section: 0)],
-                                      with: .automatic)
-            self.tableView.endUpdates()
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-            let cell = self.tableView.cellForRow(
-                at: IndexPath(row: row, section: 0)
-            ) as? RecordTableViewCell
-            let isExpanded = self.records[row].isExpanded
-            let isLastRow = (row == self.records.count - 1)
-            let isManyMemo = (cell?.frame.height ?? 0.0 > self.tableView.frame.height / 2)
-            let isCellNil = (cell == nil)
-            let shouldScrollToTop = isExpanded && (isManyMemo || isLastRow || isCellNil)
-            if shouldScrollToTop {
-                self.tableView.scrollToRow(at: IndexPath(row: row, section: 0),
-                                           at: .top,
-                                           animated: true)
-            }
-        }
+        viewModel.inputs.memoButtonDidTapped(row: row)
     }
     
     func deleteButtonDidTappped(row: Int) {
-        let alert = Alert.create(title: LocalizeKey.doYouReallyWantToDeleteThis.localizedString())
-            .addAction(title: LocalizeKey.delete.localizedString(), style: .destructive) {
-                self.recordUseCase.delete(at: row)
-                self.tableView.reloadData()
-                self.delegate?.deleteButtonDidTappped(records: self.records)
-                self.dismiss(animated: true)
-            }
-            .addAction(title: LocalizeKey.close.localizedString()) {
-                self.dismiss(animated: true)
-            }
-        present(alert, animated: true)
+        viewModel.inputs.deleteButtonDidTappped(row: row)
     }
     
 }
