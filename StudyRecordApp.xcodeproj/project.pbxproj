@@ -11,6 +11,7 @@
 		AB00DDC926F4EEC3008CC3F1 /* AdditionalCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00DDC826F4EEC3008CC3F1 /* AdditionalCategoryViewController.swift */; };
 		AB00DDCB26F4EECA008CC3F1 /* AdditionalCategory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB00DDCA26F4EECA008CC3F1 /* AdditionalCategory.storyboard */; };
 		AB00DE1026F64576008CC3F1 /* StudyRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00DE0F26F64576008CC3F1 /* StudyRecordViewModel.swift */; };
+		AB00DE1226F66228008CC3F1 /* AdditionalStudyRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00DE1126F66228008CC3F1 /* AdditionalStudyRecordViewModel.swift */; };
 		AB0C765326EB889100BF5B64 /* CustomSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C765126EB889100BF5B64 /* CustomSwitchTableViewCell.swift */; };
 		AB0C765426EB889100BF5B64 /* CustomSwitchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB0C765226EB889100BF5B64 /* CustomSwitchTableViewCell.xib */; };
 		AB0C765726EB8B4300BF5B64 /* CustomButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C765526EB8B4300BF5B64 /* CustomButtonTableViewCell.swift */; };
@@ -186,6 +187,7 @@
 		AB00DDC826F4EEC3008CC3F1 /* AdditionalCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalCategoryViewController.swift; sourceTree = "<group>"; };
 		AB00DDCA26F4EECA008CC3F1 /* AdditionalCategory.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AdditionalCategory.storyboard; sourceTree = "<group>"; };
 		AB00DE0F26F64576008CC3F1 /* StudyRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRecordViewModel.swift; sourceTree = "<group>"; };
+		AB00DE1126F66228008CC3F1 /* AdditionalStudyRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalStudyRecordViewModel.swift; sourceTree = "<group>"; };
 		AB0C765126EB889100BF5B64 /* CustomSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSwitchTableViewCell.swift; sourceTree = "<group>"; };
 		AB0C765226EB889100BF5B64 /* CustomSwitchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomSwitchTableViewCell.xib; sourceTree = "<group>"; };
 		AB0C765526EB8B4300BF5B64 /* CustomButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonTableViewCell.swift; sourceTree = "<group>"; };
@@ -403,6 +405,7 @@
 			isa = PBXGroup;
 			children = (
 				AB00DE0F26F64576008CC3F1 /* StudyRecordViewModel.swift */,
+				AB00DE1126F66228008CC3F1 /* AdditionalStudyRecordViewModel.swift */,
 			);
 			path = StudyRecord;
 			sourceTree = "<group>";
@@ -1172,6 +1175,7 @@
 				AB93C23D266A234800C3AE8F /* SceneDelegate.swift in Sources */,
 				AB8B706026D6AD9E0069FF67 /* LoginAndSignUpViewController.swift in Sources */,
 				ABFAB21226E63B350095EC20 /* GraphUseCase.swift in Sources */,
+				AB00DE1226F66228008CC3F1 /* AdditionalStudyRecordViewModel.swift in Sources */,
 				AB13EE6826CACB16002F56FF /* UIView+Extension.swift in Sources */,
 				AB2B5B9626A2D19E009BD3C7 /* ThemeColor.swift in Sources */,
 				AB13EDFC26C8C596002F56FF /* GraphViewController.swift in Sources */,

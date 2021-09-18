@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class AdditionalStudyRecordViewController: UIViewController {
     
@@ -18,23 +20,13 @@ final class AdditionalStudyRecordViewController: UIViewController {
         case graphColor
         case memo
     }
-    private let cellTypes = CellType.allCases
-    private let recordUseCase = RecordUseCase(
-        repository: RecordRepository(
-            dataStore: RealmRecordDataStore()
-        )
-    )
-    private var inputtedTitle = ""
-    private var oldInputtedTitle = ""
-    private var selectedGraphColor: UIColor = .clear
-    private var inputtedMemo = ""
-    private var isMandatoryItemFilled: Bool {
-        !inputtedTitle.isEmpty && selectedGraphColor != .clear
-    }
+    private let viewModel: AdditionalStudyRecordViewModelType = AdditionalStudyRecordViewModel()
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupBindings()
         setupTableView()
         setupNavigationTopBar()
         setupTapGesture()
@@ -42,56 +34,28 @@ final class AdditionalStudyRecordViewController: UIViewController {
         
     }
     
-}
-
-// MARK: - func
-private extension AdditionalStudyRecordViewController {
-    
-    func controlSaveButton() {
-        subCustomNavigationBar.saveButton(isEnabled: isMandatoryItemFilled)
-    }
-    
-    func saveRecord() {
-        let record = Record(title: inputtedTitle,
-                            histories: nil,
-                            isExpanded: false,
-                            graphColor: GraphColor(color: selectedGraphColor),
-                            memo: inputtedMemo,
-                            yearID: UUID().uuidString,
-                            monthID: UUID().uuidString,
-                            order: recordUseCase.records.count)
-        recordUseCase.save(record: record)
-    }
-    
-    func showAlert() {
-        let alert = Alert.create(title: LocalizeKey.doYouWantToCloseWithoutSaving.localizedString())
-            .addAction(title: LocalizeKey.close.localizedString(),
-                       style: .destructive) {
-                self.dismiss(animated: true)
+    private func setupBindings() {
+        viewModel.outputs.event
+            .drive { [weak self] event in
+                guard let self = self else { return }
+                switch event {
+                    case .presentAlert(let alert):
+                        self.present(alert, animated: true)
+                    case .presentVC(let vc):
+                        self.present(vc, animated: true)
+                    case .dismiss:
+                        self.dismiss(animated: true)
+                    case .reloadData:
+                        self.tableView.reloadData()
+                }
             }
-            .addAction(title: LocalizeKey.save.localizedString()) {
-                self.saveRecord()
-                self.dismiss(animated: true)
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.controlSaveButton
+            .drive { isEnabled in
+                self.subCustomNavigationBar.saveButton(isEnabled: isEnabled)
             }
-        present(alert, animated: true)
-    }
-    
-    func showAlertWithTextField() {
-        let alert = Alert.create(title: LocalizeKey.Title.localizedString())
-            .setTextField { textField in
-                textField.tintColor = .dynamicColor(light: .black, dark: .white)
-                textField.text = self.inputtedTitle
-                textField.delegate = self
-            }
-            .addAction(title: LocalizeKey.close.localizedString(),
-                       style: .destructive) {
-                self.inputtedTitle = self.oldInputtedTitle
-            }
-            .addAction(title: LocalizeKey.add.localizedString()) {
-                self.oldInputtedTitle = self.inputtedTitle
-                self.tableView.reloadData()
-            }
-        present(alert, animated: true)
+            .disposed(by: disposeBag)
     }
     
 }
@@ -105,20 +69,11 @@ extension AdditionalStudyRecordViewController: UITableViewDelegate {
         let cellType = CellType(rawValue: indexPath.row)!
         switch cellType {
             case .title:
-                showAlertWithTextField()
+                viewModel.inputs.titleCellDidTapped(vc: self)
             case .graphColor:
-                present(StudyRecordGraphColorViewController.self,
-                        modalPresentationStyle: .overCurrentContext,
-                        modalTransitionStyle: .crossDissolve) { vc in
-                    vc.delegate = self
-                }
+                viewModel.inputs.graphColorCellDidTapped(vc: self)
             case .memo:
-                present(StudyRecordMemoViewController.self,
-                        modalPresentationStyle: .overCurrentContext,
-                        modalTransitionStyle: .crossDissolve) { vc in
-                    vc.inputtedMemo = self.inputtedMemo
-                    vc.delegate = self
-                }
+                viewModel.inputs.memoCellDidTapped(vc: self)
         }
     }
     
@@ -146,7 +101,7 @@ extension AdditionalStudyRecordViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        return cellTypes.count
+        return CellType.allCases.count
     }
     
     func tableView(_ tableView: UITableView,
@@ -157,17 +112,17 @@ extension AdditionalStudyRecordViewController: UITableViewDataSource {
                 let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
                 cell.configure(titleText: LocalizeKey.Title.localizedString(),
                                mandatoryIsHidden: false,
-                               auxiliaryText: inputtedTitle)
+                               auxiliaryText: viewModel.outputs.titleText)
                 return cell
             case .graphColor:
                 let cell = tableView.dequeueReusableCustomCell(with: StudyRecordGraphColorTableViewCell.self)
-                cell.configure(color: selectedGraphColor)
+                cell.configure(color: viewModel.outputs.graphColor)
                 return cell
             case .memo:
                 let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
                 cell.configure(titleText: LocalizeKey.Memo.localizedString(),
                                mandatoryIsHidden: true,
-                               auxiliaryText: inputtedMemo)
+                               auxiliaryText: viewModel.outputs.memoText)
                 return cell
         }
     }
@@ -178,9 +133,7 @@ extension AdditionalStudyRecordViewController: UITableViewDataSource {
 extension AdditionalStudyRecordViewController: StudyRecordGraphColorVCDelegate {
     
     func graphColorDidSelected(color: UIColor) {
-        selectedGraphColor = color
-        tableView.reloadData()
-        controlSaveButton()
+        viewModel.inputs.graphColorDidSelected(color: color)
     }
     
 }
@@ -189,8 +142,7 @@ extension AdditionalStudyRecordViewController: StudyRecordGraphColorVCDelegate {
 extension AdditionalStudyRecordViewController: StudyRecordMemoVCDelegate {
     
     func savedMemo(memo: String) {
-        inputtedMemo = memo
-        tableView.reloadData()
+        viewModel.inputs.savedMemo(memo: memo)
     }
     
 }
@@ -199,8 +151,7 @@ extension AdditionalStudyRecordViewController: StudyRecordMemoVCDelegate {
 extension AdditionalStudyRecordViewController: UITextFieldDelegate {
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        inputtedTitle = textField.text ?? ""
-        controlSaveButton()
+        viewModel.inputs.textFieldDidChangeSelection(textField)
     }
     
 }
@@ -209,16 +160,11 @@ extension AdditionalStudyRecordViewController: UITextFieldDelegate {
 extension AdditionalStudyRecordViewController: SubCustomNavigationBarDelegate {
     
     func saveButtonDidTapped() {
-        saveRecord()
-        dismiss(animated: true)
+        viewModel.inputs.saveButtonDidTapped()
     }
     
     func dismissButtonDidTapped() {
-        if isMandatoryItemFilled {
-            showAlert()
-        } else {
-            dismiss(animated: true)
-        }
+        viewModel.inputs.dismissButtonDidTapped()
     }
     
     var navTitle: String {
