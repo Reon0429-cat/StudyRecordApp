@@ -39,14 +39,27 @@ final class AdditionalStudyRecordViewController: UIViewController {
             .drive { [weak self] event in
                 guard let self = self else { return }
                 switch event {
-                    case .presentAlert(let alert):
-                        self.present(alert, animated: true)
-                    case .presentVC(let vc):
-                        self.present(vc, animated: true)
                     case .dismiss:
                         self.dismiss(animated: true)
                     case .reloadData:
                         self.tableView.reloadData()
+                    case .presentAlert:
+                        self.presentAlert()
+                    case .presentAlertWithTextField:
+                        self.presentAlertWithTextField()
+                    case .presentStudyRecordGraphColorVC:
+                        self.present(StudyRecordGraphColorViewController.self,
+                                     modalPresentationStyle: .overCurrentContext,
+                                     modalTransitionStyle: .crossDissolve) { vc in
+                            vc.delegate = self
+                        }
+                    case .presentStudyRecordMemoVC(let inputtedMemo):
+                        self.present(StudyRecordMemoViewController.self,
+                                     modalPresentationStyle: .overCurrentContext,
+                                     modalTransitionStyle: .crossDissolve) { vc in
+                            vc.delegate = self
+                            vc.inputtedMemo = inputtedMemo
+                        }
                 }
             }
             .disposed(by: disposeBag)
@@ -60,6 +73,41 @@ final class AdditionalStudyRecordViewController: UIViewController {
     
 }
 
+// MARK: - func
+private extension AdditionalStudyRecordViewController {
+    
+    func presentAlertWithTextField() {
+        let alert = Alert.create(title: LocalizeKey.Title.localizedString())
+            .setTextField { textField in
+                textField.tintColor = .dynamicColor(light: .black, dark: .white)
+                textField.text = self.viewModel.outputs.titleText
+                textField.delegate = self
+            }
+            .addAction(title: LocalizeKey.close.localizedString(),
+                       style: .destructive) {
+                self.viewModel.inputs.alertWithTextFieldCloseButtonDidTapped()
+            }
+            .addAction(title: LocalizeKey.add.localizedString()) {
+                self.viewModel.inputs.alertWithTextFieldAddButtonDidTapped()
+                self.tableView.reloadData()
+            }
+        present(alert, animated: true)
+    }
+    
+    func presentAlert() {
+        let alert = Alert.create(title: LocalizeKey.doYouWantToCloseWithoutSaving.localizedString())
+            .addAction(title: LocalizeKey.close.localizedString(),
+                       style: .destructive) {
+                self.dismiss(animated: true)
+            }
+            .addAction(title: LocalizeKey.save.localizedString()) {
+                self.viewModel.inputs.saveButtonDidTapped()
+            }
+        present(alert, animated: true)
+    }
+    
+}
+
 // MARK: - UITableViewDelegate
 extension AdditionalStudyRecordViewController: UITableViewDelegate {
     
@@ -69,11 +117,11 @@ extension AdditionalStudyRecordViewController: UITableViewDelegate {
         let cellType = CellType(rawValue: indexPath.row)!
         switch cellType {
             case .title:
-                viewModel.inputs.titleCellDidTapped(vc: self)
+                viewModel.inputs.titleCellDidTapped()
             case .graphColor:
-                viewModel.inputs.graphColorCellDidTapped(vc: self)
+                viewModel.inputs.graphColorCellDidTapped()
             case .memo:
-                viewModel.inputs.memoCellDidTapped(vc: self)
+                viewModel.inputs.memoCellDidTapped()
         }
     }
     
