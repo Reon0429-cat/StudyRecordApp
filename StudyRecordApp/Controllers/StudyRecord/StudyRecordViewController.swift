@@ -97,19 +97,7 @@ private extension StudyRecordViewController {
     
     func scrollToRow(row: Int) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-            let cell = self.tableView.cellForRow(
-                at: IndexPath(row: row, section: 0)
-            ) as? RecordTableViewCell
-            let isExpanded = self.records[row].isExpanded
-            let isLastRow = (row == self.records.count - 1)
-            let isManyMemo = (cell?.frame.height ?? 0.0 > self.tableView.frame.height / 2)
-            let isCellNil = (cell == nil)
-            let shouldScrollToTop = isExpanded && (isManyMemo || isLastRow || isCellNil)
-            if shouldScrollToTop {
-                self.tableView.scrollToRow(at: IndexPath(row: row, section: 0),
-                                           at: .top,
-                                           animated: true)
-            }
+            self.viewModel.inputs.scrollToRow(tableView: self.tableView, row: row)
         }
     }
     

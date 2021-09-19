@@ -15,6 +15,7 @@ protocol StudyRecordViewModelInput {
     func memoButtonDidTapped(row: Int)
     func deleteButtonDidTappped(row: Int)
     func deleteRecord(row: Int)
+    func scrollToRow(tableView: UITableView, row: Int)
 }
 
 protocol StudyRecordViewModelOutput: AnyObject {
@@ -29,8 +30,7 @@ protocol StudyRecordViewModelType {
     var outputs: StudyRecordViewModelOutput { get }
 }
 
-final class StudyRecordViewModel: StudyRecordViewModelInput,
-                                  StudyRecordViewModelOutput {
+final class StudyRecordViewModel {
    
     private let recordUseCase = RecordUseCase(
         repository: RecordRepository(
@@ -47,6 +47,13 @@ final class StudyRecordViewModel: StudyRecordViewModelInput,
         case scrollToRow(selectedRow: Int)
         case presentAlert(selectedRow: Int)
     }
+    
+    private var eventRelay = PublishRelay<Event>()
+    
+}
+
+// MARK: - Input
+extension StudyRecordViewModel: StudyRecordViewModelInput {
     
     func viewWillAppear() {
         eventRelay.accept(.notifyDisplayed)
@@ -75,10 +82,30 @@ final class StudyRecordViewModel: StudyRecordViewModelInput,
         recordUseCase.delete(at: row)
     }
     
+    func scrollToRow(tableView: UITableView, row: Int) {
+        let cell = tableView.cellForRow(
+            at: IndexPath(row: row, section: 0)
+        ) as? RecordTableViewCell
+        let isExpanded = self.records[row].isExpanded
+        let isLastRow = (row == self.records.count - 1)
+        let isManyMemo = (cell?.frame.height ?? 0.0 > tableView.frame.height / 2)
+        let isCellNil = (cell == nil)
+        let shouldScrollToTop = isExpanded && (isManyMemo || isLastRow || isCellNil)
+        if shouldScrollToTop {
+            tableView.scrollToRow(at: IndexPath(row: row, section: 0),
+                                  at: .top,
+                                  animated: true)
+        }
+    }
+    
+}
+
+// MARK: - Output
+extension StudyRecordViewModel: StudyRecordViewModelOutput {
+    
     var event: Driver<Event> {
         eventRelay.asDriver(onErrorDriveWith: .empty())
     }
-    private var eventRelay = PublishRelay<Event>()
     
     var records: [Record] {
         recordUseCase.records
