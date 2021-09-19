@@ -53,20 +53,28 @@ final class StudyRecordViewController: UIViewController {
                     case .notifyDisplayed:
                         self.delegate?.screenDidPresented(screenType: .record,
                                                           isEnabledNavigationButton: !self.records.isEmpty)
-                    case .reloadData:
-                        self.tableView.reloadData()
                     case .presentEditStudyRecordVC(let row):
                         self.presentEditStudyRecordVC(row: row)
                     case .notifyLongPress:
                         self.delegate?.baseViewLongPressDidRecognized()
-                    case .reloadRows(let row):
-                        self.reloadRows(row: row)
                     case .scrollToRow(let row):
                         self.scrollToRow(row: row)
                     case .presentAlert(let row):
                         self.presentAlert(row: row)
                 }
             }
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.reload
+            .drive(onNext: { [weak self] reloadType in
+                guard let self = self else { return }
+                switch reloadType {
+                    case .all:
+                        self.tableView.reloadData()
+                    case .rows(let row):
+                        self.reloadRows(row: row)
+                }
+            })
             .disposed(by: disposeBag)
     }
     

@@ -159,7 +159,7 @@ opt_in_rules:
     #- strong_iboutlet
     #- switch_case_on_newline
     - toggle_bool
-    - trailing_closure
+#    - trailing_closure
 #    - unavailable_function
     - unneeded_parentheses_in_closure_argument
     - untyped_error_in_catch

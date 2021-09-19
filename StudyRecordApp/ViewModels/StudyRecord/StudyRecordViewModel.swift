@@ -20,6 +20,7 @@ protocol StudyRecordViewModelInput {
 
 protocol StudyRecordViewModelOutput: AnyObject {
     var event: Driver<StudyRecordViewModel.Event> { get }
+    var reload: Driver<StudyRecordViewModel.ReloadType> { get }
     var records: [Record] { get }
     func getStudyTime(at row: Int) -> (todayText: String,
                                        totalText: String)
@@ -40,15 +41,18 @@ final class StudyRecordViewModel {
     private let disposeBag = DisposeBag()
     enum Event {
         case notifyDisplayed
-        case reloadData
         case presentEditStudyRecordVC(selectedRow: Int)
         case notifyLongPress
-        case reloadRows(selectedRow: Int)
         case scrollToRow(selectedRow: Int)
         case presentAlert(selectedRow: Int)
     }
+    enum ReloadType {
+        case all
+        case rows(row: Int)
+    }
     
     private var eventRelay = PublishRelay<Event>()
+    private var reloadRelay = PublishRelay<ReloadType>()
     
 }
 
@@ -57,7 +61,7 @@ extension StudyRecordViewModel: StudyRecordViewModelInput {
     
     func viewWillAppear() {
         eventRelay.accept(.notifyDisplayed)
-        eventRelay.accept(.reloadData)
+        reloadRelay.accept(.all)
     }
     
     func baseViewTapDidRecognized(row: Int) {
@@ -70,7 +74,7 @@ extension StudyRecordViewModel: StudyRecordViewModelInput {
     
     func memoButtonDidTapped(row: Int) {
         recordUseCase.changeOpeningAndClosing(at: row)
-        eventRelay.accept(.reloadRows(selectedRow: row))
+        reloadRelay.accept(.rows(row: row))
         eventRelay.accept(.scrollToRow(selectedRow: row))
     }
     
@@ -105,6 +109,10 @@ extension StudyRecordViewModel: StudyRecordViewModelOutput {
     
     var event: Driver<Event> {
         eventRelay.asDriver(onErrorDriveWith: .empty())
+    }
+    
+    var reload: Driver<ReloadType> {
+        reloadRelay.asDriver(onErrorDriveWith: .empty())
     }
     
     var records: [Record] {
