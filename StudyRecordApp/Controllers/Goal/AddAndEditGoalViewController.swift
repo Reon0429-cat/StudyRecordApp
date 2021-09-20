@@ -495,9 +495,7 @@ private extension AddAndEditGoalViewController {
     func configureDateCell(rowType: AddAndEditGoalRowType) -> UITableViewCell {
         let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
         let inputtedDate = getDate(type: rowType)
-        // MARK: - ToDo ローカライズする
-        let auxiliaryText = Converter.convertToString(from: inputtedDate,
-                                                      format: "yyyy年M月d日")
+        let auxiliaryText = Converter.convertToString(from: inputtedDate)
         cell.configure(titleText: rowType.title,
                        mandatoryIsHidden: true,
                        auxiliaryText: auxiliaryText)

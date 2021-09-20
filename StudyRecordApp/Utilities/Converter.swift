@@ -7,22 +7,18 @@
 
 import UIKit
 
-// MARK: - ToDo ローカライズする
-
 struct Converter {
     
-    static func convertToString(from date: Date, format: String) -> String {
+    static func convertToString(from date: Date) -> String {
         let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ja_JP")
-        formatter.dateFormat = format
+        formatter.dateStyle = .long
+        formatter.timeStyle = .full
+        let localeIdentifier = Bundle.main.preferredLocalizations.first!
+        let locale = Locale(identifier: localeIdentifier)
+        formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "ydMMM",
+                                                        options: 0,
+                                                        locale: locale)
         return formatter.string(from: date)
-    }
-    
-    static func convertToDate(from string: String, format: String) -> Date? {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ja_JP")
-        formatter.dateFormat = format
-        return formatter.date(from: string)
     }
     
     static func convertToImage(from data: Data?) -> UIImage? {

@@ -180,6 +180,9 @@
 "mandatory" = "mandatory";
 "unselected" = "unselected";
 
+"year" = "year";
+"month" = "month";
+"day" = "day";
 "hour" = "hour";
 "minute" = "minute";
 "total" = "Total";

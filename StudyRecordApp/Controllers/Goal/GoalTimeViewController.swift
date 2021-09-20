@@ -16,8 +16,6 @@ protocol GoalTimeVCDelegate: AnyObject {
     func saveButtonDidTapped(date: Date, dateType: GoalDateType)
 }
 
-// MARK: - ToDo ローカライズする
-
 final class GoalTimeViewController: UIViewController {
     
     @IBOutlet private weak var pickerView: UIPickerView!
@@ -32,36 +30,6 @@ final class GoalTimeViewController: UIViewController {
     private var inputtedYear = DateType.year.numbers[0]
     private var inputtedMonth = DateType.month.numbers[0]
     private var inputtedDay = DateType.day.numbers[0]
-    private enum DateType: Int, CaseIterable {
-        case year
-        case month
-        case day
-        
-        var component: Int {
-            self.rawValue
-        }
-        var numbers: [Int] {
-            switch self {
-                case .year: return [Int](2020...2030)
-                case .month: return [Int](1...12)
-                case .day: return [Int](1...31)
-            }
-        }
-        func title(row: Int) -> String {
-            switch self {
-                case .year: return "\(self.numbers[row])年"
-                case .month: return "\(self.numbers[row])月"
-                case .day: return "\(self.numbers[row])日"
-            }
-        }
-        var alignment: NSTextAlignment {
-            switch self {
-                case .year: return .right
-                case .month: return .center
-                case .day: return .left
-            }
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,10 +73,12 @@ extension GoalTimeViewController: UIPickerViewDelegate {
             case .year: inputtedYear = dateType.numbers[row]
             case .month: inputtedMonth = dateType.numbers[row]
             case .day: inputtedDay = dateType.numbers[row]
+            default: break
         }
-        let time = Converter.convertToString(from: Date(), format: "HH:mm:ss")
-        let newDateString = "\(inputtedYear)/\(inputtedMonth)/\(inputtedDay) \(time)"
-        inputtedDate = Converter.convertToDate(from: newDateString, format: "yyyy/M/d HH:mm:ss")
+        let fixedDate = Date().fixed(year: inputtedYear,
+                                     month: inputtedMonth,
+                                     day: inputtedDay)
+        inputtedDate = fixedDate
     }
     
 }
@@ -117,7 +87,7 @@ extension GoalTimeViewController: UIPickerViewDelegate {
 extension GoalTimeViewController: UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return DateType.allCases.count
+        return DateType.allCases.count - 2
     }
     
     func pickerView(_ pickerView: UIPickerView,
@@ -168,9 +138,9 @@ private extension GoalTimeViewController {
     }
     
     func selectRow(date: Date) {
-        inputtedYear = Int(Converter.convertToString(from: date, format: "yyyy"))!
-        inputtedMonth = Int(Converter.convertToString(from: date, format: "M"))!
-        inputtedDay = Int(Converter.convertToString(from: date, format: "d"))!
+        inputtedYear = date.year
+        inputtedMonth = date.month
+        inputtedDay = date.day
         let selectingRowsAndComponents: [(row: Int, component: Int)] = [
             (row: DateType.year.numbers.firstIndex(of: inputtedYear) ?? 0,
              component: DateType.year.component),

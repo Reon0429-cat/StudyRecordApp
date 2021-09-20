@@ -54,13 +54,10 @@ final class GoalTableViewCell: UITableViewCell {
         setupMemoButton(goal: goal)
         setupPriorityStackView(goal: goal)
         titleLabel.text = goal.title
-        // MARK: - ToDo ローカライズする
-        let createdDateString = Converter.convertToString(from: goal.createdDate,
-                                                          format: "yyyy年M月d日")
-        let dueDateString = Converter.convertToString(from: goal.dueDate,
-                                                      format: "yyyy年M月d日")
-        createdDateLabel.text = "作成日: " + createdDateString
-        dueDateLabel.text = "期日: " + dueDateString
+        let createdDateString = Converter.convertToString(from: goal.createdDate)
+        let dueDateString = Converter.convertToString(from: goal.dueDate)
+        createdDateLabel.text = "\(LocalizeKey.createdDate.localizedString()): " + createdDateString
+        dueDateLabel.text = "\(LocalizeKey.dueDate.localizedString()): " + dueDateString
         myImageView.image = Converter.convertToImage(from: goal.imageData)
         imageViewBaseView.isHidden = (goal.imageData == nil)
         setupBaseView()

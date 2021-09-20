@@ -13,10 +13,13 @@ final class StudyRecordHistoryTableViewCell: UITableViewCell {
     @IBOutlet private weak var timeLabel: UILabel!
     
     func configure(history: History) {
-        // MARK: - ToDo ローカライズ対応する
-        dateLabel.text = "\(history.year)年\(history.month)月\(history.day)日"
-        let minuteText = LocalizeKey.minute.localizedString()
-        let hourText = LocalizeKey.hour.localizedString()
+        let date = Date().fixed(year: history.year,
+                                month: history.month,
+                                day: history.day)
+        let dateString = Converter.convertToString(from: date)
+        dateLabel.text = dateString
+        let minuteText = LocalizeKey.shortMinute.localizedString()
+        let hourText = LocalizeKey.shortHour.localizedString()
         switch (history.hour == 0, history.minutes == 0) {
             case (true, true):
                 timeLabel.text = "0 " + minuteText
