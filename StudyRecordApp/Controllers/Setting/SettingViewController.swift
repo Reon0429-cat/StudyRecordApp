@@ -52,9 +52,6 @@ private enum SettingRowType: Int, CaseIterable {
     }
 }
 
-// MARK: - ToDo 言語を日本語と英語で切り替えられるように
-// MARK: - ToDo アニメーション付きでダークモードを切り替えられるように
-// MARK: - ToDo ダークモード端末とアプリでそれぞれ別々に選択できるようにする
 // MARK: - ToDo 言語セルはいらないので、消す
 
 protocol SettingVCDelegate: ScreenPresentationDelegate {

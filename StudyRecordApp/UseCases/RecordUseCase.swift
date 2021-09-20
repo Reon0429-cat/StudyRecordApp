@@ -105,10 +105,9 @@ final class RecordUseCase {
     }
     
     private func isToday(_ history: History) -> Bool {
-        // MARK: - ToDo ローカライズする
-        let historyDate = "\(history.year)年\(history.month)月\(history.day)日"
-        let today = Converter.convertToString(from: Date(), format: "yyyy年M月d日")
-        return historyDate == today
+        return Date().year == history.year
+        && Date().month == history.month
+        && Date().day == history.day
     }
     
 }

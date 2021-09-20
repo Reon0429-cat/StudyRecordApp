@@ -185,7 +185,9 @@ enum LocalizeKey: String {
     
     case fixed
     
-    
+    case year
+    case month
+    case day
     
     
     
@@ -198,7 +200,7 @@ enum LocalizeKey: String {
 }
 
 enum Month: Int {
-    case january = 1
+    case january
     case february
     case march
     case april
@@ -210,4 +212,34 @@ enum Month: Int {
     case october
     case november
     case december
+    
+    var text: String {
+        switch self {
+            case .january:
+                return LocalizeKey.january.localizedString()
+            case .february:
+                return LocalizeKey.february.localizedString()
+            case .march:
+                return LocalizeKey.march.localizedString()
+            case .april:
+                return LocalizeKey.april.localizedString()
+            case .may:
+                return LocalizeKey.may.localizedString()
+            case .june:
+                return LocalizeKey.june.localizedString()
+            case .july:
+                return LocalizeKey.july.localizedString()
+            case .august:
+                return LocalizeKey.august.localizedString()
+            case .september:
+                return LocalizeKey.september.localizedString()
+            case .october:
+                return LocalizeKey.october.localizedString()
+            case .november:
+                return LocalizeKey.november.localizedString()
+            case .december:
+                return LocalizeKey.december.localizedString()
+        }
+    }
 }
+

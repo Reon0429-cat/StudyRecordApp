@@ -181,6 +181,9 @@
 "mandatory" = "必須";
 "unselected" = "未選択";
 
+"year" = "年";
+"month" = "月";
+"day" = "日";
 "hour" = "時間";
 "minute" = "分";
 "total" = "合計";
