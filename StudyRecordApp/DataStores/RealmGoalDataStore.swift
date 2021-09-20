@@ -159,7 +159,8 @@ private extension GoalRealm {
 private extension Category.Goal {
     
     var realmPriority: PriorityRealm {
-        return PriorityRealm(priority: self.priority)
+        let priorityRealm = PriorityRealm(priority: self.priority)
+        return priorityRealm
     }
     
 }
@@ -168,8 +169,8 @@ private extension PriorityRealm {
     
     convenience init(priority: Category.Goal.Priority) {
         self.init()
-        let priority = Category.Goal.Priority(mark: self.mark,
-                                              number: self.number)
+        let priority = Category.Goal.Priority(mark: priority.mark,
+                                              number: priority.number)
         self.mark = priority.mark
         self.number = priority.number
     }

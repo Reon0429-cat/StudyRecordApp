@@ -9,6 +9,7 @@ import UIKit
 
 protocol GoalTableViewCellDelegate: AnyObject {
     func memoButtonDidTapped(indexPath: IndexPath)
+    func goalViewDidTapped(indexPath: IndexPath)
 }
 
 final class GoalTableViewCell: UITableViewCell {
@@ -38,7 +39,7 @@ final class GoalTableViewCell: UITableViewCell {
         memoTextView.backgroundColor = .dynamicColor(light: .white,
                                                      dark: .secondarySystemGroupedBackground)
         priorityStackViewBaseView.backgroundColor = .clear
-        
+        setPanGR()
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -109,6 +110,19 @@ private extension GoalTableViewCell {
     func setupMemoTextView(goal: Category.Goal) {
         memoTextView.text = goal.memo
         memoTextView.setBorder()
+    }
+    
+    func setPanGR() {
+        let panGR = UITapGestureRecognizer(target: self,
+                                           action: #selector(goalViewDidTapped))
+        panGR.delegate = self
+        baseView.addGestureRecognizer(panGR)
+    }
+    
+    @objc
+    func goalViewDidTapped() {
+        guard let indexPath = indexPath else { return }
+        delegate?.goalViewDidTapped(indexPath: indexPath)
     }
     
 }

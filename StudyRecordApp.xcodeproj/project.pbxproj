@@ -115,8 +115,8 @@
 		AB2B5BC826A2D36F009BD3C7 /* ColorConceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5BC226A2D36F009BD3C7 /* ColorConceptViewController.swift */; };
 		AB2B5BC926A2D36F009BD3C7 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5BC326A2D36F009BD3C7 /* SettingViewController.swift */; };
 		AB2B5BCA26A2D36F009BD3C7 /* ThemeColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5BC426A2D36F009BD3C7 /* ThemeColorViewController.swift */; };
-		AB4397ED26DD3051008C8CA8 /* AdditionalGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4397EC26DD3051008C8CA8 /* AdditionalGoalViewController.swift */; };
-		AB4397EF26DD305B008C8CA8 /* AdditionalGoal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB4397EE26DD305B008C8CA8 /* AdditionalGoal.storyboard */; };
+		AB4397ED26DD3051008C8CA8 /* AddAndEditGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4397EC26DD3051008C8CA8 /* AddAndEditGoalViewController.swift */; };
+		AB4397EF26DD305B008C8CA8 /* AddAndEditGoal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB4397EE26DD305B008C8CA8 /* AddAndEditGoal.storyboard */; };
 		AB4397F126DD3B2A008C8CA8 /* GoalPriority.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB4397F026DD3B2A008C8CA8 /* GoalPriority.storyboard */; };
 		AB4397F326DD3B32008C8CA8 /* GoalPriorityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4397F226DD3B32008C8CA8 /* GoalPriorityViewController.swift */; };
 		AB4397F526DD57B9008C8CA8 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4397F426DD57B9008C8CA8 /* Goal.swift */; };
@@ -291,8 +291,8 @@
 		AB2B5BC226A2D36F009BD3C7 /* ColorConceptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorConceptViewController.swift; sourceTree = "<group>"; };
 		AB2B5BC326A2D36F009BD3C7 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		AB2B5BC426A2D36F009BD3C7 /* ThemeColorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeColorViewController.swift; sourceTree = "<group>"; };
-		AB4397EC26DD3051008C8CA8 /* AdditionalGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalGoalViewController.swift; sourceTree = "<group>"; };
-		AB4397EE26DD305B008C8CA8 /* AdditionalGoal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AdditionalGoal.storyboard; sourceTree = "<group>"; };
+		AB4397EC26DD3051008C8CA8 /* AddAndEditGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAndEditGoalViewController.swift; sourceTree = "<group>"; };
+		AB4397EE26DD305B008C8CA8 /* AddAndEditGoal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddAndEditGoal.storyboard; sourceTree = "<group>"; };
 		AB4397F026DD3B2A008C8CA8 /* GoalPriority.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoalPriority.storyboard; sourceTree = "<group>"; };
 		AB4397F226DD3B32008C8CA8 /* GoalPriorityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPriorityViewController.swift; sourceTree = "<group>"; };
 		AB4397F426DD57B9008C8CA8 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
@@ -436,7 +436,7 @@
 			isa = PBXGroup;
 			children = (
 				AB13EDF926C8C585002F56FF /* GoalViewController.swift */,
-				AB4397EC26DD3051008C8CA8 /* AdditionalGoalViewController.swift */,
+				AB4397EC26DD3051008C8CA8 /* AddAndEditGoalViewController.swift */,
 				AB00DDC826F4EEC3008CC3F1 /* AdditionalCategoryViewController.swift */,
 				AB4397F226DD3B32008C8CA8 /* GoalPriorityViewController.swift */,
 				ABFAB1E226E11FEC0095EC20 /* GoalTimeViewController.swift */,
@@ -457,7 +457,7 @@
 			isa = PBXGroup;
 			children = (
 				AB13EDF326C8BAAC002F56FF /* Goal.storyboard */,
-				AB4397EE26DD305B008C8CA8 /* AdditionalGoal.storyboard */,
+				AB4397EE26DD305B008C8CA8 /* AddAndEditGoal.storyboard */,
 				AB00DDCA26F4EECA008CC3F1 /* AdditionalCategory.storyboard */,
 				AB4397F026DD3B2A008C8CA8 /* GoalPriority.storyboard */,
 				ABFAB1E426E11FF80095EC20 /* GoalTime.storyboard */,
@@ -921,7 +921,7 @@
 				AB93C247266A234C00C3AE8F /* LaunchScreen.storyboard in Resources */,
 				AB14B46426DB515D007A5F16 /* ResetingPassword.storyboard in Resources */,
 				AB20F81826E949BE00564B14 /* CustomScrollableGraphView.xib in Resources */,
-				AB4397EF26DD305B008C8CA8 /* AdditionalGoal.storyboard in Resources */,
+				AB4397EF26DD305B008C8CA8 /* AddAndEditGoal.storyboard in Resources */,
 				AB43980926DE2D72008C8CA8 /* GoalPriorityTableViewCell.xib in Resources */,
 				AB13EDE126C64EBB002F56FF /* CustomTitleTableViewCell.xib in Resources */,
 				AB13ECDA26B7AF6F002F56FF /* ColorChoicesSlider.storyboard in Resources */,
@@ -1136,7 +1136,7 @@
 				AB0C76B526ED256000BF5B64 /* PasscodeViewController.swift in Sources */,
 				AB93C2C3266BC28E00C3AE8F /* EditStudyRecordViewController.swift in Sources */,
 				AB0C768526ECB63C00BF5B64 /* TileView.swift in Sources */,
-				AB4397ED26DD3051008C8CA8 /* AdditionalGoalViewController.swift in Sources */,
+				AB4397ED26DD3051008C8CA8 /* AddAndEditGoalViewController.swift in Sources */,
 				AB8B703F26D4A2410069FF67 /* UIViewController+Extension.swift in Sources */,
 				AB20F81426E809A200564B14 /* CustomSwitch.swift in Sources */,
 				AB43980126DE157E008C8CA8 /* GoalUseCase.swift in Sources */,

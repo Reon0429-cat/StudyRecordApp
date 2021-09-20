@@ -90,8 +90,11 @@ private extension TopViewController {
             case .graph:
                 break
             case .goal:
-                present(AdditionalGoalViewController.self,
-                        modalPresentationStyle: .fullScreen)
+                present(AddAndEditGoalViewController.self,
+                        modalPresentationStyle: .fullScreen) { vc in
+                    vc.selectedIndexPath = nil
+                    vc.goalScreenType = .add
+                }
             case .setting:
                 break
         }

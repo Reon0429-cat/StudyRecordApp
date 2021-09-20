@@ -7,7 +7,7 @@
 
 import UIKit
 
-private enum RowType: Int, CaseIterable {
+private enum SettingRowType: Int, CaseIterable {
     case themeColor
     case darkMode
     case passcode
@@ -189,7 +189,7 @@ extension SettingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let rowType = RowType.allCases[indexPath.row]
+        let rowType = SettingRowType.allCases[indexPath.row]
         switch rowType {
             case .themeColor:
                 presentThemeColorActionSheet()
@@ -256,13 +256,13 @@ extension SettingViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        return RowType.allCases.count
+        return SettingRowType.allCases.count
     }
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let setting = settingUseCase.setting
-        let rowType = RowType.allCases[indexPath.row]
+        let rowType = SettingRowType.allCases[indexPath.row]
         switch rowType {
             case .themeColor,
                  .multilingual,
