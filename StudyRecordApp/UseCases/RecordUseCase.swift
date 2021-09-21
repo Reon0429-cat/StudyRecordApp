@@ -83,13 +83,13 @@ final class RecordUseCase {
             if studyTime.today >= 60 {
                 return todayLocalizedText + ": " + "\(studyTime.today / 60) " + hourLocalizedText
             }
-            return todayLocalizedText + ": " + "\(studyTime.today / 60) " + minuteLocalizedText
+            return todayLocalizedText + ": " + "\(studyTime.today) " + minuteLocalizedText
         }()
         let totalText: String = {
             if studyTime.total >= 60 {
                 return totalLocalizedText + ": " + "\(studyTime.total / 60) " + hourLocalizedText
             }
-            return totalLocalizedText + ": " + "\(studyTime.total / 60) " + minuteLocalizedText
+            return totalLocalizedText + ": " + "\(studyTime.total) " + minuteLocalizedText
         }()
         return (todayText: todayText, totalText: totalText)
     }
