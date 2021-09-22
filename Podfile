@@ -15,6 +15,7 @@ target 'StudyRecordApp' do
    pod 'Firebase/Firestore'
    pod 'RxSwift'
    pod 'RxCocoa'
+   pod 'RxDataSources'
    
 end
 
