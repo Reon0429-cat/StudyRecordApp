@@ -20,8 +20,7 @@ protocol StudyRecordViewModelInput {
 
 protocol StudyRecordViewModelOutput: AnyObject {
     var event: Driver<StudyRecordViewModel.Event> { get }
-    var reload: Driver<StudyRecordViewModel.ReloadType> { get }
-    var records: [Record] { get }
+    var records: Driver<[Record]> { get }
     func getStudyTime(at row: Int) -> (todayText: String,
                                        totalText: String)
 }
@@ -33,26 +32,34 @@ protocol StudyRecordViewModelType {
 
 final class StudyRecordViewModel {
    
-    private let recordUseCase = RecordUseCase(
-        repository: RecordRepository(
+    private let recordUseCase = RxRecordUseCase(
+        repository: RxRecordRepository(
             dataStore: RealmRecordDataStore()
         )
     )
     private let disposeBag = DisposeBag()
+    private var eventRelay = PublishRelay<Event>()
+    private var recordsRelay = BehaviorRelay<[Record]?>(value: nil)
+    
+    init() {
+        setupBindings()
+        recordUseCase.readAll()
+    }
+    
     enum Event {
-        case notifyDisplayed
+        case notifyDisplayed(records: [Record])
         case presentEditStudyRecordVC(selectedRow: Int)
         case notifyLongPress
         case scrollToRow(selectedRow: Int)
-        case presentAlert(selectedRow: Int)
-    }
-    enum ReloadType {
-        case all
-        case rows(row: Int)
+        case presentAlert(selectedRow: Int, records: [Record])
     }
     
-    private var eventRelay = PublishRelay<Event>()
-    private var reloadRelay = PublishRelay<ReloadType>()
+    private func setupBindings() {
+        recordUseCase.records
+            .compactMap { $0 }
+            .bind(to: recordsRelay)
+            .disposed(by: disposeBag)
+    }
     
 }
 
@@ -60,8 +67,9 @@ final class StudyRecordViewModel {
 extension StudyRecordViewModel: StudyRecordViewModelInput {
     
     func viewWillAppear() {
-        eventRelay.accept(.notifyDisplayed)
-        reloadRelay.accept(.all)
+        recordUseCase.readAll()
+        guard let records = recordsRelay.value else { return }
+        eventRelay.accept(.notifyDisplayed(records: records))
     }
     
     func baseViewTapDidRecognized(row: Int) {
@@ -74,24 +82,27 @@ extension StudyRecordViewModel: StudyRecordViewModelInput {
     
     func memoButtonDidTapped(row: Int) {
         recordUseCase.changeOpeningAndClosing(at: row)
-        reloadRelay.accept(.rows(row: row))
+        recordUseCase.readAll()
         eventRelay.accept(.scrollToRow(selectedRow: row))
     }
     
     func deleteButtonDidTappped(row: Int) {
-        eventRelay.accept(.presentAlert(selectedRow: row))
+        guard let records = recordsRelay.value else { return }
+        eventRelay.accept(.presentAlert(selectedRow: row, records: records))
     }
     
     func deleteRecord(row: Int) {
         recordUseCase.delete(at: row)
+        recordUseCase.readAll()
     }
     
     func scrollToRow(tableView: UITableView, row: Int) {
         let cell = tableView.cellForRow(
             at: IndexPath(row: row, section: 0)
         ) as? RecordTableViewCell
-        let isExpanded = self.records[row].isExpanded
-        let isLastRow = (row == self.records.count - 1)
+        guard let records = recordsRelay.value else { return }
+        let isExpanded = records[row].isExpanded
+        let isLastRow = (row == records.count - 1)
         let isManyMemo = (cell?.frame.height ?? 0.0 > tableView.frame.height / 2)
         let isCellNil = (cell == nil)
         let shouldScrollToTop = isExpanded && (isManyMemo || isLastRow || isCellNil)
@@ -111,12 +122,9 @@ extension StudyRecordViewModel: StudyRecordViewModelOutput {
         eventRelay.asDriver(onErrorDriveWith: .empty())
     }
     
-    var reload: Driver<ReloadType> {
-        reloadRelay.asDriver(onErrorDriveWith: .empty())
-    }
-    
-    var records: [Record] {
-        recordUseCase.records
+    var records: Driver<[Record]> {
+        recordsRelay.asDriver()
+            .compactMap { $0 }
     }
     
     func getStudyTime(at row: Int) -> (todayText: String,

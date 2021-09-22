@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxDataSources
 
 // MARK: - ToDo リアルタイムで同期して更新する処理も実装する(realm)
 // MARK: - ToDo グラフカラー選択時に該当の色を丸くする(追加と編集画面でそれぞれ確認する)
@@ -24,9 +25,6 @@ final class StudyRecordViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     
     weak var delegate: StudyRecordVCDelegate?
-    private var records: [Record] {
-        viewModel.outputs.records
-    }
     private let viewModel: StudyRecordViewModelType = StudyRecordViewModel()
     private let disposeBag = DisposeBag()
     
@@ -50,31 +48,34 @@ final class StudyRecordViewController: UIViewController {
             .drive { [weak self] event in
                 guard let self = self else { return }
                 switch event {
-                    case .notifyDisplayed:
+                    case .notifyDisplayed(let records):
                         self.delegate?.screenDidPresented(screenType: .record,
-                                                          isEnabledNavigationButton: !self.records.isEmpty)
+                                                          isEnabledNavigationButton: !records.isEmpty)
                     case .presentEditStudyRecordVC(let row):
                         self.presentEditStudyRecordVC(row: row)
                     case .notifyLongPress:
                         self.delegate?.baseViewLongPressDidRecognized()
                     case .scrollToRow(let row):
                         self.scrollToRow(row: row)
-                    case .presentAlert(let row):
-                        self.presentAlert(row: row)
+                    case .presentAlert(let row, let records):
+                        self.presentAlert(row: row, records: records)
                 }
             }
             .disposed(by: disposeBag)
         
-        viewModel.outputs.reload
-            .drive(onNext: { [weak self] reloadType in
-                guard let self = self else { return }
-                switch reloadType {
-                    case .all:
-                        self.tableView.reloadData()
-                    case .rows(let row):
-                        self.reloadRows(row: row)
-                }
-            })
+        viewModel.outputs.records
+            .drive(tableView.rx.items) { tableView, row, record in
+                let cell = tableView.dequeueReusableCustomCell(with: RecordTableViewCell.self)
+                let studyTime = self.viewModel.outputs.getStudyTime(at: row)
+                let isEdit = self.delegate?.isEdit ?? false
+                cell.configure(record: record,
+                               studyTime: studyTime)
+                cell.changeMode(isEdit: isEdit,
+                                isEvenIndex: row.isMultiple(of: 2))
+                cell.tag = row
+                cell.delegate = self
+                return cell
+            }
             .disposed(by: disposeBag)
     }
     
@@ -94,27 +95,17 @@ private extension StudyRecordViewController {
         }
     }
     
-    func reloadRows(row: Int) {
-        DispatchQueue.main.async {
-            self.tableView.beginUpdates()
-            self.tableView.reloadRows(at: [IndexPath(row: row, section: 0)],
-                                      with: .automatic)
-            self.tableView.endUpdates()
-        }
-    }
-    
     func scrollToRow(row: Int) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
             self.viewModel.inputs.scrollToRow(tableView: self.tableView, row: row)
         }
     }
     
-    func presentAlert(row: Int) {
+    func presentAlert(row: Int, records: [Record]) {
         let alert = Alert.create(title: LocalizeKey.doYouReallyWantToDeleteThis.localizedString())
             .addAction(title: LocalizeKey.delete.localizedString(), style: .destructive) {
                 self.viewModel.inputs.deleteRecord(row: row)
-                self.tableView.reloadData()
-                self.delegate?.deleteButtonDidTappped(records: self.records)
+                self.delegate?.deleteButtonDidTappped(records: records)
                 self.dismiss(animated: true)
             }
             .addAction(title: LocalizeKey.close.localizedString()) {
@@ -128,51 +119,26 @@ private extension StudyRecordViewController {
 // MARK: - UITableViewDelegate
 extension StudyRecordViewController: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView,
-                   estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return records[indexPath.row].isExpanded ? tableView.rowHeight : 120
-    }
-    
-    func tableView(_ tableView: UITableView,
-                   heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return records[indexPath.row].isExpanded ? tableView.rowHeight : 120
-    }
+//    func tableView(_ tableView: UITableView,
+//                   heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return records[indexPath.row].isExpanded ? tableView.rowHeight : 120
+//    }
+//
+//    func tableView(_ tableView: UITableView,
+//                   estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return records[indexPath.row].isExpanded ? tableView.rowHeight : 120
+//    }
     
     func tableView(_ tableView: UITableView,
                    heightForHeaderInSection section: Int) -> CGFloat {
         return 20
     }
-    
+
     func tableView(_ tableView: UITableView,
                    viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
         view.backgroundColor = .clear
         return view
-    }
-    
-}
-
-// MARK: - UITableViewDataSource
-extension StudyRecordViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView,
-                   numberOfRowsInSection section: Int) -> Int {
-        return records.count
-    }
-    
-    func tableView(_ tableView: UITableView,
-                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCustomCell(with: RecordTableViewCell.self)
-        let record = records[indexPath.row]
-        let studyTime = viewModel.outputs.getStudyTime(at: indexPath.row)
-        let isEdit = delegate?.isEdit ?? false
-        cell.configure(record: record,
-                       studyTime: studyTime)
-        cell.changeMode(isEdit: isEdit,
-                        isEvenIndex: indexPath.row.isMultiple(of: 2))
-        cell.tag = indexPath.row
-        cell.delegate = self
-        return cell
     }
     
 }
@@ -203,7 +169,6 @@ private extension StudyRecordViewController {
     
     func setupTableView() {
         tableView.delegate = self
-        tableView.dataSource = self
         tableView.registerCustomCell(RecordTableViewCell.self)
         tableView.tableFooterView = UIView()
         tableView.sectionFooterHeight = 0
