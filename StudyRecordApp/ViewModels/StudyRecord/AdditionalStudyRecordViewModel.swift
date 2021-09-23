@@ -49,7 +49,6 @@ final class AdditionalStudyRecordViewModel {
     }
     enum Event {
         case dismiss
-        case reloadData
         case presentAlert
         case presentAlertWithTextField(text: String)
         case presentStudyRecordGraphColorVC
@@ -62,7 +61,7 @@ final class AdditionalStudyRecordViewModel {
     }
     
     private let eventRelay = PublishRelay<Event>()
-    private let itemsRelay = BehaviorRelay<[CellItem]>(value: [])
+    private let itemsRelay = PublishRelay<Void>()
     private let controlSaveButtonRelay = BehaviorRelay<Bool>(value: false)
     
     private func saveRecord() {
@@ -83,9 +82,7 @@ final class AdditionalStudyRecordViewModel {
 extension AdditionalStudyRecordViewModel: AdditionalStudyRecordViewModelInput {
     
     func viewDidLoad() {
-        itemsRelay.accept([.title(inputtedTitle),
-                           .graphColor(selectedGraphColor),
-                           .memo(inputtedMemo)])
+        itemsRelay.accept(())
     }
     
     func titleCellDidTapped() {
@@ -102,13 +99,13 @@ extension AdditionalStudyRecordViewModel: AdditionalStudyRecordViewModelInput {
     
     func graphColorDidSelected(color: UIColor) {
         selectedGraphColor = color
-        eventRelay.accept(.reloadData)
+        itemsRelay.accept(())
         controlSaveButtonRelay.accept(isMandatoryItemFilled)
     }
     
     func savedMemo(memo: String) {
         inputtedMemo = memo
-        eventRelay.accept(.reloadData)
+        itemsRelay.accept(())
     }
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
@@ -135,6 +132,7 @@ extension AdditionalStudyRecordViewModel: AdditionalStudyRecordViewModelInput {
     
     func alertWithTextFieldAddButtonDidTapped() {
         oldInputtedTitle = inputtedTitle
+        itemsRelay.accept(())
     }
 
 }
@@ -148,6 +146,11 @@ extension AdditionalStudyRecordViewModel: AdditionalStudyRecordViewModelOutput {
     
     var items: Driver<[CellItem]> {
         itemsRelay.asDriver(onErrorDriveWith: .empty())
+            .map {
+                [.title(self.inputtedTitle),
+                 .graphColor(self.selectedGraphColor),
+                 .memo(self.inputtedMemo)]
+            }
     }
     
     var controlSaveButton: Driver<Bool> {

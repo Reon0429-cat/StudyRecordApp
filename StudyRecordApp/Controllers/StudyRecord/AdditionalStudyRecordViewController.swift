@@ -30,7 +30,17 @@ final class AdditionalStudyRecordViewController: UIViewController {
         
     }
     
-    private func setupBindings() {
+}
+
+// MARK: - func
+private extension AdditionalStudyRecordViewController {
+    
+    func setupBindings() {
+        setupOutputBindings()
+        setupTableViewDelegate()
+    }
+    
+    func setupOutputBindings() {
         viewModel.outputs.items
             .drive(tableView.rx.items) { tableView, row, item in
                 switch item {
@@ -54,6 +64,30 @@ final class AdditionalStudyRecordViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
+        viewModel.outputs.event
+            .drive { [weak self] event in
+                guard let self = self else { return }
+                switch event {
+                    case .dismiss:
+                        self.dismiss(animated: true)
+                    case .presentAlert:
+                        self.presentAlert()
+                    case .presentAlertWithTextField(let text):
+                        self.presentAlertWithTextField(text: text)
+                    case .presentStudyRecordGraphColorVC:
+                        self.presentStudyRecordGraphColorVC()
+                    case .presentStudyRecordMemoVC(let inputtedMemo):
+                        self.presentStudyRecordMemoVC(inputtedMemo: inputtedMemo)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.controlSaveButton
+            .drive(onNext: subCustomNavigationBar.saveButton(isEnabled:))
+            .disposed(by: disposeBag)
+    }
+    
+    func setupTableViewDelegate() {
         tableView.rx.itemSelected
             .bind { indexPath in
                 self.tableView.deselectRow(at: indexPath, animated: true)
@@ -73,47 +107,24 @@ final class AdditionalStudyRecordViewController: UIViewController {
                 }
             })
             .disposed(by: disposeBag)
-        
-        viewModel.outputs.event
-            .drive { [weak self] event in
-                guard let self = self else { return }
-                switch event {
-                    case .dismiss:
-                        self.dismiss(animated: true)
-                    case .reloadData:
-                        self.tableView.reloadData()
-                    case .presentAlert:
-                        self.presentAlert()
-                    case .presentAlertWithTextField(let text):
-                        self.presentAlertWithTextField(text: text)
-                    case .presentStudyRecordGraphColorVC:
-                        self.present(StudyRecordGraphColorViewController.self,
-                                     modalPresentationStyle: .overCurrentContext,
-                                     modalTransitionStyle: .crossDissolve) { vc in
-                            vc.delegate = self
-                        }
-                    case .presentStudyRecordMemoVC(let inputtedMemo):
-                        self.present(StudyRecordMemoViewController.self,
-                                     modalPresentationStyle: .overCurrentContext,
-                                     modalTransitionStyle: .crossDissolve) { vc in
-                            vc.delegate = self
-                            vc.inputtedMemo = inputtedMemo
-                        }
-                }
-            }
-            .disposed(by: disposeBag)
-        
-        viewModel.outputs.controlSaveButton
-            .drive { isEnabled in
-                self.subCustomNavigationBar.saveButton(isEnabled: isEnabled)
-            }
-            .disposed(by: disposeBag)
     }
     
-}
-
-// MARK: - func
-private extension AdditionalStudyRecordViewController {
+    func presentStudyRecordGraphColorVC() {
+        present(StudyRecordGraphColorViewController.self,
+                modalPresentationStyle: .overCurrentContext,
+                modalTransitionStyle: .crossDissolve) { vc in
+            vc.delegate = self
+        }
+    }
+    
+    func presentStudyRecordMemoVC(inputtedMemo: String) {
+        present(StudyRecordMemoViewController.self,
+                modalPresentationStyle: .overCurrentContext,
+                modalTransitionStyle: .crossDissolve) { vc in
+            vc.delegate = self
+            vc.inputtedMemo = inputtedMemo
+        }
+    }
     
     func presentAlertWithTextField(text: String) {
         let alert = Alert.create(title: LocalizeKey.Title.localizedString())
@@ -126,10 +137,9 @@ private extension AdditionalStudyRecordViewController {
                        style: .destructive) {
                 self.viewModel.inputs.alertWithTextFieldCloseButtonDidTapped()
             }
-            .addAction(title: LocalizeKey.add.localizedString()) {
-                self.viewModel.inputs.alertWithTextFieldAddButtonDidTapped()
-                self.tableView.reloadData()
-            }
+                       .addAction(title: LocalizeKey.add.localizedString()) {
+                           self.viewModel.inputs.alertWithTextFieldAddButtonDidTapped()
+                       }
         present(alert, animated: true)
     }
     
@@ -139,9 +149,9 @@ private extension AdditionalStudyRecordViewController {
                        style: .destructive) {
                 self.dismiss(animated: true)
             }
-            .addAction(title: LocalizeKey.save.localizedString()) {
-                self.viewModel.inputs.saveButtonDidTapped()
-            }
+                       .addAction(title: LocalizeKey.save.localizedString()) {
+                           self.viewModel.inputs.saveButtonDidTapped()
+                       }
         present(alert, animated: true)
     }
     
