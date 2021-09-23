@@ -63,13 +63,13 @@ final class StudyRecordViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
-        viewModel.outputs.records
+        viewModel.outputs.elements
             .drive(tableView.rx.items) { tableView, row, element in
                 let cell = tableView.dequeueReusableCustomCell(with: RecordTableViewCell.self)
                 let isEdit = self.delegate?.isEdit ?? false
                 cell.configure(record: element.record,
-                               studyTime: (todayText: element.studyTime.todayText,
-                                           totalText: element.studyTime.totalText))
+                               studyTime: (todayText: element.todayText,
+                                           totalText: element.totalText))
                 cell.changeMode(isEdit: isEdit,
                                 isEvenIndex: row.isMultiple(of: 2))
                 cell.tag = row

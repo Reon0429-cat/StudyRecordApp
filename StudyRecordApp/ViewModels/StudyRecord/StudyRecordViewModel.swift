@@ -20,7 +20,7 @@ protocol StudyRecordViewModelInput {
 
 protocol StudyRecordViewModelOutput: AnyObject {
     var event: Driver<StudyRecordViewModel.Event> { get }
-    var records: Driver<[(record: Record, studyTime: StudyRecordViewModel.StudyTime)]> { get }
+    var elements: Driver<[StudyRecordViewModel.Element]> { get }
 }
 
 protocol StudyRecordViewModelType {
@@ -29,7 +29,7 @@ protocol StudyRecordViewModelType {
 }
 
 final class StudyRecordViewModel {
-   
+    
     private let recordUseCase = RxRecordUseCase(
         repository: RxRecordRepository(
             dataStore: RealmRecordDataStore()
@@ -44,7 +44,8 @@ final class StudyRecordViewModel {
         recordUseCase.readAll()
     }
     
-    struct StudyTime {
+    struct Element {
+        let record: Record
         let todayText: String
         let totalText: String
     }
@@ -120,21 +121,21 @@ extension StudyRecordViewModel: StudyRecordViewModelInput {
 // MARK: - Output
 extension StudyRecordViewModel: StudyRecordViewModelOutput {
     
-    var records: Driver<[(record: Record, studyTime: StudyTime)]> {
+    var elements: Driver<[Element]> {
         recordsRelay.asDriver(onErrorDriveWith: .empty())
             .compactMap { $0 }
-            .map {
-                return $0.enumerated()
-                    .map { index, record -> (record: Record, studyTime: StudyTime) in
+            .map { records in
+                return records.enumerated()
+                    .map { index, record -> Element in
                         let studyTime = self.recordUseCase.getStudyTime(at: index)
-                        let studyTimeText = StudyTime(todayText: studyTime.todayText,
-                                                      totalText: studyTime.totalText)
-                        return (record: record, studyTime: studyTimeText)
+                        let element = Element(record: record,
+                                              todayText: studyTime.todayText,
+                                              totalText: studyTime.totalText)
+                        return element
                     }
             }
     }
     
-   
     var event: Driver<Event> {
         eventRelay.asDriver(onErrorDriveWith: .empty())
     }
