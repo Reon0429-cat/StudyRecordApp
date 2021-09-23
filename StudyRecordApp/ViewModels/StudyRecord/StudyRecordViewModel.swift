@@ -20,9 +20,7 @@ protocol StudyRecordViewModelInput {
 
 protocol StudyRecordViewModelOutput: AnyObject {
     var event: Driver<StudyRecordViewModel.Event> { get }
-    var records: Driver<[Record]> { get }
-    func getStudyTime(at row: Int) -> (todayText: String,
-                                       totalText: String)
+    var records: Driver<[(record: Record, studyTime: StudyRecordViewModel.StudyTime)]> { get }
 }
 
 protocol StudyRecordViewModelType {
@@ -46,6 +44,10 @@ final class StudyRecordViewModel {
         recordUseCase.readAll()
     }
     
+    struct StudyTime {
+        let todayText: String
+        let totalText: String
+    }
     enum Event {
         case notifyDisplayed(records: [Record])
         case presentEditStudyRecordVC(selectedRow: Int)
@@ -118,18 +120,23 @@ extension StudyRecordViewModel: StudyRecordViewModelInput {
 // MARK: - Output
 extension StudyRecordViewModel: StudyRecordViewModelOutput {
     
+    var records: Driver<[(record: Record, studyTime: StudyTime)]> {
+        recordsRelay.asDriver(onErrorDriveWith: .empty())
+            .compactMap { $0 }
+            .map {
+                return $0.enumerated()
+                    .map { index, record -> (record: Record, studyTime: StudyTime) in
+                        let studyTime = self.recordUseCase.getStudyTime(at: index)
+                        let studyTimeText = StudyTime(todayText: studyTime.todayText,
+                                                      totalText: studyTime.totalText)
+                        return (record: record, studyTime: studyTimeText)
+                    }
+            }
+    }
+    
+   
     var event: Driver<Event> {
         eventRelay.asDriver(onErrorDriveWith: .empty())
-    }
-    
-    var records: Driver<[Record]> {
-        recordsRelay.asDriver()
-            .compactMap { $0 }
-    }
-    
-    func getStudyTime(at row: Int) -> (todayText: String,
-                                       totalText: String) {
-        return recordUseCase.getStudyTime(at: row)
     }
     
 }

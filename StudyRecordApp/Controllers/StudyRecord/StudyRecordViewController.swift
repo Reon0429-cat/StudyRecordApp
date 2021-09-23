@@ -64,12 +64,12 @@ final class StudyRecordViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.outputs.records
-            .drive(tableView.rx.items) { tableView, row, record in
+            .drive(tableView.rx.items) { tableView, row, element in
                 let cell = tableView.dequeueReusableCustomCell(with: RecordTableViewCell.self)
-                let studyTime = self.viewModel.outputs.getStudyTime(at: row)
                 let isEdit = self.delegate?.isEdit ?? false
-                cell.configure(record: record,
-                               studyTime: studyTime)
+                cell.configure(record: element.record,
+                               studyTime: (todayText: element.studyTime.todayText,
+                                           totalText: element.studyTime.totalText))
                 cell.changeMode(isEdit: isEdit,
                                 isEvenIndex: row.isMultiple(of: 2))
                 cell.tag = row
@@ -111,23 +111,13 @@ private extension StudyRecordViewController {
             .addAction(title: LocalizeKey.close.localizedString()) {
                 self.dismiss(animated: true)
             }
-        self.present(alert, animated: true)
+        present(alert, animated: true)
     }
     
 }
 
 // MARK: - UITableViewDelegate
 extension StudyRecordViewController: UITableViewDelegate {
-    
-//    func tableView(_ tableView: UITableView,
-//                   heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return records[indexPath.row].isExpanded ? tableView.rowHeight : 120
-//    }
-//
-//    func tableView(_ tableView: UITableView,
-//                   estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return records[indexPath.row].isExpanded ? tableView.rowHeight : 120
-//    }
     
     func tableView(_ tableView: UITableView,
                    heightForHeaderInSection section: Int) -> CGFloat {
@@ -136,6 +126,18 @@ extension StudyRecordViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView,
                    viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   heightForFooterInSection section: Int) -> CGFloat {
+        return 20
+    }
+
+    func tableView(_ tableView: UITableView,
+                   viewForFooterInSection section: Int) -> UIView? {
         let view = UIView()
         view.backgroundColor = .clear
         return view
