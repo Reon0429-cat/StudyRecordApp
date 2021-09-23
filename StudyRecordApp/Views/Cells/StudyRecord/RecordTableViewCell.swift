@@ -23,6 +23,7 @@ final class RecordTableViewCell: UITableViewCell {
     @IBOutlet private weak var todayStudyTimeLabel: UILabel!
     @IBOutlet private weak var totalStudyTimeLabel: UILabel!
     @IBOutlet private weak var deleteButton: UIButton!
+    @IBOutlet private weak var memoTextViewBaseView: UIView!
     @IBOutlet private weak var memoTextView: UITextView!
     
     weak var delegate: RecordTableViewCellDelegate?
@@ -134,6 +135,7 @@ private extension RecordTableViewCell {
         memoTextView.isEditable = false
         memoTextView.backgroundColor = .clear
         memoTextView.layer.borderWidth = 1
+        memoTextViewBaseView.isHidden = !record.isExpanded
         memoTextView.text = record.memo
     }
     
