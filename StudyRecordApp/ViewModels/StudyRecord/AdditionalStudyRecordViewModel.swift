@@ -9,6 +9,7 @@ import RxSwift
 import RxCocoa
 
 protocol AdditionalStudyRecordViewModelInput {
+    func viewDidLoad()
     func graphColorDidSelected(color: UIColor)
     func savedMemo(memo: String)
     func textFieldDidChangeSelection(_ textField: UITextField)
@@ -23,10 +24,7 @@ protocol AdditionalStudyRecordViewModelInput {
 
 protocol AdditionalStudyRecordViewModelOutput: AnyObject {
     var event: Driver<AdditionalStudyRecordViewModel.Event> { get }
-    var records: [Record] { get }
-    var titleText: String { get }
-    var graphColor: UIColor { get }
-    var memoText: String { get }
+    var items: Driver<[AdditionalStudyRecordViewModel.CellItem]> { get }
     var controlSaveButton: Driver<Bool> { get }
 }
 
@@ -53,15 +51,21 @@ final class AdditionalStudyRecordViewModel {
         case dismiss
         case reloadData
         case presentAlert
-        case presentAlertWithTextField
+        case presentAlertWithTextField(text: String)
         case presentStudyRecordGraphColorVC
         case presentStudyRecordMemoVC(memo: String)
     }
+    enum CellItem {
+        case title(String)
+        case graphColor(UIColor)
+        case memo(String)
+    }
     
     private let eventRelay = PublishRelay<Event>()
+    private let itemsRelay = BehaviorRelay<[CellItem]>(value: [])
     private let controlSaveButtonRelay = BehaviorRelay<Bool>(value: false)
     
-    func saveRecord() {
+    private func saveRecord() {
         let record = Record(title: inputtedTitle,
                             histories: nil,
                             isExpanded: false,
@@ -78,8 +82,14 @@ final class AdditionalStudyRecordViewModel {
 // MARK: - Input
 extension AdditionalStudyRecordViewModel: AdditionalStudyRecordViewModelInput {
     
+    func viewDidLoad() {
+        itemsRelay.accept([.title(inputtedTitle),
+                           .graphColor(selectedGraphColor),
+                           .memo(inputtedMemo)])
+    }
+    
     func titleCellDidTapped() {
-        eventRelay.accept(.presentAlertWithTextField)
+        eventRelay.accept(.presentAlertWithTextField(text: inputtedTitle))
     }
     
     func graphColorCellDidTapped() {
@@ -136,20 +146,8 @@ extension AdditionalStudyRecordViewModel: AdditionalStudyRecordViewModelOutput {
         eventRelay.asDriver(onErrorDriveWith: .empty())
     }
     
-    var records: [Record] {
-        recordUseCase.records
-    }
-    
-    var titleText: String {
-        return inputtedTitle
-    }
-    
-    var graphColor: UIColor {
-        return selectedGraphColor
-    }
-    
-    var memoText: String {
-        return inputtedMemo
+    var items: Driver<[CellItem]> {
+        itemsRelay.asDriver(onErrorDriveWith: .empty())
     }
     
     var controlSaveButton: Driver<Bool> {

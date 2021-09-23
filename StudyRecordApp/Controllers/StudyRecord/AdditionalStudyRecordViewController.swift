@@ -15,11 +15,6 @@ final class AdditionalStudyRecordViewController: UIViewController {
     @IBOutlet private weak var bottomWaveView: WaveView!
     @IBOutlet private weak var tableView: UITableView!
     
-    private enum CellType: Int, CaseIterable {
-        case title
-        case graphColor
-        case memo
-    }
     private let viewModel: AdditionalStudyRecordViewModelType = AdditionalStudyRecordViewModel()
     private let disposeBag = DisposeBag()
     
@@ -31,10 +26,54 @@ final class AdditionalStudyRecordViewController: UIViewController {
         setupNavigationTopBar()
         setupTapGesture()
         setupWaveView()
+        viewModel.inputs.viewDidLoad()
         
     }
     
     private func setupBindings() {
+        viewModel.outputs.items
+            .drive(tableView.rx.items) { tableView, row, item in
+                switch item {
+                    case .title(let text):
+                        let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
+                        cell.configure(titleText: LocalizeKey.Title.localizedString(),
+                                       mandatoryIsHidden: false,
+                                       auxiliaryText: text)
+                        return cell
+                    case .graphColor(let color):
+                        let cell = tableView.dequeueReusableCustomCell(with: StudyRecordGraphColorTableViewCell.self)
+                        cell.configure(color: color)
+                        return cell
+                    case .memo(let text):
+                        let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
+                        cell.configure(titleText: LocalizeKey.Memo.localizedString(),
+                                       mandatoryIsHidden: true,
+                                       auxiliaryText: text)
+                        return cell
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        tableView.rx.itemSelected
+            .bind { indexPath in
+                self.tableView.deselectRow(at: indexPath, animated: true)
+            }
+            .disposed(by: disposeBag)
+        
+        tableView.rx.modelSelected(AdditionalStudyRecordViewModel.CellItem.self)
+            .subscribe(onNext: { [weak self] item in
+                guard let self = self else { return }
+                switch item {
+                    case .title:
+                        self.viewModel.inputs.titleCellDidTapped()
+                    case .graphColor:
+                        self.viewModel.inputs.graphColorCellDidTapped()
+                    case .memo:
+                        self.viewModel.inputs.memoCellDidTapped()
+                }
+            })
+            .disposed(by: disposeBag)
+        
         viewModel.outputs.event
             .drive { [weak self] event in
                 guard let self = self else { return }
@@ -45,8 +84,8 @@ final class AdditionalStudyRecordViewController: UIViewController {
                         self.tableView.reloadData()
                     case .presentAlert:
                         self.presentAlert()
-                    case .presentAlertWithTextField:
-                        self.presentAlertWithTextField()
+                    case .presentAlertWithTextField(let text):
+                        self.presentAlertWithTextField(text: text)
                     case .presentStudyRecordGraphColorVC:
                         self.present(StudyRecordGraphColorViewController.self,
                                      modalPresentationStyle: .overCurrentContext,
@@ -76,11 +115,11 @@ final class AdditionalStudyRecordViewController: UIViewController {
 // MARK: - func
 private extension AdditionalStudyRecordViewController {
     
-    func presentAlertWithTextField() {
+    func presentAlertWithTextField(text: String) {
         let alert = Alert.create(title: LocalizeKey.Title.localizedString())
             .setTextField { textField in
                 textField.tintColor = .dynamicColor(light: .black, dark: .white)
-                textField.text = self.viewModel.outputs.titleText
+                textField.text = text
                 textField.delegate = self
             }
             .addAction(title: LocalizeKey.close.localizedString(),
@@ -112,20 +151,6 @@ private extension AdditionalStudyRecordViewController {
 extension AdditionalStudyRecordViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
-                   didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        let cellType = CellType(rawValue: indexPath.row)!
-        switch cellType {
-            case .title:
-                viewModel.inputs.titleCellDidTapped()
-            case .graphColor:
-                viewModel.inputs.graphColorCellDidTapped()
-            case .memo:
-                viewModel.inputs.memoCellDidTapped()
-        }
-    }
-    
-    func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
@@ -140,39 +165,6 @@ extension AdditionalStudyRecordViewController: UITableViewDelegate {
         let view = UIView()
         view.backgroundColor = .clear
         return view
-    }
-    
-}
-
-// MARK: - UITableViewDataSource
-extension AdditionalStudyRecordViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView,
-                   numberOfRowsInSection section: Int) -> Int {
-        return CellType.allCases.count
-    }
-    
-    func tableView(_ tableView: UITableView,
-                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellType = CellType(rawValue: indexPath.row)!
-        switch cellType {
-            case .title:
-                let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
-                cell.configure(titleText: LocalizeKey.Title.localizedString(),
-                               mandatoryIsHidden: false,
-                               auxiliaryText: viewModel.outputs.titleText)
-                return cell
-            case .graphColor:
-                let cell = tableView.dequeueReusableCustomCell(with: StudyRecordGraphColorTableViewCell.self)
-                cell.configure(color: viewModel.outputs.graphColor)
-                return cell
-            case .memo:
-                let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
-                cell.configure(titleText: LocalizeKey.Memo.localizedString(),
-                               mandatoryIsHidden: true,
-                               auxiliaryText: viewModel.outputs.memoText)
-                return cell
-        }
     }
     
 }
@@ -225,8 +217,8 @@ extension AdditionalStudyRecordViewController: SubCustomNavigationBarDelegate {
 private extension AdditionalStudyRecordViewController {
     
     func setupTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
+        tableView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
         tableView.registerCustomCell(CustomTitleTableViewCell.self)
         tableView.registerCustomCell(StudyRecordGraphColorTableViewCell.self)
         tableView.tableFooterView = UIView()
