@@ -133,6 +133,7 @@
 		AB4D6BBE2672099C00E5286E /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4D6BBD2672099C00E5286E /* UIButton+Extension.swift */; };
 		AB6E711326FBAA9300464C08 /* RxRecordUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6E711226FBAA9300464C08 /* RxRecordUseCase.swift */; };
 		AB6E711526FBAAC400464C08 /* RxRecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6E711426FBAAC400464C08 /* RxRecordRepository.swift */; };
+		AB8565DF26FD47970092B211 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8565DE26FD47970092B211 /* LoginViewModel.swift */; };
 		AB86A85A26D4915700EA990A /* HalfModalDismissInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86A85426D4915700EA990A /* HalfModalDismissInteractiveTransition.swift */; };
 		AB86A85B26D4915700EA990A /* HalfModalDismissAnimatedTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86A85526D4915700EA990A /* HalfModalDismissAnimatedTransition.swift */; };
 		AB86A85C26D4915700EA990A /* HalfModalIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86A85626D4915700EA990A /* HalfModalIndicatorView.swift */; };
@@ -313,6 +314,7 @@
 		AB4D6BBD2672099C00E5286E /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		AB6E711226FBAA9300464C08 /* RxRecordUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxRecordUseCase.swift; sourceTree = "<group>"; };
 		AB6E711426FBAAC400464C08 /* RxRecordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxRecordRepository.swift; sourceTree = "<group>"; };
+		AB8565DE26FD47970092B211 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		AB86A85426D4915700EA990A /* HalfModalDismissInteractiveTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalDismissInteractiveTransition.swift; sourceTree = "<group>"; };
 		AB86A85526D4915700EA990A /* HalfModalDismissAnimatedTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalDismissAnimatedTransition.swift; sourceTree = "<group>"; };
 		AB86A85626D4915700EA990A /* HalfModalIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalIndicatorView.swift; sourceTree = "<group>"; };
@@ -401,6 +403,7 @@
 			isa = PBXGroup;
 			children = (
 				AB00DE0D26F64557008CC3F1 /* StudyRecord */,
+				AB8565DD26FD47830092B211 /* LoginAndSignUp */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -636,6 +639,14 @@
 				AB6E711426FBAAC400464C08 /* RxRecordRepository.swift */,
 			);
 			path = RxSwift;
+			sourceTree = "<group>";
+		};
+		AB8565DD26FD47830092B211 /* LoginAndSignUp */ = {
+			isa = PBXGroup;
+			children = (
+				AB8565DE26FD47970092B211 /* LoginViewModel.swift */,
+			);
+			path = LoginAndSignUp;
 			sourceTree = "<group>";
 		};
 		AB86A85226D4912500EA990A /* All */ = {
@@ -1130,6 +1141,7 @@
 				AB93C268266A7DFF00C3AE8F /* AdditionalStudyRecordViewController.swift in Sources */,
 				ABFAB20E26E638390095EC20 /* RealmGraphDataStore.swift in Sources */,
 				AB2B5B9E26A2D1B7009BD3C7 /* NaturalConcept.swift in Sources */,
+				AB8565DF26FD47970092B211 /* LoginViewModel.swift in Sources */,
 				AB86A85C26D4915700EA990A /* HalfModalIndicatorView.swift in Sources */,
 				ABA0570126B50D1900E3DF01 /* GraphColorTileView.swift in Sources */,
 				ABFAB20C26E62D0F0095EC20 /* Graph.swift in Sources */,
