@@ -56,7 +56,22 @@ final class LoginViewController: UIViewController {
         
     }
     
-    private func setupBindings() {
+    override func touchesBegan(_ touches: Set<UITouch>,
+                               with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+}
+
+// MARK: - func
+private extension LoginViewController {
+    
+    func setupBindings() {
+        setupInputBindings()
+        setupOutputBindings()
+    }
+    
+    func setupInputBindings() {
         mailAddressTextField.rx.text.orEmpty
             .subscribe(onNext: viewModel.inputs.mailAddressTextFieldDidEntered(text:))
             .disposed(by: disposeBag)
@@ -70,13 +85,15 @@ final class LoginViewController: UIViewController {
             .disposed(by: disposeBag)
         
         passwordForgotButton.rx.tap
-            .subscribe(onNext: { self.present(ResetingPasswordViewController.self) })
+            .subscribe(onNext: viewModel.inputs.passwordForgotButtonDidTapped)
             .disposed(by: disposeBag)
         
         loginButton.rx.tap
             .subscribe(onNext: viewModel.inputs.loginButtonDidTapped)
             .disposed(by: disposeBag)
-        
+    }
+    
+    func setupOutputBindings() {
         viewModel.outputs.loginButtonIsEnabled
             .drive(loginButton.rx.isEnabled)
             .disposed(by: disposeBag)
@@ -100,27 +117,32 @@ final class LoginViewController: UIViewController {
             .drive(onNext: { event in
                 switch event {
                     case .keyboardWillShow:
-                        UIView.animate(deadlineFromNow: 0, duration: 0.5) {
-                            self.stackViewTopConstraint.constant -= 100
-                            self.view.layoutIfNeeded()
-                        }
+                        self.keyboardDidShowed()
                     case .keyboardWillHide:
-                        UIView.animate(deadlineFromNow: 0, duration: 0.5) {
-                            self.stackViewTopConstraint.constant += 100
-                            self.view.layoutIfNeeded()
-                        }
+                        self.keyboardDidHidden()
                     case .presentErrorAlert(let title):
                         self.showErrorAlert(title: title)
                     case .changeRootVCToTopVC:
                         self.changeRootVC(TopViewController.self)
+                    case .presentResetingPasswordVC:
+                        self.present(ResetingPasswordViewController.self)
                 }
             })
             .disposed(by: disposeBag)
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>,
-                               with event: UIEvent?) {
-        self.view.endEditing(true)
+    func keyboardDidShowed() {
+        UIView.animate(deadlineFromNow: 0, duration: 0.5) {
+            self.stackViewTopConstraint.constant -= 100
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func keyboardDidHidden() {
+        UIView.animate(deadlineFromNow: 0, duration: 0.5) {
+            self.stackViewTopConstraint.constant += 100
+            self.view.layoutIfNeeded()
+        }
     }
     
 }

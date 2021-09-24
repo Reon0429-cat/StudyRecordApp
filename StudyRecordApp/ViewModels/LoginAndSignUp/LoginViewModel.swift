@@ -13,6 +13,7 @@ import FirebaseAuth
 protocol LoginViewModelInput {
     func viewDidLoad()
     func loginButtonDidTapped()
+    func passwordForgotButtonDidTapped()
     func passwordSecureButtonDidTapped()
     func mailAddressTextFieldDidEntered(text: String)
     func passwordTextFieldDidEntered(text: String)
@@ -52,6 +53,7 @@ final class LoginViewModel {
         case keyboardWillHide
         case presentErrorAlert(String)
         case changeRootVCToTopVC
+        case presentResetingPasswordVC
     }
     private let passwordSecureButtonImageNameRelay = BehaviorRelay<String>(value: "eye.fill")
     private let passwordIsSecuredRelay = BehaviorRelay<Bool>(value: true)
@@ -116,6 +118,10 @@ extension LoginViewModel: LoginViewModelInput {
         changePasswordSecureButtonImage(isSlash: isPasswordHidden)
         isPasswordHidden.toggle()
         passwordIsSecuredRelay.accept(!passwordIsSecuredRelay.value)
+    }
+    
+    func passwordForgotButtonDidTapped() {
+        eventRelay.accept(.presentResetingPasswordVC)
     }
     
     func notifiedKeyboardShowed() {
