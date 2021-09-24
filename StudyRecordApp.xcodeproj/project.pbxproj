@@ -134,6 +134,9 @@
 		AB6E711326FBAA9300464C08 /* RxRecordUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6E711226FBAA9300464C08 /* RxRecordUseCase.swift */; };
 		AB6E711526FBAAC400464C08 /* RxRecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6E711426FBAAC400464C08 /* RxRecordRepository.swift */; };
 		AB8565DF26FD47970092B211 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8565DE26FD47970092B211 /* LoginViewModel.swift */; };
+		AB8565E126FD64280092B211 /* RxUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8565E026FD64280092B211 /* RxUserUseCase.swift */; };
+		AB8565E326FD64460092B211 /* RxUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8565E226FD64460092B211 /* RxUserRepository.swift */; };
+		AB8565E526FD76A70092B211 /* RxFirebaseUserDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8565E426FD76A70092B211 /* RxFirebaseUserDataStore.swift */; };
 		AB86A85A26D4915700EA990A /* HalfModalDismissInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86A85426D4915700EA990A /* HalfModalDismissInteractiveTransition.swift */; };
 		AB86A85B26D4915700EA990A /* HalfModalDismissAnimatedTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86A85526D4915700EA990A /* HalfModalDismissAnimatedTransition.swift */; };
 		AB86A85C26D4915700EA990A /* HalfModalIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86A85626D4915700EA990A /* HalfModalIndicatorView.swift */; };
@@ -315,6 +318,9 @@
 		AB6E711226FBAA9300464C08 /* RxRecordUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxRecordUseCase.swift; sourceTree = "<group>"; };
 		AB6E711426FBAAC400464C08 /* RxRecordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxRecordRepository.swift; sourceTree = "<group>"; };
 		AB8565DE26FD47970092B211 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		AB8565E026FD64280092B211 /* RxUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxUserUseCase.swift; sourceTree = "<group>"; };
+		AB8565E226FD64460092B211 /* RxUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxUserRepository.swift; sourceTree = "<group>"; };
+		AB8565E426FD76A70092B211 /* RxFirebaseUserDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxFirebaseUserDataStore.swift; sourceTree = "<group>"; };
 		AB86A85426D4915700EA990A /* HalfModalDismissInteractiveTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalDismissInteractiveTransition.swift; sourceTree = "<group>"; };
 		AB86A85526D4915700EA990A /* HalfModalDismissAnimatedTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalDismissAnimatedTransition.swift; sourceTree = "<group>"; };
 		AB86A85626D4915700EA990A /* HalfModalIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalIndicatorView.swift; sourceTree = "<group>"; };
@@ -629,6 +635,7 @@
 			isa = PBXGroup;
 			children = (
 				AB6E711226FBAA9300464C08 /* RxRecordUseCase.swift */,
+				AB8565E026FD64280092B211 /* RxUserUseCase.swift */,
 			);
 			path = RxSwift;
 			sourceTree = "<group>";
@@ -637,6 +644,7 @@
 			isa = PBXGroup;
 			children = (
 				AB6E711426FBAAC400464C08 /* RxRecordRepository.swift */,
+				AB8565E226FD64460092B211 /* RxUserRepository.swift */,
 			);
 			path = RxSwift;
 			sourceTree = "<group>";
@@ -647,6 +655,14 @@
 				AB8565DE26FD47970092B211 /* LoginViewModel.swift */,
 			);
 			path = LoginAndSignUp;
+			sourceTree = "<group>";
+		};
+		AB8565E626FD76AA0092B211 /* Rx */ = {
+			isa = PBXGroup;
+			children = (
+				AB8565E426FD76A70092B211 /* RxFirebaseUserDataStore.swift */,
+			);
+			path = Rx;
 			sourceTree = "<group>";
 		};
 		AB86A85226D4912500EA990A /* All */ = {
@@ -717,6 +733,7 @@
 				AB4397FC26DE0DB8008C8CA8 /* RealmGoalDataStore.swift */,
 				ABFAB20D26E638390095EC20 /* RealmGraphDataStore.swift */,
 				AB0C766426EBAD0E00BF5B64 /* RealmSettingDataStore.swift */,
+				AB8565E626FD76AA0092B211 /* Rx */,
 			);
 			path = DataStores;
 			sourceTree = "<group>";
@@ -1114,6 +1131,7 @@
 				ABA0570526B50F8100E3DF01 /* StudyRecordGraphColorViewController.swift in Sources */,
 				AB2B5B8426A2D0FD009BD3C7 /* NotificationName+Extension.swift in Sources */,
 				AB0C766026EBABE800BF5B64 /* GraphRealm.swift in Sources */,
+				AB8565E126FD64280092B211 /* RxUserUseCase.swift in Sources */,
 				AB93C2BD266BABA900C3AE8F /* Record.swift in Sources */,
 				AB86A85A26D4915700EA990A /* HalfModalDismissInteractiveTransition.swift in Sources */,
 				AB2B5BA026A2D1B7009BD3C7 /* ServiceConcept.swift in Sources */,
@@ -1159,6 +1177,7 @@
 				AB0C765726EB8B4300BF5B64 /* CustomButtonTableViewCell.swift in Sources */,
 				AB13EDFA26C8C585002F56FF /* GoalViewController.swift in Sources */,
 				AB4397F526DD57B9008C8CA8 /* Goal.swift in Sources */,
+				AB8565E526FD76A70092B211 /* RxFirebaseUserDataStore.swift in Sources */,
 				AB0C766926EBB10700BF5B64 /* SettingUseCase.swift in Sources */,
 				ABAE84DF26F414BB00A93A7F /* GoalHeaderView.swift in Sources */,
 				AB2B5B8E26A2D106009BD3C7 /* UITableViewCell+Extension.swift in Sources */,
@@ -1168,6 +1187,7 @@
 				ABFAB21626E6AD780095EC20 /* CustomSegmentedControl.swift in Sources */,
 				AB0C768926ECD9C400BF5B64 /* PasscodeView.swift in Sources */,
 				AB13EE6A26CB6965002F56FF /* RippleView.swift in Sources */,
+				AB8565E326FD64460092B211 /* RxUserRepository.swift in Sources */,
 				AB0C766226EBABEF00BF5B64 /* SettingRealm.swift in Sources */,
 				AB86A85E26D4915700EA990A /* HalfModalPresentationController.swift in Sources */,
 				AB2B5B8626A2D0FD009BD3C7 /* NSObjectProtocol+Extension.swift in Sources */,

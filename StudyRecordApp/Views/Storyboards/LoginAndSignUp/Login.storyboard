@@ -95,9 +95,6 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="ログイン"/>
-                                <connections>
-                                    <action selector="loginButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="wn1-fO-Mfp"/>
-                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gor-eW-KDk">
                                 <rect key="frame" x="130" y="802" width="264" height="30"/>

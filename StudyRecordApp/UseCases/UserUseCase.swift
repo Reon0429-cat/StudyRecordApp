@@ -5,7 +5,7 @@
 //  Created by 大西玲音 on 2021/08/28.
 //
 
-import UIKit
+import Foundation
 
 final class UserUseCase {
     

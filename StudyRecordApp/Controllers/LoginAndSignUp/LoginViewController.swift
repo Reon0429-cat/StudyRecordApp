@@ -31,12 +31,6 @@ final class LoginViewController: UIViewController {
     @IBOutlet private weak var passwordForgotLabel: UILabel!
     
     weak var delegate: LoginVCDelegate?
-    private var userUseCase = UserUseCase(
-        repository: UserRepository(
-            dataStore: FirebaseUserDataStore()
-        )
-    )
-    private let indicator = Indicator(kinds: PKHUDIndicator())
     private let viewModel: LoginViewModelType = LoginViewModel()
     private let disposeBag = DisposeBag()
     
@@ -79,6 +73,10 @@ final class LoginViewController: UIViewController {
             .subscribe(onNext: { self.present(ResetingPasswordViewController.self) })
             .disposed(by: disposeBag)
         
+        loginButton.rx.tap
+            .subscribe(onNext: viewModel.inputs.loginButtonDidTapped)
+            .disposed(by: disposeBag)
+        
         viewModel.outputs.loginButtonIsEnabled
             .drive(loginButton.rx.isEnabled)
             .disposed(by: disposeBag)
@@ -111,44 +109,18 @@ final class LoginViewController: UIViewController {
                             self.stackViewTopConstraint.constant += 100
                             self.view.layoutIfNeeded()
                         }
+                    case .presentErrorAlert(let title):
+                        self.showErrorAlert(title: title)
+                    case .changeRootVCToTopVC:
+                        self.changeRootVC(TopViewController.self)
                 }
             })
             .disposed(by: disposeBag)
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>,
                                with event: UIEvent?) {
         self.view.endEditing(true)
-    }
-    
-}
-
-// MARK: - IBAction func
-private extension LoginViewController {
-    
-    @IBAction func loginButtonDidTapped(_ sender: Any) {
-        guard let email = mailAddressTextField.text,
-              let password = passwordTextField.text else { return }
-        if CommunicationStatus().unstable() {
-            showErrorAlert(title: LocalizeKey.communicationEnvironmentIsNotGood.localizedString())
-            return
-        }
-        indicator.show(.progress)
-        userUseCase.login(email: email,
-                          password: password) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-                case .failure(let title):
-                    self.indicator.flash(.error) {
-                        self.showErrorAlert(title: title)
-                    }
-                case .success:
-                    self.indicator.flash(.success) {
-                        self.changeRootVC(TopViewController.self)
-                    }
-            }
-        }
     }
     
 }
