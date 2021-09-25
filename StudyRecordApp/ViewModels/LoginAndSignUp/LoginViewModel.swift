@@ -12,11 +12,6 @@ import FirebaseAuth
 
 protocol LoginViewModelInput {
     func viewDidLoad()
-    func loginButtonDidTapped()
-    func passwordForgotButtonDidTapped()
-    func passwordSecureButtonDidTapped()
-    func mailAddressTextFieldDidEntered(text: String)
-    func passwordTextFieldDidEntered(text: String)
     func notifiedKeyboardShowed()
     func notifiedKeyboardHidden()
 }
@@ -35,8 +30,34 @@ protocol LoginViewModelType {
 
 final class LoginViewModel {
     
-    init() {
+    init(input: (loginButtonEvent: ControlEvent<Void>,
+                 passwordForgotButtonEvent: ControlEvent<Void>,
+                 passwordSecureButtonEvent: ControlEvent<Void>,
+                 mailAddressTextFieldProperty: ControlProperty<String>,
+                 passwordTextFieldProperty: ControlProperty<String>)) {
         setupBindings()
+        
+        input.loginButtonEvent
+            .subscribe(onNext: loginButtonDidTapped)
+            .disposed(by: disposeBag)
+        
+        input.passwordForgotButtonEvent
+            .subscribe(onNext: {
+                self.eventRelay.accept(.presentResetingPasswordVC)
+            })
+            .disposed(by: disposeBag)
+        
+        input.passwordSecureButtonEvent
+            .subscribe(onNext: passwordSecureButtonDidTapped)
+            .disposed(by: disposeBag)
+        
+        input.mailAddressTextFieldProperty
+            .bind(to: mailAddressTextRelay)
+            .disposed(by: disposeBag)
+        
+        input.passwordTextFieldProperty
+            .bind(to: passwordTextRelay)
+            .disposed(by: disposeBag)
     }
     
     private var isPasswordHidden = true
@@ -90,6 +111,11 @@ final class LoginViewModel {
 // MARK: - Input
 extension LoginViewModel: LoginViewModelInput {
     
+    func viewDidLoad() {
+        changePasswordSecureButtonImage(isSlash: false)
+        passwordIsSecuredRelay.accept(true)
+    }
+    
     func loginButtonDidTapped() {
         if CommunicationStatus().unstable() {
             let title = LocalizeKey.communicationEnvironmentIsNotGood.localizedString()
@@ -101,27 +127,10 @@ extension LoginViewModel: LoginViewModelInput {
                           password: passwordTextRelay.value)
     }
     
-    func viewDidLoad() {
-        changePasswordSecureButtonImage(isSlash: false)
-        passwordIsSecuredRelay.accept(true)
-    }
-    
-    func mailAddressTextFieldDidEntered(text: String) {
-        mailAddressTextRelay.accept(text)
-    }
-    
-    func passwordTextFieldDidEntered(text: String) {
-        passwordTextRelay.accept(text)
-    }
-    
     func passwordSecureButtonDidTapped() {
         changePasswordSecureButtonImage(isSlash: isPasswordHidden)
         isPasswordHidden.toggle()
         passwordIsSecuredRelay.accept(!passwordIsSecuredRelay.value)
-    }
-    
-    func passwordForgotButtonDidTapped() {
-        eventRelay.accept(.presentResetingPasswordVC)
     }
     
     func notifiedKeyboardShowed() {

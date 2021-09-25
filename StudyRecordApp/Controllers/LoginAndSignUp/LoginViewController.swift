@@ -31,7 +31,15 @@ final class LoginViewController: UIViewController {
     @IBOutlet private weak var passwordForgotLabel: UILabel!
     
     weak var delegate: LoginVCDelegate?
-    private let viewModel: LoginViewModelType = LoginViewModel()
+    private lazy var viewModel: LoginViewModelType = LoginViewModel(
+        input: (
+            loginButtonEvent: loginButton.rx.tap,
+            passwordForgotButtonEvent: passwordForgotButton.rx.tap,
+            passwordSecureButtonEvent: passwordSecureButton.rx.tap,
+            mailAddressTextFieldProperty: mailAddressTextField.rx.text.orEmpty,
+            passwordTextFieldProperty: passwordTextField.rx.text.orEmpty
+        )
+    )
     private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -67,33 +75,6 @@ final class LoginViewController: UIViewController {
 private extension LoginViewController {
     
     func setupBindings() {
-        setupInputBindings()
-        setupOutputBindings()
-    }
-    
-    func setupInputBindings() {
-        mailAddressTextField.rx.text.orEmpty
-            .subscribe(onNext: viewModel.inputs.mailAddressTextFieldDidEntered(text:))
-            .disposed(by: disposeBag)
-        
-        passwordTextField.rx.text.orEmpty
-            .subscribe(onNext: viewModel.inputs.passwordTextFieldDidEntered(text:))
-            .disposed(by: disposeBag)
-        
-        passwordSecureButton.rx.tap
-            .subscribe(onNext: viewModel.inputs.passwordSecureButtonDidTapped)
-            .disposed(by: disposeBag)
-        
-        passwordForgotButton.rx.tap
-            .subscribe(onNext: viewModel.inputs.passwordForgotButtonDidTapped)
-            .disposed(by: disposeBag)
-        
-        loginButton.rx.tap
-            .subscribe(onNext: viewModel.inputs.loginButtonDidTapped)
-            .disposed(by: disposeBag)
-    }
-    
-    func setupOutputBindings() {
         viewModel.outputs.loginButtonIsEnabled
             .drive(loginButton.rx.isEnabled)
             .disposed(by: disposeBag)
