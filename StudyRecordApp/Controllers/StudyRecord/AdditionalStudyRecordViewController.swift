@@ -59,7 +59,8 @@ private extension AdditionalStudyRecordViewController {
                             memo: inputtedMemo,
                             yearID: UUID().uuidString,
                             monthID: UUID().uuidString,
-                            order: recordUseCase.records.count)
+                            order: recordUseCase.records.count,
+                            uuidString: UUID().uuidString)
         recordUseCase.save(record: record)
     }
     

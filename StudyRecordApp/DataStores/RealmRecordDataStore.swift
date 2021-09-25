@@ -49,7 +49,8 @@ final class RealmRecordDataStore: RecordDataStoreProtocol {
                             memo: record.memo,
                             yearID: record.yearID,
                             monthID: record.monthID,
-                            order: record.order)
+                            order: record.order,
+                            uuidString: record.uuidString)
         try! realm.write {
             object.title = record.title
             object.histories.removeAll()
@@ -63,6 +64,7 @@ final class RealmRecordDataStore: RecordDataStoreProtocol {
             object.yearID = record.yearID
             object.monthID = record.monthID
             object.order = record.order
+            object.uuidString = record.uuidString
         }
     }
     
@@ -110,7 +112,8 @@ private extension RecordRealm {
                             memo: record.memo,
                             yearID: record.yearID,
                             monthID: record.monthID,
-                            order: record.order)
+                            order: record.order,
+                            uuidString: record.uuidString)
         self.title = record.title
         self.histories = record.historiesList
         self.isExpanded = record.isExpanded
@@ -122,6 +125,7 @@ private extension RecordRealm {
         self.yearID = record.yearID
         self.monthID = record.monthID
         self.order = record.order
+        self.uuidString = record.uuidString
     }
     
 }
@@ -137,7 +141,8 @@ private extension Record {
                             memo: record.memo,
                             yearID: record.yearID,
                             monthID: record.monthID,
-                            order: record.order)
+                            order: record.order,
+                            uuidString: record.uuidString)
         self.title = record.title
         self.histories = record.histories
         self.isExpanded = record.isExpanded
@@ -146,6 +151,7 @@ private extension Record {
         self.yearID = record.yearID
         self.monthID = record.monthID
         self.order = record.order
+        self.uuidString = record.uuidString
     }
     
 }
