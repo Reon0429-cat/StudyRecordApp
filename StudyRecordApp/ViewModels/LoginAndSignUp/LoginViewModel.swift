@@ -30,11 +30,12 @@ protocol LoginViewModelType {
 
 final class LoginViewModel {
     
-    init(input: (loginButtonEvent: ControlEvent<Void>,
-                 passwordForgotButtonEvent: ControlEvent<Void>,
-                 passwordSecureButtonEvent: ControlEvent<Void>,
-                 mailAddressTextFieldProperty: ControlProperty<String>,
-                 passwordTextFieldProperty: ControlProperty<String>)) {
+    init(input:
+         (loginButtonEvent: ControlEvent<Void>,
+          passwordForgotButtonEvent: ControlEvent<Void>,
+          passwordSecureButtonEvent: ControlEvent<Void>,
+          mailAddressTextFieldProperty: ControlProperty<String>,
+          passwordTextFieldProperty: ControlProperty<String>)) {
         setupBindings()
         
         input.loginButtonEvent
