@@ -28,15 +28,15 @@ final class RecordUseCase {
                                monthID: record.monthID,
                                order: record.order,
                                uuidString: record.uuidString)
-        repository.update(record: newRecord, at: index)
+        repository.update(record: newRecord)
     }
     
     func save(record: Record) {
         repository.create(record: record)
     }
     
-    func delete(at index: Int) {
-        repository.delete(at: index)
+    func delete(record: Record) {
+        repository.delete(record: record)
     }
     
     func sort(from sourceIndexPath: IndexPath,
@@ -45,8 +45,8 @@ final class RecordUseCase {
                         to: destinationIndexPath)
     }
     
-    func update(record: Record, at index: Int) {
-        repository.update(record: record, at: index)
+    func update(record: Record) {
+        repository.update(record: record)
     }
     
     func read(at index: Int) -> Record {

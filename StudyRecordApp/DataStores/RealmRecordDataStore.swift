@@ -9,10 +9,9 @@ import RealmSwift
 
 protocol RecordDataStoreProtocol {
     func create(record: Record)
-    func read(at index: Int) -> Record
     func readAll() -> [Record]
-    func update(record: Record, at index: Int)
-    func delete(at index: Int)
+    func update(record: Record)
+    func delete(record: Record)
     func sort(from sourceIndexPath: IndexPath,
               to destinationIndexPath: IndexPath)
 }
@@ -31,16 +30,13 @@ final class RealmRecordDataStore: RecordDataStoreProtocol {
         }
     }
     
-    func read(at index: Int) -> Record {
-        return Record(record: objects[index])
-    }
-    
     func readAll() -> [Record] {
         return objects.map { Record(record: $0) }
     }
     
-    func update(record: Record, at index: Int) {
-        let object = objects[index]
+    func update(record: Record) {
+        let object = realm.object(ofType: RecordRealm.self,
+                                  forPrimaryKey: record.uuidString) ?? RecordRealm()
         // Recordのプロパティが増えたときにコンパイルで漏れを防ぐためにインスタンスを再生成している。
         let record = Record(title: record.title,
                             histories: record.histories,
@@ -68,14 +64,15 @@ final class RealmRecordDataStore: RecordDataStoreProtocol {
         }
     }
     
-    func delete(at index: Int) {
-        let object = objects[index]
+    func delete(record: Record) {
+        let object = realm.object(ofType: RecordRealm.self,
+                                  forPrimaryKey: record.uuidString) ?? RecordRealm()
         try! realm.write {
             realm.delete(object)
             // オブジェクトを消去するとorderに抜けが生じるため、その分詰める
-            for i in index..<objects.count {
-                objects[i].order -= 1
-            }
+            objects
+                .filter { record.order <= $0.order }
+                .forEach { $0.order -= 1 }
         }
     }
     
