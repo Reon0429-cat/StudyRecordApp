@@ -27,7 +27,8 @@ final class GoalUseCase {
         let newGoals = category.goals + [goal]
         let newCategory = Category(title: category.title,
                                    isExpanded: category.isExpanded,
-                                   goals: newGoals)
+                                   goals: newGoals,
+                                   identifier: category.identifier)
         repository.update(category: newCategory, at: section)
     }
     
@@ -41,7 +42,8 @@ final class GoalUseCase {
         goals[indexPath.row] = goal
         let newCategory = Category(title: category.title,
                                    isExpanded: category.isExpanded,
-                                   goals: goals)
+                                   goals: goals,
+                                   identifier: category.identifier)
         repository.update(category: newCategory, at: indexPath.section)
     }
     
@@ -59,7 +61,8 @@ final class GoalUseCase {
         newGoals[indexPath.row] = newGoal
         let newCategory = Category(title: category.title,
                                    isExpanded: category.isExpanded,
-                                   goals: newGoals)
+                                   goals: newGoals,
+                                   identifier: category.identifier)
         repository.update(category: newCategory, at: indexPath.section)
     }
     
@@ -67,7 +70,8 @@ final class GoalUseCase {
         let category = repository.readAll()[section]
         let newCategory = Category(title: category.title,
                                    isExpanded: !category.isExpanded,
-                                   goals: category.goals)
+                                   goals: category.goals,
+                                   identifier: category.identifier)
         repository.update(category: newCategory, at: section)
     }
     

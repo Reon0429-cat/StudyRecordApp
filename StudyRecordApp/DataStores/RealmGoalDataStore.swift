@@ -41,12 +41,14 @@ final class RealmGoalDataStore: GoalDataStoreProtocol {
         let object = objects[index]
         let category = Category(title: category.title,
                                 isExpanded: category.isExpanded,
-                                goals: category.goals)
+                                goals: category.goals,
+                                identifier: category.identifier)
         try! realm.write {
             object.title = category.title
             object.isExpanded = category.isExpanded
             object.goals.removeAll()
             object.goals.append(objectsIn: category.realmGoals)
+            object.identifier = category.identifier
         }
     }
     
@@ -65,6 +67,7 @@ private extension Category {
         self.title = category.title
         self.isExpanded = category.isExpanded
         self.goals = category.commonGoals
+        self.identifier = category.identifier
     }
     
 }
@@ -75,10 +78,12 @@ private extension CategoryRealm {
         self.init()
         let category = Category(title: category.title,
                                 isExpanded: category.isExpanded,
-                                goals: category.goals)
+                                goals: category.goals,
+                                identifier: category.identifier)
         self.title = category.title
         self.isExpanded = category.isExpanded
         self.goals = category.realmGoals
+        self.identifier = category.identifier
     }
     
 }
