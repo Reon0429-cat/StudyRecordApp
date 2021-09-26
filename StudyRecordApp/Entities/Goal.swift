@@ -13,7 +13,7 @@ struct Category {
     let isExpanded: Bool
     let goals: [Goal]
     let identifier: String
-
+    
     struct Goal {
         var title: String
         var memo: String

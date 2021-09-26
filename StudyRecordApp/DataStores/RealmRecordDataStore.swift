@@ -60,7 +60,6 @@ final class RealmRecordDataStore: RecordDataStoreProtocol {
             object.yearID = record.yearID
             object.monthID = record.monthID
             object.order = record.order
-            object.identifier = record.identifier
         }
     }
     
