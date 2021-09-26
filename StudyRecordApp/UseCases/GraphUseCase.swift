@@ -21,15 +21,16 @@ final class GraphUseCase {
                                          isFilled: false,
                                          withDots: true),
                               bar: Bar(width: 20),
-                              dot: Dot(isSquare: false))
+                              dot: Dot(isSquare: false),
+                              identifier: UUID().uuidString)
             repository.create(graph: graph)
             return graph
         }
-        return repository.read(at: 0)
+        return repository.readAll()[0]
     }
     
     func update(graph: Graph) {
-        repository.update(graph: graph, at: 0)
+        repository.update(graph: graph)
     }
     
 }

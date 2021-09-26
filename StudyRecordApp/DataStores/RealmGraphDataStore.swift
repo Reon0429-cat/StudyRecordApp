@@ -9,10 +9,8 @@ import RealmSwift
 
 protocol GraphDataStoreProtocol {
     func create(graph: Graph)
-    func read(at index: Int) -> Graph
     func readAll() -> [Graph]
-    func update(graph: Graph, at index: Int)
-    func delete(at index: Int)
+    func update(graph: Graph)
 }
 
 final class RealmGraphDataStore: GraphDataStoreProtocol {
@@ -23,38 +21,30 @@ final class RealmGraphDataStore: GraphDataStoreProtocol {
     }
     
     func create(graph: Graph) {
-        let graphRealm = GraphRealm(graph: graph)
+        let object = realm.object(ofType: GraphRealm.self,
+                                  forPrimaryKey: graph.identifier) ?? GraphRealm()
         try! realm.write {
-            realm.add(graphRealm)
+            realm.add(object)
         }
-    }
-    
-    func read(at index: Int) -> Graph {
-        return Graph(graph: objects[index])
     }
     
     func readAll() -> [Graph] {
         return objects.map { Graph(graph: $0) }
     }
     
-    func update(graph: Graph, at index: Int) {
-        let object = objects[index]
+    func update(graph: Graph) {
+        let object = realm.object(ofType: GraphRealm.self,
+                                  forPrimaryKey: graph.identifier) ?? GraphRealm()
         let graph = Graph(selectedType: graph.selectedType,
                           line: graph.line,
                           bar: graph.bar,
-                          dot: graph.dot)
+                          dot: graph.dot,
+                          identifier: graph.identifier)
         try! realm.write {
             object.selectedType = graph.selectedType
             object.line = LineRealm(graph: graph)
             object.bar = BarRealm(graph: graph)
             object.dot = DotRealm(graph: graph)
-        }
-    }
-    
-    func delete(at index: Int) {
-        let object = objects[index]
-        try! realm.write {
-            realm.delete(object)
         }
     }
     
@@ -67,11 +57,13 @@ private extension GraphRealm {
         let graph = Graph(selectedType: graph.selectedType,
                           line: graph.line,
                           bar: graph.bar,
-                          dot: graph.dot)
+                          dot: graph.dot,
+                          identifier: graph.identifier)
         self.selectedType = graph.selectedType
         self.line = LineRealm(graph: graph)
         self.bar = BarRealm(graph: graph)
         self.dot = DotRealm(graph: graph)
+        self.identifier = graph.identifier
     }
     
 }
@@ -111,7 +103,8 @@ private extension Graph {
         self.init(selectedType: graph.selectedType,
                   line: Line(graph: graph),
                   bar: Bar(graph: graph),
-                  dot: Dot(graph: graph))
+                  dot: Dot(graph: graph),
+                  identifier: graph.identifier)
     }
     
 }

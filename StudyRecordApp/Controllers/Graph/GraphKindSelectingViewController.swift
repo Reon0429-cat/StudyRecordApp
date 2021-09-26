@@ -99,13 +99,14 @@ private extension GraphKindSelectingViewController {
     
     @IBAction func saveButtonDidTapped(_ sender: Any) {
         let selectedType = SelectedGraphType.allCases[segmentedControl.selectedSegmentIndex]
-        let graph = Graph(selectedType: selectedType,
-                          line: Line(isSmooth: isSmooth,
-                                     isFilled: isFilled,
-                                     withDots: withDots),
-                          bar: Bar(width: width),
-                          dot: Dot(isSquare: isSquare))
-        graphUseCase.update(graph: graph)
+        let newGraph = Graph(selectedType: selectedType,
+                             line: Line(isSmooth: isSmooth,
+                                        isFilled: isFilled,
+                                        withDots: withDots),
+                             bar: Bar(width: width),
+                             dot: Dot(isSquare: isSquare),
+                             identifier: graphUseCase.graph.identifier)
+        graphUseCase.update(graph: newGraph)
         NotificationCenter.default.post(name: .graphSaveButtonDidTappped, object: nil)
         dismiss(animated: true)
     }

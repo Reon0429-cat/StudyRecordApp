@@ -21,6 +21,11 @@ final class GraphRealm: Object {
     @objc dynamic var line: LineRealm? = LineRealm()
     @objc dynamic var bar: BarRealm? = BarRealm()
     @objc dynamic var dot: DotRealm? = DotRealm()
+    @objc dynamic var identifier: String = UUID().uuidString
+    
+    override class func primaryKey() -> String? {
+        return "identifier"
+    }
 }
 
 final class LineRealm: Object {
