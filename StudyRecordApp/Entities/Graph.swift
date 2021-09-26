@@ -13,6 +13,7 @@ struct Graph {
     var line: Line
     var bar: Bar
     var dot: Dot
+    var identifier: String
 }
 
 struct Line {

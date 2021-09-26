@@ -147,7 +147,7 @@ extension StudyRecordViewController: RecordTableViewCellDelegate {
     func deleteButtonDidTappped(row: Int) {
         let alert = Alert.create(title: LocalizeKey.doYouReallyWantToDeleteThis.localizedString())
             .addAction(title: LocalizeKey.delete.localizedString(), style: .destructive) {
-                self.recordUseCase.delete(at: row)
+                self.recordUseCase.delete(record: self.records[row])
                 self.tableView.reloadData()
                 self.delegate?.deleteButtonDidTappped(records: self.records)
                 self.dismiss(animated: true)

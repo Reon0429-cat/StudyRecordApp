@@ -9,10 +9,9 @@ import RealmSwift
 
 protocol GoalDataStoreProtocol {
     func create(category: Category)
-    func read(at index: Int) -> Category
     func readAll() -> [Category]
-    func update(category: Category, at index: Int)
-    func delete(at index: Int)
+    func update(category: Category)
+    func delete(category: Category)
 }
 
 final class RealmGoalDataStore: GoalDataStoreProtocol {
@@ -29,19 +28,17 @@ final class RealmGoalDataStore: GoalDataStoreProtocol {
         }
     }
     
-    func read(at index: Int) -> Category {
-        return Category(category: objects[index])
-    }
-    
     func readAll() -> [Category] {
         return objects.map { Category(category: $0) }
     }
     
-    func update(category: Category, at index: Int) {
-        let object = objects[index]
+    func update(category: Category) {
+        let object = realm.object(ofType: CategoryRealm.self,
+                                  forPrimaryKey: category.identifier) ?? CategoryRealm()
         let category = Category(title: category.title,
                                 isExpanded: category.isExpanded,
-                                goals: category.goals)
+                                goals: category.goals,
+                                identifier: category.identifier)
         try! realm.write {
             object.title = category.title
             object.isExpanded = category.isExpanded
@@ -50,8 +47,9 @@ final class RealmGoalDataStore: GoalDataStoreProtocol {
         }
     }
     
-    func delete(at index: Int) {
-        let object = objects[index]
+    func delete(category: Category) {
+        let object = realm.object(ofType: CategoryRealm.self,
+                                  forPrimaryKey: category.identifier) ?? CategoryRealm()
         try! realm.write {
             realm.delete(object)
         }
@@ -65,6 +63,7 @@ private extension Category {
         self.title = category.title
         self.isExpanded = category.isExpanded
         self.goals = category.commonGoals
+        self.identifier = category.identifier
     }
     
 }
@@ -75,10 +74,12 @@ private extension CategoryRealm {
         self.init()
         let category = Category(title: category.title,
                                 isExpanded: category.isExpanded,
-                                goals: category.goals)
+                                goals: category.goals,
+                                identifier: category.identifier)
         self.title = category.title
         self.isExpanded = category.isExpanded
         self.goals = category.realmGoals
+        self.identifier = category.identifier
     }
     
 }

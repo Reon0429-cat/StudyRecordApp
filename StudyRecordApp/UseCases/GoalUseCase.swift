@@ -27,12 +27,13 @@ final class GoalUseCase {
         let newGoals = category.goals + [goal]
         let newCategory = Category(title: category.title,
                                    isExpanded: category.isExpanded,
-                                   goals: newGoals)
-        repository.update(category: newCategory, at: section)
+                                   goals: newGoals,
+                                   identifier: category.identifier)
+        repository.update(category: newCategory)
     }
     
-    func update(category: Category, at index: Int) {
-        repository.update(category: category, at: index)
+    func update(category: Category) {
+        repository.update(category: category)
     }
     
     func update(goal: Category.Goal, at indexPath: IndexPath) {
@@ -41,8 +42,9 @@ final class GoalUseCase {
         goals[indexPath.row] = goal
         let newCategory = Category(title: category.title,
                                    isExpanded: category.isExpanded,
-                                   goals: goals)
-        repository.update(category: newCategory, at: indexPath.section)
+                                   goals: goals,
+                                   identifier: category.identifier)
+        repository.update(category: newCategory)
     }
     
     func toggleGoalIsExpanded(at indexPath: IndexPath) {
@@ -59,16 +61,18 @@ final class GoalUseCase {
         newGoals[indexPath.row] = newGoal
         let newCategory = Category(title: category.title,
                                    isExpanded: category.isExpanded,
-                                   goals: newGoals)
-        repository.update(category: newCategory, at: indexPath.section)
+                                   goals: newGoals,
+                                   identifier: category.identifier)
+        repository.update(category: newCategory)
     }
     
     func toggleCategoryIsExpanded(at section: Int) {
         let category = repository.readAll()[section]
         let newCategory = Category(title: category.title,
                                    isExpanded: !category.isExpanded,
-                                   goals: category.goals)
-        repository.update(category: newCategory, at: section)
+                                   goals: category.goals,
+                                   identifier: category.identifier)
+        repository.update(category: newCategory)
     }
     
 }

@@ -170,7 +170,8 @@ private extension AddAndEditGoalViewController {
             case .add:
                 let category = Category(title: categoryTitle,
                                         isExpanded: true,
-                                        goals: [goal])
+                                        goals: [goal],
+                                        identifier: UUID().uuidString)
                 goalUseCase.save(category: category)
             case .sectionAdd, .categoryAdd:
                 guard let indexPath = selectedIndexPath else { return }

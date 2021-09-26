@@ -26,16 +26,17 @@ final class RecordUseCase {
                                memo: record.memo,
                                yearID: record.yearID,
                                monthID: record.monthID,
-                               order: record.order)
-        repository.update(record: newRecord, at: index)
+                               order: record.order,
+                               identifier: record.identifier)
+        repository.update(record: newRecord)
     }
     
     func save(record: Record) {
         repository.create(record: record)
     }
     
-    func delete(at index: Int) {
-        repository.delete(at: index)
+    func delete(record: Record) {
+        repository.delete(record: record)
     }
     
     func sort(from sourceIndexPath: IndexPath,
@@ -44,8 +45,8 @@ final class RecordUseCase {
                         to: destinationIndexPath)
     }
     
-    func update(record: Record, at index: Int) {
-        repository.update(record: record, at: index)
+    func update(record: Record) {
+        repository.update(record: record)
     }
     
     func read(at index: Int) -> Record {
@@ -83,13 +84,13 @@ final class RecordUseCase {
             if studyTime.today >= 60 {
                 return todayLocalizedText + ": " + "\(studyTime.today / 60) " + hourLocalizedText
             }
-            return todayLocalizedText + ": " + "\(studyTime.today / 60) " + minuteLocalizedText
+            return todayLocalizedText + ": " + "\(studyTime.today) " + minuteLocalizedText
         }()
         let totalText: String = {
             if studyTime.total >= 60 {
                 return totalLocalizedText + ": " + "\(studyTime.total / 60) " + hourLocalizedText
             }
-            return totalLocalizedText + ": " + "\(studyTime.total / 60) " + minuteLocalizedText
+            return totalLocalizedText + ": " + "\(studyTime.total) " + minuteLocalizedText
         }()
         return (todayText: todayText, totalText: totalText)
     }

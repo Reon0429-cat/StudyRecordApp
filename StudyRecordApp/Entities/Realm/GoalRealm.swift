@@ -12,6 +12,11 @@ final class CategoryRealm: Object {
     @objc dynamic var title: String = ""
     @objc dynamic var isExpanded: Bool = false
     var goals = List<GoalRealm>()
+    @objc dynamic var identifier = UUID().uuidString
+    
+    override class func primaryKey() -> String? {
+        return "identifier"
+    }
 }
 
 final class GoalRealm: Object {

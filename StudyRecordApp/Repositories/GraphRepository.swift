@@ -9,10 +9,8 @@ import Foundation
 
 protocol GraphRepositoryProtocol {
     func create(graph: Graph)
-    func read(at index: Int) -> Graph
     func readAll() -> [Graph]
-    func update(graph: Graph, at index: Int)
-    func delete(at index: Int)
+    func update(graph: Graph)
 }
 
 final class GraphRepository: GraphRepositoryProtocol {
@@ -26,20 +24,12 @@ final class GraphRepository: GraphRepositoryProtocol {
         dataStore.create(graph: graph)
     }
     
-    func read(at index: Int) -> Graph {
-        return dataStore.read(at: index)
-    }
-    
     func readAll() -> [Graph] {
-        return dataStore.readAll()
+        return dataStore.readAll() 
     }
     
-    func update(graph: Graph, at index: Int) {
-        dataStore.update(graph: graph, at: index)
-    }
-    
-    func delete(at index: Int) {
-        dataStore.delete(at: index)
+    func update(graph: Graph) {
+        dataStore.update(graph: graph)
     }
     
 }

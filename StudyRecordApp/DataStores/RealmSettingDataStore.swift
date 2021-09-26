@@ -9,10 +9,9 @@ import RealmSwift
 
 protocol SettingDataStoreProtocol {
     func create(setting: Setting)
-    func read(at index: Int) -> Setting
     func readAll() -> [Setting]
-    func update(setting: Setting, at index: Int)
-    func delete(at index: Int)
+    func update(setting: Setting)
+    func delete(setting: Setting)
 }
 
 final class RealmSettingDataStore: SettingDataStoreProtocol {
@@ -29,22 +28,20 @@ final class RealmSettingDataStore: SettingDataStoreProtocol {
         }
     }
     
-    func read(at index: Int) -> Setting {
-        return Setting(setting: objects[index])
-    }
-    
     func readAll() -> [Setting] {
         return objects.map { Setting(setting: $0) }
     }
     
-    func update(setting: Setting, at index: Int) {
-        let object = objects[index]
+    func update(setting: Setting) {
+        let object = realm.object(ofType: SettingRealm.self,
+                                  forPrimaryKey: setting.identifier) ?? SettingRealm()
         let setting = Setting(isDarkMode: setting.isDarkMode,
                               darkModeSettingType: setting.darkModeSettingType,
                               isPasscodeSetted: setting.isPasscodeSetted,
                               passcode: setting.passcode,
                               isPushNotificationSetted: setting.isPushNotificationSetted,
-                              language: setting.language)
+                              language: setting.language,
+                              identifier: setting.identifier)
         try! realm.write {
             object.isDarkMode = setting.isDarkMode
             object.darkModeSettingType = setting.darkModeSettingType
@@ -55,8 +52,9 @@ final class RealmSettingDataStore: SettingDataStoreProtocol {
         }
     }
     
-    func delete(at index: Int) {
-        let object = objects[index]
+    func delete(setting: Setting) {
+        let object = realm.object(ofType: SettingRealm.self,
+                                  forPrimaryKey: setting.identifier) ?? SettingRealm()
         try! realm.write {
             realm.delete(object)
         }
@@ -73,12 +71,14 @@ private extension SettingRealm {
                               isPasscodeSetted: setting.isPasscodeSetted,
                               passcode: setting.passcode,
                               isPushNotificationSetted: setting.isPushNotificationSetted,
-                              language: setting.language)
+                              language: setting.language,
+                              identifier: setting.identifier)
         self.darkModeSettingType = setting.darkModeSettingType
         self.isPasscodeSetted = setting.isPasscodeSetted
         self.passcode = setting.passcode
         self.isPushNotificationSetted = setting.isPushNotificationSetted
         self.language = setting.language
+        self.identifier = setting.identifier
     }
     
 }
@@ -91,7 +91,8 @@ private extension Setting {
                   isPasscodeSetted: setting.isPasscodeSetted,
                   passcode: setting.passcode,
                   isPushNotificationSetted: setting.isPushNotificationSetted,
-                  language: setting.language)
+                  language: setting.language,
+                  identifier: setting.identifier)
     }
     
 }

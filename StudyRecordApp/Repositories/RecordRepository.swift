@@ -11,8 +11,8 @@ protocol RecordRepositoryProtocol {
     func create(record: Record)
     func read(at index: Int) -> Record
     func readAll() -> [Record]
-    func update(record: Record, at index: Int)
-    func delete(at index: Int)
+    func update(record: Record)
+    func delete(record: Record)
     func sort(from sourceIndexPath: IndexPath,
               to destinationIndexPath: IndexPath)
 }
@@ -29,19 +29,19 @@ final class RecordRepository: RecordRepositoryProtocol {
     }
     
     func read(at index: Int) -> Record {
-        return dataStore.read(at: index)
+        return dataStore.readAll()[index]
     }
     
     func readAll() -> [Record] {
         return dataStore.readAll()
     }
     
-    func update(record: Record, at index: Int) {
-        dataStore.update(record: record, at: index)
+    func update(record: Record) {
+        dataStore.update(record: record) 
     }
     
-    func delete(at index: Int) {
-        dataStore.delete(at: index)
+    func delete(record: Record) {
+        dataStore.delete(record: record)
     }
     
     func sort(from sourceIndexPath: IndexPath,

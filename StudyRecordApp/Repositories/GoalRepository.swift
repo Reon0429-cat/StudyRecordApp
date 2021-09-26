@@ -11,8 +11,8 @@ protocol GoalRepositoryProtocol {
     func create(category: Category)
     func read(at index: Int) -> Category
     func readAll() -> [Category]
-    func update(category: Category, at index: Int)
-    func delete(at index: Int)
+    func update(category: Category)
+    func delete(category: Category)
 }
 
 final class GoalRepository: GoalRepositoryProtocol {
@@ -27,19 +27,19 @@ final class GoalRepository: GoalRepositoryProtocol {
     }
     
     func read(at index: Int) -> Category {
-        return dataStore.read(at: index)
+        return dataStore.readAll()[index]
     }
     
     func readAll() -> [Category] {
         return dataStore.readAll()
     }
     
-    func update(category: Category, at index: Int) {
-        dataStore.update(category: category, at: index)
+    func update(category: Category) {
+        dataStore.update(category: category)
     }
     
-    func delete(at index: Int) {
-        dataStore.delete(at: index)
+    func delete(category: Category) {
+        dataStore.delete(category: category)
     }
     
 }

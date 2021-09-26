@@ -329,7 +329,7 @@ extension EditStudyRecordViewController: UITextFieldDelegate {
 extension EditStudyRecordViewController: SubCustomNavigationBarDelegate {
     
     func saveButtonDidTapped() {
-        recordUseCase.update(record: selectedRecord, at: selectedRow)
+        recordUseCase.update(record: selectedRecord)
         dismiss(animated: true)
     }
     

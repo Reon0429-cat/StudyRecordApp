@@ -21,7 +21,8 @@ final class SettingUseCase {
                                   isPasscodeSetted: false,
                                   passcode: "",
                                   isPushNotificationSetted: true,
-                                  language: .japanese)
+                                  language: .japanese,
+                                  identifier: UUID().uuidString)
             repository.create(setting: setting)
             return setting
         }
@@ -29,7 +30,7 @@ final class SettingUseCase {
     }
     
     func update(setting: Setting) {
-        repository.update(setting: setting, at: 0)
+        repository.update(setting: setting)
     }
     
     func change(isDarkMode: Bool) {
@@ -38,8 +39,9 @@ final class SettingUseCase {
                                  isPasscodeSetted: setting.isPasscodeSetted,
                                  passcode: setting.passcode,
                                  isPushNotificationSetted: setting.isPushNotificationSetted,
-                                 language: setting.language)
-        repository.update(setting: newSetting, at: 0)
+                                 language: setting.language,
+                                 identifier: setting.identifier)
+        repository.update(setting: newSetting)
     }
     
     func change(darkModeSettingType: DarkModeSettingType) {
@@ -48,8 +50,9 @@ final class SettingUseCase {
                                  isPasscodeSetted: setting.isPasscodeSetted,
                                  passcode: setting.passcode,
                                  isPushNotificationSetted: setting.isPushNotificationSetted,
-                                 language: setting.language)
-        repository.update(setting: newSetting, at: 0)
+                                 language: setting.language,
+                                 identifier: setting.identifier)
+        repository.update(setting: newSetting)
     }
     
     func change(isPasscodeSetted: Bool) {
@@ -58,8 +61,9 @@ final class SettingUseCase {
                                  isPasscodeSetted: isPasscodeSetted,
                                  passcode: setting.passcode,
                                  isPushNotificationSetted: setting.isPushNotificationSetted,
-                                 language: setting.language)
-        repository.update(setting: newSetting, at: 0)
+                                 language: setting.language,
+                                 identifier: setting.identifier)
+        repository.update(setting: newSetting)
     }
     
     func change(isPushNotificationSetted: Bool) {
@@ -68,8 +72,9 @@ final class SettingUseCase {
                                  isPasscodeSetted: setting.isPasscodeSetted,
                                  passcode: setting.passcode,
                                  isPushNotificationSetted: isPushNotificationSetted,
-                                 language: setting.language)
-        repository.update(setting: newSetting, at: 0)
+                                 language: setting.language,
+                                 identifier: setting.identifier)
+        repository.update(setting: newSetting)
     }
     
     func change(language: Language) {
@@ -78,8 +83,9 @@ final class SettingUseCase {
                                  isPasscodeSetted: setting.isPasscodeSetted,
                                  passcode: setting.passcode,
                                  isPushNotificationSetted: setting.isPushNotificationSetted,
-                                 language: language)
-        repository.update(setting: newSetting, at: 0)
+                                 language: language,
+                                 identifier: setting.identifier)
+        repository.update(setting: newSetting)
     }
     
     var isPasscodeCreated: Bool {
@@ -104,8 +110,9 @@ final class SettingUseCase {
                                  isPasscodeSetted: setting.isPasscodeSetted,
                                  passcode: passcode,
                                  isPushNotificationSetted: setting.isPushNotificationSetted,
-                                 language: setting.language)
-        repository.update(setting: newSetting, at: 0)
+                                 language: setting.language,
+                                 identifier: setting.identifier)
+        repository.update(setting: newSetting)
     }
     
 }
