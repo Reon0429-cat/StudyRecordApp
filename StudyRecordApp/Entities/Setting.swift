@@ -15,6 +15,7 @@ struct Setting {
     let passcode: String
     let isPushNotificationSetted: Bool
     let language: Language
+    let identifier: String
 }
 
 enum DarkModeSettingType: Int {

@@ -11,8 +11,8 @@ protocol SettingRepositoryProtocol {
     func create(setting: Setting)
     func read(at index: Int) -> Setting
     func readAll() -> [Setting]
-    func update(setting: Setting, at index: Int)
-    func delete(at index: Int)
+    func update(setting: Setting)
+    func delete(setting: Setting)
 }
 
 final class SettingRepository: SettingRepositoryProtocol {
@@ -27,19 +27,19 @@ final class SettingRepository: SettingRepositoryProtocol {
     }
     
     func read(at index: Int) -> Setting {
-        return dataStore.read(at: index)
+        return dataStore.readAll()[index]
     }
     
     func readAll() -> [Setting] {
         return dataStore.readAll()
     }
     
-    func update(setting: Setting, at index: Int) {
-        dataStore.update(setting: setting, at: index)
+    func update(setting: Setting) {
+        dataStore.update(setting: setting)
     }
     
-    func delete(at index: Int) {
-        dataStore.delete(at: index)
+    func delete(setting: Setting) {
+        dataStore.delete(setting: setting)
     }
     
 }

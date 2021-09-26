@@ -31,4 +31,9 @@ final class SettingRealm: Object {
             languageRawValue = newValue.rawValue
         }
     }
+    @objc dynamic var identifier: String = UUID().uuidString
+    
+    override class func primaryKey() -> String? {
+        return "identifier"
+    }
 }
