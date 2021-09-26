@@ -36,7 +36,7 @@ final class RealmRecordDataStore: RecordDataStoreProtocol {
     
     func update(record: Record) {
         let object = realm.object(ofType: RecordRealm.self,
-                                  forPrimaryKey: record.uuidString) ?? RecordRealm()
+                                  forPrimaryKey: record.identifier) ?? RecordRealm()
         // Recordのプロパティが増えたときにコンパイルで漏れを防ぐためにインスタンスを再生成している。
         let record = Record(title: record.title,
                             histories: record.histories,
@@ -46,7 +46,7 @@ final class RealmRecordDataStore: RecordDataStoreProtocol {
                             yearID: record.yearID,
                             monthID: record.monthID,
                             order: record.order,
-                            uuidString: record.uuidString)
+                            identifier: record.identifier)
         try! realm.write {
             object.title = record.title
             object.histories.removeAll()
@@ -60,13 +60,13 @@ final class RealmRecordDataStore: RecordDataStoreProtocol {
             object.yearID = record.yearID
             object.monthID = record.monthID
             object.order = record.order
-            object.uuidString = record.uuidString
+            object.identifier = record.identifier
         }
     }
     
     func delete(record: Record) {
         let object = realm.object(ofType: RecordRealm.self,
-                                  forPrimaryKey: record.uuidString) ?? RecordRealm()
+                                  forPrimaryKey: record.identifier) ?? RecordRealm()
         try! realm.write {
             realm.delete(object)
             // オブジェクトを消去するとorderに抜けが生じるため、その分詰める
@@ -110,7 +110,7 @@ private extension RecordRealm {
                             yearID: record.yearID,
                             monthID: record.monthID,
                             order: record.order,
-                            uuidString: record.uuidString)
+                            identifier: record.identifier)
         self.title = record.title
         self.histories = record.historiesList
         self.isExpanded = record.isExpanded
@@ -122,7 +122,7 @@ private extension RecordRealm {
         self.yearID = record.yearID
         self.monthID = record.monthID
         self.order = record.order
-        self.uuidString = record.uuidString
+        self.identifier = record.identifier
     }
     
 }
@@ -139,7 +139,7 @@ private extension Record {
                             yearID: record.yearID,
                             monthID: record.monthID,
                             order: record.order,
-                            uuidString: record.uuidString)
+                            identifier: record.identifier)
         self.title = record.title
         self.histories = record.histories
         self.isExpanded = record.isExpanded
@@ -148,7 +148,7 @@ private extension Record {
         self.yearID = record.yearID
         self.monthID = record.monthID
         self.order = record.order
-        self.uuidString = record.uuidString
+        self.identifier = record.identifier
     }
     
 }

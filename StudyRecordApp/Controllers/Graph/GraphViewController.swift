@@ -127,7 +127,7 @@ extension GraphViewController: UITableViewDataSource {
                                yearID: record.yearID,
                                monthID: record.monthID,
                                order: record.order,
-                               uuidString: record.uuidString)
+                               identifier: record.identifier)
         let graph = graphUseCase.graph
         cell.configure(record: newRecord, graph: graph)
         cell.delegate = self

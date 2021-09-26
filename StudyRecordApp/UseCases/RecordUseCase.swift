@@ -27,7 +27,7 @@ final class RecordUseCase {
                                yearID: record.yearID,
                                monthID: record.monthID,
                                order: record.order,
-                               uuidString: record.uuidString)
+                               identifier: record.identifier)
         repository.update(record: newRecord)
     }
     

@@ -19,7 +19,7 @@ struct Record: Equatable {
     var yearID: String
     var monthID: String
     var order: Int
-    var uuidString: String
+    var identifier: String
 }
 
 struct History: Equatable {

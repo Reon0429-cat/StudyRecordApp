@@ -60,7 +60,7 @@ private extension AdditionalStudyRecordViewController {
                             yearID: UUID().uuidString,
                             monthID: UUID().uuidString,
                             order: recordUseCase.records.count,
-                            uuidString: UUID().uuidString)
+                            identifier: UUID().uuidString)
         recordUseCase.save(record: record)
     }
     

@@ -17,10 +17,10 @@ final class RecordRealm: Object {
     @objc dynamic var yearID: String = ""
     @objc dynamic var monthID: String = ""
     @objc dynamic var order: Int = 0
-    @objc dynamic var uuidString = UUID().uuidString
+    @objc dynamic var identifier = UUID().uuidString
     
     override class func primaryKey() -> String? {
-        return "uuidString"
+        return "identifier"
     }
 }
 
@@ -50,7 +50,7 @@ extension Record {
                   yearID: record.yearID,
                   monthID: record.monthID,
                   order: record.order,
-                  uuidString: record.uuidString)
+                  identifier: record.identifier)
     }
     
 }
