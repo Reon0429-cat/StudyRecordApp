@@ -29,11 +29,11 @@ final class GoalUseCase {
                                    isExpanded: category.isExpanded,
                                    goals: newGoals,
                                    identifier: category.identifier)
-        repository.update(category: newCategory, at: section)
+        repository.update(category: newCategory)
     }
     
-    func update(category: Category, at index: Int) {
-        repository.update(category: category, at: index)
+    func update(category: Category) {
+        repository.update(category: category)
     }
     
     func update(goal: Category.Goal, at indexPath: IndexPath) {
@@ -44,7 +44,7 @@ final class GoalUseCase {
                                    isExpanded: category.isExpanded,
                                    goals: goals,
                                    identifier: category.identifier)
-        repository.update(category: newCategory, at: indexPath.section)
+        repository.update(category: newCategory)
     }
     
     func toggleGoalIsExpanded(at indexPath: IndexPath) {
@@ -63,7 +63,7 @@ final class GoalUseCase {
                                    isExpanded: category.isExpanded,
                                    goals: newGoals,
                                    identifier: category.identifier)
-        repository.update(category: newCategory, at: indexPath.section)
+        repository.update(category: newCategory)
     }
     
     func toggleCategoryIsExpanded(at section: Int) {
@@ -72,7 +72,7 @@ final class GoalUseCase {
                                    isExpanded: !category.isExpanded,
                                    goals: category.goals,
                                    identifier: category.identifier)
-        repository.update(category: newCategory, at: section)
+        repository.update(category: newCategory)
     }
     
 }
