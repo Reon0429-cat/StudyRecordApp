@@ -306,7 +306,7 @@ extension SettingViewController: UITableViewDataSource {
 // MARK: - setup
 private extension SettingViewController {
     
-    private func setupTableView() {
+    func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.registerCustomCell(CustomTitleTableViewCell.self)
@@ -314,6 +314,9 @@ private extension SettingViewController {
         tableView.registerCustomCell(CustomButtonTableViewCell.self)
         tableView.tableFooterView = UIView()
         tableView.rowHeight = UITableView.automaticDimension
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
     }
     
 }

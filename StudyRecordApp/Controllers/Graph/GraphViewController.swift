@@ -165,6 +165,9 @@ private extension GraphViewController {
         tableView.dataSource = self
         tableView.registerCustomCell(GraphTableViewCell.self)
         tableView.tableFooterView = UIView()
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
     }
     
     func setupRegisterButton() {

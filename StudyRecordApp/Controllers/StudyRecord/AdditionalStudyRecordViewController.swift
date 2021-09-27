@@ -237,6 +237,9 @@ private extension AdditionalStudyRecordViewController {
         tableView.registerCustomCell(CustomTitleTableViewCell.self)
         tableView.registerCustomCell(StudyRecordGraphColorTableViewCell.self)
         tableView.tableFooterView = UIView()
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
     }
     
     func setupNavigationTopBar() {
