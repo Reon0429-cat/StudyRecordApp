@@ -109,8 +109,6 @@ private extension RecordTableViewCell {
     func setupDeleteButton() {
         deleteButton.isHidden = true
         deleteButton.cutToCircle()
-        guard let image = UIImage(systemName: "xmark.circle.fill") else { return }
-        deleteButton.setImage(image.setColor(.dynamicColor(light: .black, dark: .white)))
     }
     
     func setupTitleLabel(record: Record) {
@@ -150,6 +148,10 @@ private extension RecordTableViewCell {
                                radius: 3,
                                opacity: 0.8,
                                size: (width: 2, height: 2))
+        guard let image = UIImage(systemName: "xmark.circle.fill") else { return }
+        let color: UIColor = .dynamicColor(light: .accentColor ?? .black,
+                                           dark: .accentColor ?? .white)
+        deleteButton.setImage(image.setColor(color))
     }
     
 }
