@@ -207,8 +207,8 @@ private extension TopViewController {
     
     func setColor() {
         guard let image = UIImage(systemName: "arrow.up.arrow.down.circle.fill") else { return }
-        let color: UIColor = .dynamicColor(light: .accentColor ?? .black,
-                                           dark: .accentColor ?? .white)
+        let color: UIColor = .dynamicColor(light: .mainColor ?? .black,
+                                           dark: .mainColor ?? .white)
         sortButton.setImage(image.setColor(color))
     }
     

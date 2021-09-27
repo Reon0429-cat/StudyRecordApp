@@ -90,7 +90,7 @@ extension GraphViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 400
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView,
@@ -164,6 +164,7 @@ private extension GraphViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.registerCustomCell(GraphTableViewCell.self)
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.tableFooterView = UIView()
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
