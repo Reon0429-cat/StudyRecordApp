@@ -23,12 +23,12 @@ enum SelectedGraphType: Int, CaseIterable {
         switch self {
             case .line: return [.lineShape, .fillArea, .addDots, .dotShape]
             case .bar: return [.width]
-            case .dot: return [.dotShape]
+            case .dot: return [.addDots, .dotShape]
         }
     }
 }
 
-enum StackViewSubViewType: CaseIterable {
+enum StackViewSubViewType: Int, CaseIterable {
     case lineShape
     case fillArea
     case addDots
@@ -42,20 +42,14 @@ final class GraphKindSelectingViewController: UIViewController {
     
     @IBOutlet private weak var contentView: UIView!
     @IBOutlet private weak var saveButton: UIButton!
-    @IBOutlet private weak var lineShapeStraightLabel: UILabel!
-    @IBOutlet private weak var lineShapeSmoothLabel: UILabel!
-    @IBOutlet private weak var fillAreaNotLabel: UILabel!
-    @IBOutlet private weak var fillAreaLabel: UILabel!
-    @IBOutlet private weak var addDotsNotLabel: UILabel!
-    @IBOutlet private weak var addDotsLabel: UILabel!
-    @IBOutlet private weak var dotShapeCircleLabel: UILabel!
-    @IBOutlet private weak var dotShapeSquareLabel: UILabel!
+    @IBOutlet private weak var lineShapeStraightButton: UIButton!
+    @IBOutlet private weak var lineShapeSmoothButton: UIButton!
+    @IBOutlet private weak var fillAreaButton: UIButton!
+    @IBOutlet private weak var addDotsButton: UIButton!
+    @IBOutlet private weak var dotShapeCircleButton: UIButton!
+    @IBOutlet private weak var dotShapeSquareButton: UIButton!
     @IBOutlet private weak var segmentedControl: CustomSegmentedControl!
     @IBOutlet private weak var stackView: UIStackView!
-    @IBOutlet private weak var lineShapeSwitch: CustomSwitch!
-    @IBOutlet private weak var fillAreaSwitch: CustomSwitch!
-    @IBOutlet private weak var addDotsSwitch: CustomSwitch!
-    @IBOutlet private weak var dotShapeSwitch: CustomSwitch!
     @IBOutlet private weak var widthSlider: CustomSlider!
     @IBOutlet private weak var sliderLabel: UILabel!
     
@@ -79,12 +73,16 @@ final class GraphKindSelectingViewController: UIViewController {
         isSquare = graphUseCase.graph.dot.isSquare
         width = graphUseCase.graph.bar.width
         
-        setupLabels()
         setupSaveButton()
+        setupLineShapeStraightButton()
+        setupLineShapeSmoothButton()
+        setupFillAreaButton()
+        setupAddDotsButton()
+        setupDotShapeCircleButton()
+        setupDotShapeSquareButton()
         setupSegmentedControl()
         setupStackView()
         setupSlider()
-        setupSwitch()
         
     }
     
@@ -111,20 +109,48 @@ private extension GraphKindSelectingViewController {
         dismiss(animated: true)
     }
     
-    @IBAction func lineShapeSwitchDidToggled(_ sender: UISwitch) {
-        isSmooth = sender.isOn
+    @IBAction func lineShapeStraightButtonDidTapped(_ sender: Any) {
+        if isSmooth {
+            lineShapeStraightButton.setImage(radioButtonImage(isFilled: true))
+            lineShapeSmoothButton.setImage(radioButtonImage(isFilled: false))
+        }
+        isSmooth = false
     }
     
-    @IBAction func fillAreaSwitchDidToggled(_ sender: UISwitch) {
-        isFilled = sender.isOn
+    @IBAction func lineShapeSmoothButtonDidTapped(_ sender: Any) {
+        if !isSmooth {
+            lineShapeStraightButton.setImage(radioButtonImage(isFilled: false))
+            lineShapeSmoothButton.setImage(radioButtonImage(isFilled: true))
+        }
+        isSmooth = true
     }
     
-    @IBAction func addDotsSwitchDidToggled(_ sender: UISwitch) {
-        withDots = sender.isOn
+    @IBAction func fillAreaButtonDidTapped(_ sender: Any) {
+        fillAreaButton.setImage(radioButtonImage(isFilled: !isFilled))
+        isFilled.toggle()
     }
     
-    @IBAction func dotShapeSwitchDidToggled(_ sender: UISwitch) {
-        isSquare = sender.isOn
+    @IBAction func addDotsButtonDidTapped(_ sender: Any) {
+        addDotsButton.setImage(radioButtonImage(isFilled: !withDots))
+        dotShapeCircleButton.isHidden = withDots
+        dotShapeSquareButton.isHidden = withDots
+        withDots.toggle()
+    }
+    
+    @IBAction func dotShapeCircleButtonDidTapped(_ sender: Any) {
+        if isSquare {
+            dotShapeCircleButton.setImage(radioButtonImage(isFilled: true))
+            dotShapeSquareButton.setImage(radioButtonImage(isFilled: false))
+        }
+        isSquare = false
+    }
+    
+    @IBAction func dotShapeSquareButtonDidTapped(_ sender: Any) {
+        if !isSquare {
+            dotShapeCircleButton.setImage(radioButtonImage(isFilled: false))
+            dotShapeSquareButton.setImage(radioButtonImage(isFilled: true))
+        }
+        isSquare = true
     }
     
     @IBAction func widthSliderValueDidChanged(_ sender: UISlider) {
@@ -174,26 +200,50 @@ private extension GraphKindSelectingViewController {
         segmentedControl.selectedSegmentIndex = index
     }
     
-    func setupLabels() {
-        lineShapeStraightLabel.text = LocalizeKey.straight.localizedString()
-        lineShapeSmoothLabel.text = LocalizeKey.smooth.localizedString()
-        fillAreaNotLabel.text = LocalizeKey.notFill.localizedString()
-        fillAreaLabel.text = LocalizeKey.fill.localizedString()
-        addDotsNotLabel.text = LocalizeKey.addNotDot.localizedString()
-        addDotsLabel.text = LocalizeKey.addDot.localizedString()
-        dotShapeCircleLabel.text = LocalizeKey.circleDot.localizedString()
-        dotShapeSquareLabel.text = LocalizeKey.squareDot.localizedString()
+    func setupLineShapeStraightButton() {
+        lineShapeStraightButton.setTitle(LocalizeKey.straight.localizedString())
+        lineShapeStraightButton.setImage(radioButtonImage(isFilled: !isSmooth))
+    }
+    
+    func setupLineShapeSmoothButton() {
+        lineShapeSmoothButton.setTitle(LocalizeKey.smooth.localizedString())
+        lineShapeSmoothButton.setImage(radioButtonImage(isFilled: isSmooth))
+    }
+    
+    func setupFillAreaButton() {
+        fillAreaButton.setTitle(LocalizeKey.fill.localizedString())
+        fillAreaButton.setImage(radioButtonImage(isFilled: isFilled))
+    }
+    
+    func setupAddDotsButton() {
+        addDotsButton.setTitle(LocalizeKey.addDot.localizedString())
+        addDotsButton.setImage(radioButtonImage(isFilled: withDots))
+    }
+    
+    func setupDotShapeCircleButton() {
+        dotShapeCircleButton.setTitle(LocalizeKey.circleDot.localizedString())
+        dotShapeCircleButton.setImage(radioButtonImage(isFilled: !isSquare))
+        dotShapeCircleButton.isHidden = !withDots
+    }
+    
+    func setupDotShapeSquareButton() {
+        dotShapeSquareButton.setTitle(LocalizeKey.squareDot.localizedString())
+        dotShapeSquareButton.setImage(radioButtonImage(isFilled: isSquare))
+        dotShapeSquareButton.isHidden = !withDots
+    }
+    
+    func radioButtonImage(isFilled: Bool) -> UIImage {
+        let imageName: String = {
+            if isFilled {
+                return "record.circle"
+            }
+            return "circle"
+        }()
+        return UIImage(systemName: imageName)!
     }
     
     func setupSaveButton() {
         saveButton.setTitle(LocalizeKey.save.localizedString())
-    }
-    
-    func setupSwitch() {
-        lineShapeSwitch.isOn = isSmooth
-        fillAreaSwitch.isOn = isFilled
-        addDotsSwitch.isOn = withDots
-        dotShapeSwitch.isOn = isSquare
     }
     
     func setupSlider() {
