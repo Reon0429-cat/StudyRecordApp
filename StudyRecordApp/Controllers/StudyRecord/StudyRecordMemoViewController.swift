@@ -17,6 +17,7 @@ final class StudyRecordMemoViewController: UIViewController {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var decisionButton: UIButton!
     @IBOutlet private weak var baseView: UIView!
+    @IBOutlet private weak var textViewBaseView: UIView!
     @IBOutlet private weak var textView: UITextView!
     
     weak var delegate: StudyRecordMemoVCDelegate?
@@ -94,16 +95,22 @@ private extension StudyRecordMemoViewController {
     func setupTextView() {
         textView.text = inputtedMemo
         textView.delegate = self
-        textView.backgroundColor = .clear
+        textView.backgroundColor = .dynamicColor(light: .white,
+                                                 dark: .secondarySystemGroupedBackground)
         textView.textColor = .dynamicColor(light: .black, dark: .white)
         textView.tintColor = .dynamicColor(light: .black, dark: .white)
-        textView.layer.borderWidth = 1
+        
         textView.layer.cornerRadius = 10
         textView.becomeFirstResponder()
     }
     
     func setBorderColor() {
-        textView.layer.borderColor = UIColor.dynamicColor(light: .black, dark: .white).cgColor
+        textViewBaseView.layer.cornerRadius = 10
+        textViewBaseView.setShadow(color: .dynamicColor(light: .accentColor ?? .black,
+                                                        dark: .accentColor ?? .white),
+                                   radius: 3,
+                                   opacity: 0.8,
+                                   size: (width: 2, height: 2))
     }
     
     func setupBaseView() {
