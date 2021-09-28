@@ -38,6 +38,7 @@ final class CustomScrollableGraphView: UIView {
             return
         }
         view.frame = self.bounds
+        view.layer.cornerRadius = 10
         self.addSubview(view)
         createGraphView()
         createReferenceLines()

@@ -122,6 +122,9 @@ private extension ColorChoicesConceptViewController {
         tableView.registerCustomCell(AccordionColorTableViewCell.self)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.tableFooterView = UIView()
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
     }
     
     func setupTableViewData() {

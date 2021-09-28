@@ -95,6 +95,9 @@ private extension ColorConceptViewController {
         tableView.dataSource = self
         tableView.registerCustomCell(CustomTitleTableViewCell.self)
         tableView.tableFooterView = UIView()
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
     }
     
     func setupSubCustomNavigationBar() {

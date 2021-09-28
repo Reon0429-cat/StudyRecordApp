@@ -91,13 +91,6 @@ final class GraphTableViewCell: UITableViewCell {
         
     }
     
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        guard let traitCollection = previousTraitCollection else { return }
-        if traitCollection.hasDifferentColorAppearance(comparedTo: self.traitCollection) {
-            setBorder()
-        }
-    }
-    
 }
 
 // MARK: - IBAction func
@@ -175,18 +168,19 @@ private extension GraphTableViewCell {
     func setupGraphView() {
         graphView = CustomScrollableGraphView()
         graphView.delegate = self
+        graphView.layer.cornerRadius = 10
         setupGraphViewLayout()
     }
     
     func setupGraphBaseView() {
-        setBorder()
-        graphBaseView.layer.borderWidth = 1
         graphBaseView.backgroundColor = .dynamicColor(light: .white,
                                                       dark: .secondarySystemGroupedBackground)
-    }
-    
-    func setBorder() {
-        graphBaseView.layer.borderColor = UIColor.dynamicColor(light: .black, dark: .white).cgColor
+        graphBaseView.layer.cornerRadius = 10
+        graphBaseView.setShadow(color: .dynamicColor(light: .accentColor ?? .black,
+                                                     dark: .accentColor ?? .white),
+                                radius: 3,
+                                opacity: 0.8,
+                                size: (width: 2, height: 2))
     }
     
     func setupTitleLabel(record: Record) {
@@ -202,6 +196,7 @@ private extension GraphTableViewCell {
     
     func setupIndicator(record: Record) {
         indicator = UIActivityIndicatorView()
+        indicator.layer.cornerRadius = 10
         indicator.style = .large
         indicator.color = .dynamicColor(light: .black,
                                         dark: .white)
@@ -293,10 +288,10 @@ extension GraphTableViewCell {
         indicator.translatesAutoresizingMaskIntoConstraints = false
         graphView.addSubview(indicator)
         NSLayoutConstraint.activate([
-            indicator.centerYAnchor.constraint(equalTo: graphBaseView.centerYAnchor),
             indicator.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            indicator.widthAnchor.constraint(equalTo: self.widthAnchor),
-            indicator.heightAnchor.constraint(equalTo: self.heightAnchor)
+            indicator.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
+            indicator.heightAnchor.constraint(equalToConstant: 300),
+            indicator.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10)
         ])
     }
     

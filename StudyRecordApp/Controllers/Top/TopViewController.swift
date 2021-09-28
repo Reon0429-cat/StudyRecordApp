@@ -68,12 +68,26 @@ final class TopViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        setColor()
+        
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let pageViewController = segue.destination as? UIPageViewController {
             self.pageViewController = pageViewController
         }
         if let tabBarCollectionVC = segue.destination as? TabBarCollectionViewController {
             self.tabBarCollectionVC = tabBarCollectionVC
+        }
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        guard let traitCollection = previousTraitCollection else { return }
+        if traitCollection.hasDifferentColorAppearance(comparedTo: self.traitCollection) {
+            setColor()
         }
     }
     
@@ -189,6 +203,13 @@ private extension TopViewController {
     
     func changeThemeColor() {
         setupWaveViews()
+    }
+    
+    func setColor() {
+        guard let image = UIImage(systemName: "arrow.up.arrow.down.circle.fill") else { return }
+        let color: UIColor = .dynamicColor(light: .mainColor ?? .black,
+                                           dark: .mainColor ?? .white)
+        sortButton.setImage(image.setColor(color))
     }
     
 }
@@ -372,8 +393,6 @@ private extension TopViewController {
     func setupSortButton() {
         sortButton.isHidden = true
         sortButton.alpha = 0
-        guard let image = UIImage(systemName: "arrow.up.arrow.down.circle.fill") else { return }
-        sortButton.setImage(image.setColor(.dynamicColor(light: .black, dark: .white)))
         let config = UIImage.SymbolConfiguration(pointSize: 30)
         sortButton.setPreferredSymbolConfiguration(config, forImageIn: .normal)
     }
@@ -401,7 +420,7 @@ private extension TopViewController {
                                                name: .changedThemeColor,
                                                object: nil)
     }
-
+    
     @objc
     func changeToDefaultColor() {
         changeThemeColor()

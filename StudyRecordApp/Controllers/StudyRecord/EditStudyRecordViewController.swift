@@ -357,6 +357,9 @@ extension EditStudyRecordViewController {
         tableView.registerCustomCell(StudyRecordGraphColorTableViewCell.self)
         tableView.registerCustomCell(StudyRecordHistoryTableViewCell.self)
         tableView.tableFooterView = UIView()
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
     }
     
     func setupSubCustomNavigationBar() {

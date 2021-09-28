@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lCr-qa-LeZ">
-                                <rect key="frame" x="0.0" y="44" width="414" height="350"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="360"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="L0G-qn-hIK" customClass="CustomSegmentedControl" customModule="StudyRecordApp" customModuleProvider="target">
                                         <rect key="frame" x="141.5" y="15" width="131" height="32"/>
@@ -34,167 +34,139 @@
                                         </connections>
                                     </segmentedControl>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="YAb-5i-HEQ">
-                                        <rect key="frame" x="10" y="66" width="394" height="254"/>
+                                        <rect key="frame" x="30" y="66" width="354" height="250"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8DF-Sr-5jH">
-                                                <rect key="frame" x="0.0" y="0.0" width="394" height="51"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="8DF-Sr-5jH">
+                                                <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="直線" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="F0F-0S-A4f">
-                                                        <rect key="frame" x="0.0" y="0.0" width="162" height="51"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fXj-bp-wsW">
-                                                        <rect key="frame" x="162" y="0.0" width="70" height="51"/>
-                                                        <subviews>
-                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ig5-Rf-pN5" customClass="CustomSwitch" customModule="StudyRecordApp" customModuleProvider="target">
-                                                                <rect key="frame" x="10.5" y="10" width="51" height="31"/>
-                                                                <connections>
-                                                                    <action selector="lineShapeSwitchDidToggled:" destination="Y6W-OH-hqX" eventType="valueChanged" id="29I-Ud-wzv"/>
-                                                                </connections>
-                                                            </switch>
-                                                        </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aWC-ft-Bok">
+                                                        <rect key="frame" x="0.0" y="0.0" width="177" height="50"/>
+                                                        <color key="tintColor" systemColor="labelColor"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="record.circle" catalog="system" title="直線" imagePadding="10">
+                                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
+                                                        </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="lineShapeStraightButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="9IB-or-fnN"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8gO-Sf-fEw">
+                                                        <rect key="frame" x="177" y="0.0" width="177" height="50"/>
                                                         <constraints>
-                                                            <constraint firstItem="ig5-Rf-pN5" firstAttribute="centerX" secondItem="fXj-bp-wsW" secondAttribute="centerX" id="3D5-Jt-Vy9"/>
-                                                            <constraint firstAttribute="width" constant="70" id="F5s-hm-UdB"/>
-                                                            <constraint firstItem="ig5-Rf-pN5" firstAttribute="centerY" secondItem="fXj-bp-wsW" secondAttribute="centerY" id="FWu-eS-tzF"/>
+                                                            <constraint firstAttribute="height" constant="50" id="Nge-qA-1qh"/>
                                                         </constraints>
-                                                    </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="なめらか" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="5K3-nE-cqR">
-                                                        <rect key="frame" x="232" y="0.0" width="162" height="51"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                        <color key="tintColor" systemColor="labelColor"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="record.circle" catalog="system" title="なめらか" imagePadding="10">
+                                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
+                                                        </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="lineShapeSmoothButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="t11-J4-r7N"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="F0F-0S-A4f" firstAttribute="width" secondItem="5K3-nE-cqR" secondAttribute="width" id="xl4-Vh-yAH"/>
-                                                </constraints>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dd8-Up-ykD">
-                                                <rect key="frame" x="0.0" y="51" width="394" height="50.5"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="bSP-Vx-Xhd">
+                                                <rect key="frame" x="0.0" y="50" width="354" height="50"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ぬりつぶさない" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Jag-x2-gPI">
-                                                        <rect key="frame" x="0.0" y="0.0" width="162" height="50.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="byA-6E-TH0">
-                                                        <rect key="frame" x="162" y="0.0" width="70" height="50.5"/>
-                                                        <subviews>
-                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y6d-T1-Kqd" customClass="CustomSwitch" customModule="StudyRecordApp" customModuleProvider="target">
-                                                                <rect key="frame" x="10.5" y="9.5" width="51" height="31"/>
-                                                                <connections>
-                                                                    <action selector="fillAreaSwitchDidToggled:" destination="Y6W-OH-hqX" eventType="valueChanged" id="msY-ME-g8D"/>
-                                                                </connections>
-                                                            </switch>
-                                                        </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gqo-1c-D20">
+                                                        <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="70" id="7uu-Kw-iXt"/>
-                                                            <constraint firstItem="y6d-T1-Kqd" firstAttribute="centerX" secondItem="byA-6E-TH0" secondAttribute="centerX" id="JPZ-GW-2oa"/>
-                                                            <constraint firstItem="y6d-T1-Kqd" firstAttribute="centerY" secondItem="byA-6E-TH0" secondAttribute="centerY" id="Ney-Ac-jhi"/>
+                                                            <constraint firstAttribute="height" constant="50" id="Dm5-qT-ZeL"/>
                                                         </constraints>
-                                                    </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ぬりつぶす" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dm2-Zv-bG3">
-                                                        <rect key="frame" x="232" y="0.0" width="162" height="50.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                        <color key="tintColor" systemColor="labelColor"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="record.circle" catalog="system" title="ぬりつぶす" imagePadding="10">
+                                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
+                                                        </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="fillAreaButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="q5y-8y-Pmt"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="Jag-x2-gPI" firstAttribute="width" secondItem="dm2-Zv-bG3" secondAttribute="width" id="D6d-aN-KFn"/>
-                                                </constraints>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zVH-AS-Drw">
-                                                <rect key="frame" x="0.0" y="101.5" width="394" height="51"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="5BM-p1-nIy">
+                                                <rect key="frame" x="0.0" y="100" width="354" height="50"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ドットをつけない" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="DgC-yz-Cch">
-                                                        <rect key="frame" x="0.0" y="0.0" width="162" height="51"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pAi-YS-KiE">
-                                                        <rect key="frame" x="162" y="0.0" width="70" height="51"/>
-                                                        <subviews>
-                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xk9-iq-15h" customClass="CustomSwitch" customModule="StudyRecordApp" customModuleProvider="target">
-                                                                <rect key="frame" x="10.5" y="10" width="51" height="31"/>
-                                                                <connections>
-                                                                    <action selector="addDotsSwitchDidToggled:" destination="Y6W-OH-hqX" eventType="valueChanged" id="zl0-Bd-F0a"/>
-                                                                </connections>
-                                                            </switch>
-                                                        </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pgc-aH-noV">
+                                                        <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="70" id="B54-7G-cuc"/>
-                                                            <constraint firstItem="Xk9-iq-15h" firstAttribute="centerX" secondItem="pAi-YS-KiE" secondAttribute="centerX" id="Qsd-p3-quh"/>
-                                                            <constraint firstItem="Xk9-iq-15h" firstAttribute="centerY" secondItem="pAi-YS-KiE" secondAttribute="centerY" id="oRc-cv-i1H"/>
+                                                            <constraint firstAttribute="height" constant="50" id="kfp-CB-hTF"/>
                                                         </constraints>
-                                                    </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ドットをつける" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dib-vA-Iv7">
-                                                        <rect key="frame" x="232" y="0.0" width="162" height="51"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                        <color key="tintColor" systemColor="labelColor"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="record.circle" catalog="system" title="ドットをつける" imagePadding="10">
+                                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
+                                                        </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="addDotsButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="nNJ-bR-pfP"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="DgC-yz-Cch" firstAttribute="width" secondItem="dib-vA-Iv7" secondAttribute="width" id="2YL-1X-rjH"/>
-                                                </constraints>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n7b-Jf-6oA">
-                                                <rect key="frame" x="0.0" y="152.5" width="394" height="50.5"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="cRw-g8-qO6">
+                                                <rect key="frame" x="0.0" y="150" width="354" height="50"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="丸いドット" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="P0z-Xk-R8O">
-                                                        <rect key="frame" x="0.0" y="0.0" width="162" height="50.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pcm-F1-JTJ">
-                                                        <rect key="frame" x="162" y="0.0" width="70" height="50.5"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LzB-J4-Frx">
+                                                        <rect key="frame" x="0.0" y="0.0" width="177" height="50"/>
                                                         <subviews>
-                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="taz-3Z-Fyf" customClass="CustomSwitch" customModule="StudyRecordApp" customModuleProvider="target">
-                                                                <rect key="frame" x="10.5" y="10" width="51" height="31"/>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XfY-qf-5ZA">
+                                                                <rect key="frame" x="0.0" y="0.0" width="177" height="50"/>
+                                                                <color key="tintColor" systemColor="labelColor"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain" image="record.circle" catalog="system" title="丸いドット" imagePadding="10">
+                                                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
+                                                                </buttonConfiguration>
                                                                 <connections>
-                                                                    <action selector="dotShapeSwitchDidToggled:" destination="Y6W-OH-hqX" eventType="valueChanged" id="W03-Za-iyK"/>
+                                                                    <action selector="dotShapeCircleButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="cPW-1c-agd"/>
                                                                 </connections>
-                                                            </switch>
+                                                            </button>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="70" id="DOa-bm-2Cz"/>
-                                                            <constraint firstItem="taz-3Z-Fyf" firstAttribute="centerY" secondItem="Pcm-F1-JTJ" secondAttribute="centerY" id="HOj-o7-AF2"/>
-                                                            <constraint firstItem="taz-3Z-Fyf" firstAttribute="centerX" secondItem="Pcm-F1-JTJ" secondAttribute="centerX" id="mVf-bt-HQd"/>
+                                                            <constraint firstItem="XfY-qf-5ZA" firstAttribute="leading" secondItem="LzB-J4-Frx" secondAttribute="leading" id="Vj4-vO-cWk"/>
+                                                            <constraint firstAttribute="bottom" secondItem="XfY-qf-5ZA" secondAttribute="bottom" id="YUN-II-Dp7"/>
+                                                            <constraint firstAttribute="trailing" secondItem="XfY-qf-5ZA" secondAttribute="trailing" id="eCq-4g-nvp"/>
+                                                            <constraint firstItem="XfY-qf-5ZA" firstAttribute="top" secondItem="LzB-J4-Frx" secondAttribute="top" id="l4m-GK-rEP"/>
                                                         </constraints>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="四角いドット" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="P43-i5-CA1">
-                                                        <rect key="frame" x="232" y="0.0" width="162" height="50.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uZy-Bt-ZIm">
+                                                        <rect key="frame" x="177" y="0.0" width="177" height="50"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KIA-BV-7fd">
+                                                                <rect key="frame" x="0.0" y="0.0" width="177" height="50"/>
+                                                                <color key="tintColor" systemColor="labelColor"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain" image="record.circle" catalog="system" title="四角いドット" imagePadding="10">
+                                                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
+                                                                </buttonConfiguration>
+                                                                <connections>
+                                                                    <action selector="dotShapeSquareButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ftc-nN-aKD"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="KIA-BV-7fd" secondAttribute="trailing" id="4Sg-tO-PC6"/>
+                                                            <constraint firstItem="KIA-BV-7fd" firstAttribute="top" secondItem="uZy-Bt-ZIm" secondAttribute="top" id="7ti-7A-nEh"/>
+                                                            <constraint firstAttribute="height" constant="50" id="RF7-7N-M5q"/>
+                                                            <constraint firstAttribute="bottom" secondItem="KIA-BV-7fd" secondAttribute="bottom" id="iNc-IK-Xqd"/>
+                                                            <constraint firstItem="KIA-BV-7fd" firstAttribute="leading" secondItem="uZy-Bt-ZIm" secondAttribute="leading" id="vPi-RZ-R1S"/>
+                                                        </constraints>
+                                                    </view>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="P0z-Xk-R8O" firstAttribute="width" secondItem="P43-i5-CA1" secondAttribute="width" id="p6X-Uo-yFw"/>
-                                                </constraints>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lk9-gJ-LJf">
-                                                <rect key="frame" x="0.0" y="203" width="394" height="51"/>
+                                                <rect key="frame" x="0.0" y="200" width="354" height="50"/>
                                                 <subviews>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="5" maxValue="30" translatesAutoresizingMaskIntoConstraints="NO" id="gKW-yN-c5Q" customClass="CustomSlider" customModule="StudyRecordApp" customModuleProvider="target">
-                                                        <rect key="frame" x="48" y="10.5" width="298" height="31"/>
+                                                        <rect key="frame" x="48" y="10" width="258" height="31"/>
                                                         <connections>
                                                             <action selector="widthSliderValueDidChanged:" destination="Y6W-OH-hqX" eventType="valueChanged" id="Km5-H7-okW"/>
                                                         </connections>
                                                     </slider>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="snk-4q-WgS">
-                                                        <rect key="frame" x="344" y="15" width="50" height="21.5"/>
+                                                        <rect key="frame" x="304" y="14.5" width="50" height="21.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -208,6 +180,7 @@
                                                     <constraint firstItem="snk-4q-WgS" firstAttribute="leading" secondItem="gKW-yN-c5Q" secondAttribute="trailing" id="Fpr-ET-xqL"/>
                                                     <constraint firstItem="gKW-yN-c5Q" firstAttribute="centerY" secondItem="Lk9-gJ-LJf" secondAttribute="centerY" id="KLy-83-Eyw"/>
                                                     <constraint firstItem="snk-4q-WgS" firstAttribute="centerY" secondItem="gKW-yN-c5Q" secondAttribute="centerY" id="eob-Vw-wqK"/>
+                                                    <constraint firstAttribute="height" constant="50" id="hM5-lB-NVy"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -226,11 +199,11 @@
                                     <constraint firstItem="7G7-oi-Mrn" firstAttribute="top" secondItem="lCr-qa-LeZ" secondAttribute="top" constant="10" id="CDX-wK-8tn"/>
                                     <constraint firstItem="L0G-qn-hIK" firstAttribute="top" secondItem="lCr-qa-LeZ" secondAttribute="top" constant="15" id="EcV-O1-ord"/>
                                     <constraint firstItem="YAb-5i-HEQ" firstAttribute="top" secondItem="L0G-qn-hIK" secondAttribute="bottom" constant="20" id="Fyg-3b-SJT"/>
+                                    <constraint firstAttribute="height" constant="360" id="KEE-Ep-9o8"/>
+                                    <constraint firstAttribute="bottom" secondItem="YAb-5i-HEQ" secondAttribute="bottom" constant="44" id="MOc-Xz-jvm"/>
                                     <constraint firstItem="L0G-qn-hIK" firstAttribute="centerX" secondItem="lCr-qa-LeZ" secondAttribute="centerX" id="MrV-gV-77u"/>
-                                    <constraint firstAttribute="trailing" secondItem="YAb-5i-HEQ" secondAttribute="trailing" constant="10" id="Xij-uP-aDs"/>
+                                    <constraint firstAttribute="trailing" secondItem="YAb-5i-HEQ" secondAttribute="trailing" constant="30" id="Xij-uP-aDs"/>
                                     <constraint firstItem="YAb-5i-HEQ" firstAttribute="centerX" secondItem="lCr-qa-LeZ" secondAttribute="centerX" id="XmN-x3-z5q"/>
-                                    <constraint firstAttribute="bottom" secondItem="YAb-5i-HEQ" secondAttribute="bottom" constant="30" id="gjg-iK-1v0"/>
-                                    <constraint firstAttribute="height" constant="350" id="pMP-OR-uzc"/>
                                     <constraint firstAttribute="trailing" secondItem="7G7-oi-Mrn" secondAttribute="trailing" constant="30" id="wwb-Nh-teL"/>
                                 </constraints>
                             </view>
@@ -244,19 +217,13 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="addDotsLabel" destination="dib-vA-Iv7" id="Sqr-WP-nuO"/>
-                        <outlet property="addDotsNotLabel" destination="DgC-yz-Cch" id="v2z-1a-hz5"/>
-                        <outlet property="addDotsSwitch" destination="Xk9-iq-15h" id="XB9-3e-A6c"/>
+                        <outlet property="addDotsButton" destination="pgc-aH-noV" id="xWl-Ee-gzy"/>
                         <outlet property="contentView" destination="lCr-qa-LeZ" id="3jP-Oy-Ksc"/>
-                        <outlet property="dotShapeCircleLabel" destination="P0z-Xk-R8O" id="Cdc-fH-xhm"/>
-                        <outlet property="dotShapeSquareLabel" destination="P43-i5-CA1" id="cxW-9p-U7W"/>
-                        <outlet property="dotShapeSwitch" destination="taz-3Z-Fyf" id="ASs-DU-SSP"/>
-                        <outlet property="fillAreaLabel" destination="dm2-Zv-bG3" id="ngE-Fk-ybK"/>
-                        <outlet property="fillAreaNotLabel" destination="Jag-x2-gPI" id="aT8-iv-Vh3"/>
-                        <outlet property="fillAreaSwitch" destination="y6d-T1-Kqd" id="cYZ-bf-pjI"/>
-                        <outlet property="lineShapeSmoothLabel" destination="5K3-nE-cqR" id="xjb-kn-VdZ"/>
-                        <outlet property="lineShapeStraightLabel" destination="F0F-0S-A4f" id="uFw-dT-mrL"/>
-                        <outlet property="lineShapeSwitch" destination="ig5-Rf-pN5" id="eqi-MO-hdv"/>
+                        <outlet property="dotShapeCircleButton" destination="XfY-qf-5ZA" id="207-eo-jod"/>
+                        <outlet property="dotShapeSquareButton" destination="KIA-BV-7fd" id="nIq-7b-oNd"/>
+                        <outlet property="fillAreaButton" destination="Gqo-1c-D20" id="GBv-0R-4Y6"/>
+                        <outlet property="lineShapeSmoothButton" destination="8gO-Sf-fEw" id="iSO-c6-2tz"/>
+                        <outlet property="lineShapeStraightButton" destination="aWC-ft-Bok" id="4T1-eA-CWT"/>
                         <outlet property="saveButton" destination="7G7-oi-Mrn" id="sGm-sl-DqH"/>
                         <outlet property="segmentedControl" destination="L0G-qn-hIK" id="yCS-uF-N66"/>
                         <outlet property="sliderLabel" destination="snk-4q-WgS" id="XMW-da-LLD"/>
@@ -270,6 +237,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="record.circle" catalog="system" width="128" height="121"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

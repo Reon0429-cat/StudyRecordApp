@@ -34,14 +34,13 @@ final class RecordTableViewCell: UITableViewCell {
         
         setupBaseView()
         setupDeleteButton()
-        setBorderColor()
         
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         guard let traitCollection = previousTraitCollection else { return }
         if traitCollection.hasDifferentColorAppearance(comparedTo: self.traitCollection) {
-            setBorderColor()
+            setColor()
         }
     }
     
@@ -53,6 +52,7 @@ final class RecordTableViewCell: UITableViewCell {
                        studyTime: studyTime)
         setupMemoButton(record: record)
         setupMemoTextView(record: record)
+        setColor()
     }
     
     func changeMode(isEdit: Bool, isEvenIndex: Bool) {
@@ -92,7 +92,8 @@ private extension RecordTableViewCell {
                                                        action: #selector(baseViewLongPressDidRecognized))
         longPressGR.minimumPressDuration = 1
         baseView.addGestureRecognizer(longPressGR)
-        baseView.layer.borderWidth = 1
+        baseView.backgroundColor = .dynamicColor(light: .white,
+                                                 dark: .secondarySystemGroupedBackground)
     }
     
     @objc
@@ -108,8 +109,6 @@ private extension RecordTableViewCell {
     func setupDeleteButton() {
         deleteButton.isHidden = true
         deleteButton.cutToCircle()
-        guard let image = UIImage(systemName: "xmark.circle.fill") else { return }
-        deleteButton.setImage(image.setColor(.dynamicColor(light: .black, dark: .white)))
     }
     
     func setupTitleLabel(record: Record) {
@@ -132,14 +131,27 @@ private extension RecordTableViewCell {
     func setupMemoTextView(record: Record) {
         memoTextView.layer.cornerRadius = 10
         memoTextView.isEditable = false
-        memoTextView.backgroundColor = .clear
-        memoTextView.layer.borderWidth = 1
         memoTextView.text = record.memo
+        memoTextView.clipsToBounds = false
+        memoTextView.backgroundColor = .dynamicColor(light: .white,
+                                                     dark: .secondarySystemGroupedBackground)
     }
     
-    func setBorderColor() {
-        memoTextView.layer.borderColor = UIColor.dynamicColor(light: .black, dark: .white).cgColor
-        baseView.layer.borderColor = UIColor.dynamicColor(light: .black, dark: .white).cgColor
+    func setColor() {
+        baseView.setShadow(color: .dynamicColor(light: .accentColor ?? .black,
+                                                dark: .accentColor ?? .white),
+                           radius: 3,
+                           opacity: 0.8,
+                           size: (width: 2, height: 2))
+        memoTextView.setShadow(color: .dynamicColor(light: .accentColor ?? .black,
+                                                    dark: .accentColor ?? .white),
+                               radius: 3,
+                               opacity: 0.8,
+                               size: (width: 2, height: 2))
+        guard let image = UIImage(systemName: "xmark.circle.fill") else { return }
+        let color: UIColor = .dynamicColor(light: .mainColor ?? .black,
+                                           dark: .mainColor ?? .white)
+        deleteButton.setImage(image.setColor(color))
     }
     
 }

@@ -149,6 +149,9 @@ private extension StudyRecordSortViewController {
         tableView.dragInteractionEnabled = true
         tableView.registerCustomCell(StudyRecordSortTableViewCell.self)
         tableView.tableFooterView = UIView()
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
     }
     
     func setupSubCustomNavigationBar() {

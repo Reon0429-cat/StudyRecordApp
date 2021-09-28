@@ -180,6 +180,9 @@ private extension GoalViewController {
         tableView.registerCustomCell(GoalHeaderView.self)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.tableFooterView = UIView()
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
     }
     
 }

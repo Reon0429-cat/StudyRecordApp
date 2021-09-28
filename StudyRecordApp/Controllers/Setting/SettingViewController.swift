@@ -12,7 +12,6 @@ private enum SettingRowType: Int, CaseIterable {
     case darkMode
     case passcode
     case pushNotification
-    case multilingual
     case evaluationApp
     case shareApp
     case reports
@@ -31,8 +30,6 @@ private enum SettingRowType: Int, CaseIterable {
                 return LocalizeKey.passcode.localizedString()
             case .pushNotification:
                 return LocalizeKey.pushNotification.localizedString()
-            case .multilingual:
-                return LocalizeKey.multilingual.localizedString()
             case .howToUseApp:
                 return LocalizeKey.howToUseApp.localizedString()
             case .evaluationApp:
@@ -115,7 +112,7 @@ private extension SettingViewController {
                     }
                 }
             }
-            .addAction(title: LocalizeKey.close.localizedString())
+                       .addAction(title: LocalizeKey.close.localizedString())
         present(alert, animated: true)
     }
     
@@ -146,7 +143,7 @@ private extension SettingViewController {
                              modalPresentationStyle: .fullScreen)
             }
             .addAction(title: LocalizeKey.close.localizedString(),
-                       style: .cancel)
+                       style: .destructive)
         present(alert, animated: true)
     }
     
@@ -197,8 +194,6 @@ extension SettingViewController: UITableViewDelegate {
             case .passcode:
                 break
             case .pushNotification:
-                break
-            case .multilingual:
                 break
             case .evaluationApp:
                 break
@@ -262,14 +257,13 @@ extension SettingViewController: UITableViewDataSource {
         let rowType = SettingRowType.allCases[indexPath.row]
         switch rowType {
             case .themeColor,
-                 .multilingual,
-                 .evaluationApp,
-                 .darkMode,
-                 .shareApp,
-                 .reports,
-                 .howToUseApp,
-                 .backup,
-                 .privacyPolicy:
+                    .evaluationApp,
+                    .darkMode,
+                    .shareApp,
+                    .reports,
+                    .howToUseApp,
+                    .backup,
+                    .privacyPolicy:
                 let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
                 cell.configure(titleText: rowType.title)
                 return cell
@@ -306,7 +300,7 @@ extension SettingViewController: UITableViewDataSource {
 // MARK: - setup
 private extension SettingViewController {
     
-    private func setupTableView() {
+    func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.registerCustomCell(CustomTitleTableViewCell.self)
@@ -314,6 +308,9 @@ private extension SettingViewController {
         tableView.registerCustomCell(CustomButtonTableViewCell.self)
         tableView.tableFooterView = UIView()
         tableView.rowHeight = UITableView.automaticDimension
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
     }
     
 }

@@ -87,6 +87,9 @@ private extension AdditionalCategoryViewController {
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
         tableView.registerCustomCell(CustomTitleTableViewCell.self)
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
     }
     
     func setupDismissButton() {
