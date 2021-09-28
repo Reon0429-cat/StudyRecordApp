@@ -86,6 +86,10 @@ private extension GraphViewController {
                                                selector: #selector(cameBackFromEditScreen),
                                                name: .graphSaveButtonDidTappped,
                                                object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(changedThemeColor),
+                                               name: .changedThemeColor,
+                                               object: nil)
     }
     
     @objc
@@ -94,6 +98,11 @@ private extension GraphViewController {
         if isChanged {
             tableView.reloadData()
         }
+    }
+    
+    @objc
+    func changedThemeColor() {
+        tableView.reloadData()
     }
     
 }
