@@ -73,6 +73,24 @@ final class RecordUseCase {
         return studyTimeText
     }
     
+    func validateGraphData(oldRecords: [Record]?) -> (indexPaths: [IndexPath],
+                                                      shouldReloadAll: Bool) {
+        guard let oldRecords = oldRecords,
+              records.count == oldRecords.count else { return (indexPaths: [],
+                                                               shouldReloadAll: true) }
+        var indexPaths = [IndexPath]()
+        for (index, record) in records.enumerated() {
+            if oldRecords[index].histories != record.histories
+                || oldRecords[index].graphColor != record.graphColor
+                || oldRecords[index].title != record.title
+                || record.order != oldRecords[index].order {
+                indexPaths.append(IndexPath(row: index, section: 0))
+            }
+        }
+        return (indexPaths: indexPaths,
+                shouldReloadAll: false)
+    }
+    
     private func convertToStudyTimeText(from studyTime: (today: Int,
                                                          total: Int)) -> (todayText: String,
                                                                           totalText: String) {

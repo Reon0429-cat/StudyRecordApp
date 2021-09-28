@@ -8,7 +8,7 @@
 import Foundation
 
 // 共通の型
-struct Graph {
+struct Graph: Equatable {
     var selectedType: SelectedGraphType
     var line: Line
     var bar: Bar
@@ -16,17 +16,17 @@ struct Graph {
     var identifier: String
 }
 
-struct Line {
+struct Line: Equatable {
     var isSmooth: Bool
     var isFilled: Bool
     var withDots: Bool
 }
 
-struct Bar {
+struct Bar: Equatable {
     let width: Float
 }
 
-struct Dot {
+struct Dot: Equatable {
     let isSquare: Bool
 }
 

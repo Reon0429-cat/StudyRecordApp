@@ -52,7 +52,7 @@ final class GraphKindSelectingViewController: UIViewController {
     @IBOutlet private weak var stackView: UIStackView!
     @IBOutlet private weak var widthSlider: CustomSlider!
     @IBOutlet private weak var sliderLabel: UILabel!
-    
+
     private var graphUseCase = GraphUseCase(
         repository: GraphRepository(
             dataStore: RealmGraphDataStore()
@@ -104,8 +104,10 @@ private extension GraphKindSelectingViewController {
                              bar: Bar(width: width),
                              dot: Dot(isSquare: isSquare),
                              identifier: graphUseCase.graph.identifier)
+        NotificationCenter.default.post(name: .graphSaveButtonDidTappped,
+                                        object: nil,
+                                        userInfo: ["isChanged": newGraph != graphUseCase.graph])
         graphUseCase.update(graph: newGraph)
-        NotificationCenter.default.post(name: .graphSaveButtonDidTappped, object: nil)
         dismiss(animated: true)
     }
     

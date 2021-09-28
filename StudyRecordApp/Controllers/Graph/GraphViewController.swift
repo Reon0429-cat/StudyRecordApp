@@ -28,6 +28,7 @@ final class GraphViewController: UIViewController {
             dataStore: RealmGraphDataStore()
         )
     )
+    private var oldRecords: [Record]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,8 +46,7 @@ final class GraphViewController: UIViewController {
         tableView(isHidden: recordUseCase.records.isEmpty)
         delegate?.screenDidPresented(screenType: .graph,
                                      isEnabledNavigationButton: !recordUseCase.records.isEmpty)
-        tableView.reloadData()
-        
+        reloadRows()
     }
     
 }
@@ -67,6 +67,16 @@ private extension GraphViewController {
 // MARK: - func
 private extension GraphViewController {
     
+    func reloadRows() {
+        let validation = recordUseCase.validateGraphData(oldRecords: oldRecords)
+        if validation.shouldReloadAll {
+            tableView.reloadData()
+        } else {
+            tableView.reloadRows(at: validation.indexPaths, with: .automatic)
+        }
+        oldRecords = recordUseCase.records
+    }
+    
     func tableView(isHidden: Bool) {
         tableView.isHidden = isHidden
     }
@@ -79,8 +89,11 @@ private extension GraphViewController {
     }
     
     @objc
-    func cameBackFromEditScreen() {
-        tableView.reloadData()
+    func cameBackFromEditScreen(notification: Notification) {
+        guard let isChanged = notification.userInfo?["isChanged"] as? Bool else { return }
+        if isChanged {
+            tableView.reloadData()
+        }
     }
     
 }
@@ -137,6 +150,7 @@ extension GraphViewController: UITableViewDataSource {
     
 }
 
+// MARK: - GraphTableViewCellDelegate
 extension GraphViewController: GraphTableViewCellDelegate {
     
     func segmentedControlDidTapped(index: Int) {
