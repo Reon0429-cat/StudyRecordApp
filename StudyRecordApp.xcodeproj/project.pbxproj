@@ -36,6 +36,8 @@
 		AB0C76D726EFE38A00BF5B64 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C76D626EFE38A00BF5B64 /* CustomTextField.swift */; };
 		AB0C76D926F0A06300BF5B64 /* DarkModeSetting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB0C76D826F0A06300BF5B64 /* DarkModeSetting.storyboard */; };
 		AB0C76DB26F0A06F00BF5B64 /* DarkModeSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C76DA26F0A06F00BF5B64 /* DarkModeSettingViewController.swift */; };
+		AB13E2A42706FE6000063A0B /* PasscodeSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13E2A32706FE6000063A0B /* PasscodeSettingViewController.swift */; };
+		AB13E2A62706FE8C00063A0B /* PasscodeSetting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13E2A52706FE8C00063A0B /* PasscodeSetting.storyboard */; };
 		AB13ECD626B7AEA3002F56FF /* ColorChoicesConcept.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13ECD526B7AEA3002F56FF /* ColorChoicesConcept.storyboard */; };
 		AB13ECD826B7AF27002F56FF /* ColorChoicesTile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13ECD726B7AF27002F56FF /* ColorChoicesTile.storyboard */; };
 		AB13ECDA26B7AF6F002F56FF /* ColorChoicesSlider.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13ECD926B7AF6F002F56FF /* ColorChoicesSlider.storyboard */; };
@@ -214,6 +216,8 @@
 		AB0C76D626EFE38A00BF5B64 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		AB0C76D826F0A06300BF5B64 /* DarkModeSetting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DarkModeSetting.storyboard; sourceTree = "<group>"; };
 		AB0C76DA26F0A06F00BF5B64 /* DarkModeSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeSettingViewController.swift; sourceTree = "<group>"; };
+		AB13E2A32706FE6000063A0B /* PasscodeSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeSettingViewController.swift; sourceTree = "<group>"; };
+		AB13E2A52706FE8C00063A0B /* PasscodeSetting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PasscodeSetting.storyboard; sourceTree = "<group>"; };
 		AB13ECD526B7AEA3002F56FF /* ColorChoicesConcept.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ColorChoicesConcept.storyboard; sourceTree = "<group>"; };
 		AB13ECD726B7AF27002F56FF /* ColorChoicesTile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ColorChoicesTile.storyboard; sourceTree = "<group>"; };
 		AB13ECD926B7AF6F002F56FF /* ColorChoicesSlider.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ColorChoicesSlider.storyboard; sourceTree = "<group>"; };
@@ -572,6 +576,7 @@
 				AB13ECD726B7AF27002F56FF /* ColorChoicesTile.storyboard */,
 				AB13ECD926B7AF6F002F56FF /* ColorChoicesSlider.storyboard */,
 				AB0C76B226ED254C00BF5B64 /* Passcode.storyboard */,
+				AB13E2A52706FE8C00063A0B /* PasscodeSetting.storyboard */,
 				AB0C76D826F0A06300BF5B64 /* DarkModeSetting.storyboard */,
 			);
 			path = Setting;
@@ -596,6 +601,7 @@
 				AB2B5BBF26A2D36F009BD3C7 /* ColorChoicesTileViewController.swift */,
 				AB2B5BC026A2D36F009BD3C7 /* ColorChoicesSliderViewController.swift */,
 				AB0C76B426ED256000BF5B64 /* PasscodeViewController.swift */,
+				AB13E2A32706FE6000063A0B /* PasscodeSettingViewController.swift */,
 				AB0C76DA26F0A06F00BF5B64 /* DarkModeSettingViewController.swift */,
 			);
 			path = Setting;
@@ -957,6 +963,7 @@
 				ABAE84E126F414CF00A93A7F /* GoalHeaderView.xib in Resources */,
 				AB13ECD626B7AEA3002F56FF /* ColorChoicesConcept.storyboard in Resources */,
 				AB2B5BAC26A2D244009BD3C7 /* ThemeColor.storyboard in Resources */,
+				AB13E2A62706FE8C00063A0B /* PasscodeSetting.storyboard in Resources */,
 				AB8B705726D6AD1F0069FF67 /* SignUp.storyboard in Resources */,
 				ABFAB15926DF86920095EC20 /* GoalPhotoTableViewCell.xib in Resources */,
 				AB13EDE926C7C4C0002F56FF /* Top.storyboard in Resources */,
@@ -1075,6 +1082,7 @@
 				AB16305126CD6B1400111F55 /* WaveView.swift in Sources */,
 				AB2B5B8726A2D0FD009BD3C7 /* UICollectionView+Extension.swift in Sources */,
 				AB86A85F26D4915700EA990A /* HalfModalPresenter.swift in Sources */,
+				AB13E2A42706FE6000063A0B /* PasscodeSettingViewController.swift in Sources */,
 				AB4D6BBE2672099C00E5286E /* UIButton+Extension.swift in Sources */,
 				AB16307B26CE123A00111F55 /* RecordTableViewCell.swift in Sources */,
 				AB2B5BA426A2D1B7009BD3C7 /* PopConcept.swift in Sources */,
