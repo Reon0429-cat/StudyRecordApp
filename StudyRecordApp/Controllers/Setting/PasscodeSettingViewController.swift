@@ -74,9 +74,18 @@ private extension PasscodeSettingViewController {
     }
     
     func setupBiometricsButton() {
-        biometricsButton.setTitle("FaceIDをオンにする")
+        let context = LAContext()
+        switch context.biometryType {
+            case .faceID:
+                biometricsButton.setTitle(LocalizeKey.turnOnFaceID.localizedString())
+            case .touchID:
+                biometricsButton.setTitle(LocalizeKey.turnOnTouchID.localizedString())
+            default:
+                break
+        }
         let isFilled = settingUseCase.setting.isBiometricsSetted
         biometricsButton.setImage(isFilled: isFilled)
     }
     
 }
+

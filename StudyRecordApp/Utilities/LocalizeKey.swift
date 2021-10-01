@@ -189,7 +189,9 @@ enum LocalizeKey: String {
     case month
     case day
     
-    
+    case turnOnFaceID
+    case turnOnTouchID
+    case useAuthenticationToUnlock
     
     
     

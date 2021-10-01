@@ -199,6 +199,10 @@
 "uncategorized" = "未分類";
 "fixed" = "固定";
 
+"turnOnFaceID" = "FaceIDをオンにする";
+"turnOnTouchID" = "TouchIDをオンにする";
+"useAuthenticationToUnlock" = "ロックの解除に、認証を使用します";
+
 "" = "";
 "" = "";
 "" = "";

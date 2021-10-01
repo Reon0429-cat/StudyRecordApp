@@ -198,6 +198,11 @@
 "uncategorized" = "uncategorized";
 
 "fixed" = "fixed";
+
+"turnOnFaceID" = "Turn on Face ID";
+"turnOnTouchID" = "Turn on Touch ID";
+"useAuthenticationToUnlock" = "Use authentication to unlock";
+
 "" = "";
 "" = "";
 "" = "";
