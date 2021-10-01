@@ -192,7 +192,8 @@ enum LocalizeKey: String {
     case turnOnFaceID
     case turnOnTouchID
     case useAuthenticationToUnlock
-    
+    case pleaseAllowBiometrics
+    case turnOnBiometrics
     
     
     func localizedString() -> String {

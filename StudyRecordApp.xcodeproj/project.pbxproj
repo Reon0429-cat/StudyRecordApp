@@ -39,6 +39,7 @@
 		AB13E2A42706FE6000063A0B /* PasscodeSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13E2A32706FE6000063A0B /* PasscodeSettingViewController.swift */; };
 		AB13E2A62706FE8C00063A0B /* PasscodeSetting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13E2A52706FE8C00063A0B /* PasscodeSetting.storyboard */; };
 		AB13E2A82707241400063A0B /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13E2A72707241400063A0B /* RadioButton.swift */; };
+		AB13E2AC2707316200063A0B /* BiometricsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13E2AB2707316200063A0B /* BiometricsManager.swift */; };
 		AB13ECD626B7AEA3002F56FF /* ColorChoicesConcept.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13ECD526B7AEA3002F56FF /* ColorChoicesConcept.storyboard */; };
 		AB13ECD826B7AF27002F56FF /* ColorChoicesTile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13ECD726B7AF27002F56FF /* ColorChoicesTile.storyboard */; };
 		AB13ECDA26B7AF6F002F56FF /* ColorChoicesSlider.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13ECD926B7AF6F002F56FF /* ColorChoicesSlider.storyboard */; };
@@ -220,6 +221,7 @@
 		AB13E2A32706FE6000063A0B /* PasscodeSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeSettingViewController.swift; sourceTree = "<group>"; };
 		AB13E2A52706FE8C00063A0B /* PasscodeSetting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PasscodeSetting.storyboard; sourceTree = "<group>"; };
 		AB13E2A72707241400063A0B /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
+		AB13E2AB2707316200063A0B /* BiometricsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricsManager.swift; sourceTree = "<group>"; };
 		AB13ECD526B7AEA3002F56FF /* ColorChoicesConcept.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ColorChoicesConcept.storyboard; sourceTree = "<group>"; };
 		AB13ECD726B7AF27002F56FF /* ColorChoicesTile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ColorChoicesTile.storyboard; sourceTree = "<group>"; };
 		AB13ECD926B7AF6F002F56FF /* ColorChoicesSlider.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ColorChoicesSlider.storyboard; sourceTree = "<group>"; };
@@ -755,6 +757,7 @@
 				AB0C768426ECB63C00BF5B64 /* TileView.swift */,
 				AB0C76D426EEAF0100BF5B64 /* LocalizeKey.swift */,
 				AB71076E26F94E4A00F4F695 /* DateType.swift */,
+				AB13E2AB2707316200063A0B /* BiometricsManager.swift */,
 				AB13EDFF26C8E0E9002F56FF /* Setting */,
 			);
 			path = Utilities;
@@ -1155,6 +1158,7 @@
 				AB0C765A26EBA91D00BF5B64 /* Setting.swift in Sources */,
 				AB0C76B526ED256000BF5B64 /* PasscodeViewController.swift in Sources */,
 				AB93C2C3266BC28E00C3AE8F /* EditStudyRecordViewController.swift in Sources */,
+				AB13E2AC2707316200063A0B /* BiometricsManager.swift in Sources */,
 				AB0C768526ECB63C00BF5B64 /* TileView.swift in Sources */,
 				AB4397ED26DD3051008C8CA8 /* AddAndEditGoalViewController.swift in Sources */,
 				AB8B703F26D4A2410069FF67 /* UIViewController+Extension.swift in Sources */,

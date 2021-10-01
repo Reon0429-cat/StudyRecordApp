@@ -202,6 +202,8 @@
 "turnOnFaceID" = "Turn on Face ID";
 "turnOnTouchID" = "Turn on Touch ID";
 "useAuthenticationToUnlock" = "Use authentication to unlock";
+"pleaseAllowBiometrics" = "Please allow biometrics";
+"turnOnBiometrics" = "Turn on biometrics";
 
 "" = "";
 "" = "";

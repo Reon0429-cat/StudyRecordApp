@@ -49,6 +49,35 @@ final class PasscodeViewController: UIViewController {
         setupSubCustomNavigationBar()
         setupPasscodeView()
         
+        if settingUseCase.setting.isBiometricsSetted && passcodeMode != .create {
+            BiometricsManager().canUseBiometrics { result in
+                switch result {
+                    case .success:
+                        BiometricsManager().authenticate { result in
+                            switch result {
+                                case .success(let isSuccess):
+                                    if isSuccess {
+                                        // 成功
+                                    } else {
+                                        // 失敗
+                                    }
+                                    break
+                                case .failure(let title):
+                                    self.showErrorAlert(title: title)
+                            }
+                        }
+                    case .failure(let title):
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            self.showErrorAlert(title: title) {
+                                if let url = URL(string: UIApplication.openSettingsURLString) {
+                                    UIApplication.shared.open(url)
+                                }
+                            }
+                        }
+                }
+            }
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

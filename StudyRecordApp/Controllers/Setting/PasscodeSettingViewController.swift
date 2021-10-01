@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import LocalAuthentication
 
 final class PasscodeSettingViewController: UIViewController {
     
@@ -74,14 +73,13 @@ private extension PasscodeSettingViewController {
     }
     
     func setupBiometricsButton() {
-        let context = LAContext()
-        switch context.biometryType {
-            case .faceID:
-                biometricsButton.setTitle(LocalizeKey.turnOnFaceID.localizedString())
-            case .touchID:
-                biometricsButton.setTitle(LocalizeKey.turnOnTouchID.localizedString())
-            default:
-                break
+        BiometricsManager().canUseBiometrics { result in
+            switch result {
+                case .success:
+                    biometricsButton.setTitle(BiometricsManager().title)
+                case .failure:
+                    biometricsButton.setTitle(LocalizeKey.turnOnBiometrics.localizedString())
+            }
         }
         let isFilled = settingUseCase.setting.isBiometricsSetted
         biometricsButton.setImage(isFilled: isFilled)

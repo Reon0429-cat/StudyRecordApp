@@ -58,10 +58,13 @@ extension UIViewController {
         return vc
     }
     
-    func showErrorAlert(title: String, message: String? = nil) {
+    func showErrorAlert(title: String,
+                        message: String? = nil,
+                        handler: (() -> Void)? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: LocalizeKey.close.localizedString(),
-                                      style: .default))
+            .addAction(title: LocalizeKey.close.localizedString(),
+                       style: .default,
+                       handler: handler)
         present(alert, animated: true)
     }
     
