@@ -12,7 +12,7 @@ final class PasscodeSettingViewController: UIViewController {
     
     @IBOutlet private weak var contentView: UIView!
     @IBOutlet private weak var passcodeSwitch: CustomSwitch!
-    @IBOutlet private weak var biometricsButton: UIButton!
+    @IBOutlet private weak var biometricsButton: RadioButton!
     
     private let settingUseCase = SettingUseCase(
         repository: SettingRepository(
@@ -51,7 +51,7 @@ private extension PasscodeSettingViewController {
     
     @IBAction func biometricsButtonDidTapped(_ sender: Any) {
         let isBiometricsSetted = settingUseCase.setting.isBiometricsSetted
-        biometricsButton.setImage(radioButtonImage(isFilled: !isBiometricsSetted))
+        biometricsButton.setImage(isFilled: !isBiometricsSetted)
         settingUseCase.update(isBiometricsSetted: !isBiometricsSetted)
     }
     
@@ -76,17 +76,7 @@ private extension PasscodeSettingViewController {
     func setupBiometricsButton() {
         biometricsButton.setTitle("FaceIDをオンにする")
         let isFilled = settingUseCase.setting.isBiometricsSetted
-        biometricsButton.setImage(radioButtonImage(isFilled: isFilled))
-    }
-    
-    func radioButtonImage(isFilled: Bool) -> UIImage {
-        let imageName: String = {
-            if isFilled {
-                return "record.circle"
-            }
-            return "circle"
-        }()
-        return UIImage(systemName: imageName)!
+        biometricsButton.setImage(isFilled: isFilled)
     }
     
 }

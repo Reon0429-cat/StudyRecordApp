@@ -42,17 +42,17 @@ final class GraphKindSelectingViewController: UIViewController {
     
     @IBOutlet private weak var contentView: UIView!
     @IBOutlet private weak var saveButton: UIButton!
-    @IBOutlet private weak var lineShapeStraightButton: UIButton!
-    @IBOutlet private weak var lineShapeSmoothButton: UIButton!
-    @IBOutlet private weak var fillAreaButton: UIButton!
-    @IBOutlet private weak var addDotsButton: UIButton!
-    @IBOutlet private weak var dotShapeCircleButton: UIButton!
-    @IBOutlet private weak var dotShapeSquareButton: UIButton!
+    @IBOutlet private weak var lineShapeStraightButton: RadioButton!
+    @IBOutlet private weak var lineShapeSmoothButton: RadioButton!
+    @IBOutlet private weak var fillAreaButton: RadioButton!
+    @IBOutlet private weak var addDotsButton: RadioButton!
+    @IBOutlet private weak var dotShapeCircleButton: RadioButton!
+    @IBOutlet private weak var dotShapeSquareButton: RadioButton!
     @IBOutlet private weak var segmentedControl: CustomSegmentedControl!
     @IBOutlet private weak var stackView: UIStackView!
     @IBOutlet private weak var widthSlider: CustomSlider!
     @IBOutlet private weak var sliderLabel: UILabel!
-
+    
     private var graphUseCase = GraphUseCase(
         repository: GraphRepository(
             dataStore: RealmGraphDataStore()
@@ -113,27 +113,28 @@ private extension GraphKindSelectingViewController {
     
     @IBAction func lineShapeStraightButtonDidTapped(_ sender: Any) {
         if isSmooth {
-            lineShapeStraightButton.setImage(radioButtonImage(isFilled: true))
-            lineShapeSmoothButton.setImage(radioButtonImage(isFilled: false))
+            lineShapeStraightButton.setImage(isFilled: true)
+            lineShapeSmoothButton.setImage(isFilled: false)
         }
         isSmooth = false
     }
     
     @IBAction func lineShapeSmoothButtonDidTapped(_ sender: Any) {
         if !isSmooth {
-            lineShapeStraightButton.setImage(radioButtonImage(isFilled: false))
-            lineShapeSmoothButton.setImage(radioButtonImage(isFilled: true))
+            lineShapeStraightButton.setImage(isFilled: false)
+            lineShapeSmoothButton.setImage(isFilled: true)
+
         }
         isSmooth = true
     }
     
     @IBAction func fillAreaButtonDidTapped(_ sender: Any) {
-        fillAreaButton.setImage(radioButtonImage(isFilled: !isFilled))
+        fillAreaButton.setImage(isFilled: !isFilled)
         isFilled.toggle()
     }
     
     @IBAction func addDotsButtonDidTapped(_ sender: Any) {
-        addDotsButton.setImage(radioButtonImage(isFilled: !withDots))
+        addDotsButton.setImage(isFilled: !withDots)
         dotShapeCircleButton.isHidden = withDots
         dotShapeSquareButton.isHidden = withDots
         withDots.toggle()
@@ -141,16 +142,16 @@ private extension GraphKindSelectingViewController {
     
     @IBAction func dotShapeCircleButtonDidTapped(_ sender: Any) {
         if isSquare {
-            dotShapeCircleButton.setImage(radioButtonImage(isFilled: true))
-            dotShapeSquareButton.setImage(radioButtonImage(isFilled: false))
+            dotShapeCircleButton.setImage(isFilled: true)
+            dotShapeSquareButton.setImage(isFilled: false)
         }
         isSquare = false
     }
     
     @IBAction func dotShapeSquareButtonDidTapped(_ sender: Any) {
         if !isSquare {
-            dotShapeCircleButton.setImage(radioButtonImage(isFilled: false))
-            dotShapeSquareButton.setImage(radioButtonImage(isFilled: true))
+            dotShapeCircleButton.setImage(isFilled: false)
+            dotShapeSquareButton.setImage(isFilled: true)
         }
         isSquare = true
     }
@@ -204,44 +205,34 @@ private extension GraphKindSelectingViewController {
     
     func setupLineShapeStraightButton() {
         lineShapeStraightButton.setTitle(LocalizeKey.straight.localizedString())
-        lineShapeStraightButton.setImage(radioButtonImage(isFilled: !isSmooth))
+        lineShapeStraightButton.setImage(isFilled: !isSmooth)
     }
     
     func setupLineShapeSmoothButton() {
         lineShapeSmoothButton.setTitle(LocalizeKey.smooth.localizedString())
-        lineShapeSmoothButton.setImage(radioButtonImage(isFilled: isSmooth))
+        lineShapeSmoothButton.setImage(isFilled: isSmooth)
     }
     
     func setupFillAreaButton() {
         fillAreaButton.setTitle(LocalizeKey.fill.localizedString())
-        fillAreaButton.setImage(radioButtonImage(isFilled: isFilled))
+        fillAreaButton.setImage(isFilled: isFilled)
     }
     
     func setupAddDotsButton() {
         addDotsButton.setTitle(LocalizeKey.addDot.localizedString())
-        addDotsButton.setImage(radioButtonImage(isFilled: withDots))
+        addDotsButton.setImage(isFilled: withDots)
     }
     
     func setupDotShapeCircleButton() {
         dotShapeCircleButton.setTitle(LocalizeKey.circleDot.localizedString())
-        dotShapeCircleButton.setImage(radioButtonImage(isFilled: !isSquare))
+        dotShapeCircleButton.setImage(isFilled: !isSquare)
         dotShapeCircleButton.isHidden = !withDots
     }
     
     func setupDotShapeSquareButton() {
         dotShapeSquareButton.setTitle(LocalizeKey.squareDot.localizedString())
-        dotShapeSquareButton.setImage(radioButtonImage(isFilled: isSquare))
+        dotShapeSquareButton.setImage(isFilled: isSquare)
         dotShapeSquareButton.isHidden = !withDots
-    }
-    
-    func radioButtonImage(isFilled: Bool) -> UIImage {
-        let imageName: String = {
-            if isFilled {
-                return "record.circle"
-            }
-            return "circle"
-        }()
-        return UIImage(systemName: imageName)!
     }
     
     func setupSaveButton() {

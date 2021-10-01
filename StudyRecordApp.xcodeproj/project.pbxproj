@@ -38,6 +38,7 @@
 		AB0C76DB26F0A06F00BF5B64 /* DarkModeSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C76DA26F0A06F00BF5B64 /* DarkModeSettingViewController.swift */; };
 		AB13E2A42706FE6000063A0B /* PasscodeSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13E2A32706FE6000063A0B /* PasscodeSettingViewController.swift */; };
 		AB13E2A62706FE8C00063A0B /* PasscodeSetting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13E2A52706FE8C00063A0B /* PasscodeSetting.storyboard */; };
+		AB13E2A82707241400063A0B /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13E2A72707241400063A0B /* RadioButton.swift */; };
 		AB13ECD626B7AEA3002F56FF /* ColorChoicesConcept.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13ECD526B7AEA3002F56FF /* ColorChoicesConcept.storyboard */; };
 		AB13ECD826B7AF27002F56FF /* ColorChoicesTile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13ECD726B7AF27002F56FF /* ColorChoicesTile.storyboard */; };
 		AB13ECDA26B7AF6F002F56FF /* ColorChoicesSlider.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13ECD926B7AF6F002F56FF /* ColorChoicesSlider.storyboard */; };
@@ -218,6 +219,7 @@
 		AB0C76DA26F0A06F00BF5B64 /* DarkModeSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeSettingViewController.swift; sourceTree = "<group>"; };
 		AB13E2A32706FE6000063A0B /* PasscodeSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeSettingViewController.swift; sourceTree = "<group>"; };
 		AB13E2A52706FE8C00063A0B /* PasscodeSetting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PasscodeSetting.storyboard; sourceTree = "<group>"; };
+		AB13E2A72707241400063A0B /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		AB13ECD526B7AEA3002F56FF /* ColorChoicesConcept.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ColorChoicesConcept.storyboard; sourceTree = "<group>"; };
 		AB13ECD726B7AF27002F56FF /* ColorChoicesTile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ColorChoicesTile.storyboard; sourceTree = "<group>"; };
 		AB13ECD926B7AF6F002F56FF /* ColorChoicesSlider.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ColorChoicesSlider.storyboard; sourceTree = "<group>"; };
@@ -515,6 +517,7 @@
 				AB0C76BF26EE9B4600BF5B64 /* CustomButton.swift */,
 				AB0C76D626EFE38A00BF5B64 /* CustomTextField.swift */,
 				AB00DDC626F4E75E008CC3F1 /* CategoryKeyboardView.swift */,
+				AB13E2A72707241400063A0B /* RadioButton.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -1093,6 +1096,7 @@
 				ABFAB15826DF86920095EC20 /* GoalPhotoTableViewCell.swift in Sources */,
 				AB14B46226DA855F007A5F16 /* CommunicationStatus.swift in Sources */,
 				ABFAB15526DF802A0095EC20 /* PriorityStackView.swift in Sources */,
+				AB13E2A82707241400063A0B /* RadioButton.swift in Sources */,
 				AB2B5BC726A2D36F009BD3C7 /* ColorChoicesConceptViewController.swift in Sources */,
 				AB2B5B8326A2D0FD009BD3C7 /* UICollectionViewCell+Extension.swift in Sources */,
 				AB0C766526EBAD0E00BF5B64 /* RealmSettingDataStore.swift in Sources */,

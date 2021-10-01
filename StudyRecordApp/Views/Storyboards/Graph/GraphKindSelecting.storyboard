@@ -39,7 +39,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="8DF-Sr-5jH">
                                                 <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aWC-ft-Bok">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aWC-ft-Bok" customClass="RadioButton" customModule="StudyRecordApp" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="177" height="50"/>
                                                         <color key="tintColor" systemColor="labelColor"/>
                                                         <state key="normal" title="Button"/>
@@ -50,7 +50,7 @@
                                                             <action selector="lineShapeStraightButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="9IB-or-fnN"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8gO-Sf-fEw">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8gO-Sf-fEw" customClass="RadioButton" customModule="StudyRecordApp" customModuleProvider="target">
                                                         <rect key="frame" x="177" y="0.0" width="177" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="Nge-qA-1qh"/>
@@ -69,7 +69,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="bSP-Vx-Xhd">
                                                 <rect key="frame" x="0.0" y="50" width="354" height="50"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gqo-1c-D20">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gqo-1c-D20" customClass="RadioButton" customModule="StudyRecordApp" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="Dm5-qT-ZeL"/>
@@ -88,7 +88,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="5BM-p1-nIy">
                                                 <rect key="frame" x="0.0" y="100" width="354" height="50"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pgc-aH-noV">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pgc-aH-noV" customClass="RadioButton" customModule="StudyRecordApp" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="kfp-CB-hTF"/>
@@ -110,7 +110,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LzB-J4-Frx">
                                                         <rect key="frame" x="0.0" y="0.0" width="177" height="50"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XfY-qf-5ZA">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XfY-qf-5ZA" customClass="RadioButton" customModule="StudyRecordApp" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="177" height="50"/>
                                                                 <color key="tintColor" systemColor="labelColor"/>
                                                                 <state key="normal" title="Button"/>
@@ -133,7 +133,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uZy-Bt-ZIm">
                                                         <rect key="frame" x="177" y="0.0" width="177" height="50"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KIA-BV-7fd">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KIA-BV-7fd" customClass="RadioButton" customModule="StudyRecordApp" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="177" height="50"/>
                                                                 <color key="tintColor" systemColor="labelColor"/>
                                                                 <state key="normal" title="Button"/>
