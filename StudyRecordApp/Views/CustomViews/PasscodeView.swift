@@ -121,6 +121,7 @@ private extension PasscodeView {
     }
     
     @IBAction func clearButtonDidTapped(_ sender: Any) {
+        
         switch labelType {
             case .first:
                 break

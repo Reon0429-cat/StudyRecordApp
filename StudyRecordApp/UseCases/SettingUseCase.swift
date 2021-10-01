@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CryptoKit
 
 final class SettingUseCase {
     
@@ -66,34 +67,12 @@ final class SettingUseCase {
         repository.update(setting: newSetting)
     }
     
-    func change(isPushNotificationSetted: Bool) {
-        let newSetting = Setting(isDarkMode: setting.isDarkMode,
-                                 darkModeSettingType: setting.darkModeSettingType,
-                                 isPasscodeSetted: setting.isPasscodeSetted,
-                                 passcode: setting.passcode,
-                                 isPushNotificationSetted: isPushNotificationSetted,
-                                 language: setting.language,
-                                 identifier: setting.identifier)
-        repository.update(setting: newSetting)
-    }
-    
-    func change(language: Language) {
-        let newSetting = Setting(isDarkMode: setting.isDarkMode,
-                                 darkModeSettingType: setting.darkModeSettingType,
-                                 isPasscodeSetted: setting.isPasscodeSetted,
-                                 passcode: setting.passcode,
-                                 isPushNotificationSetted: setting.isPushNotificationSetted,
-                                 language: language,
-                                 identifier: setting.identifier)
-        repository.update(setting: newSetting)
-    }
-    
     var isPasscodeCreated: Bool {
         return !setting.passcode.isEmpty
     }
     
     func isSame(passcode: String) -> Bool {
-        return setting.passcode == passcode
+        return setting.passcode == passcode.toHash()
     }
     
     func create(passcode: String) {
@@ -108,11 +87,22 @@ final class SettingUseCase {
         let newSetting = Setting(isDarkMode: setting.isDarkMode,
                                  darkModeSettingType: setting.darkModeSettingType,
                                  isPasscodeSetted: setting.isPasscodeSetted,
-                                 passcode: passcode,
+                                 passcode: passcode.toHash(),
                                  isPushNotificationSetted: setting.isPushNotificationSetted,
                                  language: setting.language,
                                  identifier: setting.identifier)
         repository.update(setting: newSetting)
+    }
+    
+}
+
+private extension String {
+    
+    func toHash() -> String {
+        let data = self.data(using: .utf8)!
+        let hashed = SHA256.hash(data: data)
+        let hashString = hashed.compactMap { String(format: "%02x", $0) }.joined()
+        return hashString
     }
     
 }
