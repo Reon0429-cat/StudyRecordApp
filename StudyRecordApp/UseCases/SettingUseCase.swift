@@ -22,7 +22,6 @@ final class SettingUseCase {
                                   isPasscodeSetted: false,
                                   passcode: "",
                                   isBiometricsSetted: false,
-                                  isPushNotificationSetted: true,
                                   language: .japanese,
                                   identifier: UUID().uuidString)
             repository.create(setting: setting)
@@ -41,7 +40,6 @@ final class SettingUseCase {
                                  isPasscodeSetted: setting.isPasscodeSetted,
                                  passcode: setting.passcode,
                                  isBiometricsSetted: setting.isBiometricsSetted,
-                                 isPushNotificationSetted: setting.isPushNotificationSetted,
                                  language: setting.language,
                                  identifier: setting.identifier)
         repository.update(setting: newSetting)
@@ -53,7 +51,6 @@ final class SettingUseCase {
                                  isPasscodeSetted: setting.isPasscodeSetted,
                                  passcode: setting.passcode,
                                  isBiometricsSetted: setting.isBiometricsSetted,
-                                 isPushNotificationSetted: setting.isPushNotificationSetted,
                                  language: setting.language,
                                  identifier: setting.identifier)
         repository.update(setting: newSetting)
@@ -65,7 +62,6 @@ final class SettingUseCase {
                                  isPasscodeSetted: isPasscodeSetted,
                                  passcode: setting.passcode,
                                  isBiometricsSetted: setting.isBiometricsSetted,
-                                 isPushNotificationSetted: setting.isPushNotificationSetted,
                                  language: setting.language,
                                  identifier: setting.identifier)
         repository.update(setting: newSetting)
@@ -93,7 +89,6 @@ final class SettingUseCase {
                                  isPasscodeSetted: setting.isPasscodeSetted,
                                  passcode: setting.passcode,
                                  isBiometricsSetted: isBiometricsSetted,
-                                 isPushNotificationSetted: setting.isPushNotificationSetted,
                                  language: setting.language,
                                  identifier: setting.identifier)
         repository.update(setting: newSetting)
@@ -105,7 +100,6 @@ final class SettingUseCase {
                                  isPasscodeSetted: setting.isPasscodeSetted,
                                  passcode: passcode.toHash(),
                                  isBiometricsSetted: setting.isBiometricsSetted,
-                                 isPushNotificationSetted: setting.isPushNotificationSetted,
                                  language: setting.language,
                                  identifier: setting.identifier)
         repository.update(setting: newSetting)

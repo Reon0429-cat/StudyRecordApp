@@ -40,7 +40,6 @@ final class RealmSettingDataStore: SettingDataStoreProtocol {
                               isPasscodeSetted: setting.isPasscodeSetted,
                               passcode: setting.passcode,
                               isBiometricsSetted: setting.isBiometricsSetted,
-                              isPushNotificationSetted: setting.isPushNotificationSetted,
                               language: setting.language,
                               identifier: setting.identifier)
         try! realm.write {
@@ -49,7 +48,6 @@ final class RealmSettingDataStore: SettingDataStoreProtocol {
             object.isPasscodeSetted = setting.isPasscodeSetted
             object.passcode = setting.passcode
             object.isBiometricsSetted = setting.isBiometricsSetted
-            object.isPushNotificationSetted = setting.isPushNotificationSetted
             object.language = setting.language
         }
     }
@@ -73,14 +71,12 @@ private extension SettingRealm {
                               isPasscodeSetted: setting.isPasscodeSetted,
                               passcode: setting.passcode,
                               isBiometricsSetted: setting.isBiometricsSetted,
-                              isPushNotificationSetted: setting.isPushNotificationSetted,
                               language: setting.language,
                               identifier: setting.identifier)
         self.darkModeSettingType = setting.darkModeSettingType
         self.isPasscodeSetted = setting.isPasscodeSetted
         self.passcode = setting.passcode
         self.isBiometricsSetted = setting.isBiometricsSetted
-        self.isPushNotificationSetted = setting.isPushNotificationSetted
         self.language = setting.language
         self.identifier = setting.identifier
     }
@@ -95,7 +91,6 @@ private extension Setting {
                   isPasscodeSetted: setting.isPasscodeSetted,
                   passcode: setting.passcode,
                   isBiometricsSetted: setting.isBiometricsSetted,
-                  isPushNotificationSetted: setting.isPushNotificationSetted,
                   language: setting.language,
                   identifier: setting.identifier)
     }
