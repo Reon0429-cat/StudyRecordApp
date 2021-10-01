@@ -248,7 +248,6 @@ extension SettingViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let setting = settingUseCase.setting
         let rowType = SettingRowType.allCases[indexPath.row]
         switch rowType {
             case .logout:
@@ -260,19 +259,6 @@ extension SettingViewController: UITableViewDataSource {
                 let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
                 cell.configure(titleText: rowType.title)
                 return cell
-//            case .passcode:
-//                let cell = tableView.dequeueReusableCustomCell(with: CustomSwitchTableViewCell.self)
-//                cell.configure(title: rowType.title,
-//                               isOn: setting.isPasscodeSetted) { isOn in
-//                    self.settingUseCase.change(isPasscodeSetted: isOn)
-//                    if !self.settingUseCase.isPasscodeCreated && isOn {
-//                        self.present(PasscodeViewController.self,
-//                                     modalPresentationStyle: .fullScreen) { vc in
-//                            vc.passcodeMode = .create
-//                        }
-//                    }
-//                }
-//                return cell
         }
     }
     

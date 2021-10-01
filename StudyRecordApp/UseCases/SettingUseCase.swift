@@ -21,6 +21,7 @@ final class SettingUseCase {
                                   darkModeSettingType: .app,
                                   isPasscodeSetted: false,
                                   passcode: "",
+                                  isBiometricsSetted: false,
                                   isPushNotificationSetted: true,
                                   language: .japanese,
                                   identifier: UUID().uuidString)
@@ -39,6 +40,7 @@ final class SettingUseCase {
                                  darkModeSettingType: setting.darkModeSettingType,
                                  isPasscodeSetted: setting.isPasscodeSetted,
                                  passcode: setting.passcode,
+                                 isBiometricsSetted: setting.isBiometricsSetted,
                                  isPushNotificationSetted: setting.isPushNotificationSetted,
                                  language: setting.language,
                                  identifier: setting.identifier)
@@ -50,6 +52,7 @@ final class SettingUseCase {
                                  darkModeSettingType: darkModeSettingType,
                                  isPasscodeSetted: setting.isPasscodeSetted,
                                  passcode: setting.passcode,
+                                 isBiometricsSetted: setting.isBiometricsSetted,
                                  isPushNotificationSetted: setting.isPushNotificationSetted,
                                  language: setting.language,
                                  identifier: setting.identifier)
@@ -61,6 +64,7 @@ final class SettingUseCase {
                                  darkModeSettingType: setting.darkModeSettingType,
                                  isPasscodeSetted: isPasscodeSetted,
                                  passcode: setting.passcode,
+                                 isBiometricsSetted: setting.isBiometricsSetted,
                                  isPushNotificationSetted: setting.isPushNotificationSetted,
                                  language: setting.language,
                                  identifier: setting.identifier)
@@ -83,11 +87,24 @@ final class SettingUseCase {
         updatePasscode(passcode: passcode)
     }
     
+    func update(isBiometricsSetted: Bool) {
+        let newSetting = Setting(isDarkMode: setting.isDarkMode,
+                                 darkModeSettingType: setting.darkModeSettingType,
+                                 isPasscodeSetted: setting.isPasscodeSetted,
+                                 passcode: setting.passcode,
+                                 isBiometricsSetted: isBiometricsSetted,
+                                 isPushNotificationSetted: setting.isPushNotificationSetted,
+                                 language: setting.language,
+                                 identifier: setting.identifier)
+        repository.update(setting: newSetting)
+    }
+    
     private func updatePasscode(passcode: String) {
         let newSetting = Setting(isDarkMode: setting.isDarkMode,
                                  darkModeSettingType: setting.darkModeSettingType,
                                  isPasscodeSetted: setting.isPasscodeSetted,
                                  passcode: passcode.toHash(),
+                                 isBiometricsSetted: setting.isBiometricsSetted,
                                  isPushNotificationSetted: setting.isPushNotificationSetted,
                                  language: setting.language,
                                  identifier: setting.identifier)

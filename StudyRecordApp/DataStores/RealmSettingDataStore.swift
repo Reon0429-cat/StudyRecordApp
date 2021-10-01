@@ -39,6 +39,7 @@ final class RealmSettingDataStore: SettingDataStoreProtocol {
                               darkModeSettingType: setting.darkModeSettingType,
                               isPasscodeSetted: setting.isPasscodeSetted,
                               passcode: setting.passcode,
+                              isBiometricsSetted: setting.isBiometricsSetted,
                               isPushNotificationSetted: setting.isPushNotificationSetted,
                               language: setting.language,
                               identifier: setting.identifier)
@@ -47,6 +48,7 @@ final class RealmSettingDataStore: SettingDataStoreProtocol {
             object.darkModeSettingType = setting.darkModeSettingType
             object.isPasscodeSetted = setting.isPasscodeSetted
             object.passcode = setting.passcode
+            object.isBiometricsSetted = setting.isBiometricsSetted
             object.isPushNotificationSetted = setting.isPushNotificationSetted
             object.language = setting.language
         }
@@ -70,12 +72,14 @@ private extension SettingRealm {
                               darkModeSettingType: setting.darkModeSettingType,
                               isPasscodeSetted: setting.isPasscodeSetted,
                               passcode: setting.passcode,
+                              isBiometricsSetted: setting.isBiometricsSetted,
                               isPushNotificationSetted: setting.isPushNotificationSetted,
                               language: setting.language,
                               identifier: setting.identifier)
         self.darkModeSettingType = setting.darkModeSettingType
         self.isPasscodeSetted = setting.isPasscodeSetted
         self.passcode = setting.passcode
+        self.isBiometricsSetted = setting.isBiometricsSetted
         self.isPushNotificationSetted = setting.isPushNotificationSetted
         self.language = setting.language
         self.identifier = setting.identifier
@@ -90,6 +94,7 @@ private extension Setting {
                   darkModeSettingType: setting.darkModeSettingType,
                   isPasscodeSetted: setting.isPasscodeSetted,
                   passcode: setting.passcode,
+                  isBiometricsSetted: setting.isBiometricsSetted,
                   isPushNotificationSetted: setting.isPushNotificationSetted,
                   language: setting.language,
                   identifier: setting.identifier)
