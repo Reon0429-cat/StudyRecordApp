@@ -25,8 +25,9 @@ final class PasscodeView: UIView {
     @IBOutlet private weak var thirdLabel: UILabel!
     @IBOutlet private weak var fourthLabel: UILabel!
     @IBOutlet private var keyboardButtons: [UIButton]!
+    @IBOutlet private weak var clearButton: UIButton!
     @IBOutlet private weak var inputCountLabel: UILabel!
-
+    
     weak var delegate: PasscodeViewDelegate?
     private enum LabelType {
         case first(_ text: String)
@@ -53,8 +54,8 @@ final class PasscodeView: UIView {
                 .instantiate(withOwner: self,
                              options: nil)
                 .first as? UIView else {
-            return
-        }
+                    return
+                }
         view.frame = self.bounds
         self.addSubview(view)
         
@@ -64,6 +65,7 @@ final class PasscodeView: UIView {
         super.layoutSubviews()
         
         setupKeyboardButtons()
+        setupClearButton()
         
     }
     
@@ -118,6 +120,22 @@ private extension PasscodeView {
         }
     }
     
+    @IBAction func clearButtonDidTapped(_ sender: Any) {
+        switch labelType {
+            case .first:
+                break
+            case .second(let firstText):
+                firstLabel.text = "◯"
+                labelType = .first(String(firstText.dropLast()))
+            case .third(let secondText):
+                secondLabel.text = "◯"
+                labelType = .second(String(secondText.dropLast()))
+            case .fourth(let thirdText):
+                thirdLabel.text = "◯"
+                labelType = .third(String(thirdText.dropLast()))
+        }
+    }
+    
 }
 
 // MARK: - setup
@@ -128,6 +146,11 @@ private extension PasscodeView {
             button.cutToCircle()
             button.setGradation()
         }
+    }
+    
+    func setupClearButton() {
+        clearButton.cutToCircle()
+        clearButton.setGradation()
     }
     
 }
