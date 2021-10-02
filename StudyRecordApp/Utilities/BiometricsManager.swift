@@ -33,11 +33,11 @@ struct BiometricsManager {
                                      error: &error) {
             completion(.success(nil))
         } else {
-            completion(.failure(LocalizeKey.pleaseAllowBiometrics.localizedString()))
+            completion(.failure(""))
         }
     }
     
-    func authenticate(completion: @escaping ResultHandler<Bool>) {
+    func authenticate(completion: @escaping ResultHandler<Any?>) {
         let localizedReason = LocalizeKey.useAuthenticationToUnlock.localizedString()
         context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics,
                                localizedReason: localizedReason) { isSuccess, error in
@@ -48,7 +48,11 @@ struct BiometricsManager {
                 }
                 return
             }
-            completion(.success(isSuccess))
+            if isSuccess {
+                completion(.success(nil))
+            } else {
+                completion(.failure(LocalizeKey.unknownError.localizedString()))
+            }
         }
     }
     

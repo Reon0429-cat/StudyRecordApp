@@ -205,6 +205,8 @@
 "pleaseAllowBiometrics" = "生体認証を許可してください";
 "turnOnBiometrics" = "生体認証をオンにする";
 "unknownError" = "不明なエラー";
+"allow" = "許可する";
+"turnOffBiometricsFromThisApp" = "またはこのアプリの設定から生体認証をオフにしてください";
 
 "" = "";
 "" = "";

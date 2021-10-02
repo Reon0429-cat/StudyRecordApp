@@ -40,6 +40,9 @@ final class PasscodeViewController: UIViewController {
             dataStore: RealmSettingDataStore()
         )
     )
+    private var shouldPresentBiometrics: Bool {
+        settingUseCase.setting.isBiometricsSetted && passcodeMode != .create
+    }
     var passcodeMode: PasscodeMode = .create
     
     override func viewDidLoad() {
@@ -48,37 +51,8 @@ final class PasscodeViewController: UIViewController {
         setup()
         setupSubCustomNavigationBar()
         setupPasscodeView()
-        
-        if settingUseCase.setting.isBiometricsSetted && passcodeMode != .create {
-            BiometricsManager().canUseBiometrics { result in
-                switch result {
-                    case .success:
-                        BiometricsManager().authenticate { result in
-                            switch result {
-                                case .success(let isSuccess):
-                                    if isSuccess {
-                                        DispatchQueue.main.async {
-                                            self.changeRootVC(TopViewController.self)
-                                        }
-                                    } else {
-                                        DispatchQueue.main.async {
-                                            self.showErrorAlert(title: LocalizeKey.unknownError.localizedString())
-                                        }
-                                    }
-                                case .failure(let title):
-                                    self.showErrorAlert(title: title)
-                            }
-                        }
-                    case .failure(let title):
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                            self.showErrorAlert(title: title) {
-                                if let url = URL(string: UIApplication.openSettingsURLString) {
-                                    UIApplication.shared.open(url)
-                                }
-                            }
-                        }
-                }
-            }
+        if shouldPresentBiometrics {
+            presentBiometrics()
         }
         
     }
@@ -210,6 +184,50 @@ private extension PasscodeViewController {
     
     func setVibration() {
         AudioServicesPlaySystemSound(1102)
+    }
+    
+    func presentBiometrics() {
+        BiometricsManager().canUseBiometrics { result in
+            switch result {
+                case .success:
+                    performBiometrics()
+                case .failure:
+                    DispatchQueue.main.async {
+                        self.presentCanNotAllowBiometricsAlert()
+                    }
+            }
+        }
+    }
+    
+    func presentCanNotAllowBiometricsAlert() {
+        let title = LocalizeKey.pleaseAllowBiometrics.localizedString()
+        let message = LocalizeKey.turnOffBiometricsFromThisApp.localizedString()
+        let alert = Alert.create(title: title,
+                                 message: message)
+            .addAction(title: LocalizeKey.close.localizedString(),
+                       style: .destructive)
+            .addAction(title: LocalizeKey.allow.localizedString(),
+                       style: .default) {
+                if let url = URL(string: UIApplication.openSettingsURLString) {
+                    UIApplication.shared.open(url)
+                }
+            }
+        present(alert, animated: true)
+    }
+    
+    func performBiometrics() {
+        BiometricsManager().authenticate { result in
+            switch result {
+                case .success:
+                    DispatchQueue.main.async {
+                        self.changeRootVC(TopViewController.self)
+                    }
+                case .failure(let title):
+                    DispatchQueue.main.async {
+                        self.showErrorAlert(title: title)
+                    }
+            }
+        }
     }
     
 }
