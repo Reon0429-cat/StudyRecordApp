@@ -13,7 +13,7 @@ struct Setting {
     let darkModeSettingType: DarkModeSettingType
     let isPasscodeSetted: Bool
     let passcode: String
-    let isPushNotificationSetted: Bool
+    let isBiometricsSetted: Bool
     let language: Language
     let identifier: String
 }

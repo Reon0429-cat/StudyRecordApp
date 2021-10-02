@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CryptoKit
 
 final class SettingUseCase {
     
@@ -20,7 +21,7 @@ final class SettingUseCase {
                                   darkModeSettingType: .app,
                                   isPasscodeSetted: false,
                                   passcode: "",
-                                  isPushNotificationSetted: true,
+                                  isBiometricsSetted: false,
                                   language: .japanese,
                                   identifier: UUID().uuidString)
             repository.create(setting: setting)
@@ -38,7 +39,7 @@ final class SettingUseCase {
                                  darkModeSettingType: setting.darkModeSettingType,
                                  isPasscodeSetted: setting.isPasscodeSetted,
                                  passcode: setting.passcode,
-                                 isPushNotificationSetted: setting.isPushNotificationSetted,
+                                 isBiometricsSetted: setting.isBiometricsSetted,
                                  language: setting.language,
                                  identifier: setting.identifier)
         repository.update(setting: newSetting)
@@ -49,7 +50,7 @@ final class SettingUseCase {
                                  darkModeSettingType: darkModeSettingType,
                                  isPasscodeSetted: setting.isPasscodeSetted,
                                  passcode: setting.passcode,
-                                 isPushNotificationSetted: setting.isPushNotificationSetted,
+                                 isBiometricsSetted: setting.isBiometricsSetted,
                                  language: setting.language,
                                  identifier: setting.identifier)
         repository.update(setting: newSetting)
@@ -60,30 +61,8 @@ final class SettingUseCase {
                                  darkModeSettingType: setting.darkModeSettingType,
                                  isPasscodeSetted: isPasscodeSetted,
                                  passcode: setting.passcode,
-                                 isPushNotificationSetted: setting.isPushNotificationSetted,
+                                 isBiometricsSetted: setting.isBiometricsSetted,
                                  language: setting.language,
-                                 identifier: setting.identifier)
-        repository.update(setting: newSetting)
-    }
-    
-    func change(isPushNotificationSetted: Bool) {
-        let newSetting = Setting(isDarkMode: setting.isDarkMode,
-                                 darkModeSettingType: setting.darkModeSettingType,
-                                 isPasscodeSetted: setting.isPasscodeSetted,
-                                 passcode: setting.passcode,
-                                 isPushNotificationSetted: isPushNotificationSetted,
-                                 language: setting.language,
-                                 identifier: setting.identifier)
-        repository.update(setting: newSetting)
-    }
-    
-    func change(language: Language) {
-        let newSetting = Setting(isDarkMode: setting.isDarkMode,
-                                 darkModeSettingType: setting.darkModeSettingType,
-                                 isPasscodeSetted: setting.isPasscodeSetted,
-                                 passcode: setting.passcode,
-                                 isPushNotificationSetted: setting.isPushNotificationSetted,
-                                 language: language,
                                  identifier: setting.identifier)
         repository.update(setting: newSetting)
     }
@@ -93,7 +72,7 @@ final class SettingUseCase {
     }
     
     func isSame(passcode: String) -> Bool {
-        return setting.passcode == passcode
+        return setting.passcode == passcode.toHash()
     }
     
     func create(passcode: String) {
@@ -104,15 +83,37 @@ final class SettingUseCase {
         updatePasscode(passcode: passcode)
     }
     
+    func update(isBiometricsSetted: Bool) {
+        let newSetting = Setting(isDarkMode: setting.isDarkMode,
+                                 darkModeSettingType: setting.darkModeSettingType,
+                                 isPasscodeSetted: setting.isPasscodeSetted,
+                                 passcode: setting.passcode,
+                                 isBiometricsSetted: isBiometricsSetted,
+                                 language: setting.language,
+                                 identifier: setting.identifier)
+        repository.update(setting: newSetting)
+    }
+    
     private func updatePasscode(passcode: String) {
         let newSetting = Setting(isDarkMode: setting.isDarkMode,
                                  darkModeSettingType: setting.darkModeSettingType,
                                  isPasscodeSetted: setting.isPasscodeSetted,
-                                 passcode: passcode,
-                                 isPushNotificationSetted: setting.isPushNotificationSetted,
+                                 passcode: passcode.toHash(),
+                                 isBiometricsSetted: setting.isBiometricsSetted,
                                  language: setting.language,
                                  identifier: setting.identifier)
         repository.update(setting: newSetting)
+    }
+    
+}
+
+private extension String {
+    
+    func toHash() -> String {
+        let data = self.data(using: .utf8)!
+        let hashed = SHA256.hash(data: data)
+        let hashString = hashed.compactMap { String(format: "%02x", $0) }.joined()
+        return hashString
     }
     
 }

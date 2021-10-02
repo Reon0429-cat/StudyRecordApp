@@ -21,7 +21,7 @@ final class SettingRealm: Object {
     }
     @objc dynamic var isPasscodeSetted: Bool = false
     @objc dynamic var passcode: String = ""
-    @objc dynamic var isPushNotificationSetted: Bool = true
+    @objc dynamic var isBiometricsSetted: Bool = false
     @objc private dynamic var languageRawValue = 0
     var language: Language {
         get {

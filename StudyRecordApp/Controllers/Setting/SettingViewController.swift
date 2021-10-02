@@ -11,7 +11,6 @@ private enum SettingRowType: Int, CaseIterable {
     case themeColor
     case darkMode
     case passcode
-    case pushNotification
     case evaluationApp
     case shareApp
     case reports
@@ -28,8 +27,6 @@ private enum SettingRowType: Int, CaseIterable {
                 return LocalizeKey.darkMode.localizedString()
             case .passcode:
                 return LocalizeKey.passcode.localizedString()
-            case .pushNotification:
-                return LocalizeKey.pushNotification.localizedString()
             case .howToUseApp:
                 return LocalizeKey.howToUseApp.localizedString()
             case .evaluationApp:
@@ -48,8 +45,6 @@ private enum SettingRowType: Int, CaseIterable {
         }
     }
 }
-
-// MARK: - ToDo 言語セルはいらないので、消す
 
 protocol SettingVCDelegate: ScreenPresentationDelegate {
     
@@ -192,9 +187,9 @@ extension SettingViewController: UITableViewDelegate {
                     self.halfModalPresenter.viewController = vc
                 }
             case .passcode:
-                break
-            case .pushNotification:
-                break
+                present(PasscodeSettingViewController.self) { vc in
+                    self.halfModalPresenter.viewController = vc
+                }
             case .evaluationApp:
                 break
             case .shareApp:
@@ -253,44 +248,16 @@ extension SettingViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let setting = settingUseCase.setting
         let rowType = SettingRowType.allCases[indexPath.row]
         switch rowType {
-            case .themeColor,
-                    .evaluationApp,
-                    .darkMode,
-                    .shareApp,
-                    .reports,
-                    .howToUseApp,
-                    .backup,
-                    .privacyPolicy:
-                let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
-                cell.configure(titleText: rowType.title)
-                return cell
-            case .passcode:
-                let cell = tableView.dequeueReusableCustomCell(with: CustomSwitchTableViewCell.self)
-                cell.configure(title: rowType.title,
-                               isOn: setting.isPasscodeSetted) { isOn in
-                    self.settingUseCase.change(isPasscodeSetted: isOn)
-                    if !self.settingUseCase.isPasscodeCreated && isOn {
-                        self.present(PasscodeViewController.self,
-                                     modalPresentationStyle: .fullScreen) { vc in
-                            vc.passcodeMode = .create
-                        }
-                    }
-                }
-                return cell
-            case .pushNotification:
-                let cell = tableView.dequeueReusableCustomCell(with: CustomSwitchTableViewCell.self)
-                cell.configure(title: rowType.title,
-                               isOn: setting.isPushNotificationSetted) { isOn in
-                    self.settingUseCase.change(isPushNotificationSetted: isOn)
-                }
-                return cell
             case .logout:
                 let cell = tableView.dequeueReusableCustomCell(with: CustomButtonTableViewCell.self)
                 cell.configure(title: rowType.title)
                 cell.onTapEvent = { self.presentLogoutAlert() }
+                return cell
+            default:
+                let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
+                cell.configure(titleText: rowType.title)
                 return cell
         }
     }
@@ -304,7 +271,6 @@ private extension SettingViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.registerCustomCell(CustomTitleTableViewCell.self)
-        tableView.registerCustomCell(CustomSwitchTableViewCell.self)
         tableView.registerCustomCell(CustomButtonTableViewCell.self)
         tableView.tableFooterView = UIView()
         tableView.rowHeight = UITableView.automaticDimension

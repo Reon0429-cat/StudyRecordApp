@@ -39,7 +39,7 @@ final class RealmSettingDataStore: SettingDataStoreProtocol {
                               darkModeSettingType: setting.darkModeSettingType,
                               isPasscodeSetted: setting.isPasscodeSetted,
                               passcode: setting.passcode,
-                              isPushNotificationSetted: setting.isPushNotificationSetted,
+                              isBiometricsSetted: setting.isBiometricsSetted,
                               language: setting.language,
                               identifier: setting.identifier)
         try! realm.write {
@@ -47,7 +47,7 @@ final class RealmSettingDataStore: SettingDataStoreProtocol {
             object.darkModeSettingType = setting.darkModeSettingType
             object.isPasscodeSetted = setting.isPasscodeSetted
             object.passcode = setting.passcode
-            object.isPushNotificationSetted = setting.isPushNotificationSetted
+            object.isBiometricsSetted = setting.isBiometricsSetted
             object.language = setting.language
         }
     }
@@ -70,13 +70,13 @@ private extension SettingRealm {
                               darkModeSettingType: setting.darkModeSettingType,
                               isPasscodeSetted: setting.isPasscodeSetted,
                               passcode: setting.passcode,
-                              isPushNotificationSetted: setting.isPushNotificationSetted,
+                              isBiometricsSetted: setting.isBiometricsSetted,
                               language: setting.language,
                               identifier: setting.identifier)
         self.darkModeSettingType = setting.darkModeSettingType
         self.isPasscodeSetted = setting.isPasscodeSetted
         self.passcode = setting.passcode
-        self.isPushNotificationSetted = setting.isPushNotificationSetted
+        self.isBiometricsSetted = setting.isBiometricsSetted
         self.language = setting.language
         self.identifier = setting.identifier
     }
@@ -90,7 +90,7 @@ private extension Setting {
                   darkModeSettingType: setting.darkModeSettingType,
                   isPasscodeSetted: setting.isPasscodeSetted,
                   passcode: setting.passcode,
-                  isPushNotificationSetted: setting.isPushNotificationSetted,
+                  isBiometricsSetted: setting.isBiometricsSetted,
                   language: setting.language,
                   identifier: setting.identifier)
     }

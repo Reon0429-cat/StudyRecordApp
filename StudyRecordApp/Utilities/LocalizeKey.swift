@@ -189,9 +189,14 @@ enum LocalizeKey: String {
     case month
     case day
     
-    
-    
-    
+    case turnOnFaceID
+    case turnOnTouchID
+    case useAuthenticationToUnlock
+    case pleaseAllowBiometrics
+    case turnOnBiometrics
+    case turnOffBiometricsFromThisApp
+    case unknownError
+    case allow
     
     func localizedString() -> String {
         return NSLocalizedString(self.rawValue,

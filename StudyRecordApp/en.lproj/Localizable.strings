@@ -198,6 +198,16 @@
 "uncategorized" = "uncategorized";
 
 "fixed" = "fixed";
+
+"turnOnFaceID" = "Turn on Face ID";
+"turnOnTouchID" = "Turn on Touch ID";
+"useAuthenticationToUnlock" = "Use authentication to unlock";
+"pleaseAllowBiometrics" = "Please allow biometrics";
+"turnOnBiometrics" = "Turn on biometrics";
+"unknownError" = "Unknown error";
+"allow" = "allow";
+"turnOffBiometricsFromThisApp" = "Or turn off biometrics from the settings of this app";
+
 "" = "";
 "" = "";
 "" = "";

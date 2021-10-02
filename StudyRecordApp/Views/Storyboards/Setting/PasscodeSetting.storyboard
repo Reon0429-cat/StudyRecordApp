@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Passcode Setting View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="PasscodeSettingViewController" id="Y6W-OH-hqX" customClass="PasscodeSettingViewController" customModule="StudyRecordApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WNs-Uz-iAc">
+                                <rect key="frame" x="0.0" y="44" width="414" height="220"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="wUR-he-QaG">
+                                        <rect key="frame" x="0.0" y="20" width="414" height="150"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Guk-t3-hYJ">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cfU-Um-PYe">
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="パスコード" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="7kf-As-CEK">
+                                                                <rect key="frame" x="20" y="27.5" width="87" height="20.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ud2-mB-OWe" customClass="CustomSwitch" customModule="StudyRecordApp" customModuleProvider="target">
+                                                                <rect key="frame" x="345" y="22" width="51" height="31"/>
+                                                                <connections>
+                                                                    <action selector="passcodeSwitchValueDidChanged:" destination="Y6W-OH-hqX" eventType="valueChanged" id="Yx3-AQ-JM5"/>
+                                                                </connections>
+                                                            </switch>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="Ud2-mB-OWe" secondAttribute="trailing" constant="20" id="7DZ-Z2-uvK"/>
+                                                            <constraint firstItem="Ud2-mB-OWe" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7kf-As-CEK" secondAttribute="trailing" constant="20" id="CI9-BE-Pba"/>
+                                                            <constraint firstItem="Ud2-mB-OWe" firstAttribute="centerY" secondItem="cfU-Um-PYe" secondAttribute="centerY" id="Msa-Kt-zax"/>
+                                                            <constraint firstItem="7kf-As-CEK" firstAttribute="centerY" secondItem="cfU-Um-PYe" secondAttribute="centerY" id="XpN-1Q-eip"/>
+                                                            <constraint firstItem="7kf-As-CEK" firstAttribute="leading" secondItem="cfU-Um-PYe" secondAttribute="leading" constant="20" id="wOC-bY-h6m"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7HL-xS-Fzg">
+                                                <rect key="frame" x="0.0" y="75" width="414" height="75"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MoA-Bj-w5m">
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3yJ-om-IVM" customClass="RadioButton" customModule="StudyRecordApp" customModuleProvider="target">
+                                                                <rect key="frame" x="5" y="18.5" width="192.5" height="38"/>
+                                                                <color key="tintColor" systemColor="labelColor"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain" image="record.circle" catalog="system" title="FaceIDをオンにする" imagePadding="10">
+                                                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
+                                                                </buttonConfiguration>
+                                                                <connections>
+                                                                    <action selector="biometricsButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="t0d-Yr-YGv"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstItem="3yJ-om-IVM" firstAttribute="leading" secondItem="MoA-Bj-w5m" secondAttribute="leading" constant="5" id="gVu-hT-Rhe"/>
+                                                            <constraint firstItem="3yJ-om-IVM" firstAttribute="centerY" secondItem="MoA-Bj-w5m" secondAttribute="centerY" id="ogh-bj-k2u"/>
+                                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="3yJ-om-IVM" secondAttribute="trailing" constant="20" id="uMe-F6-qvE"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="220" id="KZg-7m-Lwf"/>
+                                    <constraint firstAttribute="bottom" secondItem="wUR-he-QaG" secondAttribute="bottom" constant="50" id="Lef-Vj-Z6c"/>
+                                    <constraint firstItem="wUR-he-QaG" firstAttribute="centerX" secondItem="WNs-Uz-iAc" secondAttribute="centerX" id="W5X-bE-KsU"/>
+                                    <constraint firstItem="wUR-he-QaG" firstAttribute="leading" secondItem="WNs-Uz-iAc" secondAttribute="leading" id="kaR-XI-NUf"/>
+                                    <constraint firstItem="wUR-he-QaG" firstAttribute="top" secondItem="WNs-Uz-iAc" secondAttribute="top" constant="20" id="mN8-ND-qST"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="WNs-Uz-iAc" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="7Vk-V5-29w"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="WNs-Uz-iAc" secondAttribute="trailing" id="gk2-mb-CzG"/>
+                            <constraint firstItem="WNs-Uz-iAc" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="inE-m3-RLs"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="biometricsButton" destination="3yJ-om-IVM" id="FY2-2U-bDT"/>
+                        <outlet property="contentView" destination="WNs-Uz-iAc" id="7Gi-A4-CGA"/>
+                        <outlet property="passcodeSwitch" destination="Ud2-mB-OWe" id="cvR-Ab-U5i"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-22" y="113"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="record.circle" catalog="system" width="128" height="121"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
