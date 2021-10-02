@@ -195,6 +195,8 @@ enum LocalizeKey: String {
     case pleaseAllowBiometrics
     case turnOnBiometrics
     
+    case unknownError
+    
     
     func localizedString() -> String {
         return NSLocalizedString(self.rawValue,

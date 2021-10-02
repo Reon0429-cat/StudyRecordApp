@@ -8,7 +8,7 @@
 import Foundation
 import LocalAuthentication
 
-final class BiometricsManager {
+struct BiometricsManager {
     
     private var context: LAContext {
         let context = LAContext()
@@ -41,40 +41,14 @@ final class BiometricsManager {
         let localizedReason = LocalizeKey.useAuthenticationToUnlock.localizedString()
         context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics,
                                localizedReason: localizedReason) { isSuccess, error in
-//            if let error = error {
-//                switch LAError(_nsError: error as NSError).code {
-//                    case .appCancel:
-//                        // システムによるキャンセル① アプリのコード
-//                    case .systemCancel:
-//                        // システムによるキャンセル② システム
-//                    case .userCancel:
-//                        // ユーザーによってキャンセルされた場合
-//                    case .biometryLockout:
-//                        // 生体認証エラー① 失敗制限に達した際のロック
-//                    case .biometryNotAvailable:
-//                        // 生体認証エラー② 許可していない
-//                    case .biometryNotEnrolled:
-//                        // 生体認証エラー③ 生体認証IDが１つもない
-//                    case .authenticationFailed:
-//                        // 認証に失敗してエラー
-//                    case .invalidContext:
-//                        // システムによるエラー① すでに無効化済み
-//                    case .notInteractive:
-//                        // システムによるエラー② 非表示になっている
-//                    case .passcodeNotSet:
-//                        // パスコード認証エラー① パスコードを設定していない
-//                    case .userFallback:
-//                        // パスコード認証エラー② LAPolicyによって無効化
-//                    default:
-//                        // そのほかの未対応エラー
-//                }
-//                return
-//            }
-//            if isSuccess {
-//                completion(.success(isSuccess))
-//            } else {
-//                completion(.failure("予期せぬエラー"))
-//            }
+            if let error = error {
+                switch LAError(_nsError: error as NSError).code {
+                    default:
+                        break
+                }
+                return
+            }
+            completion(.success(isSuccess))
         }
     }
     

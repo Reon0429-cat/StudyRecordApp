@@ -57,11 +57,14 @@ final class PasscodeViewController: UIViewController {
                             switch result {
                                 case .success(let isSuccess):
                                     if isSuccess {
-                                        // 成功
+                                        DispatchQueue.main.async {
+                                            self.changeRootVC(TopViewController.self)
+                                        }
                                     } else {
-                                        // 失敗
+                                        DispatchQueue.main.async {
+                                            self.showErrorAlert(title: LocalizeKey.unknownError.localizedString())
+                                        }
                                     }
-                                    break
                                 case .failure(let title):
                                     self.showErrorAlert(title: title)
                             }

@@ -204,6 +204,7 @@
 "useAuthenticationToUnlock" = "Use authentication to unlock";
 "pleaseAllowBiometrics" = "Please allow biometrics";
 "turnOnBiometrics" = "Turn on biometrics";
+"unknownError" = "Unknown error";
 
 "" = "";
 "" = "";

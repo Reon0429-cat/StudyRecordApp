@@ -204,6 +204,7 @@
 "useAuthenticationToUnlock" = "ロックの解除に、認証を使用します";
 "pleaseAllowBiometrics" = "生体認証を許可してください";
 "turnOnBiometrics" = "生体認証をオンにする";
+"unknownError" = "不明なエラー";
 
 "" = "";
 "" = "";
