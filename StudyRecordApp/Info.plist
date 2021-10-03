@@ -3,7 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>NSFaceIDUsageDescription</key>
-	<string>FaceIDをロック解除のために使う</string>
+	<string>Use Face ID to unlock.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Used to call the camera.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Used to use the photo app to save photos.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -22,11 +26,6 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSCameraUsageDescription</key>
-	<string>カメラを呼び出すために追加する</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>写真を保存する写真アプリを利用するために追加する
-写真を保存する写真アプリを利用するために追加する</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
