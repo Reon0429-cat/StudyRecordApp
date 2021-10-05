@@ -8,9 +8,9 @@
 import RealmSwift
 
 protocol GraphDataStoreProtocol {
-    func create(graph: Graph)
-    func readAll() -> [Graph]
-    func update(graph: Graph)
+    func create(graph: GraphRealm)
+    func readAll() -> [GraphRealm]
+    func update(graph: GraphRealm)
 }
 
 final class RealmGraphDataStore: GraphDataStoreProtocol {
@@ -20,117 +20,26 @@ final class RealmGraphDataStore: GraphDataStoreProtocol {
         realm.objects(GraphRealm.self)
     }
     
-    func create(graph: Graph) {
-        let object = realm.object(ofType: GraphRealm.self,
-                                  forPrimaryKey: graph.identifier) ?? GraphRealm()
+    func create(graph: GraphRealm) {
         try! realm.write {
-            realm.add(object)
+            realm.add(graph)
         }
     }
     
-    func readAll() -> [Graph] {
-        return objects.map { Graph(graph: $0) }
+    func readAll() -> [GraphRealm] {
+        return objects.map { $0 }
     }
     
-    func update(graph: Graph) {
+    func update(graph: GraphRealm) {
         let object = realm.object(ofType: GraphRealm.self,
                                   forPrimaryKey: graph.identifier) ?? GraphRealm()
-        let graph = Graph(selectedType: graph.selectedType,
-                          line: graph.line,
-                          bar: graph.bar,
-                          dot: graph.dot,
-                          identifier: graph.identifier)
         try! realm.write {
             object.selectedType = graph.selectedType
-            object.line = LineRealm(graph: graph)
-            object.bar = BarRealm(graph: graph)
-            object.dot = DotRealm(graph: graph)
+            object.line = graph.line
+            object.bar = graph.bar
+            object.dot = graph.dot
         }
     }
     
 }
 
-private extension GraphRealm {
-    
-    convenience init(graph: Graph) {
-        self.init()
-        let graph = Graph(selectedType: graph.selectedType,
-                          line: graph.line,
-                          bar: graph.bar,
-                          dot: graph.dot,
-                          identifier: graph.identifier)
-        self.selectedType = graph.selectedType
-        self.line = LineRealm(graph: graph)
-        self.bar = BarRealm(graph: graph)
-        self.dot = DotRealm(graph: graph)
-        self.identifier = graph.identifier
-    }
-    
-}
-
-private extension LineRealm {
-    
-    convenience init(graph: Graph) {
-        self.init()
-        self.isSmooth = graph.line.isSmooth
-        self.isFilled = graph.line.isFilled
-        self.withDots = graph.line.withDots
-    }
-    
-}
-
-private extension BarRealm {
-    
-    convenience init(graph: Graph) {
-        self.init()
-        self.width = graph.bar.width
-    }
-    
-}
-
-private extension DotRealm {
-    
-    convenience init(graph: Graph) {
-        self.init()
-        self.isSquare = graph.dot.isSquare
-    }
-    
-}
-
-private extension Graph {
-    
-    init(graph: GraphRealm) {
-        self.init(selectedType: graph.selectedType,
-                  line: Line(graph: graph),
-                  bar: Bar(graph: graph),
-                  dot: Dot(graph: graph),
-                  identifier: graph.identifier)
-    }
-    
-}
-
-private extension Line {
-    
-    init(graph: GraphRealm) {
-        self.init(isSmooth: graph.line?.isSmooth ?? false,
-                  isFilled: graph.line?.isFilled ?? false,
-                  withDots: graph.line?.withDots ?? true)
-    }
-    
-}
-
-private extension Bar {
-    
-    init(graph: GraphRealm) {
-        self.init(width: graph.bar?.width ?? 20)
-    }
-    
-}
-
-private extension Dot {
-    
-    init(graph: GraphRealm) {
-        self.init(isSquare: graph.dot?.isSquare ?? false)
-    }
-    
-}
