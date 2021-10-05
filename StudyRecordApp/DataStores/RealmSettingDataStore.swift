@@ -8,10 +8,10 @@
 import RealmSwift
 
 protocol SettingDataStoreProtocol {
-    func create(setting: Setting)
-    func readAll() -> [Setting]
-    func update(setting: Setting)
-    func delete(setting: Setting)
+    func create(setting: SettingRealm)
+    func readAll() -> [SettingRealm]
+    func update(setting: SettingRealm)
+    func delete(setting: SettingRealm)
 }
 
 final class RealmSettingDataStore: SettingDataStoreProtocol {
@@ -21,27 +21,19 @@ final class RealmSettingDataStore: SettingDataStoreProtocol {
         realm.objects(SettingRealm.self)
     }
     
-    func create(setting: Setting) {
-        let settingRealm = SettingRealm(setting: setting)
+    func create(setting: SettingRealm) {
         try! realm.write {
-            realm.add(settingRealm)
+            realm.add(setting)
         }
     }
     
-    func readAll() -> [Setting] {
-        return objects.map { Setting(setting: $0) }
+    func readAll() -> [SettingRealm] {
+        return objects.map { $0 }
     }
     
-    func update(setting: Setting) {
+    func update(setting: SettingRealm) {
         let object = realm.object(ofType: SettingRealm.self,
                                   forPrimaryKey: setting.identifier) ?? SettingRealm()
-        let setting = Setting(isDarkMode: setting.isDarkMode,
-                              darkModeSettingType: setting.darkModeSettingType,
-                              isPasscodeSetted: setting.isPasscodeSetted,
-                              passcode: setting.passcode,
-                              isBiometricsSetted: setting.isBiometricsSetted,
-                              language: setting.language,
-                              identifier: setting.identifier)
         try! realm.write {
             object.isDarkMode = setting.isDarkMode
             object.darkModeSettingType = setting.darkModeSettingType
@@ -52,7 +44,7 @@ final class RealmSettingDataStore: SettingDataStoreProtocol {
         }
     }
     
-    func delete(setting: Setting) {
+    func delete(setting: SettingRealm) {
         let object = realm.object(ofType: SettingRealm.self,
                                   forPrimaryKey: setting.identifier) ?? SettingRealm()
         try! realm.write {
@@ -62,37 +54,3 @@ final class RealmSettingDataStore: SettingDataStoreProtocol {
     
 }
 
-private extension SettingRealm {
-    
-    convenience init(setting: Setting) {
-        self.init()
-        let setting = Setting(isDarkMode: setting.isDarkMode,
-                              darkModeSettingType: setting.darkModeSettingType,
-                              isPasscodeSetted: setting.isPasscodeSetted,
-                              passcode: setting.passcode,
-                              isBiometricsSetted: setting.isBiometricsSetted,
-                              language: setting.language,
-                              identifier: setting.identifier)
-        self.darkModeSettingType = setting.darkModeSettingType
-        self.isPasscodeSetted = setting.isPasscodeSetted
-        self.passcode = setting.passcode
-        self.isBiometricsSetted = setting.isBiometricsSetted
-        self.language = setting.language
-        self.identifier = setting.identifier
-    }
-    
-}
-
-private extension Setting {
-    
-    init(setting: SettingRealm) {
-        self.init(isDarkMode: setting.isDarkMode,
-                  darkModeSettingType: setting.darkModeSettingType,
-                  isPasscodeSetted: setting.isPasscodeSetted,
-                  passcode: setting.passcode,
-                  isBiometricsSetted: setting.isBiometricsSetted,
-                  language: setting.language,
-                  identifier: setting.identifier)
-    }
-    
-}

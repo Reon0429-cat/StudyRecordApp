@@ -664,8 +664,8 @@
 		AB8B704926D5EF290069FF67 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				AB13ED4A26BB9155002F56FF /* RecordRepository.swift */,
 				AB14B46726DBA4F9007A5F16 /* UserRepository.swift */,
+				AB13ED4A26BB9155002F56FF /* RecordRepository.swift */,
 				AB4397FE26DE141E008C8CA8 /* GoalRepository.swift */,
 				ABFAB20F26E63A830095EC20 /* GraphRepository.swift */,
 				AB0C766626EBAF3400BF5B64 /* SettingRepository.swift */,
