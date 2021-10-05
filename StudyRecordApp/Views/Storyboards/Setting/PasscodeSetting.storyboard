@@ -104,6 +104,7 @@
                     <connections>
                         <outlet property="biometricsButton" destination="3yJ-om-IVM" id="FY2-2U-bDT"/>
                         <outlet property="contentView" destination="WNs-Uz-iAc" id="7Gi-A4-CGA"/>
+                        <outlet property="passcodeLabel" destination="7kf-As-CEK" id="EBy-cR-gEU"/>
                         <outlet property="passcodeSwitch" destination="Ud2-mB-OWe" id="cvR-Ab-U5i"/>
                     </connections>
                 </viewController>

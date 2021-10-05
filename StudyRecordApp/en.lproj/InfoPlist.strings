@@ -1,0 +1,12 @@
+/* 
+  InfoPlist.strings
+  StudyRecordApp
+
+  Created by 大西玲音 on 2021/10/03.
+  
+*/
+
+CFBundleDisplayName = "StudyRecordApp";
+NSFaceIDUsageDescription = "Use Face ID to unlock.";
+NSCameraUsageDescription = "Used to call the camera.";
+NSPhotoLibraryUsageDescription = "Used to use the photo app to save photos.";

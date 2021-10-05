@@ -9,6 +9,7 @@ import UIKit
 
 final class PasscodeSettingViewController: UIViewController {
     
+    @IBOutlet private weak var passcodeLabel: UILabel!
     @IBOutlet private weak var contentView: UIView!
     @IBOutlet private weak var passcodeSwitch: CustomSwitch!
     @IBOutlet private weak var biometricsButton: RadioButton!
@@ -22,6 +23,7 @@ final class PasscodeSettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupPasscodeLabel()
         setupBiometricsButton()
         
     }
@@ -67,6 +69,10 @@ extension PasscodeSettingViewController: HalfModalPresenterDelegate {
 
 // MARK: - setup
 private extension PasscodeSettingViewController {
+    
+    func setupPasscodeLabel() {
+        passcodeLabel.text = LocalizeKey.passcode.localizedString()
+    }
     
     func setupPasscodeSwitch() {
         passcodeSwitch.isOn = settingUseCase.setting.isPasscodeSetted
