@@ -38,7 +38,8 @@ final class RealmRecordDataStore: RealmRecordDataStoreProtocol {
                                   forPrimaryKey: record.identifier) ?? RecordRealm()
         try! realm.write {
             object.title = record.title
-            object.histories = record.histories
+            object.histories.removeAll()
+            object.histories.append(objectsIn: record.histories)
             object.isExpanded = record.isExpanded
             object.graphColor = record.graphColor
             object.memo = record.memo

@@ -37,7 +37,8 @@ final class RealmGoalDataStore: GoalDataStoreProtocol {
         try! realm.write {
             object.title = category.title
             object.isExpanded = category.isExpanded
-            object.goals = category.goals
+            object.goals.removeAll()
+            object.goals.append(objectsIn: category.goals)
         }
     }
     
