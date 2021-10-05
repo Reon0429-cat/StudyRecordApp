@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 protocol RecordRepositoryProtocol {
     func create(record: Record)
@@ -19,35 +20,124 @@ protocol RecordRepositoryProtocol {
 
 final class RecordRepository: RecordRepositoryProtocol {
     
-    private var dataStore: RecordDataStoreProtocol
-    init(dataStore: RecordDataStoreProtocol) {
+    private var dataStore: RealmRecordDataStoreProtocol
+    init(dataStore: RealmRecordDataStoreProtocol) {
         self.dataStore = dataStore
     }
     
     func create(record: Record) {
-        dataStore.create(record: record)
+        let recordRealm = RecordRealm(record: record)
+        dataStore.create(record: recordRealm)
     }
     
     func read(at index: Int) -> Record {
-        return dataStore.readAll()[index]
+        let record = Record(record: dataStore.readAll()[index])
+        return record
     }
     
     func readAll() -> [Record] {
-        return dataStore.readAll()
+        let records = dataStore.readAll().map { Record(record: $0) }
+        return records
     }
     
     func update(record: Record) {
-        dataStore.update(record: record) 
+        let recordRealm = RecordRealm(record: record)
+        dataStore.update(record: recordRealm)
     }
     
     func delete(record: Record) {
-        dataStore.delete(record: record)
+        let recordRealm = RecordRealm(record: record)
+        dataStore.delete(record: recordRealm)
     }
     
     func sort(from sourceIndexPath: IndexPath,
               to destinationIndexPath: IndexPath) {
         dataStore.sort(from: sourceIndexPath,
                        to: destinationIndexPath)
+    }
+    
+}
+
+private extension RecordRealm {
+    
+    convenience init(record: Record) {
+        self.init()
+        // Recordのプロパティが増えたときにコンパイルで漏れを防ぐためにインスタンスを再生成している。
+        let record = Record(title: record.title,
+                            histories: record.histories,
+                            isExpanded: record.isExpanded,
+                            graphColor: record.graphColor,
+                            memo: record.memo,
+                            yearID: record.yearID,
+                            monthID: record.monthID,
+                            order: record.order,
+                            identifier: record.identifier)
+        self.title = record.title
+        self.histories = record.historiesList
+        self.isExpanded = record.isExpanded
+        self.graphColor?.redValue = Float(record.graphColor.redValue)
+        self.graphColor?.greenValue = Float(record.graphColor.greenValue)
+        self.graphColor?.blueValue = Float(record.graphColor.blueValue)
+        self.graphColor?.alphaValue = Float(record.graphColor.alphaValue)
+        self.memo = record.memo
+        self.yearID = record.yearID
+        self.monthID = record.monthID
+        self.order = record.order
+        self.identifier = record.identifier
+    }
+    
+}
+
+private extension Record {
+    
+    init(record: RecordRealm) {
+        // Recordのプロパティが増えたときにコンパイルで漏れを防ぐためにインスタンスを再生成している。
+        let record = Record(title: record.title,
+                            histories: record.historiesArray,
+                            isExpanded: record.isExpanded,
+                            graphColor: GraphColor(record: record),
+                            memo: record.memo,
+                            yearID: record.yearID,
+                            monthID: record.monthID,
+                            order: record.order,
+                            identifier: record.identifier)
+        self.title = record.title
+        self.histories = record.histories
+        self.isExpanded = record.isExpanded
+        self.graphColor = record.graphColor
+        self.memo = record.memo
+        self.yearID = record.yearID
+        self.monthID = record.monthID
+        self.order = record.order
+        self.identifier = record.identifier
+    }
+    
+}
+
+// [History]に変換 ->  List<HistoryRealm>
+private extension Record {
+    
+    var historiesList: List<HistoryRealm> {
+        let histories = List<HistoryRealm>()
+        self.histories?.forEach { history in
+            let historyRealm = HistoryRealm(history: history)
+            histories.append(historyRealm)
+        }
+        return histories
+    }
+    
+}
+
+// List<HistoryRealm> -> [History]に変換
+private extension RecordRealm {
+    
+    var historiesArray: [History] {
+        var histories = [History]()
+        self.histories.forEach { history in
+            let history = History(history: history)
+            histories.append(history)
+        }
+        return histories
     }
     
 }
