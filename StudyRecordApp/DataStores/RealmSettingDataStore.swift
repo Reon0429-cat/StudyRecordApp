@@ -5,7 +5,7 @@
 //  Created by 大西玲音 on 2021/09/11.
 //
 
-import RealmSwift
+import Foundation
 
 protocol SettingDataStoreProtocol {
     func create(setting: SettingRealm)
@@ -16,40 +16,21 @@ protocol SettingDataStoreProtocol {
 
 final class RealmSettingDataStore: SettingDataStoreProtocol {
     
-    private let realm = try! Realm()
-    private var objects: Results<SettingRealm> {
-        realm.objects(SettingRealm.self)
-    }
-    
     func create(setting: SettingRealm) {
-        try! realm.write {
-            realm.add(setting)
-        }
+        RealmManager.create(object: setting)
     }
     
     func readAll() -> [SettingRealm] {
-        return objects.map { $0 }
+        return RealmManager.readAll(type: SettingRealm.self,
+                                    byKeyPath: nil)
     }
     
     func update(setting: SettingRealm) {
-        let object = realm.object(ofType: SettingRealm.self,
-                                  forPrimaryKey: setting.identifier) ?? SettingRealm()
-        try! realm.write {
-            object.isDarkMode = setting.isDarkMode
-            object.darkModeSettingType = setting.darkModeSettingType
-            object.isPasscodeSetted = setting.isPasscodeSetted
-            object.passcode = setting.passcode
-            object.isBiometricsSetted = setting.isBiometricsSetted
-            object.language = setting.language
-        }
+        RealmManager.update(object: setting)
     }
     
     func delete(setting: SettingRealm) {
-        let object = realm.object(ofType: SettingRealm.self,
-                                  forPrimaryKey: setting.identifier) ?? SettingRealm()
-        try! realm.write {
-            realm.delete(object)
-        }
+        RealmManager.delete(object: setting)
     }
     
 }
