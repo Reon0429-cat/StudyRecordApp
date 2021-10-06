@@ -5,68 +5,41 @@
 //  Created by 大西玲音 on 2021/08/05.
 //
 
-import RealmSwift
+import Foundation
 
 protocol RealmRecordDataStoreProtocol {
     func create(record: RecordRealm)
     func readAll() -> [RecordRealm]
     func update(record: RecordRealm)
     func delete(record: RecordRealm)
-    func sort(from sourceIndexPath: IndexPath,
-              to destinationIndexPath: IndexPath)
+    func sort(sourceObject: RecordRealm,
+              destinationObject: RecordRealm)
 }
 
 final class RealmRecordDataStore: RealmRecordDataStoreProtocol {
     
-    private let realm = try! Realm()
-    private var objects: Results<RecordRealm> {
-        realm.objects(RecordRealm.self).sorted(byKeyPath: "order", ascending: true)
-    }
-    
     func create(record: RecordRealm) {
-        try! realm.write {
-            realm.add(record)
-        }
+        RealmManager.create(object: record)
     }
     
     func readAll() -> [RecordRealm] {
-        return objects.map { $0 }
+        return RealmManager.readAll(type: RecordRealm.self)
     }
     
     func update(record: RecordRealm) {
-        try! realm.write {
-            realm.add(record, update: .modified)
-        }
+        RealmManager.update(object: record)
     }
     
     func delete(record: RecordRealm) {
-        let object = realm.object(ofType: RecordRealm.self,
-                                  forPrimaryKey: record.identifier) ?? RecordRealm()
-        try! realm.write {
-            realm.delete(object)
-            objects
-                .filter { record.order <= $0.order }
-                .forEach { $0.order -= 1 }
-        }
+        RealmManager.delete(object: record,
+                            identifier: record.identifier)
+        RealmManager.setupOrder(type: RecordRealm.self)
     }
     
-    func sort(from sourceIndexPath: IndexPath,
-              to destinationIndexPath: IndexPath) {
-        let sourceObject = objects[sourceIndexPath.row]
-        let destinationObject = objects[destinationIndexPath.row]
-        let destinationObjectOrder = destinationObject.order
-        try! realm.write {
-            if sourceIndexPath.row < destinationIndexPath.row {
-                for index in sourceIndexPath.row...destinationIndexPath.row {
-                    objects[index].order -= 1
-                }
-            } else {
-                for index in destinationIndexPath.row...sourceIndexPath.row {
-                    objects[index].order += 1
-                }
-            }
-            sourceObject.order = destinationObjectOrder
-        }
+    func sort(sourceObject: RecordRealm,
+              destinationObject: RecordRealm) {
+        RealmManager.sort(sourceObject: sourceObject,
+                          destinationObject: destinationObject)
     }
     
 }

@@ -52,8 +52,9 @@ final class RecordRepository: RecordRepositoryProtocol {
     
     func sort(from sourceIndexPath: IndexPath,
               to destinationIndexPath: IndexPath) {
-        dataStore.sort(from: sourceIndexPath,
-                       to: destinationIndexPath)
+        let objects = dataStore.readAll()
+        dataStore.sort(sourceObject: objects[sourceIndexPath.row],
+                       destinationObject: objects[destinationIndexPath.row])
     }
     
 }
