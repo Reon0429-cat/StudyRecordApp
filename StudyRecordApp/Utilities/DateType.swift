@@ -30,21 +30,21 @@ enum DateType: Int, CaseIterable {
         switch self {
             case .year:
                 if Locale.current.languageCode == "ja" {
-                    return "\(self.numbers[row])" + LocalizeKey.year.localizedString()
+                    return "\(self.numbers[row])" + L10n.year
                 }
                 return "\(self.numbers[row])"
             case .month:
                 if Locale.current.languageCode == "ja" {
-                    return "\(self.numbers[row])" + LocalizeKey.month.localizedString()
+                    return "\(self.numbers[row])" + L10n.month
                 }
                 return "\(Month(rawValue: row)!.text.prefix(3))"
             case .day:
                 if Locale.current.languageCode == "ja" {
-                    return "\(self.numbers[row])" + LocalizeKey.day.localizedString()
+                    return "\(self.numbers[row])" + L10n.day
                 }
                 return "\(self.numbers[row])"
-            case .hour: return "\(self.numbers[row])" + LocalizeKey.shortHour.localizedString()
-            case .minutes: return "\(self.numbers[row])" + LocalizeKey.shortMinute.localizedString()
+            case .hour: return "\(self.numbers[row])" + L10n.shortHour
+            case .minutes: return "\(self.numbers[row])" + L10n.shortMinute
         }
     }
     var alignment: NSTextAlignment {

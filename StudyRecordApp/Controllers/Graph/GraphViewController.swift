@@ -195,11 +195,11 @@ private extension GraphViewController {
     }
     
     func setupRegisterButton() {
-        registerButton.setTitle(LocalizeKey.Register.localizedString())
+        registerButton.setTitle(L10n.register)
     }
     
     func setupDescriptionLabel() {
-        descriptionLabel.text = LocalizeKey.recordedDataIsNotRegistered.localizedString()
+        descriptionLabel.text = L10n.recordedDataIsNotRegistered
     }
     
 }

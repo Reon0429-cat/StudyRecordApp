@@ -78,7 +78,7 @@ private extension LoginViewController {
         guard let email = mailAddressTextField.text,
               let password = passwordTextField.text else { return }
         if CommunicationStatus().unstable() {
-            showErrorAlert(title: LocalizeKey.communicationEnvironmentIsNotGood.localizedString())
+            showErrorAlert(title: L10n.communicationEnvironmentIsNotGood)
             return
         }
         indicator.show(.progress)
@@ -154,7 +154,7 @@ private extension LoginViewController {
     }
     
     func setupMailAddressLabel() {
-        mailAddressLabel.text = LocalizeKey.mailAddress.localizedString()
+        mailAddressLabel.text = L10n.mailAddress
         mailAddressLabel.textColor = .dynamicColor(light: .black, dark: .white)
     }
     
@@ -164,7 +164,7 @@ private extension LoginViewController {
     }
     
     func setupPasswordLabel() {
-        passwordLabel.text = LocalizeKey.password.localizedString()
+        passwordLabel.text = L10n.password
         passwordLabel.textColor = .dynamicColor(light: .black, dark: .white)
     }
     
@@ -180,7 +180,7 @@ private extension LoginViewController {
     }
     
     func setupLoginButton() {
-        loginButton.setTitle(LocalizeKey.login.localizedString())
+        loginButton.setTitle(L10n.login)
         changeLoginButtonState(isEnabled: false)
     }
     
@@ -190,12 +190,12 @@ private extension LoginViewController {
     }
     
     func setupPasswordForgotLabel() {
-        passwordForgotLabel.text = LocalizeKey.passwordForgot.localizedString()
+        passwordForgotLabel.text = L10n.passwordForgot
         passwordForgotLabel.textColor = .dynamicColor(light: .black, dark: .white)
     }
     
     func setupPasswordForgotButton() {
-        passwordForgotButton.setTitle(LocalizeKey.here.localizedString())
+        passwordForgotButton.setTitle(L10n.here)
     }
     
     func setupPasswordImage() {

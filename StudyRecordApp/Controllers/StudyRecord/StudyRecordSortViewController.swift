@@ -133,7 +133,7 @@ extension StudyRecordSortViewController: SubCustomNavigationBarDelegate {
     }
     
     var navTitle: String {
-        return LocalizeKey.Sort.localizedString()
+        return L10n.largeSort
     }
     
 }

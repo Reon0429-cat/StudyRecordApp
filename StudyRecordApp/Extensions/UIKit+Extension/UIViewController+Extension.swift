@@ -62,7 +62,7 @@ extension UIViewController {
                         message: String? = nil,
                         handler: (() -> Void)? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            .addAction(title: LocalizeKey.close.localizedString(),
+            .addAction(title: L10n.close,
                        style: .default,
                        handler: handler)
         present(alert, animated: true)

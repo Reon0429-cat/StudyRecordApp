@@ -65,12 +65,12 @@ private extension AdditionalStudyRecordViewController {
     }
     
     func showAlert() {
-        let alert = Alert.create(title: LocalizeKey.doYouWantToCloseWithoutSaving.localizedString())
-            .addAction(title: LocalizeKey.close.localizedString(),
+        let alert = Alert.create(title: L10n.doYouWantToCloseWithoutSaving)
+            .addAction(title: L10n.close,
                        style: .destructive) {
                 self.dismiss(animated: true)
             }
-            .addAction(title: LocalizeKey.save.localizedString()) {
+            .addAction(title: L10n.save) {
                 self.saveRecord()
                 self.dismiss(animated: true)
             }
@@ -78,17 +78,17 @@ private extension AdditionalStudyRecordViewController {
     }
     
     func showAlertWithTextField() {
-        let alert = Alert.create(title: LocalizeKey.Title.localizedString())
+        let alert = Alert.create(title: L10n.largeTitle)
             .setTextField { textField in
                 textField.tintColor = .dynamicColor(light: .black, dark: .white)
                 textField.text = self.inputtedTitle
                 textField.delegate = self
             }
-            .addAction(title: LocalizeKey.close.localizedString(),
+            .addAction(title: L10n.close,
                        style: .destructive) {
                 self.inputtedTitle = self.oldInputtedTitle
             }
-            .addAction(title: LocalizeKey.add.localizedString()) {
+            .addAction(title: L10n.add) {
                 self.oldInputtedTitle = self.inputtedTitle
                 self.tableView.reloadData()
             }
@@ -156,7 +156,7 @@ extension AdditionalStudyRecordViewController: UITableViewDataSource {
         switch cellType {
             case .title:
                 let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
-                cell.configure(titleText: LocalizeKey.Title.localizedString(),
+                cell.configure(titleText: L10n.largeTitle,
                                mandatoryIsHidden: false,
                                auxiliaryText: inputtedTitle)
                 return cell
@@ -166,7 +166,7 @@ extension AdditionalStudyRecordViewController: UITableViewDataSource {
                 return cell
             case .memo:
                 let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
-                cell.configure(titleText: LocalizeKey.Memo.localizedString(),
+                cell.configure(titleText: L10n.largeMemo,
                                mandatoryIsHidden: true,
                                auxiliaryText: inputtedMemo)
                 return cell
@@ -223,7 +223,7 @@ extension AdditionalStudyRecordViewController: SubCustomNavigationBarDelegate {
     }
     
     var navTitle: String {
-        return LocalizeKey.Add.localizedString()
+        return L10n.largeAdd
     }
     
 }

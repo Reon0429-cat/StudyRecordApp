@@ -115,7 +115,7 @@ private extension GoalPriorityViewController {
     }
     
     func setupAddButton() {
-        addButton.setTitle(LocalizeKey.add.localizedString())
+        addButton.setTitle(L10n.add)
     }
     
 }

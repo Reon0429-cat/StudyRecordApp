@@ -88,11 +88,11 @@ private extension SignUpViewController {
               let password = passwordTextField.text,
               let passwordConfirmation = passwordConfirmationTextField.text else { return }
         if CommunicationStatus().unstable() {
-            showErrorAlert(title: LocalizeKey.communicationEnvironmentIsNotGood.localizedString())
+            showErrorAlert(title: L10n.communicationEnvironmentIsNotGood)
             return
         }
         if password != passwordConfirmation {
-            showErrorAlert(title: LocalizeKey.passwordsDoNotMatch.localizedString())
+            showErrorAlert(title: L10n.passwordsDoNotMatch)
             return
         }
         indicator.show(.progress)
@@ -219,12 +219,12 @@ private extension SignUpViewController {
     
     func setupSignUpButton() {
         signUpButton.layer.cornerRadius = 10
-        signUpButton.setTitle(LocalizeKey.signUp.localizedString())
+        signUpButton.setTitle(L10n.signUp)
         changeSignUpButtonState(isEnabled: false)
     }
     
     func setupMailAddressLabel() {
-        mailAddressLabel.text = LocalizeKey.mailAddress.localizedString()
+        mailAddressLabel.text = L10n.mailAddress
         mailAddressLabel.textColor = .dynamicColor(light: .black, dark: .white)
     }
     
@@ -234,7 +234,7 @@ private extension SignUpViewController {
     }
     
     func setupPasswordLabel() {
-        passwordLabel.text = LocalizeKey.password.localizedString()
+        passwordLabel.text = L10n.password
         passwordLabel.textColor = .dynamicColor(light: .black, dark: .white)
     }
     
@@ -244,7 +244,7 @@ private extension SignUpViewController {
     }
     
     func setupPasswordConfirmationLabel() {
-        passwordConfirmationLabel.text = LocalizeKey.passwordConfirmation.localizedString()
+        passwordConfirmationLabel.text = L10n.passwordConfirmation
         passwordConfirmationLabel.textColor = .dynamicColor(light: .black, dark: .white)
     }
     

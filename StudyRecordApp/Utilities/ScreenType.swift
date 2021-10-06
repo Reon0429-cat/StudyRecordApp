@@ -24,13 +24,13 @@ enum ScreenType: Int, CaseIterable {
     var title: String {
         switch self {
             case .record:
-                return LocalizeKey.record.localizedString()
+                return L10n.record
             case .graph:
-                return LocalizeKey.graph.localizedString()
+                return L10n.graph
             case .goal:
-                return LocalizeKey.goal.localizedString()
+                return L10n.goal
             case .setting:
-                return LocalizeKey.setting.localizedString()
+                return L10n.setting
         }
     }
 }

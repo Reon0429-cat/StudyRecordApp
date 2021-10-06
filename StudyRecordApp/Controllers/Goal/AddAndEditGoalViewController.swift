@@ -26,19 +26,19 @@ enum AddAndEditGoalRowType: Int, CaseIterable {
     var title: String {
         switch self {
             case .title:
-                return LocalizeKey.Title.localizedString()
+                return L10n.largeTitle
             case .category:
-                return LocalizeKey.Category.localizedString()
+                return L10n.largeCategory
             case .memo:
-                return LocalizeKey.Memo.localizedString()
+                return L10n.largeMemo
             case .priority:
-                return LocalizeKey.Priority.localizedString()
+                return L10n.largePriority
             case .dueDate:
-                return LocalizeKey.dueDate.localizedString()
+                return L10n.dueDate
             case .createdDate:
-                return LocalizeKey.createdDate.localizedString()
+                return L10n.createdDate
             case .photo:
-                return LocalizeKey.photo.localizedString()
+                return L10n.photo
         }
     }
 }
@@ -98,24 +98,24 @@ private extension AddAndEditGoalViewController {
     
     func showAlertWithTextField(rowType: AddAndEditGoalRowType) {
         if rowType == .title {
-            let alert = Alert.create(title: LocalizeKey.Title.localizedString())
+            let alert = Alert.create(title: L10n.largeTitle)
                 .setTextField { textField in
                     textField.text = self.inputtedTitle
                     textField.tag = rowType.rawValue
                     textField.delegate = self
                 }
-                .addAction(title: LocalizeKey.close.localizedString(),
+                .addAction(title: L10n.close,
                            style: .destructive) {
                     self.inputtedTitle = self.oldInputtedTitle
                 }
-                .addAction(title: LocalizeKey.add.localizedString()) {
+                .addAction(title: L10n.add) {
                     self.oldInputtedTitle = self.inputtedTitle
                     self.tableView.reloadData()
                 }
             present(alert, animated: true)
         }
         if rowType == .category {
-            let alert = Alert.create(title: LocalizeKey.Category.localizedString())
+            let alert = Alert.create(title: L10n.largeCategory)
                 .setTextField { textField in
                     textField.text = self.inputtedCategoryTitle
                     textField.tag = rowType.rawValue
@@ -127,11 +127,11 @@ private extension AddAndEditGoalViewController {
                     keyboardView.delegate = self
                     textField.inputAccessoryView = keyboardView
                 }
-                .addAction(title: LocalizeKey.close.localizedString(),
+                .addAction(title: L10n.close,
                            style: .destructive) {
                     self.inputtedCategoryTitle = self.oldInputtedCategoryTitle
                 }
-                .addAction(title: LocalizeKey.add.localizedString()) {
+                .addAction(title: L10n.add) {
                     self.oldInputtedCategoryTitle = self.inputtedCategoryTitle
                     self.tableView.reloadData()
                 }
@@ -140,11 +140,11 @@ private extension AddAndEditGoalViewController {
     }
     
     func showAlert() {
-        let alert = Alert.create(title: LocalizeKey.doYouWantToCloseWithoutSaving.localizedString())
-            .addAction(title: LocalizeKey.close.localizedString(), style: .destructive) {
+        let alert = Alert.create(title: L10n.doYouWantToCloseWithoutSaving)
+            .addAction(title: L10n.close, style: .destructive) {
                 self.dismiss(animated: true)
             }
-            .addAction(title: LocalizeKey.save.localizedString()) {
+            .addAction(title: L10n.save) {
                 self.saveGoal()
                 self.dismiss(animated: true)
             }
@@ -154,7 +154,7 @@ private extension AddAndEditGoalViewController {
     func saveGoal() {
         let categoryTitle: String = {
             if inputtedCategoryTitle.isEmpty {
-                return LocalizeKey.uncategorized.localizedString()
+                return L10n.uncategorized
             }
             return inputtedCategoryTitle
         }()
@@ -221,14 +221,14 @@ private extension AddAndEditGoalViewController {
     
     func presentPhotoActionSheet(row: Int) {
         var alert = Alert.create(preferredStyle: .actionSheet)
-            .addAction(title: LocalizeKey.takeAPhoto.localizedString()) {
+            .addAction(title: L10n.takeAPhoto) {
                 self.presentTo(.camera)
             }
-            .addAction(title: LocalizeKey.selectFromLibrary.localizedString()) {
+            .addAction(title: L10n.selectFromLibrary) {
                 self.presentTo(.photoLibrary)
             }
         if inputtedImageData != nil {
-            alert = alert.addAction(title: LocalizeKey.deletePhoto.localizedString(),
+            alert = alert.addAction(title: L10n.deletePhoto,
                                     style: .destructive) {
                 self.inputtedImageData = nil
                 DispatchQueue.main.async {
@@ -240,7 +240,7 @@ private extension AddAndEditGoalViewController {
                 }
             }
         }
-        alert = alert.addAction(title: LocalizeKey.close.localizedString(),
+        alert = alert.addAction(title: L10n.close,
                                 style: .cancel)
         present(alert, animated: true)
     }
@@ -394,10 +394,10 @@ extension AddAndEditGoalViewController: SubCustomNavigationBarDelegate {
     var navTitle: String {
         if let goalScreenType = goalScreenType {
             if goalScreenType == .edit {
-                return LocalizeKey.Edit.localizedString()
+                return L10n.largeEdit
             }
         }
-        return LocalizeKey.Add.localizedString()
+        return L10n.largeAdd
     }
     
 }
@@ -471,7 +471,7 @@ private extension AddAndEditGoalViewController {
                                auxiliaryText: inputtedCategoryTitle)
             case .sectionAdd, .edit:
                 cell.configure(titleText: rowType.title,
-                               mandatoryText: LocalizeKey.fixed.localizedString(),
+                               mandatoryText: L10n.fixed,
                                mandatoryIsHidden: false,
                                auxiliaryText: inputtedCategoryTitle)
         }

@@ -67,11 +67,11 @@ private extension StudyRecordMemoViewController {
 private extension StudyRecordMemoViewController {
     
     func showAlert() {
-        let alert = Alert.create(title: LocalizeKey.doYouWantToCloseTheNoteWithoutSaving.localizedString())
-            .addAction(title: LocalizeKey.close.localizedString(), style: .destructive) {
+        let alert = Alert.create(title: L10n.doYouWantToCloseTheNoteWithoutSaving)
+            .addAction(title: L10n.close, style: .destructive) {
                 self.dismiss(animated: true)
             }
-            .addAction(title: LocalizeKey.save.localizedString()) {
+            .addAction(title: L10n.save) {
                 self.delegate?.savedMemo(memo: self.inputtedMemo)
                 self.dismiss(animated: true)
             }
@@ -118,15 +118,15 @@ private extension StudyRecordMemoViewController {
     }
     
     func setupDidmissButton() {
-        dismissButton.setTitle(LocalizeKey.close.localizedString())
+        dismissButton.setTitle(L10n.close)
     }
     
     func setupTitleLabel() {
-        titleLabel.text = LocalizeKey.Memo.localizedString()
+        titleLabel.text = L10n.largeMemo
     }
     
     func setupDecisionButton() {
-        decisionButton.setTitle(LocalizeKey.decision.localizedString())
+        decisionButton.setTitle(L10n.decision)
     }
     
 }

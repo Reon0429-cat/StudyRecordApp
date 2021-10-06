@@ -14,7 +14,7 @@ final class CustomTitleTableViewCell: UITableViewCell {
     @IBOutlet private weak var auxiliaryLabel: UILabel!
     
     func configure(titleText: String,
-                   mandatoryText: String = LocalizeKey.mandatory.localizedString(),
+                   mandatoryText: String = L10n.mandatory,
                    mandatoryIsHidden: Bool = true,
                    auxiliaryText: String = "") {
         titleLabel.text = titleText

@@ -98,7 +98,7 @@ final class FirebaseUserDataStore: UserDataStoreProtocol {
     
     func sendPasswordResetMail(email: String,
                                completion: @escaping ResultHandler<Any?>) {
-        Auth.auth().languageCode = LocalizeKey.languageCode.localizedString()
+        Auth.auth().languageCode = L10n.languageCode
         Auth.auth().sendPasswordReset(withEmail: email) { error in
             if let error = error {
                 let message = self.authErrorMessage(error)
@@ -113,20 +113,20 @@ final class FirebaseUserDataStore: UserDataStoreProtocol {
         if let errorCode = AuthErrorCode(rawValue: error._code) {
             switch errorCode {
                 case .invalidEmail:
-                    return LocalizeKey.theEmailAddressFormatContainsAnError.localizedString()
+                    return L10n.theEmailAddressFormatContainsAnError
                 case .weakPassword:
-                    return LocalizeKey.pleaseEnterThePasswordWithAtLeast6Characters.localizedString()
+                    return L10n.pleaseEnterThePasswordWithAtLeast6Characters
                 case .wrongPassword:
-                    return LocalizeKey.thePasswordIsIncorrect.localizedString()
+                    return L10n.thePasswordIsIncorrect
                 case .userNotFound:
-                    return LocalizeKey.thisEmailAddressIsNotRegistered.localizedString()
+                    return L10n.thisEmailAddressIsNotRegistered
                 case .emailAlreadyInUse:
-                    return LocalizeKey.thisEmailAddressIsAlreadyRegistered.localizedString()
+                    return L10n.thisEmailAddressIsAlreadyRegistered
                 default:
-                    return LocalizeKey.loginFailed.localizedString() + "\(error.localizedDescription)"
+                    return L10n.loginFailed + "\(error.localizedDescription)"
             }
         }
-        return LocalizeKey.anUnknownErrorHasOccurred.localizedString()
+        return L10n.anUnknownErrorHasOccurred
     }
     
 }

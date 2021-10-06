@@ -90,15 +90,15 @@ private extension StudyRecordGraphColorViewController {
     }
     
     func setupDidmissButton() {
-        dismissButton.setTitle(LocalizeKey.close.localizedString())
+        dismissButton.setTitle(L10n.close)
     }
     
     func setupTitleLabel() {
-        titleLabel.text = LocalizeKey.graphColor.localizedString()
+        titleLabel.text = L10n.graphColor
     }
     
     func setupDecisionButton() {
-        decisionButton.setTitle(LocalizeKey.decision.localizedString())
+        decisionButton.setTitle(L10n.decision)
     }
     
 }

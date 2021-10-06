@@ -18,11 +18,11 @@ extension OverseasConcept {
     var title: String {
         switch self {
             case .foreignCountries:
-                return LocalizeKey.foreignCountries.localizedString()
+                return L10n.foreignCountries
             case .journey:
-                return LocalizeKey.journey.localizedString()
+                return L10n.journey
             case .mysterious:
-                return LocalizeKey.mysterious.localizedString()
+                return L10n.mysterious
         }
     }
     var colors: [UIColor] {

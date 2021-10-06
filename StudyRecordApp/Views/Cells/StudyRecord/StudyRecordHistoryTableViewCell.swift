@@ -18,8 +18,8 @@ final class StudyRecordHistoryTableViewCell: UITableViewCell {
                                 day: history.day)
         let dateString = Converter.convertToString(from: date)
         dateLabel.text = dateString
-        let minuteText = LocalizeKey.shortMinute.localizedString()
-        let hourText = LocalizeKey.shortHour.localizedString()
+        let minuteText = L10n.shortMinute
+        let hourText = L10n.shortHour
         switch (history.hour == 0, history.minutes == 0) {
             case (true, true):
                 timeLabel.text = "0 " + minuteText

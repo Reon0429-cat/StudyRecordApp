@@ -258,15 +258,15 @@ extension TopViewController {
         switch screenType {
             case .record:
                 editButton.setFade(.in)
-                editButton.changeTitle(editButton.type?.title ?? LocalizeKey.edit.localizedString())
+                editButton.changeTitle(editButton.type?.title ?? L10n.edit)
                 changeAddButton(isEnabled: true)
             case .graph:
                 editButton.setFade(.in)
-                editButton.changeTitle(LocalizeKey.setting.localizedString())
+                editButton.changeTitle(L10n.setting)
                 changeAddButton(isEnabled: false)
             case .goal:
                 editButton.setFade(.in)
-                editButton.changeTitle(LocalizeKey.edit.localizedString())
+                editButton.changeTitle(L10n.edit)
                 changeAddButton(isEnabled: true)
             case .setting:
                 editButton.setFade(.out)

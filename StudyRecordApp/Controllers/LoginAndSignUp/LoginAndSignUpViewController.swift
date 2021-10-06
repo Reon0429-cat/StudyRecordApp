@@ -164,7 +164,7 @@ private extension LoginAndSignUpViewController {
     func setupLoginButton() {
         loginButton.layer.cornerRadius = cornerRadiusConstant
         loginButton.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        loginButton.setTitle(LocalizeKey.login.localizedString())
+        loginButton.setTitle(L10n.login)
         loginButton.backgroundColor = .dynamicColor(light: .white,
                                                     dark: .secondarySystemBackground)
     }
@@ -172,7 +172,7 @@ private extension LoginAndSignUpViewController {
     func setupSignUpButton() {
         signUpButton.layer.cornerRadius = cornerRadiusConstant
         signUpButton.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        signUpButton.setTitle(LocalizeKey.signUp.localizedString())
+        signUpButton.setTitle(L10n.signUp)
         signUpButton.backgroundColor = .clear
     }
     

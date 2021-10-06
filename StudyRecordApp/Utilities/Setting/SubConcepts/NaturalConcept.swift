@@ -20,18 +20,12 @@ extension NaturalConcept {
     
     var title: String {
         switch self {
-            case .relax:
-                return LocalizeKey.relax.localizedString()
-            case .feminine:
-                return LocalizeKey.feminine.localizedString()
-            case .organic:
-                return LocalizeKey.organic.localizedString()
-            case .craft:
-                return LocalizeKey.craft.localizedString()
-            case .living:
-                return LocalizeKey.living.localizedString()
-            case .botanical:
-                return LocalizeKey.botanical.localizedString()
+            case .relax: return L10n.relax
+            case .feminine: return L10n.feminine
+            case .organic: return L10n.organic
+            case .craft: return L10n.craft
+            case .living: return L10n.living
+            case .botanical: return L10n.botanical
         }
     }
     var colors: [UIColor] {

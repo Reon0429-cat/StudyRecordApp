@@ -16,14 +16,10 @@ enum PasscodeMode {
     
     var title: String {
         switch self {
-            case .certification:
-                return LocalizeKey.certification.localizedString()
-            case .create:
-                return LocalizeKey.create.localizedString()
-            case .change:
-                return LocalizeKey.change.localizedString()
-            case .changeCertification:
-                return LocalizeKey.certification.localizedString()
+            case .certification: return L10n.certification
+            case .create: return L10n.create
+            case .change: return L10n.change
+            case .changeCertification: return L10n.certification
         }
     }
 } 
@@ -113,7 +109,7 @@ private extension PasscodeViewController {
         switch inputState {
             case .first:
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                    self.passcodeView.changeInputLabelText(LocalizeKey.oneTimeLeft.localizedString())
+                    self.passcodeView.changeInputLabelText(L10n.oneTimeLeft)
                 }
             case .confirmation(let oncePasscode, let twicePasscode):
                 if oncePasscode == twicePasscode {
@@ -123,8 +119,8 @@ private extension PasscodeViewController {
                     }
                 } else {
                     setVibration()
-                    showErrorAlert(title: LocalizeKey.passwordsDoNotMatch.localizedString())
-                    passcodeView.changeInputLabelText(LocalizeKey.twoTimeLeft.localizedString())
+                    showErrorAlert(title: L10n.passwordsDoNotMatch)
+                    passcodeView.changeInputLabelText(L10n.twoTimeLeft)
                 }
         }
     }
@@ -133,7 +129,7 @@ private extension PasscodeViewController {
         switch inputState {
             case .first:
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                    self.passcodeView.changeInputLabelText(LocalizeKey.oneTimeLeft.localizedString())
+                    self.passcodeView.changeInputLabelText(L10n.oneTimeLeft)
                 }
             case .confirmation(let oncePasscode, let twicePasscode):
                 if oncePasscode == twicePasscode {
@@ -143,8 +139,8 @@ private extension PasscodeViewController {
                     }
                 } else {
                     setVibration()
-                    showErrorAlert(title: LocalizeKey.passwordsDoNotMatch.localizedString())
-                    passcodeView.changeInputLabelText(LocalizeKey.pleaseEnterANewPasscode.localizedString())
+                    showErrorAlert(title: L10n.passwordsDoNotMatch)
+                    passcodeView.changeInputLabelText(L10n.pleaseEnterANewPasscode)
                 }
         }
     }
@@ -162,7 +158,7 @@ private extension PasscodeViewController {
                 } else {
                     setVibration()
                     indicator.flash(.error) {
-                        self.passcodeView.changeInputLabelText(LocalizeKey.pleaseEnterYourCurrentPasscode.localizedString())
+                        self.passcodeView.changeInputLabelText(L10n.pleaseEnterYourCurrentPasscode)
                     }
                 }
             case .confirmation(_, let twicePasscode):
@@ -176,7 +172,7 @@ private extension PasscodeViewController {
                 } else {
                     setVibration()
                     indicator.flash(.error) {
-                        self.passcodeView.changeInputLabelText(LocalizeKey.pleaseEnterYourCurrentPasscode.localizedString())
+                        self.passcodeView.changeInputLabelText(L10n.pleaseEnterYourCurrentPasscode)
                     }
                 }
         }
@@ -200,13 +196,13 @@ private extension PasscodeViewController {
     }
     
     func presentCanNotAllowBiometricsAlert() {
-        let title = LocalizeKey.pleaseAllowBiometrics.localizedString()
-        let message = LocalizeKey.turnOffBiometricsFromThisApp.localizedString()
+        let title = L10n.pleaseAllowBiometrics
+        let message = L10n.turnOffBiometricsFromThisApp
         let alert = Alert.create(title: title,
                                  message: message)
-            .addAction(title: LocalizeKey.close.localizedString(),
+            .addAction(title: L10n.close,
                        style: .destructive)
-            .addAction(title: LocalizeKey.allow.localizedString(),
+            .addAction(title: L10n.allow,
                        style: .default) {
                 if let url = URL(string: UIApplication.openSettingsURLString) {
                     UIApplication.shared.open(url)
@@ -288,23 +284,23 @@ private extension PasscodeViewController {
     }
     
     func setup() {
-        changePasscodeButton.setTitle(LocalizeKey.changePasscode.localizedString())
+        changePasscodeButton.setTitle(L10n.changePasscode)
         switch passcodeMode {
             case .certification:
                 passcodeView.changeInputLabelText("")
                 subCustomNavigationBar.dismissButton(isHidden: true)
                 changePasscodeButton.isHidden = false
             case .create:
-                passcodeView.changeInputLabelText(LocalizeKey.twoTimeLeft.localizedString())
+                passcodeView.changeInputLabelText(L10n.twoTimeLeft)
                 
                 subCustomNavigationBar.dismissButton(isHidden: false)
                 changePasscodeButton.isHidden = true
             case .change:
-                passcodeView.changeInputLabelText(LocalizeKey.pleaseEnterANewPasscode.localizedString())
+                passcodeView.changeInputLabelText(L10n.pleaseEnterANewPasscode)
                 subCustomNavigationBar.dismissButton(isHidden: false)
                 changePasscodeButton.isHidden = true
             case .changeCertification:
-                passcodeView.changeInputLabelText(LocalizeKey.pleaseEnterYourCurrentPasscode.localizedString())
+                passcodeView.changeInputLabelText(L10n.pleaseEnterYourCurrentPasscode)
                 subCustomNavigationBar.dismissButton(isHidden: false)
                 changePasscodeButton.isHidden = true
         }

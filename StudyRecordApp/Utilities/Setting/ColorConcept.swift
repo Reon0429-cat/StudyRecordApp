@@ -18,20 +18,13 @@ enum ColorConcept: CaseIterable {
     
     var title: String {
         switch self {
-            case .natural:
-                return LocalizeKey.natural.localizedString()
-            case .pop:
-                return LocalizeKey.pop.localizedString()
-            case .elegant:
-                return LocalizeKey.elegant.localizedString()
-            case .season:
-                return LocalizeKey.season.localizedString()
-            case .japan:
-                return LocalizeKey.japan.localizedString()
-            case .overseas:
-                return LocalizeKey.overseas.localizedString()
-            case .service:
-                return LocalizeKey.service.localizedString()
+            case .natural: return L10n.natural
+            case .pop: return L10n.pop
+            case .elegant: return L10n.elegant
+            case .season: return L10n.season
+            case .japan: return L10n.japan
+            case .overseas: return L10n.overseas
+            case .service: return L10n.service
         }
     }
     var subConceptTitles: [String] {

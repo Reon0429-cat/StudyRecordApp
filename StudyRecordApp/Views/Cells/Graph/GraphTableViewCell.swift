@@ -251,20 +251,20 @@ private extension GraphTableViewCell {
     }
     
     func setupSimpleNoGraphDataLabel() {
-        simpleNoGraphDataLabel.text = LocalizeKey.thereIsNoData.localizedString()
+        simpleNoGraphDataLabel.text = L10n.thereIsNoData
         setupSimpleNoGraphDataLabelLayout()
     }
     
     func setupYAxisLabel() {
-        yAxisLabel.text = LocalizeKey.hour.localizedString()
+        yAxisLabel.text = L10n.hour
     }
     
     func setupRegisterButton() {
-        registerButton.setTitle(LocalizeKey.Register.localizedString())
+        registerButton.setTitle(L10n.register)
     }
     
     func setupNoGraphDataLabel() {
-        noGraphDataLabel.text = LocalizeKey.graphDataIsNotRegistered.localizedString()
+        noGraphDataLabel.text = L10n.graphDataIsNotRegistered
     }
     
 }

@@ -1,0 +1,5 @@
+strings:
+  inputs: StudyRecordApp/en.lproj/Localizable.strings
+  outputs:
+    - templateName: structured-swift5
+      output: StudyRecordApp/Generated/strings.swift

@@ -124,7 +124,7 @@ private extension RecordTableViewCell {
     
     func setupMemoButton(record: Record) {
         let titleTriangle = record.isExpanded ?  "▲ " : "▼ "
-        memoButton.setTitle(titleTriangle + LocalizeKey.memo.localizedString())
+        memoButton.setTitle(titleTriangle + L10n.memo)
         memoButton.isHidden = record.memo.isEmpty
     }
     
