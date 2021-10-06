@@ -33,7 +33,7 @@ final class RealmManager {
     }
     
     static func readAll<T: Object>(type: T.Type) -> [T] {
-        let objects = realm.objects(T.self).sorted(byKeyPath: "order",
+        let objects = realm.objects(T.self).sorted(byKeyPath: .order,
                                                    ascending: true)
         return objects.map { $0 }
     }
@@ -42,7 +42,7 @@ final class RealmManager {
         let objects = RealmManager.readAll(type: type)
         objects.enumerated().forEach { index, object in
             try! realm.write {
-                object.setValue(index, forKey: "order")
+                object.setValue(index, forKey: .order)
             }
             RealmManager.update(object: object)
         }
@@ -50,26 +50,29 @@ final class RealmManager {
     
     static func sort<T: Object>(sourceObject: T,
                                 destinationObject: T) {
-        let sourceObjectOrder = sourceObject.value(forKey: "order") as! Int
-        let destinationObjectOrder = destinationObject.value(forKey: "order") as! Int
+        let sourceObjectOrder = sourceObject.value(forKey: .order) as! Int
+        let destinationObjectOrder = destinationObject.value(forKey: .order) as! Int
         let objects = RealmManager.readAll(type: T.self)
         try! realm.write {
             if sourceObjectOrder < destinationObjectOrder {
-                for index in sourceObjectOrder...destinationObjectOrder {
-                    let order = objects[index].value(forKey: "order") as! Int
-                    objects[index].setValue(order - 1,
-                                            forKey: "order")
+                for order in sourceObjectOrder...destinationObjectOrder {
+                    objects[order].setValue(order - 1, forKey: .order)
                 }
             } else {
-                for index in destinationObjectOrder...sourceObjectOrder {
-                    let order = objects[index].value(forKey: "order") as! Int
-                    objects[index].setValue(order + 1,
-                                            forKey: "order")
+                for order in destinationObjectOrder...sourceObjectOrder {
+                    objects[order].setValue(order + 1, forKey: .order)
                 }
             }
-            objects[sourceObjectOrder].setValue(destinationObjectOrder,
-                                                forKey: "order")
+            objects[sourceObjectOrder].setValue(destinationObjectOrder, forKey: .order)
         }
+    }
+    
+}
+
+private extension String {
+    
+    static var order: String {
+        return "order"
     }
     
 }
