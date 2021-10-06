@@ -120,6 +120,8 @@
 		AB2B5BC926A2D36F009BD3C7 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5BC326A2D36F009BD3C7 /* SettingViewController.swift */; };
 		AB2B5BCA26A2D36F009BD3C7 /* ThemeColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5BC426A2D36F009BD3C7 /* ThemeColorViewController.swift */; };
 		AB372783270D84C0005DBAB3 /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB372782270D84C0005DBAB3 /* Month.swift */; };
+		AB37278A270D9F94005DBAB3 /* StoryboardSegues.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB372788270D9F94005DBAB3 /* StoryboardSegues.swift */; };
+		AB37278B270D9F94005DBAB3 /* StoryboardScenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB372789270D9F94005DBAB3 /* StoryboardScenes.swift */; };
 		AB4397ED26DD3051008C8CA8 /* AddAndEditGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4397EC26DD3051008C8CA8 /* AddAndEditGoalViewController.swift */; };
 		AB4397EF26DD305B008C8CA8 /* AddAndEditGoal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB4397EE26DD305B008C8CA8 /* AddAndEditGoal.storyboard */; };
 		AB4397F126DD3B2A008C8CA8 /* GoalPriority.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB4397F026DD3B2A008C8CA8 /* GoalPriority.storyboard */; };
@@ -304,6 +306,8 @@
 		AB2B5BC326A2D36F009BD3C7 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		AB2B5BC426A2D36F009BD3C7 /* ThemeColorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeColorViewController.swift; sourceTree = "<group>"; };
 		AB372782270D84C0005DBAB3 /* Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
+		AB372788270D9F94005DBAB3 /* StoryboardSegues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardSegues.swift; sourceTree = "<group>"; };
+		AB372789270D9F94005DBAB3 /* StoryboardScenes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardScenes.swift; sourceTree = "<group>"; };
 		AB4397EC26DD3051008C8CA8 /* AddAndEditGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAndEditGoalViewController.swift; sourceTree = "<group>"; };
 		AB4397EE26DD305B008C8CA8 /* AddAndEditGoal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddAndEditGoal.storyboard; sourceTree = "<group>"; };
 		AB4397F026DD3B2A008C8CA8 /* GoalPriority.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoalPriority.storyboard; sourceTree = "<group>"; };
@@ -410,6 +414,8 @@
 			isa = PBXGroup;
 			children = (
 				AB058830270D80A400DC10C7 /* strings.swift */,
+				AB372789270D9F94005DBAB3 /* StoryboardScenes.swift */,
+				AB372788270D9F94005DBAB3 /* StoryboardSegues.swift */,
 			);
 			path = Generated;
 			sourceTree = "<group>";
@@ -1087,6 +1093,7 @@
 				AB93C24F266A271E00C3AE8F /* StudyRecordViewController.swift in Sources */,
 				AB43980826DE2D72008C8CA8 /* GoalPriorityTableViewCell.swift in Sources */,
 				AB13EDAF26BFAA62002F56FF /* StudyRecordSortViewController.swift in Sources */,
+				AB37278B270D9F94005DBAB3 /* StoryboardScenes.swift in Sources */,
 				AB4397FF26DE141E008C8CA8 /* GoalRepository.swift in Sources */,
 				AB2B5BCA26A2D36F009BD3C7 /* ThemeColorViewController.swift in Sources */,
 				AB8B705926D6AD290069FF67 /* SignUpViewController.swift in Sources */,
@@ -1115,6 +1122,7 @@
 				AB4397FB26DDF78A008C8CA8 /* HUDIndicator.swift in Sources */,
 				ABFAB15826DF86920095EC20 /* GoalPhotoTableViewCell.swift in Sources */,
 				AB14B46226DA855F007A5F16 /* CommunicationStatus.swift in Sources */,
+				AB37278A270D9F94005DBAB3 /* StoryboardSegues.swift in Sources */,
 				ABFAB15526DF802A0095EC20 /* PriorityStackView.swift in Sources */,
 				AB13E2A82707241400063A0B /* RadioButton.swift in Sources */,
 				AB2B5BC726A2D36F009BD3C7 /* ColorChoicesConceptViewController.swift in Sources */,

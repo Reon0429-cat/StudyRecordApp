@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 final class LoginAndSignUpViewController: UIViewController {
     
@@ -19,13 +20,6 @@ final class LoginAndSignUpViewController: UIViewController {
     private enum ViewType {
         case login
         case signUp
-    }
-    private func convertToViewTypeFrom(_ id: String) -> ViewType {
-        switch id {
-            case "loginSegueId": return .login
-            case "signUpSegueId": return .signUp
-            default: fatalError("予期しないidがあります。")
-        }
     }
     private var viewType: ViewType = .login {
         didSet {
@@ -47,15 +41,15 @@ final class LoginAndSignUpViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let segueId = segue.identifier else { return }
-        let viewType = convertToViewTypeFrom(segueId)
-        switch viewType {
-            case .login:
+        switch StoryboardSegue.LoginAndSignUp(segue) {
+            case .loginSegueId:
                 let loginVC = segue.destination as! LoginViewController
                 loginVC.delegate = self
-            case .signUp:
+            case .signUpSegueId:
                 let signUpVC = segue.destination as! SignUpViewController
                 signUpVC.delegate = self
+            default:
+                break
         }
     }
     
