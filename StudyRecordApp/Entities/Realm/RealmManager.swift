@@ -24,21 +24,30 @@ final class RealmManager {
         }
     }
     
-    static func delete<T: Object>(object: T, identifier: String) {
+    static func delete<T: Object>(object: T) {
+        let identifier = object.value(forKey: .identifier) as! String
         let object = realm.object(ofType: T.self,
                                   forPrimaryKey: identifier) ?? T()
         try! realm.write {
             realm.delete(object)
         }
+        setupOrder(type: T.self)
     }
     
-    static func readAll<T: Object>(type: T.Type) -> [T] {
-        let objects = realm.objects(T.self).sorted(byKeyPath: .order,
-                                                   ascending: true)
+    static func readAll<T: Object>(type: T.Type,
+                                   byKeyPath: String? = .order) -> [T] {
+        let objects: Results<T> = {
+            if byKeyPath == nil {
+                return realm.objects(T.self)
+            } else {
+                return  realm.objects(T.self).sorted(byKeyPath: .order,
+                                                     ascending: true)
+            }
+        }()
         return objects.map { $0 }
     }
     
-    static func setupOrder<T: Object>(type: T.Type) {
+    private static func setupOrder<T: Object>(type: T.Type) {
         let objects = RealmManager.readAll(type: type)
         objects.enumerated().forEach { index, object in
             try! realm.write {
@@ -71,8 +80,17 @@ final class RealmManager {
 
 private extension String {
     
+    enum Constant: String {
+        case order
+        case identifier
+    }
+    
     static var order: String {
-        return "order"
+        return Constant.order.rawValue
+    }
+    
+    static var identifier: String {
+        return Constant.identifier.rawValue
     }
     
 }
