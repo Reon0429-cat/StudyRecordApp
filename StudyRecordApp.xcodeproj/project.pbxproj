@@ -10,6 +10,7 @@
 		AB00DDC726F4E75E008CC3F1 /* CategoryKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00DDC626F4E75E008CC3F1 /* CategoryKeyboardView.swift */; };
 		AB00DDC926F4EEC3008CC3F1 /* AdditionalCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00DDC826F4EEC3008CC3F1 /* AdditionalCategoryViewController.swift */; };
 		AB00DDCB26F4EECA008CC3F1 /* AdditionalCategory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB00DDCA26F4EECA008CC3F1 /* AdditionalCategory.storyboard */; };
+		AB058831270D80A400DC10C7 /* strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB058830270D80A400DC10C7 /* strings.swift */; };
 		AB0C765326EB889100BF5B64 /* CustomSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C765126EB889100BF5B64 /* CustomSwitchTableViewCell.swift */; };
 		AB0C765426EB889100BF5B64 /* CustomSwitchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB0C765226EB889100BF5B64 /* CustomSwitchTableViewCell.xib */; };
 		AB0C765726EB8B4300BF5B64 /* CustomButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C765526EB8B4300BF5B64 /* CustomButtonTableViewCell.swift */; };
@@ -32,7 +33,6 @@
 		AB0C76B526ED256000BF5B64 /* PasscodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C76B426ED256000BF5B64 /* PasscodeViewController.swift */; };
 		AB0C76C026EE9B4600BF5B64 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C76BF26EE9B4600BF5B64 /* CustomButton.swift */; };
 		AB0C76CC26EEA8C500BF5B64 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AB0C76CE26EEA8C500BF5B64 /* Localizable.strings */; };
-		AB0C76D526EEAF0100BF5B64 /* LocalizeKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C76D426EEAF0100BF5B64 /* LocalizeKey.swift */; };
 		AB0C76D726EFE38A00BF5B64 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C76D626EFE38A00BF5B64 /* CustomTextField.swift */; };
 		AB0C76D926F0A06300BF5B64 /* DarkModeSetting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB0C76D826F0A06300BF5B64 /* DarkModeSetting.storyboard */; };
 		AB0C76DB26F0A06F00BF5B64 /* DarkModeSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C76DA26F0A06F00BF5B64 /* DarkModeSettingViewController.swift */; };
@@ -119,6 +119,7 @@
 		AB2B5BC826A2D36F009BD3C7 /* ColorConceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5BC226A2D36F009BD3C7 /* ColorConceptViewController.swift */; };
 		AB2B5BC926A2D36F009BD3C7 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5BC326A2D36F009BD3C7 /* SettingViewController.swift */; };
 		AB2B5BCA26A2D36F009BD3C7 /* ThemeColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5BC426A2D36F009BD3C7 /* ThemeColorViewController.swift */; };
+		AB372783270D84C0005DBAB3 /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB372782270D84C0005DBAB3 /* Month.swift */; };
 		AB4397ED26DD3051008C8CA8 /* AddAndEditGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4397EC26DD3051008C8CA8 /* AddAndEditGoalViewController.swift */; };
 		AB4397EF26DD305B008C8CA8 /* AddAndEditGoal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB4397EE26DD305B008C8CA8 /* AddAndEditGoal.storyboard */; };
 		AB4397F126DD3B2A008C8CA8 /* GoalPriority.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB4397F026DD3B2A008C8CA8 /* GoalPriority.storyboard */; };
@@ -191,6 +192,7 @@
 		AB00DDC626F4E75E008CC3F1 /* CategoryKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryKeyboardView.swift; sourceTree = "<group>"; };
 		AB00DDC826F4EEC3008CC3F1 /* AdditionalCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalCategoryViewController.swift; sourceTree = "<group>"; };
 		AB00DDCA26F4EECA008CC3F1 /* AdditionalCategory.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AdditionalCategory.storyboard; sourceTree = "<group>"; };
+		AB058830270D80A400DC10C7 /* strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = strings.swift; sourceTree = "<group>"; };
 		AB0C765126EB889100BF5B64 /* CustomSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSwitchTableViewCell.swift; sourceTree = "<group>"; };
 		AB0C765226EB889100BF5B64 /* CustomSwitchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomSwitchTableViewCell.xib; sourceTree = "<group>"; };
 		AB0C765526EB8B4300BF5B64 /* CustomButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonTableViewCell.swift; sourceTree = "<group>"; };
@@ -215,7 +217,6 @@
 		AB0C76C926EEA8A600BF5B64 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		AB0C76CD26EEA8C500BF5B64 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AB0C76CF26EEA8D200BF5B64 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		AB0C76D426EEAF0100BF5B64 /* LocalizeKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizeKey.swift; sourceTree = "<group>"; };
 		AB0C76D626EFE38A00BF5B64 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		AB0C76D826F0A06300BF5B64 /* DarkModeSetting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DarkModeSetting.storyboard; sourceTree = "<group>"; };
 		AB0C76DA26F0A06F00BF5B64 /* DarkModeSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeSettingViewController.swift; sourceTree = "<group>"; };
@@ -302,6 +303,7 @@
 		AB2B5BC226A2D36F009BD3C7 /* ColorConceptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorConceptViewController.swift; sourceTree = "<group>"; };
 		AB2B5BC326A2D36F009BD3C7 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		AB2B5BC426A2D36F009BD3C7 /* ThemeColorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeColorViewController.swift; sourceTree = "<group>"; };
+		AB372782270D84C0005DBAB3 /* Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
 		AB4397EC26DD3051008C8CA8 /* AddAndEditGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAndEditGoalViewController.swift; sourceTree = "<group>"; };
 		AB4397EE26DD305B008C8CA8 /* AddAndEditGoal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddAndEditGoal.storyboard; sourceTree = "<group>"; };
 		AB4397F026DD3B2A008C8CA8 /* GoalPriority.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoalPriority.storyboard; sourceTree = "<group>"; };
@@ -402,6 +404,14 @@
 				F4A1350DA353A8FEAF4BEEB3 /* Pods-StudyRecordApp.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		AB05882D270D7EE400DC10C7 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				AB058830270D80A400DC10C7 /* strings.swift */,
+			);
+			path = Generated;
 			sourceTree = "<group>";
 		};
 		AB0C766326EBABF500BF5B64 /* Realm */ = {
@@ -744,6 +754,7 @@
 				AB93C248266A234C00C3AE8F /* Info.plist */,
 				ABCE16C9270994210014F618 /* InfoPlist.strings */,
 				AB8B704B26D600500069FF67 /* GoogleService-Info.plist */,
+				AB05882D270D7EE400DC10C7 /* Generated */,
 			);
 			path = StudyRecordApp;
 			sourceTree = "<group>";
@@ -751,6 +762,7 @@
 		AB93C25A266A5A0D00C3AE8F /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				AB372782270D84C0005DBAB3 /* Month.swift */,
 				ABFAB21326E67A2E0095EC20 /* Alert.swift */,
 				AB275FFD26DCAA56009F63B3 /* Indicator.swift */,
 				AB4397FA26DDF78A008C8CA8 /* HUDIndicator.swift */,
@@ -759,7 +771,6 @@
 				AB13EDDA26C3C163002F56FF /* Converter.swift */,
 				AB0C767E26EBD5A700BF5B64 /* ThemeColorView.swift */,
 				AB0C768426ECB63C00BF5B64 /* TileView.swift */,
-				AB0C76D426EEAF0100BF5B64 /* LocalizeKey.swift */,
 				AB71076E26F94E4A00F4F695 /* DateType.swift */,
 				AB13E2AB2707316200063A0B /* BiometricsManager.swift */,
 				AB13EDFF26C8E0E9002F56FF /* Setting */,
@@ -1063,8 +1074,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB86A85D26D4915700EA990A /* HalfModalOverlayView.swift in Sources */,
-				AB0C76D526EEAF0100BF5B64 /* LocalizeKey.swift in Sources */,
 				AB2B5B9F26A2D1B7009BD3C7 /* OverseasConcept.swift in Sources */,
+				AB372783270D84C0005DBAB3 /* Month.swift in Sources */,
 				AB13EE6626CAC98A002F56FF /* ScreenType.swift in Sources */,
 				AB0C76D726EFE38A00BF5B64 /* CustomTextField.swift in Sources */,
 				ABBA350B26F93026001BAEEF /* Date+Extension.swift in Sources */,
@@ -1090,6 +1101,7 @@
 				AB13ED4D26BB9241002F56FF /* RecordUseCase.swift in Sources */,
 				AB0C76DB26F0A06F00BF5B64 /* DarkModeSettingViewController.swift in Sources */,
 				AB0C765326EB889100BF5B64 /* CustomSwitchTableViewCell.swift in Sources */,
+				AB058831270D80A400DC10C7 /* strings.swift in Sources */,
 				AB16305126CD6B1400111F55 /* WaveView.swift in Sources */,
 				AB2B5B8726A2D0FD009BD3C7 /* UICollectionView+Extension.swift in Sources */,
 				AB86A85F26D4915700EA990A /* HalfModalPresenter.swift in Sources */,

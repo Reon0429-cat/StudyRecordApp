@@ -483,6 +483,7 @@ PODS:
   - RealmSwift (10.14.0):
     - Realm (= 10.14.0)
   - ScrollableGraphView (4.0.6)
+  - SwiftGen (6.5.1)
 
 DEPENDENCIES:
   - Firebase/Analytics
@@ -492,6 +493,7 @@ DEPENDENCIES:
   - ReachabilitySwift
   - RealmSwift
   - ScrollableGraphView
+  - SwiftGen
 
 SPEC REPOS:
   trunk:
@@ -518,6 +520,7 @@ SPEC REPOS:
     - Realm
     - RealmSwift
     - ScrollableGraphView
+    - SwiftGen
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
@@ -543,7 +546,8 @@ SPEC CHECKSUMS:
   Realm: 95a120db10fa66d0f1d10bee4ce828177ae00090
   RealmSwift: 4937e1b6f9b87bc25dc23883198807bf69e8cb76
   ScrollableGraphView: 4af35d4ea9ecdec665d34a74da51da161ddff8ac
+  SwiftGen: a6d22010845f08fe18fbdf3a07a8e380fd22e0ea
 
-PODFILE CHECKSUM: a2ad66cf086131f1f019096fc36c69cac0cd94f5
+PODFILE CHECKSUM: b6c04036c2f8ad5586189bd2648df915b448efd1
 
 COCOAPODS: 1.10.2
