@@ -16,7 +16,7 @@ final class ThemeColorView: UIView {
     weak var delegate: ThemeColorViewDelegate?
     var imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "eyedropper")
+        imageView.image = UIImage(systemName: .eyedropper)
         imageView.tintColor = .black
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView

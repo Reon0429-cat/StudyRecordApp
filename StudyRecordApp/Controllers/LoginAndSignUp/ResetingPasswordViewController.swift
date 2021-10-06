@@ -127,7 +127,7 @@ private extension ResetingPasswordViewController {
     }
     
     func setupMailAddressImage() {
-        guard let image = UIImage(systemName: "envelope") else { return }
+        guard let image = UIImage(systemName: .envelope) else { return }
         mailAddressImage.image = image.setColor(.dynamicColor(light: .black, dark: .white))
     }
     

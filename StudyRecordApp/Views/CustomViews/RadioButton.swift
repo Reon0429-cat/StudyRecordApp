@@ -32,11 +32,11 @@ final class RadioButton: UIButton {
     }
     
     private func radioButtonImage(isFilled: Bool) -> UIImage {
-        let imageName: String = {
+        let imageName: SystemName = {
             if isFilled {
-                return "record.circle"
+                return .recordCircle
             }
-            return "circle"
+            return .circle
         }()
         return UIImage(systemName: imageName)!
     }

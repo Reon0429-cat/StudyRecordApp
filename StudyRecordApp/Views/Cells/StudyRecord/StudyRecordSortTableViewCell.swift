@@ -14,7 +14,7 @@ final class StudyRecordSortTableViewCell: UITableViewCell {
     
     func configure(title: String) {
         titleLabel.text = title
-        guard let image = UIImage(systemName: "list.bullet") else { return }
+        guard let image = UIImage(systemName: .listBullet) else { return }
         listImageButton.setImage(image.setColor(.dynamicColor(light: .black, dark: .white)))
     }
     

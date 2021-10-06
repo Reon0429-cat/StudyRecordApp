@@ -113,8 +113,8 @@ private extension LoginViewController {
     }
     
     func changePasswordSecureButtonImage(isSlash: Bool) {
-        guard let eyeFillImage = UIImage(systemName: "eye.fill"),
-              let eyeSlashFillImage = UIImage(systemName: "eye.slash.fill") else { return }
+        guard let eyeFillImage = UIImage(systemName: .eyeFill),
+              let eyeSlashFillImage = UIImage(systemName: .eyeSlashFill) else { return }
         let image = isSlash ? eyeSlashFillImage : eyeFillImage
         passwordSecureButton.setImage(image)
     }
@@ -175,7 +175,7 @@ private extension LoginViewController {
     }
     
     func setupMailAddressImage() {
-        guard let image = UIImage(systemName: "envelope") else { return }
+        guard let image = UIImage(systemName: .envelope) else { return }
         mailAddressImage.image = image.setColor(.dynamicColor(light: .black, dark: .white))
     }
     
@@ -199,7 +199,7 @@ private extension LoginViewController {
     }
     
     func setupPasswordImage() {
-        guard let image = UIImage(systemName: "lock") else { return }
+        guard let image = UIImage(systemName: .lock) else { return }
         passwordImage.image = image.setColor(.dynamicColor(light: .black, dark: .white))
     }
     

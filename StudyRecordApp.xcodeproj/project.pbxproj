@@ -122,6 +122,7 @@
 		AB372783270D84C0005DBAB3 /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB372782270D84C0005DBAB3 /* Month.swift */; };
 		AB37278A270D9F94005DBAB3 /* StoryboardSegues.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB372788270D9F94005DBAB3 /* StoryboardSegues.swift */; };
 		AB37278B270D9F94005DBAB3 /* StoryboardScenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB372789270D9F94005DBAB3 /* StoryboardScenes.swift */; };
+		AB37278D270DA181005DBAB3 /* SystemName.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB37278C270DA181005DBAB3 /* SystemName.swift */; };
 		AB4397ED26DD3051008C8CA8 /* AddAndEditGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4397EC26DD3051008C8CA8 /* AddAndEditGoalViewController.swift */; };
 		AB4397EF26DD305B008C8CA8 /* AddAndEditGoal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB4397EE26DD305B008C8CA8 /* AddAndEditGoal.storyboard */; };
 		AB4397F126DD3B2A008C8CA8 /* GoalPriority.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB4397F026DD3B2A008C8CA8 /* GoalPriority.storyboard */; };
@@ -308,6 +309,7 @@
 		AB372782270D84C0005DBAB3 /* Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
 		AB372788270D9F94005DBAB3 /* StoryboardSegues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardSegues.swift; sourceTree = "<group>"; };
 		AB372789270D9F94005DBAB3 /* StoryboardScenes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardScenes.swift; sourceTree = "<group>"; };
+		AB37278C270DA181005DBAB3 /* SystemName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemName.swift; sourceTree = "<group>"; };
 		AB4397EC26DD3051008C8CA8 /* AddAndEditGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAndEditGoalViewController.swift; sourceTree = "<group>"; };
 		AB4397EE26DD305B008C8CA8 /* AddAndEditGoal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddAndEditGoal.storyboard; sourceTree = "<group>"; };
 		AB4397F026DD3B2A008C8CA8 /* GoalPriority.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoalPriority.storyboard; sourceTree = "<group>"; };
@@ -744,6 +746,7 @@
 		AB93C239266A234800C3AE8F /* StudyRecordApp */ = {
 			isa = PBXGroup;
 			children = (
+				AB37278C270DA181005DBAB3 /* SystemName.swift */,
 				AB8B704726D5EF1B0069FF67 /* Entities */,
 				AB8B704A26D5EF3F0069FF67 /* DataStores */,
 				AB8B704926D5EF290069FF67 /* Repositories */,
@@ -1192,6 +1195,7 @@
 				AB8B704E26D62F800069FF67 /* LoginViewController.swift in Sources */,
 				ABA056F626B4C7D800E3DF01 /* StudyRecordGraphColorTableViewCell.swift in Sources */,
 				AB13ED4B26BB9155002F56FF /* RecordRepository.swift in Sources */,
+				AB37278D270DA181005DBAB3 /* SystemName.swift in Sources */,
 				AB2B5B8D26A2D106009BD3C7 /* UITableView+Extension.swift in Sources */,
 				AB13EDD126C29D9E002F56FF /* StudyRecordTimeRecordViewController.swift in Sources */,
 				AB275FFE26DCAA56009F63B3 /* Indicator.swift in Sources */,
