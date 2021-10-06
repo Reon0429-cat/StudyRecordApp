@@ -54,10 +54,10 @@ final class GoalRepository: GoalRepositoryProtocol {
 private extension Category {
     
     init(category: CategoryRealm) {
-        self.title = category.title
-        self.isExpanded = category.isExpanded
-        self.goals = category.commonGoals
-        self.identifier = category.identifier
+        self = Category(title: category.title,
+                        isExpanded: category.isExpanded,
+                        goals: category.commonGoals,
+                        identifier: category.identifier)
     }
     
 }

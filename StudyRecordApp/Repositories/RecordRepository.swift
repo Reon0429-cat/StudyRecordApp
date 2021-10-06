@@ -91,25 +91,15 @@ private extension RecordRealm {
 private extension Record {
     
     init(record: RecordRealm) {
-        // Recordのプロパティが増えたときにコンパイルで漏れを防ぐためにインスタンスを再生成している。
-        let record = Record(title: record.title,
-                            histories: record.historiesArray,
-                            isExpanded: record.isExpanded,
-                            graphColor: GraphColor(record: record),
-                            memo: record.memo,
-                            yearID: record.yearID,
-                            monthID: record.monthID,
-                            order: record.order,
-                            identifier: record.identifier)
-        self.title = record.title
-        self.histories = record.histories
-        self.isExpanded = record.isExpanded
-        self.graphColor = record.graphColor
-        self.memo = record.memo
-        self.yearID = record.yearID
-        self.monthID = record.monthID
-        self.order = record.order
-        self.identifier = record.identifier
+        self = Record(title: record.title,
+                      histories: record.historiesArray,
+                      isExpanded: record.isExpanded,
+                      graphColor: GraphColor(record: record),
+                      memo: record.memo,
+                      yearID: record.yearID,
+                      monthID: record.monthID,
+                      order: record.order,
+                      identifier: record.identifier)
     }
     
 }
