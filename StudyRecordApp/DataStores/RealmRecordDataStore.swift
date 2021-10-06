@@ -31,9 +31,7 @@ final class RealmRecordDataStore: RealmRecordDataStoreProtocol {
     }
     
     func delete(record: RecordRealm) {
-        RealmManager.delete(object: record,
-                            identifier: record.identifier)
-        RealmManager.setupOrder(type: RecordRealm.self)
+        RealmManager.delete(object: record)
     }
     
     func sort(sourceObject: RecordRealm,
