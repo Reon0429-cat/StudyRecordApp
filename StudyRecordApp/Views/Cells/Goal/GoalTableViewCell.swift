@@ -56,8 +56,8 @@ final class GoalTableViewCell: UITableViewCell {
         titleLabel.text = goal.title
         let createdDateString = Converter.convertToString(from: goal.createdDate)
         let dueDateString = Converter.convertToString(from: goal.dueDate)
-        createdDateLabel.text = "\(LocalizeKey.createdDate.localizedString()): " + createdDateString
-        dueDateLabel.text = "\(LocalizeKey.dueDate.localizedString()): " + dueDateString
+        createdDateLabel.text = "\(L10n.createdDate): " + createdDateString
+        dueDateLabel.text = "\(L10n.dueDate): " + dueDateString
         myImageView.image = Converter.convertToImage(from: goal.imageData)
         imageViewBaseView.isHidden = (goal.imageData == nil)
         setupBaseView()
@@ -80,7 +80,7 @@ private extension GoalTableViewCell {
     
     func setupMemoButton(goal: Category.Goal) {
         let titleTriangle = goal.isExpanded ?  "▲ " : "▼ "
-        memoButton.setTitle(titleTriangle + LocalizeKey.memo.localizedString())
+        memoButton.setTitle(titleTriangle + L10n.memo)
         memoButton.isHidden = goal.memo.isEmpty
     }
     

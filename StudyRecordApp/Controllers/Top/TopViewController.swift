@@ -180,8 +180,8 @@ private extension TopViewController {
     }
     
     func changeAddButton(isEnabled: Bool) {
-        guard let xmarkImage = UIImage(systemName: "xmark"),
-              let plusImage = UIImage(systemName: "plus") else { return }
+        guard let xmarkImage = UIImage(systemName: .xmark),
+              let plusImage = UIImage(systemName: .plus) else { return }
         addButton.isEnabled = isEnabled
         if isEnabled {
             addButton.setImage(plusImage.setColor(.white))
@@ -206,7 +206,7 @@ private extension TopViewController {
     }
     
     func setColor() {
-        guard let image = UIImage(systemName: "arrow.up.arrow.down.circle.fill") else { return }
+        guard let image = UIImage(systemName: .arrowUpArrowDownCircleFill) else { return }
         let color: UIColor = .dynamicColor(light: .mainColor ?? .black,
                                            dark: .mainColor ?? .white)
         sortButton.setImage(image.setColor(color))
@@ -258,15 +258,15 @@ extension TopViewController {
         switch screenType {
             case .record:
                 editButton.setFade(.in)
-                editButton.changeTitle(editButton.type?.title ?? LocalizeKey.edit.localizedString())
+                editButton.changeTitle(editButton.type?.title ?? L10n.edit)
                 changeAddButton(isEnabled: true)
             case .graph:
                 editButton.setFade(.in)
-                editButton.changeTitle(LocalizeKey.setting.localizedString())
+                editButton.changeTitle(L10n.setting)
                 changeAddButton(isEnabled: false)
             case .goal:
                 editButton.setFade(.in)
-                editButton.changeTitle(LocalizeKey.edit.localizedString())
+                editButton.changeTitle(L10n.edit)
                 changeAddButton(isEnabled: true)
             case .setting:
                 editButton.setFade(.out)
@@ -379,7 +379,7 @@ private extension TopViewController {
     }
     
     func setupAddButton() {
-        guard let image = UIImage(systemName: "plus") else { return }
+        guard let image = UIImage(systemName: .plus) else { return }
         addButton.setImage(image.setColor(.white))
         addButton.setGradation(locations: [0, 0.9])
     }

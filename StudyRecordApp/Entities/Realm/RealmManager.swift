@@ -1,0 +1,96 @@
+//
+//  RealmManager.swift
+//  StudyRecordApp
+//
+//  Created by 大西玲音 on 2021/10/06.
+//
+
+import Foundation
+import RealmSwift
+
+final class RealmManager {
+    
+    private static let realm = try! Realm()
+    
+    static func create<T: Object>(object: T) {
+        try! realm.write {
+            realm.add(object)
+        }
+    }
+    
+    static func update<T: Object>(object: T) {
+        try! realm.write {
+            realm.add(object, update: .modified)
+        }
+    }
+    
+    static func delete<T: Object>(object: T) {
+        let identifier = object.value(forKey: .identifier) as! String
+        let object = realm.object(ofType: T.self,
+                                  forPrimaryKey: identifier) ?? T()
+        try! realm.write {
+            realm.delete(object)
+        }
+        setupOrder(type: T.self)
+    }
+    
+    static func readAll<T: Object>(type: T.Type,
+                                   byKeyPath: String? = .order) -> [T] {
+        let objects: Results<T> = {
+            if byKeyPath == nil {
+                return realm.objects(T.self)
+            } else {
+                return  realm.objects(T.self).sorted(byKeyPath: .order,
+                                                     ascending: true)
+            }
+        }()
+        return objects.map { $0 }
+    }
+    
+    private static func setupOrder<T: Object>(type: T.Type) {
+        let objects = RealmManager.readAll(type: type)
+        objects.enumerated().forEach { index, object in
+            try! realm.write {
+                object.setValue(index, forKey: .order)
+            }
+            RealmManager.update(object: object)
+        }
+    }
+    
+    static func sort<T: Object>(sourceObject: T,
+                                destinationObject: T) {
+        let sourceObjectOrder = sourceObject.value(forKey: .order) as! Int
+        let destinationObjectOrder = destinationObject.value(forKey: .order) as! Int
+        let objects = RealmManager.readAll(type: T.self)
+        try! realm.write {
+            if sourceObjectOrder < destinationObjectOrder {
+                for order in sourceObjectOrder...destinationObjectOrder {
+                    objects[order].setValue(order - 1, forKey: .order)
+                }
+            } else {
+                for order in destinationObjectOrder...sourceObjectOrder {
+                    objects[order].setValue(order + 1, forKey: .order)
+                }
+            }
+            objects[sourceObjectOrder].setValue(destinationObjectOrder, forKey: .order)
+        }
+    }
+    
+}
+
+private extension String {
+    
+    enum Constant: String {
+        case order
+        case identifier
+    }
+    
+    static var order: String {
+        return Constant.order.rawValue
+    }
+    
+    static var identifier: String {
+        return Constant.identifier.rawValue
+    }
+    
+}

@@ -155,15 +155,15 @@ private extension GoalTimeViewController {
     }
     
     func setupTodayButton() {
-        todayButton.setTitle(LocalizeKey.today.localizedString())
+        todayButton.setTitle(L10n.today)
     }
     
     func setupSaveButton() {
-        saveButton.setTitle(LocalizeKey.save.localizedString())
+        saveButton.setTitle(L10n.save)
     }
     
     func setupDismissButton() {
-        dismissButton.setTitle(LocalizeKey.close.localizedString())
+        dismissButton.setTitle(L10n.close)
     }
     
 }

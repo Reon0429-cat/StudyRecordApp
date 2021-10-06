@@ -15,14 +15,10 @@ enum NavigationButtonType {
     
     var title: String {
         switch self {
-            case .save:
-                return LocalizeKey.save.localizedString()
-            case .dismiss:
-                return LocalizeKey.close.localizedString()
-            case .edit:
-                return LocalizeKey.edit.localizedString()
-            case .completion:
-                return LocalizeKey.completion.localizedString()
+            case .save: return L10n.save
+            case .dismiss: return L10n.close
+            case .edit: return L10n.edit
+            case .completion: return L10n.completion
         }
     }
 }

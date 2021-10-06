@@ -94,10 +94,10 @@ final class RecordUseCase {
     private func convertToStudyTimeText(from studyTime: (today: Int,
                                                          total: Int)) -> (todayText: String,
                                                                           totalText: String) {
-        let todayLocalizedText = LocalizeKey.today.localizedString()
-        let totalLocalizedText = LocalizeKey.total.localizedString()
-        let hourLocalizedText = LocalizeKey.shortHour.localizedString()
-        let minuteLocalizedText = LocalizeKey.shortMinute.localizedString()
+        let todayLocalizedText = L10n.today
+        let totalLocalizedText = L10n.total
+        let hourLocalizedText = L10n.shortHour
+        let minuteLocalizedText = L10n.shortMinute
         let todayText: String = {
             if studyTime.today >= 60 {
                 return todayLocalizedText + ": " + "\(studyTime.today / 60) " + hourLocalizedText

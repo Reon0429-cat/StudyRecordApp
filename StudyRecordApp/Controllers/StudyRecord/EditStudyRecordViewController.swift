@@ -62,16 +62,16 @@ private extension EditStudyRecordViewController {
     
     func showAlertWithTextField() {
         oldInputtedTitle = selectedRecord.title
-        let alert = Alert.create(title: LocalizeKey.Title.localizedString())
+        let alert = Alert.create(title: L10n.largeTitle)
             .setTextField { textField in
                 textField.tintColor = .dynamicColor(light: .black, dark: .white)
                 textField.text = self.selectedRecord.title
                 textField.delegate = self
             }
-            .addAction(title: LocalizeKey.close.localizedString(), style: .destructive) {
+            .addAction(title: L10n.close, style: .destructive) {
                 self.selectedRecord.title = self.oldInputtedTitle
             }
-            .addAction(title: LocalizeKey.edit.localizedString()) {
+            .addAction(title: L10n.edit) {
                 self.oldInputtedTitle = self.selectedRecord.title
                 self.subCustomNavigationBar.saveButton(
                     isEnabled: !self.oldInputtedTitle.isEmpty
@@ -82,12 +82,12 @@ private extension EditStudyRecordViewController {
     }
     
     func showAlert() {
-        let alert = Alert.create(title: LocalizeKey.doYouWantToDiscardYourEdits.localizedString())
-            .addAction(title: LocalizeKey.discard.localizedString(),
+        let alert = Alert.create(title: L10n.doYouWantToDiscardYourEdits)
+            .addAction(title: L10n.largeDiscard,
                        style: .destructive) {
                 self.dismiss(animated: true)
             }
-            .addAction(title: LocalizeKey.close.localizedString(),
+            .addAction(title: L10n.close,
                        style: .default)
         present(alert, animated: true)
     }
@@ -174,7 +174,7 @@ extension EditStudyRecordViewController: UITableViewDataSource {
         switch cellType {
             case .title:
                 let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
-                cell.configure(titleText: LocalizeKey.Title.localizedString(),
+                cell.configure(titleText: L10n.largeTitle,
                                mandatoryIsHidden: false,
                                auxiliaryText: selectedRecord.title)
                 return cell
@@ -185,13 +185,13 @@ extension EditStudyRecordViewController: UITableViewDataSource {
                 return cell
             case .memo:
                 let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
-                cell.configure(titleText: LocalizeKey.Memo.localizedString(),
+                cell.configure(titleText: L10n.largeMemo,
                                mandatoryIsHidden: true,
                                auxiliaryText: selectedRecord.memo)
                 return cell
             case .timeRecord:
                 let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
-                cell.configure(titleText: LocalizeKey.recordTime.localizedString(),
+                cell.configure(titleText: L10n.recordTime,
                                mandatoryIsHidden: true,
                                auxiliaryText: "")
                 return cell
@@ -225,7 +225,7 @@ extension EditStudyRecordViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
-        return LocalizeKey.delete.localizedString()
+        return L10n.delete
     }
     
 }
@@ -280,13 +280,11 @@ extension EditStudyRecordViewController: StudyRecordTimeRecordVCDelegate {
                     minutes -= 60
                 }
                 if hour >= 24 {
-                    let title = String(format: LocalizeKey.moreThan24Hours.localizedString(),
-                                       "\(history.year)",
-                                       NSLocalizedString("\(Month(rawValue: history.month)!)",
-                                                         comment: ""),
-                                       "\(history.day)")
+                    let title = L10n.moreThan24Hours("\(history.year)",
+                                                     NSLocalizedString("\(Month(rawValue: history.month)!)", comment: ""),
+                                                     "\(history.day)")
                     let alert = Alert.create(title: title)
-                        .addAction(title: LocalizeKey.close.localizedString())
+                        .addAction(title: L10n.close)
                     dismiss(animated: true) {
                         self.present(alert, animated: true)
                     }
@@ -342,7 +340,7 @@ extension EditStudyRecordViewController: SubCustomNavigationBarDelegate {
     }
     
     var navTitle: String {
-        return LocalizeKey.Edit.localizedString()
+        return L10n.largeEdit
     }
     
 }

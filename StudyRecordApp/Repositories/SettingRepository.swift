@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 protocol SettingRepositoryProtocol {
     func create(setting: Setting)
@@ -23,24 +24,63 @@ final class SettingRepository: SettingRepositoryProtocol {
     }
     
     func create(setting: Setting) {
-        dataStore.create(setting: setting)
+        let settingRealm = SettingRealm(setting: setting)
+        dataStore.create(setting: settingRealm)
     }
     
     func read(at index: Int) -> Setting {
-        return dataStore.readAll()[index]
+        let setting = Setting(setting: dataStore.readAll()[index])
+        return setting
     }
     
     func readAll() -> [Setting] {
-        return dataStore.readAll()
+        let settings = dataStore.readAll().map { Setting(setting: $0) }
+        return settings
     }
     
     func update(setting: Setting) {
-        dataStore.update(setting: setting)
+        let settingRealm = SettingRealm(setting: setting)
+        dataStore.update(setting: settingRealm)
     }
     
     func delete(setting: Setting) {
-        dataStore.delete(setting: setting)
+        let settingRealm = SettingRealm(setting: setting)
+        dataStore.delete(setting: settingRealm)
     }
     
 }
 
+private extension SettingRealm {
+    
+    convenience init(setting: Setting) {
+        self.init()
+        let setting = Setting(isDarkMode: setting.isDarkMode,
+                              darkModeSettingType: setting.darkModeSettingType,
+                              isPasscodeSetted: setting.isPasscodeSetted,
+                              passcode: setting.passcode,
+                              isBiometricsSetted: setting.isBiometricsSetted,
+                              language: setting.language,
+                              identifier: setting.identifier)
+        self.darkModeSettingType = setting.darkModeSettingType
+        self.isPasscodeSetted = setting.isPasscodeSetted
+        self.passcode = setting.passcode
+        self.isBiometricsSetted = setting.isBiometricsSetted
+        self.language = setting.language
+        self.identifier = setting.identifier
+    }
+    
+}
+
+private extension Setting {
+    
+    init(setting: SettingRealm) {
+        self.init(isDarkMode: setting.isDarkMode,
+                  darkModeSettingType: setting.darkModeSettingType,
+                  isPasscodeSetted: setting.isPasscodeSetted,
+                  passcode: setting.passcode,
+                  isBiometricsSetted: setting.isBiometricsSetted,
+                  language: setting.language,
+                  identifier: setting.identifier)
+    }
+    
+}

@@ -34,7 +34,7 @@ final class CategoryKeyboardView: UIView {
                                         dark: .secondarySystemGroupedBackground)
         
         let categoryButton = UIButton()
-        categoryButton.setTitle(LocalizeKey.category.localizedString() + " >")
+        categoryButton.setTitle(L10n.category + " >")
         categoryButton.titleLabel?.font = .systemFont(ofSize: 20)
         categoryButton.addTarget(self,
                                  action: #selector(categoryButtonDidTapped),

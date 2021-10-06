@@ -61,12 +61,12 @@ private extension StudyRecordTimeRecordViewController {
 private extension StudyRecordTimeRecordViewController {
     
     func showAlert() {
-        let alert = Alert.create(title: LocalizeKey.doYouReallyWantToDeleteThis.localizedString())
-            .addAction(title: LocalizeKey.delete.localizedString(), style: .destructive) {
+        let alert = Alert.create(title: L10n.doYouReallyWantToDeleteThis)
+            .addAction(title: L10n.delete, style: .destructive) {
                 self.delegate?.deleteButtonDidTapped(index: self.tappedHistoryIndex!)
                 self.dismiss(animated: true)
             }
-            .addAction(title: LocalizeKey.close.localizedString())
+            .addAction(title: L10n.close)
         present(alert, animated: true)
     }
     

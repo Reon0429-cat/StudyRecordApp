@@ -18,14 +18,10 @@ extension ElegantConcept {
     
     var title: String {
         switch self {
-            case .adultColor:
-                return LocalizeKey.adultColor.localizedString()
-            case .gorgeous:
-                return LocalizeKey.gorgeous.localizedString()
-            case .art:
-                return LocalizeKey.art.localizedString()
-            case .intelligence:
-                return LocalizeKey.intelligence.localizedString()
+            case .adultColor: return L10n.adultColor
+            case .gorgeous: return L10n.gorgeous
+            case .art: return L10n.art
+            case .intelligence: return L10n.intelligence
         }
     }
     var colors: [UIColor] {

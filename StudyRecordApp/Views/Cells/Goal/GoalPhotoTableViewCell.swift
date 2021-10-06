@@ -16,7 +16,7 @@ final class GoalPhotoTableViewCell: UITableViewCell {
     func configure(title: String, image: UIImage?) {
         titleLabel.text = title
         photoImageView.image = image
-        unselectedLabel.text = LocalizeKey.unselected.localizedString()
+        unselectedLabel.text = L10n.unselected
         unselectedLabel.isHidden = image != nil
         unselectedLabel.layer.cornerRadius = 10
         unselectedLabel.layer.borderWidth = 0.5

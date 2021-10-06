@@ -124,7 +124,7 @@ private extension RecordTableViewCell {
     
     func setupMemoButton(record: Record) {
         let titleTriangle = record.isExpanded ?  "▲ " : "▼ "
-        memoButton.setTitle(titleTriangle + LocalizeKey.memo.localizedString())
+        memoButton.setTitle(titleTriangle + L10n.memo)
         memoButton.isHidden = record.memo.isEmpty
     }
     
@@ -148,7 +148,7 @@ private extension RecordTableViewCell {
                                radius: 3,
                                opacity: 0.8,
                                size: (width: 2, height: 2))
-        guard let image = UIImage(systemName: "xmark.circle.fill") else { return }
+        guard let image = UIImage(systemName: .xmarkCircleFill) else { return }
         let color: UIColor = .dynamicColor(light: .mainColor ?? .black,
                                            dark: .mainColor ?? .white)
         deleteButton.setImage(image.setColor(color))

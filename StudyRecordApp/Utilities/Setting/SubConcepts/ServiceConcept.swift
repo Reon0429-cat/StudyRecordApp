@@ -17,12 +17,9 @@ extension ServiceConcept {
     
     var title: String {
         switch self {
-            case .business:
-                return LocalizeKey.business.localizedString()
-            case .digital:
-                return LocalizeKey.digital.localizedString()
-            case .shop:
-                return LocalizeKey.shop.localizedString()
+            case .business: return L10n.business
+            case .digital: return L10n.digital
+            case .shop: return L10n.shop
         }
     }
     var colors: [UIColor] {

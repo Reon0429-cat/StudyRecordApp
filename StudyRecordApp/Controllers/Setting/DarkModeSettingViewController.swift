@@ -112,15 +112,15 @@ private extension DarkModeSettingViewController {
     }
     
     func setupSettingAppLabel() {
-        settingAppLabel.text = LocalizeKey.darkModeSettingApp.localizedString()
+        settingAppLabel.text = L10n.darkModeSettingApp
     }
     
     func setupDarkModeLabel() {
-        settingDarkModeLabel.text = LocalizeKey.darkMode.localizedString()
+        settingDarkModeLabel.text = L10n.darkMode
     }
     
     func setupSettingAutoLabel() {
-        settingAutoLabel.text = LocalizeKey.darkModeSettingAuto.localizedString()
+        settingAutoLabel.text = L10n.darkModeSettingAuto
     }
     
     func setupSettingAppSwitch() {

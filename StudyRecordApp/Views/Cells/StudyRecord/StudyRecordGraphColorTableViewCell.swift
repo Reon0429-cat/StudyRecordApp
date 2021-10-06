@@ -32,9 +32,9 @@ final class StudyRecordGraphColorTableViewCell: UITableViewCell {
         graphColorView.backgroundColor = color
         unselectedLabel.isHidden = color.alphaValue != 0
         unselectedLabel.textColor = .dynamicColor(light: .black, dark: .white)
-        unselectedLabel.text = LocalizeKey.unselected.localizedString()
-        mandatoryLabel.text = LocalizeKey.mandatory.localizedString()
-        titleLabel.text = LocalizeKey.graphColor.localizedString()
+        unselectedLabel.text = L10n.unselected
+        mandatoryLabel.text = L10n.mandatory
+        titleLabel.text = L10n.graphColor
     }
     
 }

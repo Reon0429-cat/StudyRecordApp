@@ -21,27 +21,16 @@ private enum SettingRowType: Int, CaseIterable {
     
     var title: String {
         switch self {
-            case .themeColor:
-                return LocalizeKey.themeColor.localizedString()
-            case .darkMode:
-                return LocalizeKey.darkMode.localizedString()
-            case .passcode:
-                return LocalizeKey.passcode.localizedString()
-            case .howToUseApp:
-                return LocalizeKey.howToUseApp.localizedString()
-            case .evaluationApp:
-                return LocalizeKey.evaluationApp.localizedString()
-            case .shareApp:
-                return LocalizeKey.shareApp.localizedString()
-            case .reports:
-                return LocalizeKey.reports.localizedString()
-            case .backup:
-                return LocalizeKey.backup.localizedString()
-            case .privacyPolicy:
-                return LocalizeKey.privacyPolicy.localizedString()
-            case .logout:
-                return LocalizeKey.logout.localizedString()
-                
+            case .themeColor: return L10n.themeColor
+            case .darkMode: return L10n.darkMode
+            case .passcode: return L10n.passcode
+            case .evaluationApp: return L10n.evaluationApp
+            case .shareApp: return L10n.shareApp
+            case .reports: return L10n.reports
+            case .howToUseApp: return L10n.howToUseApp
+            case .backup: return L10n.backup
+            case .privacyPolicy: return L10n.privacyPolicy
+            case .logout: return L10n.logout
         }
     }
 }
@@ -90,8 +79,8 @@ final class SettingViewController: UIViewController {
 private extension SettingViewController {
     
     func presentLogoutAlert() {
-        let alert = Alert.create(title: LocalizeKey.areYouSureYouWantToLogOut.localizedString())
-            .addAction(title: LocalizeKey.logout.localizedString(),
+        let alert = Alert.create(title: L10n.areYouSureYouWantToLogOut)
+            .addAction(title: L10n.logout,
                        style: .destructive) {
                 self.indicator.show(.progress)
                 self.userUseCase.logout { result in
@@ -107,7 +96,7 @@ private extension SettingViewController {
                     }
                 }
             }
-                       .addAction(title: LocalizeKey.close.localizedString())
+                       .addAction(title: L10n.close)
         present(alert, animated: true)
     }
     
@@ -122,30 +111,30 @@ private extension SettingViewController {
     
     func presentThemeColorActionSheet() {
         let alert = Alert.create(preferredStyle: .alert)
-            .addAction(title: LocalizeKey.default.localizedString()) {
+            .addAction(title: L10n.default) {
                 self.presentDefaultAlert()
             }
-            .addAction(title: LocalizeKey.custom.localizedString()) {
+            .addAction(title: L10n.custom) {
                 self.present(ThemeColorViewController.self,
                              modalPresentationStyle: .fullScreen) { vc in
                     vc.colorConcept = nil
                     vc.containerType = .tile
-                    vc.navigationTitle = LocalizeKey.custom.localizedString()
+                    vc.navigationTitle = L10n.custom
                 }
             }
-            .addAction(title: LocalizeKey.recommendation.localizedString()) {
+            .addAction(title: L10n.recommendation) {
                 self.present(ColorConceptViewController.self,
                              modalPresentationStyle: .fullScreen)
             }
-            .addAction(title: LocalizeKey.close.localizedString(),
+            .addAction(title: L10n.close,
                        style: .destructive)
         present(alert, animated: true)
     }
     
     func presentDefaultAlert() {
-        let alert = Alert.create(title: LocalizeKey.doYouWantTheDefaultColor.localizedString())
-            .addAction(title: LocalizeKey.no.localizedString())
-            .addAction(title: LocalizeKey.yes.localizedString()) {
+        let alert = Alert.create(title: L10n.doYouWantTheDefaultColor)
+            .addAction(title: L10n.no)
+            .addAction(title: L10n.yes) {
                 UserDefaults.standard.save(color: nil, .main)
                 UserDefaults.standard.save(color: nil, .sub)
                 UserDefaults.standard.save(color: nil, .accent)

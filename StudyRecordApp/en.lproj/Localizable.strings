@@ -21,7 +21,6 @@
 "graph" = "Graph";
 "goal" = "Goal";
 "setting" = "Setting";
-
 "natural" = "Natural";
 "pop" = "Pop";
 "elegant" = "Elegant";
@@ -63,20 +62,20 @@
 "save" = "save";
 "close" = "close";
 "edit" = "edit";
-"Edit" = "Edit";
+"largeEdit" = "Edit";
 "completion" = "completion";
 "title" = "title";
-"Title" = "Title";
+"largeTitle" = "Title";
 "add" = "add";
-"Add" = "Add";
+"largeAdd" = "Add";
 "memo" = "memo";
-"Memo" = "Memo";
+"largeMemo" = "Memo";
 "graphColor" = "Graph Color";
-"Sort" = "Sort";
-"send" = "Send";
+"largeSort" = "Sort";
+"largeSend" = "Send";
 "delete" = "delete";
 "decision" = "decision";
-"discard" = "Discard";
+"largeDiscard" = "Discard";
 
 "login" = "Login";
 "signUp" = "SignUp";
@@ -111,10 +110,10 @@
 "november" = "November";
 "december" = "December";
 "category" = "category";
-"Category" = "Category";
+"largeCategory" = "Category";
 "simple" = "simple";
 
-"Priority" = "Priority";
+"largePriority" = "Priority";
 "dueDate" = "Due Date";
 "createdDate" = "Created Date";
 "photo" = "Photo";

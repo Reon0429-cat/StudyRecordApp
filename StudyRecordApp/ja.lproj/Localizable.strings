@@ -63,21 +63,21 @@
 "save" = "保存";
 "close" = "閉じる";
 "edit" = "編集";
-"Edit" = "編集";
+"largeEdit" = "編集";
 "completion" = "完了";
 "delete" = "削除";
 "title" = "タイトル";
-"Title" = "タイトル";
+"largeTitle" = "タイトル";
 "add" = "追加";
-"Add" = "追加";
+"largeAdd" = "追加";
 "memo" = "メモ";
-"Memo" = "メモ";
+"largeMemo" = "メモ";
 "graphColor" = "グラフカラー";
 "decision" = "決定";
-"Sort" = "並び替え";
-"discard" = "破棄する";
+"largeSort" = "並び替え";
+"largeDiscard" = "破棄する";
 "recordTime" = "時間を記録する";
-"send" = "送信";
+"largeSend" = "送信";
 
 "login" = "ログイン";
 "signUp" = "サインアップ";
@@ -112,9 +112,9 @@
 "december" = "12月";
 
 "category" = "カテゴリ";
-"Category" = "カテゴリ";
+"largeCategory" = "カテゴリ";
 "simple" = "シンプル";
-"Priority" = "優先度";
+"largePriority" = "優先度";
 "dueDate" = "期日";
 "createdDate" = "作成日";
 "photo" = "写真";

@@ -1,0 +1,13 @@
+strings:
+  inputs: StudyRecordApp/en.lproj/Localizable.strings
+  outputs:
+    - templateName: structured-swift5
+      output: StudyRecordApp/Generated/strings.swift
+ib:
+  inputs: StudyRecordApp
+  filter: .+\.storyboard$
+  outputs:
+    - templateName: scenes-swift5
+      output: StudyRecordApp/Generated/StoryboardScenes.swift
+    - templateName: segues-swift5
+      output: StudyRecordApp/Generated/StoryboardSegues.swift

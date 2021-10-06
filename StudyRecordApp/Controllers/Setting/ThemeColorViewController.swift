@@ -273,15 +273,15 @@ private extension ThemeColorViewController {
         if containerType == .concept {
             segmentedControlBackView.isHidden = true
         }
-        segmentedControl.create([LocalizeKey.tile.localizedString(),
-                                 LocalizeKey.slider.localizedString()],
+        segmentedControl.create([L10n.tile,
+                                 L10n.slider],
                                 selectedIndex: 0)
     }
     
     func setupColorViewLabels() {
-        mainLabel.text = LocalizeKey.main.localizedString()
-        subLabel.text = LocalizeKey.sub.localizedString()
-        accentLabel.text = LocalizeKey.accent.localizedString()
+        mainLabel.text = L10n.main
+        subLabel.text = L10n.sub
+        accentLabel.text = L10n.accent
     }
     
     func setupThemeColorViewColor() {

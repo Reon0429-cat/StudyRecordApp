@@ -109,7 +109,7 @@ private extension ResetingPasswordViewController {
     
     func setupSendButton() {
         changeSendButtonState(isEnabled: false)
-        sendButton.setTitle(LocalizeKey.send.localizedString())
+        sendButton.setTitle(L10n.largeSend)
     }
     
     func setupMailAddressTextField() {
@@ -119,20 +119,20 @@ private extension ResetingPasswordViewController {
     }
     
     func setupTitleLabel() {
-        titleLabel.text = LocalizeKey.passwordForgotTitle.localizedString()
+        titleLabel.text = L10n.passwordForgotTitle
     }
     
     func setupMailAddressLabel() {
-        mailAddressLabel.text = LocalizeKey.mailAddress.localizedString()
+        mailAddressLabel.text = L10n.mailAddress
     }
     
     func setupMailAddressImage() {
-        guard let image = UIImage(systemName: "envelope") else { return }
+        guard let image = UIImage(systemName: .envelope) else { return }
         mailAddressImage.image = image.setColor(.dynamicColor(light: .black, dark: .white))
     }
     
     func setupDetailLabel() {
-        detailLabel.text = LocalizeKey.passwordForgotDetail.localizedString()
+        detailLabel.text = L10n.passwordForgotDetail
     }
     
     func setupKeyboardObserver() {

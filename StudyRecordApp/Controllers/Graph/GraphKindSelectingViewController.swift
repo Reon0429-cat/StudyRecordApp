@@ -14,9 +14,9 @@ enum SelectedGraphType: Int, CaseIterable {
     
     var title: String {
         switch self {
-            case .line: return LocalizeKey.Line.localizedString()
-            case .bar: return LocalizeKey.Bar.localizedString()
-            case .dot: return LocalizeKey.Dot.localizedString()
+            case .line: return L10n.line
+            case .bar: return L10n.bar
+            case .dot: return L10n.dot
         }
     }
     var stackViewSubViewTypes: [StackViewSubViewType] {
@@ -204,39 +204,39 @@ private extension GraphKindSelectingViewController {
     }
     
     func setupLineShapeStraightButton() {
-        lineShapeStraightButton.setTitle(LocalizeKey.straight.localizedString())
+        lineShapeStraightButton.setTitle(L10n.straight)
         lineShapeStraightButton.setImage(isFilled: !isSmooth)
     }
     
     func setupLineShapeSmoothButton() {
-        lineShapeSmoothButton.setTitle(LocalizeKey.smooth.localizedString())
+        lineShapeSmoothButton.setTitle(L10n.smooth)
         lineShapeSmoothButton.setImage(isFilled: isSmooth)
     }
     
     func setupFillAreaButton() {
-        fillAreaButton.setTitle(LocalizeKey.fill.localizedString())
+        fillAreaButton.setTitle(L10n.fill)
         fillAreaButton.setImage(isFilled: isFilled)
     }
     
     func setupAddDotsButton() {
-        addDotsButton.setTitle(LocalizeKey.addDot.localizedString())
+        addDotsButton.setTitle(L10n.addDot)
         addDotsButton.setImage(isFilled: withDots)
     }
     
     func setupDotShapeCircleButton() {
-        dotShapeCircleButton.setTitle(LocalizeKey.circleDot.localizedString())
+        dotShapeCircleButton.setTitle(L10n.circleDot)
         dotShapeCircleButton.setImage(isFilled: !isSquare)
         dotShapeCircleButton.isHidden = !withDots
     }
     
     func setupDotShapeSquareButton() {
-        dotShapeSquareButton.setTitle(LocalizeKey.squareDot.localizedString())
+        dotShapeSquareButton.setTitle(L10n.squareDot)
         dotShapeSquareButton.setImage(isFilled: isSquare)
         dotShapeSquareButton.isHidden = !withDots
     }
     
     func setupSaveButton() {
-        saveButton.setTitle(LocalizeKey.save.localizedString())
+        saveButton.setTitle(L10n.save)
     }
     
     func setupSlider() {

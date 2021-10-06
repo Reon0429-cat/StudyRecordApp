@@ -93,11 +93,11 @@ private extension AdditionalCategoryViewController {
     }
     
     func setupDismissButton() {
-        dismissButton.setTitle(LocalizeKey.close.localizedString())
+        dismissButton.setTitle(L10n.close)
     }
     
     func setupSaveButton() {
-        saveButton.setTitle(LocalizeKey.decision.localizedString())
+        saveButton.setTitle(L10n.decision)
     }
     
 }

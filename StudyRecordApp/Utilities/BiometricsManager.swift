@@ -19,11 +19,11 @@ struct BiometricsManager {
     var title: String {
         switch context.biometryType {
             case .faceID:
-                return LocalizeKey.turnOnFaceID.localizedString()
+                return L10n.turnOnFaceID
             case .touchID:
-                return LocalizeKey.turnOnTouchID.localizedString()
+                return L10n.turnOnTouchID
             default:
-                return LocalizeKey.turnOnBiometrics.localizedString()
+                return L10n.turnOnBiometrics
         }
     }
     
@@ -38,7 +38,7 @@ struct BiometricsManager {
     }
     
     func authenticate(completion: @escaping ResultHandler<Any?>) {
-        let localizedReason = LocalizeKey.useAuthenticationToUnlock.localizedString()
+        let localizedReason = L10n.useAuthenticationToUnlock
         context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics,
                                localizedReason: localizedReason) { isSuccess, error in
             if let error = error {
@@ -51,7 +51,7 @@ struct BiometricsManager {
             if isSuccess {
                 completion(.success(nil))
             } else {
-                completion(.failure(LocalizeKey.unknownError.localizedString()))
+                completion(.failure(L10n.unknownError))
             }
         }
     }

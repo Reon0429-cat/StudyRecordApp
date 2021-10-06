@@ -71,7 +71,7 @@ extension PasscodeSettingViewController: HalfModalPresenterDelegate {
 private extension PasscodeSettingViewController {
     
     func setupPasscodeLabel() {
-        passcodeLabel.text = LocalizeKey.passcode.localizedString()
+        passcodeLabel.text = L10n.passcode
     }
     
     func setupPasscodeSwitch() {
@@ -84,7 +84,7 @@ private extension PasscodeSettingViewController {
                 case .success:
                     biometricsButton.setTitle(BiometricsManager().title)
                 case .failure:
-                    biometricsButton.setTitle(LocalizeKey.turnOnBiometrics.localizedString())
+                    biometricsButton.setTitle(L10n.turnOnBiometrics)
             }
         }
         let isFilled = settingUseCase.setting.isBiometricsSetted
