@@ -34,18 +34,8 @@ final class RealmRecordDataStore: RealmRecordDataStoreProtocol {
     }
     
     func update(record: RecordRealm) {
-        let object = realm.object(ofType: RecordRealm.self,
-                                  forPrimaryKey: record.identifier) ?? RecordRealm()
         try! realm.write {
-            object.title = record.title
-            object.histories.removeAll()
-            object.histories.append(objectsIn: record.histories)
-            object.isExpanded = record.isExpanded
-            object.graphColor = record.graphColor
-            object.memo = record.memo
-            object.yearID = record.yearID
-            object.monthID = record.monthID
-            object.order = record.order
+            realm.add(record, update: .modified)
         }
     }
     
