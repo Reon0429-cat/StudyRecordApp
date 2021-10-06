@@ -746,7 +746,6 @@
 		AB93C239266A234800C3AE8F /* StudyRecordApp */ = {
 			isa = PBXGroup;
 			children = (
-				AB37278C270DA181005DBAB3 /* SystemName.swift */,
 				AB8B704726D5EF1B0069FF67 /* Entities */,
 				AB8B704A26D5EF3F0069FF67 /* DataStores */,
 				AB8B704926D5EF290069FF67 /* Repositories */,
@@ -772,6 +771,7 @@
 			isa = PBXGroup;
 			children = (
 				AB372782270D84C0005DBAB3 /* Month.swift */,
+				AB37278C270DA181005DBAB3 /* SystemName.swift */,
 				ABFAB21326E67A2E0095EC20 /* Alert.swift */,
 				AB275FFD26DCAA56009F63B3 /* Indicator.swift */,
 				AB4397FA26DDF78A008C8CA8 /* HUDIndicator.swift */,
