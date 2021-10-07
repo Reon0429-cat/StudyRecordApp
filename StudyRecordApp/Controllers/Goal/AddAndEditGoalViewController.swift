@@ -168,7 +168,8 @@ private extension AddAndEditGoalViewController {
                                  dueDate: inputtedDate.due,
                                  createdDate: inputtedDate.created,
                                  imageData: inputtedImageData,
-                                 order: getGoalOrder())
+                                 order: getGoalOrder(),
+                                 identifier: UUID().uuidString)
         switch goalScreenType {
             case .add:
                 let categoryTitle: String = {
@@ -490,11 +491,11 @@ private extension AddAndEditGoalViewController {
         let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
         guard let goalScreenType = goalScreenType else { abort() }
         switch goalScreenType {
-            case .add, .categoryAdd:
+            case .add:
                 cell.configure(titleText: rowType.title,
                                mandatoryIsHidden: true,
                                auxiliaryText: inputtedCategoryTitle)
-            case .sectionAdd, .edit:
+            case .sectionAdd, .categoryAdd, .edit:
                 cell.configure(titleText: rowType.title,
                                mandatoryText: L10n.fixed,
                                mandatoryIsHidden: false,

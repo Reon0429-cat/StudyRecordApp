@@ -62,4 +62,8 @@ final class GoalUseCase {
         repository.update(category: newCategory)
     }
     
+    func deleteGoal(at indexPath: IndexPath) {
+        repository.deleteGoal(indexPath: indexPath)
+    }
+    
 }

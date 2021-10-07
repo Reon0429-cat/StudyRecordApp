@@ -25,6 +25,7 @@ struct Category {
         var createdDate: Date
         var imageData: Data?
         var order: Int
+        let identifier: String
         
         struct Priority {
             var mark: PriorityMark
@@ -101,7 +102,8 @@ extension Category.Goal {
          dueDate: Date? = nil,
          createdDate: Date? = nil,
          imageData: Data? = nil,
-         order: Int? = nil) {
+         order: Int? = nil,
+         identifier: String? = nil) {
         if let title = title {
             self.title = title
         } else {
@@ -142,6 +144,12 @@ extension Category.Goal {
         } else {
             self.order = goal.order
         }
+        if let identifier = identifier {
+            self.identifier = identifier
+        } else {
+            self.identifier = goal.identifier
+        }
+        
     }
     
 }

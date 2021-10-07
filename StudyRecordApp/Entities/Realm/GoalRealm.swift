@@ -29,6 +29,11 @@ final class GoalRealm: Object {
     @objc dynamic var createdDate: Date = Date()
     @objc dynamic var imageData: Data?
     @objc dynamic var order: Int = 0
+    @objc dynamic var identifier = UUID().uuidString
+    
+    override class func primaryKey() -> String? {
+        return "identifier"
+    }
 }
 
 final class PriorityRealm: Object {

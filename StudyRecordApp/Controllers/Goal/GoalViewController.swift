@@ -168,8 +168,30 @@ extension GoalViewController: GoalTableViewCellDelegate {
     }
     
     func deleteButtonDidTapped(indexPath: IndexPath) {
-        // 削除された
-        delegate?.deleteButtonDidTappped(isEmpty: categories.isEmpty)
+        let alert = Alert.create(title: L10n.doYouReallyWantToDeleteThis)
+            .addAction(title: L10n.delete, style: .destructive) {
+                self.goalUseCase.deleteGaol(at: indexPath)
+                self.delegate?.deleteButtonDidTappped(isEmpty: self.categories.isEmpty)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+                
+                self.goalUseCase.categories.forEach { category in
+                    category.goals.forEach { goal in
+                        print("DEBUG_PRINT: ",
+                              "title: ", goal.title,
+                              "order", goal.order)
+                    }
+                    print("DEBUG_PRINT: =====================")
+                }
+                
+                
+                self.dismiss(animated: true)
+            }
+            .addAction(title: L10n.close) {
+                self.dismiss(animated: true)
+            }
+        present(alert, animated: true)
     }
     
     func goalViewDidTapped(indexPath: IndexPath) {

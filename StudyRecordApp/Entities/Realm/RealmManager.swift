@@ -8,7 +8,25 @@
 import Foundation
 import RealmSwift
 
-final class RealmManager {
+protocol RealmListDeletable {
+    static func deleteList<T: Object>(objects: List<T>, at index: Int)
+}
+
+extension RealmListDeletable {
+    
+    static func deleteList<T: Object>(objects: List<T>, at index: Int) {
+        let realm = try! Realm()
+        try! realm.write {
+            objects.remove(at: index)
+            objects.enumerated().forEach { index, object in
+                object.setValue(index, forKey: .order)
+            }
+        }
+    }
+    
+}
+
+final class RealmManager: RealmListDeletable {
     
     private static let realm = try! Realm()
     
@@ -40,8 +58,8 @@ final class RealmManager {
             if byKeyPath == nil {
                 return realm.objects(T.self)
             } else {
-                return  realm.objects(T.self).sorted(byKeyPath: .order,
-                                                     ascending: true)
+                return realm.objects(T.self).sorted(byKeyPath: .order,
+                                                    ascending: true)
             }
         }()
         return objects.map { $0 }

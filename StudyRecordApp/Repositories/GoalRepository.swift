@@ -14,6 +14,7 @@ protocol GoalRepositoryProtocol {
     func readAll() -> [Category]
     func update(category: Category)
     func delete(category: Category)
+    func deleteGoal(indexPath: IndexPath)
 }
 
 final class GoalRepository: GoalRepositoryProtocol {
@@ -46,6 +47,12 @@ final class GoalRepository: GoalRepositoryProtocol {
     func delete(category: Category) {
         let categoryRealm = CategoryRealm(category: category)
         dataStore.delete(category: categoryRealm)
+    }
+    
+    func deleteGoal(indexPath: IndexPath) {
+        let categoryRealm = dataStore.readAll()[indexPath.section]
+        dataStore.deleteGoal(category: categoryRealm,
+                             indexPath: indexPath)
     }
     
 }
@@ -105,7 +112,8 @@ private extension Category.Goal {
                   dueDate: goal.dueDate,
                   createdDate: goal.createdDate,
                   imageData: goal.imageData,
-                  order: goal.order)
+                  order: goal.order,
+                  identifier: goal.identifier)
     }
     
 }
@@ -144,7 +152,8 @@ private extension GoalRealm {
                                  dueDate: goal.dueDate,
                                  createdDate: goal.createdDate,
                                  imageData: goal.imageData,
-                                 order: goal.order)
+                                 order: goal.order,
+                                 identifier: goal.identifier)
         self.title = goal.title
         self.memo = goal.memo
         self.isExpanded = goal.isExpanded
@@ -153,6 +162,7 @@ private extension GoalRealm {
         self.createdDate = goal.createdDate
         self.imageData = goal.imageData
         self.order = goal.order
+        self.identifier = goal.identifier
     }
     
 }
