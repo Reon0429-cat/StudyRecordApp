@@ -25,10 +25,8 @@ final class GoalUseCase {
     func save(goal: Category.Goal, section: Int) {
         let category = repository.read(at: section)
         let newGoals = category.goals + [goal]
-        let newCategory = Category(title: category.title,
-                                   isExpanded: category.isExpanded,
-                                   goals: newGoals,
-                                   identifier: category.identifier)
+        let newCategory = Category(category: category,
+                                   goals: newGoals)
         repository.update(category: newCategory)
     }
     
@@ -40,38 +38,27 @@ final class GoalUseCase {
         let category = repository.read(at: indexPath.section)
         var goals = category.goals
         goals[indexPath.row] = goal
-        let newCategory = Category(title: category.title,
-                                   isExpanded: category.isExpanded,
-                                   goals: goals,
-                                   identifier: category.identifier)
+        let newCategory = Category(category: category,
+                                   goals: goals)
         repository.update(category: newCategory)
     }
     
     func toggleGoalIsExpanded(at indexPath: IndexPath) {
         let category = repository.read(at: indexPath.section)
         let goal = category.goals[indexPath.row]
-        let newGoal = Category.Goal(title: goal.title,
-                                    memo: goal.memo,
-                                    isExpanded: !goal.isExpanded,
-                                    priority: goal.priority,
-                                    dueDate: goal.dueDate,
-                                    createdDate: goal.createdDate,
-                                    imageData: goal.imageData)
+        let newGoal = Category.Goal(goal: goal,
+                                    isExpanded: !goal.isExpanded)
         var newGoals = category.goals
         newGoals[indexPath.row] = newGoal
-        let newCategory = Category(title: category.title,
-                                   isExpanded: category.isExpanded,
-                                   goals: newGoals,
-                                   identifier: category.identifier)
+        let newCategory = Category(category: category,
+                                   goals: newGoals)
         repository.update(category: newCategory)
     }
     
     func toggleCategoryIsExpanded(at section: Int) {
         let category = repository.readAll()[section]
-        let newCategory = Category(title: category.title,
-                                   isExpanded: !category.isExpanded,
-                                   goals: category.goals,
-                                   identifier: category.identifier)
+        let newCategory = Category(category: category,
+                                   isExpanded: !category.isExpanded)
         repository.update(category: newCategory)
     }
     

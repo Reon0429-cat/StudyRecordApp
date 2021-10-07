@@ -57,6 +57,7 @@ private extension Category {
         self = Category(title: category.title,
                         isExpanded: category.isExpanded,
                         goals: category.commonGoals,
+                        order: category.order,
                         identifier: category.identifier)
     }
     
@@ -69,10 +70,12 @@ private extension CategoryRealm {
         let category = Category(title: category.title,
                                 isExpanded: category.isExpanded,
                                 goals: category.goals,
+                                order: category.order,
                                 identifier: category.identifier)
         self.title = category.title
         self.isExpanded = category.isExpanded
         self.goals = category.realmGoals
+        self.order = category.order
         self.identifier = category.identifier
     }
     
@@ -101,7 +104,8 @@ private extension Category.Goal {
                   ?? Priority(mark: .star, number: .one),
                   dueDate: goal.dueDate,
                   createdDate: goal.createdDate,
-                  imageData: goal.imageData)
+                  imageData: goal.imageData,
+                  order: goal.order)
     }
     
 }
@@ -139,7 +143,8 @@ private extension GoalRealm {
                                  priority: goal.priority,
                                  dueDate: goal.dueDate,
                                  createdDate: goal.createdDate,
-                                 imageData: goal.imageData)
+                                 imageData: goal.imageData,
+                                 order: goal.order)
         self.title = goal.title
         self.memo = goal.memo
         self.isExpanded = goal.isExpanded
@@ -147,6 +152,7 @@ private extension GoalRealm {
         self.dueDate = goal.dueDate
         self.createdDate = goal.createdDate
         self.imageData = goal.imageData
+        self.order = goal.order
     }
     
 }
