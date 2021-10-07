@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,6 +19,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="587" height="309"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="63k-jc-TAx">
+                        <rect key="frame" x="20" y="190" width="547" height="109"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                        <color key="textColor" systemColor="labelColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6mO-LY-CIT">
                         <rect key="frame" x="10" y="10" width="567" height="180"/>
                         <subviews>
@@ -99,22 +108,33 @@
                             <constraint firstItem="vPZ-C7-Duu" firstAttribute="top" secondItem="6mO-LY-CIT" secondAttribute="top" constant="5" id="hdE-ra-boi"/>
                         </constraints>
                     </view>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="63k-jc-TAx">
-                        <rect key="frame" x="20" y="200" width="547" height="99"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                        <color key="textColor" systemColor="labelColor"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                    </textView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kmB-mu-9gO">
+                        <rect key="frame" x="547" y="0.0" width="40" height="40"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="AEv-HB-Emo"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <state key="normal">
+                            <imageReference key="image" image="xmark.circle.fill" catalog="system" symbolScale="large" renderingMode="original"/>
+                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" scale="large" weight="heavy"/>
+                        </state>
+                        <connections>
+                            <action selector="deleteButtonDidTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="sgN-NX-91X"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="kmB-mu-9gO" firstAttribute="width" secondItem="kmB-mu-9gO" secondAttribute="height" id="9Ae-zE-Qd3"/>
                     <constraint firstItem="6mO-LY-CIT" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Gnj-59-lxI"/>
+                    <constraint firstAttribute="trailing" secondItem="kmB-mu-9gO" secondAttribute="trailing" id="Ovs-Uh-YsD"/>
                     <constraint firstAttribute="bottom" secondItem="63k-jc-TAx" secondAttribute="bottom" priority="900" constant="10" id="PRR-S5-znL"/>
                     <constraint firstAttribute="trailing" secondItem="63k-jc-TAx" secondAttribute="trailing" constant="20" id="gdu-su-pn0"/>
-                    <constraint firstItem="63k-jc-TAx" firstAttribute="top" secondItem="6mO-LY-CIT" secondAttribute="bottom" constant="10" id="jxL-fR-9j1"/>
+                    <constraint firstItem="63k-jc-TAx" firstAttribute="top" secondItem="6mO-LY-CIT" secondAttribute="bottom" id="jxL-fR-9j1"/>
                     <constraint firstItem="6mO-LY-CIT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="lEY-J9-jkz"/>
                     <constraint firstItem="6mO-LY-CIT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="moz-IM-Gs1"/>
+                    <constraint firstItem="kmB-mu-9gO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="qYq-un-uET"/>
                     <constraint firstItem="63k-jc-TAx" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="tNL-3W-1j2"/>
                 </constraints>
             </tableViewCellContentView>
@@ -122,6 +142,7 @@
             <connections>
                 <outlet property="baseView" destination="6mO-LY-CIT" id="eUS-xy-Xqc"/>
                 <outlet property="createdDateLabel" destination="TgN-3h-cgG" id="SGi-xT-poo"/>
+                <outlet property="deleteButton" destination="kmB-mu-9gO" id="bPf-Ax-bW4"/>
                 <outlet property="dueDateLabel" destination="g7a-aR-4Hy" id="kJa-S4-JVA"/>
                 <outlet property="imageViewBaseView" destination="4iu-Tw-75c" id="T2U-Ti-3v1"/>
                 <outlet property="memoButton" destination="6zK-Zs-qFe" id="bxB-yA-WjU"/>
@@ -134,6 +155,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

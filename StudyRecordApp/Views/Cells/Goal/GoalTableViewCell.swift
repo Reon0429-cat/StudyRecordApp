@@ -10,6 +10,7 @@ import UIKit
 protocol GoalTableViewCellDelegate: AnyObject {
     func memoButtonDidTapped(indexPath: IndexPath)
     func goalViewDidTapped(indexPath: IndexPath)
+    func deleteButtonDidTapped(indexPath: IndexPath)
 }
 
 final class GoalTableViewCell: UITableViewCell {
@@ -23,6 +24,7 @@ final class GoalTableViewCell: UITableViewCell {
     @IBOutlet private weak var imageViewBaseView: UIView!
     @IBOutlet private weak var memoButton: UIButton!
     @IBOutlet private weak var memoTextView: UITextView!
+    @IBOutlet private weak var deleteButton: UIButton!
     
     weak var delegate: GoalTableViewCellDelegate?
     private var priorityStackView = UIStackView()
@@ -40,13 +42,13 @@ final class GoalTableViewCell: UITableViewCell {
                                                      dark: .secondarySystemGroupedBackground)
         priorityStackViewBaseView.backgroundColor = .clear
         setPanGR()
+        
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         guard let traitCollection = previousTraitCollection else { return }
         if traitCollection.hasDifferentColorAppearance(comparedTo: self.traitCollection) {
-            baseView.setBorder()
-            memoTextView.setBorder()
+            setColor()
         }
     }
     
@@ -62,15 +64,36 @@ final class GoalTableViewCell: UITableViewCell {
         imageViewBaseView.isHidden = (goal.imageData == nil)
         setupBaseView()
         setupMemoTextView(goal: goal)
+        setColor()
+    }
+    
+    func changeMode(isEdit: Bool, isEvenIndex: Bool) {
+        if isEdit {
+            deleteButton.setFade(.in)
+            baseView.vibrate(.start, isEvenIndex: isEvenIndex, range: 0.8)
+        } else {
+            deleteButton.setFade(.out)
+            baseView.vibrate(.stop, range: 0.8)
+        }
     }
     
     func isHidden(_ isHidden: Bool) {
         self.isHidden = isHidden
     }
     
-    @IBAction private func memoButtonDidTapped(_ sender: Any) {
+}
+
+// MARK: - IBAction func
+private extension GoalTableViewCell {
+    
+    @IBAction func memoButtonDidTapped(_ sender: Any) {
         guard let indexPath = indexPath else { return }
         delegate?.memoButtonDidTapped(indexPath: indexPath)
+    }
+    
+    @IBAction func deleteButtonDidTapped(_ sender: Any) {
+        guard let indexPath = indexPath else { return }
+        delegate?.deleteButtonDidTapped(indexPath: indexPath)
     }
     
 }
@@ -88,7 +111,7 @@ private extension GoalTableViewCell {
         self.priorityStackView.removeFromSuperview()
         let priorityStackView = PriorityStackView(priority: goal.priority,
                                                   imageSize: 15)
-        self.addSubview(priorityStackView)
+        baseView.addSubview(priorityStackView)
         NSLayoutConstraint.activate([
             priorityStackView.centerYAnchor.constraint(
                 equalTo: priorityStackViewBaseView.centerYAnchor
@@ -101,12 +124,14 @@ private extension GoalTableViewCell {
     }
     
     func setupBaseView() {
-        baseView.setBorder()
+        baseView.layer.cornerRadius = 10
     }
     
     func setupMemoTextView(goal: Category.Goal) {
         memoTextView.text = goal.memo
-        memoTextView.setBorder()
+        memoTextView.layer.cornerRadius = 10
+        memoTextView.isEditable = false
+        memoTextView.clipsToBounds = false
     }
     
     func setPanGR() {
@@ -122,15 +147,21 @@ private extension GoalTableViewCell {
         delegate?.goalViewDidTapped(indexPath: indexPath)
     }
     
-}
-
-private extension UIView {
-    
-    func setBorder() {
-        self.layer.cornerRadius = 10
-        self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.dynamicColor(light: .black,
-                                                      dark: .white).cgColor
+    func setColor() {
+        baseView.setShadow(color: .dynamicColor(light: .accentColor ?? .black,
+                                                dark: .accentColor ?? .white),
+                           radius: 3,
+                           opacity: 0.8,
+                           size: (width: 2, height: 2))
+        memoTextView.setShadow(color: .dynamicColor(light: .accentColor ?? .black,
+                                                    dark: .accentColor ?? .white),
+                               radius: 3,
+                               opacity: 0.8,
+                               size: (width: 2, height: 2))
+        guard let image = UIImage(systemName: .xmarkCircleFill) else { return }
+        let color: UIColor = .dynamicColor(light: .mainColor ?? .black,
+                                           dark: .mainColor ?? .white)
+        deleteButton.setImage(image.setColor(color))
     }
     
 }
