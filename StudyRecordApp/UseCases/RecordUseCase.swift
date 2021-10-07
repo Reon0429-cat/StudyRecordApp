@@ -19,15 +19,8 @@ final class RecordUseCase {
     
     func changeOpeningAndClosing(at index: Int) {
         let record = repository.read(at: index)
-        let newRecord = Record(title: record.title,
-                               histories: record.histories,
-                               isExpanded: !record.isExpanded,
-                               graphColor: record.graphColor,
-                               memo: record.memo,
-                               yearID: record.yearID,
-                               monthID: record.monthID,
-                               order: record.order,
-                               identifier: record.identifier)
+        let newRecord = Record(record: record,
+                               isExpanded: !record.isExpanded)
         repository.update(record: newRecord)
     }
     
