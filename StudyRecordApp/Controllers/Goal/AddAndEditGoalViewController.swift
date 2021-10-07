@@ -96,50 +96,58 @@ final class AddAndEditGoalViewController: UIViewController {
 // MARK: - func
 private extension AddAndEditGoalViewController {
     
-    func showAlertWithTextField(rowType: AddAndEditGoalRowType) {
+    func presentAlertWithTextField(rowType: AddAndEditGoalRowType) {
         if rowType == .title {
-            let alert = Alert.create(title: L10n.largeTitle)
-                .setTextField { textField in
-                    textField.text = self.inputtedTitle
-                    textField.tag = rowType.rawValue
-                    textField.delegate = self
-                }
-                .addAction(title: L10n.close,
-                           style: .destructive) {
-                    self.inputtedTitle = self.oldInputtedTitle
-                }
-                .addAction(title: L10n.add) {
-                    self.oldInputtedTitle = self.inputtedTitle
-                    self.tableView.reloadData()
-                }
-            present(alert, animated: true)
+            presentTitleAlertWithTextField(rowType: .title)
         }
         if rowType == .category {
-            let alert = Alert.create(title: L10n.largeCategory)
-                .setTextField { textField in
-                    textField.text = self.inputtedCategoryTitle
-                    textField.tag = rowType.rawValue
-                    textField.delegate = self
-                    let keyboardView = CategoryKeyboardView(frame: CGRect(x: 0,
-                                                                          y: 0,
-                                                                          width: self.view.frame.width,
-                                                                          height: 45))
-                    keyboardView.delegate = self
-                    textField.inputAccessoryView = keyboardView
-                }
-                .addAction(title: L10n.close,
-                           style: .destructive) {
-                    self.inputtedCategoryTitle = self.oldInputtedCategoryTitle
-                }
-                .addAction(title: L10n.add) {
-                    self.oldInputtedCategoryTitle = self.inputtedCategoryTitle
-                    self.tableView.reloadData()
-                }
-            present(alert, animated: true)
+            presentCategoryAlertWithTextField(rowType: .category)
         }
     }
     
-    func showAlert() {
+    func presentTitleAlertWithTextField(rowType: AddAndEditGoalRowType) {
+        let alert = Alert.create(title: L10n.largeTitle)
+            .setTextField { textField in
+                textField.text = self.inputtedTitle
+                textField.tag = rowType.rawValue
+                textField.delegate = self
+            }
+            .addAction(title: L10n.close,
+                       style: .destructive) {
+                self.inputtedTitle = self.oldInputtedTitle
+            }
+            .addAction(title: L10n.add) {
+                self.oldInputtedTitle = self.inputtedTitle
+                self.tableView.reloadData()
+            }
+        present(alert, animated: true)
+    }
+    
+    func presentCategoryAlertWithTextField(rowType: AddAndEditGoalRowType) {
+        let alert = Alert.create(title: L10n.largeCategory)
+            .setTextField { textField in
+                textField.text = self.inputtedCategoryTitle
+                textField.tag = rowType.rawValue
+                textField.delegate = self
+                let keyboardView = CategoryKeyboardView(frame: CGRect(x: 0,
+                                                                      y: 0,
+                                                                      width: self.view.frame.width,
+                                                                      height: 45))
+                keyboardView.delegate = self
+                textField.inputAccessoryView = keyboardView
+            }
+            .addAction(title: L10n.close,
+                       style: .destructive) {
+                self.inputtedCategoryTitle = self.oldInputtedCategoryTitle
+            }
+            .addAction(title: L10n.add) {
+                self.oldInputtedCategoryTitle = self.inputtedCategoryTitle
+                self.tableView.reloadData()
+            }
+        present(alert, animated: true)
+    }
+    
+    func showCloseAlert() {
         let alert = Alert.create(title: L10n.doYouWantToCloseWithoutSaving)
             .addAction(title: L10n.close, style: .destructive) {
                 self.dismiss(animated: true)
@@ -152,25 +160,27 @@ private extension AddAndEditGoalViewController {
     }
     
     func saveGoal() {
-        let categoryTitle: String = {
-            if inputtedCategoryTitle.isEmpty {
-                return L10n.uncategorized
-            }
-            return inputtedCategoryTitle
-        }()
+        guard let goalScreenType = goalScreenType else { return }
         let goal = Category.Goal(title: inputtedTitle,
                                  memo: inputtedMemo,
                                  isExpanded: false,
                                  priority: inputtedPriority,
                                  dueDate: inputtedDate.due,
                                  createdDate: inputtedDate.created,
-                                 imageData: inputtedImageData)
-        guard let goalScreenType = goalScreenType else { return }
+                                 imageData: inputtedImageData,
+                                 order: getGoalOrder())
         switch goalScreenType {
             case .add:
+                let categoryTitle: String = {
+                    if inputtedCategoryTitle.isEmpty {
+                        return L10n.uncategorized
+                    }
+                    return inputtedCategoryTitle
+                }()
                 let category = Category(title: categoryTitle,
                                         isExpanded: true,
                                         goals: [goal],
+                                        order: goalUseCase.categories.count,
                                         identifier: UUID().uuidString)
                 goalUseCase.save(category: category)
             case .sectionAdd, .categoryAdd:
@@ -180,6 +190,20 @@ private extension AddAndEditGoalViewController {
                 guard let indexPath = selectedIndexPath else { return }
                 goalUseCase.update(goal: goal, at: indexPath)
         }
+        
+        func getGoalOrder() -> Int {
+            switch goalScreenType {
+                case .add:
+                    return 0
+                case .sectionAdd, .categoryAdd:
+                    guard let indexPath = selectedIndexPath else { abort() }
+                    return goalUseCase.categories[indexPath.section].goals.count
+                case .edit:
+                    guard let indexPath = selectedIndexPath else { abort() }
+                    return indexPath.row
+            }
+        }
+        
     }
     
     func presentTo(_ sourceType: UIImagePickerController.SourceType) {
@@ -256,11 +280,11 @@ extension AddAndEditGoalViewController: UITableViewDelegate {
         let rowType = AddAndEditGoalRowType.allCases[indexPath.row]
         switch rowType {
             case .title:
-                showAlertWithTextField(rowType: rowType)
+                presentAlertWithTextField(rowType: rowType)
             case .category:
                 guard let goalScreenType = goalScreenType else { return }
                 if goalScreenType == .add {
-                    showAlertWithTextField(rowType: rowType)
+                    presentAlertWithTextField(rowType: rowType)
                 }
             case .memo:
                 presentStudyRecordMemoVC()
@@ -275,7 +299,9 @@ extension AddAndEditGoalViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if AddAndEditGoalRowType(rawValue: indexPath.row) == .photo && inputtedImageData != nil {
+        let isImageShowed = inputtedImageData != nil
+        let isPhotoRow = AddAndEditGoalRowType(rawValue: indexPath.row) == .photo
+        if isPhotoRow && isImageShowed {
             return tableView.rowHeight
         }
         return 80
@@ -385,17 +411,16 @@ extension AddAndEditGoalViewController: SubCustomNavigationBarDelegate {
     
     func dismissButtonDidTapped() {
         if isMandatoryItemFilled {
-            showAlert()
+            showCloseAlert()
         } else {
             dismiss(animated: true)
         }
     }
     
     var navTitle: String {
-        if let goalScreenType = goalScreenType {
-            if goalScreenType == .edit {
-                return L10n.largeEdit
-            }
+        if let goalScreenType = goalScreenType,
+           goalScreenType == .edit {
+            return L10n.largeEdit
         }
         return L10n.largeAdd
     }
