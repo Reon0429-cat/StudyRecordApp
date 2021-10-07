@@ -7,8 +7,8 @@
 
 import UIKit
 
-protocol GoalVCDelegate: ScreenPresentationDelegate {
-    
+protocol GoalVCDelegate: ScreenPresentationDelegate,
+                         EditButtonSelectable {
 }
 
 final class GoalViewController: UIViewController {
@@ -41,6 +41,10 @@ final class GoalViewController: UIViewController {
         
     }
     
+    func reloadTableView() {
+        tableView.reloadData()
+    }
+    
 }
 
 // MARK: - IBAction func
@@ -48,6 +52,7 @@ private extension GoalViewController {
     
 }
 
+// MARK: - func
 private extension GoalViewController {
     
     func getRowHeight(at indexPath: IndexPath) -> CGFloat {
@@ -107,6 +112,8 @@ extension GoalViewController: UITableViewDelegate, UITableViewDataSource {
         let goal = category.goals[indexPath.row]
         cell.configure(goal: goal)
         cell.isHidden(!category.isExpanded)
+        cell.changeMode(isEdit: delegate?.isEdit ?? false,
+                        isEvenIndex: indexPath.row.isMultiple(of: 2))
         cell.indexPath = indexPath
         cell.delegate = self
         return cell
@@ -158,6 +165,11 @@ extension GoalViewController: GoalTableViewCellDelegate {
                                       with: .automatic)
             self.tableView.endUpdates()
         }
+    }
+    
+    func deleteButtonDidTapped(indexPath: IndexPath) {
+        // 削除された
+        delegate?.deleteButtonDidTappped(isEmpty: categories.isEmpty)
     }
     
     func goalViewDidTapped(indexPath: IndexPath) {

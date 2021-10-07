@@ -7,6 +7,8 @@
 
 import UIKit
 
+// MARK: - ToDo 全てのアラートをボタンの位置などを修正する
+
 final class TopViewController: UIViewController {
     
     @IBOutlet private weak var titleLabel: UILabel!
@@ -135,8 +137,12 @@ private extension TopViewController {
     
     func changeEditMode(type: NavigationButtonType) {
         editButton.changeType(to: type)
-        if let studyRecordVC = viewControllers.first as? StudyRecordViewController {
+        let vc = viewControllers[screenType.rawValue]
+        if let studyRecordVC = vc as? StudyRecordViewController {
             studyRecordVC.reloadTableView()
+        }
+        if let goalVC = vc as? GoalViewController {
+            goalVC.reloadTableView()
         }
         if editButton.isType(.edit) {
             sortButton.setFade(.out)
@@ -284,18 +290,18 @@ extension TopViewController {
     
 }
 
-// MARK: - StudyRecordVCDelegate
-extension TopViewController: StudyRecordVCDelegate {
+// MARK: - EditButtonSelectable
+extension TopViewController: EditButtonSelectable {
     
     var isEdit: Bool {
         editButton.isType(.completion)
     }
     
-    func deleteButtonDidTappped(records: [Record]) {
-        if records.isEmpty {
+    func deleteButtonDidTappped(isEmpty: Bool) {
+        if isEmpty {
             changeEditMode(type: .edit)
         }
-        editButton.isEnabled(!records.isEmpty)
+        editButton.isEnabled(!isEmpty)
     }
     
     func baseViewLongPressDidRecognized() {
@@ -303,6 +309,11 @@ extension TopViewController: StudyRecordVCDelegate {
             changeEditMode(type: .completion)
         }
     }
+    
+}
+
+// MARK: - StudyRecordVCDelegate
+extension TopViewController: StudyRecordVCDelegate {
     
 }
 
@@ -338,7 +349,12 @@ extension TopViewController: NavigationButtonDelegate {
                     self.halfModalPresenter.viewController = vc
                 }
             case .goal:
-                break
+                changeEditMode(type: {
+                    switch type {
+                        case .edit: return .completion
+                        default: return .edit
+                    }
+                }())
             case .setting:
                 break
         }

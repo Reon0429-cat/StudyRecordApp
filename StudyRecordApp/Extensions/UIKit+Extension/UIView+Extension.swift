@@ -49,7 +49,9 @@ extension UIView {
         }
     }
     
-    func vibrate(_ vibrateAction: VibrateAction, isEvenIndex: Bool = false) {
+    func vibrate(_ vibrateAction: VibrateAction,
+                 isEvenIndex: Bool = false,
+                 range: Double = 1.2) {
         let vibrateKey = "VibrateAnimationKey"
         let rotationKey = "transform.rotation"
         switch vibrateAction {
@@ -59,7 +61,7 @@ extension UIView {
                 animation.beginTime = 0.1
                 animation.isRemovedOnCompletion = false
                 animation.duration = 0.12
-                let range = isEvenIndex ? 1.2 : -1.2
+                let range = isEvenIndex ? range : -range
                 animation.fromValue = range * Double.pi / 180
                 animation.toValue = -range * Double.pi / 180
                 animation.repeatCount = .infinity
