@@ -19,6 +19,7 @@ enum SystemName: String {
     case lock
     case xmark
     case plus
+    case plusCircle = "plus.circle"
     case arrowUpArrowDownCircleFill = "arrow.up.arrow.down.circle.fill"
     case xmarkCircle = "xmark.circle"
     case arrowtriangleDownFill = "arrowtriangle.down.fill"
