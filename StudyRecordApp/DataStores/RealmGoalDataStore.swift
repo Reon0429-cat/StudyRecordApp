@@ -14,6 +14,8 @@ protocol GoalDataStoreProtocol {
     func delete(category: CategoryRealm)
     func deleteGoal(category: CategoryRealm,
                     indexPath: IndexPath)
+    func sortCategory(from sourceCategory: CategoryRealm,
+                      to destinationCategory: CategoryRealm)
 }
 
 final class RealmGoalDataStore: GoalDataStoreProtocol {
@@ -38,6 +40,12 @@ final class RealmGoalDataStore: GoalDataStoreProtocol {
                     indexPath: IndexPath) {
         RealmManager().ex.deleteList(objects: category.goals,
                                      at: indexPath.row)
+    }
+    
+    func sortCategory(from sourceCategory: CategoryRealm,
+                      to destinationCategory: CategoryRealm) {
+        RealmManager().sort(sourceObject: sourceCategory,
+                            destinationObject: destinationCategory)
     }
     
 }

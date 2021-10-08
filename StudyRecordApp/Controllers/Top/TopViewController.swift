@@ -124,7 +124,8 @@ private extension TopViewController {
             case .graph:
                 break
             case .goal:
-                break
+                present(GoalSortViewController.self,
+                        modalPresentationStyle: .fullScreen)
             case .setting:
                 break
         }

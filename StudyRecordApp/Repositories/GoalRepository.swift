@@ -15,6 +15,8 @@ protocol GoalRepositoryProtocol {
     func update(category: Category)
     func delete(category: Category)
     func deleteGoal(indexPath: IndexPath)
+    func sortCategory(from sourceIndexPath: IndexPath,
+                      to destinationIndexPath: IndexPath)
 }
 
 final class GoalRepository: GoalRepositoryProtocol {
@@ -53,6 +55,14 @@ final class GoalRepository: GoalRepositoryProtocol {
         let categoryRealm = dataStore.readAll()[indexPath.section]
         dataStore.deleteGoal(category: categoryRealm,
                              indexPath: indexPath)
+    }
+    
+    func sortCategory(from sourceIndexPath: IndexPath,
+                      to destinationIndexPath: IndexPath) {
+        let sourceCategory = dataStore.readAll()[sourceIndexPath.row]
+        let destinationCategory = dataStore.readAll()[destinationIndexPath.row]
+        dataStore.sortCategory(from: sourceCategory,
+                               to: destinationCategory)
     }
     
 }

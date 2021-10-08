@@ -33,12 +33,15 @@ final class StudyRecordSortViewController: UIViewController {
     
 }
 
+// MARK: - SortableViewControllerProtocol
+extension StudyRecordSortViewController: SortableViewControllerProtocol { }
+
 // MARK: - UITableViewDelegate
 extension StudyRecordSortViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return _tableView(tableView, heightForRowAt: indexPath)
     }
     
 }
@@ -48,7 +51,7 @@ extension StudyRecordSortViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        _tableView(tableView, didSelectRowAt: indexPath)
     }
     
     func tableView(_ tableView: UITableView,
@@ -81,14 +84,12 @@ extension StudyRecordSortViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    heightForHeaderInSection section: Int) -> CGFloat {
-        return 30
+        return _tableView(tableView, heightForHeaderInSection: section)
     }
     
     func tableView(_ tableView: UITableView,
                    viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView()
-        view.backgroundColor = .clear
-        return view
+        return _tableView(tableView, viewForHeaderInSection: section)
     }
     
 }
@@ -100,8 +101,10 @@ extension StudyRecordSortViewController: UITableViewDragDelegate {
                    itemsForBeginning session: UIDragSession,
                    at indexPath: IndexPath) -> [UIDragItem] {
         let recordTitle = records[indexPath.row].title
-        let provider = NSItemProvider(object: recordTitle as NSItemProviderWriting)
-        return [UIDragItem(itemProvider: provider)]
+        return _tableView(tableView,
+                          itemsForBeginning: session,
+                          at: indexPath,
+                          title: recordTitle)
     }
     
 }
@@ -112,8 +115,9 @@ extension StudyRecordSortViewController: UITableViewDropDelegate {
     func tableView(_ tableView: UITableView,
                    dropSessionDidUpdate session: UIDropSession,
                    withDestinationIndexPath destinationIndexPath: IndexPath?) -> UITableViewDropProposal {
-        return UITableViewDropProposal(operation: .move,
-                                       intent: .insertAtDestinationIndexPath)
+        return _tableView(tableView,
+                          dropSessionDidUpdate: session,
+                          withDestinationIndexPath: destinationIndexPath)
     }
     
     func tableView(_ tableView: UITableView,
@@ -142,16 +146,8 @@ extension StudyRecordSortViewController: SubCustomNavigationBarDelegate {
 private extension StudyRecordSortViewController {
     
     func setupTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.dragDelegate = self
-        tableView.dropDelegate = self
-        tableView.dragInteractionEnabled = true
+        _setup(tableView: tableView, vc: self)
         tableView.registerCustomCell(StudyRecordSortTableViewCell.self)
-        tableView.tableFooterView = UIView()
-        if #available(iOS 15.0, *) {
-            tableView.sectionHeaderTopPadding = 0
-        }
     }
     
     func setupSubCustomNavigationBar() {

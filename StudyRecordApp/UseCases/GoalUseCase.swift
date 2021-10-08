@@ -71,4 +71,10 @@ final class GoalUseCase {
         repository.delete(category: category)
     }
     
+    func sortCategory(from sourceIndexPath: IndexPath,
+                      to destinationIndexPath: IndexPath) {
+        repository.sortCategory(from: sourceIndexPath,
+                                to: destinationIndexPath)
+    }
+    
 }
