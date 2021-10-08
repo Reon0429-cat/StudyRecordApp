@@ -189,6 +189,7 @@
 		ABFAB21226E63B350095EC20 /* GraphUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAB21126E63B350095EC20 /* GraphUseCase.swift */; };
 		ABFAB21426E67A2E0095EC20 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAB21326E67A2E0095EC20 /* Alert.swift */; };
 		ABFAB21626E6AD780095EC20 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAB21526E6AD780095EC20 /* CustomSegmentedControl.swift */; };
+		ABFB3A5C270FDB6900BC6D3F /* Compatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFB3A5B270FDB6900BC6D3F /* Compatible.swift */; };
 		D14EABCB62E5596481983E6D /* Pods_StudyRecordApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7ADEAD2199951B48FEFB0D8 /* Pods_StudyRecordApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -380,6 +381,7 @@
 		ABFAB21126E63B350095EC20 /* GraphUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphUseCase.swift; sourceTree = "<group>"; };
 		ABFAB21326E67A2E0095EC20 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		ABFAB21526E6AD780095EC20 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
+		ABFB3A5B270FDB6900BC6D3F /* Compatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Compatible.swift; sourceTree = "<group>"; };
 		B7ADEAD2199951B48FEFB0D8 /* Pods_StudyRecordApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudyRecordApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F080AD4E0F25E92F286ED79A /* Pods-StudyRecordApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyRecordApp.debug.xcconfig"; path = "Target Support Files/Pods-StudyRecordApp/Pods-StudyRecordApp.debug.xcconfig"; sourceTree = "<group>"; };
 		F4A1350DA353A8FEAF4BEEB3 /* Pods-StudyRecordApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyRecordApp.release.xcconfig"; path = "Target Support Files/Pods-StudyRecordApp/Pods-StudyRecordApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -774,6 +776,7 @@
 			isa = PBXGroup;
 			children = (
 				AB372782270D84C0005DBAB3 /* Month.swift */,
+				ABFB3A5B270FDB6900BC6D3F /* Compatible.swift */,
 				AB37278C270DA181005DBAB3 /* SystemName.swift */,
 				ABFAB21326E67A2E0095EC20 /* Alert.swift */,
 				AB275FFD26DCAA56009F63B3 /* Indicator.swift */,
@@ -1202,6 +1205,7 @@
 				AB37278D270DA181005DBAB3 /* SystemName.swift in Sources */,
 				AB2B5B8D26A2D106009BD3C7 /* UITableView+Extension.swift in Sources */,
 				AB13EDD126C29D9E002F56FF /* StudyRecordTimeRecordViewController.swift in Sources */,
+				ABFB3A5C270FDB6900BC6D3F /* Compatible.swift in Sources */,
 				AB275FFE26DCAA56009F63B3 /* Indicator.swift in Sources */,
 				AB2B5BA226A2D1B7009BD3C7 /* ElegantConcept.swift in Sources */,
 				AB0C766726EBAF3400BF5B64 /* SettingRepository.swift in Sources */,

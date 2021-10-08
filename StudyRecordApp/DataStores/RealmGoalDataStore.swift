@@ -12,24 +12,32 @@ protocol GoalDataStoreProtocol {
     func readAll() -> [CategoryRealm]
     func update(category: CategoryRealm)
     func delete(category: CategoryRealm)
+    func deleteGoal(category: CategoryRealm,
+                    indexPath: IndexPath)
 }
 
 final class RealmGoalDataStore: GoalDataStoreProtocol {
     
     func create(category: CategoryRealm) {
-        RealmManager.create(object: category)
+        RealmManager().create(object: category)
     }
     
     func readAll() -> [CategoryRealm] {
-        return RealmManager.readAll(type: CategoryRealm.self)
+        return RealmManager().readAll(type: CategoryRealm.self)
     }
     
     func update(category: CategoryRealm) {
-        RealmManager.update(object: category)
+        RealmManager().update(object: category)
     }
     
     func delete(category: CategoryRealm) {
-        RealmManager.delete(object: category)
+        RealmManager().delete(object: category)
+    }
+    
+    func deleteGoal(category: CategoryRealm,
+                    indexPath: IndexPath) {
+        RealmManager().ex.deleteList(objects: category.goals,
+                                     at: indexPath.row)
     }
     
 }

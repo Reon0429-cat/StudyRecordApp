@@ -8,41 +8,23 @@
 import Foundation
 import RealmSwift
 
-protocol RealmListDeletable {
-    static func deleteList<T: Object>(objects: List<T>, at index: Int)
-}
-
-extension RealmListDeletable {
+struct RealmManager {
     
-    static func deleteList<T: Object>(objects: List<T>, at index: Int) {
-        let realm = try! Realm()
-        try! realm.write {
-            objects.remove(at: index)
-            objects.enumerated().forEach { index, object in
-                object.setValue(index, forKey: .order)
-            }
-        }
-    }
+    private let realm = try! Realm()
     
-}
-
-final class RealmManager: RealmListDeletable {
-    
-    private static let realm = try! Realm()
-    
-    static func create<T: Object>(object: T) {
+    func create<T: Object>(object: T) {
         try! realm.write {
             realm.add(object)
         }
     }
     
-    static func update<T: Object>(object: T) {
+    func update<T: Object>(object: T) {
         try! realm.write {
             realm.add(object, update: .modified)
         }
     }
     
-    static func delete<T: Object>(object: T) {
+    func delete<T: Object>(object: T) {
         let identifier = object.value(forKey: .identifier) as! String
         let object = realm.object(ofType: T.self,
                                   forPrimaryKey: identifier) ?? T()
@@ -52,7 +34,7 @@ final class RealmManager: RealmListDeletable {
         setupOrder(type: T.self)
     }
     
-    static func readAll<T: Object>(type: T.Type,
+    func readAll<T: Object>(type: T.Type,
                                    byKeyPath: String? = .order) -> [T] {
         let objects: Results<T> = {
             if byKeyPath == nil {
@@ -65,21 +47,21 @@ final class RealmManager: RealmListDeletable {
         return objects.map { $0 }
     }
     
-    private static func setupOrder<T: Object>(type: T.Type) {
-        let objects = RealmManager.readAll(type: type)
+    private func setupOrder<T: Object>(type: T.Type) {
+        let objects = RealmManager().readAll(type: type)
         objects.enumerated().forEach { index, object in
             try! realm.write {
                 object.setValue(index, forKey: .order)
             }
-            RealmManager.update(object: object)
+            RealmManager().update(object: object)
         }
     }
     
-    static func sort<T: Object>(sourceObject: T,
+    func sort<T: Object>(sourceObject: T,
                                 destinationObject: T) {
         let sourceObjectOrder = sourceObject.value(forKey: .order) as! Int
         let destinationObjectOrder = destinationObject.value(forKey: .order) as! Int
-        let objects = RealmManager.readAll(type: T.self)
+        let objects = RealmManager().readAll(type: T.self)
         try! realm.write {
             if sourceObjectOrder < destinationObjectOrder {
                 for order in sourceObjectOrder...destinationObjectOrder {
@@ -91,6 +73,22 @@ final class RealmManager: RealmListDeletable {
                 }
             }
             objects[sourceObjectOrder].setValue(destinationObjectOrder, forKey: .order)
+        }
+    }
+    
+}
+
+extension RealmManager: Compatible { }
+
+extension Base where T == RealmManager {
+    
+    func deleteList<T: Object>(objects: List<T>, at index: Int) {
+        let realm = try! Realm()
+        try! realm.write {
+            objects.remove(at: index)
+            objects.enumerated().forEach { index, object in
+                object.setValue(index, forKey: .order)
+            }
         }
     }
     

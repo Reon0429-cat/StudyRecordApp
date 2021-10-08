@@ -17,20 +17,20 @@ protocol SettingDataStoreProtocol {
 final class RealmSettingDataStore: SettingDataStoreProtocol {
     
     func create(setting: SettingRealm) {
-        RealmManager.create(object: setting)
+        RealmManager().create(object: setting)
     }
     
     func readAll() -> [SettingRealm] {
-        return RealmManager.readAll(type: SettingRealm.self,
+        return RealmManager().readAll(type: SettingRealm.self,
                                     byKeyPath: nil)
     }
     
     func update(setting: SettingRealm) {
-        RealmManager.update(object: setting)
+        RealmManager().update(object: setting)
     }
     
     func delete(setting: SettingRealm) {
-        RealmManager.delete(object: setting)
+        RealmManager().delete(object: setting)
     }
     
 }
