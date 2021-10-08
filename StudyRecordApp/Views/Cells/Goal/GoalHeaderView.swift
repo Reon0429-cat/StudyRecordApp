@@ -34,10 +34,14 @@ final class GoalHeaderView: UITableViewHeaderFooterView {
     
     func changeMode(isEdit: Bool) {
         if isEdit {
+            addButton.alpha = 1
+            deleteButton.alpha = 0
             addButton.isHidden = true
-            deleteButton.isHidden = false
+            deleteButton.setFade(.in)
         } else {
-            addButton.isHidden = false
+            addButton.alpha = 0
+            deleteButton.alpha = 1
+            addButton.setFade(.in)
             deleteButton.isHidden = true
         }
     }
@@ -79,7 +83,6 @@ private extension GoalHeaderView {
     }
     
     func setupFoldingButton(category: Category) {
-        print("DEBUG_PRINT: ", category.goals.isEmpty)
         foldingButton.isHidden = category.goals.isEmpty
         let image: UIImage = {
             if category.isExpanded {
