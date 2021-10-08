@@ -20,12 +20,15 @@ enum SystemName: String {
     case xmark
     case plus
     case arrowUpArrowDownCircleFill = "arrow.up.arrow.down.circle.fill"
+    case xmarkCircle = "xmark.circle"
+    case arrowtriangleDownFill = "arrowtriangle.down.fill"
+    case arrowtriangleUpfill = "arrowtriangle.up.fill"
 }
 
 extension UIImage {
     
-    convenience init?(systemName: SystemName) {
-        self.init(systemName: systemName.rawValue)
+    convenience init(systemName: SystemName) {
+        self.init(systemName: systemName.rawValue)!
     }
     
 }

@@ -186,8 +186,8 @@ private extension TopViewController {
     }
     
     func changeAddButton(isEnabled: Bool) {
-        guard let xmarkImage = UIImage(systemName: .xmark),
-              let plusImage = UIImage(systemName: .plus) else { return }
+        let xmarkImage = UIImage(systemName: .xmark)
+        let plusImage = UIImage(systemName: .plus)
         addButton.isEnabled = isEnabled
         if isEnabled {
             addButton.setImage(plusImage.setColor(.white))
@@ -212,7 +212,7 @@ private extension TopViewController {
     }
     
     func setColor() {
-        guard let image = UIImage(systemName: .arrowUpArrowDownCircleFill) else { return }
+        let image = UIImage(systemName: .arrowUpArrowDownCircleFill)
         let color: UIColor = .dynamicColor(light: .mainColor ?? .black,
                                            dark: .mainColor ?? .white)
         sortButton.setImage(image.setColor(color))
@@ -395,8 +395,8 @@ private extension TopViewController {
     }
     
     func setupAddButton() {
-        guard let image = UIImage(systemName: .plus) else { return }
-        addButton.setImage(image.setColor(.white))
+        let plusImage = UIImage(systemName: .plus)
+        addButton.setImage(plusImage.setColor(.white))
         addButton.setGradation(locations: [0, 0.9])
     }
     

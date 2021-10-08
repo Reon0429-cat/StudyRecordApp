@@ -148,7 +148,7 @@ private extension RecordTableViewCell {
                                radius: 3,
                                opacity: 0.8,
                                size: (width: 2, height: 2))
-        guard let image = UIImage(systemName: .xmarkCircleFill) else { return }
+        let image = UIImage(systemName: .xmarkCircleFill)
         let color: UIColor = .dynamicColor(light: .mainColor ?? .black,
                                            dark: .mainColor ?? .white)
         deleteButton.setImage(image.setColor(color))

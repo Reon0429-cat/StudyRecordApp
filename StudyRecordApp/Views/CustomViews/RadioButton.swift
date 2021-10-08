@@ -38,7 +38,7 @@ final class RadioButton: UIButton {
             }
             return .circle
         }()
-        return UIImage(systemName: imageName)!
+        return UIImage(systemName: imageName)
     }
     
 }

@@ -142,15 +142,15 @@ private extension SignUpViewController {
     }
     
     func changePasswordSecureButtonImage(isSlash: Bool) {
-        guard let eyeFillImage = UIImage(systemName: .eyeFill),
-              let eyeSlashFillImage = UIImage(systemName: .eyeSlashFill) else { return }
+        let eyeFillImage = UIImage(systemName: .eyeFill)
+        let eyeSlashFillImage = UIImage(systemName: .eyeSlashFill)
         let image = isSlash ? eyeSlashFillImage : eyeFillImage
         passwordSecureButton.setImage(image)
     }
     
     func changePasswordConfirmationSecureButtonImage(isSlash: Bool) {
-        guard let eyeFillImage = UIImage(systemName: .eyeFill),
-              let eyeSlashFillImage = UIImage(systemName: .eyeSlashFill) else { return }
+        let eyeFillImage = UIImage(systemName: .eyeFill)
+        let eyeSlashFillImage = UIImage(systemName: .eyeSlashFill)
         let image = isSlash ? eyeSlashFillImage : eyeFillImage
         passwordConfirmationSecureButton.setImage(image)
     }
@@ -229,8 +229,8 @@ private extension SignUpViewController {
     }
     
     func setupMailAddressImage() {
-        guard let image = UIImage(systemName: .envelope) else { return }
-        mailAddressImage.image = image.setColor(.dynamicColor(light: .black, dark: .white))
+        let envelopImage = UIImage(systemName: .envelope)
+        mailAddressImage.image = envelopImage.setColor(.dynamicColor(light: .black, dark: .white))
     }
     
     func setupPasswordLabel() {
@@ -239,8 +239,8 @@ private extension SignUpViewController {
     }
     
     func setupPasswordImage() {
-        guard let image = UIImage(systemName: .lock) else { return }
-        passwordImage.image = image.setColor(.dynamicColor(light: .black, dark: .white))
+        let lockImage = UIImage(systemName: .lock)
+        passwordImage.image = lockImage.setColor(.dynamicColor(light: .black, dark: .white))
     }
     
     func setupPasswordConfirmationLabel() {
@@ -249,8 +249,8 @@ private extension SignUpViewController {
     }
     
     func setupPasswordConfirmationImage() {
-        guard let image = UIImage(systemName: .lock) else { return }
-        passwordConfirmationImage.image = image.setColor(.dynamicColor(light: .black, dark: .white))
+        let lockImage = UIImage(systemName: .lock)
+        passwordConfirmationImage.image = lockImage.setColor(.dynamicColor(light: .black, dark: .white))
     }
     
     func setupKeyboardObserver() {
