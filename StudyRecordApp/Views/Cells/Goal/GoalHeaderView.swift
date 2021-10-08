@@ -9,6 +9,7 @@ import UIKit
 
 protocol GoalHeaderViewDelegate: AnyObject {
     func addButtonDidTapped(section: Int)
+    func deleteButtonDidTapped(section: Int)
     func foldingButtonDidTapped(section: Int)
 }
 
@@ -17,6 +18,7 @@ final class GoalHeaderView: UITableViewHeaderFooterView {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var addButton: UIButton!
     @IBOutlet private weak var foldingButton: UIButton!
+    @IBOutlet private weak var deleteButton: UIButton!
     @IBOutlet private weak var separatorView: UIView!
     
     static let height: CGFloat = 50
@@ -25,7 +27,19 @@ final class GoalHeaderView: UITableViewHeaderFooterView {
     func configure(category: Category) {
         setupTitleLabel(category: category)
         setupFoldingButton(category: category)
+        setupAddButton()
+        setupDeleteButton()
         separatorView.backgroundColor = .separatorColor
+    }
+    
+    func changeMode(isEdit: Bool) {
+        if isEdit {
+            addButton.isHidden = true
+            deleteButton.isHidden = false
+        } else {
+            addButton.isHidden = false
+            deleteButton.isHidden = true
+        }
     }
     
 }
@@ -41,6 +55,10 @@ private extension GoalHeaderView {
         delegate?.foldingButtonDidTapped(section: self.tag)
     }
     
+    @IBAction func deleteButtonDidTapped(_ sender: Any) {
+        delegate?.deleteButtonDidTapped(section: self.tag)
+    }
+    
 }
 
 // MARK: - setup
@@ -50,9 +68,26 @@ private extension GoalHeaderView {
         titleLabel.text = category.title + " (\(category.goals.count))"
     }
     
+    func setupAddButton() {
+        addButton.setImage(UIImage(systemName: .plus))
+        addButton.isHidden = false
+    }
+    
+    func setupDeleteButton() {
+        deleteButton.setImage(UIImage(systemName: .xmarkCircle))
+        deleteButton.isHidden = true
+    }
+    
     func setupFoldingButton(category: Category) {
-        let title = category.isExpanded ? "▲" : "▼"
-        foldingButton.setTitle(title)
+        print("DEBUG_PRINT: ", category.goals.isEmpty)
+        foldingButton.isHidden = category.goals.isEmpty
+        let image: UIImage = {
+            if category.isExpanded {
+                return UIImage(systemName: .arrowtriangleUpfill)
+            }
+            return UIImage(systemName: .arrowtriangleDownFill)
+        }()
+        foldingButton.setImage(image)
     }
     
 }

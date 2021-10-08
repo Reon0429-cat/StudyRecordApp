@@ -37,7 +37,6 @@ final class GoalViewController: UIViewController {
         
         delegate?.screenDidPresented(screenType: .goal,
                                      isEnabledNavigationButton: !categories.isEmpty)
-        tableView.reloadData()
         
     }
     
@@ -94,6 +93,7 @@ extension GoalViewController: UITableViewDelegate, UITableViewDataSource {
         let headerView = tableView.dequeueReusableCustomHeaderFooterView(with: GoalHeaderView.self)
         let category = categories[section]
         headerView.configure(category: category)
+        headerView.changeMode(isEdit: delegate?.isEdit ?? false)
         headerView.delegate = self
         headerView.tag = section
         return headerView
@@ -150,6 +150,22 @@ extension GoalViewController: GoalHeaderViewDelegate {
             self.tableView.reloadSections([section], with: .automatic)
             self.tableView.endUpdates()
         }
+    }
+    
+    func deleteButtonDidTapped(section: Int) {
+        let alert = Alert.create(title: L10n.doYouReallyWantToDeleteThis)
+            .addAction(title: L10n.delete, style: .destructive) {
+                self.goalUseCase.deleteCategory(at: section)
+                self.delegate?.deleteButtonDidTappped(isEmpty: self.categories.isEmpty)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+                self.dismiss(animated: true)
+            }
+            .addAction(title: L10n.close) {
+                self.dismiss(animated: true)
+            }
+        present(alert, animated: true)
     }
     
 }

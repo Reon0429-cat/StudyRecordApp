@@ -66,4 +66,9 @@ final class GoalUseCase {
         repository.deleteGoal(indexPath: indexPath)
     }
     
+    func deleteCategory(at section: Int) {
+        let category = repository.readAll()[section]
+        repository.delete(category: category)
+    }
+    
 }
