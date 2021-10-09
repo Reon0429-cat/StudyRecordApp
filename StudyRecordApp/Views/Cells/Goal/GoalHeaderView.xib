@@ -12,95 +12,113 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="GoalHeaderView" customModule="StudyRecordApp" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="412" height="74"/>
+            <rect key="frame" x="0.0" y="0.0" width="368" height="50"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D0X-Su-TRQ">
-                    <rect key="frame" x="5" y="5" width="402" height="69"/>
+                    <rect key="frame" x="0.0" y="0.0" width="368" height="50"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タイトル" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMJ-8x-gJ6">
+                            <rect key="frame" x="10" y="25.5" width="73.5" height="21.5"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BeB-Vk-hHx">
+                            <rect key="frame" x="261" y="16" width="29" height="29"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="BeB-Vk-hHx" secondAttribute="height" id="wMf-kv-fPO"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <state key="normal" image="arrow.up.arrow.down.circle" catalog="system">
+                                <color key="titleColor" systemColor="labelColor"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
+                            </state>
+                            <connections>
+                                <action selector="sortButtonDidTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="nNr-uQ-92Z"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hhz-An-bon">
+                            <rect key="frame" x="295" y="16" width="29" height="29"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="hhz-An-bon" secondAttribute="height" id="XDI-a7-ROo"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="-2" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" image="arrowtriangle.down.fill" catalog="system">
+                                <color key="titleColor" systemColor="labelColor"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
+                            </state>
+                            <connections>
+                                <action selector="foldingButtonDidTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="Use-CH-mli"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ia-uc-Upr">
+                            <rect key="frame" x="329" y="16" width="29" height="29"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="5Ia-uc-Upr" secondAttribute="height" multiplier="1:1" id="mn4-ae-IXh"/>
+                                <constraint firstAttribute="height" constant="29" id="z2f-QM-oO9"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" image="xmark.circle" catalog="system">
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
+                            </state>
+                            <connections>
+                                <action selector="deleteButtonDidTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="aOl-Wb-So2"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k48-II-Fb6">
+                            <rect key="frame" x="329" y="16" width="29" height="29"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="29" id="MmU-ZB-sDV"/>
+                                <constraint firstAttribute="width" secondItem="k48-II-Fb6" secondAttribute="height" id="fsl-2B-gW1"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <state key="normal" image="plus.circle" catalog="system">
+                                <color key="titleColor" systemColor="labelColor"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
+                            </state>
+                            <connections>
+                                <action selector="addButtonDidTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="Eaq-SJ-36O"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q8P-tX-tWJ">
+                            <rect key="frame" x="10" y="49.5" width="358" height="0.5"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="0.5" id="HBr-Fw-Vl7"/>
+                            </constraints>
+                        </view>
+                    </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="BeB-Vk-hHx" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eMJ-8x-gJ6" secondAttribute="trailing" id="4HG-hT-EUM"/>
+                        <constraint firstItem="BeB-Vk-hHx" firstAttribute="width" secondItem="hhz-An-bon" secondAttribute="width" id="5dH-Ff-B17"/>
+                        <constraint firstAttribute="trailing" secondItem="k48-II-Fb6" secondAttribute="trailing" constant="10" id="9u0-xP-dyy"/>
+                        <constraint firstItem="eMJ-8x-gJ6" firstAttribute="top" relation="greaterThanOrEqual" secondItem="D0X-Su-TRQ" secondAttribute="top" id="Uso-ni-jdk"/>
+                        <constraint firstItem="5Ia-uc-Upr" firstAttribute="leading" secondItem="hhz-An-bon" secondAttribute="trailing" constant="5" id="Wd5-rn-2fu"/>
+                        <constraint firstAttribute="bottom" secondItem="5Ia-uc-Upr" secondAttribute="bottom" constant="5" id="XyE-sn-XIx"/>
+                        <constraint firstItem="k48-II-Fb6" firstAttribute="bottom" secondItem="5Ia-uc-Upr" secondAttribute="bottom" id="ZII-aC-IvP"/>
+                        <constraint firstItem="eMJ-8x-gJ6" firstAttribute="leading" secondItem="D0X-Su-TRQ" secondAttribute="leading" constant="10" id="bVQ-XA-4Zk"/>
+                        <constraint firstAttribute="trailing" secondItem="q8P-tX-tWJ" secondAttribute="trailing" id="ciP-Pk-VoA"/>
+                        <constraint firstItem="5Ia-uc-Upr" firstAttribute="trailing" secondItem="k48-II-Fb6" secondAttribute="trailing" id="fQm-Bo-ipW"/>
+                        <constraint firstItem="BeB-Vk-hHx" firstAttribute="bottom" secondItem="k48-II-Fb6" secondAttribute="bottom" id="fdO-Qp-Fcs"/>
+                        <constraint firstItem="hhz-An-bon" firstAttribute="leading" secondItem="BeB-Vk-hHx" secondAttribute="trailing" constant="5" id="gAD-w6-Czk"/>
+                        <constraint firstItem="hhz-An-bon" firstAttribute="bottom" secondItem="k48-II-Fb6" secondAttribute="bottom" id="h8i-LG-62K"/>
+                        <constraint firstAttribute="bottom" secondItem="q8P-tX-tWJ" secondAttribute="bottom" id="jsC-Yz-Avn"/>
+                        <constraint firstItem="hhz-An-bon" firstAttribute="width" secondItem="k48-II-Fb6" secondAttribute="width" id="nlg-yM-cFV"/>
+                        <constraint firstItem="q8P-tX-tWJ" firstAttribute="leading" secondItem="D0X-Su-TRQ" secondAttribute="leading" constant="10" id="yAX-lt-izG"/>
+                        <constraint firstAttribute="bottom" secondItem="eMJ-8x-gJ6" secondAttribute="bottom" constant="3" id="yVG-In-DMc"/>
+                    </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タイトル" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="eMJ-8x-gJ6">
-                    <rect key="frame" x="20" y="45" width="82" height="24"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ia-uc-Upr">
-                    <rect key="frame" x="363" y="40" width="29" height="29"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="5Ia-uc-Upr" secondAttribute="height" multiplier="1:1" id="mn4-ae-IXh"/>
-                    </constraints>
-                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                    <state key="normal" image="xmark.circle" catalog="system">
-                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
-                    </state>
-                    <connections>
-                        <action selector="deleteButtonDidTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="aOl-Wb-So2"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k48-II-Fb6">
-                    <rect key="frame" x="363" y="40" width="29" height="29"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="k48-II-Fb6" secondAttribute="height" id="Gx3-yA-Xu0"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                    <state key="normal" image="plus.circle" catalog="system">
-                        <color key="titleColor" systemColor="labelColor"/>
-                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
-                    </state>
-                    <connections>
-                        <action selector="addButtonDidTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="Eaq-SJ-36O"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hhz-An-bon">
-                    <rect key="frame" x="330.5" y="43.5" width="25.5" height="25.5"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="hhz-An-bon" secondAttribute="height" multiplier="1:1" id="cTn-AK-qvk"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                    <inset key="imageEdgeInsets" minX="0.0" minY="-2" maxX="0.0" maxY="0.0"/>
-                    <state key="normal" image="arrowtriangle.down.fill" catalog="system">
-                        <color key="titleColor" systemColor="labelColor"/>
-                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
-                    </state>
-                    <connections>
-                        <action selector="foldingButtonDidTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="Use-CH-mli"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BeB-Vk-hHx">
-                    <rect key="frame" x="294.5" y="40" width="29" height="29"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="BeB-Vk-hHx" secondAttribute="height" multiplier="1:1" id="QbW-X6-EKH"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                    <state key="normal" image="arrow.up.arrow.down.circle" catalog="system">
-                        <color key="titleColor" systemColor="labelColor"/>
-                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
-                    </state>
-                    <connections>
-                        <action selector="sortButtonDidTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="nNr-uQ-92Z"/>
-                    </connections>
-                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="BeB-Vk-hHx" firstAttribute="bottom" secondItem="hhz-An-bon" secondAttribute="bottom" id="1Ly-v7-jcc"/>
+                <constraint firstItem="D0X-Su-TRQ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="0lm-Of-u6r"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="D0X-Su-TRQ" secondAttribute="bottom" id="8Uh-19-hWj"/>
-                <constraint firstAttribute="bottom" secondItem="eMJ-8x-gJ6" secondAttribute="bottom" constant="5" id="8nx-kD-tEG"/>
-                <constraint firstItem="5Ia-uc-Upr" firstAttribute="leading" secondItem="hhz-An-bon" secondAttribute="trailing" constant="7" id="BkF-Fk-bdy"/>
-                <constraint firstItem="D0X-Su-TRQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="ECR-8y-gOL"/>
-                <constraint firstItem="eMJ-8x-gJ6" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="EyA-z6-9vF"/>
-                <constraint firstItem="BeB-Vk-hHx" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eMJ-8x-gJ6" secondAttribute="trailing" id="HIM-qf-nbw"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="k48-II-Fb6" secondAttribute="bottom" constant="5" id="JMW-LY-H6n"/>
-                <constraint firstItem="D0X-Su-TRQ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="5" id="Nlr-Ua-3Sp"/>
-                <constraint firstItem="hhz-An-bon" firstAttribute="leading" secondItem="BeB-Vk-hHx" secondAttribute="trailing" constant="7" id="UcB-RL-0Wr"/>
-                <constraint firstItem="hhz-An-bon" firstAttribute="bottom" secondItem="k48-II-Fb6" secondAttribute="bottom" id="arb-Sx-cbi"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="5Ia-uc-Upr" secondAttribute="trailing" constant="20" id="fAZ-PF-ZDB"/>
-                <constraint firstItem="eMJ-8x-gJ6" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="top" id="fWM-8k-a5t"/>
-                <constraint firstItem="k48-II-Fb6" firstAttribute="bottom" secondItem="5Ia-uc-Upr" secondAttribute="bottom" id="fc2-jE-pH8"/>
-                <constraint firstItem="D0X-Su-TRQ" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="-5" id="mUP-0U-Pny"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="k48-II-Fb6" secondAttribute="trailing" constant="20" id="pyu-YZ-EDv"/>
+                <constraint firstItem="D0X-Su-TRQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ECR-8y-gOL"/>
+                <constraint firstItem="D0X-Su-TRQ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="bSU-bd-YMi"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
@@ -110,10 +128,11 @@
                 <outlet property="baseView" destination="D0X-Su-TRQ" id="a9u-HO-VsB"/>
                 <outlet property="deleteButton" destination="5Ia-uc-Upr" id="ktz-5x-qKd"/>
                 <outlet property="foldingButton" destination="hhz-An-bon" id="U4w-Lz-Jie"/>
+                <outlet property="separatorView" destination="q8P-tX-tWJ" id="TBZ-c8-EHX"/>
                 <outlet property="sortButton" destination="BeB-Vk-hHx" id="3OH-6h-Sxi"/>
                 <outlet property="titleLabel" destination="eMJ-8x-gJ6" id="fTM-y7-A40"/>
             </connections>
-            <point key="canvasLocation" x="-179.71014492753625" y="-219.64285714285714"/>
+            <point key="canvasLocation" x="-211.59420289855075" y="-227.67857142857142"/>
         </view>
     </objects>
     <resources>
