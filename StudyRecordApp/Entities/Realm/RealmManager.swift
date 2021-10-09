@@ -34,6 +34,12 @@ struct RealmManager {
         setupOrder(type: T.self)
     }
     
+    func deleteAll() {
+        try! realm.write {
+            realm.deleteAll()
+        }
+    }
+    
     func readAll<T: Object>(type: T.Type,
                             byKeyPath: String? = .order) -> [T] {
         let objects: Results<T> = {
