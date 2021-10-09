@@ -16,6 +16,9 @@ protocol GoalDataStoreProtocol {
                     indexPath: IndexPath)
     func sortCategory(from sourceCategory: CategoryRealm,
                       to destinationCategory: CategoryRealm)
+    func sortGoal(category: CategoryRealm,
+                  from sourceGoal: GoalRealm,
+                  to destinationGoal: GoalRealm)
 }
 
 final class RealmGoalDataStore: GoalDataStoreProtocol {
@@ -46,6 +49,14 @@ final class RealmGoalDataStore: GoalDataStoreProtocol {
                       to destinationCategory: CategoryRealm) {
         RealmManager().sort(sourceObject: sourceCategory,
                             destinationObject: destinationCategory)
+    }
+    
+    func sortGoal(category: CategoryRealm,
+                  from sourceGoal: GoalRealm,
+                  to destinationGoal: GoalRealm) {
+        RealmManager().ex.sortList(objects: category.goals,
+                                   sourceObject: sourceGoal,
+                                   destinationObject: destinationGoal)
     }
     
 }

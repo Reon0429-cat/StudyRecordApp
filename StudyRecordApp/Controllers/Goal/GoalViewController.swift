@@ -29,6 +29,7 @@ final class GoalViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
+        createMockCategory()
         
     }
     
@@ -38,6 +39,55 @@ final class GoalViewController: UIViewController {
         delegate?.screenDidPresented(screenType: .goal,
                                      isEnabledNavigationButton: !categories.isEmpty)
         
+    }
+    
+    // MARK: - ToDo 消す
+    func createMockCategory() {
+        for i in 0..<goalUseCase.categories.count {
+            goalUseCase.deleteCategory(at: i)
+        }
+        let goalTitles = ["りんご", "バナナ", "ぶどう", "なし", "みかん"]
+        var goals = [Category.Goal]()
+        goalTitles.enumerated().forEach { index, title in
+            let goal = Category.Goal(title: title,
+                                     memo: "",
+                                     isExpanded: false,
+                                     priority: .init(mark: .heart,
+                                                     number: .one),
+                                     dueDate: Date(),
+                                     createdDate: Date(),
+                                     imageData: nil,
+                                     order: index,
+                                     identifier: UUID().uuidString)
+            goals.append(goal)
+        }
+        let category = Category(title: "フルーツ",
+                                isExpanded: true,
+                                goals: goals,
+                                order: 0,
+                                identifier: UUID().uuidString)
+        goalUseCase.save(category: category)
+        let goalTitles2 = ["車", "電車", "自転車"]
+        var goals2 = [Category.Goal]()
+        goalTitles2.enumerated().forEach { index, title in
+            let goal = Category.Goal(title: title,
+                                     memo: "",
+                                     isExpanded: false,
+                                     priority: .init(mark: .heart,
+                                                     number: .one),
+                                     dueDate: Date(),
+                                     createdDate: Date(),
+                                     imageData: nil,
+                                     order: index,
+                                     identifier: UUID().uuidString)
+            goals2.append(goal)
+        }
+        let category2 = Category(title: "乗り物",
+                                 isExpanded: true,
+                                 goals: goals2,
+                                 order: 1,
+                                 identifier: UUID().uuidString)
+        goalUseCase.save(category: category2)
     }
     
     func reloadTableView() {
@@ -149,6 +199,13 @@ extension GoalViewController: GoalHeaderViewDelegate {
             }
             self.tableView.reloadSections([section], with: .automatic)
             self.tableView.endUpdates()
+        }
+    }
+    
+    func sortButtonDidTapped(section: Int) {
+        present(GoalSortViewController.self,
+                modalPresentationStyle: .fullScreen) { vc in
+            vc.tappedSection = section
         }
     }
     

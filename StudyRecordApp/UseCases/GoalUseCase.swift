@@ -77,4 +77,15 @@ final class GoalUseCase {
                                 to: destinationIndexPath)
     }
     
+    func sortGoal(tappedSection: Int,
+                  from sourceIndex: Int,
+                  to destinationIndex: Int) {
+        let sourceIndexPath = IndexPath(row: sourceIndex,
+                                        section: tappedSection)
+        let destinationIndexPath = IndexPath(row: destinationIndex,
+                                             section: tappedSection)
+        repository.sortGoal(from: sourceIndexPath,
+                            to: destinationIndexPath)
+    }
+    
 }
