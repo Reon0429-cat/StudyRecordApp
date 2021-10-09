@@ -11,6 +11,8 @@ protocol GoalVCDelegate: ScreenPresentationDelegate,
                          EditButtonSelectable {
 }
 
+// MARK: - ToDo 達成済みリストを見れるように作る
+
 final class GoalViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
@@ -43,51 +45,30 @@ final class GoalViewController: UIViewController {
     
     // MARK: - ToDo 消す
     func createMockCategory() {
-        for i in 0..<goalUseCase.categories.count {
-            goalUseCase.deleteCategory(at: i)
+        goalUseCase.deleteAll()
+        for _ in 0..<10 {
+            let goalTitles = ["りんご", "バナナ", "ぶどう", "なし", "みかん"]
+            var goals = [Category.Goal]()
+            goalTitles.enumerated().forEach { index, title in
+                let goal = Category.Goal(title: title,
+                                         memo: "",
+                                         isExpanded: false,
+                                         priority: .init(mark: .heart,
+                                                         number: .one),
+                                         dueDate: Date(),
+                                         createdDate: Date(),
+                                         imageData: nil,
+                                         order: index,
+                                         identifier: UUID().uuidString)
+                goals.append(goal)
+            }
+            let category = Category(title: ["フルーツ", "叶えること", "動物", "勉強することを一覧にした"].randomElement() ?? "",
+                                    isExpanded: false,
+                                    goals: goals,
+                                    order: 0,
+                                    identifier: UUID().uuidString)
+            goalUseCase.save(category: category)
         }
-        let goalTitles = ["りんご", "バナナ", "ぶどう", "なし", "みかん"]
-        var goals = [Category.Goal]()
-        goalTitles.enumerated().forEach { index, title in
-            let goal = Category.Goal(title: title,
-                                     memo: "",
-                                     isExpanded: false,
-                                     priority: .init(mark: .heart,
-                                                     number: .one),
-                                     dueDate: Date(),
-                                     createdDate: Date(),
-                                     imageData: nil,
-                                     order: index,
-                                     identifier: UUID().uuidString)
-            goals.append(goal)
-        }
-        let category = Category(title: "フルーツ",
-                                isExpanded: true,
-                                goals: goals,
-                                order: 0,
-                                identifier: UUID().uuidString)
-        goalUseCase.save(category: category)
-        let goalTitles2 = ["車", "電車", "自転車"]
-        var goals2 = [Category.Goal]()
-        goalTitles2.enumerated().forEach { index, title in
-            let goal = Category.Goal(title: title,
-                                     memo: "",
-                                     isExpanded: false,
-                                     priority: .init(mark: .heart,
-                                                     number: .one),
-                                     dueDate: Date(),
-                                     createdDate: Date(),
-                                     imageData: nil,
-                                     order: index,
-                                     identifier: UUID().uuidString)
-            goals2.append(goal)
-        }
-        let category2 = Category(title: "乗り物",
-                                 isExpanded: true,
-                                 goals: goals2,
-                                 order: 1,
-                                 identifier: UUID().uuidString)
-        goalUseCase.save(category: category2)
     }
     
     func reloadTableView() {
