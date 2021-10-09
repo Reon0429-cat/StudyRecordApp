@@ -7,9 +7,11 @@
 
 import UIKit
 
-protocol GoalVCDelegate: ScreenPresentationDelegate {
-    
+protocol GoalVCDelegate: ScreenPresentationDelegate,
+                         EditButtonSelectable {
 }
+
+// MARK: - ToDo 達成済みリストを見れるように作る
 
 final class GoalViewController: UIViewController {
     
@@ -29,6 +31,7 @@ final class GoalViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
+        createMockCategory()
         
     }
     
@@ -37,8 +40,39 @@ final class GoalViewController: UIViewController {
         
         delegate?.screenDidPresented(screenType: .goal,
                                      isEnabledNavigationButton: !categories.isEmpty)
-        tableView.reloadData()
         
+    }
+    
+    // MARK: - ToDo 消す
+    func createMockCategory() {
+        goalUseCase.deleteAll()
+        for _ in 0..<10 {
+            let goalTitles = ["りんご", "バナナ", "ぶどう", "なし", "みかん"]
+            var goals = [Category.Goal]()
+            goalTitles.enumerated().forEach { index, title in
+                let goal = Category.Goal(title: title,
+                                         memo: "",
+                                         isExpanded: false,
+                                         priority: .init(mark: .heart,
+                                                         number: .one),
+                                         dueDate: Date(),
+                                         createdDate: Date(),
+                                         imageData: nil,
+                                         order: index,
+                                         identifier: UUID().uuidString)
+                goals.append(goal)
+            }
+            let category = Category(title: ["フルーツ", "叶えること", "動物", "勉強することを一覧にした"].randomElement() ?? "",
+                                    isExpanded: false,
+                                    goals: goals,
+                                    order: 0,
+                                    identifier: UUID().uuidString)
+            goalUseCase.save(category: category)
+        }
+    }
+    
+    func reloadTableView() {
+        tableView.reloadData()
     }
     
 }
@@ -48,6 +82,7 @@ private extension GoalViewController {
     
 }
 
+// MARK: - func
 private extension GoalViewController {
     
     func getRowHeight(at indexPath: IndexPath) -> CGFloat {
@@ -89,6 +124,7 @@ extension GoalViewController: UITableViewDelegate, UITableViewDataSource {
         let headerView = tableView.dequeueReusableCustomHeaderFooterView(with: GoalHeaderView.self)
         let category = categories[section]
         headerView.configure(category: category)
+        headerView.changeMode(isEdit: delegate?.isEdit ?? false)
         headerView.delegate = self
         headerView.tag = section
         return headerView
@@ -107,6 +143,8 @@ extension GoalViewController: UITableViewDelegate, UITableViewDataSource {
         let goal = category.goals[indexPath.row]
         cell.configure(goal: goal)
         cell.isHidden(!category.isExpanded)
+        cell.changeMode(isEdit: delegate?.isEdit ?? false,
+                        isEvenIndex: indexPath.row.isMultiple(of: 2))
         cell.indexPath = indexPath
         cell.delegate = self
         return cell
@@ -145,6 +183,29 @@ extension GoalViewController: GoalHeaderViewDelegate {
         }
     }
     
+    func sortButtonDidTapped(section: Int) {
+        present(GoalSortViewController.self,
+                modalPresentationStyle: .fullScreen) { vc in
+            vc.tappedSection = section
+        }
+    }
+    
+    func deleteButtonDidTapped(section: Int) {
+        let alert = Alert.create(title: L10n.doYouReallyWantToDeleteThis)
+            .addAction(title: L10n.delete, style: .destructive) {
+                self.goalUseCase.deleteCategory(at: section)
+                self.delegate?.deleteButtonDidTappped(isEmpty: self.categories.isEmpty)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+                self.dismiss(animated: true)
+            }
+            .addAction(title: L10n.close) {
+                self.dismiss(animated: true)
+            }
+        present(alert, animated: true)
+    }
+    
 }
 
 // MARK: - GoalTableViewCellDelegate
@@ -158,6 +219,22 @@ extension GoalViewController: GoalTableViewCellDelegate {
                                       with: .automatic)
             self.tableView.endUpdates()
         }
+    }
+    
+    func deleteButtonDidTapped(indexPath: IndexPath) {
+        let alert = Alert.create(title: L10n.doYouReallyWantToDeleteThis)
+            .addAction(title: L10n.delete, style: .destructive) {
+                self.goalUseCase.deleteGoal(at: indexPath)
+                self.delegate?.deleteButtonDidTappped(isEmpty: self.categories.isEmpty)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+                self.dismiss(animated: true)
+            }
+            .addAction(title: L10n.close) {
+                self.dismiss(animated: true)
+            }
+        present(alert, animated: true)
     }
     
     func goalViewDidTapped(indexPath: IndexPath) {

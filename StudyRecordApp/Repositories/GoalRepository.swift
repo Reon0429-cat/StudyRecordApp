@@ -14,6 +14,12 @@ protocol GoalRepositoryProtocol {
     func readAll() -> [Category]
     func update(category: Category)
     func delete(category: Category)
+    func deleteAll()
+    func deleteGoal(indexPath: IndexPath)
+    func sortCategory(from sourceIndexPath: IndexPath,
+                      to destinationIndexPath: IndexPath)
+    func sortGoal(from sourceIndexPath: IndexPath,
+                  to destinationIndexPath: IndexPath)
 }
 
 final class GoalRepository: GoalRepositoryProtocol {
@@ -48,6 +54,40 @@ final class GoalRepository: GoalRepositoryProtocol {
         dataStore.delete(category: categoryRealm)
     }
     
+    func deleteAll() {
+        dataStore.deleteAll()
+    }
+    
+    func deleteGoal(indexPath: IndexPath) {
+        let categoryRealm = dataStore.readAll()[indexPath.section]
+        dataStore.deleteGoal(category: categoryRealm,
+                             indexPath: indexPath)
+    }
+    
+    func sortCategory(from sourceIndexPath: IndexPath,
+                      to destinationIndexPath: IndexPath) {
+        let sourceCategory = dataStore.readAll()[sourceIndexPath.row]
+        let destinationCategory = dataStore.readAll()[destinationIndexPath.row]
+        dataStore.sortCategory(from: sourceCategory,
+                               to: destinationCategory)
+    }
+    
+    func sortGoal(from sourceIndexPath: IndexPath,
+                  to destinationIndexPath: IndexPath) {
+        let sourceGoal = getGoal(indexPath: sourceIndexPath)
+        let destinationGoal = getGoal(indexPath: destinationIndexPath)
+        let categoryRealm = dataStore.readAll()[sourceIndexPath.section]
+        dataStore.sortGoal(category: categoryRealm,
+                           from: sourceGoal,
+                           to: destinationGoal)
+    }
+    
+    private func getGoal(indexPath: IndexPath) -> GoalRealm {
+        let category = dataStore.readAll()[indexPath.section]
+        let goal = category.goals[indexPath.row]
+        return goal
+    }
+    
 }
 
 
@@ -57,6 +97,7 @@ private extension Category {
         self = Category(title: category.title,
                         isExpanded: category.isExpanded,
                         goals: category.commonGoals,
+                        order: category.order,
                         identifier: category.identifier)
     }
     
@@ -69,10 +110,12 @@ private extension CategoryRealm {
         let category = Category(title: category.title,
                                 isExpanded: category.isExpanded,
                                 goals: category.goals,
+                                order: category.order,
                                 identifier: category.identifier)
         self.title = category.title
         self.isExpanded = category.isExpanded
         self.goals = category.realmGoals
+        self.order = category.order
         self.identifier = category.identifier
     }
     
@@ -101,7 +144,9 @@ private extension Category.Goal {
                   ?? Priority(mark: .star, number: .one),
                   dueDate: goal.dueDate,
                   createdDate: goal.createdDate,
-                  imageData: goal.imageData)
+                  imageData: goal.imageData,
+                  order: goal.order,
+                  identifier: goal.identifier)
     }
     
 }
@@ -139,7 +184,9 @@ private extension GoalRealm {
                                  priority: goal.priority,
                                  dueDate: goal.dueDate,
                                  createdDate: goal.createdDate,
-                                 imageData: goal.imageData)
+                                 imageData: goal.imageData,
+                                 order: goal.order,
+                                 identifier: goal.identifier)
         self.title = goal.title
         self.memo = goal.memo
         self.isExpanded = goal.isExpanded
@@ -147,6 +194,8 @@ private extension GoalRealm {
         self.dueDate = goal.dueDate
         self.createdDate = goal.createdDate
         self.imageData = goal.imageData
+        self.order = goal.order
+        self.identifier = goal.identifier
     }
     
 }

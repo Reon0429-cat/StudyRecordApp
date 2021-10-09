@@ -9,7 +9,9 @@ import UIKit
 
 protocol GoalHeaderViewDelegate: AnyObject {
     func addButtonDidTapped(section: Int)
+    func deleteButtonDidTapped(section: Int)
     func foldingButtonDidTapped(section: Int)
+    func sortButtonDidTapped(section: Int)
 }
 
 final class GoalHeaderView: UITableViewHeaderFooterView {
@@ -17,15 +19,48 @@ final class GoalHeaderView: UITableViewHeaderFooterView {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var addButton: UIButton!
     @IBOutlet private weak var foldingButton: UIButton!
-    @IBOutlet private weak var separatorView: UIView!
+    @IBOutlet private weak var deleteButton: UIButton!
+    @IBOutlet private weak var sortButton: UIButton!
     
     static let height: CGFloat = 50
     weak var delegate: GoalHeaderViewDelegate?
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        setupAddButton()
+        setupDeleteButton()
+        setupSortButton()
+        
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        guard let traitCollection = previousTraitCollection else { return }
+        if traitCollection.hasDifferentColorAppearance(comparedTo: self.traitCollection) {
+            setColor()
+        }
+    }
+    
     func configure(category: Category) {
         setupTitleLabel(category: category)
         setupFoldingButton(category: category)
-        separatorView.backgroundColor = .separatorColor
+        setColor()
+    }
+    
+    func changeMode(isEdit: Bool) {
+        if isEdit {
+            addButton.isHidden = true
+            if sortButton.isHidden {
+                sortButton.setFade(.in)
+            }
+            deleteButton.isHidden = false
+        } else {
+            addButton.isHidden = false
+            if !sortButton.isHidden {
+                sortButton.setFade(.out)
+            }
+            deleteButton.isHidden = true
+        }
     }
     
 }
@@ -41,6 +76,14 @@ private extension GoalHeaderView {
         delegate?.foldingButtonDidTapped(section: self.tag)
     }
     
+    @IBAction func deleteButtonDidTapped(_ sender: Any) {
+        delegate?.deleteButtonDidTapped(section: self.tag)
+    }
+    
+    @IBAction func sortButtonDidTapped(_ sender: Any) {
+        delegate?.sortButtonDidTapped(section: self.tag)
+    }
+    
 }
 
 // MARK: - setup
@@ -50,9 +93,49 @@ private extension GoalHeaderView {
         titleLabel.text = category.title + " (\(category.goals.count))"
     }
     
+    func setupAddButton() {
+        addButton.setImage(UIImage(systemName: .plusCircle))
+        addButton.isHidden = false
+    }
+    
+    func setupDeleteButton() {
+        deleteButton.setImage(UIImage(systemName: .xmarkCircle))
+        deleteButton.isHidden = true
+    }
+    
+    func setupSortButton() {
+        sortButton.setImage(UIImage(systemName: .arrowUpArrowDownCircleFill))
+        sortButton.isHidden = true
+    }
+    
     func setupFoldingButton(category: Category) {
-        let title = category.isExpanded ? "▲" : "▼"
-        foldingButton.setTitle(title)
+        foldingButton.isHidden = category.goals.isEmpty
+        let image: UIImage = {
+            if category.isExpanded {
+                return UIImage(systemName: .arrowtriangleUpfill)
+            }
+            return UIImage(systemName: .arrowtriangleDownFill)
+        }()
+        foldingButton.setImage(image)
+    }
+    
+    func setColor() {
+        addButton.setShadow()
+        foldingButton.setShadow()
+        deleteButton.setShadow()
+        sortButton.setShadow()
+    }
+    
+}
+
+private extension UIView {
+    
+    func setShadow() {
+        self.setShadow(color: .dynamicColor(light: .mainColor ?? .black,
+                                            dark: .mainColor ?? .white),
+                       radius: 1,
+                       opacity: 0.8,
+                       size: (width: 2, height: 2))
     }
     
 }

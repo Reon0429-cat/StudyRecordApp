@@ -12,6 +12,7 @@ final class CategoryRealm: Object {
     @objc dynamic var title: String = ""
     @objc dynamic var isExpanded: Bool = false
     var goals = List<GoalRealm>()
+    @objc dynamic var order: Int = 0
     @objc dynamic var identifier = UUID().uuidString
     
     override class func primaryKey() -> String? {
@@ -27,6 +28,12 @@ final class GoalRealm: Object {
     @objc dynamic var dueDate: Date = Date()
     @objc dynamic var createdDate: Date = Date()
     @objc dynamic var imageData: Data?
+    @objc dynamic var order: Int = 0
+    @objc dynamic var identifier = UUID().uuidString
+    
+    override class func primaryKey() -> String? {
+        return "identifier"
+    }
 }
 
 final class PriorityRealm: Object {

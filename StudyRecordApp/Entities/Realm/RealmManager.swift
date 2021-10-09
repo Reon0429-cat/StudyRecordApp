@@ -8,23 +8,23 @@
 import Foundation
 import RealmSwift
 
-final class RealmManager {
+struct RealmManager {
     
-    private static let realm = try! Realm()
+    private let realm = try! Realm()
     
-    static func create<T: Object>(object: T) {
+    func create<T: Object>(object: T) {
         try! realm.write {
             realm.add(object)
         }
     }
     
-    static func update<T: Object>(object: T) {
+    func update<T: Object>(object: T) {
         try! realm.write {
             realm.add(object, update: .modified)
         }
     }
     
-    static func delete<T: Object>(object: T) {
+    func delete<T: Object>(object: T) {
         let identifier = object.value(forKey: .identifier) as! String
         let object = realm.object(ofType: T.self,
                                   forPrimaryKey: identifier) ?? T()
@@ -34,34 +34,30 @@ final class RealmManager {
         setupOrder(type: T.self)
     }
     
-    static func readAll<T: Object>(type: T.Type,
-                                   byKeyPath: String? = .order) -> [T] {
+    func deleteAll() {
+        try! realm.write {
+            realm.deleteAll()
+        }
+    }
+    
+    func readAll<T: Object>(type: T.Type,
+                            byKeyPath: String? = .order) -> [T] {
         let objects: Results<T> = {
             if byKeyPath == nil {
                 return realm.objects(T.self)
             } else {
-                return  realm.objects(T.self).sorted(byKeyPath: .order,
-                                                     ascending: true)
+                return realm.objects(T.self).sorted(byKeyPath: .order,
+                                                    ascending: true)
             }
         }()
         return objects.map { $0 }
     }
     
-    private static func setupOrder<T: Object>(type: T.Type) {
-        let objects = RealmManager.readAll(type: type)
-        objects.enumerated().forEach { index, object in
-            try! realm.write {
-                object.setValue(index, forKey: .order)
-            }
-            RealmManager.update(object: object)
-        }
-    }
-    
-    static func sort<T: Object>(sourceObject: T,
-                                destinationObject: T) {
+    func sort<T: Object>(sourceObject: T,
+                         destinationObject: T) {
         let sourceObjectOrder = sourceObject.value(forKey: .order) as! Int
         let destinationObjectOrder = destinationObject.value(forKey: .order) as! Int
-        let objects = RealmManager.readAll(type: T.self)
+        let objects = RealmManager().readAll(type: T.self)
         try! realm.write {
             if sourceObjectOrder < destinationObjectOrder {
                 for order in sourceObjectOrder...destinationObjectOrder {
@@ -73,6 +69,54 @@ final class RealmManager {
                 }
             }
             objects[sourceObjectOrder].setValue(destinationObjectOrder, forKey: .order)
+        }
+    }
+    
+    private func setupOrder<T: Object>(type: T.Type) {
+        let objects = RealmManager().readAll(type: type)
+        objects.enumerated().forEach { index, object in
+            try! realm.write {
+                object.setValue(index, forKey: .order)
+            }
+            RealmManager().update(object: object)
+        }
+    }
+    
+}
+
+extension RealmManager: Compatible { }
+
+extension Base where T == RealmManager {
+    
+    func deleteList<T: Object>(objects: List<T>, at index: Int) {
+        let realm = try! Realm()
+        try! realm.write {
+            objects.remove(at: index)
+            objects.enumerated().forEach { index, object in
+                object.setValue(index, forKey: .order)
+            }
+        }
+    }
+    
+    func sortList<T: Object>(objects: List<T>,
+                             sourceObject: T,
+                             destinationObject: T) {
+        let sourceObjectOrder = sourceObject.value(forKey: .order) as! Int
+        let destinationObjectOrder = destinationObject.value(forKey: .order) as! Int
+        let realm = try! Realm()
+        try! realm.write {
+            if sourceObjectOrder < destinationObjectOrder {
+                for order in sourceObjectOrder...destinationObjectOrder {
+                    objects[order].setValue(order - 1, forKey: .order)
+                }
+            } else {
+                for order in destinationObjectOrder...sourceObjectOrder {
+                    objects[order].setValue(order + 1, forKey: .order)
+                }
+            }
+            objects[sourceObjectOrder].setValue(destinationObjectOrder, forKey: .order)
+            objects.remove(at: sourceObjectOrder)
+            objects.insert(sourceObject, at: destinationObjectOrder)
         }
     }
     

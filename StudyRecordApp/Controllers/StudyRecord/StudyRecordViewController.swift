@@ -10,10 +10,14 @@ import UIKit
 // MARK: - ToDo リアルタイムで同期して更新する処理も実装する(realm)
 // MARK: - ToDo グラフカラー選択時に該当の色を丸くする(追加と編集画面でそれぞれ確認する)
 
-protocol StudyRecordVCDelegate: ScreenPresentationDelegate {
+protocol EditButtonSelectable {
     var isEdit: Bool { get }
-    func deleteButtonDidTappped(records: [Record])
+    func deleteButtonDidTappped(isEmpty: Bool)
     func baseViewLongPressDidRecognized()
+}
+
+protocol StudyRecordVCDelegate: ScreenPresentationDelegate,
+                                EditButtonSelectable {
 }
 
 final class StudyRecordViewController: UIViewController {
@@ -148,7 +152,7 @@ extension StudyRecordViewController: RecordTableViewCellDelegate {
             .addAction(title: L10n.delete, style: .destructive) {
                 self.recordUseCase.delete(record: self.records[row])
                 self.tableView.reloadData()
-                self.delegate?.deleteButtonDidTappped(records: self.records)
+                self.delegate?.deleteButtonDidTappped(isEmpty: self.records.isEmpty)
                 self.dismiss(animated: true)
             }
             .addAction(title: L10n.close) {

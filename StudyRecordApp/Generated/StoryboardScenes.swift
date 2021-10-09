@@ -87,6 +87,13 @@ internal enum StoryboardScene {
 
     internal static let goalPriorityViewController = SceneType<StudyRecordApp.GoalPriorityViewController>(storyboard: GoalPriority.self, identifier: "GoalPriorityViewController")
   }
+  internal enum GoalSort: StoryboardType {
+    internal static let storyboardName = "GoalSort"
+
+    internal static let initialScene = InitialSceneType<StudyRecordApp.GoalSortViewController>(storyboard: GoalSort.self)
+
+    internal static let goalSortViewController = SceneType<StudyRecordApp.GoalSortViewController>(storyboard: GoalSort.self, identifier: "GoalSortViewController")
+  }
   internal enum GoalTime: StoryboardType {
     internal static let storyboardName = "GoalTime"
 

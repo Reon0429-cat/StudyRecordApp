@@ -12,24 +12,56 @@ protocol GoalDataStoreProtocol {
     func readAll() -> [CategoryRealm]
     func update(category: CategoryRealm)
     func delete(category: CategoryRealm)
+    func deleteAll()
+    func deleteGoal(category: CategoryRealm,
+                    indexPath: IndexPath)
+    func sortCategory(from sourceCategory: CategoryRealm,
+                      to destinationCategory: CategoryRealm)
+    func sortGoal(category: CategoryRealm,
+                  from sourceGoal: GoalRealm,
+                  to destinationGoal: GoalRealm)
 }
 
 final class RealmGoalDataStore: GoalDataStoreProtocol {
     
     func create(category: CategoryRealm) {
-        RealmManager.create(object: category)
+        RealmManager().create(object: category)
     }
     
     func readAll() -> [CategoryRealm] {
-        return RealmManager.readAll(type: CategoryRealm.self)
+        return RealmManager().readAll(type: CategoryRealm.self)
     }
     
     func update(category: CategoryRealm) {
-        RealmManager.update(object: category)
+        RealmManager().update(object: category)
     }
     
     func delete(category: CategoryRealm) {
-        RealmManager.delete(object: category)
+        RealmManager().delete(object: category)
+    }
+    
+    func deleteAll() {
+        RealmManager().deleteAll()
+    }
+    
+    func deleteGoal(category: CategoryRealm,
+                    indexPath: IndexPath) {
+        RealmManager().ex.deleteList(objects: category.goals,
+                                     at: indexPath.row)
+    }
+    
+    func sortCategory(from sourceCategory: CategoryRealm,
+                      to destinationCategory: CategoryRealm) {
+        RealmManager().sort(sourceObject: sourceCategory,
+                            destinationObject: destinationCategory)
+    }
+    
+    func sortGoal(category: CategoryRealm,
+                  from sourceGoal: GoalRealm,
+                  to destinationGoal: GoalRealm) {
+        RealmManager().ex.sortList(objects: category.goals,
+                                   sourceObject: sourceGoal,
+                                   destinationObject: destinationGoal)
     }
     
 }

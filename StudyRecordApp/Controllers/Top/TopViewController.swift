@@ -7,6 +7,8 @@
 
 import UIKit
 
+// MARK: - ToDo 全てのアラートをボタンの位置などを修正する
+
 final class TopViewController: UIViewController {
     
     @IBOutlet private weak var titleLabel: UILabel!
@@ -122,7 +124,8 @@ private extension TopViewController {
             case .graph:
                 break
             case .goal:
-                break
+                present(GoalSortViewController.self,
+                        modalPresentationStyle: .fullScreen)
             case .setting:
                 break
         }
@@ -135,8 +138,12 @@ private extension TopViewController {
     
     func changeEditMode(type: NavigationButtonType) {
         editButton.changeType(to: type)
-        if let studyRecordVC = viewControllers.first as? StudyRecordViewController {
+        let vc = viewControllers[screenType.rawValue]
+        if let studyRecordVC = vc as? StudyRecordViewController {
             studyRecordVC.reloadTableView()
+        }
+        if let goalVC = vc as? GoalViewController {
+            goalVC.reloadTableView()
         }
         if editButton.isType(.edit) {
             sortButton.setFade(.out)
@@ -180,8 +187,8 @@ private extension TopViewController {
     }
     
     func changeAddButton(isEnabled: Bool) {
-        guard let xmarkImage = UIImage(systemName: .xmark),
-              let plusImage = UIImage(systemName: .plus) else { return }
+        let xmarkImage = UIImage(systemName: .xmark)
+        let plusImage = UIImage(systemName: .plus)
         addButton.isEnabled = isEnabled
         if isEnabled {
             addButton.setImage(plusImage.setColor(.white))
@@ -206,7 +213,7 @@ private extension TopViewController {
     }
     
     func setColor() {
-        guard let image = UIImage(systemName: .arrowUpArrowDownCircleFill) else { return }
+        let image = UIImage(systemName: .arrowUpArrowDownCircleFill)
         let color: UIColor = .dynamicColor(light: .mainColor ?? .black,
                                            dark: .mainColor ?? .white)
         sortButton.setImage(image.setColor(color))
@@ -284,18 +291,18 @@ extension TopViewController {
     
 }
 
-// MARK: - StudyRecordVCDelegate
-extension TopViewController: StudyRecordVCDelegate {
+// MARK: - EditButtonSelectable
+extension TopViewController: EditButtonSelectable {
     
     var isEdit: Bool {
         editButton.isType(.completion)
     }
     
-    func deleteButtonDidTappped(records: [Record]) {
-        if records.isEmpty {
+    func deleteButtonDidTappped(isEmpty: Bool) {
+        if isEmpty {
             changeEditMode(type: .edit)
         }
-        editButton.isEnabled(!records.isEmpty)
+        editButton.isEnabled(!isEmpty)
     }
     
     func baseViewLongPressDidRecognized() {
@@ -303,6 +310,11 @@ extension TopViewController: StudyRecordVCDelegate {
             changeEditMode(type: .completion)
         }
     }
+    
+}
+
+// MARK: - StudyRecordVCDelegate
+extension TopViewController: StudyRecordVCDelegate {
     
 }
 
@@ -338,7 +350,12 @@ extension TopViewController: NavigationButtonDelegate {
                     self.halfModalPresenter.viewController = vc
                 }
             case .goal:
-                break
+                changeEditMode(type: {
+                    switch type {
+                        case .edit: return .completion
+                        default: return .edit
+                    }
+                }())
             case .setting:
                 break
         }
@@ -379,8 +396,8 @@ private extension TopViewController {
     }
     
     func setupAddButton() {
-        guard let image = UIImage(systemName: .plus) else { return }
-        addButton.setImage(image.setColor(.white))
+        let plusImage = UIImage(systemName: .plus)
+        addButton.setImage(plusImage.setColor(.white))
         addButton.setGradation(locations: [0, 0.9])
     }
     

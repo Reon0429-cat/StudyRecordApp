@@ -141,15 +141,8 @@ extension GraphViewController: UITableViewDataSource {
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCustomCell(with: GraphTableViewCell.self)
         let record = recordUseCase.read(at: indexPath.row)
-        let newRecord = Record(title: record.title,
-                               histories: record.histories?.reversed(),
-                               isExpanded: record.isExpanded,
-                               graphColor: record.graphColor,
-                               memo: record.memo,
-                               yearID: record.yearID,
-                               monthID: record.monthID,
-                               order: record.order,
-                               identifier: record.identifier)
+        let newRecord = Record(record: record,
+                               histories: record.histories?.reversed())
         let graph = graphUseCase.graph
         cell.configure(record: newRecord, graph: graph)
         cell.delegate = self

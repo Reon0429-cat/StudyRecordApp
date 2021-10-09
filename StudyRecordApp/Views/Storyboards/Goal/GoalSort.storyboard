@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Goal Sort View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="GoalSortViewController" id="Y6W-OH-hqX" customClass="GoalSortViewController" customModule="StudyRecordApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="iYw-G7-5KL">
+                                <rect key="frame" x="0.0" y="114" width="414" height="642"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mds-s2-xG1" customClass="SubCustomNavigationBar" customModule="StudyRecordApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="114"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="114" id="DGi-eU-31O"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xnI-mC-S4a" customClass="WaveView" customModule="StudyRecordApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="756" width="414" height="100"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="6jS-t1-LEa"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Mds-s2-xG1" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="9kv-Qg-7LX"/>
+                            <constraint firstItem="Mds-s2-xG1" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="Bxs-Xi-MMC"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Mds-s2-xG1" secondAttribute="trailing" id="Fbs-7d-Gfp"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="iYw-G7-5KL" secondAttribute="trailing" id="WzY-Vm-Ga8"/>
+                            <constraint firstAttribute="bottom" secondItem="xnI-mC-S4a" secondAttribute="bottom" constant="40" id="iAV-Ij-1wb"/>
+                            <constraint firstItem="xnI-mC-S4a" firstAttribute="top" secondItem="iYw-G7-5KL" secondAttribute="bottom" id="j4V-PZ-hGo"/>
+                            <constraint firstItem="iYw-G7-5KL" firstAttribute="top" secondItem="Mds-s2-xG1" secondAttribute="bottom" id="kJ7-Ls-OIQ"/>
+                            <constraint firstItem="xnI-mC-S4a" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="s34-cR-odX"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="xnI-mC-S4a" secondAttribute="trailing" id="y53-Ko-de6"/>
+                            <constraint firstItem="iYw-G7-5KL" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="zpO-G3-w8t"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bottomWaveView" destination="xnI-mC-S4a" id="ANb-01-MIG"/>
+                        <outlet property="subCustomNavigationBar" destination="Mds-s2-xG1" id="J3H-fD-ohh"/>
+                        <outlet property="tableView" destination="iYw-G7-5KL" id="zXK-R9-yjk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="99" y="98"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

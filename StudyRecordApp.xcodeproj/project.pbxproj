@@ -189,6 +189,10 @@
 		ABFAB21226E63B350095EC20 /* GraphUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAB21126E63B350095EC20 /* GraphUseCase.swift */; };
 		ABFAB21426E67A2E0095EC20 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAB21326E67A2E0095EC20 /* Alert.swift */; };
 		ABFAB21626E6AD780095EC20 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAB21526E6AD780095EC20 /* CustomSegmentedControl.swift */; };
+		ABFB3A5C270FDB6900BC6D3F /* Compatible.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFB3A5B270FDB6900BC6D3F /* Compatible.swift */; };
+		ABFB3A5E2710247A00BC6D3F /* SortableViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFB3A5D2710247A00BC6D3F /* SortableViewControllerProtocol.swift */; };
+		ABFB3A60271024F400BC6D3F /* GoalSortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFB3A5F271024F400BC6D3F /* GoalSortViewController.swift */; };
+		ABFB3A62271024FF00BC6D3F /* GoalSort.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABFB3A61271024FF00BC6D3F /* GoalSort.storyboard */; };
 		D14EABCB62E5596481983E6D /* Pods_StudyRecordApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7ADEAD2199951B48FEFB0D8 /* Pods_StudyRecordApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -380,6 +384,10 @@
 		ABFAB21126E63B350095EC20 /* GraphUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphUseCase.swift; sourceTree = "<group>"; };
 		ABFAB21326E67A2E0095EC20 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		ABFAB21526E6AD780095EC20 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
+		ABFB3A5B270FDB6900BC6D3F /* Compatible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Compatible.swift; sourceTree = "<group>"; };
+		ABFB3A5D2710247A00BC6D3F /* SortableViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortableViewControllerProtocol.swift; sourceTree = "<group>"; };
+		ABFB3A5F271024F400BC6D3F /* GoalSortViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSortViewController.swift; sourceTree = "<group>"; };
+		ABFB3A61271024FF00BC6D3F /* GoalSort.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoalSort.storyboard; sourceTree = "<group>"; };
 		B7ADEAD2199951B48FEFB0D8 /* Pods_StudyRecordApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudyRecordApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F080AD4E0F25E92F286ED79A /* Pods-StudyRecordApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyRecordApp.debug.xcconfig"; path = "Target Support Files/Pods-StudyRecordApp/Pods-StudyRecordApp.debug.xcconfig"; sourceTree = "<group>"; };
 		F4A1350DA353A8FEAF4BEEB3 /* Pods-StudyRecordApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyRecordApp.release.xcconfig"; path = "Target Support Files/Pods-StudyRecordApp/Pods-StudyRecordApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -476,6 +484,7 @@
 				AB00DDC826F4EEC3008CC3F1 /* AdditionalCategoryViewController.swift */,
 				AB4397F226DD3B32008C8CA8 /* GoalPriorityViewController.swift */,
 				ABFAB1E226E11FEC0095EC20 /* GoalTimeViewController.swift */,
+				ABFB3A5F271024F400BC6D3F /* GoalSortViewController.swift */,
 			);
 			path = Goal;
 			sourceTree = "<group>";
@@ -497,6 +506,7 @@
 				AB00DDCA26F4EECA008CC3F1 /* AdditionalCategory.storyboard */,
 				AB4397F026DD3B2A008C8CA8 /* GoalPriority.storyboard */,
 				ABFAB1E426E11FF80095EC20 /* GoalTime.storyboard */,
+				ABFB3A61271024FF00BC6D3F /* GoalSort.storyboard */,
 			);
 			path = Goal;
 			sourceTree = "<group>";
@@ -773,7 +783,9 @@
 		AB93C25A266A5A0D00C3AE8F /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				ABFB3A5D2710247A00BC6D3F /* SortableViewControllerProtocol.swift */,
 				AB372782270D84C0005DBAB3 /* Month.swift */,
+				ABFB3A5B270FDB6900BC6D3F /* Compatible.swift */,
 				AB37278C270DA181005DBAB3 /* SystemName.swift */,
 				ABFAB21326E67A2E0095EC20 /* Alert.swift */,
 				AB275FFD26DCAA56009F63B3 /* Indicator.swift */,
@@ -964,6 +976,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB93C247266A234C00C3AE8F /* LaunchScreen.storyboard in Resources */,
+				ABFB3A62271024FF00BC6D3F /* GoalSort.storyboard in Resources */,
 				AB14B46426DB515D007A5F16 /* ResetingPassword.storyboard in Resources */,
 				AB20F81826E949BE00564B14 /* CustomScrollableGraphView.xib in Resources */,
 				AB4397EF26DD305B008C8CA8 /* AddAndEditGoal.storyboard in Resources */,
@@ -1145,6 +1158,8 @@
 				AB14B46826DBA4F9007A5F16 /* UserRepository.swift in Sources */,
 				AB13EDE426C78DB4002F56FF /* ScreenTransitionCollectionViewCell.swift in Sources */,
 				ABFAB21026E63A830095EC20 /* GraphRepository.swift in Sources */,
+				ABFB3A5E2710247A00BC6D3F /* SortableViewControllerProtocol.swift in Sources */,
+				ABFB3A60271024F400BC6D3F /* GoalSortViewController.swift in Sources */,
 				AB2B5BA326A2D1B7009BD3C7 /* JapanConcept.swift in Sources */,
 				AB14B46026DA3381007A5F16 /* UserUseCase.swift in Sources */,
 				AB372791270DCC2A005DBAB3 /* RealmManager.swift in Sources */,
@@ -1202,6 +1217,7 @@
 				AB37278D270DA181005DBAB3 /* SystemName.swift in Sources */,
 				AB2B5B8D26A2D106009BD3C7 /* UITableView+Extension.swift in Sources */,
 				AB13EDD126C29D9E002F56FF /* StudyRecordTimeRecordViewController.swift in Sources */,
+				ABFB3A5C270FDB6900BC6D3F /* Compatible.swift in Sources */,
 				AB275FFE26DCAA56009F63B3 /* Indicator.swift in Sources */,
 				AB2B5BA226A2D1B7009BD3C7 /* ElegantConcept.swift in Sources */,
 				AB0C766726EBAF3400BF5B64 /* SettingRepository.swift in Sources */,
