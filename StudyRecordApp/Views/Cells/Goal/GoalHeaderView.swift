@@ -21,7 +21,6 @@ final class GoalHeaderView: UITableViewHeaderFooterView {
     @IBOutlet private weak var foldingButton: UIButton!
     @IBOutlet private weak var deleteButton: UIButton!
     @IBOutlet private weak var sortButton: UIButton!
-    @IBOutlet private weak var separatorView: UIView!
     
     static let height: CGFloat = 50
     weak var delegate: GoalHeaderViewDelegate?
@@ -35,10 +34,17 @@ final class GoalHeaderView: UITableViewHeaderFooterView {
         
     }
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        guard let traitCollection = previousTraitCollection else { return }
+        if traitCollection.hasDifferentColorAppearance(comparedTo: self.traitCollection) {
+            setColor()
+        }
+    }
+    
     func configure(category: Category) {
         setupTitleLabel(category: category)
         setupFoldingButton(category: category)
-        separatorView.backgroundColor = .separatorColor
+        setColor()
     }
     
     func changeMode(isEdit: Bool) {
@@ -111,6 +117,25 @@ private extension GoalHeaderView {
             return UIImage(systemName: .arrowtriangleDownFill)
         }()
         foldingButton.setImage(image)
+    }
+    
+    func setColor() {
+        addButton.setShadow()
+        foldingButton.setShadow()
+        deleteButton.setShadow()
+        sortButton.setShadow()
+    }
+    
+}
+
+private extension UIView {
+    
+    func setShadow() {
+        self.setShadow(color: .dynamicColor(light: .mainColor ?? .black,
+                                            dark: .mainColor ?? .white),
+                       radius: 1,
+                       opacity: 0.8,
+                       size: (width: 2, height: 2))
     }
     
 }
