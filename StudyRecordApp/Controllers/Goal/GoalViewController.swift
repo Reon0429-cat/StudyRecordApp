@@ -12,6 +12,11 @@ protocol GoalVCDelegate: ScreenPresentationDelegate,
 }
 
 // MARK: - ToDo 達成済みリストを見れるように作る
+// MARK: - ToDo sectionの高さを変えられるようにする
+// MARK: - ToDo 長押しで編集モードにする
+// MARK: - ToDo タップでセクションタイトル編集
+// MARK: - ToDo カテゴリがないときはカテゴリ遷移ビューを非表示にする
+// MARK: - ToDo 一番上のセクションが隠れるのをなおす
 
 final class GoalViewController: UIViewController {
     
@@ -62,7 +67,10 @@ final class GoalViewController: UIViewController {
                                          identifier: UUID().uuidString)
                 goals.append(goal)
             }
-            let category = Category(title: ["フルーツ", "叶えること", "動物", "勉強することを一覧にした"].randomElement() ?? "",
+            let category = Category(title: ["ああああああああああああああああああああああああああ",
+                                            "いいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいい",
+                                           "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"]
+                                        .randomElement() ?? "",
                                     isExpanded: false,
                                     goals: goals,
                                     order: 0,
@@ -113,9 +121,6 @@ extension GoalViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
-            return GoalHeaderView.height + 35
-        }
         return GoalHeaderView.height
     }
     
@@ -256,6 +261,7 @@ private extension GoalViewController {
         tableView.registerCustomCell(GoalTableViewCell.self)
         tableView.registerCustomCell(GoalHeaderView.self)
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.sectionHeaderHeight = UITableView.automaticDimension
         tableView.tableFooterView = UIView()
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
