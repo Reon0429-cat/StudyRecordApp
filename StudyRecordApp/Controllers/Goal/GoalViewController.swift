@@ -45,7 +45,7 @@ final class GoalViewController: UIViewController {
     
     // MARK: - ToDo 消す
     func createMockCategory() {
-        goalUseCase.deleteAll()
+        goalUseCase.deleteAllCategory()
         for _ in 0..<10 {
             let goalTitles = ["りんご", "バナナ", "ぶどう", "なし", "みかん"]
             var goals = [Category.Goal]()

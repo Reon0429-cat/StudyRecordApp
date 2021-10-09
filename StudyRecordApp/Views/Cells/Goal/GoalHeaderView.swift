@@ -16,6 +16,7 @@ protocol GoalHeaderViewDelegate: AnyObject {
 
 final class GoalHeaderView: UITableViewHeaderFooterView {
     
+    @IBOutlet private weak var baseView: UIView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var addButton: UIButton!
     @IBOutlet private weak var foldingButton: UIButton!
@@ -120,10 +121,7 @@ private extension GoalHeaderView {
     }
     
     func setColor() {
-        addButton.setShadow()
-        foldingButton.setShadow()
-        deleteButton.setShadow()
-        sortButton.setShadow()
+        baseView.setShadow()
     }
     
 }
