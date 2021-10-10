@@ -8,31 +8,25 @@
 import UIKit
 
 protocol GoalHeaderViewDelegate: AnyObject {
-    func addButtonDidTapped(section: Int)
-    func deleteButtonDidTapped(section: Int)
+    func editButtonDidTapped(section: Int)
     func foldingButtonDidTapped(section: Int)
-    func sortButtonDidTapped(section: Int)
 }
 
 final class GoalHeaderView: UITableViewHeaderFooterView {
     
     @IBOutlet private weak var baseView: UIView!
     @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var addButton: UIButton!
     @IBOutlet private weak var foldingButton: UIButton!
-    @IBOutlet private weak var deleteButton: UIButton!
-    @IBOutlet private weak var sortButton: UIButton!
+    @IBOutlet private weak var editButton: UIButton!
     @IBOutlet private weak var separatorView: UIView!
     
-    static let height: CGFloat = 50
+    static let height: CGFloat = 70
     weak var delegate: GoalHeaderViewDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        setupAddButton()
-        setupDeleteButton()
-        setupSortButton()
+        setupEditButton()
         setupSeparatorView()
         
     }
@@ -46,24 +40,8 @@ final class GoalHeaderView: UITableViewHeaderFooterView {
     
     func configure(category: Category) {
         setupTitleLabel(category: category)
-        setupFoldingButton(category: category)
+        setupfoldingButton(category: category)
         setColor()
-    }
-    
-    func changeMode(isEdit: Bool) {
-        if isEdit {
-            addButton.isHidden = true
-            if sortButton.isHidden {
-                sortButton.setFade(.in)
-            }
-            deleteButton.isHidden = false
-        } else {
-            addButton.isHidden = false
-            if !sortButton.isHidden {
-                sortButton.setFade(.out)
-            }
-            deleteButton.isHidden = true
-        }
     }
     
 }
@@ -71,20 +49,12 @@ final class GoalHeaderView: UITableViewHeaderFooterView {
 // MARK: - IBAction func
 private extension GoalHeaderView {
     
-    @IBAction func addButtonDidTapped(_ sender: Any) {
-        delegate?.addButtonDidTapped(section: self.tag)
+    @IBAction func editButtonDidTapped(_ sender: Any) {
+        delegate?.editButtonDidTapped(section: self.tag)
     }
     
     @IBAction func foldingButtonDidTapped(_ sender: Any) {
         delegate?.foldingButtonDidTapped(section: self.tag)
-    }
-    
-    @IBAction func deleteButtonDidTapped(_ sender: Any) {
-        delegate?.deleteButtonDidTapped(section: self.tag)
-    }
-    
-    @IBAction func sortButtonDidTapped(_ sender: Any) {
-        delegate?.sortButtonDidTapped(section: self.tag)
     }
     
 }
@@ -96,23 +66,11 @@ private extension GoalHeaderView {
         titleLabel.text = category.title + " (\(category.goals.count))"
     }
     
-    func setupAddButton() {
-        addButton.setImage(UIImage(systemName: .plusCircle))
-        addButton.isHidden = false
+    func setupEditButton() {
+        
     }
     
-    func setupDeleteButton() {
-        deleteButton.setImage(UIImage(systemName: .xmarkCircle))
-        deleteButton.isHidden = true
-    }
-    
-    func setupSortButton() {
-        sortButton.setImage(UIImage(systemName: .arrowUpArrowDownCircleFill))
-        sortButton.isHidden = true
-    }
-    
-    func setupFoldingButton(category: Category) {
-        foldingButton.isHidden = category.goals.isEmpty
+    func setupfoldingButton(category: Category) {
         let image: UIImage = {
             if category.isExpanded {
                 return UIImage(systemName: .arrowtriangleUpfill)

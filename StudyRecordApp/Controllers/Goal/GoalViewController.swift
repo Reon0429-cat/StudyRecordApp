@@ -58,7 +58,7 @@ final class GoalViewController: UIViewController {
     // MARK: - ToDo 消す
     func createMockCategory() {
         goalUseCase.deleteAllCategory()
-        for _ in 0..<10 {
+        for categoryTitle in ["フルーツ", "乗り物", "食べ物", "職業"] {
             let goalTitles = ["りんご", "バナナ", "ぶどう", "なし", "みかん"]
             var goals = [Category.Goal]()
             goalTitles.enumerated().forEach { index, title in
@@ -74,10 +74,7 @@ final class GoalViewController: UIViewController {
                                          identifier: UUID().uuidString)
                 goals.append(goal)
             }
-            let category = Category(title: ["ああああああああああああああああああああああああああ",
-                                            "いいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいい",
-                                           "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"]
-                                        .randomElement() ?? "",
+            let category = Category(title: categoryTitle,
                                     isExpanded: false,
                                     goals: goals,
                                     listType: .category,
@@ -146,7 +143,6 @@ extension GoalViewController: UITableViewDelegate, UITableViewDataSource {
         let headerView = tableView.dequeueReusableCustomHeaderFooterView(with: GoalHeaderView.self)
         let category = categories[section]
         headerView.configure(category: category)
-        headerView.changeMode(isEdit: delegate?.isEdit ?? false)
         headerView.delegate = self
         headerView.tag = section
         return headerView
@@ -183,13 +179,14 @@ extension GoalViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK: - GoalHeaderViewDelegate
 extension GoalViewController: GoalHeaderViewDelegate {
     
-    func addButtonDidTapped(section: Int) {
-        present(AddAndEditGoalViewController.self,
-                modalPresentationStyle: .fullScreen) { vc in
-            let row = self.categories[section].goals.count - 1
-            vc.selectedIndexPath = IndexPath(row: row, section: section)
-            vc.goalScreenType = .sectionAdd
-        }
+    func editButtonDidTapped(section: Int) {
+        let alert = Alert.create(preferredStyle: .alert)
+            .addAction(title: L10n.add) { self.addButtonDidTapped(section: section) }
+            .addAction(title: L10n.sort) { self.sortButtonDidTapped(section: section) }
+            .addAction(title: L10n.delete) { self.deleteButtonDidTapped(section: section) }
+            .addAction(title: L10n.achieved) { self.achieveButtonDidTapped(section: section) }
+            .addAction(title: L10n.close, style: .destructive)
+        present(alert, animated: true)
     }
     
     func foldingButtonDidTapped(section: Int) {
@@ -205,14 +202,27 @@ extension GoalViewController: GoalHeaderViewDelegate {
         }
     }
     
-    func sortButtonDidTapped(section: Int) {
+    private func achieveButtonDidTapped(section: Int) {
+        
+    }
+    
+    private func addButtonDidTapped(section: Int) {
+        present(AddAndEditGoalViewController.self,
+                modalPresentationStyle: .fullScreen) { vc in
+            let row = self.categories[section].goals.count - 1
+            vc.selectedIndexPath = IndexPath(row: row, section: section)
+            vc.goalScreenType = .sectionAdd
+        }
+    }
+    
+    private func sortButtonDidTapped(section: Int) {
         present(GoalSortViewController.self,
                 modalPresentationStyle: .fullScreen) { vc in
             vc.tappedSection = section
         }
     }
     
-    func deleteButtonDidTapped(section: Int) {
+    private func deleteButtonDidTapped(section: Int) {
         let alert = Alert.create(title: L10n.doYouReallyWantToDeleteThis)
             .addAction(title: L10n.delete, style: .destructive) {
                 self.goalUseCase.deleteCategory(at: section)

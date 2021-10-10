@@ -307,6 +307,8 @@ internal enum L10n {
   internal static let slider = L10n.tr("Localizable", "slider")
   /// Smooth
   internal static let smooth = L10n.tr("Localizable", "smooth")
+  /// sort
+  internal static let sort = L10n.tr("Localizable", "sort")
   /// Spring
   internal static let spring = L10n.tr("Localizable", "spring")
   /// Square dots

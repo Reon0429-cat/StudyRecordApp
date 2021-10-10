@@ -72,6 +72,7 @@
 "largeMemo" = "Memo";
 "graphColor" = "Graph Color";
 "largeSort" = "Sort";
+"sort" = "sort";
 "largeSend" = "Send";
 "delete" = "delete";
 "decision" = "decision";

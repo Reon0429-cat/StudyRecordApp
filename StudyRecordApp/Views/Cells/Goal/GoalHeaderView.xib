@@ -19,67 +19,24 @@
                     <rect key="frame" x="0.0" y="0.0" width="368" height="50"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タイトル" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMJ-8x-gJ6">
-                            <rect key="frame" x="10" y="25.5" width="73.5" height="21.5"/>
+                            <rect key="frame" x="12" y="23.5" width="73.5" height="21.5"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BeB-Vk-hHx">
-                            <rect key="frame" x="261" y="16" width="29" height="29"/>
-                            <constraints>
-                                <constraint firstAttribute="width" secondItem="BeB-Vk-hHx" secondAttribute="height" id="wMf-kv-fPO"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                            <state key="normal" image="arrow.up.arrow.down.circle" catalog="system">
-                                <color key="titleColor" systemColor="labelColor"/>
-                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
-                            </state>
-                            <connections>
-                                <action selector="sortButtonDidTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="nNr-uQ-92Z"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hhz-An-bon">
-                            <rect key="frame" x="295" y="16" width="29" height="29"/>
-                            <constraints>
-                                <constraint firstAttribute="width" secondItem="hhz-An-bon" secondAttribute="height" id="XDI-a7-ROo"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                            <inset key="imageEdgeInsets" minX="0.0" minY="-2" maxX="0.0" maxY="0.0"/>
-                            <state key="normal" image="arrowtriangle.down.fill" catalog="system">
-                                <color key="titleColor" systemColor="labelColor"/>
-                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
-                            </state>
-                            <connections>
-                                <action selector="foldingButtonDidTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="Use-CH-mli"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ia-uc-Upr">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ia-uc-Upr">
                             <rect key="frame" x="329" y="16" width="29" height="29"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="5Ia-uc-Upr" secondAttribute="height" multiplier="1:1" id="mn4-ae-IXh"/>
                                 <constraint firstAttribute="height" constant="29" id="z2f-QM-oO9"/>
                             </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="32"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                            <state key="normal" image="xmark.circle" catalog="system">
-                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
-                            </state>
-                            <connections>
-                                <action selector="deleteButtonDidTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="aOl-Wb-So2"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k48-II-Fb6">
-                            <rect key="frame" x="329" y="16" width="29" height="29"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="29" id="MmU-ZB-sDV"/>
-                                <constraint firstAttribute="width" secondItem="k48-II-Fb6" secondAttribute="height" id="fsl-2B-gW1"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                            <state key="normal" image="plus.circle" catalog="system">
+                            <state key="normal" title="…">
                                 <color key="titleColor" systemColor="labelColor"/>
-                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
                             </state>
                             <connections>
-                                <action selector="addButtonDidTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="Eaq-SJ-36O"/>
+                                <action selector="editButtonDidTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="3e2-Nk-Eqq"/>
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q8P-tX-tWJ">
@@ -89,26 +46,33 @@
                                 <constraint firstAttribute="height" constant="0.5" id="HBr-Fw-Vl7"/>
                             </constraints>
                         </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gjr-5P-aaG">
+                            <rect key="frame" x="295" y="16" width="29" height="29"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="gjr-5P-aaG" secondAttribute="height" id="P8q-u7-7JZ"/>
+                            </constraints>
+                            <color key="tintColor" systemColor="labelColor"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" image="arrowtriangle.down.fill" catalog="system" title=""/>
+                            <connections>
+                                <action selector="foldingButtonDidTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="sfg-Ev-k7l"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstItem="BeB-Vk-hHx" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eMJ-8x-gJ6" secondAttribute="trailing" id="4HG-hT-EUM"/>
-                        <constraint firstItem="BeB-Vk-hHx" firstAttribute="width" secondItem="hhz-An-bon" secondAttribute="width" id="5dH-Ff-B17"/>
-                        <constraint firstAttribute="trailing" secondItem="k48-II-Fb6" secondAttribute="trailing" constant="10" id="9u0-xP-dyy"/>
+                        <constraint firstAttribute="trailing" secondItem="5Ia-uc-Upr" secondAttribute="trailing" constant="10" id="50V-Z9-QRg"/>
+                        <constraint firstItem="gjr-5P-aaG" firstAttribute="centerY" secondItem="5Ia-uc-Upr" secondAttribute="centerY" id="I3j-z3-Bee"/>
+                        <constraint firstItem="5Ia-uc-Upr" firstAttribute="leading" secondItem="gjr-5P-aaG" secondAttribute="trailing" constant="5" id="L37-Pn-xo5"/>
                         <constraint firstItem="eMJ-8x-gJ6" firstAttribute="top" relation="greaterThanOrEqual" secondItem="D0X-Su-TRQ" secondAttribute="top" id="Uso-ni-jdk"/>
-                        <constraint firstItem="5Ia-uc-Upr" firstAttribute="leading" secondItem="hhz-An-bon" secondAttribute="trailing" constant="5" id="Wd5-rn-2fu"/>
                         <constraint firstAttribute="bottom" secondItem="5Ia-uc-Upr" secondAttribute="bottom" constant="5" id="XyE-sn-XIx"/>
-                        <constraint firstItem="k48-II-Fb6" firstAttribute="bottom" secondItem="5Ia-uc-Upr" secondAttribute="bottom" id="ZII-aC-IvP"/>
-                        <constraint firstItem="eMJ-8x-gJ6" firstAttribute="leading" secondItem="D0X-Su-TRQ" secondAttribute="leading" constant="10" id="bVQ-XA-4Zk"/>
+                        <constraint firstItem="eMJ-8x-gJ6" firstAttribute="leading" secondItem="D0X-Su-TRQ" secondAttribute="leading" constant="12" id="bVQ-XA-4Zk"/>
                         <constraint firstAttribute="trailing" secondItem="q8P-tX-tWJ" secondAttribute="trailing" id="ciP-Pk-VoA"/>
-                        <constraint firstItem="5Ia-uc-Upr" firstAttribute="trailing" secondItem="k48-II-Fb6" secondAttribute="trailing" id="fQm-Bo-ipW"/>
-                        <constraint firstItem="BeB-Vk-hHx" firstAttribute="bottom" secondItem="k48-II-Fb6" secondAttribute="bottom" id="fdO-Qp-Fcs"/>
-                        <constraint firstItem="hhz-An-bon" firstAttribute="leading" secondItem="BeB-Vk-hHx" secondAttribute="trailing" constant="5" id="gAD-w6-Czk"/>
-                        <constraint firstItem="hhz-An-bon" firstAttribute="bottom" secondItem="k48-II-Fb6" secondAttribute="bottom" id="h8i-LG-62K"/>
+                        <constraint firstItem="gjr-5P-aaG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eMJ-8x-gJ6" secondAttribute="trailing" constant="3" id="e1z-Oi-cbW"/>
+                        <constraint firstItem="gjr-5P-aaG" firstAttribute="width" secondItem="5Ia-uc-Upr" secondAttribute="width" id="fl8-7S-l0p"/>
                         <constraint firstAttribute="bottom" secondItem="q8P-tX-tWJ" secondAttribute="bottom" id="jsC-Yz-Avn"/>
-                        <constraint firstItem="hhz-An-bon" firstAttribute="width" secondItem="k48-II-Fb6" secondAttribute="width" id="nlg-yM-cFV"/>
                         <constraint firstItem="q8P-tX-tWJ" firstAttribute="leading" secondItem="D0X-Su-TRQ" secondAttribute="leading" constant="10" id="yAX-lt-izG"/>
-                        <constraint firstAttribute="bottom" secondItem="eMJ-8x-gJ6" secondAttribute="bottom" constant="3" id="yVG-In-DMc"/>
+                        <constraint firstAttribute="bottom" secondItem="eMJ-8x-gJ6" secondAttribute="bottom" constant="5" id="yVG-In-DMc"/>
                     </constraints>
                 </view>
             </subviews>
@@ -124,22 +88,17 @@
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="addButton" destination="k48-II-Fb6" id="aZe-YF-Kh3"/>
                 <outlet property="baseView" destination="D0X-Su-TRQ" id="a9u-HO-VsB"/>
-                <outlet property="deleteButton" destination="5Ia-uc-Upr" id="ktz-5x-qKd"/>
-                <outlet property="foldingButton" destination="hhz-An-bon" id="U4w-Lz-Jie"/>
+                <outlet property="editButton" destination="5Ia-uc-Upr" id="ktz-5x-qKd"/>
+                <outlet property="foldingButton" destination="gjr-5P-aaG" id="t7w-16-0JO"/>
                 <outlet property="separatorView" destination="q8P-tX-tWJ" id="TBZ-c8-EHX"/>
-                <outlet property="sortButton" destination="BeB-Vk-hHx" id="3OH-6h-Sxi"/>
                 <outlet property="titleLabel" destination="eMJ-8x-gJ6" id="fTM-y7-A40"/>
             </connections>
             <point key="canvasLocation" x="-211.59420289855075" y="-227.67857142857142"/>
         </view>
     </objects>
     <resources>
-        <image name="arrow.up.arrow.down.circle" catalog="system" width="128" height="121"/>
         <image name="arrowtriangle.down.fill" catalog="system" width="128" height="124"/>
-        <image name="plus.circle" catalog="system" width="128" height="121"/>
-        <image name="xmark.circle" catalog="system" width="128" height="121"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
