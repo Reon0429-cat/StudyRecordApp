@@ -36,7 +36,7 @@
                                 <color key="titleColor" systemColor="labelColor"/>
                             </state>
                             <connections>
-                                <action selector="editButtonDidTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="3e2-Nk-Eqq"/>
+                                <action selector="settingButtonDidTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="nrl-aC-o0Z"/>
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q8P-tX-tWJ">
@@ -89,9 +89,9 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="baseView" destination="D0X-Su-TRQ" id="a9u-HO-VsB"/>
-                <outlet property="editButton" destination="5Ia-uc-Upr" id="ktz-5x-qKd"/>
                 <outlet property="foldingButton" destination="gjr-5P-aaG" id="t7w-16-0JO"/>
                 <outlet property="separatorView" destination="q8P-tX-tWJ" id="TBZ-c8-EHX"/>
+                <outlet property="settingButton" destination="5Ia-uc-Upr" id="ktz-5x-qKd"/>
                 <outlet property="titleLabel" destination="eMJ-8x-gJ6" id="fTM-y7-A40"/>
             </connections>
             <point key="canvasLocation" x="-211.59420289855075" y="-227.67857142857142"/>

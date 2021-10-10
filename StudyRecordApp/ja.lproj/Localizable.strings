@@ -80,6 +80,7 @@
 "recordTime" = "時間を記録する";
 "largeSend" = "送信";
 "achieved" = "達成済み";
+"achieve" = "達成";
 
 "login" = "ログイン";
 "signUp" = "サインアップ";

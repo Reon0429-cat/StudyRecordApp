@@ -12,6 +12,8 @@ import Foundation
 internal enum L10n {
   /// Accent
   internal static let accent = L10n.tr("Localizable", "accent")
+  /// achieve
+  internal static let achieve = L10n.tr("Localizable", "achieve")
   /// achieved
   internal static let achieved = L10n.tr("Localizable", "achieved")
   /// Active

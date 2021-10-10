@@ -78,6 +78,7 @@
 "decision" = "decision";
 "largeDiscard" = "Discard";
 "achieved" = "achieved";
+"achieve" = "achieve";
 
 "login" = "Login";
 "signUp" = "SignUp";

@@ -8,7 +8,7 @@
 import UIKit
 
 protocol GoalHeaderViewDelegate: AnyObject {
-    func editButtonDidTapped(section: Int)
+    func settingButtonDidTapped(section: Int)
     func foldingButtonDidTapped(section: Int)
 }
 
@@ -17,7 +17,7 @@ final class GoalHeaderView: UITableViewHeaderFooterView {
     @IBOutlet private weak var baseView: UIView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var foldingButton: UIButton!
-    @IBOutlet private weak var editButton: UIButton!
+    @IBOutlet private weak var settingButton: UIButton!
     @IBOutlet private weak var separatorView: UIView!
     
     static let height: CGFloat = 70
@@ -26,7 +26,7 @@ final class GoalHeaderView: UITableViewHeaderFooterView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        setupEditButton()
+        setupSettingButton()
         setupSeparatorView()
         
     }
@@ -49,8 +49,8 @@ final class GoalHeaderView: UITableViewHeaderFooterView {
 // MARK: - IBAction func
 private extension GoalHeaderView {
     
-    @IBAction func editButtonDidTapped(_ sender: Any) {
-        delegate?.editButtonDidTapped(section: self.tag)
+    @IBAction func settingButtonDidTapped(_ sender: Any) {
+        delegate?.settingButtonDidTapped(section: self.tag)
     }
     
     @IBAction func foldingButtonDidTapped(_ sender: Any) {
@@ -66,7 +66,7 @@ private extension GoalHeaderView {
         titleLabel.text = category.title + " (\(category.goals.count))"
     }
     
-    func setupEditButton() {
+    func setupSettingButton() {
         
     }
     
@@ -78,6 +78,7 @@ private extension GoalHeaderView {
             return UIImage(systemName: .arrowtriangleDownFill)
         }()
         foldingButton.setImage(image)
+        foldingButton.isHidden = category.goals.isEmpty
     }
     
     func setupSeparatorView() {
