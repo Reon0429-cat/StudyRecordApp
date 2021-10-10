@@ -81,6 +81,7 @@
 "largeSend" = "送信";
 "achieved" = "達成済み";
 "achieve" = "達成";
+"unarchive" = "未達成";
 
 "login" = "ログイン";
 "signUp" = "サインアップ";

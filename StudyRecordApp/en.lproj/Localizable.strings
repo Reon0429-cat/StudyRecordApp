@@ -79,6 +79,7 @@
 "largeDiscard" = "Discard";
 "achieved" = "achieved";
 "achieve" = "achieve";
+"unarchive" = "unarchive";
 
 "login" = "Login";
 "signUp" = "SignUp";

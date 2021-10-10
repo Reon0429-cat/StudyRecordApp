@@ -8,8 +8,8 @@
 import UIKit
 
 protocol GoalHeaderViewDelegate: AnyObject {
-    func settingButtonDidTapped(section: Int)
-    func foldingButtonDidTapped(section: Int)
+    func settingButtonDidTapped(convertedSection: Int)
+    func foldingButtonDidTapped(convertedSection: Int)
 }
 
 final class GoalHeaderView: UITableViewHeaderFooterView {
@@ -50,11 +50,11 @@ final class GoalHeaderView: UITableViewHeaderFooterView {
 private extension GoalHeaderView {
     
     @IBAction func settingButtonDidTapped(_ sender: Any) {
-        delegate?.settingButtonDidTapped(section: self.tag)
+        delegate?.settingButtonDidTapped(convertedSection: self.tag)
     }
     
     @IBAction func foldingButtonDidTapped(_ sender: Any) {
-        delegate?.foldingButtonDidTapped(section: self.tag)
+        delegate?.foldingButtonDidTapped(convertedSection: self.tag)
     }
     
 }

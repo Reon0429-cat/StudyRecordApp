@@ -355,6 +355,8 @@ internal enum L10n {
   internal static let turnOnTouchID = L10n.tr("Localizable", "turnOnTouchID")
   /// 2 time left
   internal static let twoTimeLeft = L10n.tr("Localizable", "twoTimeLeft")
+  /// unarchive
+  internal static let unarchive = L10n.tr("Localizable", "unarchive")
   /// uncategorized
   internal static let uncategorized = L10n.tr("Localizable", "uncategorized")
   /// Unknown error
