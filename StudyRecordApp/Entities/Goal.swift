@@ -6,13 +6,13 @@
 //
 
 import Foundation
-import UIKit
 
 // 共通の型
 struct Category {
     let title: String
     let isExpanded: Bool
     let goals: [Goal]
+    let listType: ListType
     let order: Int
     let identifier: String
     
@@ -33,6 +33,12 @@ struct Category {
         }
     }
     
+}
+
+enum ListType: Int, CaseIterable {
+    case category
+    case simple
+    case achieved
 }
 
 enum PriorityMark: Int {
@@ -61,6 +67,7 @@ extension Category {
          title: String? = nil,
          isExpanded: Bool? = nil,
          goals: [Category.Goal]? = nil,
+         listType: ListType? = nil,
          order: Int? = nil,
          identifier: String? = nil) {
         if let title = title {
@@ -77,6 +84,11 @@ extension Category {
             self.goals = goals
         } else {
             self.goals = category.goals
+        }
+        if let listType = listType {
+            self.listType = listType
+        } else {
+            self.listType = category.listType
         }
         if let order = order {
             self.order = order

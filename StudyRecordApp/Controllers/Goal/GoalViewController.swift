@@ -27,6 +27,7 @@ final class GoalViewController: UIViewController {
     @IBOutlet private weak var statisticsButton: UIButton!
     
     weak var delegate: GoalVCDelegate?
+    private let selectedSegmentIndexKey = "selectedSegmentIndexKey"
     private var goalUseCase = GoalUseCase(
         repository: GoalRepository(
             dataStore: RealmGoalDataStore()
@@ -79,6 +80,7 @@ final class GoalViewController: UIViewController {
                                         .randomElement() ?? "",
                                     isExpanded: false,
                                     goals: goals,
+                                    listType: .category,
                                     order: 0,
                                     identifier: UUID().uuidString)
             goalUseCase.save(category: category)
@@ -95,7 +97,8 @@ final class GoalViewController: UIViewController {
 private extension GoalViewController {
     
     @IBAction func segmentedControlValueDidChanged(_ sender: Any) {
-        
+        UserDefaults.standard.set(segmentedControl.selectedSegmentIndex,
+                                  forKey: selectedSegmentIndexKey)
     }
     
     @IBAction func statisticsButtonDidTapped(_ sender: Any) {
@@ -284,7 +287,8 @@ private extension GoalViewController {
     
     func setupSegmentedControl() {
         let titles = [L10n.category, L10n.simple, L10n.achieved]
-        segmentedControl.create(titles, selectedIndex: 0)
+        let index = UserDefaults.standard.integer(forKey: selectedSegmentIndexKey)
+        segmentedControl.create(titles, selectedIndex: index)
     }
     
     func setupStatisticsButton() {
