@@ -11,16 +11,20 @@ protocol GoalVCDelegate: ScreenPresentationDelegate,
                          EditButtonSelectable {
 }
 
-// MARK: - ToDo 達成済みリストを見れるように作る
 // MARK: - ToDo sectionの高さを変えられるようにする
 // MARK: - ToDo 長押しで編集モードにする
 // MARK: - ToDo タップでセクションタイトル編集
 // MARK: - ToDo カテゴリがないときはカテゴリ遷移ビューを非表示にする
-// MARK: - ToDo 一番上のセクションが隠れるのをなおす
+// MARK: - ToDo テーブルビューの上にセグメントを置いて達成済みとシンプルに切り替えられるようにする
+// MARK: - ToDo カテゴリが見切れる
+// MARK: - ToDo 統計機能
+// MARK: - ToDo sectionのボタンを一つにまとめる
 
 final class GoalViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var segmentedControl: CustomSegmentedControl!
+    @IBOutlet private weak var statisticsButton: UIButton!
     
     weak var delegate: GoalVCDelegate?
     private var goalUseCase = GoalUseCase(
@@ -36,6 +40,8 @@ final class GoalViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
+        setupSegmentedControl()
+        setupStatisticsButton()
         createMockCategory()
         
     }
@@ -87,6 +93,14 @@ final class GoalViewController: UIViewController {
 
 // MARK: - IBAction func
 private extension GoalViewController {
+    
+    @IBAction func segmentedControlValueDidChanged(_ sender: Any) {
+        
+    }
+    
+    @IBAction func statisticsButtonDidTapped(_ sender: Any) {
+        
+    }
     
 }
 
@@ -179,7 +193,7 @@ extension GoalViewController: GoalHeaderViewDelegate {
         goalUseCase.toggleCategoryIsExpanded(at: section)
         DispatchQueue.main.async {
             self.tableView.beginUpdates()
-            (0..<self.goalUseCase.categories[section].goals.count).forEach {
+            (0..<self.categories[section].goals.count).forEach {
                 self.tableView.reloadRows(at: [IndexPath(row: $0, section: section)],
                                           with: .automatic)
             }
@@ -266,6 +280,15 @@ private extension GoalViewController {
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
         }
+    }
+    
+    func setupSegmentedControl() {
+        let titles = [L10n.category, L10n.simple, L10n.achieved]
+        segmentedControl.create(titles, selectedIndex: 0)
+    }
+    
+    func setupStatisticsButton() {
+        statisticsButton.backgroundColor = .clear
     }
     
 }

@@ -78,6 +78,7 @@
 "largeDiscard" = "破棄する";
 "recordTime" = "時間を記録する";
 "largeSend" = "送信";
+"achieved" = "達成済み";
 
 "login" = "ログイン";
 "signUp" = "サインアップ";

@@ -76,6 +76,7 @@
 "delete" = "delete";
 "decision" = "decision";
 "largeDiscard" = "Discard";
+"achieved" = "achieved";
 
 "login" = "Login";
 "signUp" = "SignUp";
