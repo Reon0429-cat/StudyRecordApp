@@ -61,19 +61,31 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6zK-Zs-qFe">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pNG-LH-u9x">
                                                 <rect key="frame" x="0.0" y="146" width="397" height="24"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <state key="normal" title="▼ メモ">
-                                                    <color key="titleColor" systemColor="labelColor"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="memoButtonDidTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="0Kn-Fa-LCv"/>
-                                                </connections>
-                                            </button>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6zK-Zs-qFe">
+                                                        <rect key="frame" x="0.0" y="0.0" width="52" height="24"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <state key="normal" title="▼ メモ">
+                                                            <color key="titleColor" systemColor="labelColor"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="memoButtonDidTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="0Kn-Fa-LCv"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="6zK-Zs-qFe" secondAttribute="trailing" id="3nH-9G-6hF"/>
+                                                    <constraint firstAttribute="bottom" secondItem="6zK-Zs-qFe" secondAttribute="bottom" id="KKP-h5-aa7"/>
+                                                    <constraint firstItem="6zK-Zs-qFe" firstAttribute="top" secondItem="pNG-LH-u9x" secondAttribute="top" id="T2r-OD-hGv"/>
+                                                    <constraint firstItem="6zK-Zs-qFe" firstAttribute="leading" secondItem="pNG-LH-u9x" secondAttribute="leading" id="VdG-nh-ziq"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="6zK-Zs-qFe" firstAttribute="height" secondItem="dNV-YD-u3m" secondAttribute="height" multiplier="1.2" id="5bq-9n-kRc"/>
+                                            <constraint firstItem="pNG-LH-u9x" firstAttribute="height" secondItem="dNV-YD-u3m" secondAttribute="height" multiplier="1.2" id="I2P-uY-LaV"/>
                                             <constraint firstItem="g7a-aR-4Hy" firstAttribute="height" secondItem="dNV-YD-u3m" secondAttribute="height" id="Wvx-aa-LGY"/>
                                             <constraint firstItem="TgN-3h-cgG" firstAttribute="height" secondItem="dNV-YD-u3m" secondAttribute="height" id="nm0-MT-2Xp"/>
                                         </constraints>

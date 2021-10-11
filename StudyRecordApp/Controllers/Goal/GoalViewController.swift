@@ -14,10 +14,10 @@ protocol GoalVCDelegate: ScreenPresentationDelegate,
 // MARK: - ToDo sectionの高さを変えられるようにする
 // MARK: - ToDo 長押しで編集モードにする
 // MARK: - ToDo カテゴリがないときはカテゴリ遷移ビューを非表示にする
-// MARK: - ToDo 達成済みとシンプルに切り替えられるようにする
 // MARK: - ToDo カテゴリが見切れる
 // MARK: - ToDo 統計機能
 // MARK: - ToDo カテゴリや達成済みのものだけ並び替えられるようにする
+// MARK: - ToDo rowでも達成済みかどうかのマークを切り替えられるようにする
 
 final class GoalViewController: UIViewController {
     
@@ -134,7 +134,12 @@ private extension GoalViewController {
         let category = categories[convert(section: indexPath.section)]
         guard category.isExpanded else { return 0 }
         let goal = category.goals[indexPath.row]
-        return goal.isExpanded ? tableView.rowHeight : 200
+        if goal.isExpanded {
+            return tableView.rowHeight
+        }
+        // GoalSimpleTableViewCellのbaseViewの高さ(70) + padding(20)
+        // GoalTableViewCellのbaseViewの高さ(180) + padding(20)
+        return isSimpleMode ? 90 : 200
     }
     
     func getListType() -> ListType {
@@ -155,7 +160,6 @@ private extension GoalViewController {
         return section + filterdCategories.count
     }
     
-    // MARK: - ToDo
     func reconvert(convertedSection: Int) -> Int {
         let categories = categories[0...convertedSection]
         if getListType() == .achieved {
@@ -212,16 +216,29 @@ extension GoalViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCustomCell(with: GoalTableViewCell.self)
-        let category = categories[convert(section: indexPath.section)]
-        let goal = category.goals[indexPath.row]
-        cell.configure(goal: goal)
-        cell.isHidden(!category.isExpanded)
-        cell.changeMode(isEdit: delegate?.isEdit ?? false,
-                        isEvenIndex: indexPath.row.isMultiple(of: 2))
-        cell.indexPath = indexPath
-        cell.delegate = self
-        return cell
+        if isSimpleMode {
+            let cell = tableView.dequeueReusableCustomCell(with: GoalSimpleTableViewCell.self)
+            let category = categories[convert(section: indexPath.section)]
+            let goal = category.goals[indexPath.row]
+            cell.configure(goal: goal)
+            cell.isHidden(!category.isExpanded)
+            cell.changeMode(isEdit: delegate?.isEdit ?? false,
+                            isEvenIndex: indexPath.row.isMultiple(of: 2))
+            cell.indexPath = indexPath
+            cell.delegate = self
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCustomCell(with: GoalTableViewCell.self)
+            let category = categories[convert(section: indexPath.section)]
+            let goal = category.goals[indexPath.row]
+            cell.configure(goal: goal)
+            cell.isHidden(!category.isExpanded)
+            cell.changeMode(isEdit: delegate?.isEdit ?? false,
+                            isEvenIndex: indexPath.row.isMultiple(of: 2))
+            cell.indexPath = indexPath
+            cell.delegate = self
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView,
@@ -354,8 +371,9 @@ private extension GoalViewController {
     func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.registerCustomCell(GoalTableViewCell.self)
         tableView.registerCustomCell(GoalHeaderView.self)
+        tableView.registerCustomCell(GoalTableViewCell.self)
+        tableView.registerCustomCell(GoalSimpleTableViewCell.self)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.sectionHeaderHeight = UITableView.automaticDimension
         tableView.tableFooterView = UIView()
