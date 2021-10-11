@@ -219,8 +219,7 @@ extension GoalViewController: UITableViewDelegate, UITableViewDataSource {
         cell.isHidden(!category.isExpanded)
         cell.changeMode(isEdit: delegate?.isEdit ?? false,
                         isEvenIndex: indexPath.row.isMultiple(of: 2))
-        cell.indexPath = IndexPath(row: indexPath.row,
-                                   section: convert(section: indexPath.section))
+        cell.indexPath = indexPath
         cell.delegate = self
         return cell
     }
