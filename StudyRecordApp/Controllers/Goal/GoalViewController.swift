@@ -13,12 +13,11 @@ protocol GoalVCDelegate: ScreenPresentationDelegate,
 
 // MARK: - ToDo sectionの高さを変えられるようにする
 // MARK: - ToDo 長押しで編集モードにする
-// MARK: - ToDo タップでセクションタイトル編集
 // MARK: - ToDo カテゴリがないときはカテゴリ遷移ビューを非表示にする
-// MARK: - ToDo テーブルビューの上にセグメントを置いて達成済みとシンプルに切り替えられるようにする
+// MARK: - ToDo 達成済みとシンプルに切り替えられるようにする
 // MARK: - ToDo カテゴリが見切れる
 // MARK: - ToDo 統計機能
-// MARK: - ToDo sectionのボタンを一つにまとめる
+// MARK: - ToDo カテゴリや達成済みのものだけ並び替えられるようにする
 
 final class GoalViewController: UIViewController {
     
@@ -36,11 +35,23 @@ final class GoalViewController: UIViewController {
     private var categories: [Category] {
         goalUseCase.categories
     }
+    enum ListType: CaseIterable {
+        case category
+        case simple
+        case achieved
+        var title: String {
+            switch self {
+                case .category: return L10n.category
+                case .simple: return L10n.simple
+                case .achieved: return L10n.achieved
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        createMockCategory()
+        createMockCategory()
         setupSegmentedControl()
         setupTableView()
         setupStatisticsButton()
@@ -74,16 +85,10 @@ final class GoalViewController: UIViewController {
                                          identifier: UUID().uuidString)
                 goals.append(goal)
             }
-            let listType: ListType = {
-                if categoryTitle != "AAA" {
-                    return .category
-                }
-                return .achieved
-            }()
             let category = Category(title: categoryTitle + " order\(index)",
                                     isExpanded: false,
                                     goals: goals,
-                                    listType: listType,
+                                    isAchieved: false,
                                     order: index,
                                     identifier: UUID().uuidString)
             goalUseCase.save(category: category)
@@ -123,29 +128,29 @@ private extension GoalViewController {
     
     func getListType() -> ListType {
         let index = segmentedControl.selectedSegmentIndex
-        let listType = ListType(rawValue: index) ?? .category
+        let listType = ListType.allCases[index]
         return listType
     }
     
     func convert(section: Int) -> Int {
         let filterdCategories: [Category] = {
             if getListType() == .achieved {
-                let achievedCategories = categories.filter { $0.listType == .achieved }
-                return categories[0...achievedCategories[section].order].filter { $0.listType != .achieved }
+                let achievedCategories = categories.filter { $0.isAchieved }
+                return categories[0...achievedCategories[section].order].filter { !$0.isAchieved }
             }
-            let unarchievedCategories = categories.filter { $0.listType != .achieved }
-            return categories[0...unarchievedCategories[section].order].filter { $0.listType == .achieved }
+            let unarchievedCategories = categories.filter { !$0.isAchieved }
+            return categories[0...unarchievedCategories[section].order].filter { $0.isAchieved }
         }()
         return section + filterdCategories.count
     }
     
     func reconvert(convertedSection: Int) -> Int {
-        let categories = goalUseCase.categories[0...convertedSection]
+        let categories = categories[0...convertedSection]
         if getListType() == .achieved {
-            let unAchievedCount = categories.filter { $0.listType == .category }.count
+            let unAchievedCount = categories.filter { !$0.isAchieved }.count
             return convertedSection - unAchievedCount
         } else {
-            let achievedCount = categories.filter { $0.listType == .achieved }.count
+            let achievedCount = categories.filter { $0.isAchieved }.count
             return convertedSection - achievedCount
         }
     }
@@ -157,9 +162,9 @@ extension GoalViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         if getListType() == .achieved {
-            return goalUseCase.categories.filter { $0.listType == .achieved }.count
+            return categories.filter { $0.isAchieved }.count
         }
-        return goalUseCase.categories.filter { $0.listType == .category }.count
+        return categories.filter { !$0.isAchieved }.count
     }
     
     func tableView(_ tableView: UITableView,
@@ -246,11 +251,7 @@ extension GoalViewController: GoalHeaderViewDelegate {
     }
     
     private func achieveButtonDidTapped(convertedSection: Int) {
-        if getListType() == .achieved {
-            goalUseCase.changeListType(to: .category, at: convertedSection)
-        } else {
-            goalUseCase.changeListType(to: .achieved, at: convertedSection)
-        }
+        goalUseCase.toggleIsAchieved(at: convertedSection)
         tableView.reloadData()
     }
     
@@ -353,7 +354,7 @@ private extension GoalViewController {
     }
     
     func setupSegmentedControl() {
-        let titles = [L10n.category, L10n.simple, L10n.achieved]
+        let titles = ListType.allCases.map { $0.title }
         let index = UserDefaults.standard.integer(forKey: selectedSegmentIndexKey)
         segmentedControl.create(titles, selectedIndex: index)
     }

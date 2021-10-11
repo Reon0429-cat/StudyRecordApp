@@ -97,7 +97,7 @@ private extension Category {
         self = Category(title: category.title,
                         isExpanded: category.isExpanded,
                         goals: category.commonGoals,
-                        listType: category.listType,
+                        isAchieved: category.isAchieved,
                         order: category.order,
                         identifier: category.identifier)
     }
@@ -111,13 +111,13 @@ private extension CategoryRealm {
         let category = Category(title: category.title,
                                 isExpanded: category.isExpanded,
                                 goals: category.goals,
-                                listType: category.listType,
+                                isAchieved: category.isAchieved,
                                 order: category.order,
                                 identifier: category.identifier)
         self.title = category.title
         self.isExpanded = category.isExpanded
         self.goals = category.realmGoals
-        self.listType = category.listType
+        self.isAchieved = category.isAchieved
         self.order = category.order
         self.identifier = category.identifier
     }

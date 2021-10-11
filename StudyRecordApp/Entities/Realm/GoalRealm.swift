@@ -12,11 +12,7 @@ final class CategoryRealm: Object {
     @objc dynamic var title: String = ""
     @objc dynamic var isExpanded: Bool = false
     var goals = List<GoalRealm>()
-    @objc private dynamic var listRawValue = 0
-    var listType: ListType {
-        get { return ListType(rawValue: listRawValue) ?? .category }
-        set { listRawValue = newValue.rawValue }
-    }
+    @objc dynamic var isAchieved: Bool = false
     @objc dynamic var order: Int = 0
     @objc dynamic var identifier = UUID().uuidString
     

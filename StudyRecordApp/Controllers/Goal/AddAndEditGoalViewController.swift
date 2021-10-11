@@ -181,7 +181,7 @@ private extension AddAndEditGoalViewController {
                 let category = Category(title: categoryTitle,
                                         isExpanded: true,
                                         goals: [goal],
-                                        listType: .category,
+                                        isAchieved: false,
                                         order: goalUseCase.categories.count,
                                         identifier: UUID().uuidString)
                 goalUseCase.save(category: category)

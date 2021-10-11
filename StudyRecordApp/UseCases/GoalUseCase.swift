@@ -92,9 +92,10 @@ final class GoalUseCase {
                             to: destinationIndexPath)
     }
     
-    func changeListType(to listType: ListType, at section: Int) {
+    func toggleIsAchieved(at section: Int) {
         let category = repository.readAll()[section]
-        let newCategory = Category(category: category, listType: listType)
+        let newCategory = Category(category: category,
+                                   isAchieved: !category.isAchieved)
         repository.update(category: newCategory)
     }
     

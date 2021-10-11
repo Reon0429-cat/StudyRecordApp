@@ -12,7 +12,7 @@ struct Category {
     let title: String
     let isExpanded: Bool
     let goals: [Goal]
-    let listType: ListType
+    let isAchieved: Bool
     let order: Int
     let identifier: String
     
@@ -33,12 +33,6 @@ struct Category {
         }
     }
     
-}
-
-enum ListType: Int, CaseIterable {
-    case category
-    case simple
-    case achieved
 }
 
 enum PriorityMark: Int {
@@ -67,7 +61,7 @@ extension Category {
          title: String? = nil,
          isExpanded: Bool? = nil,
          goals: [Category.Goal]? = nil,
-         listType: ListType? = nil,
+         isAchieved: Bool? = nil,
          order: Int? = nil,
          identifier: String? = nil) {
         if let title = title {
@@ -85,10 +79,10 @@ extension Category {
         } else {
             self.goals = category.goals
         }
-        if let listType = listType {
-            self.listType = listType
+        if let isAchieved = isAchieved {
+            self.isAchieved = isAchieved
         } else {
-            self.listType = category.listType
+            self.isAchieved = category.isAchieved
         }
         if let order = order {
             self.order = order
