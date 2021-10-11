@@ -11,13 +11,13 @@ protocol GoalVCDelegate: ScreenPresentationDelegate,
                          EditButtonSelectable {
 }
 
-// MARK: - ToDo sectionの高さを変えられるようにする
-// MARK: - ToDo 長押しで編集モードにする
+// MARK: - ToDo rowの高さを可変にする
 // MARK: - ToDo カテゴリがないときはカテゴリ遷移ビューを非表示にする
 // MARK: - ToDo カテゴリが見切れる
 // MARK: - ToDo 統計機能
 // MARK: - ToDo カテゴリや達成済みのものだけ並び替えられるようにする
 // MARK: - ToDo rowでも達成済みかどうかのマークを切り替えられるようにする
+// MARK: - ToDo セクションのfoldingButtonがタップされたら一番上にスクロールする
 
 final class GoalViewController: UIViewController {
     
@@ -60,7 +60,9 @@ final class GoalViewController: UIViewController {
         setupSimpleButton()
         setupTableView()
         setupStatisticsButton()
-        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.tableView.reloadData()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,7 +76,7 @@ final class GoalViewController: UIViewController {
     // MARK: - ToDo 消す
     func createMockCategory() {
         goalUseCase.deleteAllCategory()
-        ["AAA", "BBB", "CCC", "DDD"].enumerated().forEach { index, categoryTitle in
+        ["A", "BBBB", "CCCCC", "DD"].enumerated().forEach { index, categoryTitle in
             let goalTitles = ["000", "111", "222"]
             var goals = [Category.Goal]()
             goalTitles.enumerated().forEach { index, title in
@@ -90,7 +92,11 @@ final class GoalViewController: UIViewController {
                                          identifier: UUID().uuidString)
                 goals.append(goal)
             }
-            let category = Category(title: categoryTitle + " order\(index)",
+            var title = ""
+            for _ in 0..<50 {
+                title += categoryTitle
+            }
+            let category = Category(title: title,
                                     isExpanded: false,
                                     goals: goals,
                                     isAchieved: false,
@@ -101,7 +107,9 @@ final class GoalViewController: UIViewController {
     }
     
     func reloadTableView() {
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
 }
@@ -112,13 +120,17 @@ private extension GoalViewController {
     @IBAction func segmentedControlValueDidChanged(_ sender: Any) {
         UserDefaults.standard.set(segmentedControl.selectedSegmentIndex,
                                   forKey: selectedSegmentIndexKey)
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     @IBAction func simpleButtonDidTapped(_ sender: Any) {
         simpleButton.setImage(isFilled: !isSimpleMode)
         UserDefaults.standard.set(!isSimpleMode, forKey: isSimpleModeKey)
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     @IBAction func statisticsButtonDidTapped(_ sender: Any) {
@@ -194,8 +206,29 @@ extension GoalViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView,
+                   estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+        return tableView.sectionHeaderHeight
+    }
+    
+    func tableView(_ tableView: UITableView,
                    heightForHeaderInSection section: Int) -> CGFloat {
-        return GoalHeaderView.height
+        return tableView.sectionHeaderHeight
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   heightForFooterInSection section: Int) -> CGFloat {
+        if getListType() == .achieved {
+            let achievedCategories = categories.filter { $0.isAchieved }
+            if section == achievedCategories.count - 1 {
+                return 30
+            }
+        } else {
+            let unarchievedCategories = categories.filter { !$0.isAchieved }
+            if section == unarchievedCategories.count - 1 {
+                return 30
+            }
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView,
@@ -206,6 +239,12 @@ extension GoalViewController: UITableViewDelegate, UITableViewDataSource {
         headerView.configure(category: category)
         headerView.delegate = self
         return headerView
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   viewForFooterInSection section: Int) -> UIView? {
+        let view = UIView()
+        return view
     }
     
     func tableView(_ tableView: UITableView,
@@ -241,12 +280,6 @@ extension GoalViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView,
-                   willDisplayHeaderView view: UIView,
-                   forSection section: Int) {
-        view.tintColor = .dynamicColor(light: .black, dark: .white)
-    }
-    
 }
 
 // MARK: - GoalHeaderViewDelegate
@@ -267,20 +300,15 @@ extension GoalViewController: GoalHeaderViewDelegate {
     func foldingButtonDidTapped(convertedSection: Int) {
         goalUseCase.toggleCategoryIsExpanded(at: convertedSection)
         DispatchQueue.main.async {
-            self.tableView.beginUpdates()
-            let section = self.reconvert(convertedSection: convertedSection)
-            (0..<self.categories[convertedSection].goals.count).forEach {
-                self.tableView.reloadRows(at: [IndexPath(row: $0, section: section)],
-                                          with: .automatic)
-            }
-            self.tableView.reloadSections([section], with: .automatic)
-            self.tableView.endUpdates()
+            self.tableView.reloadData()
         }
     }
     
     private func achieveButtonDidTapped(convertedSection: Int) {
         goalUseCase.toggleIsAchieved(at: convertedSection)
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     private func addButtonDidTapped(convertedSection: Int) {
@@ -328,10 +356,10 @@ extension GoalViewController: GoalTableViewCellDelegate {
                                            section: convert(section: indexPath.section))
         goalUseCase.toggleGoalIsExpanded(at: convertedIndexPath)
         DispatchQueue.main.async {
-            self.tableView.beginUpdates()
-            self.tableView.reloadRows(at: [indexPath],
-                                      with: .automatic)
-            self.tableView.endUpdates()
+            self.tableView.performBatchUpdates {
+                self.tableView.reloadRows(at: [indexPath],
+                                          with: .automatic)
+            }
         }
     }
     

@@ -14,13 +14,11 @@ protocol GoalHeaderViewDelegate: AnyObject {
 
 final class GoalHeaderView: UITableViewHeaderFooterView {
     
-    @IBOutlet private weak var baseView: UIView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var foldingButton: UIButton!
     @IBOutlet private weak var settingButton: UIButton!
     @IBOutlet private weak var separatorView: UIView!
     
-    static let height: CGFloat = 70
     weak var delegate: GoalHeaderViewDelegate?
     
     override func awakeFromNib() {
