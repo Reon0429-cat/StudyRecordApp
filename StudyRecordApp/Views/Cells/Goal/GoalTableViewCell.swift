@@ -36,6 +36,7 @@ final class GoalTableViewCell: UITableViewCell {
         backgroundColor = .clear
         selectionStyle = .none
         myImageView.layer.cornerRadius = 10
+        deleteButton.isHidden = true
         baseView.backgroundColor = .dynamicColor(light: .white,
                                                  dark: .secondarySystemGroupedBackground)
         memoTextView.backgroundColor = .dynamicColor(light: .white,

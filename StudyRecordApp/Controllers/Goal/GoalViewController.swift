@@ -373,6 +373,7 @@ private extension GoalViewController {
     
     func setupSimpleButton() {
         simpleButton.setImage(isFilled: isSimpleMode)
+        simpleButton.setTitle(L10n.simple)
         simpleButton.backgroundColor = .clear
     }
     
