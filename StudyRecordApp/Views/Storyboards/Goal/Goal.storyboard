@@ -22,7 +22,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="T3x-m7-sMh" customClass="CustomSegmentedControl" customModule="StudyRecordApp" customModuleProvider="target">
-                                <rect key="frame" x="20" y="74" width="131" height="32"/>
+                                <rect key="frame" x="15" y="74" width="131" height="32"/>
                                 <segments>
                                     <segment title="First"/>
                                     <segment title="Second"/>
@@ -47,14 +47,30 @@
                                     <action selector="statisticsButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="gcI-cz-oLy"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gif-MO-O0U" customClass="RadioButton" customModule="StudyRecordApp" customModuleProvider="target">
+                                <rect key="frame" x="156" y="78" width="81" height="23"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="5" maxY="0.0"/>
+                                <state key="normal" title="シンプル" image="record.circle" catalog="system">
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20"/>
+                                </state>
+                                <connections>
+                                    <action selector="simpleButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="p8b-EO-v5a"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="awX-Io-wV7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="T3x-m7-sMh" secondAttribute="trailing" constant="10" id="3X2-xQ-ZHh"/>
-                            <constraint firstItem="T3x-m7-sMh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="LDA-bk-5Ed"/>
+                            <constraint firstItem="gif-MO-O0U" firstAttribute="leading" secondItem="T3x-m7-sMh" secondAttribute="trailing" constant="10" id="1va-f1-T2Z"/>
+                            <constraint firstItem="T3x-m7-sMh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="15" id="LDA-bk-5Ed"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Loa-T6-D3E" secondAttribute="bottom" id="LHe-Xe-5sT"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="awX-Io-wV7" secondAttribute="trailing" constant="20" id="NNO-71-Ei1"/>
+                            <constraint firstItem="gif-MO-O0U" firstAttribute="centerY" secondItem="T3x-m7-sMh" secondAttribute="centerY" id="QPI-d6-cWU"/>
+                            <constraint firstItem="awX-Io-wV7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gif-MO-O0U" secondAttribute="trailing" constant="5" id="XXD-K6-NBT"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Loa-T6-D3E" secondAttribute="trailing" id="c23-x7-OC3"/>
                             <constraint firstItem="Loa-T6-D3E" firstAttribute="top" secondItem="T3x-m7-sMh" secondAttribute="bottom" constant="10" id="h8Y-qO-qlj"/>
                             <constraint firstItem="T3x-m7-sMh" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="30" id="jiV-OU-XiS"/>
@@ -64,6 +80,7 @@
                     </view>
                     <connections>
                         <outlet property="segmentedControl" destination="T3x-m7-sMh" id="jRu-yE-kR6"/>
+                        <outlet property="simpleButton" destination="gif-MO-O0U" id="B8Q-je-UPD"/>
                         <outlet property="statisticsButton" destination="awX-Io-wV7" id="uEC-el-tYG"/>
                         <outlet property="tableView" destination="Loa-T6-D3E" id="Kij-3M-x2W"/>
                     </connections>
@@ -75,6 +92,7 @@
     </scenes>
     <resources>
         <image name="newspaper" catalog="system" width="128" height="111"/>
+        <image name="record.circle" catalog="system" width="128" height="121"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

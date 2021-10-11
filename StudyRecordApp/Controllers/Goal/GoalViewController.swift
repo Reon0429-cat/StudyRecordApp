@@ -24,9 +24,11 @@ final class GoalViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var segmentedControl: CustomSegmentedControl!
     @IBOutlet private weak var statisticsButton: UIButton!
+    @IBOutlet private weak var simpleButton: RadioButton!
     
     weak var delegate: GoalVCDelegate?
     private let selectedSegmentIndexKey = "selectedSegmentIndexKey"
+    private let isSimpleModeKey = "simpleButtonIsFilledKey"
     private var goalUseCase = GoalUseCase(
         repository: GoalRepository(
             dataStore: RealmGoalDataStore()
@@ -35,14 +37,16 @@ final class GoalViewController: UIViewController {
     private var categories: [Category] {
         goalUseCase.categories
     }
+    private var isSimpleMode: Bool {
+        UserDefaults.standard.bool(forKey: isSimpleModeKey)
+    }
+    
     enum ListType: CaseIterable {
         case category
-        case simple
         case achieved
         var title: String {
             switch self {
                 case .category: return L10n.category
-                case .simple: return L10n.simple
                 case .achieved: return L10n.achieved
             }
         }
@@ -53,6 +57,7 @@ final class GoalViewController: UIViewController {
         
         createMockCategory()
         setupSegmentedControl()
+        setupSimpleButton()
         setupTableView()
         setupStatisticsButton()
         
@@ -110,6 +115,12 @@ private extension GoalViewController {
         tableView.reloadData()
     }
     
+    @IBAction func simpleButtonDidTapped(_ sender: Any) {
+        simpleButton.setImage(isFilled: !isSimpleMode)
+        UserDefaults.standard.set(!isSimpleMode, forKey: isSimpleModeKey)
+        tableView.reloadData()
+    }
+    
     @IBAction func statisticsButtonDidTapped(_ sender: Any) {
         
     }
@@ -144,6 +155,7 @@ private extension GoalViewController {
         return section + filterdCategories.count
     }
     
+    // MARK: - ToDo
     func reconvert(convertedSection: Int) -> Int {
         let categories = categories[0...convertedSection]
         if getListType() == .achieved {
@@ -357,6 +369,11 @@ private extension GoalViewController {
         let titles = ListType.allCases.map { $0.title }
         let index = UserDefaults.standard.integer(forKey: selectedSegmentIndexKey)
         segmentedControl.create(titles, selectedIndex: index)
+    }
+    
+    func setupSimpleButton() {
+        simpleButton.setImage(isFilled: isSimpleMode)
+        simpleButton.backgroundColor = .clear
     }
     
     func setupStatisticsButton() {
