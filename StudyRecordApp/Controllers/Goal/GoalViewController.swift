@@ -319,11 +319,11 @@ extension GoalViewController: GoalTableViewCellDelegate {
     }
     
     func deleteButtonDidTapped(indexPath: IndexPath) {
-        let indexPath = IndexPath(row: indexPath.row,
-                                  section: convert(section: indexPath.section))
+        let convertedIndexPath = IndexPath(row: indexPath.row,
+                                           section: convert(section: indexPath.section))
         let alert = Alert.create(title: L10n.doYouReallyWantToDeleteThis)
             .addAction(title: L10n.delete, style: .destructive) {
-                self.goalUseCase.deleteGoal(at: indexPath)
+                self.goalUseCase.deleteGoal(at: convertedIndexPath)
                 self.delegate?.deleteButtonDidTappped(isEmpty: self.categories.isEmpty)
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
@@ -337,11 +337,11 @@ extension GoalViewController: GoalTableViewCellDelegate {
     }
     
     func goalViewDidTapped(indexPath: IndexPath) {
-        let indexPath = IndexPath(row: indexPath.row,
-                                  section: convert(section: indexPath.section))
+        let convertedIndexPath = IndexPath(row: indexPath.row,
+                                           section: convert(section: indexPath.section))
         present(AddAndEditGoalViewController.self,
                 modalPresentationStyle: .fullScreen) { vc in
-            vc.selectedIndexPath = indexPath
+            vc.selectedIndexPath = convertedIndexPath
             vc.goalScreenType = .edit
         }
     }
