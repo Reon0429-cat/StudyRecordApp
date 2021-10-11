@@ -10,6 +10,7 @@ import UIKit
 protocol GoalTableViewCellDelegate: AnyObject {
     func memoButtonDidTapped(indexPath: IndexPath)
     func goalViewDidTapped(indexPath: IndexPath)
+    func baseViewLongPressDidRecognized()
     func deleteButtonDidTapped(indexPath: IndexPath)
 }
 
@@ -37,12 +38,10 @@ final class GoalTableViewCell: UITableViewCell {
         selectionStyle = .none
         myImageView.layer.cornerRadius = 10
         deleteButton.isHidden = true
-        baseView.backgroundColor = .dynamicColor(light: .white,
-                                                 dark: .secondarySystemGroupedBackground)
         memoTextView.backgroundColor = .dynamicColor(light: .white,
                                                      dark: .secondarySystemGroupedBackground)
         priorityStackViewBaseView.backgroundColor = .clear
-        setPanGR()
+        setupBaseView()
         
     }
     
@@ -63,7 +62,6 @@ final class GoalTableViewCell: UITableViewCell {
         dueDateLabel.text = "\(L10n.dueDate): " + dueDateString
         myImageView.image = Converter.convertToImage(from: goal.imageData)
         imageViewBaseView.isHidden = (goal.imageData == nil)
-        setupBaseView()
         setupMemoTextView(goal: goal)
         setColor()
     }
@@ -126,6 +124,27 @@ private extension GoalTableViewCell {
     
     func setupBaseView() {
         baseView.layer.cornerRadius = 10
+        baseView.backgroundColor = .dynamicColor(light: .white,
+                                                 dark: .secondarySystemGroupedBackground)
+        
+        let panGR = UITapGestureRecognizer(target: self,
+                                           action: #selector(goalViewDidTapped))
+        baseView.addGestureRecognizer(panGR)
+        let longPressGR = UILongPressGestureRecognizer(target: self,
+                                                       action: #selector(goalViewDidLongPressed))
+        longPressGR.minimumPressDuration = 1
+        baseView.addGestureRecognizer(longPressGR)
+    }
+    
+    @objc
+    func goalViewDidTapped() {
+        guard let indexPath = indexPath else { return }
+        delegate?.goalViewDidTapped(indexPath: indexPath)
+    }
+    
+    @objc
+    func goalViewDidLongPressed() {
+        delegate?.baseViewLongPressDidRecognized()
     }
     
     func setupMemoTextView(goal: Category.Goal) {
@@ -133,19 +152,6 @@ private extension GoalTableViewCell {
         memoTextView.layer.cornerRadius = 10
         memoTextView.isEditable = false
         memoTextView.clipsToBounds = false
-    }
-    
-    func setPanGR() {
-        let panGR = UITapGestureRecognizer(target: self,
-                                           action: #selector(goalViewDidTapped))
-        panGR.delegate = self
-        baseView.addGestureRecognizer(panGR)
-    }
-    
-    @objc
-    func goalViewDidTapped() {
-        guard let indexPath = indexPath else { return }
-        delegate?.goalViewDidTapped(indexPath: indexPath)
     }
     
     func setColor() {
@@ -159,10 +165,18 @@ private extension GoalTableViewCell {
                                radius: 3,
                                opacity: 0.8,
                                size: (width: 2, height: 2))
-        let image = UIImage(systemName: .xmarkCircleFill) 
+        let image = UIImage(systemName: .xmarkCircleFill)
         let color: UIColor = .dynamicColor(light: .mainColor ?? .black,
                                            dark: .mainColor ?? .white)
         deleteButton.setImage(image.setColor(color))
+    }
+    
+}
+
+extension GoalTableViewCell {
+    
+    override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
     
 }

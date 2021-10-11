@@ -26,12 +26,10 @@ final class GoalSimpleTableViewCell: UITableViewCell {
         backgroundColor = .clear
         selectionStyle = .none
         deleteButton.isHidden = true
-        baseView.backgroundColor = .dynamicColor(light: .white,
-                                                 dark: .secondarySystemGroupedBackground)
         memoTextView.backgroundColor = .dynamicColor(light: .white,
                                                      dark: .secondarySystemGroupedBackground)
         priorityStackViewBaseView.backgroundColor = .clear
-        setPanGR()
+        setupBaseView()
         
     }
     
@@ -46,7 +44,6 @@ final class GoalSimpleTableViewCell: UITableViewCell {
         setupMemoButton(goal: goal)
         setupPriorityStackView(goal: goal)
         titleLabel.text = goal.title
-        setupBaseView()
         setupMemoTextView(goal: goal)
         setColor()
     }
@@ -109,6 +106,27 @@ private extension GoalSimpleTableViewCell {
     
     func setupBaseView() {
         baseView.layer.cornerRadius = 10
+        baseView.backgroundColor = .dynamicColor(light: .white,
+                                                 dark: .secondarySystemGroupedBackground)
+        
+        let panGR = UITapGestureRecognizer(target: self,
+                                           action: #selector(goalViewDidTapped))
+        baseView.addGestureRecognizer(panGR)
+        let longPressGR = UILongPressGestureRecognizer(target: self,
+                                                       action: #selector(goalViewDidLongPressed))
+        longPressGR.minimumPressDuration = 1
+        baseView.addGestureRecognizer(longPressGR)
+    }
+    
+    @objc
+    func goalViewDidTapped() {
+        guard let indexPath = indexPath else { return }
+        delegate?.goalViewDidTapped(indexPath: indexPath)
+    }
+    
+    @objc
+    func goalViewDidLongPressed() {
+        delegate?.baseViewLongPressDidRecognized()
     }
     
     func setupMemoTextView(goal: Category.Goal) {
@@ -116,19 +134,6 @@ private extension GoalSimpleTableViewCell {
         memoTextView.layer.cornerRadius = 10
         memoTextView.isEditable = false
         memoTextView.clipsToBounds = false
-    }
-    
-    func setPanGR() {
-        let panGR = UITapGestureRecognizer(target: self,
-                                           action: #selector(goalViewDidTapped))
-        panGR.delegate = self
-        baseView.addGestureRecognizer(panGR)
-    }
-    
-    @objc
-    func goalViewDidTapped() {
-        guard let indexPath = indexPath else { return }
-        delegate?.goalViewDidTapped(indexPath: indexPath)
     }
     
     func setColor() {

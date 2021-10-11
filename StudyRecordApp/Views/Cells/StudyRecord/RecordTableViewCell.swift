@@ -85,6 +85,9 @@ private extension RecordTableViewCell {
     
     func setupBaseView() {
         baseView.layer.cornerRadius = 20
+        baseView.backgroundColor = .dynamicColor(light: .white,
+                                                 dark: .secondarySystemGroupedBackground)
+        
         let tapGR = UITapGestureRecognizer(target: self,
                                            action: #selector(baseViewTapDidRecognized))
         baseView.addGestureRecognizer(tapGR)
@@ -92,8 +95,6 @@ private extension RecordTableViewCell {
                                                        action: #selector(baseViewLongPressDidRecognized))
         longPressGR.minimumPressDuration = 1
         baseView.addGestureRecognizer(longPressGR)
-        baseView.backgroundColor = .dynamicColor(light: .white,
-                                                 dark: .secondarySystemGroupedBackground)
     }
     
     @objc

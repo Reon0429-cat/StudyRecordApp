@@ -363,6 +363,10 @@ extension GoalViewController: GoalTableViewCellDelegate {
         }
     }
     
+    func baseViewLongPressDidRecognized() {
+        delegate?.baseViewLongPressDidRecognized()
+    }
+    
 }
 
 // MARK: - setup
