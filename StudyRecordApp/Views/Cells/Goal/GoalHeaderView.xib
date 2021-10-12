@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タイトル" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMJ-8x-gJ6">
-                    <rect key="frame" x="15" y="26" width="73.5" height="21.5"/>
+                    <rect key="frame" x="15" y="21" width="73.5" height="21.5"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -66,9 +66,9 @@
                 <constraint firstItem="5Ia-uc-Upr" firstAttribute="leading" secondItem="gjr-5P-aaG" secondAttribute="trailing" id="MmV-PR-Vat"/>
                 <constraint firstItem="gjr-5P-aaG" firstAttribute="width" secondItem="5Ia-uc-Upr" secondAttribute="width" id="Qsa-A9-fkv"/>
                 <constraint firstItem="gjr-5P-aaG" firstAttribute="bottom" secondItem="5Ia-uc-Upr" secondAttribute="bottom" id="a1H-PE-AkX"/>
-                <constraint firstItem="q8P-tX-tWJ" firstAttribute="top" secondItem="eMJ-8x-gJ6" secondAttribute="bottom" priority="900" constant="5" id="b3f-1t-c7I"/>
+                <constraint firstItem="q8P-tX-tWJ" firstAttribute="top" secondItem="eMJ-8x-gJ6" secondAttribute="bottom" priority="900" constant="10" id="b3f-1t-c7I"/>
                 <constraint firstItem="eMJ-8x-gJ6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="hMw-C1-oMh"/>
-                <constraint firstItem="eMJ-8x-gJ6" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="jbG-aE-hmH"/>
+                <constraint firstItem="eMJ-8x-gJ6" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="jbG-aE-hmH"/>
                 <constraint firstAttribute="trailing" secondItem="q8P-tX-tWJ" secondAttribute="trailing" id="kbw-zF-Pya"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="q8P-tX-tWJ" secondAttribute="bottom" id="qlo-fZ-QZZ"/>
                 <constraint firstItem="gjr-5P-aaG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eMJ-8x-gJ6" secondAttribute="trailing" id="sM7-ZS-COn"/>

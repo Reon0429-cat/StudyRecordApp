@@ -63,6 +63,7 @@ final class GoalViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.tableView.reloadData()
         }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -255,29 +256,21 @@ extension GoalViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if isSimpleMode {
-            let cell = tableView.dequeueReusableCustomCell(with: GoalSimpleTableViewCell.self)
-            let category = categories[convert(section: indexPath.section)]
-            let goal = category.goals[indexPath.row]
-            cell.configure(goal: goal)
-            cell.isHidden(!category.isExpanded)
-            cell.changeMode(isEdit: delegate?.isEdit ?? false,
-                            isEvenIndex: indexPath.row.isMultiple(of: 2))
-            cell.indexPath = indexPath
-            cell.delegate = self
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCustomCell(with: GoalTableViewCell.self)
-            let category = categories[convert(section: indexPath.section)]
-            let goal = category.goals[indexPath.row]
-            cell.configure(goal: goal)
-            cell.isHidden(!category.isExpanded)
-            cell.changeMode(isEdit: delegate?.isEdit ?? false,
-                            isEvenIndex: indexPath.row.isMultiple(of: 2))
-            cell.indexPath = indexPath
-            cell.delegate = self
-            return cell
-        }
+        let cell: GoalTableViewCellProtocol = {
+            if isSimpleMode {
+                return tableView.dequeueReusableCustomCell(with: GoalSimpleTableViewCell.self)
+            }
+            return tableView.dequeueReusableCustomCell(with: GoalTableViewCell.self)
+        }()
+        let category = categories[convert(section: indexPath.section)]
+        let goal = category.goals[indexPath.row]
+        cell.configure(goal: goal)
+        cell.isHidden(!category.isExpanded)
+        cell.changeMode(isEdit: delegate?.isEdit ?? false,
+                       isEvenIndex: indexPath.row.isMultiple(of: 2))
+        cell.indexPath = indexPath
+        cell.delegate = self
+        return cell
     }
     
 }

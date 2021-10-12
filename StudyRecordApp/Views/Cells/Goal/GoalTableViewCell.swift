@@ -7,12 +7,23 @@
 
 import UIKit
 
+// GoalTableViewCellとGoalSimpleTableViewCellの共通のインターフェース
+protocol GoalTableViewCellProtocol where Self: UITableViewCell {
+    func configure(goal: Category.Goal)
+    func isHidden(_ isHidden: Bool)
+    func changeMode(isEdit: Bool, isEvenIndex: Bool)
+    var indexPath: IndexPath? { get set }
+    var delegate: GoalTableViewCellDelegate? { get set }
+}
+
 protocol GoalTableViewCellDelegate: AnyObject {
     func memoButtonDidTapped(indexPath: IndexPath)
     func goalViewDidTapped(indexPath: IndexPath)
     func baseViewLongPressDidRecognized()
     func deleteButtonDidTapped(indexPath: IndexPath)
 }
+
+extension GoalTableViewCell: GoalTableViewCellProtocol { }
 
 final class GoalTableViewCell: UITableViewCell {
     
@@ -169,14 +180,6 @@ private extension GoalTableViewCell {
         let color: UIColor = .dynamicColor(light: .mainColor ?? .black,
                                            dark: .mainColor ?? .white)
         deleteButton.setImage(image.setColor(color))
-    }
-    
-}
-
-extension GoalTableViewCell {
-    
-    override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
     }
     
 }

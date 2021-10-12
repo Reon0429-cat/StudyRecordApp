@@ -7,6 +7,8 @@
 
 import UIKit
 
+extension GoalSimpleTableViewCell: GoalTableViewCellProtocol { }
+
 final class GoalSimpleTableViewCell: UITableViewCell {
     
     @IBOutlet private weak var baseView: UIView!
