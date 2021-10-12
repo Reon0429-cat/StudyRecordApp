@@ -60,9 +60,6 @@ final class GoalViewController: UIViewController {
         setupSimpleButton()
         setupTableView()
         setupStatisticsButton()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.tableView.reloadData()
-        }
         
     }
     
@@ -208,7 +205,7 @@ extension GoalViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-        return tableView.sectionHeaderHeight
+        return GoalTableViewCell.standardHeight
     }
     
     func tableView(_ tableView: UITableView,
@@ -218,16 +215,11 @@ extension GoalViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    heightForFooterInSection section: Int) -> CGFloat {
-        if getListType() == .achieved {
-            let achievedCategories = categories.filter { $0.isAchieved }
-            if section == achievedCategories.count - 1 {
-                return 30
-            }
-        } else {
-            let unarchievedCategories = categories.filter { !$0.isAchieved }
-            if section == unarchievedCategories.count - 1 {
-                return 30
-            }
+        let filteredCategories = categories.filter {
+            return getListType() == .achieved ? $0.isAchieved : !$0.isAchieved
+        }
+        if section == filteredCategories.count - 1 {
+            return 30
         }
         return 0
     }
@@ -267,7 +259,7 @@ extension GoalViewController: UITableViewDelegate, UITableViewDataSource {
         cell.configure(goal: goal)
         cell.isHidden(!category.isExpanded)
         cell.changeMode(isEdit: delegate?.isEdit ?? false,
-                       isEvenIndex: indexPath.row.isMultiple(of: 2))
+                        isEvenIndex: indexPath.row.isMultiple(of: 2))
         cell.indexPath = indexPath
         cell.delegate = self
         return cell
