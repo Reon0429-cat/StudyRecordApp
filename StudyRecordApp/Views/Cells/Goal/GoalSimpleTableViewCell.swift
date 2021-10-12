@@ -51,13 +51,10 @@ final class GoalSimpleTableViewCell: UITableViewCell {
     }
     
     func changeMode(isEdit: Bool, isEvenIndex: Bool) {
-        if isEdit {
-            deleteButton.setFade(.in)
-            baseView.vibrate(.start, isEvenIndex: isEvenIndex, range: 0.8)
-        } else {
-            deleteButton.setFade(.out)
-            baseView.vibrate(.stop, range: 0.8)
-        }
+        changeMode(isEdit: isEdit,
+                   isEvenIndex: isEvenIndex,
+                   deleteButton: deleteButton,
+                   baseView: baseView)
     }
     
     func isHidden(_ isHidden: Bool) {

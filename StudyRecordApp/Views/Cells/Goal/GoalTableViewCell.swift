@@ -16,6 +16,23 @@ protocol GoalTableViewCellProtocol where Self: UITableViewCell {
     var delegate: GoalTableViewCellDelegate? { get set }
 }
 
+extension GoalTableViewCellProtocol {
+    
+    func changeMode(isEdit: Bool,
+                    isEvenIndex: Bool,
+                    deleteButton: UIButton,
+                    baseView: UIView) {
+        if isEdit {
+            deleteButton.setFade(.in)
+            baseView.vibrate(.start, isEvenIndex: isEvenIndex, range: 0.8)
+        } else {
+            deleteButton.setFade(.out)
+            baseView.vibrate(.stop, range: 0.8)
+        }
+    }
+    
+}
+
 protocol GoalTableViewCellDelegate: AnyObject {
     func memoButtonDidTapped(indexPath: IndexPath)
     func goalViewDidTapped(indexPath: IndexPath)
@@ -78,13 +95,10 @@ final class GoalTableViewCell: UITableViewCell {
     }
     
     func changeMode(isEdit: Bool, isEvenIndex: Bool) {
-        if isEdit {
-            deleteButton.setFade(.in)
-            baseView.vibrate(.start, isEvenIndex: isEvenIndex, range: 0.8)
-        } else {
-            deleteButton.setFade(.out)
-            baseView.vibrate(.stop, range: 0.8)
-        }
+        changeMode(isEdit: isEdit,
+                   isEvenIndex: isEvenIndex,
+                   deleteButton: deleteButton,
+                   baseView: baseView)
     }
     
     func isHidden(_ isHidden: Bool) {
