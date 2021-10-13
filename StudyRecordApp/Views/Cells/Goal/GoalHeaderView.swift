@@ -19,6 +19,7 @@ final class GoalHeaderView: UITableViewHeaderFooterView {
     @IBOutlet private weak var settingButton: UIButton!
     @IBOutlet private weak var separatorView: UIView!
     
+    static let estimatedHeight: CGFloat = 50
     weak var delegate: GoalHeaderViewDelegate?
     
     override func awakeFromNib() {

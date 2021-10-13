@@ -204,7 +204,7 @@ extension GoalViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-        return GoalTableViewCell.standardHeight
+        return GoalHeaderView.estimatedHeight
     }
     
     func tableView(_ tableView: UITableView,
@@ -298,7 +298,9 @@ extension GoalViewController: GoalHeaderViewDelegate {
     func foldingButtonDidTapped(convertedSection: Int) {
         goalUseCase.toggleCategoryIsExpanded(at: convertedSection)
         DispatchQueue.main.async {
-            self.tableView.reloadData()
+            self.tableView.performBatchUpdates {
+                self.tableView.reloadData()
+            }
         }
     }
     

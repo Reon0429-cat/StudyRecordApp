@@ -52,28 +52,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9xc-Lx-nkT">
-                                <rect key="frame" x="72" y="46" width="329" height="24"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="8AN-IO-ns1" firstAttribute="top" secondItem="AvB-7Q-LTL" secondAttribute="bottom" id="5mw-Kj-PHW"/>
-                            <constraint firstAttribute="bottom" secondItem="9xc-Lx-nkT" secondAttribute="bottom" id="Fsb-vN-bLf"/>
                             <constraint firstItem="AvB-7Q-LTL" firstAttribute="leading" secondItem="6aX-i8-sgn" secondAttribute="leading" constant="5" id="I5P-9V-4Jn"/>
                             <constraint firstItem="8AN-IO-ns1" firstAttribute="leading" secondItem="6aX-i8-sgn" secondAttribute="leading" constant="5" id="PeN-Fj-erf"/>
-                            <constraint firstAttribute="trailing" secondItem="9xc-Lx-nkT" secondAttribute="trailing" id="Roi-WF-SUw"/>
-                            <constraint firstItem="9xc-Lx-nkT" firstAttribute="leading" secondItem="8AN-IO-ns1" secondAttribute="trailing" constant="15" id="SZg-Yi-Qxt"/>
                             <constraint firstAttribute="height" constant="70" id="ZUV-Ae-Z8a"/>
-                            <constraint firstItem="9xc-Lx-nkT" firstAttribute="height" secondItem="8AN-IO-ns1" secondAttribute="height" id="o9t-HF-GOA"/>
                             <constraint firstAttribute="trailing" secondItem="AvB-7Q-LTL" secondAttribute="trailing" constant="10" id="pQH-BG-oqI"/>
                             <constraint firstAttribute="bottom" secondItem="8AN-IO-ns1" secondAttribute="bottom" id="rBd-B6-hvJ"/>
                             <constraint firstItem="AvB-7Q-LTL" firstAttribute="top" relation="greaterThanOrEqual" secondItem="6aX-i8-sgn" secondAttribute="top" id="vta-0R-fgT"/>
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RAF-y1-2Wc">
-                        <rect key="frame" x="381" y="25" width="40" height="40"/>
+                        <rect key="frame" x="381" y="0.0" width="40" height="40"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="40" id="5Rr-7T-myU"/>
@@ -91,10 +83,10 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
+                    <constraint firstItem="RAF-y1-2Wc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="9Hr-fD-f86"/>
                     <constraint firstAttribute="bottom" secondItem="iPa-1h-Xsu" secondAttribute="bottom" priority="900" constant="10" id="BZm-g5-4GV"/>
                     <constraint firstItem="iPa-1h-Xsu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="DZs-HI-E7d"/>
                     <constraint firstItem="6aX-i8-sgn" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="GTc-Yq-yAr"/>
-                    <constraint firstItem="RAF-y1-2Wc" firstAttribute="centerY" secondItem="6aX-i8-sgn" secondAttribute="centerY" id="Tyz-47-gd8"/>
                     <constraint firstItem="6aX-i8-sgn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Vsw-ap-OJk"/>
                     <constraint firstItem="iPa-1h-Xsu" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="oCv-O6-ac3"/>
                     <constraint firstItem="iPa-1h-Xsu" firstAttribute="top" secondItem="6aX-i8-sgn" secondAttribute="bottom" id="rgH-1Q-DMd"/>
@@ -109,7 +101,6 @@
                 <outlet property="deleteButton" destination="RAF-y1-2Wc" id="SUH-n5-McC"/>
                 <outlet property="memoButton" destination="8AN-IO-ns1" id="C0f-7y-19o"/>
                 <outlet property="memoTextView" destination="iPa-1h-Xsu" id="5Og-R3-G6p"/>
-                <outlet property="priorityStackViewBaseView" destination="9xc-Lx-nkT" id="N3f-tc-lJ1"/>
                 <outlet property="titleLabel" destination="AvB-7Q-LTL" id="vLG-5p-Ykq"/>
             </connections>
             <point key="canvasLocation" x="210.86956521739131" y="197.87946428571428"/>

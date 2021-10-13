@@ -12,17 +12,17 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="GoalHeaderView" customModule="StudyRecordApp" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="279" height="53"/>
+            <rect key="frame" x="0.0" y="0.0" width="279" height="45"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タイトル" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMJ-8x-gJ6">
-                    <rect key="frame" x="15" y="21" width="73.5" height="21.5"/>
+                    <rect key="frame" x="15" y="13" width="73.5" height="21.5"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ia-uc-Upr">
-                    <rect key="frame" x="240" y="18.5" width="29" height="29"/>
+                    <rect key="frame" x="240" y="10.5" width="29" height="29"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="5Ia-uc-Upr" secondAttribute="height" multiplier="1:1" id="mn4-ae-IXh"/>
                         <constraint firstAttribute="height" constant="29" id="z2f-QM-oO9"/>
@@ -37,7 +37,7 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q8P-tX-tWJ">
-                    <rect key="frame" x="10" y="52.5" width="269" height="0.5"/>
+                    <rect key="frame" x="10" y="44.5" width="269" height="0.5"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="0.5" id="HBr-Fw-Vl7"/>
@@ -45,7 +45,7 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gjr-5P-aaG">
-                    <rect key="frame" x="211" y="18.5" width="29" height="29"/>
+                    <rect key="frame" x="211" y="10.5" width="29" height="29"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="gjr-5P-aaG" secondAttribute="height" id="P8q-u7-7JZ"/>
                     </constraints>
@@ -82,7 +82,7 @@
                 <outlet property="settingButton" destination="5Ia-uc-Upr" id="ktz-5x-qKd"/>
                 <outlet property="titleLabel" destination="eMJ-8x-gJ6" id="fTM-y7-A40"/>
             </connections>
-            <point key="canvasLocation" x="-150" y="-226.67410714285714"/>
+            <point key="canvasLocation" x="-150" y="-229.35267857142856"/>
         </view>
     </objects>
     <resources>

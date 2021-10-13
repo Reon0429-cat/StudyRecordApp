@@ -55,7 +55,6 @@ final class GoalTableViewCell: UITableViewCell {
     @IBOutlet private weak var memoTextView: UITextView!
     @IBOutlet private weak var deleteButton: UIButton!
     
-    static let standardHeight: CGFloat = 50
     weak var delegate: GoalTableViewCellDelegate?
     private var priorityStackView = UIStackView()
     var indexPath: IndexPath?

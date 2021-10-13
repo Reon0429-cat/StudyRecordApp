@@ -16,10 +16,8 @@ final class GoalSimpleTableViewCell: UITableViewCell {
     @IBOutlet private weak var memoButton: UIButton!
     @IBOutlet private weak var deleteButton: UIButton!
     @IBOutlet private weak var memoTextView: UITextView!
-    @IBOutlet private weak var priorityStackViewBaseView: UIView!
     
     weak var delegate: GoalTableViewCellDelegate?
-    private var priorityStackView = UIStackView()
     var indexPath: IndexPath?
     
     override func awakeFromNib() {
@@ -30,7 +28,6 @@ final class GoalSimpleTableViewCell: UITableViewCell {
         deleteButton.isHidden = true
         memoTextView.backgroundColor = .dynamicColor(light: .white,
                                                      dark: .secondarySystemGroupedBackground)
-        priorityStackViewBaseView.backgroundColor = .clear
         setupBaseView()
         
     }
@@ -44,7 +41,6 @@ final class GoalSimpleTableViewCell: UITableViewCell {
     
     func configure(goal: Category.Goal) {
         setupMemoButton(goal: goal)
-        setupPriorityStackView(goal: goal)
         titleLabel.text = goal.title
         setupMemoTextView(goal: goal)
         setColor()
@@ -85,22 +81,6 @@ private extension GoalSimpleTableViewCell {
         let titleTriangle = goal.isExpanded ?  "▲ " : "▼ "
         memoButton.setTitle(titleTriangle + L10n.memo)
         memoButton.isHidden = goal.memo.isEmpty
-    }
-    
-    func setupPriorityStackView(goal: Category.Goal) {
-        self.priorityStackView.removeFromSuperview()
-        let priorityStackView = PriorityStackView(priority: goal.priority,
-                                                  imageSize: 15)
-        baseView.addSubview(priorityStackView)
-        NSLayoutConstraint.activate([
-            priorityStackView.centerYAnchor.constraint(
-                equalTo: priorityStackViewBaseView.centerYAnchor
-            ),
-            priorityStackView.leadingAnchor.constraint(
-                equalTo: priorityStackViewBaseView.leadingAnchor
-            )
-        ])
-        self.priorityStackView = priorityStackView
     }
     
     func setupBaseView() {
