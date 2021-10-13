@@ -108,6 +108,7 @@ private extension AddAndEditGoalViewController {
     func presentTitleAlertWithTextField(rowType: AddAndEditGoalRowType) {
         let alert = Alert.create(title: L10n.largeTitle)
             .setTextField { textField in
+                textField.tintColor = .dynamicColor(light: .black, dark: .white)
                 textField.text = self.inputtedTitle
                 textField.tag = rowType.rawValue
                 textField.delegate = self
@@ -126,6 +127,7 @@ private extension AddAndEditGoalViewController {
     func presentCategoryAlertWithTextField(rowType: AddAndEditGoalRowType) {
         let alert = Alert.create(title: L10n.largeCategory)
             .setTextField { textField in
+                textField.tintColor = .dynamicColor(light: .black, dark: .white)
                 textField.text = self.inputtedCategoryTitle
                 textField.tag = rowType.rawValue
                 textField.delegate = self

@@ -52,7 +52,9 @@ final class GoalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        goalUseCase.deleteAllCategory()
         createMockCategory()
+
         setupSegmentedControl()
         setupSimpleButton()
         setupTableView()
@@ -70,14 +72,15 @@ final class GoalViewController: UIViewController {
     
     // MARK: - ToDo 消す
     func createMockCategory() {
-        goalUseCase.deleteAllCategory()
-        ["A", "BBB", "CCC", "DD"].enumerated().forEach { index, categoryTitle in
+        ["A", "BBB", "CCC", "DD",
+         "A", "BBB", "CCC", "DD",
+         "A", "BBB", "CCC", "DD",
+         "A", "BBB", "CCC", "DD"].enumerated().forEach { index, categoryTitle in
             let goalTitles = ["000", "111", "222"]
             var goals = [Category.Goal]()
             goalTitles.enumerated().forEach { index, title in
                 let a = categoryTitle + title + categoryTitle + title + categoryTitle + title
-                let b = a + a + a + a + a + a + a + a
-                let goal = Category.Goal(title: b + b + b,
+                let goal = Category.Goal(title: a + a + a,
                                          memo: title + title + title,
                                          isExpanded: false,
                                          priority: .init(mark: .heart,
@@ -284,13 +287,13 @@ extension GoalViewController: GoalHeaderViewDelegate {
     
     func settingButtonDidTapped(convertedSection: Int) {
         let achieveButtonTitle = getListType() == .achieved ? L10n.unarchive : L10n.achieve
-        let alert = Alert.create(preferredStyle: .alert)
+        let alert = Alert.create(preferredStyle: .actionSheet)
             .addAction(title: L10n.add) { self.addButtonDidTapped(convertedSection: convertedSection) }
             .addAction(title: L10n.edit) { self.editButtonDidTapped(convertedSection: convertedSection) }
-            .addAction(title: L10n.delete) { self.deleteButtonDidTapped(convertedSection: convertedSection) }
             .addAction(title: L10n.sort) { self.sortButtonDidTapped(convertedSection: convertedSection) }
             .addAction(title: achieveButtonTitle) { self.achieveButtonDidTapped(convertedSection: convertedSection) }
-            .addAction(title: L10n.close, style: .destructive)
+            .addAction(title: L10n.delete, style: .destructive) { self.deleteButtonDidTapped(convertedSection: convertedSection) }
+            .addAction(title: L10n.close, style: .cancel)
         present(alert, animated: true)
     }
     
@@ -320,6 +323,26 @@ extension GoalViewController: GoalHeaderViewDelegate {
     }
     
     private func editButtonDidTapped(convertedSection: Int) {
+        let category = categories[convertedSection]
+        var _textField = UITextField()
+        let alert = Alert.create(title: L10n.largeTitle, preferredStyle: .alert)
+            .setTextField { textField in
+                textField.tintColor = .dynamicColor(light: .black, dark: .white)
+                let isUncategorized = (category.title == L10n.uncategorized)
+                textField.text = isUncategorized ? "" : category.title
+                _textField = textField
+            }
+            .addAction(title: L10n.close, style: .destructive)
+            .addAction(title: L10n.edit, style: .default) {
+                guard let text = _textField.text else { return }
+                let categoryTitle = text.isEmpty ? L10n.uncategorized : text
+                let newCategory = Category(category: category, title: categoryTitle)
+                self.goalUseCase.update(category: newCategory)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+        present(alert, animated: true)
     }
     
     private func sortButtonDidTapped(convertedSection: Int) {
