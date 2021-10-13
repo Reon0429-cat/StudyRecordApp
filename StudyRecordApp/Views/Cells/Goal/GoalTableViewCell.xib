@@ -31,38 +31,38 @@
                         <rect key="frame" x="10" y="10" width="567" height="180"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vPZ-C7-Duu">
-                                <rect key="frame" x="10" y="5" width="557" height="170"/>
+                                <rect key="frame" x="10" y="5" width="552" height="170"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2lO-fd-LHc">
-                                        <rect key="frame" x="0.0" y="0.0" width="397" height="170"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="412" height="170"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dNV-YD-u3m">
-                                                <rect key="frame" x="0.0" y="0.0" width="397" height="20"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="412" height="20"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="YSP-qv-pn0"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タイトル" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gxc-yv-nke">
-                                                <rect key="frame" x="0.0" y="20" width="397" height="86"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タイトル" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.84999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="gxc-yv-nke">
+                                                <rect key="frame" x="0.0" y="20" width="412" height="86"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="期日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="g7a-aR-4Hy">
-                                                <rect key="frame" x="0.0" y="106" width="397" height="20"/>
+                                                <rect key="frame" x="0.0" y="106" width="412" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="作成日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="TgN-3h-cgG">
-                                                <rect key="frame" x="0.0" y="126" width="397" height="20"/>
+                                                <rect key="frame" x="0.0" y="126" width="412" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pNG-LH-u9x">
-                                                <rect key="frame" x="0.0" y="146" width="397" height="24"/>
+                                                <rect key="frame" x="0.0" y="146" width="412" height="24"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6zK-Zs-qFe">
                                                         <rect key="frame" x="0.0" y="0.0" width="52" height="24"/>
@@ -91,13 +91,13 @@
                                         </constraints>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4iu-Tw-75c">
-                                        <rect key="frame" x="397" y="0.0" width="160" height="170"/>
+                                        <rect key="frame" x="412" y="0.0" width="140" height="170"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="i3d-9F-Unj">
-                                                <rect key="frame" x="10" y="15" width="140" height="140"/>
+                                                <rect key="frame" x="10" y="25" width="120" height="120"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="i3d-9F-Unj" secondAttribute="height" multiplier="1:1" id="6a1-z3-i53"/>
-                                                    <constraint firstAttribute="width" constant="140" id="Zh4-oH-Gif"/>
+                                                    <constraint firstAttribute="width" constant="120" id="Zh4-oH-Gif"/>
                                                 </constraints>
                                             </imageView>
                                         </subviews>
@@ -114,7 +114,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="vPZ-C7-Duu" secondAttribute="bottom" constant="5" id="6pC-Nd-FoP"/>
-                            <constraint firstAttribute="trailing" secondItem="vPZ-C7-Duu" secondAttribute="trailing" id="7ms-oi-iBP"/>
+                            <constraint firstAttribute="trailing" secondItem="vPZ-C7-Duu" secondAttribute="trailing" constant="5" id="7ms-oi-iBP"/>
                             <constraint firstItem="vPZ-C7-Duu" firstAttribute="leading" secondItem="6mO-LY-CIT" secondAttribute="leading" constant="10" id="KHy-Ke-j3a"/>
                             <constraint firstAttribute="height" constant="180" id="XY7-Wm-Pos"/>
                             <constraint firstItem="vPZ-C7-Duu" firstAttribute="top" secondItem="6mO-LY-CIT" secondAttribute="top" constant="5" id="hdE-ra-boi"/>

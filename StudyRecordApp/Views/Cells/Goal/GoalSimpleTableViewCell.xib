@@ -45,7 +45,7 @@
                                     <action selector="memoButtonDidTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Et9-jN-Z6A"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="AvB-7Q-LTL">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.84999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="AvB-7Q-LTL">
                                 <rect key="frame" x="5" y="24.5" width="386" height="21.5"/>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -55,7 +55,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="8AN-IO-ns1" firstAttribute="top" secondItem="AvB-7Q-LTL" secondAttribute="bottom" id="5mw-Kj-PHW"/>
+                            <constraint firstItem="8AN-IO-ns1" firstAttribute="top" secondItem="AvB-7Q-LTL" secondAttribute="bottom" priority="900" id="5mw-Kj-PHW"/>
                             <constraint firstItem="AvB-7Q-LTL" firstAttribute="leading" secondItem="6aX-i8-sgn" secondAttribute="leading" constant="5" id="I5P-9V-4Jn"/>
                             <constraint firstItem="8AN-IO-ns1" firstAttribute="leading" secondItem="6aX-i8-sgn" secondAttribute="leading" constant="5" id="PeN-Fj-erf"/>
                             <constraint firstAttribute="height" constant="70" id="ZUV-Ae-Z8a"/>

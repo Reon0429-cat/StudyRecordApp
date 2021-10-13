@@ -129,12 +129,14 @@ private extension AddAndEditGoalViewController {
                 textField.text = self.inputtedCategoryTitle
                 textField.tag = rowType.rawValue
                 textField.delegate = self
-                let keyboardView = CategoryKeyboardView(frame: CGRect(x: 0,
-                                                                      y: 0,
-                                                                      width: self.view.frame.width,
-                                                                      height: 45))
-                keyboardView.delegate = self
-                textField.inputAccessoryView = keyboardView
+                if !self.goalUseCase.categories.isEmpty {
+                    let keyboardView = CategoryKeyboardView(frame: CGRect(x: 0,
+                                                                          y: 0,
+                                                                          width: self.view.frame.width,
+                                                                          height: 45))
+                    keyboardView.delegate = self
+                    textField.inputAccessoryView = keyboardView
+                }
             }
             .addAction(title: L10n.close,
                        style: .destructive) {

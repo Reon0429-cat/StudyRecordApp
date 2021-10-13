@@ -11,9 +11,6 @@ protocol GoalVCDelegate: ScreenPresentationDelegate,
                          EditButtonSelectable {
 }
 
-// MARK: - ToDo rowの高さを可変にする
-// MARK: - ToDo カテゴリがないときはカテゴリ遷移ビューを非表示にする
-// MARK: - ToDo カテゴリが見切れる
 // MARK: - ToDo 統計機能
 // MARK: - ToDo カテゴリや達成済みのものだけ並び替えられるようにする
 // MARK: - ToDo rowでも達成済みかどうかのマークを切り替えられるようにする
@@ -78,7 +75,9 @@ final class GoalViewController: UIViewController {
             let goalTitles = ["000", "111", "222"]
             var goals = [Category.Goal]()
             goalTitles.enumerated().forEach { index, title in
-                let goal = Category.Goal(title: categoryTitle + title,
+                let a = categoryTitle + title + categoryTitle + title + categoryTitle + title
+                let b = a + a + a + a + a + a + a + a
+                let goal = Category.Goal(title: b + b + b,
                                          memo: title + title + title,
                                          isExpanded: false,
                                          priority: .init(mark: .heart,
