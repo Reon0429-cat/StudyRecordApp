@@ -74,7 +74,7 @@ final class GoalViewController: UIViewController {
     // MARK: - ToDo 消す
     func createMockCategory() {
         goalUseCase.deleteAllCategory()
-        ["A", "BBBB", "CCCCC", "DD"].enumerated().forEach { index, categoryTitle in
+        ["A", "BBB", "CCC", "DD"].enumerated().forEach { index, categoryTitle in
             let goalTitles = ["000", "111", "222"]
             var goals = [Category.Goal]()
             goalTitles.enumerated().forEach { index, title in
@@ -91,7 +91,7 @@ final class GoalViewController: UIViewController {
                 goals.append(goal)
             }
             var title = ""
-            for _ in 0..<50 {
+            for _ in 0..<20 {
                 title += categoryTitle
             }
             let category = Category(title: title,
@@ -187,10 +187,9 @@ private extension GoalViewController {
 extension GoalViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        if getListType() == .achieved {
-            return categories.filter { $0.isAchieved }.count
-        }
-        return categories.filter { !$0.isAchieved }.count
+        return categories.filter {
+            getListType() == .achieved ? $0.isAchieved : !$0.isAchieved
+        }.count
     }
     
     func tableView(_ tableView: UITableView,
@@ -263,6 +262,20 @@ extension GoalViewController: UITableViewDelegate, UITableViewDataSource {
         cell.indexPath = indexPath
         cell.delegate = self
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   willDisplayHeaderView view: UIView,
+                   forSection section: Int) {
+        view.tintColor = .dynamicColor(light: .white,
+                                       dark: .black)
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   willDisplayFooterView view: UIView,
+                   forSection section: Int) {
+        view.tintColor = .dynamicColor(light: .white,
+                                       dark: .black)
     }
     
 }
