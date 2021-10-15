@@ -14,7 +14,6 @@ protocol GoalVCDelegate: ScreenPresentationDelegate,
 // MARK: - ToDo 統計機能
 // MARK: - ToDo カテゴリや達成済みのものだけ並び替えられるようにする
 // MARK: - ToDo rowでも達成済みかどうかのマークを切り替えられるようにする
-// MARK: - ToDo セクションのfoldingButtonがタップされたら一番上にスクロールする
 
 final class GoalViewController: UIViewController {
     
@@ -52,9 +51,9 @@ final class GoalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        goalUseCase.deleteAllCategory()
-        createMockCategory()
-
+//        goalUseCase.deleteAllCategory()
+//        createMockCategory()
+        
         setupSegmentedControl()
         setupSimpleButton()
         setupTableView()
@@ -73,10 +72,8 @@ final class GoalViewController: UIViewController {
     // MARK: - ToDo 消す
     func createMockCategory() {
         ["A", "BBB", "CCC", "DD",
-         "A", "BBB", "CCC", "DD",
-         "A", "BBB", "CCC", "DD",
-         "A", "BBB", "CCC", "DD"].enumerated().forEach { index, categoryTitle in
-            let goalTitles = ["000", "111", "222"]
+         "E", "FF", "GGGG", "HH"].enumerated().forEach { index, categoryTitle in
+            let goalTitles = ["000000", "111111", "222222"]
             var goals = [Category.Goal]()
             goalTitles.enumerated().forEach { index, title in
                 let a = categoryTitle + title + categoryTitle + title + categoryTitle + title

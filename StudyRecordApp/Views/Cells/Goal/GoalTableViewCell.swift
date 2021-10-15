@@ -73,6 +73,13 @@ final class GoalTableViewCell: UITableViewCell {
         
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        myImageView.image = nil
+        
+    }
+    
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         guard let traitCollection = previousTraitCollection else { return }
         if traitCollection.hasDifferentColorAppearance(comparedTo: self.traitCollection) {
