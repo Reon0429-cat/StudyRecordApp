@@ -81,6 +81,7 @@
 "achieve" = "achieve";
 "unarchive" = "unarchive";
 "unarchived" = "unarchived";
+"overall" = "overall";
 
 "login" = "Login";
 "signUp" = "SignUp";

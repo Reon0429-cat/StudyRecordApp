@@ -169,7 +169,7 @@ private extension AddAndEditGoalViewController {
                                  memo: inputtedMemo,
                                  isExpanded: false,
                                  priority: inputtedPriority,
-                                 isChecked: false,
+                                 isChecked: getGoalIsChecked(),
                                  dueDate: inputtedDate.due,
                                  createdDate: inputtedDate.created,
                                  imageData: inputtedImageData,
@@ -208,6 +208,16 @@ private extension AddAndEditGoalViewController {
                 case .edit:
                     guard let indexPath = selectedIndexPath else { abort() }
                     return indexPath.row
+            }
+        }
+        
+        func getGoalIsChecked() -> Bool {
+            switch goalScreenType {
+                case .add, .sectionAdd, .categoryAdd:
+                    return false
+                case .edit:
+                    guard let indexPath = selectedIndexPath else { abort() }
+                    return goalUseCase.categories[indexPath.section].goals[indexPath.row].isChecked
             }
         }
         

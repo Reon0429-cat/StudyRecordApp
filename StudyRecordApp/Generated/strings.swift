@@ -232,6 +232,8 @@ internal enum L10n {
   internal static let oneTimeLeft = L10n.tr("Localizable", "oneTimeLeft")
   /// Organic
   internal static let organic = L10n.tr("Localizable", "organic")
+  /// overall
+  internal static let overall = L10n.tr("Localizable", "overall")
   /// Overseas
   internal static let overseas = L10n.tr("Localizable", "overseas")
   /// Passcode
@@ -261,6 +263,8 @@ internal enum L10n {
   internal static let pleaseEnterYourCurrentPasscode = L10n.tr("Localizable", "pleaseEnterYourCurrentPasscode")
   /// Pop
   internal static let pop = L10n.tr("Localizable", "pop")
+  /// priority
+  internal static let priority = L10n.tr("Localizable", "priority")
   /// Privacy policy
   internal static let privacyPolicy = L10n.tr("Localizable", "privacyPolicy")
   /// Push Notification
@@ -357,6 +361,8 @@ internal enum L10n {
   internal static let twoTimeLeft = L10n.tr("Localizable", "twoTimeLeft")
   /// unarchive
   internal static let unarchive = L10n.tr("Localizable", "unarchive")
+  /// unarchived
+  internal static let unarchived = L10n.tr("Localizable", "unarchived")
   /// uncategorized
   internal static let uncategorized = L10n.tr("Localizable", "uncategorized")
   /// Unknown error

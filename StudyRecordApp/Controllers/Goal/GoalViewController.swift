@@ -11,7 +11,6 @@ protocol GoalVCDelegate: ScreenPresentationDelegate,
                          EditButtonSelectable {
 }
 
-// MARK: - ToDo 統計機能
 // MARK: - ToDo カテゴリや達成済みのものだけ並び替えられるようにする
 
 final class GoalViewController: UIViewController {
@@ -131,7 +130,7 @@ private extension GoalViewController {
     }
     
     @IBAction func statisticsButtonDidTapped(_ sender: Any) {
-        
+        present(GoalStatisticsViewController.self)
     }
     
 }
