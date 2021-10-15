@@ -24,6 +24,7 @@ enum SystemName: String {
     case xmarkCircle = "xmark.circle"
     case arrowtriangleDownFill = "arrowtriangle.down.fill"
     case arrowtriangleUpfill = "arrowtriangle.up.fill"
+    case checkmarkCircleFill = "checkmark.circle.fill"
 }
 
 extension UIImage {

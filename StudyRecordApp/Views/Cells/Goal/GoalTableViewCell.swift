@@ -38,6 +38,7 @@ protocol GoalTableViewCellDelegate: AnyObject {
     func goalViewDidTapped(indexPath: IndexPath)
     func baseViewLongPressDidRecognized()
     func deleteButtonDidTapped(indexPath: IndexPath)
+    func achievementButtonDidTapped(indexPath: IndexPath)
 }
 
 extension GoalTableViewCell: GoalTableViewCellProtocol { }
@@ -54,6 +55,7 @@ final class GoalTableViewCell: UITableViewCell {
     @IBOutlet private weak var memoButton: UIButton!
     @IBOutlet private weak var memoTextView: UITextView!
     @IBOutlet private weak var deleteButton: UIButton!
+    @IBOutlet private weak var achievementButton: UIButton!
     
     weak var delegate: GoalTableViewCellDelegate?
     private var priorityStackView = UIStackView()
@@ -98,6 +100,7 @@ final class GoalTableViewCell: UITableViewCell {
         myImageView.image = Converter.convertToImage(from: goal.imageData)
         imageViewBaseView.isHidden = (goal.imageData == nil)
         setupMemoTextView(goal: goal)
+        setupAchievementButton(goal: goal)
         setColor()
     }
     
@@ -127,6 +130,11 @@ private extension GoalTableViewCell {
         delegate?.deleteButtonDidTapped(indexPath: indexPath)
     }
     
+    @IBAction func achievementButtonDidTapped(_ sender: Any) {
+        guard let indexPath = indexPath else { return }
+        delegate?.achievementButtonDidTapped(indexPath: indexPath)
+    }
+    
 }
 
 // MARK: - setup
@@ -152,6 +160,16 @@ private extension GoalTableViewCell {
             )
         ])
         self.priorityStackView = priorityStackView
+    }
+    
+    func setupAchievementButton(goal: Category.Goal) {
+        let image: UIImage = {
+            if goal.isChecked {
+                return UIImage(systemName: .checkmarkCircleFill)
+            }
+            return UIImage(systemName: .circle)
+        }()
+        achievementButton.setImage(image)
     }
     
     func setupBaseView() {

@@ -43,6 +43,18 @@ final class GoalUseCase {
         repository.update(category: newCategory)
     }
     
+    func toggleGoalIsChecked(at indexPath: IndexPath) {
+        let category = repository.read(at: indexPath.section)
+        let goal = category.goals[indexPath.row]
+        var newGoals = category.goals
+        let newGoal = Category.Goal(goal: goal,
+                                    isChecked: !goal.isChecked)
+        newGoals[indexPath.row] = newGoal
+        let newCategory = Category(category: category,
+                                   goals: newGoals)
+        repository.update(category: newCategory)
+    }
+    
     func toggleGoalIsExpanded(at indexPath: IndexPath) {
         let category = repository.read(at: indexPath.section)
         let goal = category.goals[indexPath.row]

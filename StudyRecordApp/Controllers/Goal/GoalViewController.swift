@@ -13,7 +13,6 @@ protocol GoalVCDelegate: ScreenPresentationDelegate,
 
 // MARK: - ToDo 統計機能
 // MARK: - ToDo カテゴリや達成済みのものだけ並び替えられるようにする
-// MARK: - ToDo rowでも達成済みかどうかのマークを切り替えられるようにする
 
 final class GoalViewController: UIViewController {
     
@@ -82,6 +81,7 @@ final class GoalViewController: UIViewController {
                                          isExpanded: false,
                                          priority: .init(mark: .heart,
                                                          number: .one),
+                                         isChecked: false,
                                          dueDate: Date(),
                                          createdDate: Date(),
                                          imageData: nil,
@@ -398,6 +398,18 @@ extension GoalViewController: GoalTableViewCellDelegate {
                 self.dismiss(animated: true)
             }
         present(alert, animated: true)
+    }
+    
+    func achievementButtonDidTapped(indexPath: IndexPath) {
+        let convertedIndexPath = IndexPath(row: indexPath.row,
+                                           section: convert(section: indexPath.section))
+        goalUseCase.toggleGoalIsChecked(at: convertedIndexPath)
+        DispatchQueue.main.async {
+            let section = self.reconvert(convertedSection: convertedIndexPath.section)
+            let indexPath = IndexPath(row: convertedIndexPath.row,
+                                      section: section)
+            self.tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
     }
     
     func goalViewDidTapped(indexPath: IndexPath) {
