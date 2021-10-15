@@ -80,6 +80,7 @@
 "achieved" = "achieved";
 "achieve" = "achieve";
 "unarchive" = "unarchive";
+"unarchived" = "unarchived";
 
 "login" = "Login";
 "signUp" = "SignUp";
@@ -118,6 +119,8 @@
 "simple" = "simple";
 
 "largePriority" = "Priority";
+"priority" = "priority";
+
 "dueDate" = "Due Date";
 "createdDate" = "Created Date";
 "photo" = "Photo";
