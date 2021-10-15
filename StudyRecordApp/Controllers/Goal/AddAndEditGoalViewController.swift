@@ -169,6 +169,7 @@ private extension AddAndEditGoalViewController {
                                  memo: inputtedMemo,
                                  isExpanded: false,
                                  priority: inputtedPriority,
+                                 isChecked: false,
                                  dueDate: inputtedDate.due,
                                  createdDate: inputtedDate.created,
                                  imageData: inputtedImageData,

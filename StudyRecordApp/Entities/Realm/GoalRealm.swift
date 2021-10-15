@@ -26,6 +26,7 @@ final class GoalRealm: Object {
     @objc dynamic var memo: String = ""
     @objc dynamic var isExpanded: Bool = false
     @objc dynamic var priority: PriorityRealm? = PriorityRealm()
+    @objc dynamic var isChecked: Bool = false
     @objc dynamic var dueDate: Date = Date()
     @objc dynamic var createdDate: Date = Date()
     @objc dynamic var imageData: Data?

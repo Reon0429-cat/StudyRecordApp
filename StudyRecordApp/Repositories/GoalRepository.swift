@@ -145,6 +145,7 @@ private extension Category.Goal {
                   isExpanded: goal.isExpanded,
                   priority: goal.priority?.toCommon
                   ?? Priority(mark: .star, number: .one),
+                  isChecked: goal.isChecked,
                   dueDate: goal.dueDate,
                   createdDate: goal.createdDate,
                   imageData: goal.imageData,
@@ -185,6 +186,7 @@ private extension GoalRealm {
                                  memo: goal.memo,
                                  isExpanded: goal.isExpanded,
                                  priority: goal.priority,
+                                 isChecked: goal.isChecked,
                                  dueDate: goal.dueDate,
                                  createdDate: goal.createdDate,
                                  imageData: goal.imageData,
@@ -194,6 +196,7 @@ private extension GoalRealm {
         self.memo = goal.memo
         self.isExpanded = goal.isExpanded
         self.priority = goal.realmPriority
+        self.isChecked = goal.isChecked
         self.dueDate = goal.dueDate
         self.createdDate = goal.createdDate
         self.imageData = goal.imageData

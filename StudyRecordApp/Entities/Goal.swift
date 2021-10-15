@@ -17,14 +17,15 @@ struct Category {
     let identifier: String
     
     struct Goal {
-        var title: String
-        var memo: String
-        var isExpanded: Bool
-        var priority: Priority
-        var dueDate: Date
-        var createdDate: Date
-        var imageData: Data?
-        var order: Int
+        let title: String
+        let memo: String
+        let isExpanded: Bool
+        let priority: Priority
+        let isChecked: Bool
+        let dueDate: Date
+        let createdDate: Date
+        let imageData: Data?
+        let order: Int
         let identifier: String
         
         struct Priority {
@@ -105,6 +106,7 @@ extension Category.Goal {
          memo: String? = nil,
          isExpanded: Bool? = nil,
          priority: Category.Goal.Priority? = nil,
+         isChecked: Bool? = nil,
          dueDate: Date? = nil,
          createdDate: Date? = nil,
          imageData: Data? = nil,
@@ -129,6 +131,11 @@ extension Category.Goal {
             self.priority = priority
         } else {
             self.priority = goal.priority
+        }
+        if let isChecked = isChecked {
+            self.isChecked = isChecked
+        } else {
+            self.isChecked = goal.isChecked
         }
         if let dueDate = dueDate {
             self.dueDate = dueDate
