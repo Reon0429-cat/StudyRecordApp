@@ -74,36 +74,27 @@ extension GoalStatisticsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCustomCell(with: GoalStatisticsTableViewCell.self)
-        if shouldOnlyUnachievedCategory {
-            let categories = categories.filter { !$0.isAchieved }
-            if indexPath.row == 0 {
-                let goals = categories.map { $0.goals }.flatMap { $0 }
-                let category = Category(title: L10n.overall,
-                                        isExpanded: false,
-                                        goals: goals,
-                                        isAchieved: false,
-                                        order: Int.max,
-                                        identifier: UUID().uuidString)
-                cell.configure(category: category)
-            } else {
-                let category = categories[indexPath.row - 1]
-                cell.configure(category: category)
+        let categories: [Category] = {
+            if shouldOnlyUnachievedCategory {
+                return self.categories.filter { !$0.isAchieved }
             }
-        } else {
-            if indexPath.row == 0 {
+            return self.categories
+        }()
+        let category: Category = {
+            let isOverall = indexPath.row == 0
+            if isOverall {
                 let goals = categories.map { $0.goals }.flatMap { $0 }
-                let category = Category(title: L10n.overall,
-                                        isExpanded: false,
-                                        goals: goals,
-                                        isAchieved: false,
-                                        order: Int.max,
-                                        identifier: UUID().uuidString)
-                cell.configure(category: category)
-            } else {
-                let category = categories[indexPath.row - 1]
-                cell.configure(category: category)
+                return Category(title: L10n.overall,
+                                isExpanded: false,
+                                goals: goals,
+                                isAchieved: false,
+                                order: Int.max,
+                                identifier: UUID().uuidString)
             }
-        }
+            // 帳尻を合わせるために-1
+            return categories[indexPath.row - 1]
+        }()
+        cell.configure(category: category)
         return cell
     }
     
