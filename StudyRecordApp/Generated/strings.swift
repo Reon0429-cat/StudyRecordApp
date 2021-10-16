@@ -305,6 +305,8 @@ internal enum L10n {
   internal static let shortHour = L10n.tr("Localizable", "shortHour")
   /// m
   internal static let shortMinute = L10n.tr("Localizable", "shortMinute")
+  /// Show only category unachieved.
+  internal static let showOnlyCategoryUnachieved = L10n.tr("Localizable", "showOnlyCategoryUnachieved")
   /// SignUp
   internal static let signUp = L10n.tr("Localizable", "signUp")
   /// simple

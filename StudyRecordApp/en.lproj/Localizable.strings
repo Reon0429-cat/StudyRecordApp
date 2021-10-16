@@ -82,6 +82,7 @@
 "unarchive" = "unarchive";
 "unarchived" = "unarchived";
 "overall" = "overall";
+"showOnlyCategoryUnachieved" = "Show only category unachieved.";
 
 "login" = "Login";
 "signUp" = "SignUp";
