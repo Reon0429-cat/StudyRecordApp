@@ -11,6 +11,7 @@ final class GoalStatisticsViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var settingUnachievedCategoryButton: RadioButton!
+    @IBOutlet private weak var separatorView: UIView!
     
     private let settingUnachievedCategoryKey = "SettingUnachievedCategoryKey"
     private var goalUseCase = GoalUseCase(
@@ -30,6 +31,7 @@ final class GoalStatisticsViewController: UIViewController {
         
         setupTableView()
         setupSettingUnachievedCategoryButton()
+        setupSeparatorView()
         
     }
     
@@ -118,8 +120,13 @@ private extension GoalStatisticsViewController {
     }
     
     func setupSettingUnachievedCategoryButton() {
+        settingUnachievedCategoryButton.setTitle(L10n.showOnlyCategoryUnachieved)
         let isFill = shouldOnlyUnachievedCategory
         settingUnachievedCategoryButton.setImage(isFilled: isFill)
+    }
+    
+    func setupSeparatorView() {
+        separatorView.backgroundColor = .separatorColor
     }
     
 }

@@ -8,13 +8,16 @@
 import UIKit
 
 final class GoalStatisticsTableViewCell: UITableViewCell {
-
+    
     @IBOutlet private weak var categoryNameLabel: UILabel!
     @IBOutlet private weak var achievementLabel: UILabel!
+    @IBOutlet private weak var achievementSeparatorView: UIView!
     @IBOutlet private weak var unarchievementLabel: UILabel!
+    @IBOutlet private weak var unarchievementSeparatorView: UIView!
     @IBOutlet private weak var achievementScoreLabel: UILabel!
     @IBOutlet private weak var unarchievementScoreLabel: UILabel!
     @IBOutlet private weak var priorityLabel: UILabel!
+    @IBOutlet private weak var prioritySeparatorView: UIView!
     @IBOutlet private weak var oneStarPriorityCountLabel: UILabel!
     @IBOutlet private weak var twoStarPriorityCountLabel: UILabel!
     @IBOutlet private weak var threeStarPriorityCountLabel: UILabel!
@@ -33,6 +36,7 @@ final class GoalStatisticsTableViewCell: UITableViewCell {
         achievementLabel.text = L10n.achieved
         unarchievementLabel.text = L10n.unarchived
         priorityLabel.text = L10n.priority
+        setupSeparatorView()
         
     }
     
@@ -82,5 +86,14 @@ private extension GoalStatisticsTableViewCell {
         fourHeartPriorityCountLabel.text = "\(heartGoals.filter { $0.priority.number == .four }.count)"
         fiveHeartPriorityCountLabel.text = "\(heartGoals.filter { $0.priority.number == .five }.count)"
     }
-
+    
+    func setupSeparatorView() {
+        achievementSeparatorView.backgroundColor = .dynamicColor(light: .subColor ?? .black,
+                                                                 dark: .subColor ?? .white)
+        unarchievementSeparatorView.backgroundColor = .dynamicColor(light: .subColor ?? .black,
+                                                                    dark: .subColor ?? .white)
+        prioritySeparatorView.backgroundColor = .dynamicColor(light: .subColor ?? .black,
+                                                              dark: .subColor ?? .white)
+    }
+    
 }
