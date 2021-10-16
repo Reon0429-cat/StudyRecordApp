@@ -1,64 +1,23 @@
 //
-//  GoalTableViewCell.swift
+//  GoalSimpleTableViewCell.swift
 //  StudyRecordApp
 //
-//  Created by 大西玲音 on 2021/08/31.
+//  Created by 大西玲音 on 2021/10/11.
 //
 
 import UIKit
 
-// GoalTableViewCellとGoalSimpleTableViewCellの共通のインターフェース
-protocol GoalTableViewCellProtocol where Self: UITableViewCell {
-    func configure(goal: Category.Goal)
-    func isHidden(_ isHidden: Bool)
-    func changeMode(isEdit: Bool, isEvenIndex: Bool)
-    var indexPath: IndexPath? { get set }
-    var delegate: GoalTableViewCellDelegate? { get set }
-}
+extension GoalSimpleTableViewCell: GoalTableViewCellProtocol { }
 
-extension GoalTableViewCellProtocol {
+final class GoalSimpleTableViewCell: UITableViewCell {
     
-    func changeMode(isEdit: Bool,
-                    isEvenIndex: Bool,
-                    deleteButton: UIButton,
-                    baseView: UIView) {
-        if isEdit {
-            deleteButton.setFade(.in)
-            baseView.vibrate(.start, isEvenIndex: isEvenIndex, range: 0.8)
-        } else {
-            deleteButton.setFade(.out)
-            baseView.vibrate(.stop, range: 0.8)
-        }
-    }
-    
-}
-
-protocol GoalTableViewCellDelegate: AnyObject {
-    func memoButtonDidTapped(indexPath: IndexPath)
-    func goalViewDidTapped(indexPath: IndexPath)
-    func baseViewLongPressDidRecognized()
-    func deleteButtonDidTapped(indexPath: IndexPath)
-    func achievementButtonDidTapped(indexPath: IndexPath)
-}
-
-extension GoalTableViewCell: GoalTableViewCellProtocol { }
-
-final class GoalTableViewCell: UITableViewCell {
-    
-    @IBOutlet private weak var priorityStackViewBaseView: UIView!
     @IBOutlet private weak var baseView: UIView!
     @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var dueDateLabel: UILabel!
-    @IBOutlet private weak var createdDateLabel: UILabel!
-    @IBOutlet private weak var myImageView: UIImageView!
-    @IBOutlet private weak var imageViewBaseView: UIView!
     @IBOutlet private weak var memoButton: UIButton!
-    @IBOutlet private weak var memoTextView: UITextView!
     @IBOutlet private weak var deleteButton: UIButton!
-    @IBOutlet private weak var achievementButton: UIButton!
+    @IBOutlet private weak var memoTextView: UITextView!
     
     weak var delegate: GoalTableViewCellDelegate?
-    private var priorityStackView = UIStackView()
     var indexPath: IndexPath?
     
     override func awakeFromNib() {
@@ -66,19 +25,10 @@ final class GoalTableViewCell: UITableViewCell {
         
         backgroundColor = .clear
         selectionStyle = .none
-        myImageView.layer.cornerRadius = 10
         deleteButton.isHidden = true
         memoTextView.backgroundColor = .dynamicColor(light: .white,
                                                      dark: .secondarySystemGroupedBackground)
-        priorityStackViewBaseView.backgroundColor = .clear
         setupBaseView()
-        
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        
-        myImageView.image = nil
         
     }
     
@@ -91,16 +41,8 @@ final class GoalTableViewCell: UITableViewCell {
     
     func configure(goal: Category.Goal) {
         setupMemoButton(goal: goal)
-        setupPriorityStackView(goal: goal)
         titleLabel.text = goal.title
-        let createdDateString = Converter.convertToString(from: goal.createdDate)
-        let dueDateString = Converter.convertToString(from: goal.dueDate)
-        createdDateLabel.text = "\(L10n.createdDate): " + createdDateString
-        dueDateLabel.text = "\(L10n.dueDate): " + dueDateString
-        myImageView.image = Converter.convertToImage(from: goal.imageData)
-        imageViewBaseView.isHidden = (goal.imageData == nil)
         setupMemoTextView(goal: goal)
-        setupAchievementButton(goal: goal)
         setColor()
     }
     
@@ -118,7 +60,7 @@ final class GoalTableViewCell: UITableViewCell {
 }
 
 // MARK: - IBAction func
-private extension GoalTableViewCell {
+private extension GoalSimpleTableViewCell {
     
     @IBAction func memoButtonDidTapped(_ sender: Any) {
         guard let indexPath = indexPath else { return }
@@ -130,46 +72,15 @@ private extension GoalTableViewCell {
         delegate?.deleteButtonDidTapped(indexPath: indexPath)
     }
     
-    @IBAction func achievementButtonDidTapped(_ sender: Any) {
-        guard let indexPath = indexPath else { return }
-        delegate?.achievementButtonDidTapped(indexPath: indexPath)
-    }
-    
 }
 
 // MARK: - setup
-private extension GoalTableViewCell {
+private extension GoalSimpleTableViewCell {
     
     func setupMemoButton(goal: Category.Goal) {
         let titleTriangle = goal.isExpanded ?  "▲ " : "▼ "
         memoButton.setTitle(titleTriangle + L10n.memo)
         memoButton.isHidden = goal.memo.isEmpty
-    }
-    
-    func setupPriorityStackView(goal: Category.Goal) {
-        self.priorityStackView.removeFromSuperview()
-        let priorityStackView = PriorityStackView(priority: goal.priority,
-                                                  imageSize: 15)
-        baseView.addSubview(priorityStackView)
-        NSLayoutConstraint.activate([
-            priorityStackView.centerYAnchor.constraint(
-                equalTo: priorityStackViewBaseView.centerYAnchor
-            ),
-            priorityStackView.leadingAnchor.constraint(
-                equalTo: priorityStackViewBaseView.leadingAnchor
-            )
-        ])
-        self.priorityStackView = priorityStackView
-    }
-    
-    func setupAchievementButton(goal: Category.Goal) {
-        let image: UIImage = {
-            if goal.isChecked {
-                return UIImage(systemName: .checkmarkCircleFill)
-            }
-            return UIImage(systemName: .circle)
-        }()
-        achievementButton.setImage(image)
     }
     
     func setupBaseView() {

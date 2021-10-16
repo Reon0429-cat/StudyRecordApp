@@ -43,6 +43,18 @@ final class GoalUseCase {
         repository.update(category: newCategory)
     }
     
+    func toggleGoalIsChecked(at indexPath: IndexPath) {
+        let category = repository.read(at: indexPath.section)
+        let goal = category.goals[indexPath.row]
+        var newGoals = category.goals
+        let newGoal = Category.Goal(goal: goal,
+                                    isChecked: !goal.isChecked)
+        newGoals[indexPath.row] = newGoal
+        let newCategory = Category(category: category,
+                                   goals: newGoals)
+        repository.update(category: newCategory)
+    }
+    
     func toggleGoalIsExpanded(at indexPath: IndexPath) {
         let category = repository.read(at: indexPath.section)
         let goal = category.goals[indexPath.row]
@@ -62,8 +74,8 @@ final class GoalUseCase {
         repository.update(category: newCategory)
     }
     
-    func deleteAll() {
-        repository.deleteAll()
+    func deleteAllCategory() {
+        repository.deleteAllCategory()
     }
     
     func deleteGoal(at indexPath: IndexPath) {
@@ -90,6 +102,13 @@ final class GoalUseCase {
                                              section: tappedSection)
         repository.sortGoal(from: sourceIndexPath,
                             to: destinationIndexPath)
+    }
+    
+    func toggleIsAchieved(at section: Int) {
+        let category = repository.readAll()[section]
+        let newCategory = Category(category: category,
+                                   isAchieved: !category.isAchieved)
+        repository.update(category: newCategory)
     }
     
 }

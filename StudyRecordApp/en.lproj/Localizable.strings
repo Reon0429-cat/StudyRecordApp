@@ -72,10 +72,17 @@
 "largeMemo" = "Memo";
 "graphColor" = "Graph Color";
 "largeSort" = "Sort";
+"sort" = "sort";
 "largeSend" = "Send";
 "delete" = "delete";
 "decision" = "decision";
 "largeDiscard" = "Discard";
+"achieved" = "achieved";
+"achieve" = "achieve";
+"unarchive" = "unarchive";
+"unarchived" = "unarchived";
+"overall" = "overall";
+"showOnlyCategoryUnachieved" = "Show only category unachieved.";
 
 "login" = "Login";
 "signUp" = "SignUp";
@@ -114,6 +121,8 @@
 "simple" = "simple";
 
 "largePriority" = "Priority";
+"priority" = "priority";
+
 "dueDate" = "Due Date";
 "createdDate" = "Created Date";
 "photo" = "Photo";

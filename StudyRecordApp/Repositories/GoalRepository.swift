@@ -14,7 +14,7 @@ protocol GoalRepositoryProtocol {
     func readAll() -> [Category]
     func update(category: Category)
     func delete(category: Category)
-    func deleteAll()
+    func deleteAllCategory()
     func deleteGoal(indexPath: IndexPath)
     func sortCategory(from sourceIndexPath: IndexPath,
                       to destinationIndexPath: IndexPath)
@@ -54,8 +54,8 @@ final class GoalRepository: GoalRepositoryProtocol {
         dataStore.delete(category: categoryRealm)
     }
     
-    func deleteAll() {
-        dataStore.deleteAll()
+    func deleteAllCategory() {
+        dataStore.deleteAllCategory()
     }
     
     func deleteGoal(indexPath: IndexPath) {
@@ -97,6 +97,7 @@ private extension Category {
         self = Category(title: category.title,
                         isExpanded: category.isExpanded,
                         goals: category.commonGoals,
+                        isAchieved: category.isAchieved,
                         order: category.order,
                         identifier: category.identifier)
     }
@@ -110,11 +111,13 @@ private extension CategoryRealm {
         let category = Category(title: category.title,
                                 isExpanded: category.isExpanded,
                                 goals: category.goals,
+                                isAchieved: category.isAchieved,
                                 order: category.order,
                                 identifier: category.identifier)
         self.title = category.title
         self.isExpanded = category.isExpanded
         self.goals = category.realmGoals
+        self.isAchieved = category.isAchieved
         self.order = category.order
         self.identifier = category.identifier
     }
@@ -142,6 +145,7 @@ private extension Category.Goal {
                   isExpanded: goal.isExpanded,
                   priority: goal.priority?.toCommon
                   ?? Priority(mark: .star, number: .one),
+                  isChecked: goal.isChecked,
                   dueDate: goal.dueDate,
                   createdDate: goal.createdDate,
                   imageData: goal.imageData,
@@ -182,6 +186,7 @@ private extension GoalRealm {
                                  memo: goal.memo,
                                  isExpanded: goal.isExpanded,
                                  priority: goal.priority,
+                                 isChecked: goal.isChecked,
                                  dueDate: goal.dueDate,
                                  createdDate: goal.createdDate,
                                  imageData: goal.imageData,
@@ -191,6 +196,7 @@ private extension GoalRealm {
         self.memo = goal.memo
         self.isExpanded = goal.isExpanded
         self.priority = goal.realmPriority
+        self.isChecked = goal.isChecked
         self.dueDate = goal.dueDate
         self.createdDate = goal.createdDate
         self.imageData = goal.imageData

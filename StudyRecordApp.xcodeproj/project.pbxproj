@@ -138,6 +138,10 @@
 		AB43980826DE2D72008C8CA8 /* GoalPriorityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43980626DE2D72008C8CA8 /* GoalPriorityTableViewCell.swift */; };
 		AB43980926DE2D72008C8CA8 /* GoalPriorityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB43980726DE2D72008C8CA8 /* GoalPriorityTableViewCell.xib */; };
 		AB4D6BBE2672099C00E5286E /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4D6BBD2672099C00E5286E /* UIButton+Extension.swift */; };
+		AB4F7C7C2719E0C8000A8D83 /* GoalStatistics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB4F7C7B2719E0C8000A8D83 /* GoalStatistics.storyboard */; };
+		AB4F7C7E2719E0E5000A8D83 /* GoalStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4F7C7D2719E0E5000A8D83 /* GoalStatisticsViewController.swift */; };
+		AB4F7C812719E3E1000A8D83 /* GoalStatisticsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4F7C7F2719E3E1000A8D83 /* GoalStatisticsTableViewCell.swift */; };
+		AB4F7C822719E3E1000A8D83 /* GoalStatisticsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB4F7C802719E3E1000A8D83 /* GoalStatisticsTableViewCell.xib */; };
 		AB71076F26F94E4A00F4F695 /* DateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB71076E26F94E4A00F4F695 /* DateType.swift */; };
 		AB86A85A26D4915700EA990A /* HalfModalDismissInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86A85426D4915700EA990A /* HalfModalDismissInteractiveTransition.swift */; };
 		AB86A85B26D4915700EA990A /* HalfModalDismissAnimatedTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86A85526D4915700EA990A /* HalfModalDismissAnimatedTransition.swift */; };
@@ -165,6 +169,8 @@
 		AB93C2C3266BC28E00C3AE8F /* EditStudyRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C2C2266BC28E00C3AE8F /* EditStudyRecordViewController.swift */; };
 		AB93C2C5266BC2D600C3AE8F /* EditStudyRecord.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB93C2C4266BC2D600C3AE8F /* EditStudyRecord.storyboard */; };
 		AB9B4FD626D771C5001A7BAB /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9B4FD526D771C5001A7BAB /* UITextField+Extension.swift */; };
+		AB9F30F527140DCE008A79A5 /* GoalSimpleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9F30F327140DCE008A79A5 /* GoalSimpleTableViewCell.swift */; };
+		AB9F30F627140DCE008A79A5 /* GoalSimpleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB9F30F427140DCE008A79A5 /* GoalSimpleTableViewCell.xib */; };
 		ABA056F626B4C7D800E3DF01 /* StudyRecordGraphColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA056F426B4C7D800E3DF01 /* StudyRecordGraphColorTableViewCell.swift */; };
 		ABA056F726B4C7D800E3DF01 /* StudyRecordGraphColorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABA056F526B4C7D800E3DF01 /* StudyRecordGraphColorTableViewCell.xib */; };
 		ABA056FF26B50CC700E3DF01 /* GraphColorTileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABA056FE26B50CC700E3DF01 /* GraphColorTileView.xib */; };
@@ -330,6 +336,10 @@
 		AB43980626DE2D72008C8CA8 /* GoalPriorityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPriorityTableViewCell.swift; sourceTree = "<group>"; };
 		AB43980726DE2D72008C8CA8 /* GoalPriorityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoalPriorityTableViewCell.xib; sourceTree = "<group>"; };
 		AB4D6BBD2672099C00E5286E /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		AB4F7C7B2719E0C8000A8D83 /* GoalStatistics.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoalStatistics.storyboard; sourceTree = "<group>"; };
+		AB4F7C7D2719E0E5000A8D83 /* GoalStatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalStatisticsViewController.swift; sourceTree = "<group>"; };
+		AB4F7C7F2719E3E1000A8D83 /* GoalStatisticsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalStatisticsTableViewCell.swift; sourceTree = "<group>"; };
+		AB4F7C802719E3E1000A8D83 /* GoalStatisticsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoalStatisticsTableViewCell.xib; sourceTree = "<group>"; };
 		AB71076E26F94E4A00F4F695 /* DateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateType.swift; sourceTree = "<group>"; };
 		AB86A85426D4915700EA990A /* HalfModalDismissInteractiveTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalDismissInteractiveTransition.swift; sourceTree = "<group>"; };
 		AB86A85526D4915700EA990A /* HalfModalDismissAnimatedTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalDismissAnimatedTransition.swift; sourceTree = "<group>"; };
@@ -359,6 +369,8 @@
 		AB93C2C2266BC28E00C3AE8F /* EditStudyRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStudyRecordViewController.swift; sourceTree = "<group>"; };
 		AB93C2C4266BC2D600C3AE8F /* EditStudyRecord.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditStudyRecord.storyboard; sourceTree = "<group>"; };
 		AB9B4FD526D771C5001A7BAB /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		AB9F30F327140DCE008A79A5 /* GoalSimpleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSimpleTableViewCell.swift; sourceTree = "<group>"; };
+		AB9F30F427140DCE008A79A5 /* GoalSimpleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoalSimpleTableViewCell.xib; sourceTree = "<group>"; };
 		ABA056F426B4C7D800E3DF01 /* StudyRecordGraphColorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRecordGraphColorTableViewCell.swift; sourceTree = "<group>"; };
 		ABA056F526B4C7D800E3DF01 /* StudyRecordGraphColorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudyRecordGraphColorTableViewCell.xib; sourceTree = "<group>"; };
 		ABA056FE26B50CC700E3DF01 /* GraphColorTileView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GraphColorTileView.xib; sourceTree = "<group>"; };
@@ -485,6 +497,7 @@
 				AB4397F226DD3B32008C8CA8 /* GoalPriorityViewController.swift */,
 				ABFAB1E226E11FEC0095EC20 /* GoalTimeViewController.swift */,
 				ABFB3A5F271024F400BC6D3F /* GoalSortViewController.swift */,
+				AB4F7C7D2719E0E5000A8D83 /* GoalStatisticsViewController.swift */,
 			);
 			path = Goal;
 			sourceTree = "<group>";
@@ -507,6 +520,7 @@
 				AB4397F026DD3B2A008C8CA8 /* GoalPriority.storyboard */,
 				ABFAB1E426E11FF80095EC20 /* GoalTime.storyboard */,
 				ABFB3A61271024FF00BC6D3F /* GoalSort.storyboard */,
+				AB4F7C7B2719E0C8000A8D83 /* GoalStatistics.storyboard */,
 			);
 			path = Goal;
 			sourceTree = "<group>";
@@ -569,6 +583,10 @@
 				AB43980726DE2D72008C8CA8 /* GoalPriorityTableViewCell.xib */,
 				ABFAB15626DF86920095EC20 /* GoalPhotoTableViewCell.swift */,
 				ABFAB15726DF86920095EC20 /* GoalPhotoTableViewCell.xib */,
+				AB9F30F327140DCE008A79A5 /* GoalSimpleTableViewCell.swift */,
+				AB9F30F427140DCE008A79A5 /* GoalSimpleTableViewCell.xib */,
+				AB4F7C7F2719E3E1000A8D83 /* GoalStatisticsTableViewCell.swift */,
+				AB4F7C802719E3E1000A8D83 /* GoalStatisticsTableViewCell.xib */,
 			);
 			path = Goal;
 			sourceTree = "<group>";
@@ -986,9 +1004,11 @@
 				AB13EDB526BFAB8B002F56FF /* StudyRecordSortTableViewCell.xib in Resources */,
 				AB93C251266A27B900C3AE8F /* StudyRecord.storyboard in Resources */,
 				AB2B5BAB26A2D244009BD3C7 /* ColorConcept.storyboard in Resources */,
+				AB4F7C822719E3E1000A8D83 /* GoalStatisticsTableViewCell.xib in Resources */,
 				AB93C244266A234C00C3AE8F /* Assets.xcassets in Resources */,
 				AB8B705026D62FA90069FF67 /* Login.storyboard in Resources */,
 				AB8B704C26D600500069FF67 /* GoogleService-Info.plist in Resources */,
+				AB4F7C7C2719E0C8000A8D83 /* GoalStatistics.storyboard in Resources */,
 				AB0C76CC26EEA8C500BF5B64 /* Localizable.strings in Resources */,
 				ABFAB1E526E11FF80095EC20 /* GoalTime.storyboard in Resources */,
 				AB20F81026E7F3DB00564B14 /* GraphKindSelecting.storyboard in Resources */,
@@ -1004,6 +1024,7 @@
 				AB93C2C5266BC2D600C3AE8F /* EditStudyRecord.storyboard in Resources */,
 				AB8B705E26D6AD950069FF67 /* LoginAndSignUp.storyboard in Resources */,
 				AB13EDB126BFAA7D002F56FF /* StudyRecordSort.storyboard in Resources */,
+				AB9F30F627140DCE008A79A5 /* GoalSimpleTableViewCell.xib in Resources */,
 				AB16308426CEABD400111F55 /* NavigationButton.xib in Resources */,
 				ABFAB20926E394A60095EC20 /* GraphTableViewCell.xib in Resources */,
 				ABCE16C7270994210014F618 /* InfoPlist.strings in Resources */,
@@ -1105,6 +1126,7 @@
 				AB0C76D726EFE38A00BF5B64 /* CustomTextField.swift in Sources */,
 				ABBA350B26F93026001BAEEF /* Date+Extension.swift in Sources */,
 				AB13EDE026C64EBB002F56FF /* CustomTitleTableViewCell.swift in Sources */,
+				AB9F30F527140DCE008A79A5 /* GoalSimpleTableViewCell.swift in Sources */,
 				ABFAB21426E67A2E0095EC20 /* Alert.swift in Sources */,
 				AB0C76C026EE9B4600BF5B64 /* CustomButton.swift in Sources */,
 				AB13EDDB26C3C163002F56FF /* Converter.swift in Sources */,
@@ -1129,6 +1151,7 @@
 				AB0C765326EB889100BF5B64 /* CustomSwitchTableViewCell.swift in Sources */,
 				AB058831270D80A400DC10C7 /* strings.swift in Sources */,
 				AB16305126CD6B1400111F55 /* WaveView.swift in Sources */,
+				AB4F7C812719E3E1000A8D83 /* GoalStatisticsTableViewCell.swift in Sources */,
 				AB2B5B8726A2D0FD009BD3C7 /* UICollectionView+Extension.swift in Sources */,
 				AB86A85F26D4915700EA990A /* HalfModalPresenter.swift in Sources */,
 				AB13E2A42706FE6000063A0B /* PasscodeSettingViewController.swift in Sources */,
@@ -1215,6 +1238,7 @@
 				ABA056F626B4C7D800E3DF01 /* StudyRecordGraphColorTableViewCell.swift in Sources */,
 				AB13ED4B26BB9155002F56FF /* RecordRepository.swift in Sources */,
 				AB37278D270DA181005DBAB3 /* SystemName.swift in Sources */,
+				AB4F7C7E2719E0E5000A8D83 /* GoalStatisticsViewController.swift in Sources */,
 				AB2B5B8D26A2D106009BD3C7 /* UITableView+Extension.swift in Sources */,
 				AB13EDD126C29D9E002F56FF /* StudyRecordTimeRecordViewController.swift in Sources */,
 				ABFB3A5C270FDB6900BC6D3F /* Compatible.swift in Sources */,

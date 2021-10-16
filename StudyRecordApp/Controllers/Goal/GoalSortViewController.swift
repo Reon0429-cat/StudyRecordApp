@@ -102,7 +102,13 @@ extension GoalSortViewController: UITableViewDataSource {
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCustomCell(with: StudyRecordSortTableViewCell.self)
         controlBottomWaveView(indexPath: indexPath)
-        cell.configure(title: getRowTitle(index: indexPath.row))
+        let isAchieved: Bool = {
+            if isCategorySort {
+                return categories[indexPath.row].isAchieved
+            }
+            return goals[indexPath.row].isChecked
+        }()
+        cell.configure(title: getRowTitle(index: indexPath.row), isAchieved: isAchieved)
         return cell
     }
     

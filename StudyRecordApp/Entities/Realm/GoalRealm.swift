@@ -12,6 +12,7 @@ final class CategoryRealm: Object {
     @objc dynamic var title: String = ""
     @objc dynamic var isExpanded: Bool = false
     var goals = List<GoalRealm>()
+    @objc dynamic var isAchieved: Bool = false
     @objc dynamic var order: Int = 0
     @objc dynamic var identifier = UUID().uuidString
     
@@ -25,6 +26,7 @@ final class GoalRealm: Object {
     @objc dynamic var memo: String = ""
     @objc dynamic var isExpanded: Bool = false
     @objc dynamic var priority: PriorityRealm? = PriorityRealm()
+    @objc dynamic var isChecked: Bool = false
     @objc dynamic var dueDate: Date = Date()
     @objc dynamic var createdDate: Date = Date()
     @objc dynamic var imageData: Data?
@@ -39,20 +41,12 @@ final class GoalRealm: Object {
 final class PriorityRealm: Object {
     @objc private dynamic var markRawValue = 0
     var mark: PriorityMark {
-        get {
-            return PriorityMark(rawValue: markRawValue) ?? .star
-        }
-        set {
-            markRawValue = newValue.rawValue
-        }
+        get { return PriorityMark(rawValue: markRawValue) ?? .star }
+        set { markRawValue = newValue.rawValue }
     }
     @objc private dynamic var numberRawValue = 0
     var number: PriorityNumber {
-        get {
-            return PriorityNumber(rawValue: numberRawValue) ?? .one
-        }
-        set {
-            numberRawValue = newValue.rawValue
-        }
+        get { return PriorityNumber(rawValue: numberRawValue) ?? .one }
+        set { numberRawValue = newValue.rawValue }
     }
 }

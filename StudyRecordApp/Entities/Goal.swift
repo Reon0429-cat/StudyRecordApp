@@ -6,25 +6,26 @@
 //
 
 import Foundation
-import UIKit
 
 // 共通の型
 struct Category {
     let title: String
     let isExpanded: Bool
     let goals: [Goal]
+    let isAchieved: Bool
     let order: Int
     let identifier: String
     
     struct Goal {
-        var title: String
-        var memo: String
-        var isExpanded: Bool
-        var priority: Priority
-        var dueDate: Date
-        var createdDate: Date
-        var imageData: Data?
-        var order: Int
+        let title: String
+        let memo: String
+        let isExpanded: Bool
+        let priority: Priority
+        let isChecked: Bool
+        let dueDate: Date
+        let createdDate: Date
+        let imageData: Data?
+        let order: Int
         let identifier: String
         
         struct Priority {
@@ -61,6 +62,7 @@ extension Category {
          title: String? = nil,
          isExpanded: Bool? = nil,
          goals: [Category.Goal]? = nil,
+         isAchieved: Bool? = nil,
          order: Int? = nil,
          identifier: String? = nil) {
         if let title = title {
@@ -77,6 +79,11 @@ extension Category {
             self.goals = goals
         } else {
             self.goals = category.goals
+        }
+        if let isAchieved = isAchieved {
+            self.isAchieved = isAchieved
+        } else {
+            self.isAchieved = category.isAchieved
         }
         if let order = order {
             self.order = order
@@ -99,6 +106,7 @@ extension Category.Goal {
          memo: String? = nil,
          isExpanded: Bool? = nil,
          priority: Category.Goal.Priority? = nil,
+         isChecked: Bool? = nil,
          dueDate: Date? = nil,
          createdDate: Date? = nil,
          imageData: Data? = nil,
@@ -123,6 +131,11 @@ extension Category.Goal {
             self.priority = priority
         } else {
             self.priority = goal.priority
+        }
+        if let isChecked = isChecked {
+            self.isChecked = isChecked
+        } else {
+            self.isChecked = goal.isChecked
         }
         if let dueDate = dueDate {
             self.dueDate = dueDate

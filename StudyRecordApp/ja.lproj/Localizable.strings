@@ -75,9 +75,16 @@
 "graphColor" = "グラフカラー";
 "decision" = "決定";
 "largeSort" = "並び替え";
+"sort" = "並び替え";
 "largeDiscard" = "破棄する";
 "recordTime" = "時間を記録する";
 "largeSend" = "送信";
+"achieved" = "達成済み";
+"achieve" = "達成";
+"unarchive" = "未達成";
+"unarchived" = "未達成";
+"overall" = "全体";
+"showOnlyCategoryUnachieved" = "カテゴリ未達成のみ表示";
 
 "login" = "ログイン";
 "signUp" = "サインアップ";
@@ -114,6 +121,7 @@
 "category" = "カテゴリ";
 "largeCategory" = "カテゴリ";
 "simple" = "シンプル";
+"priority" = "優先度";
 "largePriority" = "優先度";
 "dueDate" = "期日";
 "createdDate" = "作成日";

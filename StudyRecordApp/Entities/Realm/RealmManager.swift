@@ -34,9 +34,10 @@ struct RealmManager {
         setupOrder(type: T.self)
     }
     
-    func deleteAll() {
+    func deleteAll<T: Object>(type: T.Type) {
+        let object = realm.objects(type.self)
         try! realm.write {
-            realm.deleteAll()
+            realm.delete(object)
         }
     }
     

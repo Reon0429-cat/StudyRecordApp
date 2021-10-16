@@ -108,6 +108,7 @@ private extension AddAndEditGoalViewController {
     func presentTitleAlertWithTextField(rowType: AddAndEditGoalRowType) {
         let alert = Alert.create(title: L10n.largeTitle)
             .setTextField { textField in
+                textField.tintColor = .dynamicColor(light: .black, dark: .white)
                 textField.text = self.inputtedTitle
                 textField.tag = rowType.rawValue
                 textField.delegate = self
@@ -126,15 +127,18 @@ private extension AddAndEditGoalViewController {
     func presentCategoryAlertWithTextField(rowType: AddAndEditGoalRowType) {
         let alert = Alert.create(title: L10n.largeCategory)
             .setTextField { textField in
+                textField.tintColor = .dynamicColor(light: .black, dark: .white)
                 textField.text = self.inputtedCategoryTitle
                 textField.tag = rowType.rawValue
                 textField.delegate = self
-                let keyboardView = CategoryKeyboardView(frame: CGRect(x: 0,
-                                                                      y: 0,
-                                                                      width: self.view.frame.width,
-                                                                      height: 45))
-                keyboardView.delegate = self
-                textField.inputAccessoryView = keyboardView
+                if !self.goalUseCase.categories.isEmpty {
+                    let keyboardView = CategoryKeyboardView(frame: CGRect(x: 0,
+                                                                          y: 0,
+                                                                          width: self.view.frame.width,
+                                                                          height: 45))
+                    keyboardView.delegate = self
+                    textField.inputAccessoryView = keyboardView
+                }
             }
             .addAction(title: L10n.close,
                        style: .destructive) {
@@ -165,6 +169,7 @@ private extension AddAndEditGoalViewController {
                                  memo: inputtedMemo,
                                  isExpanded: false,
                                  priority: inputtedPriority,
+                                 isChecked: getGoalIsChecked(),
                                  dueDate: inputtedDate.due,
                                  createdDate: inputtedDate.created,
                                  imageData: inputtedImageData,
@@ -181,6 +186,7 @@ private extension AddAndEditGoalViewController {
                 let category = Category(title: categoryTitle,
                                         isExpanded: true,
                                         goals: [goal],
+                                        isAchieved: false,
                                         order: goalUseCase.categories.count,
                                         identifier: UUID().uuidString)
                 goalUseCase.save(category: category)
@@ -202,6 +208,16 @@ private extension AddAndEditGoalViewController {
                 case .edit:
                     guard let indexPath = selectedIndexPath else { abort() }
                     return indexPath.row
+            }
+        }
+        
+        func getGoalIsChecked() -> Bool {
+            switch goalScreenType {
+                case .add, .sectionAdd, .categoryAdd:
+                    return false
+                case .edit:
+                    guard let indexPath = selectedIndexPath else { abort() }
+                    return goalUseCase.categories[indexPath.section].goals[indexPath.row].isChecked
             }
         }
         

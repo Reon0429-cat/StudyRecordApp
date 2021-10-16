@@ -12,6 +12,10 @@ import Foundation
 internal enum L10n {
   /// Accent
   internal static let accent = L10n.tr("Localizable", "accent")
+  /// achieve
+  internal static let achieve = L10n.tr("Localizable", "achieve")
+  /// achieved
+  internal static let achieved = L10n.tr("Localizable", "achieved")
   /// Active
   internal static let active = L10n.tr("Localizable", "active")
   /// add
@@ -228,6 +232,8 @@ internal enum L10n {
   internal static let oneTimeLeft = L10n.tr("Localizable", "oneTimeLeft")
   /// Organic
   internal static let organic = L10n.tr("Localizable", "organic")
+  /// overall
+  internal static let overall = L10n.tr("Localizable", "overall")
   /// Overseas
   internal static let overseas = L10n.tr("Localizable", "overseas")
   /// Passcode
@@ -257,6 +263,8 @@ internal enum L10n {
   internal static let pleaseEnterYourCurrentPasscode = L10n.tr("Localizable", "pleaseEnterYourCurrentPasscode")
   /// Pop
   internal static let pop = L10n.tr("Localizable", "pop")
+  /// priority
+  internal static let priority = L10n.tr("Localizable", "priority")
   /// Privacy policy
   internal static let privacyPolicy = L10n.tr("Localizable", "privacyPolicy")
   /// Push Notification
@@ -297,6 +305,8 @@ internal enum L10n {
   internal static let shortHour = L10n.tr("Localizable", "shortHour")
   /// m
   internal static let shortMinute = L10n.tr("Localizable", "shortMinute")
+  /// Show only category unachieved.
+  internal static let showOnlyCategoryUnachieved = L10n.tr("Localizable", "showOnlyCategoryUnachieved")
   /// SignUp
   internal static let signUp = L10n.tr("Localizable", "signUp")
   /// simple
@@ -305,6 +315,8 @@ internal enum L10n {
   internal static let slider = L10n.tr("Localizable", "slider")
   /// Smooth
   internal static let smooth = L10n.tr("Localizable", "smooth")
+  /// sort
+  internal static let sort = L10n.tr("Localizable", "sort")
   /// Spring
   internal static let spring = L10n.tr("Localizable", "spring")
   /// Square dots
@@ -349,6 +361,10 @@ internal enum L10n {
   internal static let turnOnTouchID = L10n.tr("Localizable", "turnOnTouchID")
   /// 2 time left
   internal static let twoTimeLeft = L10n.tr("Localizable", "twoTimeLeft")
+  /// unarchive
+  internal static let unarchive = L10n.tr("Localizable", "unarchive")
+  /// unarchived
+  internal static let unarchived = L10n.tr("Localizable", "unarchived")
   /// uncategorized
   internal static let uncategorized = L10n.tr("Localizable", "uncategorized")
   /// Unknown error
