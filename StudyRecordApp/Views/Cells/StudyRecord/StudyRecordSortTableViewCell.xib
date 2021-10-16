@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -25,34 +26,49 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XXr-48-zOw">
-                        <rect key="frame" x="309.5" y="31" width="25.5" height="22"/>
+                        <rect key="frame" x="309.5" y="29.5" width="25.5" height="25.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="25.5" id="k1Z-UK-HKC"/>
+                            <constraint firstAttribute="width" secondItem="XXr-48-zOw" secondAttribute="height" id="kCz-yT-ypa"/>
                         </constraints>
                         <state key="normal">
                             <imageReference key="image" image="list.bullet" catalog="system" symbolScale="large" renderingMode="original"/>
                         </state>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="達成済み" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="IN9-13-eVn">
+                        <rect key="frame" x="294.5" y="0.0" width="55.5" height="29.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" systemColor="systemRedColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="IN9-13-eVn" firstAttribute="centerX" secondItem="XXr-48-zOw" secondAttribute="centerX" id="05T-ZT-uzb"/>
                     <constraint firstItem="pQA-RB-k0h" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="JhU-kg-xsQ"/>
                     <constraint firstAttribute="bottom" secondItem="pQA-RB-k0h" secondAttribute="bottom" id="Rc6-bL-Ltg"/>
                     <constraint firstItem="pQA-RB-k0h" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="T37-we-abp"/>
                     <constraint firstItem="XXr-48-zOw" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="aSq-xK-eth"/>
                     <constraint firstItem="XXr-48-zOw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pQA-RB-k0h" secondAttribute="trailing" constant="20" id="eRZ-jG-hkJ"/>
+                    <constraint firstItem="XXr-48-zOw" firstAttribute="top" secondItem="IN9-13-eVn" secondAttribute="bottom" id="gZg-Us-A0m"/>
+                    <constraint firstAttribute="trailing" secondItem="IN9-13-eVn" secondAttribute="trailing" constant="5" id="kWj-i8-4nC"/>
                     <constraint firstAttribute="trailing" secondItem="XXr-48-zOw" secondAttribute="trailing" constant="20" id="mAB-iI-HV7"/>
+                    <constraint firstItem="IN9-13-eVn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="n9s-oe-Jpb"/>
                     <constraint firstItem="pQA-RB-k0h" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="w6T-c3-dzm"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="achievedLabel" destination="IN9-13-eVn" id="hrn-KA-nf1"/>
                 <outlet property="listImageButton" destination="XXr-48-zOw" id="lHd-RF-Rkw"/>
                 <outlet property="titleLabel" destination="pQA-RB-k0h" id="M8w-xG-x8s"/>
             </connections>
-            <point key="canvasLocation" x="163.04347826086959" y="152.00892857142856"/>
+            <point key="canvasLocation" x="171.73913043478262" y="169.41964285714286"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="list.bullet" catalog="system" width="128" height="88"/>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

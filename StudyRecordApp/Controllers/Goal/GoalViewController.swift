@@ -11,8 +11,6 @@ protocol GoalVCDelegate: ScreenPresentationDelegate,
                          EditButtonSelectable {
 }
 
-// MARK: - ToDo カテゴリや達成済みのものだけ並び替えられるようにする
-
 final class GoalViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
