@@ -8,8 +8,12 @@
 import UIKit
 
 protocol GoalHeaderViewDelegate: AnyObject {
-    func settingButtonDidTapped(convertedSection: Int)
     func foldingButtonDidTapped(convertedSection: Int)
+    func addButtonDidTapped(convertedSection: Int)
+    func editButtonDidTapped(convertedSection: Int)
+    func sortButtonDidTapped(convertedSection: Int)
+    func achieveButtonDidTapped(convertedSection: Int)
+    func deleteButtonDidTapped(convertedSection: Int)
 }
 
 final class GoalHeaderView: UITableViewHeaderFooterView {
@@ -25,7 +29,6 @@ final class GoalHeaderView: UITableViewHeaderFooterView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        setupSettingButton()
         setupSeparatorView()
         
     }
@@ -37,10 +40,41 @@ final class GoalHeaderView: UITableViewHeaderFooterView {
         }
     }
     
-    func configure(category: Category) {
+    func configure(category: Category, isAchieved: Bool) {
         setupTitleLabel(category: category)
         setupfoldingButton(category: category)
+        setupSettingButton(isAchieved: isAchieved)
         setColor()
+    }
+    
+    private func createUIMenu(isAchieved: Bool) -> UIMenu {
+        let addAction = UIAction(title: L10n.add,
+                                 image: UIImage(systemName: .plus)) { _ in
+            self.delegate?.addButtonDidTapped(convertedSection: self.tag)
+        }
+        let editAction = UIAction(title: L10n.edit,
+                                  image: UIImage(systemName: .pencil)) { _ in
+            self.delegate?.editButtonDidTapped(convertedSection: self.tag)
+        }
+        let sortAction = UIAction(title: L10n.sort,
+                                  image: UIImage(systemName: .arrowUpArrowDown)) { _ in
+            self.delegate?.sortButtonDidTapped(convertedSection: self.tag)
+        }
+        let achieveTitle = isAchieved ? L10n.unarchive : L10n.achieve
+        let achieveSystemName: SystemName = isAchieved ? .flagSlash : .flag
+        let achieveAction = UIAction(title: achieveTitle,
+                                     image: UIImage(systemName: achieveSystemName)) { _ in
+            self.delegate?.achieveButtonDidTapped(convertedSection: self.tag)
+        }
+        let deleteAction = UIAction(title: L10n.delete,
+                                    image: UIImage(systemName: .trash),
+                                    attributes: .destructive) { _ in
+            self.delegate?.deleteButtonDidTapped(convertedSection: self.tag)
+        }
+        let actions = [addAction, editAction, sortAction, achieveAction, deleteAction]
+        return UIMenu(title: "",
+                      options: .displayInline,
+                      children: actions)
     }
     
 }
@@ -49,7 +83,7 @@ final class GoalHeaderView: UITableViewHeaderFooterView {
 private extension GoalHeaderView {
     
     @IBAction func settingButtonDidTapped(_ sender: Any) {
-        delegate?.settingButtonDidTapped(convertedSection: self.tag)
+        
     }
     
     @IBAction func foldingButtonDidTapped(_ sender: Any) {
@@ -65,8 +99,9 @@ private extension GoalHeaderView {
         titleLabel.text = category.title + " (\(category.goals.count))"
     }
     
-    func setupSettingButton() {
-        
+    func setupSettingButton(isAchieved: Bool) {
+        settingButton.showsMenuAsPrimaryAction = true
+        settingButton.menu = createUIMenu(isAchieved: isAchieved)
     }
     
     func setupfoldingButton(category: Category) {

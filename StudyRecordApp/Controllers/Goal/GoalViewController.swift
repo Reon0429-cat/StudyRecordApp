@@ -232,7 +232,8 @@ extension GoalViewController: UITableViewDelegate, UITableViewDataSource {
         let headerView = tableView.dequeueReusableCustomHeaderFooterView(with: GoalHeaderView.self)
         headerView.tag = convert(section: section)
         let category = categories[convert(section: section)]
-        headerView.configure(category: category)
+        let isAchieved = getListType() == .achieved
+        headerView.configure(category: category, isAchieved: isAchieved)
         headerView.delegate = self
         return headerView
     }
@@ -287,18 +288,6 @@ extension GoalViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK: - GoalHeaderViewDelegate
 extension GoalViewController: GoalHeaderViewDelegate {
     
-    func settingButtonDidTapped(convertedSection: Int) {
-        let achieveButtonTitle = getListType() == .achieved ? L10n.unarchive : L10n.achieve
-        let alert = Alert.create(preferredStyle: .actionSheet)
-            .addAction(title: L10n.add) { self.addButtonDidTapped(convertedSection: convertedSection) }
-            .addAction(title: L10n.edit) { self.editButtonDidTapped(convertedSection: convertedSection) }
-            .addAction(title: L10n.sort) { self.sortButtonDidTapped(convertedSection: convertedSection) }
-            .addAction(title: achieveButtonTitle) { self.achieveButtonDidTapped(convertedSection: convertedSection) }
-            .addAction(title: L10n.delete, style: .destructive) { self.deleteButtonDidTapped(convertedSection: convertedSection) }
-            .addAction(title: L10n.close, style: .cancel)
-        present(alert, animated: true)
-    }
-    
     func foldingButtonDidTapped(convertedSection: Int) {
         goalUseCase.toggleCategoryIsExpanded(at: convertedSection)
         DispatchQueue.main.async {
@@ -308,14 +297,14 @@ extension GoalViewController: GoalHeaderViewDelegate {
         }
     }
     
-    private func achieveButtonDidTapped(convertedSection: Int) {
+    func achieveButtonDidTapped(convertedSection: Int) {
         goalUseCase.toggleIsAchieved(at: convertedSection)
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
     
-    private func addButtonDidTapped(convertedSection: Int) {
+    func addButtonDidTapped(convertedSection: Int) {
         present(AddAndEditGoalViewController.self,
                 modalPresentationStyle: .fullScreen) { vc in
             let row = self.categories[convertedSection].goals.count - 1
@@ -324,7 +313,7 @@ extension GoalViewController: GoalHeaderViewDelegate {
         }
     }
     
-    private func editButtonDidTapped(convertedSection: Int) {
+    func editButtonDidTapped(convertedSection: Int) {
         let category = categories[convertedSection]
         var _textField = UITextField()
         let alert = Alert.create(title: L10n.largeTitle, preferredStyle: .alert)
@@ -347,14 +336,14 @@ extension GoalViewController: GoalHeaderViewDelegate {
         present(alert, animated: true)
     }
     
-    private func sortButtonDidTapped(convertedSection: Int) {
+    func sortButtonDidTapped(convertedSection: Int) {
         present(GoalSortViewController.self,
                 modalPresentationStyle: .fullScreen) { vc in
             vc.tappedSection = convertedSection
         }
     }
     
-    private func deleteButtonDidTapped(convertedSection: Int) {
+    func deleteButtonDidTapped(convertedSection: Int) {
         let alert = Alert.create(title: L10n.doYouReallyWantToDeleteThis)
             .addAction(title: L10n.delete, style: .destructive) {
                 self.goalUseCase.deleteCategory(at: convertedSection)
