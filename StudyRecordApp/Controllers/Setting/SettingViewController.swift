@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MessageUI
 
 private enum SettingRowType: Int, CaseIterable {
     case themeColor
@@ -159,6 +160,17 @@ private extension SettingViewController {
         present(activityVC, animated: true)
     }
     
+    func presentMailVC() {
+        guard MFMailComposeViewController.canSendMail() else { return }
+        let mailComposeVC = MFMailComposeViewController()
+        mailComposeVC.mailComposeDelegate = self
+        let recipients = ["oonishireon110@gmail.com"]
+        mailComposeVC.setSubject("開発者側で設定する件名")
+        mailComposeVC.setToRecipients(recipients)
+        mailComposeVC.setMessageBody("開発者側で設定する本文", isHTML: false)
+        present(mailComposeVC, animated: true)
+    }
+    
 }
 
 // MARK: - UITableViewDelegate
@@ -184,7 +196,7 @@ extension SettingViewController: UITableViewDelegate {
             case .shareApp:
                 presentActivityVC()
             case .reports:
-                break
+                presentMailVC()
             case .howToUseApp:
                 break
             case .backup:
@@ -249,6 +261,27 @@ extension SettingViewController: UITableViewDataSource {
                 cell.configure(titleText: rowType.title)
                 return cell
         }
+    }
+    
+}
+
+// MARK: - MFMailComposeViewControllerDelegate
+extension SettingViewController: MFMailComposeViewControllerDelegate {
+    
+    func mailComposeController(_ controller: MFMailComposeViewController,
+                               didFinishWith result: MFMailComposeResult,
+                               error: Error?) {
+        switch result {
+            case .saved:
+                print("DEBUG_PRINT: saved")
+                // UserDefaultsで保存させる
+            case .sent:
+                print("DEBUG_PRINT: sent")
+                // UNNotification
+            default:
+                break
+        }
+        controller.dismiss(animated: true)
     }
     
 }
