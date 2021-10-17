@@ -14,6 +14,7 @@ target 'StudyRecordApp' do
    pod 'Firebase/Auth'
    pod 'Firebase/Firestore'
    pod 'SwiftGen'
+   pod 'mailcore2-ios'
    
 end
 
