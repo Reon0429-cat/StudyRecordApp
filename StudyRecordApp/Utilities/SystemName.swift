@@ -21,10 +21,15 @@ enum SystemName: String {
     case plus
     case plusCircle = "plus.circle"
     case arrowUpArrowDownCircleFill = "arrow.up.arrow.down.circle.fill"
+    case arrowUpArrowDown = "arrow.up.arrow.down"
     case xmarkCircle = "xmark.circle"
     case arrowtriangleDownFill = "arrowtriangle.down.fill"
     case arrowtriangleUpfill = "arrowtriangle.up.fill"
     case checkmarkCircleFill = "checkmark.circle.fill"
+    case pencil
+    case flag
+    case trash
+    case flagSlash = "flag.slash"
 }
 
 extension UIImage {
