@@ -137,6 +137,8 @@
 		AB43980526DE1DD6008C8CA8 /* GoalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB43980326DE1DD6008C8CA8 /* GoalTableViewCell.xib */; };
 		AB43980826DE2D72008C8CA8 /* GoalPriorityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43980626DE2D72008C8CA8 /* GoalPriorityTableViewCell.swift */; };
 		AB43980926DE2D72008C8CA8 /* GoalPriorityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB43980726DE2D72008C8CA8 /* GoalPriorityTableViewCell.xib */; };
+		AB45399F271CBF8000CF1C04 /* Reports.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB45399E271CBF8000CF1C04 /* Reports.storyboard */; };
+		AB4539A1271CBF8C00CF1C04 /* ReportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4539A0271CBF8C00CF1C04 /* ReportsViewController.swift */; };
 		AB4D6BBE2672099C00E5286E /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4D6BBD2672099C00E5286E /* UIButton+Extension.swift */; };
 		AB4F7C7C2719E0C8000A8D83 /* GoalStatistics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB4F7C7B2719E0C8000A8D83 /* GoalStatistics.storyboard */; };
 		AB4F7C7E2719E0E5000A8D83 /* GoalStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4F7C7D2719E0E5000A8D83 /* GoalStatisticsViewController.swift */; };
@@ -335,6 +337,9 @@
 		AB43980326DE1DD6008C8CA8 /* GoalTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoalTableViewCell.xib; sourceTree = "<group>"; };
 		AB43980626DE2D72008C8CA8 /* GoalPriorityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPriorityTableViewCell.swift; sourceTree = "<group>"; };
 		AB43980726DE2D72008C8CA8 /* GoalPriorityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoalPriorityTableViewCell.xib; sourceTree = "<group>"; };
+		AB45399B271CBB0F00CF1C04 /* StudyRecordApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StudyRecordApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		AB45399E271CBF8000CF1C04 /* Reports.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Reports.storyboard; sourceTree = "<group>"; };
+		AB4539A0271CBF8C00CF1C04 /* ReportsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsViewController.swift; sourceTree = "<group>"; };
 		AB4D6BBD2672099C00E5286E /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		AB4F7C7B2719E0C8000A8D83 /* GoalStatistics.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoalStatistics.storyboard; sourceTree = "<group>"; };
 		AB4F7C7D2719E0E5000A8D83 /* GoalStatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalStatisticsViewController.swift; sourceTree = "<group>"; };
@@ -635,6 +640,7 @@
 				AB0C76B226ED254C00BF5B64 /* Passcode.storyboard */,
 				AB13E2A52706FE8C00063A0B /* PasscodeSetting.storyboard */,
 				AB0C76D826F0A06300BF5B64 /* DarkModeSetting.storyboard */,
+				AB45399E271CBF8000CF1C04 /* Reports.storyboard */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -660,6 +666,7 @@
 				AB0C76B426ED256000BF5B64 /* PasscodeViewController.swift */,
 				AB13E2A32706FE6000063A0B /* PasscodeSettingViewController.swift */,
 				AB0C76DA26F0A06F00BF5B64 /* DarkModeSettingViewController.swift */,
+				AB4539A0271CBF8C00CF1C04 /* ReportsViewController.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -763,6 +770,7 @@
 				AB93C238266A234800C3AE8F /* Products */,
 				6ED773C562BE78F875EC7183 /* Pods */,
 				635B9A72C0918FAFFC219E8A /* Frameworks */,
+				AB45399B271CBB0F00CF1C04 /* StudyRecordApp-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -966,6 +974,7 @@
 				TargetAttributes = {
 					AB93C236266A234800C3AE8F = {
 						CreatedOnToolsVersion = 12.5;
+						LastSwiftMigration = 1300;
 					};
 				};
 			};
@@ -1037,6 +1046,7 @@
 				AB13EDE926C7C4C0002F56FF /* Top.storyboard in Resources */,
 				AB13EDE526C78DB4002F56FF /* ScreenTransitionCollectionViewCell.xib in Resources */,
 				AB93C266266A7DEB00C3AE8F /* AdditionalStudyRecord.storyboard in Resources */,
+				AB45399F271CBF8000CF1C04 /* Reports.storyboard in Resources */,
 				AB0C765826EB8B4300BF5B64 /* CustomButtonTableViewCell.xib in Resources */,
 				AB13EDF426C8BAAC002F56FF /* Goal.storyboard in Resources */,
 				AB0C768726ECD98E00BF5B64 /* PasscodeView.xib in Resources */,
@@ -1187,6 +1197,7 @@
 				AB14B46026DA3381007A5F16 /* UserUseCase.swift in Sources */,
 				AB372791270DCC2A005DBAB3 /* RealmManager.swift in Sources */,
 				AB0C768326EBD9B900BF5B64 /* SubCustomNavigationBar.swift in Sources */,
+				AB4539A1271CBF8C00CF1C04 /* ReportsViewController.swift in Sources */,
 				AB2B5BA126A2D1B7009BD3C7 /* SeasonConcept.swift in Sources */,
 				AB2B5B8526A2D0FD009BD3C7 /* UIColor+Extension.swift in Sources */,
 				AB4397F326DD3B32008C8CA8 /* GoalPriorityViewController.swift in Sources */,
@@ -1414,6 +1425,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 242KS3V77L;
 				INFOPLIST_FILE = StudyRecordApp/Info.plist;
@@ -1424,6 +1436,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = oonishireon.StudyRecordApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "StudyRecordApp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1435,6 +1449,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 242KS3V77L;
 				INFOPLIST_FILE = StudyRecordApp/Info.plist;
@@ -1445,6 +1460,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = oonishireon.StudyRecordApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "StudyRecordApp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
