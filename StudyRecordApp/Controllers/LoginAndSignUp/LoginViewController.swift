@@ -107,11 +107,6 @@ private extension LoginViewController {
 // MARK: - func
 private extension LoginViewController {
     
-    func changeLoginButtonState(isEnabled: Bool) {
-        loginButton.isEnabled = isEnabled
-        loginButton.backgroundColor = isEnabled ? .black : .gray
-    }
-    
     func changePasswordSecureButtonImage(isSlash: Bool) {
         let eyeFillImage = UIImage(systemName: .eyeFill)
         let eyeSlashFillImage = UIImage(systemName: .eyeSlashFill)
@@ -133,7 +128,7 @@ extension LoginViewController: UITextFieldDelegate {
         guard let mailAddressText = mailAddressTextField.text,
               let passwordText = passwordTextField.text else { return }
         let isEnabled = !mailAddressText.isEmpty && !passwordText.isEmpty
-        changeLoginButtonState(isEnabled: isEnabled)
+        loginButton.changeState(isEnabled: isEnabled)
     }
     
 }
@@ -181,7 +176,7 @@ private extension LoginViewController {
     
     func setupLoginButton() {
         loginButton.setTitle(L10n.login)
-        changeLoginButtonState(isEnabled: false)
+        loginButton.changeState(isEnabled: false)
     }
     
     func setupPasswordSecureButton() {
