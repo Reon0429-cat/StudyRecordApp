@@ -6,7 +6,7 @@
   
 */
 
-CFBundleDisplayName = "StudyRecordApp";
+CFBundleDisplayName = "TaskL";
 NSFaceIDUsageDescription = "Use Face ID to unlock.";
 NSCameraUsageDescription = "Used to call the camera.";
 NSPhotoLibraryUsageDescription = "Used to use the photo app to save photos.";

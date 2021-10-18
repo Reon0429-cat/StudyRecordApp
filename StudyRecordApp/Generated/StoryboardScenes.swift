@@ -153,6 +153,13 @@ internal enum StoryboardScene {
 
     internal static let passcodeSettingViewController = SceneType<StudyRecordApp.PasscodeSettingViewController>(storyboard: PasscodeSetting.self, identifier: "PasscodeSettingViewController")
   }
+  internal enum Reports: StoryboardType {
+    internal static let storyboardName = "Reports"
+
+    internal static let initialScene = InitialSceneType<StudyRecordApp.ReportsViewController>(storyboard: Reports.self)
+
+    internal static let reportsViewController = SceneType<StudyRecordApp.ReportsViewController>(storyboard: Reports.self, identifier: "ReportsViewController")
+  }
   internal enum ResetingPassword: StoryboardType {
     internal static let storyboardName = "ResetingPassword"
 

@@ -35,6 +35,7 @@ final class TopViewController: UIViewController {
     private var viewControllers = [UIViewController]()
     private var currentPageIndex = 0
     private var halfModalPresenter = HalfModalPresenter()
+    private var reportThankYouView = ReportThankYouView()
     
     override func loadView() {
         super.loadView()
@@ -56,6 +57,7 @@ final class TopViewController: UIViewController {
         setupSortButton()
         setAnimation()
         setupObserver()
+        setupReportThankYouView()
         self.view.backgroundColor = .dynamicColor(light: .white,
                                                   dark: .black)
         
@@ -67,6 +69,7 @@ final class TopViewController: UIViewController {
         setupAddButtonLayout()
         setupTitleLabelLayout()
         setupSeparatorViewLayout()
+        setupReportThankYouViewLayout()
         
     }
     
@@ -331,6 +334,13 @@ extension TopViewController: GraphVCDelegate {
 // MARK: - SettingVCDelegate
 extension TopViewController: SettingVCDelegate {
     
+    func presentThankYouView() {
+        reportThankYouView.setFade(.in)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.reportThankYouView.setFade(.out)
+        }
+    }
+    
 }
 
 // MARK: - NavigationButtonDelegate
@@ -441,6 +451,21 @@ private extension TopViewController {
     @objc
     func changeToDefaultColor() {
         changeThemeColor()
+    }
+    
+    func setupReportThankYouView() {
+        reportThankYouView.setFade(.out)
+    }
+    
+    func setupReportThankYouViewLayout() {
+        reportThankYouView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(reportThankYouView)
+        NSLayoutConstraint.activate([
+            reportThankYouView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 45),
+            reportThankYouView.widthAnchor.constraint(equalTo: self.view.widthAnchor, constant: -40),
+            reportThankYouView.heightAnchor.constraint(equalToConstant: 70),
+            reportThankYouView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+        ])
     }
     
 }

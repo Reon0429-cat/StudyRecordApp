@@ -100,16 +100,18 @@ internal enum L10n {
   internal static let digital = L10n.tr("Localizable", "digital")
   /// Dot
   internal static let dot = L10n.tr("Localizable", "Dot")
-  /// Do you really want to delete this
+  /// Do you really want to delete this?
   internal static let doYouReallyWantToDeleteThis = L10n.tr("Localizable", "doYouReallyWantToDeleteThis")
   /// Do you want the default color?
   internal static let doYouWantTheDefaultColor = L10n.tr("Localizable", "doYouWantTheDefaultColor")
-  /// Do you want to close the note without saving
+  /// Do you want to close the note without saving?
   internal static let doYouWantToCloseTheNoteWithoutSaving = L10n.tr("Localizable", "doYouWantToCloseTheNoteWithoutSaving")
-  /// Do you want to close without saving
+  /// Do you want to close without saving?
   internal static let doYouWantToCloseWithoutSaving = L10n.tr("Localizable", "doYouWantToCloseWithoutSaving")
   /// Do you want to discard your edits?
   internal static let doYouWantToDiscardYourEdits = L10n.tr("Localizable", "doYouWantToDiscardYourEdits")
+  /// Do you want to send with this content?
+  internal static let doYouWantToSendWithThisContent = L10n.tr("Localizable", "doYouWantToSendWithThisContent?")
   /// Due Date
   internal static let dueDate = L10n.tr("Localizable", "dueDate")
   /// edit
@@ -118,6 +120,8 @@ internal enum L10n {
   internal static let elegant = L10n.tr("Localizable", "elegant")
   /// Evaluation App
   internal static let evaluationApp = L10n.tr("Localizable", "evaluationApp")
+  /// Failed to send.
+  internal static let failedToSend = L10n.tr("Localizable", "failedToSend.")
   /// February
   internal static let february = L10n.tr("Localizable", "february")
   /// Feminine
@@ -281,8 +285,16 @@ internal enum L10n {
   internal static let register = L10n.tr("Localizable", "Register")
   /// Relax
   internal static let relax = L10n.tr("Localizable", "relax")
+  /// We will use the contents you received as a reference for future service development.
+  /// Please enter your email address only if you need a reply, and refrain from entering any other personal information.
+  internal static let reportAttention = L10n.tr("Localizable", "reportAttention")
   /// Reports
   internal static let reports = L10n.tr("Localizable", "reports")
+  /// Please enter your opinions, requests, and details of the problem.
+  internal static let reportsDetail = L10n.tr("Localizable", "reportsDetail")
+  /// The transmission is complete.
+  /// We look forward to working with you in the future.
+  internal static let reportThankYouTitle = L10n.tr("Localizable", "reportThankYouTitle")
   /// Retro
   internal static let retro = L10n.tr("Localizable", "retro")
   /// save
@@ -291,6 +303,8 @@ internal enum L10n {
   internal static let season = L10n.tr("Localizable", "season")
   /// Select from library
   internal static let selectFromLibrary = L10n.tr("Localizable", "selectFromLibrary")
+  /// send
+  internal static let send = L10n.tr("Localizable", "send")
   /// September
   internal static let september = L10n.tr("Localizable", "september")
   /// Service

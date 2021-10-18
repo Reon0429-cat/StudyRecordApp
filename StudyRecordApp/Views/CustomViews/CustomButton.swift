@@ -29,5 +29,10 @@ final class CustomButton: UIButton {
         layer.cornerRadius = 10
     }
     
+    func changeState(isEnabled: Bool) {
+        self.isEnabled = isEnabled
+        self.layer.opacity = isEnabled ? 1 : 0.8
+    }
+    
 }
 

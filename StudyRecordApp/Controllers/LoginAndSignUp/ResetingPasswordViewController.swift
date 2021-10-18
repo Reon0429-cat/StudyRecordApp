@@ -81,11 +81,6 @@ private extension ResetingPasswordViewController {
         }
     }
     
-    func changeSendButtonState(isEnabled: Bool) {
-        sendButton.isEnabled = isEnabled
-        sendButton.backgroundColor = isEnabled ? .black : .gray
-    }
-    
 }
 
 // MARK: - UITextFieldDelegate
@@ -99,7 +94,7 @@ extension ResetingPasswordViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let emailText = mailAddressTextField.text else { return }
         let isEnabled = !emailText.isEmpty
-        changeSendButtonState(isEnabled: isEnabled)
+        sendButton.changeState(isEnabled: isEnabled)
     }
     
 }
@@ -108,7 +103,7 @@ extension ResetingPasswordViewController: UITextFieldDelegate {
 private extension ResetingPasswordViewController {
     
     func setupSendButton() {
-        changeSendButtonState(isEnabled: false)
+        sendButton.changeState(isEnabled: false)
         sendButton.setTitle(L10n.largeSend)
     }
     

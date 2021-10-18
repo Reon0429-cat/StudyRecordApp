@@ -79,12 +79,18 @@
 "largeDiscard" = "破棄する";
 "recordTime" = "時間を記録する";
 "largeSend" = "送信";
+"send" = "送信";
 "achieved" = "達成済み";
 "achieve" = "達成";
 "unarchive" = "未達成";
 "unarchived" = "未達成";
 "overall" = "全体";
 "showOnlyCategoryUnachieved" = "カテゴリ未達成のみ表示";
+"doYouWantToSendWithThisContent?" = "こちらの内容で送信しますか？";
+"failedToSend." = "送信に失敗しました。";
+
+"reportAttention" = "頂いた内容は今後のサービス開発の参考にさせていただきます。\n返信が必要の場合のみメールアドレスを記載していただき、その他の個人情報の記載はご遠慮ください。";
+"reportThankYouTitle" = "送信が完了しました。\n今後ともよろしくお願いいたします。";
 
 "login" = "ログイン";
 "signUp" = "サインアップ";
@@ -99,9 +105,9 @@
 "passwordsDoNotMatch" = "パスワードが一致しません";
 "passwordForgotDetail" = "上記のメールアドレスにパスワード\n再設定用のURLを送信します。";
 "passwordForgotTitle" = "パスワードをお忘れの場合";
-"doYouWantToCloseTheNoteWithoutSaving" = "保存せずにメモを閉じますか";
-"doYouReallyWantToDeleteThis" = "本当に削除しますか";
-"doYouWantToCloseWithoutSaving" = "保存せずに閉じますか";
+"doYouWantToCloseTheNoteWithoutSaving" = "保存せずにメモを閉じますか？";
+"doYouReallyWantToDeleteThis" = "本当に削除しますか？";
+"doYouWantToCloseWithoutSaving" = "保存せずに閉じますか？";
 "doYouWantToDiscardYourEdits" = "編集内容を破棄しますか？";
 "moreThan24Hours" = "%1$@年%2$@%3$@日の記録時間が24時間以上です。";
 
@@ -156,6 +162,8 @@
 "evaluationApp" = "アプリを評価する";
 "shareApp" = "アプリを共有する";
 "reports" = "ご意見、ご要望、不具合の報告";
+"reportsDetail" = "ご意見、ご要望、不具合の内容をご記入ください。";
+
 "backup" = "バックアップ";
 "privacyPolicy" = "プライバシーポリシー";
 "logout" = "ログアウト";

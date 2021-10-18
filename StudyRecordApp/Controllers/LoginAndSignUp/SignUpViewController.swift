@@ -136,11 +136,6 @@ private extension SignUpViewController {
         }
     }
     
-    func changeSignUpButtonState(isEnabled: Bool) {
-        signUpButton.isEnabled = isEnabled
-        signUpButton.backgroundColor = isEnabled ? .black : .gray
-    }
-    
     func changePasswordSecureButtonImage(isSlash: Bool) {
         let eyeFillImage = UIImage(systemName: .eyeFill)
         let eyeSlashFillImage = UIImage(systemName: .eyeSlashFill)
@@ -170,7 +165,7 @@ extension SignUpViewController: UITextFieldDelegate {
               let passwordText = passwordTextField.text,
               let passwordConfirmationText = passwordConfirmationTextField.text else { return }
         let isEnabled = !mailAddressText.isEmpty && !passwordText.isEmpty && !passwordConfirmationText.isEmpty
-        changeSignUpButtonState(isEnabled: isEnabled)
+        signUpButton.changeState(isEnabled: isEnabled)
     }
     
 }
@@ -220,7 +215,7 @@ private extension SignUpViewController {
     func setupSignUpButton() {
         signUpButton.layer.cornerRadius = 10
         signUpButton.setTitle(L10n.signUp)
-        changeSignUpButtonState(isEnabled: false)
+        signUpButton.changeState(isEnabled: false)
     }
     
     func setupMailAddressLabel() {
