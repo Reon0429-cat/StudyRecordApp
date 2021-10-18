@@ -86,6 +86,7 @@
 "showOnlyCategoryUnachieved" = "Show only category unachieved.";
 "doYouWantToSendWithThisContent?" = "Do you want to send with this content?";
 "failedToSend." = "Failed to send.";
+"reportThankYouTitle" = "The transmission is complete.\nWe look forward to working with you in the future.";
 
 "login" = "Login";
 "signUp" = "SignUp";

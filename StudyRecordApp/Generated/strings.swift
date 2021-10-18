@@ -292,6 +292,9 @@ internal enum L10n {
   internal static let reports = L10n.tr("Localizable", "reports")
   /// Please enter your opinions, requests, and details of the problem.
   internal static let reportsDetail = L10n.tr("Localizable", "reportsDetail")
+  /// The transmission is complete.
+  /// We look forward to working with you in the future.
+  internal static let reportThankYouTitle = L10n.tr("Localizable", "reportThankYouTitle")
   /// Retro
   internal static let retro = L10n.tr("Localizable", "retro")
   /// save
