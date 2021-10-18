@@ -30,6 +30,8 @@ internal enum L10n {
   internal static let allow = L10n.tr("Localizable", "allow")
   /// An unknown error has occurred
   internal static let anUnknownErrorHasOccurred = L10n.tr("Localizable", "anUnknownErrorHasOccurred")
+  /// App Icon
+  internal static let appIcon = L10n.tr("Localizable", "appIcon")
   /// April
   internal static let april = L10n.tr("Localizable", "april")
   /// Are you sure you want to log out?
@@ -166,6 +168,8 @@ internal enum L10n {
   internal static let june = L10n.tr("Localizable", "june")
   /// Kids
   internal static let kids = L10n.tr("Localizable", "kids")
+  /// Language
+  internal static let language = L10n.tr("Localizable", "language")
   /// en
   internal static let languageCode = L10n.tr("Localizable", "languageCode")
   /// Add

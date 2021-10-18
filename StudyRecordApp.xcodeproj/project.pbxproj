@@ -145,6 +145,8 @@
 		AB4539B5271D76CF00CF1C04 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4539B4271D76CF00CF1C04 /* Constant.swift */; };
 		AB4539B7271D7D0500CF1C04 /* ReportThankYouView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB4539B6271D7D0500CF1C04 /* ReportThankYouView.xib */; };
 		AB4539B9271D7D1500CF1C04 /* ReportThankYouView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4539B8271D7D1500CF1C04 /* ReportThankYouView.swift */; };
+		AB4539BB271DC82600CF1C04 /* SampleAppIcon.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB4539BA271DC82600CF1C04 /* SampleAppIcon.storyboard */; };
+		AB4539BD271DC84600CF1C04 /* SampleAppIconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4539BC271DC84600CF1C04 /* SampleAppIconViewController.swift */; };
 		AB4D6BBE2672099C00E5286E /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4D6BBD2672099C00E5286E /* UIButton+Extension.swift */; };
 		AB4F7C7C2719E0C8000A8D83 /* GoalStatistics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB4F7C7B2719E0C8000A8D83 /* GoalStatistics.storyboard */; };
 		AB4F7C7E2719E0E5000A8D83 /* GoalStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4F7C7D2719E0E5000A8D83 /* GoalStatisticsViewController.swift */; };
@@ -352,6 +354,8 @@
 		AB4539B4271D76CF00CF1C04 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		AB4539B6271D7D0500CF1C04 /* ReportThankYouView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportThankYouView.xib; sourceTree = "<group>"; };
 		AB4539B8271D7D1500CF1C04 /* ReportThankYouView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportThankYouView.swift; sourceTree = "<group>"; };
+		AB4539BA271DC82600CF1C04 /* SampleAppIcon.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SampleAppIcon.storyboard; sourceTree = "<group>"; };
+		AB4539BC271DC84600CF1C04 /* SampleAppIconViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAppIconViewController.swift; sourceTree = "<group>"; };
 		AB4D6BBD2672099C00E5286E /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		AB4F7C7B2719E0C8000A8D83 /* GoalStatistics.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoalStatistics.storyboard; sourceTree = "<group>"; };
 		AB4F7C7D2719E0E5000A8D83 /* GoalStatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalStatisticsViewController.swift; sourceTree = "<group>"; };
@@ -867,6 +871,7 @@
 		AB93C25C266A5A2C00C3AE8F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				AB4539BC271DC84600CF1C04 /* SampleAppIconViewController.swift */,
 				AB86A85226D4912500EA990A /* All */,
 				AB8B705C26D6AD570069FF67 /* LoginAndSignUp */,
 				AB13EDEC26C7C561002F56FF /* Top */,
@@ -881,6 +886,7 @@
 		AB93C25D266A5A5E00C3AE8F /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				AB4539BA271DC82600CF1C04 /* SampleAppIcon.storyboard */,
 				AB8B705B26D6AD460069FF67 /* LoginAndSignUp */,
 				AB13EDE726C7C4B7002F56FF /* Top */,
 				AB93C2C7266BC4F000C3AE8F /* StudyRecord */,
@@ -1039,6 +1045,7 @@
 				AB13EDB526BFAB8B002F56FF /* StudyRecordSortTableViewCell.xib in Resources */,
 				AB93C251266A27B900C3AE8F /* StudyRecord.storyboard in Resources */,
 				AB2B5BAB26A2D244009BD3C7 /* ColorConcept.storyboard in Resources */,
+				AB4539BB271DC82600CF1C04 /* SampleAppIcon.storyboard in Resources */,
 				AB4F7C822719E3E1000A8D83 /* GoalStatisticsTableViewCell.xib in Resources */,
 				AB93C244266A234C00C3AE8F /* Assets.xcassets in Resources */,
 				AB8B705026D62FA90069FF67 /* Login.storyboard in Resources */,
@@ -1275,6 +1282,7 @@
 				AB4539A6271D560500CF1C04 /* PlaceHolderTextView.swift in Sources */,
 				AB8B703F26D4A2410069FF67 /* UIViewController+Extension.swift in Sources */,
 				AB4539B0271D6C4C00CF1C04 /* SecretConstant.swift in Sources */,
+				AB4539BD271DC84600CF1C04 /* SampleAppIconViewController.swift in Sources */,
 				AB20F81426E809A200564B14 /* CustomSwitch.swift in Sources */,
 				AB43980126DE157E008C8CA8 /* GoalUseCase.swift in Sources */,
 				AB8B704E26D62F800069FF67 /* LoginViewController.swift in Sources */,

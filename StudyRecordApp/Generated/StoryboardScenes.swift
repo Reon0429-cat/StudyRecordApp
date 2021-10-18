@@ -167,6 +167,13 @@ internal enum StoryboardScene {
 
     internal static let resetingPasswordViewController = SceneType<StudyRecordApp.ResetingPasswordViewController>(storyboard: ResetingPassword.self, identifier: "ResetingPasswordViewController")
   }
+  internal enum SampleAppIcon: StoryboardType {
+    internal static let storyboardName = "SampleAppIcon"
+
+    internal static let initialScene = InitialSceneType<StudyRecordApp.SampleAppIconViewController>(storyboard: SampleAppIcon.self)
+
+    internal static let sampleAppIconViewController = SceneType<StudyRecordApp.SampleAppIconViewController>(storyboard: SampleAppIcon.self, identifier: "SampleAppIconViewController")
+  }
   internal enum Setting: StoryboardType {
     internal static let storyboardName = "Setting"
 

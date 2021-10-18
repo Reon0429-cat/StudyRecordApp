@@ -158,6 +158,8 @@
 "multilingual" = "Multilingual";
 "howToUseApp" = "How To Use App";
 "evaluationApp" = "Evaluation App";
+"appIcon" = "App Icon";
+"language" = "Language";
 "shareApp" = "Share App";
 "reports" = "Reports";
 "backup" = "Backup";

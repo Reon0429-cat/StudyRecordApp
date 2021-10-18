@@ -2,12 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSFaceIDUsageDescription</key>
-	<string>Use Face ID to unlock.</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Used to call the camera.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Used to use the photo app to save photos.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -26,6 +20,12 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Used to call the camera.</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Use Face ID to unlock.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Used to use the photo app to save photos.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
