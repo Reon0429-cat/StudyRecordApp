@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "LightBlue_Orange-Wings-White.jpg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}

@@ -152,6 +152,7 @@
 		AB4F7C7E2719E0E5000A8D83 /* GoalStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4F7C7D2719E0E5000A8D83 /* GoalStatisticsViewController.swift */; };
 		AB4F7C812719E3E1000A8D83 /* GoalStatisticsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4F7C7F2719E3E1000A8D83 /* GoalStatisticsTableViewCell.swift */; };
 		AB4F7C822719E3E1000A8D83 /* GoalStatisticsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB4F7C802719E3E1000A8D83 /* GoalStatisticsTableViewCell.xib */; };
+		AB63B9EF271E099D00987B66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB93C243266A234C00C3AE8F /* Assets.xcassets */; };
 		AB71076F26F94E4A00F4F695 /* DateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB71076E26F94E4A00F4F695 /* DateType.swift */; };
 		AB86A85A26D4915700EA990A /* HalfModalDismissInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86A85426D4915700EA990A /* HalfModalDismissInteractiveTransition.swift */; };
 		AB86A85B26D4915700EA990A /* HalfModalDismissAnimatedTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86A85526D4915700EA990A /* HalfModalDismissAnimatedTransition.swift */; };
@@ -169,7 +170,6 @@
 		AB8B706026D6AD9E0069FF67 /* LoginAndSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8B705F26D6AD9E0069FF67 /* LoginAndSignUpViewController.swift */; };
 		AB93C23B266A234800C3AE8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C23A266A234800C3AE8F /* AppDelegate.swift */; };
 		AB93C23D266A234800C3AE8F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C23C266A234800C3AE8F /* SceneDelegate.swift */; };
-		AB93C244266A234C00C3AE8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB93C243266A234C00C3AE8F /* Assets.xcassets */; };
 		AB93C247266A234C00C3AE8F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB93C245266A234C00C3AE8F /* LaunchScreen.storyboard */; };
 		AB93C24F266A271E00C3AE8F /* StudyRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C24E266A271E00C3AE8F /* StudyRecordViewController.swift */; };
 		AB93C251266A27B900C3AE8F /* StudyRecord.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB93C250266A27B900C3AE8F /* StudyRecord.storyboard */; };
@@ -660,6 +660,7 @@
 				AB13E2A52706FE8C00063A0B /* PasscodeSetting.storyboard */,
 				AB0C76D826F0A06300BF5B64 /* DarkModeSetting.storyboard */,
 				AB4539AA271D57B700CF1C04 /* Reports.storyboard */,
+				AB4539BA271DC82600CF1C04 /* SampleAppIcon.storyboard */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -686,6 +687,7 @@
 				AB13E2A32706FE6000063A0B /* PasscodeSettingViewController.swift */,
 				AB0C76DA26F0A06F00BF5B64 /* DarkModeSettingViewController.swift */,
 				AB4539A0271CBF8C00CF1C04 /* ReportsViewController.swift */,
+				AB4539BC271DC84600CF1C04 /* SampleAppIconViewController.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -871,7 +873,6 @@
 		AB93C25C266A5A2C00C3AE8F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				AB4539BC271DC84600CF1C04 /* SampleAppIconViewController.swift */,
 				AB86A85226D4912500EA990A /* All */,
 				AB8B705C26D6AD570069FF67 /* LoginAndSignUp */,
 				AB13EDEC26C7C561002F56FF /* Top */,
@@ -886,7 +887,6 @@
 		AB93C25D266A5A5E00C3AE8F /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				AB4539BA271DC82600CF1C04 /* SampleAppIcon.storyboard */,
 				AB8B705B26D6AD460069FF67 /* LoginAndSignUp */,
 				AB13EDE726C7C4B7002F56FF /* Top */,
 				AB93C2C7266BC4F000C3AE8F /* StudyRecord */,
@@ -1047,7 +1047,6 @@
 				AB2B5BAB26A2D244009BD3C7 /* ColorConcept.storyboard in Resources */,
 				AB4539BB271DC82600CF1C04 /* SampleAppIcon.storyboard in Resources */,
 				AB4F7C822719E3E1000A8D83 /* GoalStatisticsTableViewCell.xib in Resources */,
-				AB93C244266A234C00C3AE8F /* Assets.xcassets in Resources */,
 				AB8B705026D62FA90069FF67 /* Login.storyboard in Resources */,
 				AB8B704C26D600500069FF67 /* GoogleService-Info.plist in Resources */,
 				AB4F7C7C2719E0C8000A8D83 /* GoalStatistics.storyboard in Resources */,
@@ -1069,6 +1068,7 @@
 				AB9F30F627140DCE008A79A5 /* GoalSimpleTableViewCell.xib in Resources */,
 				AB16308426CEABD400111F55 /* NavigationButton.xib in Resources */,
 				ABFAB20926E394A60095EC20 /* GraphTableViewCell.xib in Resources */,
+				AB63B9EF271E099D00987B66 /* Assets.xcassets in Resources */,
 				ABCE16C7270994210014F618 /* InfoPlist.strings in Resources */,
 				AB4539B7271D7D0500CF1C04 /* ReportThankYouView.xib in Resources */,
 				ABAE84E126F414CF00A93A7F /* GoalHeaderView.xib in Resources */,
