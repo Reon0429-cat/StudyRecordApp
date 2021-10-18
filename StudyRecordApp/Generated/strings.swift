@@ -110,6 +110,8 @@ internal enum L10n {
   internal static let doYouWantToCloseWithoutSaving = L10n.tr("Localizable", "doYouWantToCloseWithoutSaving")
   /// Do you want to discard your edits?
   internal static let doYouWantToDiscardYourEdits = L10n.tr("Localizable", "doYouWantToDiscardYourEdits")
+  /// Do you want to send with this content?
+  internal static let doYouWantToSendWithThisContent = L10n.tr("Localizable", "doYouWantToSendWithThisContent?")
   /// Due Date
   internal static let dueDate = L10n.tr("Localizable", "dueDate")
   /// edit
@@ -118,6 +120,8 @@ internal enum L10n {
   internal static let elegant = L10n.tr("Localizable", "elegant")
   /// Evaluation App
   internal static let evaluationApp = L10n.tr("Localizable", "evaluationApp")
+  /// Failed to send.
+  internal static let failedToSend = L10n.tr("Localizable", "failedToSend.")
   /// February
   internal static let february = L10n.tr("Localizable", "february")
   /// Feminine
@@ -296,6 +300,8 @@ internal enum L10n {
   internal static let season = L10n.tr("Localizable", "season")
   /// Select from library
   internal static let selectFromLibrary = L10n.tr("Localizable", "selectFromLibrary")
+  /// send
+  internal static let send = L10n.tr("Localizable", "send")
   /// September
   internal static let september = L10n.tr("Localizable", "september")
   /// Service

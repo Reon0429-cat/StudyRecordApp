@@ -140,6 +140,9 @@
 		AB4539A1271CBF8C00CF1C04 /* ReportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4539A0271CBF8C00CF1C04 /* ReportsViewController.swift */; };
 		AB4539A6271D560500CF1C04 /* PlaceHolderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4539A5271D560500CF1C04 /* PlaceHolderTextView.swift */; };
 		AB4539AB271D57B700CF1C04 /* Reports.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB4539AA271D57B700CF1C04 /* Reports.storyboard */; };
+		AB4539B0271D6C4C00CF1C04 /* SecretConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4539AF271D6C4C00CF1C04 /* SecretConstant.swift */; };
+		AB4539B3271D6F9400CF1C04 /* MailSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4539B2271D6F9400CF1C04 /* MailSender.swift */; };
+		AB4539B5271D76CF00CF1C04 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4539B4271D76CF00CF1C04 /* Constant.swift */; };
 		AB4D6BBE2672099C00E5286E /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4D6BBD2672099C00E5286E /* UIButton+Extension.swift */; };
 		AB4F7C7C2719E0C8000A8D83 /* GoalStatistics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB4F7C7B2719E0C8000A8D83 /* GoalStatistics.storyboard */; };
 		AB4F7C7E2719E0E5000A8D83 /* GoalStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4F7C7D2719E0E5000A8D83 /* GoalStatisticsViewController.swift */; };
@@ -342,6 +345,9 @@
 		AB4539A0271CBF8C00CF1C04 /* ReportsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsViewController.swift; sourceTree = "<group>"; };
 		AB4539A5271D560500CF1C04 /* PlaceHolderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceHolderTextView.swift; sourceTree = "<group>"; };
 		AB4539AA271D57B700CF1C04 /* Reports.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Reports.storyboard; path = "../../../../../../Library/Mobile Documents/com~apple~CloudDocs/.Trash/Reports.storyboard"; sourceTree = "<group>"; };
+		AB4539AF271D6C4C00CF1C04 /* SecretConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretConstant.swift; sourceTree = "<group>"; };
+		AB4539B2271D6F9400CF1C04 /* MailSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailSender.swift; sourceTree = "<group>"; };
+		AB4539B4271D76CF00CF1C04 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		AB4D6BBD2672099C00E5286E /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		AB4F7C7B2719E0C8000A8D83 /* GoalStatistics.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoalStatistics.storyboard; sourceTree = "<group>"; };
 		AB4F7C7D2719E0E5000A8D83 /* GoalStatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalStatisticsViewController.swift; sourceTree = "<group>"; };
@@ -674,6 +680,15 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
+		AB4539B1271D6E9000CF1C04 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				AB4539AF271D6C4C00CF1C04 /* SecretConstant.swift */,
+				AB4539B4271D76CF00CF1C04 /* Constant.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		AB86A85226D4912500EA990A /* All */ = {
 			isa = PBXGroup;
 			children = (
@@ -796,6 +811,7 @@
 				AB93C25B266A5A2800C3AE8F /* Views */,
 				AB93C25C266A5A2C00C3AE8F /* Controllers */,
 				AB93C2CB266C84CA00C3AE8F /* Extensions */,
+				AB4539B1271D6E9000CF1C04 /* Constants */,
 				AB0C76CE26EEA8C500BF5B64 /* Localizable.strings */,
 				AB93C23A266A234800C3AE8F /* AppDelegate.swift */,
 				AB93C23C266A234800C3AE8F /* SceneDelegate.swift */,
@@ -813,6 +829,7 @@
 			isa = PBXGroup;
 			children = (
 				ABFB3A5D2710247A00BC6D3F /* SortableViewControllerProtocol.swift */,
+				AB4539B2271D6F9400CF1C04 /* MailSender.swift */,
 				AB372782270D84C0005DBAB3 /* Month.swift */,
 				ABFB3A5B270FDB6900BC6D3F /* Compatible.swift */,
 				AB37278C270DA181005DBAB3 /* SystemName.swift */,
@@ -1135,9 +1152,11 @@
 				AB86A85D26D4915700EA990A /* HalfModalOverlayView.swift in Sources */,
 				AB2B5B9F26A2D1B7009BD3C7 /* OverseasConcept.swift in Sources */,
 				AB372783270D84C0005DBAB3 /* Month.swift in Sources */,
+				AB4539B3271D6F9400CF1C04 /* MailSender.swift in Sources */,
 				AB13EE6626CAC98A002F56FF /* ScreenType.swift in Sources */,
 				AB0C76D726EFE38A00BF5B64 /* CustomTextField.swift in Sources */,
 				ABBA350B26F93026001BAEEF /* Date+Extension.swift in Sources */,
+				AB4539B5271D76CF00CF1C04 /* Constant.swift in Sources */,
 				AB13EDE026C64EBB002F56FF /* CustomTitleTableViewCell.swift in Sources */,
 				AB9F30F527140DCE008A79A5 /* GoalSimpleTableViewCell.swift in Sources */,
 				ABFAB21426E67A2E0095EC20 /* Alert.swift in Sources */,
@@ -1247,6 +1266,7 @@
 				AB4397ED26DD3051008C8CA8 /* AddAndEditGoalViewController.swift in Sources */,
 				AB4539A6271D560500CF1C04 /* PlaceHolderTextView.swift in Sources */,
 				AB8B703F26D4A2410069FF67 /* UIViewController+Extension.swift in Sources */,
+				AB4539B0271D6C4C00CF1C04 /* SecretConstant.swift in Sources */,
 				AB20F81426E809A200564B14 /* CustomSwitch.swift in Sources */,
 				AB43980126DE157E008C8CA8 /* GoalUseCase.swift in Sources */,
 				AB8B704E26D62F800069FF67 /* LoginViewController.swift in Sources */,

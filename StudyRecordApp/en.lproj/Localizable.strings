@@ -74,6 +74,7 @@
 "largeSort" = "Sort";
 "sort" = "sort";
 "largeSend" = "Send";
+"send" = "send";
 "delete" = "delete";
 "decision" = "decision";
 "largeDiscard" = "Discard";
@@ -83,6 +84,8 @@
 "unarchived" = "unarchived";
 "overall" = "overall";
 "showOnlyCategoryUnachieved" = "Show only category unachieved.";
+"doYouWantToSendWithThisContent?" = "Do you want to send with this content?";
+"failedToSend." = "Failed to send.";
 
 "login" = "Login";
 "signUp" = "SignUp";

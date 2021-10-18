@@ -16,6 +16,7 @@ final class ReportsViewController: UIViewController {
     @IBOutlet private weak var attentionLabel: UILabel!
     
     private let draftedTextKey = "draftedTextKey"
+    private let indicator = Indicator(kinds: PKHUDIndicator())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +46,38 @@ final class ReportsViewController: UIViewController {
 private extension ReportsViewController {
     
     @IBAction func sendButtonDidTapped(_ sender: Any) {
-        print("DEBUG_PRINT: ", #function)
+        let alert = Alert.create(title: L10n.doYouWantToSendWithThisContent)
+            .addAction(title: L10n.close)
+            .addAction(title: L10n.send) {
+                self.sendReportsToMail()
+            }
+        present(alert, animated: true)
+    }
+    
+}
+
+// MARK: - func
+private extension ReportsViewController {
+    
+    func sendReportsToMail() {
+        indicator.show(.progress)
+        MailSender().send(emailText: SecretConstant.reportsMail,
+                          passwordText: SecretConstant.reportsMailPassword,
+                          titleText: Constant.appName + " " + L10n.reports,
+                          bodyText: textView.text) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+                case .failure:
+                    self.indicator.flash(.error) {
+                        self.showErrorAlert(title: L10n.failedToSend)
+                    }
+                case .success:
+                    self.indicator.flash(.success) {
+                        // UNNotification
+                        self.dismiss(animated: true)
+                    }
+            }
+        }
     }
     
 }
@@ -120,6 +152,7 @@ private extension ReportsViewController {
     func setupSendButton() {
         let isEnabled = !textView.text.isEmpty
         sendButton.changeState(isEnabled: isEnabled)
+        sendButton.setTitle(L10n.largeSend)
     }
     
     func setupSubCustomNavigationBar() {

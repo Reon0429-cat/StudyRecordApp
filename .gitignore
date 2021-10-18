@@ -26,3 +26,5 @@ Pods/*
 !.gitkeep
 .DS_Store
 docs
+
+*SecretConstant.swift

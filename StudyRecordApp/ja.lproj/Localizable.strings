@@ -79,12 +79,15 @@
 "largeDiscard" = "破棄する";
 "recordTime" = "時間を記録する";
 "largeSend" = "送信";
+"send" = "送信";
 "achieved" = "達成済み";
 "achieve" = "達成";
 "unarchive" = "未達成";
 "unarchived" = "未達成";
 "overall" = "全体";
 "showOnlyCategoryUnachieved" = "カテゴリ未達成のみ表示";
+"doYouWantToSendWithThisContent?" = "こちらの内容で送信しますか？";
+"failedToSend." = "送信に失敗しました。";
 
 "reportAttention" = "頂いた内容は今後のサービス開発の参考にさせていただきます。\n返信が必要の場合のみメールアドレスを記載していただき、その他の個人情報の記載はご遠慮ください。";
 
