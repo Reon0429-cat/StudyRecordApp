@@ -11,7 +11,7 @@ final class ReportsViewController: UIViewController {
     
     @IBOutlet private weak var subCustomNavigationBar: SubCustomNavigationBar!
     @IBOutlet private weak var textViewBaseView: UIView!
-    @IBOutlet private weak var textView: UITextView!
+    @IBOutlet private weak var textView: PlaceHolderTextView!
     @IBOutlet private weak var sendButton: CustomButton!
     @IBOutlet private weak var attentionLabel: UILabel!
     
@@ -94,8 +94,6 @@ extension ReportsViewController: UITextViewDelegate {
 private extension ReportsViewController {
     
     func setupTextView() {
-        // MARK: - ToDo 共通化
-        // MARK: - ToDo 文字入れる(placefolder)
         textView.delegate = self
         textView.backgroundColor = .dynamicColor(light: .white,
                                                  dark: .secondarySystemGroupedBackground)
@@ -106,6 +104,8 @@ private extension ReportsViewController {
         if let text = UserDefaults.standard.string(forKey: draftedTextKey) {
             textView.text = text
         }
+        textView.placeHolder = L10n.reportsDetail
+        textView.placeHolder(isHidden: !textView.text.isEmpty)
     }
     
     func setBorderColor() {
@@ -132,4 +132,3 @@ private extension ReportsViewController {
     }
     
 }
-

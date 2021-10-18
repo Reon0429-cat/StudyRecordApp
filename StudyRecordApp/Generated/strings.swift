@@ -286,6 +286,8 @@ internal enum L10n {
   internal static let reportAttention = L10n.tr("Localizable", "reportAttention")
   /// Reports
   internal static let reports = L10n.tr("Localizable", "reports")
+  /// Please enter your opinions, requests, and details of the problem.
+  internal static let reportsDetail = L10n.tr("Localizable", "reportsDetail")
   /// Retro
   internal static let retro = L10n.tr("Localizable", "retro")
   /// save

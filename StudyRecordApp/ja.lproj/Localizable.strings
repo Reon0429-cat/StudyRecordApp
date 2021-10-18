@@ -158,6 +158,8 @@
 "evaluationApp" = "アプリを評価する";
 "shareApp" = "アプリを共有する";
 "reports" = "ご意見、ご要望、不具合の報告";
+"reportsDetail" = "ご意見、ご要望、不具合の内容をご記入ください。";
+
 "backup" = "バックアップ";
 "privacyPolicy" = "プライバシーポリシー";
 "logout" = "ログアウト";

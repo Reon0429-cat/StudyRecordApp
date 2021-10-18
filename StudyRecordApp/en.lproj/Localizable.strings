@@ -169,6 +169,7 @@
 "doYouWantTheDefaultColor" = "Do you want the default color?";
 
 "reportAttention" = "We will use the contents you received as a reference for future service development.\nPlease enter your email address only if you need a reply, and refrain from entering any other personal information.";
+"reportsDetail" = "Please enter your opinions, requests, and details of the problem.";
 
 "main" = "Main";
 "sub" = "Sub";
