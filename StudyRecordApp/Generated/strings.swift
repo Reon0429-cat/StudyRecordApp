@@ -100,13 +100,13 @@ internal enum L10n {
   internal static let digital = L10n.tr("Localizable", "digital")
   /// Dot
   internal static let dot = L10n.tr("Localizable", "Dot")
-  /// Do you really want to delete this
+  /// Do you really want to delete this?
   internal static let doYouReallyWantToDeleteThis = L10n.tr("Localizable", "doYouReallyWantToDeleteThis")
   /// Do you want the default color?
   internal static let doYouWantTheDefaultColor = L10n.tr("Localizable", "doYouWantTheDefaultColor")
-  /// Do you want to close the note without saving
+  /// Do you want to close the note without saving?
   internal static let doYouWantToCloseTheNoteWithoutSaving = L10n.tr("Localizable", "doYouWantToCloseTheNoteWithoutSaving")
-  /// Do you want to close without saving
+  /// Do you want to close without saving?
   internal static let doYouWantToCloseWithoutSaving = L10n.tr("Localizable", "doYouWantToCloseWithoutSaving")
   /// Do you want to discard your edits?
   internal static let doYouWantToDiscardYourEdits = L10n.tr("Localizable", "doYouWantToDiscardYourEdits")
@@ -281,6 +281,9 @@ internal enum L10n {
   internal static let register = L10n.tr("Localizable", "Register")
   /// Relax
   internal static let relax = L10n.tr("Localizable", "relax")
+  /// We will use the contents you received as a reference for future service development.
+  /// Please enter your email address only if you need a reply, and refrain from entering any other personal information.
+  internal static let reportAttention = L10n.tr("Localizable", "reportAttention")
   /// Reports
   internal static let reports = L10n.tr("Localizable", "reports")
   /// Retro

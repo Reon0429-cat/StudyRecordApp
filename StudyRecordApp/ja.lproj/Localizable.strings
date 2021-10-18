@@ -86,6 +86,8 @@
 "overall" = "全体";
 "showOnlyCategoryUnachieved" = "カテゴリ未達成のみ表示";
 
+"reportAttention" = "頂いた内容は今後のサービス開発の参考にさせていただきます。\n返信が必要の場合のみメールアドレスを記載していただき、その他の個人情報の記載はご遠慮ください。";
+
 "login" = "ログイン";
 "signUp" = "サインアップ";
 
@@ -99,9 +101,9 @@
 "passwordsDoNotMatch" = "パスワードが一致しません";
 "passwordForgotDetail" = "上記のメールアドレスにパスワード\n再設定用のURLを送信します。";
 "passwordForgotTitle" = "パスワードをお忘れの場合";
-"doYouWantToCloseTheNoteWithoutSaving" = "保存せずにメモを閉じますか";
-"doYouReallyWantToDeleteThis" = "本当に削除しますか";
-"doYouWantToCloseWithoutSaving" = "保存せずに閉じますか";
+"doYouWantToCloseTheNoteWithoutSaving" = "保存せずにメモを閉じますか？";
+"doYouReallyWantToDeleteThis" = "本当に削除しますか？";
+"doYouWantToCloseWithoutSaving" = "保存せずに閉じますか？";
 "doYouWantToDiscardYourEdits" = "編集内容を破棄しますか？";
 "moreThan24Hours" = "%1$@年%2$@%3$@日の記録時間が24時間以上です。";
 

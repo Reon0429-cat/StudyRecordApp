@@ -97,10 +97,10 @@
 "passwordsDoNotMatch" = "Passwords do not match";
 "passwordForgotDetail" = "Password to the above email address\nSend the URL for resetting.";
 "passwordForgotTitle" = "If you forget your password";
-"doYouReallyWantToDeleteThis" = "Do you really want to delete this";
-"doYouWantToCloseWithoutSaving" = "Do you want to close without saving";
+"doYouReallyWantToDeleteThis" = "Do you really want to delete this?";
+"doYouWantToCloseWithoutSaving" = "Do you want to close without saving?";
 "doYouWantToDiscardYourEdits" = "Do you want to discard your edits?";
-"doYouWantToCloseTheNoteWithoutSaving" = "Do you want to close the note without saving";
+"doYouWantToCloseTheNoteWithoutSaving" = "Do you want to close the note without saving?";
 "recordTime" = "Record time";
 "moreThan24Hours" = "The recording time on %2$@ %3$@, %1$@ will be more than 24 hours.";
 
@@ -167,6 +167,8 @@
 "yes" = "Yes";
 "no" = "No";
 "doYouWantTheDefaultColor" = "Do you want the default color?";
+
+"reportAttention" = "We will use the contents you received as a reference for future service development.\nPlease enter your email address only if you need a reply, and refrain from entering any other personal information.";
 
 "main" = "Main";
 "sub" = "Sub";
