@@ -36,7 +36,7 @@ private enum SettingRowType: Int, CaseIterable {
 }
 
 protocol SettingVCDelegate: ScreenPresentationDelegate {
-    
+    func presentThankYouView()
 }
 
 // MARK: - ToDo 多言語をセルに入れる
@@ -187,7 +187,9 @@ extension SettingViewController: UITableViewDelegate {
                 presentActivityVC()
             case .reports:
                 present(ReportsViewController.self,
-                        modalPresentationStyle: .fullScreen)
+                        modalPresentationStyle: .fullScreen) { vc in
+                    vc.delegate = self
+                }
             case .howToUseApp:
                 break
             case .backup:
@@ -252,6 +254,15 @@ extension SettingViewController: UITableViewDataSource {
                 cell.configure(titleText: rowType.title)
                 return cell
         }
+    }
+    
+}
+
+// MARK: - ReportsVCDelegate
+extension SettingViewController: ReportsVCDelegate {
+    
+    func presentThankYouView() {
+        delegate?.presentThankYouView()
     }
     
 }

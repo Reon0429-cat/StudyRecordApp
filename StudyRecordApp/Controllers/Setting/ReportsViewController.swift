@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ReportsVCDelegate: AnyObject {
+    func presentThankYouView()
+}
+
 final class ReportsViewController: UIViewController {
     
     @IBOutlet private weak var subCustomNavigationBar: SubCustomNavigationBar!
@@ -17,6 +21,7 @@ final class ReportsViewController: UIViewController {
     
     private let draftedTextKey = "draftedTextKey"
     private let indicator = Indicator(kinds: PKHUDIndicator())
+    weak var delegate: ReportsVCDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,7 +78,7 @@ private extension ReportsViewController {
                     }
                 case .success:
                     self.indicator.flash(.success) {
-                        // UNNotification
+                        self.delegate?.presentThankYouView()
                         self.dismiss(animated: true)
                     }
             }

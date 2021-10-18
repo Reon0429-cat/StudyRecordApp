@@ -143,6 +143,8 @@
 		AB4539B0271D6C4C00CF1C04 /* SecretConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4539AF271D6C4C00CF1C04 /* SecretConstant.swift */; };
 		AB4539B3271D6F9400CF1C04 /* MailSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4539B2271D6F9400CF1C04 /* MailSender.swift */; };
 		AB4539B5271D76CF00CF1C04 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4539B4271D76CF00CF1C04 /* Constant.swift */; };
+		AB4539B7271D7D0500CF1C04 /* ReportThankYouView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB4539B6271D7D0500CF1C04 /* ReportThankYouView.xib */; };
+		AB4539B9271D7D1500CF1C04 /* ReportThankYouView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4539B8271D7D1500CF1C04 /* ReportThankYouView.swift */; };
 		AB4D6BBE2672099C00E5286E /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4D6BBD2672099C00E5286E /* UIButton+Extension.swift */; };
 		AB4F7C7C2719E0C8000A8D83 /* GoalStatistics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB4F7C7B2719E0C8000A8D83 /* GoalStatistics.storyboard */; };
 		AB4F7C7E2719E0E5000A8D83 /* GoalStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4F7C7D2719E0E5000A8D83 /* GoalStatisticsViewController.swift */; };
@@ -348,6 +350,8 @@
 		AB4539AF271D6C4C00CF1C04 /* SecretConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretConstant.swift; sourceTree = "<group>"; };
 		AB4539B2271D6F9400CF1C04 /* MailSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailSender.swift; sourceTree = "<group>"; };
 		AB4539B4271D76CF00CF1C04 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		AB4539B6271D7D0500CF1C04 /* ReportThankYouView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportThankYouView.xib; sourceTree = "<group>"; };
+		AB4539B8271D7D1500CF1C04 /* ReportThankYouView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportThankYouView.swift; sourceTree = "<group>"; };
 		AB4D6BBD2672099C00E5286E /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		AB4F7C7B2719E0C8000A8D83 /* GoalStatistics.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoalStatistics.storyboard; sourceTree = "<group>"; };
 		AB4F7C7D2719E0E5000A8D83 /* GoalStatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalStatisticsViewController.swift; sourceTree = "<group>"; };
@@ -582,6 +586,8 @@
 				AB00DDC626F4E75E008CC3F1 /* CategoryKeyboardView.swift */,
 				AB13E2A72707241400063A0B /* RadioButton.swift */,
 				AB4539A5271D560500CF1C04 /* PlaceHolderTextView.swift */,
+				AB4539B6271D7D0500CF1C04 /* ReportThankYouView.xib */,
+				AB4539B8271D7D1500CF1C04 /* ReportThankYouView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -1057,6 +1063,7 @@
 				AB16308426CEABD400111F55 /* NavigationButton.xib in Resources */,
 				ABFAB20926E394A60095EC20 /* GraphTableViewCell.xib in Resources */,
 				ABCE16C7270994210014F618 /* InfoPlist.strings in Resources */,
+				AB4539B7271D7D0500CF1C04 /* ReportThankYouView.xib in Resources */,
 				ABAE84E126F414CF00A93A7F /* GoalHeaderView.xib in Resources */,
 				AB13ECD626B7AEA3002F56FF /* ColorChoicesConcept.storyboard in Resources */,
 				AB2B5BAC26A2D244009BD3C7 /* ThemeColor.storyboard in Resources */,
@@ -1205,6 +1212,7 @@
 				AB20F81226E7F3E100564B14 /* GraphKindSelectingViewController.swift in Sources */,
 				AB93C268266A7DFF00C3AE8F /* AdditionalStudyRecordViewController.swift in Sources */,
 				ABFAB20E26E638390095EC20 /* RealmGraphDataStore.swift in Sources */,
+				AB4539B9271D7D1500CF1C04 /* ReportThankYouView.swift in Sources */,
 				AB2B5B9E26A2D1B7009BD3C7 /* NaturalConcept.swift in Sources */,
 				AB86A85C26D4915700EA990A /* HalfModalIndicatorView.swift in Sources */,
 				ABA0570126B50D1900E3DF01 /* GraphColorTileView.swift in Sources */,
