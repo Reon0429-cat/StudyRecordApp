@@ -6,7 +6,7 @@
   
 */
 
-CFBundleDisplayName = "TaskL";
+CFBundleDisplayName = "TaskR";
 NSFaceIDUsageDescription = "FaceIDをロック解除のために使う。";
 NSCameraUsageDescription = "カメラを呼び出すために使う。";
 NSPhotoLibraryUsageDescription = "写真を保存するための写真アプリを利用するために使う。";
