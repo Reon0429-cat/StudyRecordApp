@@ -2,7 +2,7 @@ strings:
   inputs: StudyRecordApp/en.lproj/Localizable.strings
   outputs:
     - templateName: structured-swift5
-      output: StudyRecordApp/Generated/strings.swift
+      output: StudyRecordApp/Generated/L10n-Strings.swift
 ib:
   inputs: StudyRecordApp
   filter: .+\.storyboard$
@@ -11,3 +11,14 @@ ib:
       output: StudyRecordApp/Generated/StoryboardScenes.swift
     - templateName: segues-swift5
       output: StudyRecordApp/Generated/StoryboardSegues.swift
+
+xcassets:
+  inputs:
+    - StudyRecordApp/Assets.xcassets
+    - StudyRecordApp/Images.xcassets
+    - StudyRecordApp/Colors.xcassets
+  outputs:
+    - templateName: swift5
+      params:
+        allValues: true
+      output: StudyRecordApp/Generated/SwiftGen-Assets.swift

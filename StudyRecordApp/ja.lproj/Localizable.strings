@@ -160,6 +160,8 @@
 "multilingual" = "言語";
 "howToUseApp" = "アプリの使い方";
 "evaluationApp" = "アプリを評価する";
+"appIcon" = "アプリアイコン";
+"language" = "言語";
 "shareApp" = "アプリを共有する";
 "reports" = "ご意見、ご要望、不具合の報告";
 "reportsDetail" = "ご意見、ご要望、不具合の内容をご記入ください。";
@@ -224,9 +226,11 @@
 "allow" = "許可する";
 "turnOffBiometricsFromThisApp" = "またはこのアプリの設定から生体認証をオフにしてください";
 
-"" = "";
-"" = "";
-"" = "";
+"black" = "黒";
+"white" = "白";
+
+"normal" = "ノーマル";
+"mixed" = "ミックス";
 "" = "";
 "" = "";
 "" = "";

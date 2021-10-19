@@ -30,6 +30,8 @@ internal enum L10n {
   internal static let allow = L10n.tr("Localizable", "allow")
   /// An unknown error has occurred
   internal static let anUnknownErrorHasOccurred = L10n.tr("Localizable", "anUnknownErrorHasOccurred")
+  /// App Icon
+  internal static let appIcon = L10n.tr("Localizable", "appIcon")
   /// April
   internal static let april = L10n.tr("Localizable", "april")
   /// Are you sure you want to log out?
@@ -46,6 +48,8 @@ internal enum L10n {
   internal static let bar = L10n.tr("Localizable", "Bar")
   /// Beautiful
   internal static let beautiful = L10n.tr("Localizable", "beautiful")
+  /// black
+  internal static let black = L10n.tr("Localizable", "black")
   /// Botanical
   internal static let botanical = L10n.tr("Localizable", "botanical")
   /// Business
@@ -166,6 +170,8 @@ internal enum L10n {
   internal static let june = L10n.tr("Localizable", "june")
   /// Kids
   internal static let kids = L10n.tr("Localizable", "kids")
+  /// Language
+  internal static let language = L10n.tr("Localizable", "language")
   /// en
   internal static let languageCode = L10n.tr("Localizable", "languageCode")
   /// Add
@@ -210,6 +216,8 @@ internal enum L10n {
   internal static let memo = L10n.tr("Localizable", "memo")
   /// minute
   internal static let minute = L10n.tr("Localizable", "minute")
+  /// mixed
+  internal static let mixed = L10n.tr("Localizable", "mixed")
   /// Moist
   internal static let moist = L10n.tr("Localizable", "moist")
   /// month
@@ -226,6 +234,8 @@ internal enum L10n {
   internal static let natural = L10n.tr("Localizable", "natural")
   /// No
   internal static let no = L10n.tr("Localizable", "no")
+  /// normal
+  internal static let normal = L10n.tr("Localizable", "normal")
   /// Do not fill
   internal static let notFill = L10n.tr("Localizable", "notFill")
   /// November
@@ -387,6 +397,8 @@ internal enum L10n {
   internal static let unselected = L10n.tr("Localizable", "unselected")
   /// Use authentication to unlock
   internal static let useAuthenticationToUnlock = L10n.tr("Localizable", "useAuthenticationToUnlock")
+  /// white
+  internal static let white = L10n.tr("Localizable", "white")
   /// Winter
   internal static let winter = L10n.tr("Localizable", "winter")
   /// year

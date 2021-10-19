@@ -61,4 +61,12 @@ final class CustomSegmentedControl: UISegmentedControl {
         selectedSegmentIndex = selectedIndex
     }
     
+    func setImages(_ images: [UIImage], selectedIndex: Int) {
+        removeAllSegments()
+        images.enumerated().forEach { index, image in
+            insertSegment(with: image, at: index, animated: false)
+        }
+        selectedSegmentIndex = selectedIndex
+    }
+    
 }

@@ -9,6 +9,6 @@ import Foundation
 
 struct Constant {
     
-    static let appName = "TaskL"
+    static let appName = "TaskR"
     
 }

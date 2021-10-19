@@ -12,6 +12,8 @@ private enum SettingRowType: Int, CaseIterable {
     case darkMode
     case passcode
     case evaluationApp
+    case appIcon
+    case language
     case shareApp
     case reports
     case howToUseApp
@@ -25,6 +27,8 @@ private enum SettingRowType: Int, CaseIterable {
             case .darkMode: return L10n.darkMode
             case .passcode: return L10n.passcode
             case .evaluationApp: return L10n.evaluationApp
+            case .appIcon: return L10n.appIcon
+            case .language: return L10n.language
             case .shareApp: return L10n.shareApp
             case .reports: return L10n.reports
             case .howToUseApp: return L10n.howToUseApp
@@ -38,8 +42,6 @@ private enum SettingRowType: Int, CaseIterable {
 protocol SettingVCDelegate: ScreenPresentationDelegate {
     func presentThankYouView()
 }
-
-// MARK: - ToDo 多言語をセルに入れる
 
 final class SettingViewController: UIViewController {
     
@@ -182,6 +184,11 @@ extension SettingViewController: UITableViewDelegate {
                     self.halfModalPresenter.viewController = vc
                 }
             case .evaluationApp:
+                break
+            case .appIcon:
+                present(AppIconViewController.self,
+                        modalPresentationStyle: .fullScreen)
+            case .language:
                 break
             case .shareApp:
                 presentActivityVC()

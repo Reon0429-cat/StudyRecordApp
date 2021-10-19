@@ -158,6 +158,8 @@
 "multilingual" = "Multilingual";
 "howToUseApp" = "How To Use App";
 "evaluationApp" = "Evaluation App";
+"appIcon" = "App Icon";
+"language" = "Language";
 "shareApp" = "Share App";
 "reports" = "Reports";
 "backup" = "Backup";
@@ -223,10 +225,12 @@
 "allow" = "allow";
 "turnOffBiometricsFromThisApp" = "Or turn off biometrics from the settings of this app";
 
-"" = "";
-"" = "";
-"" = "";
-"" = "";
+"black" = "black";
+"white" = "white";
+
+"normal" = "normal";
+"mixed" = "mixed";
+
 "" = "";
 "" = "";
 "" = "";
