@@ -10,6 +10,5 @@ import UIKit
 final class AppIconCollectionReusableView: UICollectionReusableView {
     
     static var identifier: String { String(describing: self) }
-    static var nib: UINib { UINib(nibName: String(describing: self), bundle: nil) }
     
 }

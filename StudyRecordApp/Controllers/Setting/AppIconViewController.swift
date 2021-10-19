@@ -89,7 +89,6 @@ final class AppIconViewController: UIViewController {
             && isMixedColor($0.name)
         }
     }
-    
     private let iconBackgroundKey = "iconBackgroundKey"
     private let iconTypeKey = "iconTypeKey"
     
@@ -119,6 +118,10 @@ private extension AppIconViewController {
         }
     }
     
+    func getSectionType(section: Int) -> SectionType {
+        return SectionType(rawValue: section) ?? .normal
+    }
+    
 }
 
 // MARK: - IBAction func
@@ -143,8 +146,7 @@ extension AppIconViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
-        let sectionType = SectionType(rawValue: indexPath.section) ?? .normal
-        switch sectionType {
+        switch getSectionType(section: indexPath.section) {
             case .normal:
                 let name = normalImageAssets[indexPath.item].name
                 changeIcon(name: name)
@@ -164,10 +166,9 @@ extension AppIconViewController: UICollectionViewDataSource {
                         forElementKind elementKind: String,
                         at indexPath: IndexPath) {
         view.subviews.forEach { $0.removeFromSuperview() }
-        let sectionType = SectionType(rawValue: indexPath.section) ?? .normal
         let label = UILabel()
         label.font = .systemFont(ofSize: 20)
-        label.text = sectionType.title
+        label.text = getSectionType(section: indexPath.section).title
         label.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(label)
         NSLayoutConstraint.activate([
@@ -183,8 +184,7 @@ extension AppIconViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        let sectionType = SectionType(rawValue: section) ?? .normal
-        switch sectionType {
+        switch getSectionType(section: section) {
             case .normal:
                 return normalImageAssets.count
             case .mixed:
@@ -196,8 +196,7 @@ extension AppIconViewController: UICollectionViewDataSource {
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCustomCell(with: AppIconCollectionViewCell.self,
                                                             indexPath: indexPath)
-        let sectionType = SectionType(rawValue: indexPath.section) ?? .normal
-        switch sectionType {
+        switch getSectionType(section: indexPath.section) {
             case .normal:
                 let image = normalImageAssets[indexPath.item].image
                 cell.configure(image: image)
@@ -212,9 +211,11 @@ extension AppIconViewController: UICollectionViewDataSource {
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {
-            let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                       withReuseIdentifier: AppIconCollectionReusableView.identifier,
-                                                                       for: indexPath) as! AppIconCollectionReusableView
+            let view = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: AppIconCollectionReusableView.identifier,
+                for: indexPath
+            )
             return view
         }
         return UICollectionReusableView()
