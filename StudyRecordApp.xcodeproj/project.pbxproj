@@ -186,6 +186,8 @@
 		ABA0570526B50F8100E3DF01 /* StudyRecordGraphColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA0570426B50F8100E3DF01 /* StudyRecordGraphColorViewController.swift */; };
 		ABAE84DF26F414BB00A93A7F /* GoalHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAE84DE26F414BB00A93A7F /* GoalHeaderView.swift */; };
 		ABAE84E126F414CF00A93A7F /* GoalHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABAE84E026F414CF00A93A7F /* GoalHeaderView.xib */; };
+		ABB7F836271EDDB1003F928D /* AppIcon.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABB7F835271EDDB1003F928D /* AppIcon.storyboard */; };
+		ABB7F838271EDDBC003F928D /* AppIconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB7F837271EDDBC003F928D /* AppIconViewController.swift */; };
 		ABBA350B26F93026001BAEEF /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBA350A26F93026001BAEEF /* Date+Extension.swift */; };
 		ABBF358F271EB36900CB3249 /* BlueGreen-Heart-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3439271EB36000CB3249 /* BlueGreen-Heart-White@3x.png */; };
 		ABBF3590271EB36900CB3249 /* Red_Blue-Wings-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF343A271EB36000CB3249 /* Red_Blue-Wings-White@3x.png */; };
@@ -532,6 +534,7 @@
 		ABBF36E7271EC29E00CB3249 /* SwiftGen-Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBF36E6271EC29E00CB3249 /* SwiftGen-Assets.swift */; };
 		ABBF36E9271EC30500CB3249 /* L10n-Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBF36E8271EC30500CB3249 /* L10n-Strings.swift */; };
 		ABBF36EA271ECD6E00CB3249 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB93C243266A234C00C3AE8F /* Assets.xcassets */; };
+		ABBF3727271ED15E00CB3249 /* Pods_StudyRecordApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7ADEAD2199951B48FEFB0D8 /* Pods_StudyRecordApp.framework */; };
 		ABCE16C7270994210014F618 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ABCE16C9270994210014F618 /* InfoPlist.strings */; };
 		ABDF66BE26E79543000D9FD5 /* TabBarCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDF66BD26E79543000D9FD5 /* TabBarCollectionViewController.swift */; };
 		ABE8CF59271EA8D500705EE4 /* Reports.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABE8CF58271EA8D500705EE4 /* Reports.storyboard */; };
@@ -552,7 +555,6 @@
 		ABFB3A5E2710247A00BC6D3F /* SortableViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFB3A5D2710247A00BC6D3F /* SortableViewControllerProtocol.swift */; };
 		ABFB3A60271024F400BC6D3F /* GoalSortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFB3A5F271024F400BC6D3F /* GoalSortViewController.swift */; };
 		ABFB3A62271024FF00BC6D3F /* GoalSort.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABFB3A61271024FF00BC6D3F /* GoalSort.storyboard */; };
-		D14EABCB62E5596481983E6D /* Pods_StudyRecordApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7ADEAD2199951B48FEFB0D8 /* Pods_StudyRecordApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -741,6 +743,8 @@
 		ABA0570426B50F8100E3DF01 /* StudyRecordGraphColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRecordGraphColorViewController.swift; sourceTree = "<group>"; };
 		ABAE84DE26F414BB00A93A7F /* GoalHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalHeaderView.swift; sourceTree = "<group>"; };
 		ABAE84E026F414CF00A93A7F /* GoalHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoalHeaderView.xib; sourceTree = "<group>"; };
+		ABB7F835271EDDB1003F928D /* AppIcon.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AppIcon.storyboard; sourceTree = "<group>"; };
+		ABB7F837271EDDBC003F928D /* AppIconViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconViewController.swift; sourceTree = "<group>"; };
 		ABBA350A26F93026001BAEEF /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		ABBF3439271EB36000CB3249 /* BlueGreen-Heart-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueGreen-Heart-White@3x.png"; sourceTree = "<group>"; };
 		ABBF343A271EB36000CB3249 /* Red_Blue-Wings-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red_Blue-Wings-White@3x.png"; sourceTree = "<group>"; };
@@ -1117,7 +1121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D14EABCB62E5596481983E6D /* Pods_StudyRecordApp.framework in Frameworks */,
+				ABBF3727271ED15E00CB3249 /* Pods_StudyRecordApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1348,6 +1352,7 @@
 				AB0C76D826F0A06300BF5B64 /* DarkModeSetting.storyboard */,
 				ABE8CF58271EA8D500705EE4 /* Reports.storyboard */,
 				AB4539BA271DC82600CF1C04 /* SampleAppIcon.storyboard */,
+				ABB7F835271EDDB1003F928D /* AppIcon.storyboard */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -1375,6 +1380,7 @@
 				AB0C76DA26F0A06F00BF5B64 /* DarkModeSettingViewController.swift */,
 				AB4539A0271CBF8C00CF1C04 /* ReportsViewController.swift */,
 				AB4539BC271DC84600CF1C04 /* SampleAppIconViewController.swift */,
+				ABB7F837271EDDBC003F928D /* AppIconViewController.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -2416,6 +2422,7 @@
 				ABBF35ED271EB36900CB3249 /* Red_Blue-Wings-Black@3x.png in Resources */,
 				ABBF35B9271EB36900CB3249 /* Black-Wings-White.png in Resources */,
 				ABE8CF59271EA8D500705EE4 /* Reports.storyboard in Resources */,
+				ABB7F836271EDDB1003F928D /* AppIcon.storyboard in Resources */,
 				ABBF35A7271EB36900CB3249 /* Pink-Heart-Black.png in Resources */,
 				ABBF36CB271EB36900CB3249 /* Red_Pink-Wings-White.png in Resources */,
 				ABBF35D1271EB36900CB3249 /* Purple-Wing-White@3x.png in Resources */,
@@ -2557,6 +2564,7 @@
 				AB13EDDB26C3C163002F56FF /* Converter.swift in Sources */,
 				ABBF36E9271EC30500CB3249 /* L10n-Strings.swift in Sources */,
 				AB2B5BC526A2D36F009BD3C7 /* ColorChoicesTileViewController.swift in Sources */,
+				ABB7F838271EDDBC003F928D /* AppIconViewController.swift in Sources */,
 				AB93C24F266A271E00C3AE8F /* StudyRecordViewController.swift in Sources */,
 				AB43980826DE2D72008C8CA8 /* GoalPriorityTableViewCell.swift in Sources */,
 				AB13EDAF26BFAA62002F56FF /* StudyRecordSortViewController.swift in Sources */,

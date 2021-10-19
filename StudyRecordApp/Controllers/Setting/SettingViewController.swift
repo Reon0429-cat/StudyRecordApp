@@ -186,7 +186,8 @@ extension SettingViewController: UITableViewDelegate {
             case .evaluationApp:
                 break
             case .appIcon:
-                present(SampleAppIconViewController.self)
+                present(AppIconViewController.self,
+                        modalPresentationStyle: .fullScreen)
             case .language:
                 break
             case .shareApp:
