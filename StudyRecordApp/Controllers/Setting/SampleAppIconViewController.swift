@@ -36,4 +36,18 @@ final class SampleAppIconViewController: UIViewController {
         imageView.image = UIImage(named: imageType.rawValue)
     }
     
+    @IBAction private func changeIconButtonDidTapped(_ sender: Any) {
+        changeIcon(name: "Yellow-Wings-Black")
+    }
+    
+    private func changeIcon(name: String) {
+        UIApplication.shared.setAlternateIconName(name) { error in
+            if let error = error {
+                print("DEBUG_PRINT: 失敗 :\(name)", error.localizedDescription)
+                return
+            }
+            print("DEBUG_PRINT: 成功 :\(name)")
+        }
+    }
+    
 }

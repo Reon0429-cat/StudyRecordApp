@@ -48,17 +48,28 @@
                                     <action selector="segmentedControlDidChanged:" destination="Y6W-OH-hqX" eventType="valueChanged" id="K0h-Ew-J0o"/>
                                 </connections>
                             </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YDO-9K-2NT">
+                                <rect key="frame" x="22" y="64" width="372" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Change Icon"/>
+                                <connections>
+                                    <action selector="changeIconButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="KOu-d4-8A7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="8fG-qW-BxH" secondAttribute="trailing" constant="100" id="H6H-T4-bju"/>
                             <constraint firstItem="FoU-vb-E9p" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="100" id="Krj-Ez-SPB"/>
+                            <constraint firstItem="YDO-9K-2NT" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="L6X-gw-ra6"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ECO-IQ-WfT" secondAttribute="trailing" id="MRQ-vQ-3Ex"/>
                             <constraint firstItem="8fG-qW-BxH" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="NDp-rC-ZdV"/>
                             <constraint firstItem="FoU-vb-E9p" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="YAc-vJ-den"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="4hq-a1-qDF" secondAttribute="trailing" id="b2o-VO-aIw"/>
+                            <constraint firstItem="YDO-9K-2NT" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="22" id="fAs-TQ-DAr"/>
                             <constraint firstItem="ECO-IQ-WfT" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="fVh-kD-bMt"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="YDO-9K-2NT" secondAttribute="trailing" constant="20" id="fr3-M4-4AC"/>
                             <constraint firstItem="8fG-qW-BxH" firstAttribute="top" secondItem="ECO-IQ-WfT" secondAttribute="bottom" constant="-70" id="q7F-tt-aPe"/>
                             <constraint firstItem="4hq-a1-qDF" firstAttribute="top" secondItem="8fG-qW-BxH" secondAttribute="bottom" constant="-130" id="ree-30-Zzl"/>
                             <constraint firstItem="4hq-a1-qDF" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="riQ-3Q-HKL"/>
@@ -78,7 +89,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="heartWings" width="250" height="250.5"/>
+        <image name="heartWings" width="500" height="501"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

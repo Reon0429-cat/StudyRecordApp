@@ -139,7 +139,6 @@
 		AB43980926DE2D72008C8CA8 /* GoalPriorityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB43980726DE2D72008C8CA8 /* GoalPriorityTableViewCell.xib */; };
 		AB4539A1271CBF8C00CF1C04 /* ReportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4539A0271CBF8C00CF1C04 /* ReportsViewController.swift */; };
 		AB4539A6271D560500CF1C04 /* PlaceHolderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4539A5271D560500CF1C04 /* PlaceHolderTextView.swift */; };
-		AB4539AB271D57B700CF1C04 /* Reports.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB4539AA271D57B700CF1C04 /* Reports.storyboard */; };
 		AB4539B0271D6C4C00CF1C04 /* SecretConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4539AF271D6C4C00CF1C04 /* SecretConstant.swift */; };
 		AB4539B3271D6F9400CF1C04 /* MailSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4539B2271D6F9400CF1C04 /* MailSender.swift */; };
 		AB4539B5271D76CF00CF1C04 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4539B4271D76CF00CF1C04 /* Constant.swift */; };
@@ -152,7 +151,6 @@
 		AB4F7C7E2719E0E5000A8D83 /* GoalStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4F7C7D2719E0E5000A8D83 /* GoalStatisticsViewController.swift */; };
 		AB4F7C812719E3E1000A8D83 /* GoalStatisticsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4F7C7F2719E3E1000A8D83 /* GoalStatisticsTableViewCell.swift */; };
 		AB4F7C822719E3E1000A8D83 /* GoalStatisticsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB4F7C802719E3E1000A8D83 /* GoalStatisticsTableViewCell.xib */; };
-		AB63B9F0271E8B6300987B66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB93C243266A234C00C3AE8F /* Assets.xcassets */; };
 		AB71076F26F94E4A00F4F695 /* DateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB71076E26F94E4A00F4F695 /* DateType.swift */; };
 		AB86A85A26D4915700EA990A /* HalfModalDismissInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86A85426D4915700EA990A /* HalfModalDismissInteractiveTransition.swift */; };
 		AB86A85B26D4915700EA990A /* HalfModalDismissAnimatedTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86A85526D4915700EA990A /* HalfModalDismissAnimatedTransition.swift */; };
@@ -190,8 +188,352 @@
 		ABAE84DF26F414BB00A93A7F /* GoalHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAE84DE26F414BB00A93A7F /* GoalHeaderView.swift */; };
 		ABAE84E126F414CF00A93A7F /* GoalHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABAE84E026F414CF00A93A7F /* GoalHeaderView.xib */; };
 		ABBA350B26F93026001BAEEF /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBA350A26F93026001BAEEF /* Date+Extension.swift */; };
+		ABBF358F271EB36900CB3249 /* BlueGreen-Heart-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3439271EB36000CB3249 /* BlueGreen-Heart-White@3x.png */; };
+		ABBF3590271EB36900CB3249 /* Red_Blue-Wings-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF343A271EB36000CB3249 /* Red_Blue-Wings-White@3x.png */; };
+		ABBF3591271EB36900CB3249 /* Blue_Yellow-Wing-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF343B271EB36000CB3249 /* Blue_Yellow-Wing-Black@2x.png */; };
+		ABBF3592271EB36900CB3249 /* BlueGreen_LightBlue-Wings-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF343C271EB36000CB3249 /* BlueGreen_LightBlue-Wings-Black@3x.png */; };
+		ABBF3593271EB36900CB3249 /* Black-Wings-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF343D271EB36000CB3249 /* Black-Wings-Black@3x.png */; };
+		ABBF3594271EB36900CB3249 /* Pink-Wings-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF343E271EB36000CB3249 /* Pink-Wings-White.png */; };
+		ABBF3595271EB36900CB3249 /* Red_Pink-Wings-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF343F271EB36000CB3249 /* Red_Pink-Wings-White@2x.png */; };
+		ABBF3596271EB36900CB3249 /* LightBlue-Heart-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3440271EB36000CB3249 /* LightBlue-Heart-White.png */; };
+		ABBF3597271EB36900CB3249 /* Purple-Heart-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3441271EB36000CB3249 /* Purple-Heart-White.png */; };
+		ABBF3598271EB36900CB3249 /* Blue_Yellow-Wings-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3442271EB36000CB3249 /* Blue_Yellow-Wings-White.png */; };
+		ABBF3599271EB36900CB3249 /* Black-Heart-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3443271EB36000CB3249 /* Black-Heart-Black@3x.png */; };
+		ABBF359A271EB36900CB3249 /* LightBlue_Orange-Wings-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3444271EB36000CB3249 /* LightBlue_Orange-Wings-Black@2x.png */; };
+		ABBF359B271EB36900CB3249 /* BlueGreen_LightBlue-Wing-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3445271EB36000CB3249 /* BlueGreen_LightBlue-Wing-Black@2x.png */; };
+		ABBF359C271EB36900CB3249 /* LightPink-Heart-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3446271EB36000CB3249 /* LightPink-Heart-Black.png */; };
+		ABBF359D271EB36900CB3249 /* Blue_Yellow-Heart-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3447271EB36000CB3249 /* Blue_Yellow-Heart-Black@3x.png */; };
+		ABBF359E271EB36900CB3249 /* LightPink-Wing-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3448271EB36000CB3249 /* LightPink-Wing-Black.png */; };
+		ABBF359F271EB36900CB3249 /* LightBlue_Orange-Wing-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3449271EB36000CB3249 /* LightBlue_Orange-Wing-Black@3x.png */; };
+		ABBF35A0271EB36900CB3249 /* BlueGreen-Wings-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF344A271EB36000CB3249 /* BlueGreen-Wings-White.png */; };
+		ABBF35A1271EB36900CB3249 /* Pink_Green-Heart-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF344B271EB36000CB3249 /* Pink_Green-Heart-Black@3x.png */; };
+		ABBF35A2271EB36900CB3249 /* Red_Blue-Wing-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF344C271EB36000CB3249 /* Red_Blue-Wing-White@3x.png */; };
+		ABBF35A3271EB36900CB3249 /* Blue_Purple-Heart-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF344D271EB36000CB3249 /* Blue_Purple-Heart-Black.png */; };
+		ABBF35A4271EB36900CB3249 /* Black-Heart-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF344E271EB36000CB3249 /* Black-Heart-White.png */; };
+		ABBF35A5271EB36900CB3249 /* Green-Heart-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF344F271EB36000CB3249 /* Green-Heart-White@3x.png */; };
+		ABBF35A6271EB36900CB3249 /* Orange-Heart-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3450271EB36000CB3249 /* Orange-Heart-Black.png */; };
+		ABBF35A7271EB36900CB3249 /* Pink-Heart-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3451271EB36000CB3249 /* Pink-Heart-Black.png */; };
+		ABBF35A8271EB36900CB3249 /* Red-Wings-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3452271EB36100CB3249 /* Red-Wings-White@2x.png */; };
+		ABBF35A9271EB36900CB3249 /* BlueGreen-Heart-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3453271EB36100CB3249 /* BlueGreen-Heart-White@2x.png */; };
+		ABBF35AA271EB36900CB3249 /* Red_Blue-Wing-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3454271EB36100CB3249 /* Red_Blue-Wing-Black@3x.png */; };
+		ABBF35AB271EB36900CB3249 /* LightPink-Heart-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3455271EB36100CB3249 /* LightPink-Heart-Black@2x.png */; };
+		ABBF35AC271EB36900CB3249 /* Pink_Green-Wing-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3456271EB36100CB3249 /* Pink_Green-Wing-Black@2x.png */; };
+		ABBF35AD271EB36900CB3249 /* Blue_Purple-Wing-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3457271EB36100CB3249 /* Blue_Purple-Wing-White.png */; };
+		ABBF35AE271EB36900CB3249 /* Red-Heart-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3458271EB36100CB3249 /* Red-Heart-White@3x.png */; };
+		ABBF35AF271EB36900CB3249 /* Black-Wings-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3459271EB36100CB3249 /* Black-Wings-Black.png */; };
+		ABBF35B0271EB36900CB3249 /* LightBlue_Orange-Heart-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF345A271EB36100CB3249 /* LightBlue_Orange-Heart-Black.png */; };
+		ABBF35B1271EB36900CB3249 /* Blue_Yellow-Heart-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF345B271EB36100CB3249 /* Blue_Yellow-Heart-White@3x.png */; };
+		ABBF35B2271EB36900CB3249 /* Yellow-Wings-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF345C271EB36100CB3249 /* Yellow-Wings-White.png */; };
+		ABBF35B3271EB36900CB3249 /* Green-Heart-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF345D271EB36100CB3249 /* Green-Heart-Black@2x.png */; };
+		ABBF35B4271EB36900CB3249 /* LightBlue_Orange-Wings-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF345E271EB36100CB3249 /* LightBlue_Orange-Wings-White.png */; };
+		ABBF35B5271EB36900CB3249 /* Pink_Green-Wing-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF345F271EB36100CB3249 /* Pink_Green-Wing-White@3x.png */; };
+		ABBF35B6271EB36900CB3249 /* Yellow-Heart-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3460271EB36100CB3249 /* Yellow-Heart-Black@3x.png */; };
+		ABBF35B7271EB36900CB3249 /* BlueGreen-Wing-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3461271EB36100CB3249 /* BlueGreen-Wing-Black.png */; };
+		ABBF35B8271EB36900CB3249 /* Green-Heart-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3462271EB36100CB3249 /* Green-Heart-Black.png */; };
+		ABBF35B9271EB36900CB3249 /* Black-Wings-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3463271EB36100CB3249 /* Black-Wings-White.png */; };
+		ABBF35BA271EB36900CB3249 /* Purple-Heart-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3464271EB36100CB3249 /* Purple-Heart-White@2x.png */; };
+		ABBF35BB271EB36900CB3249 /* Purple-Wing-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3465271EB36100CB3249 /* Purple-Wing-Black@2x.png */; };
+		ABBF35BC271EB36900CB3249 /* Green_Yellow-Wings-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3466271EB36100CB3249 /* Green_Yellow-Wings-Black.png */; };
+		ABBF35BD271EB36900CB3249 /* Green-Wings-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3467271EB36100CB3249 /* Green-Wings-White.png */; };
+		ABBF35BE271EB36900CB3249 /* Blue_Yellow-Wings-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3468271EB36100CB3249 /* Blue_Yellow-Wings-Black@3x.png */; };
+		ABBF35BF271EB36900CB3249 /* Pink-Wings-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3469271EB36100CB3249 /* Pink-Wings-Black@2x.png */; };
+		ABBF35C0271EB36900CB3249 /* Blue-Wings-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF346A271EB36100CB3249 /* Blue-Wings-White.png */; };
+		ABBF35C1271EB36900CB3249 /* Red_Blue-Heart-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF346B271EB36100CB3249 /* Red_Blue-Heart-Black.png */; };
+		ABBF35C2271EB36900CB3249 /* BlueGreen_LightBlue-Wings-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF346C271EB36100CB3249 /* BlueGreen_LightBlue-Wings-Black@2x.png */; };
+		ABBF35C3271EB36900CB3249 /* Pink-Wing-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF346D271EB36100CB3249 /* Pink-Wing-Black@2x.png */; };
+		ABBF35C4271EB36900CB3249 /* Blue_Purple-Wings-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF346E271EB36100CB3249 /* Blue_Purple-Wings-White.png */; };
+		ABBF35C5271EB36900CB3249 /* Red-Wing-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF346F271EB36100CB3249 /* Red-Wing-Black.png */; };
+		ABBF35C6271EB36900CB3249 /* Blue_Purple-Wings-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3470271EB36100CB3249 /* Blue_Purple-Wings-White@3x.png */; };
+		ABBF35C7271EB36900CB3249 /* Yellow-Heart-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3471271EB36200CB3249 /* Yellow-Heart-Black.png */; };
+		ABBF35C8271EB36900CB3249 /* Red_Blue-Wing-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3472271EB36200CB3249 /* Red_Blue-Wing-Black@2x.png */; };
+		ABBF35C9271EB36900CB3249 /* BlueGreen-Wings-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3473271EB36200CB3249 /* BlueGreen-Wings-Black@3x.png */; };
+		ABBF35CA271EB36900CB3249 /* Blue_Yellow-Wing-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3474271EB36200CB3249 /* Blue_Yellow-Wing-White.png */; };
+		ABBF35CB271EB36900CB3249 /* Orange-Heart-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3475271EB36200CB3249 /* Orange-Heart-Black@2x.png */; };
+		ABBF35CC271EB36900CB3249 /* Orange-Wing-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3476271EB36200CB3249 /* Orange-Wing-White@2x.png */; };
+		ABBF35CD271EB36900CB3249 /* LightPink-Wings-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3477271EB36200CB3249 /* LightPink-Wings-Black.png */; };
+		ABBF35CE271EB36900CB3249 /* Green_Yellow-Wing-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3478271EB36200CB3249 /* Green_Yellow-Wing-Black.png */; };
+		ABBF35CF271EB36900CB3249 /* Yellow-Wing-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3479271EB36200CB3249 /* Yellow-Wing-Black@3x.png */; };
+		ABBF35D0271EB36900CB3249 /* Blue_Purple-Wings-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF347A271EB36200CB3249 /* Blue_Purple-Wings-Black@2x.png */; };
+		ABBF35D1271EB36900CB3249 /* Purple-Wing-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF347B271EB36200CB3249 /* Purple-Wing-White@3x.png */; };
+		ABBF35D2271EB36900CB3249 /* Pink_Green-Heart-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF347C271EB36200CB3249 /* Pink_Green-Heart-White.png */; };
+		ABBF35D3271EB36900CB3249 /* Orange-Wings-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF347D271EB36200CB3249 /* Orange-Wings-Black@2x.png */; };
+		ABBF35D4271EB36900CB3249 /* LightBlue-Wings-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF347E271EB36200CB3249 /* LightBlue-Wings-White@3x.png */; };
+		ABBF35D5271EB36900CB3249 /* Green_Yellow-Wing-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF347F271EB36200CB3249 /* Green_Yellow-Wing-Black@2x.png */; };
+		ABBF35D6271EB36900CB3249 /* Pink_Green-Wing-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3480271EB36200CB3249 /* Pink_Green-Wing-Black@3x.png */; };
+		ABBF35D7271EB36900CB3249 /* Orange-Wings-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3481271EB36200CB3249 /* Orange-Wings-White@2x.png */; };
+		ABBF35D8271EB36900CB3249 /* LightBlue_Orange-Wing-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3482271EB36200CB3249 /* LightBlue_Orange-Wing-Black@2x.png */; };
+		ABBF35D9271EB36900CB3249 /* LightBlue-Wing-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3483271EB36200CB3249 /* LightBlue-Wing-Black@2x.png */; };
+		ABBF35DA271EB36900CB3249 /* Green-Wing-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3484271EB36200CB3249 /* Green-Wing-Black@2x.png */; };
+		ABBF35DB271EB36900CB3249 /* Red-Heart-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3485271EB36200CB3249 /* Red-Heart-White.png */; };
+		ABBF35DC271EB36900CB3249 /* Red_Pink-Wing-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3486271EB36200CB3249 /* Red_Pink-Wing-White@2x.png */; };
+		ABBF35DD271EB36900CB3249 /* Green_Yellow-Heart-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3487271EB36200CB3249 /* Green_Yellow-Heart-Black@3x.png */; };
+		ABBF35DE271EB36900CB3249 /* Pink-Heart-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3488271EB36200CB3249 /* Pink-Heart-Black@2x.png */; };
+		ABBF35DF271EB36900CB3249 /* Green-Wing-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3489271EB36200CB3249 /* Green-Wing-Black.png */; };
+		ABBF35E0271EB36900CB3249 /* LightBlue-Wings-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF348A271EB36200CB3249 /* LightBlue-Wings-White.png */; };
+		ABBF35E1271EB36900CB3249 /* Black-Wing-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF348B271EB36200CB3249 /* Black-Wing-White@3x.png */; };
+		ABBF35E2271EB36900CB3249 /* Red-Heart-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF348C271EB36200CB3249 /* Red-Heart-White@2x.png */; };
+		ABBF35E3271EB36900CB3249 /* Blue_Yellow-Wings-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF348D271EB36300CB3249 /* Blue_Yellow-Wings-Black@2x.png */; };
+		ABBF35E4271EB36900CB3249 /* Red_Pink-Heart-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF348E271EB36300CB3249 /* Red_Pink-Heart-Black@2x.png */; };
+		ABBF35E5271EB36900CB3249 /* Red_Pink-Heart-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF348F271EB36300CB3249 /* Red_Pink-Heart-White@2x.png */; };
+		ABBF35E6271EB36900CB3249 /* Orange-Wings-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3490271EB36300CB3249 /* Orange-Wings-White.png */; };
+		ABBF35E7271EB36900CB3249 /* Green-Wings-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3491271EB36300CB3249 /* Green-Wings-White@3x.png */; };
+		ABBF35E8271EB36900CB3249 /* Yellow-Wings-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3492271EB36300CB3249 /* Yellow-Wings-Black.png */; };
+		ABBF35E9271EB36900CB3249 /* LightBlue-Heart-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3493271EB36300CB3249 /* LightBlue-Heart-White@3x.png */; };
+		ABBF35EA271EB36900CB3249 /* Blue-Heart-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3494271EB36300CB3249 /* Blue-Heart-White@3x.png */; };
+		ABBF35EB271EB36900CB3249 /* LightPink-Wings-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3495271EB36300CB3249 /* LightPink-Wings-White@3x.png */; };
+		ABBF35EC271EB36900CB3249 /* Blue_Yellow-Wings-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3496271EB36300CB3249 /* Blue_Yellow-Wings-White@3x.png */; };
+		ABBF35ED271EB36900CB3249 /* Red_Blue-Wings-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3497271EB36300CB3249 /* Red_Blue-Wings-Black@3x.png */; };
+		ABBF35EE271EB36900CB3249 /* Yellow-Wings-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3498271EB36300CB3249 /* Yellow-Wings-Black@3x.png */; };
+		ABBF35EF271EB36900CB3249 /* Blue_Purple-Wing-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3499271EB36300CB3249 /* Blue_Purple-Wing-Black@2x.png */; };
+		ABBF35F0271EB36900CB3249 /* Black-Heart-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF349A271EB36300CB3249 /* Black-Heart-Black@2x.png */; };
+		ABBF35F1271EB36900CB3249 /* Green-Wing-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF349B271EB36300CB3249 /* Green-Wing-White.png */; };
+		ABBF35F2271EB36900CB3249 /* Pink_Green-Heart-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF349C271EB36300CB3249 /* Pink_Green-Heart-Black@2x.png */; };
+		ABBF35F3271EB36900CB3249 /* Pink-Wings-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF349D271EB36300CB3249 /* Pink-Wings-White@2x.png */; };
+		ABBF35F4271EB36900CB3249 /* Blue_Yellow-Wings-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF349E271EB36300CB3249 /* Blue_Yellow-Wings-White@2x.png */; };
+		ABBF35F5271EB36900CB3249 /* LightBlue-Heart-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF349F271EB36300CB3249 /* LightBlue-Heart-Black@3x.png */; };
+		ABBF35F6271EB36900CB3249 /* LightPink-Wing-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34A0271EB36300CB3249 /* LightPink-Wing-White.png */; };
+		ABBF35F7271EB36900CB3249 /* Pink-Wing-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34A1271EB36300CB3249 /* Pink-Wing-White.png */; };
+		ABBF35F8271EB36900CB3249 /* Red_Blue-Wing-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34A2271EB36300CB3249 /* Red_Blue-Wing-White.png */; };
+		ABBF35F9271EB36900CB3249 /* LightBlue_Orange-Heart-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34A3271EB36300CB3249 /* LightBlue_Orange-Heart-White@2x.png */; };
+		ABBF35FA271EB36900CB3249 /* Purple-Heart-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34A4271EB36300CB3249 /* Purple-Heart-Black@3x.png */; };
+		ABBF35FB271EB36900CB3249 /* BlueGreen_LightBlue-Heart-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34A5271EB36300CB3249 /* BlueGreen_LightBlue-Heart-Black.png */; };
+		ABBF35FC271EB36900CB3249 /* Purple-Heart-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34A6271EB36300CB3249 /* Purple-Heart-White@3x.png */; };
+		ABBF35FD271EB36900CB3249 /* Yellow-Wing-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34A7271EB36300CB3249 /* Yellow-Wing-White.png */; };
+		ABBF35FE271EB36900CB3249 /* Green_Yellow-Wings-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34A8271EB36300CB3249 /* Green_Yellow-Wings-White.png */; };
+		ABBF35FF271EB36900CB3249 /* Purple-Heart-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34A9271EB36300CB3249 /* Purple-Heart-Black.png */; };
+		ABBF3600271EB36900CB3249 /* Green-Wing-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34AA271EB36300CB3249 /* Green-Wing-Black@3x.png */; };
+		ABBF3601271EB36900CB3249 /* Green_Yellow-Wing-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34AB271EB36300CB3249 /* Green_Yellow-Wing-White@2x.png */; };
+		ABBF3602271EB36900CB3249 /* LightBlue_Orange-Wing-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34AC271EB36300CB3249 /* LightBlue_Orange-Wing-White@3x.png */; };
+		ABBF3603271EB36900CB3249 /* Yellow-Wing-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34AD271EB36400CB3249 /* Yellow-Wing-White@2x.png */; };
+		ABBF3604271EB36900CB3249 /* Green_Yellow-Heart-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34AE271EB36400CB3249 /* Green_Yellow-Heart-White.png */; };
+		ABBF3605271EB36900CB3249 /* Orange-Wings-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34AF271EB36400CB3249 /* Orange-Wings-Black@3x.png */; };
+		ABBF3606271EB36900CB3249 /* Pink_Green-Wing-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34B0271EB36400CB3249 /* Pink_Green-Wing-White@2x.png */; };
+		ABBF3607271EB36900CB3249 /* Blue-Wing-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34B1271EB36400CB3249 /* Blue-Wing-Black.png */; };
+		ABBF3608271EB36900CB3249 /* Red_Pink-Wing-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34B2271EB36400CB3249 /* Red_Pink-Wing-White.png */; };
+		ABBF3609271EB36900CB3249 /* LightPink-Wing-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34B3271EB36400CB3249 /* LightPink-Wing-White@3x.png */; };
+		ABBF360A271EB36900CB3249 /* Blue_Purple-Wing-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34B4271EB36400CB3249 /* Blue_Purple-Wing-White@2x.png */; };
+		ABBF360B271EB36900CB3249 /* Pink-Heart-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34B5271EB36400CB3249 /* Pink-Heart-White@2x.png */; };
+		ABBF360C271EB36900CB3249 /* Red-Wing-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34B6271EB36400CB3249 /* Red-Wing-Black@2x.png */; };
+		ABBF360D271EB36900CB3249 /* BlueGreen-Wings-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34B7271EB36400CB3249 /* BlueGreen-Wings-White@3x.png */; };
+		ABBF360E271EB36900CB3249 /* Orange-Wing-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34B8271EB36400CB3249 /* Orange-Wing-Black.png */; };
+		ABBF360F271EB36900CB3249 /* Purple-Wings-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34B9271EB36400CB3249 /* Purple-Wings-White@3x.png */; };
+		ABBF3610271EB36900CB3249 /* Green_Yellow-Heart-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34BA271EB36400CB3249 /* Green_Yellow-Heart-Black.png */; };
+		ABBF3611271EB36900CB3249 /* LightPink-Heart-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34BB271EB36400CB3249 /* LightPink-Heart-Black@3x.png */; };
+		ABBF3612271EB36900CB3249 /* LightBlue_Orange-Heart-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34BC271EB36400CB3249 /* LightBlue_Orange-Heart-White.png */; };
+		ABBF3613271EB36900CB3249 /* LightBlue-Wing-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34BD271EB36400CB3249 /* LightBlue-Wing-White@3x.png */; };
+		ABBF3614271EB36900CB3249 /* Black-Heart-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34BE271EB36400CB3249 /* Black-Heart-White@2x.png */; };
+		ABBF3615271EB36900CB3249 /* Purple-Wing-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34BF271EB36400CB3249 /* Purple-Wing-Black@3x.png */; };
+		ABBF3616271EB36900CB3249 /* BlueGreen-Wing-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34C0271EB36400CB3249 /* BlueGreen-Wing-Black@2x.png */; };
+		ABBF3617271EB36900CB3249 /* Green-Wings-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34C1271EB36400CB3249 /* Green-Wings-Black.png */; };
+		ABBF3618271EB36900CB3249 /* LightPink-Wing-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34C2271EB36400CB3249 /* LightPink-Wing-Black@3x.png */; };
+		ABBF3619271EB36900CB3249 /* BlueGreen-Heart-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34C3271EB36400CB3249 /* BlueGreen-Heart-Black.png */; };
+		ABBF361A271EB36900CB3249 /* Blue_Purple-Wings-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34C4271EB36400CB3249 /* Blue_Purple-Wings-Black.png */; };
+		ABBF361B271EB36900CB3249 /* Yellow-Wings-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34C5271EB36400CB3249 /* Yellow-Wings-White@2x.png */; };
+		ABBF361C271EB36900CB3249 /* BlueGreen_LightBlue-Wing-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34C6271EB36400CB3249 /* BlueGreen_LightBlue-Wing-White@3x.png */; };
+		ABBF361D271EB36900CB3249 /* BlueGreen_LightBlue-Heart-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34C7271EB36400CB3249 /* BlueGreen_LightBlue-Heart-White.png */; };
+		ABBF361E271EB36900CB3249 /* Pink_Green-Wings-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34C8271EB36400CB3249 /* Pink_Green-Wings-White@3x.png */; };
+		ABBF361F271EB36900CB3249 /* Red-Wings-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34C9271EB36400CB3249 /* Red-Wings-Black.png */; };
+		ABBF3620271EB36900CB3249 /* Blue_Purple-Heart-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34CA271EB36400CB3249 /* Blue_Purple-Heart-Black@3x.png */; };
+		ABBF3621271EB36900CB3249 /* Black-Wing-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34CB271EB36400CB3249 /* Black-Wing-Black@2x.png */; };
+		ABBF3622271EB36900CB3249 /* Blue_Purple-Wing-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34CC271EB36400CB3249 /* Blue_Purple-Wing-White@3x.png */; };
+		ABBF3623271EB36900CB3249 /* LightPink-Wings-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34CD271EB36400CB3249 /* LightPink-Wings-White.png */; };
+		ABBF3624271EB36900CB3249 /* BlueGreen-Wing-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34CE271EB36400CB3249 /* BlueGreen-Wing-White.png */; };
+		ABBF3625271EB36900CB3249 /* Pink-Wings-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34CF271EB36400CB3249 /* Pink-Wings-White@3x.png */; };
+		ABBF3626271EB36900CB3249 /* Green_Yellow-Wings-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34D0271EB36400CB3249 /* Green_Yellow-Wings-Black@3x.png */; };
+		ABBF3627271EB36900CB3249 /* Purple-Wing-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34D1271EB36400CB3249 /* Purple-Wing-White@2x.png */; };
+		ABBF3628271EB36900CB3249 /* Blue-Heart-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34D2271EB36400CB3249 /* Blue-Heart-Black.png */; };
+		ABBF3629271EB36900CB3249 /* BlueGreen-Wings-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34D3271EB36400CB3249 /* BlueGreen-Wings-Black.png */; };
+		ABBF362A271EB36900CB3249 /* LightBlue-Wings-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34D4271EB36400CB3249 /* LightBlue-Wings-Black.png */; };
+		ABBF362B271EB36900CB3249 /* Green_Yellow-Wing-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34D5271EB36400CB3249 /* Green_Yellow-Wing-Black@3x.png */; };
+		ABBF362C271EB36900CB3249 /* Black-Wings-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34D6271EB36400CB3249 /* Black-Wings-White@3x.png */; };
+		ABBF362D271EB36900CB3249 /* Black-Wing-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34D7271EB36400CB3249 /* Black-Wing-Black.png */; };
+		ABBF362E271EB36900CB3249 /* Orange-Heart-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34D8271EB36400CB3249 /* Orange-Heart-White.png */; };
+		ABBF362F271EB36900CB3249 /* Red_Blue-Wings-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34D9271EB36400CB3249 /* Red_Blue-Wings-White.png */; };
+		ABBF3630271EB36900CB3249 /* Blue_Yellow-Heart-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34DA271EB36500CB3249 /* Blue_Yellow-Heart-White.png */; };
+		ABBF3631271EB36900CB3249 /* Pink_Green-Wings-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34DB271EB36500CB3249 /* Pink_Green-Wings-Black@3x.png */; };
+		ABBF3632271EB36900CB3249 /* Purple-Wing-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34DC271EB36500CB3249 /* Purple-Wing-White.png */; };
+		ABBF3633271EB36900CB3249 /* Orange-Wings-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34DD271EB36500CB3249 /* Orange-Wings-Black.png */; };
+		ABBF3634271EB36900CB3249 /* LightBlue-Wing-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34DE271EB36500CB3249 /* LightBlue-Wing-Black@3x.png */; };
+		ABBF3635271EB36900CB3249 /* Red-Heart-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34DF271EB36500CB3249 /* Red-Heart-Black.png */; };
+		ABBF3636271EB36900CB3249 /* BlueGreen_LightBlue-Wings-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34E0271EB36500CB3249 /* BlueGreen_LightBlue-Wings-Black.png */; };
+		ABBF3637271EB36900CB3249 /* Yellow-Wings-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34E1271EB36500CB3249 /* Yellow-Wings-White@3x.png */; };
+		ABBF3638271EB36900CB3249 /* Green-Heart-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34E2271EB36500CB3249 /* Green-Heart-White@2x.png */; };
+		ABBF3639271EB36900CB3249 /* Red-Heart-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34E3271EB36500CB3249 /* Red-Heart-Black@2x.png */; };
+		ABBF363A271EB36900CB3249 /* BlueGreen-Wing-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34E4271EB36500CB3249 /* BlueGreen-Wing-White@2x.png */; };
+		ABBF363B271EB36900CB3249 /* Blue_Yellow-Heart-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34E5271EB36500CB3249 /* Blue_Yellow-Heart-Black@2x.png */; };
+		ABBF363C271EB36900CB3249 /* Red_Blue-Wings-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34E6271EB36500CB3249 /* Red_Blue-Wings-Black.png */; };
+		ABBF363D271EB36900CB3249 /* Blue-Heart-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34E7271EB36500CB3249 /* Blue-Heart-Black@2x.png */; };
+		ABBF363E271EB36900CB3249 /* BlueGreen_LightBlue-Heart-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34E8271EB36500CB3249 /* BlueGreen_LightBlue-Heart-White@3x.png */; };
+		ABBF363F271EB36900CB3249 /* Red-Wings-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34E9271EB36500CB3249 /* Red-Wings-Black@3x.png */; };
+		ABBF3640271EB36900CB3249 /* LightBlue_Orange-Wing-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34EA271EB36500CB3249 /* LightBlue_Orange-Wing-White@2x.png */; };
+		ABBF3641271EB36900CB3249 /* Blue_Purple-Wings-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34EB271EB36500CB3249 /* Blue_Purple-Wings-Black@3x.png */; };
+		ABBF3642271EB36900CB3249 /* LightBlue-Wings-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34EC271EB36500CB3249 /* LightBlue-Wings-Black@2x.png */; };
+		ABBF3643271EB36900CB3249 /* Orange-Heart-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34ED271EB36500CB3249 /* Orange-Heart-White@2x.png */; };
+		ABBF3644271EB36900CB3249 /* LightBlue-Wings-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34EE271EB36500CB3249 /* LightBlue-Wings-Black@3x.png */; };
+		ABBF3645271EB36900CB3249 /* Purple-Wings-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34EF271EB36500CB3249 /* Purple-Wings-Black@2x.png */; };
+		ABBF3646271EB36900CB3249 /* Blue_Purple-Wing-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34F0271EB36500CB3249 /* Blue_Purple-Wing-Black@3x.png */; };
+		ABBF3647271EB36900CB3249 /* BlueGreen_LightBlue-Wing-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34F1271EB36500CB3249 /* BlueGreen_LightBlue-Wing-White@2x.png */; };
+		ABBF3648271EB36900CB3249 /* Green-Heart-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34F2271EB36500CB3249 /* Green-Heart-White.png */; };
+		ABBF3649271EB36900CB3249 /* Blue_Purple-Wings-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34F3271EB36500CB3249 /* Blue_Purple-Wings-White@2x.png */; };
+		ABBF364A271EB36900CB3249 /* Pink_Green-Heart-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34F4271EB36500CB3249 /* Pink_Green-Heart-Black.png */; };
+		ABBF364B271EB36900CB3249 /* Red-Wings-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34F5271EB36500CB3249 /* Red-Wings-Black@2x.png */; };
+		ABBF364C271EB36900CB3249 /* BlueGreen_LightBlue-Wing-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34F6271EB36500CB3249 /* BlueGreen_LightBlue-Wing-White.png */; };
+		ABBF364D271EB36900CB3249 /* LightPink-Heart-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34F7271EB36500CB3249 /* LightPink-Heart-White@2x.png */; };
+		ABBF364E271EB36900CB3249 /* Blue_Yellow-Wing-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34F8271EB36500CB3249 /* Blue_Yellow-Wing-White@3x.png */; };
+		ABBF364F271EB36900CB3249 /* Blue-Heart-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34F9271EB36500CB3249 /* Blue-Heart-White.png */; };
+		ABBF3650271EB36900CB3249 /* LightBlue_Orange-Heart-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34FA271EB36500CB3249 /* LightBlue_Orange-Heart-Black@3x.png */; };
+		ABBF3651271EB36900CB3249 /* Pink-Wing-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34FB271EB36500CB3249 /* Pink-Wing-White@3x.png */; };
+		ABBF3652271EB36900CB3249 /* LightBlue_Orange-Wings-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34FC271EB36500CB3249 /* LightBlue_Orange-Wings-Black.png */; };
+		ABBF3653271EB36900CB3249 /* Red_Blue-Wing-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34FD271EB36500CB3249 /* Red_Blue-Wing-Black.png */; };
+		ABBF3654271EB36900CB3249 /* Red-Wings-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34FE271EB36500CB3249 /* Red-Wings-White@3x.png */; };
+		ABBF3655271EB36900CB3249 /* Yellow-Wing-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF34FF271EB36500CB3249 /* Yellow-Wing-Black.png */; };
+		ABBF3656271EB36900CB3249 /* Red-Wing-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3500271EB36500CB3249 /* Red-Wing-White.png */; };
+		ABBF3657271EB36900CB3249 /* Green-Wing-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3501271EB36500CB3249 /* Green-Wing-White@2x.png */; };
+		ABBF3658271EB36900CB3249 /* Pink-Wings-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3502271EB36500CB3249 /* Pink-Wings-Black@3x.png */; };
+		ABBF3659271EB36900CB3249 /* Pink_Green-Heart-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3503271EB36500CB3249 /* Pink_Green-Heart-White@2x.png */; };
+		ABBF365A271EB36900CB3249 /* Pink_Green-Heart-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3504271EB36500CB3249 /* Pink_Green-Heart-White@3x.png */; };
+		ABBF365B271EB36900CB3249 /* Green-Wings-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3505271EB36500CB3249 /* Green-Wings-Black@2x.png */; };
+		ABBF365C271EB36900CB3249 /* Green_Yellow-Wing-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3506271EB36500CB3249 /* Green_Yellow-Wing-White.png */; };
+		ABBF365D271EB36900CB3249 /* Red_Blue-Heart-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3507271EB36500CB3249 /* Red_Blue-Heart-Black@3x.png */; };
+		ABBF365E271EB36900CB3249 /* Green_Yellow-Heart-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3508271EB36500CB3249 /* Green_Yellow-Heart-White@3x.png */; };
+		ABBF365F271EB36900CB3249 /* BlueGreen-Heart-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3509271EB36600CB3249 /* BlueGreen-Heart-White.png */; };
+		ABBF3660271EB36900CB3249 /* Pink_Green-Wings-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF350A271EB36600CB3249 /* Pink_Green-Wings-Black@2x.png */; };
+		ABBF3661271EB36900CB3249 /* Pink-Heart-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF350B271EB36600CB3249 /* Pink-Heart-White@3x.png */; };
+		ABBF3662271EB36900CB3249 /* LightPink-Heart-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF350C271EB36600CB3249 /* LightPink-Heart-White@3x.png */; };
+		ABBF3663271EB36900CB3249 /* Yellow-Heart-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF350D271EB36600CB3249 /* Yellow-Heart-White@2x.png */; };
+		ABBF3664271EB36900CB3249 /* Green_Yellow-Wings-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF350E271EB36600CB3249 /* Green_Yellow-Wings-White@3x.png */; };
+		ABBF3665271EB36900CB3249 /* BlueGreen_LightBlue-Wings-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF350F271EB36600CB3249 /* BlueGreen_LightBlue-Wings-White@3x.png */; };
+		ABBF3666271EB36900CB3249 /* Red-Wings-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3510271EB36600CB3249 /* Red-Wings-White.png */; };
+		ABBF3667271EB36900CB3249 /* Blue_Purple-Heart-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3511271EB36600CB3249 /* Blue_Purple-Heart-White@3x.png */; };
+		ABBF3668271EB36900CB3249 /* Purple-Wings-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3512271EB36600CB3249 /* Purple-Wings-Black.png */; };
+		ABBF3669271EB36900CB3249 /* Green-Wing-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3513271EB36600CB3249 /* Green-Wing-White@3x.png */; };
+		ABBF366A271EB36900CB3249 /* Black-Wings-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3514271EB36600CB3249 /* Black-Wings-White@2x.png */; };
+		ABBF366B271EB36900CB3249 /* Yellow-Wings-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3515271EB36600CB3249 /* Yellow-Wings-Black@2x.png */; };
+		ABBF366C271EB36900CB3249 /* Green_Yellow-Wing-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3516271EB36600CB3249 /* Green_Yellow-Wing-White@3x.png */; };
+		ABBF366D271EB36900CB3249 /* Black-Wing-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3517271EB36600CB3249 /* Black-Wing-Black@3x.png */; };
+		ABBF366E271EB36900CB3249 /* LightPink-Heart-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3518271EB36600CB3249 /* LightPink-Heart-White.png */; };
+		ABBF366F271EB36900CB3249 /* Red_Pink-Wings-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3519271EB36600CB3249 /* Red_Pink-Wings-Black.png */; };
+		ABBF3670271EB36900CB3249 /* LightBlue-Wings-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF351A271EB36600CB3249 /* LightBlue-Wings-White@2x.png */; };
+		ABBF3671271EB36900CB3249 /* Purple-Wing-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF351B271EB36600CB3249 /* Purple-Wing-Black.png */; };
+		ABBF3672271EB36900CB3249 /* Pink-Heart-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF351C271EB36600CB3249 /* Pink-Heart-Black@3x.png */; };
+		ABBF3673271EB36900CB3249 /* LightBlue_Orange-Heart-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF351D271EB36600CB3249 /* LightBlue_Orange-Heart-Black@2x.png */; };
+		ABBF3674271EB36900CB3249 /* Blue-Wing-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF351E271EB36600CB3249 /* Blue-Wing-Black@2x.png */; };
+		ABBF3675271EB36900CB3249 /* BlueGreen_LightBlue-Wing-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF351F271EB36600CB3249 /* BlueGreen_LightBlue-Wing-Black@3x.png */; };
+		ABBF3676271EB36900CB3249 /* Blue-Wing-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3520271EB36600CB3249 /* Blue-Wing-White.png */; };
+		ABBF3677271EB36900CB3249 /* Blue-Wings-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3521271EB36600CB3249 /* Blue-Wings-Black.png */; };
+		ABBF3678271EB36900CB3249 /* Blue-Wing-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3522271EB36600CB3249 /* Blue-Wing-White@2x.png */; };
+		ABBF3679271EB36900CB3249 /* Orange-Heart-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3523271EB36600CB3249 /* Orange-Heart-Black@3x.png */; };
+		ABBF367A271EB36900CB3249 /* LightBlue_Orange-Wings-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3524271EB36600CB3249 /* LightBlue_Orange-Wings-White@3x.png */; };
+		ABBF367B271EB36900CB3249 /* Purple-Wings-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3525271EB36600CB3249 /* Purple-Wings-Black@3x.png */; };
+		ABBF367C271EB36900CB3249 /* Red_Blue-Wing-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3526271EB36600CB3249 /* Red_Blue-Wing-White@2x.png */; };
+		ABBF367D271EB36900CB3249 /* Red-Wing-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3527271EB36600CB3249 /* Red-Wing-White@2x.png */; };
+		ABBF367E271EB36900CB3249 /* Orange-Heart-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3528271EB36600CB3249 /* Orange-Heart-White@3x.png */; };
+		ABBF367F271EB36900CB3249 /* Blue-Wing-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3529271EB36600CB3249 /* Blue-Wing-White@3x.png */; };
+		ABBF3680271EB36900CB3249 /* BlueGreen_LightBlue-Heart-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF352A271EB36600CB3249 /* BlueGreen_LightBlue-Heart-White@2x.png */; };
+		ABBF3681271EB36900CB3249 /* Red-Wing-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF352B271EB36600CB3249 /* Red-Wing-Black@3x.png */; };
+		ABBF3682271EB36900CB3249 /* Pink-Heart-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF352C271EB36600CB3249 /* Pink-Heart-White.png */; };
+		ABBF3683271EB36900CB3249 /* Blue-Heart-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF352D271EB36600CB3249 /* Blue-Heart-White@2x.png */; };
+		ABBF3684271EB36900CB3249 /* BlueGreen_LightBlue-Wing-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF352E271EB36600CB3249 /* BlueGreen_LightBlue-Wing-Black.png */; };
+		ABBF3685271EB36900CB3249 /* BlueGreen-Wings-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF352F271EB36600CB3249 /* BlueGreen-Wings-Black@2x.png */; };
+		ABBF3686271EB36900CB3249 /* Pink-Wing-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3530271EB36600CB3249 /* Pink-Wing-White@2x.png */; };
+		ABBF3687271EB36900CB3249 /* Red_Pink-Wings-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3531271EB36600CB3249 /* Red_Pink-Wings-White@3x.png */; };
+		ABBF3688271EB36900CB3249 /* BlueGreen_LightBlue-Wings-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3532271EB36600CB3249 /* BlueGreen_LightBlue-Wings-White.png */; };
+		ABBF3689271EB36900CB3249 /* Purple-Wings-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3533271EB36600CB3249 /* Purple-Wings-White.png */; };
+		ABBF368A271EB36900CB3249 /* BlueGreen_LightBlue-Heart-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3534271EB36600CB3249 /* BlueGreen_LightBlue-Heart-Black@2x.png */; };
+		ABBF368B271EB36900CB3249 /* Red_Blue-Wings-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3535271EB36600CB3249 /* Red_Blue-Wings-Black@2x.png */; };
+		ABBF368C271EB36900CB3249 /* BlueGreen_LightBlue-Heart-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3536271EB36600CB3249 /* BlueGreen_LightBlue-Heart-Black@3x.png */; };
+		ABBF368D271EB36900CB3249 /* Green_Yellow-Wings-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3537271EB36600CB3249 /* Green_Yellow-Wings-Black@2x.png */; };
+		ABBF368E271EB36900CB3249 /* Orange-Wings-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3538271EB36600CB3249 /* Orange-Wings-White@3x.png */; };
+		ABBF368F271EB36900CB3249 /* LightPink-Wing-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3539271EB36700CB3249 /* LightPink-Wing-White@2x.png */; };
+		ABBF3690271EB36900CB3249 /* BlueGreen_LightBlue-Wings-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF353A271EB36700CB3249 /* BlueGreen_LightBlue-Wings-White@2x.png */; };
+		ABBF3691271EB36900CB3249 /* Blue-Wings-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF353B271EB36700CB3249 /* Blue-Wings-Black@2x.png */; };
+		ABBF3692271EB36900CB3249 /* Blue_Yellow-Heart-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF353C271EB36700CB3249 /* Blue_Yellow-Heart-White@2x.png */; };
+		ABBF3693271EB36900CB3249 /* Blue-Wings-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF353D271EB36700CB3249 /* Blue-Wings-White@3x.png */; };
+		ABBF3694271EB36900CB3249 /* Blue_Purple-Heart-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF353E271EB36700CB3249 /* Blue_Purple-Heart-White.png */; };
+		ABBF3695271EB36900CB3249 /* Black-Heart-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF353F271EB36700CB3249 /* Black-Heart-White@3x.png */; };
+		ABBF3696271EB36900CB3249 /* LightBlue_Orange-Wing-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3540271EB36700CB3249 /* LightBlue_Orange-Wing-White.png */; };
+		ABBF3697271EB36900CB3249 /* LightBlue_Orange-Wing-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3541271EB36700CB3249 /* LightBlue_Orange-Wing-Black.png */; };
+		ABBF3698271EB36900CB3249 /* Pink_Green-Wings-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3542271EB36700CB3249 /* Pink_Green-Wings-Black.png */; };
+		ABBF3699271EB36900CB3249 /* LightBlue-Heart-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3543271EB36700CB3249 /* LightBlue-Heart-Black@2x.png */; };
+		ABBF369A271EB36900CB3249 /* LightBlue-Wing-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3544271EB36700CB3249 /* LightBlue-Wing-White@2x.png */; };
+		ABBF369B271EB36900CB3249 /* Black-Heart-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3545271EB36700CB3249 /* Black-Heart-Black.png */; };
+		ABBF369C271EB36900CB3249 /* Blue-Heart-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3546271EB36700CB3249 /* Blue-Heart-Black@3x.png */; };
+		ABBF369D271EB36900CB3249 /* Red_Blue-Heart-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3547271EB36700CB3249 /* Red_Blue-Heart-White@2x.png */; };
+		ABBF369E271EB36900CB3249 /* Yellow-Wing-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3548271EB36700CB3249 /* Yellow-Wing-Black@2x.png */; };
+		ABBF369F271EB36900CB3249 /* Black-Wings-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3549271EB36700CB3249 /* Black-Wings-Black@2x.png */; };
+		ABBF36A0271EB36900CB3249 /* BlueGreen-Heart-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF354A271EB36700CB3249 /* BlueGreen-Heart-Black@2x.png */; };
+		ABBF36A1271EB36900CB3249 /* Red_Pink-Heart-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF354B271EB36700CB3249 /* Red_Pink-Heart-White@3x.png */; };
+		ABBF36A2271EB36900CB3249 /* Red_Pink-Heart-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF354C271EB36700CB3249 /* Red_Pink-Heart-White.png */; };
+		ABBF36A3271EB36900CB3249 /* Red_Pink-Wing-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF354D271EB36700CB3249 /* Red_Pink-Wing-Black.png */; };
+		ABBF36A4271EB36900CB3249 /* Blue-Wings-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF354E271EB36700CB3249 /* Blue-Wings-White@2x.png */; };
+		ABBF36A5271EB36900CB3249 /* Black-Wing-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF354F271EB36700CB3249 /* Black-Wing-White.png */; };
+		ABBF36A6271EB36900CB3249 /* BlueGreen-Wing-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3550271EB36700CB3249 /* BlueGreen-Wing-Black@3x.png */; };
+		ABBF36A7271EB36900CB3249 /* Purple-Heart-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3551271EB36700CB3249 /* Purple-Heart-Black@2x.png */; };
+		ABBF36A8271EB36900CB3249 /* Pink_Green-Wing-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3552271EB36700CB3249 /* Pink_Green-Wing-White.png */; };
+		ABBF36A9271EB36900CB3249 /* Red_Blue-Heart-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3553271EB36700CB3249 /* Red_Blue-Heart-Black@2x.png */; };
+		ABBF36AA271EB36900CB3249 /* Blue_Purple-Heart-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3554271EB36700CB3249 /* Blue_Purple-Heart-Black@2x.png */; };
+		ABBF36AB271EB36900CB3249 /* Red_Pink-Wing-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3555271EB36700CB3249 /* Red_Pink-Wing-White@3x.png */; };
+		ABBF36AC271EB36900CB3249 /* Blue-Wing-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3556271EB36700CB3249 /* Blue-Wing-Black@3x.png */; };
+		ABBF36AD271EB36900CB3249 /* LightPink-Wings-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3557271EB36700CB3249 /* LightPink-Wings-White@2x.png */; };
+		ABBF36AE271EB36900CB3249 /* Pink-Wing-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3558271EB36700CB3249 /* Pink-Wing-Black@3x.png */; };
+		ABBF36AF271EB36900CB3249 /* Red_Pink-Wings-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3559271EB36700CB3249 /* Red_Pink-Wings-Black@3x.png */; };
+		ABBF36B0271EB36900CB3249 /* Red-Wing-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF355A271EB36700CB3249 /* Red-Wing-White@3x.png */; };
+		ABBF36B1271EB36900CB3249 /* Black-Wing-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF355B271EB36700CB3249 /* Black-Wing-White@2x.png */; };
+		ABBF36B2271EB36900CB3249 /* BlueGreen-Heart-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF355C271EB36700CB3249 /* BlueGreen-Heart-Black@3x.png */; };
+		ABBF36B3271EB36900CB3249 /* Blue_Yellow-Wing-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF355D271EB36700CB3249 /* Blue_Yellow-Wing-White@2x.png */; };
+		ABBF36B4271EB36900CB3249 /* Blue_Purple-Heart-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF355E271EB36700CB3249 /* Blue_Purple-Heart-White@2x.png */; };
+		ABBF36B5271EB36900CB3249 /* LightBlue-Wing-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF355F271EB36800CB3249 /* LightBlue-Wing-White.png */; };
+		ABBF36B6271EB36900CB3249 /* LightPink-Wings-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3560271EB36800CB3249 /* LightPink-Wings-Black@2x.png */; };
+		ABBF36B7271EB36900CB3249 /* LightBlue_Orange-Heart-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3561271EB36800CB3249 /* LightBlue_Orange-Heart-White@3x.png */; };
+		ABBF36B8271EB36900CB3249 /* LightBlue_Orange-Wings-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3562271EB36800CB3249 /* LightBlue_Orange-Wings-Black@3x.png */; };
+		ABBF36B9271EB36900CB3249 /* Red_Pink-Wing-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3563271EB36800CB3249 /* Red_Pink-Wing-Black@2x.png */; };
+		ABBF36BA271EB36900CB3249 /* Green_Yellow-Heart-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3564271EB36800CB3249 /* Green_Yellow-Heart-Black@2x.png */; };
+		ABBF36BB271EB36900CB3249 /* Pink_Green-Wings-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3565271EB36800CB3249 /* Pink_Green-Wings-White.png */; };
+		ABBF36BC271EB36900CB3249 /* LightBlue-Wing-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3566271EB36800CB3249 /* LightBlue-Wing-Black.png */; };
+		ABBF36BD271EB36900CB3249 /* Orange-Wing-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3567271EB36800CB3249 /* Orange-Wing-Black@2x.png */; };
+		ABBF36BE271EB36900CB3249 /* Green-Heart-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3568271EB36800CB3249 /* Green-Heart-Black@3x.png */; };
+		ABBF36BF271EB36900CB3249 /* LightPink-Wings-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3569271EB36800CB3249 /* LightPink-Wings-Black@3x.png */; };
+		ABBF36C0271EB36900CB3249 /* Blue_Yellow-Wing-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF356A271EB36800CB3249 /* Blue_Yellow-Wing-Black.png */; };
+		ABBF36C1271EB36900CB3249 /* Pink-Wing-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF356B271EB36800CB3249 /* Pink-Wing-Black.png */; };
+		ABBF36C2271EB36900CB3249 /* Blue_Yellow-Wing-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF356C271EB36800CB3249 /* Blue_Yellow-Wing-Black@3x.png */; };
+		ABBF36C3271EB36900CB3249 /* Blue_Yellow-Wings-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF356D271EB36800CB3249 /* Blue_Yellow-Wings-Black.png */; };
+		ABBF36C4271EB36900CB3249 /* Green-Wings-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF356E271EB36800CB3249 /* Green-Wings-White@2x.png */; };
+		ABBF36C5271EB36900CB3249 /* Purple-Wings-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF356F271EB36800CB3249 /* Purple-Wings-White@2x.png */; };
+		ABBF36C6271EB36900CB3249 /* Yellow-Heart-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3570271EB36800CB3249 /* Yellow-Heart-Black@2x.png */; };
+		ABBF36C7271EB36900CB3249 /* Red_Blue-Heart-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3571271EB36800CB3249 /* Red_Blue-Heart-White.png */; };
+		ABBF36C8271EB36900CB3249 /* Orange-Wing-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3572271EB36800CB3249 /* Orange-Wing-White.png */; };
+		ABBF36C9271EB36900CB3249 /* LightPink-Wing-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3573271EB36800CB3249 /* LightPink-Wing-Black@2x.png */; };
+		ABBF36CA271EB36900CB3249 /* Red_Pink-Heart-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3574271EB36800CB3249 /* Red_Pink-Heart-Black@3x.png */; };
+		ABBF36CB271EB36900CB3249 /* Red_Pink-Wings-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3575271EB36800CB3249 /* Red_Pink-Wings-White.png */; };
+		ABBF36CC271EB36900CB3249 /* Blue_Yellow-Heart-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3576271EB36800CB3249 /* Blue_Yellow-Heart-Black.png */; };
+		ABBF36CD271EB36900CB3249 /* Orange-Wing-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3577271EB36800CB3249 /* Orange-Wing-Black@3x.png */; };
+		ABBF36CE271EB36900CB3249 /* Pink_Green-Wings-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3578271EB36800CB3249 /* Pink_Green-Wings-White@2x.png */; };
+		ABBF36CF271EB36900CB3249 /* Red_Blue-Wings-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3579271EB36800CB3249 /* Red_Blue-Wings-White@2x.png */; };
+		ABBF36D0271EB36900CB3249 /* LightBlue-Heart-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF357A271EB36800CB3249 /* LightBlue-Heart-Black.png */; };
+		ABBF36D1271EB36900CB3249 /* Yellow-Wing-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF357B271EB36800CB3249 /* Yellow-Wing-White@3x.png */; };
+		ABBF36D2271EB36900CB3249 /* Red_Pink-Wings-Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF357C271EB36800CB3249 /* Red_Pink-Wings-Black@2x.png */; };
+		ABBF36D3271EB36900CB3249 /* Blue_Purple-Wing-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF357D271EB36800CB3249 /* Blue_Purple-Wing-Black.png */; };
+		ABBF36D4271EB36900CB3249 /* Pink_Green-Wing-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF357E271EB36800CB3249 /* Pink_Green-Wing-Black.png */; };
+		ABBF36D5271EB36900CB3249 /* Pink-Wings-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF357F271EB36800CB3249 /* Pink-Wings-Black.png */; };
+		ABBF36D6271EB36900CB3249 /* BlueGreen-Wings-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3580271EB36800CB3249 /* BlueGreen-Wings-White@2x.png */; };
+		ABBF36D7271EB36900CB3249 /* LightBlue-Heart-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3581271EB36800CB3249 /* LightBlue-Heart-White@2x.png */; };
+		ABBF36D8271EB36900CB3249 /* Blue-Wings-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3582271EB36800CB3249 /* Blue-Wings-Black@3x.png */; };
+		ABBF36D9271EB36900CB3249 /* Red-Heart-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3583271EB36800CB3249 /* Red-Heart-Black@3x.png */; };
+		ABBF36DA271EB36900CB3249 /* Yellow-Heart-White.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3584271EB36800CB3249 /* Yellow-Heart-White.png */; };
+		ABBF36DB271EB36900CB3249 /* LightBlue_Orange-Wings-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3585271EB36800CB3249 /* LightBlue_Orange-Wings-White@2x.png */; };
+		ABBF36DC271EB36900CB3249 /* Green-Wings-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3586271EB36800CB3249 /* Green-Wings-Black@3x.png */; };
+		ABBF36DD271EB36900CB3249 /* Yellow-Heart-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3587271EB36800CB3249 /* Yellow-Heart-White@3x.png */; };
+		ABBF36DE271EB36900CB3249 /* Red_Blue-Heart-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3588271EB36800CB3249 /* Red_Blue-Heart-White@3x.png */; };
+		ABBF36DF271EB36900CB3249 /* BlueGreen-Wing-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF3589271EB36800CB3249 /* BlueGreen-Wing-White@3x.png */; };
+		ABBF36E0271EB36900CB3249 /* Green_Yellow-Wings-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF358A271EB36800CB3249 /* Green_Yellow-Wings-White@2x.png */; };
+		ABBF36E1271EB36900CB3249 /* Orange-Wing-White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF358B271EB36900CB3249 /* Orange-Wing-White@3x.png */; };
+		ABBF36E2271EB36900CB3249 /* Red_Pink-Heart-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF358C271EB36900CB3249 /* Red_Pink-Heart-Black.png */; };
+		ABBF36E3271EB36900CB3249 /* Red_Pink-Wing-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF358D271EB36900CB3249 /* Red_Pink-Wing-Black@3x.png */; };
+		ABBF36E4271EB36900CB3249 /* Green_Yellow-Heart-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF358E271EB36900CB3249 /* Green_Yellow-Heart-White@2x.png */; };
+		ABBF36E5271EB42A00CB3249 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB93C243266A234C00C3AE8F /* Assets.xcassets */; };
 		ABCE16C7270994210014F618 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ABCE16C9270994210014F618 /* InfoPlist.strings */; };
 		ABDF66BE26E79543000D9FD5 /* TabBarCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDF66BD26E79543000D9FD5 /* TabBarCollectionViewController.swift */; };
+		ABE8CF59271EA8D500705EE4 /* Reports.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABE8CF58271EA8D500705EE4 /* Reports.storyboard */; };
 		ABFAB15526DF802A0095EC20 /* PriorityStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAB15426DF802A0095EC20 /* PriorityStackView.swift */; };
 		ABFAB15826DF86920095EC20 /* GoalPhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAB15626DF86920095EC20 /* GoalPhotoTableViewCell.swift */; };
 		ABFAB15926DF86920095EC20 /* GoalPhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABFAB15726DF86920095EC20 /* GoalPhotoTableViewCell.xib */; };
@@ -348,7 +690,6 @@
 		AB45399B271CBB0F00CF1C04 /* StudyRecordApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StudyRecordApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		AB4539A0271CBF8C00CF1C04 /* ReportsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsViewController.swift; sourceTree = "<group>"; };
 		AB4539A5271D560500CF1C04 /* PlaceHolderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceHolderTextView.swift; sourceTree = "<group>"; };
-		AB4539AA271D57B700CF1C04 /* Reports.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Reports.storyboard; path = "../../../../../../Library/Mobile Documents/com~apple~CloudDocs/.Trash/Reports.storyboard"; sourceTree = "<group>"; };
 		AB4539AF271D6C4C00CF1C04 /* SecretConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretConstant.swift; sourceTree = "<group>"; };
 		AB4539B2271D6F9400CF1C04 /* MailSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailSender.swift; sourceTree = "<group>"; };
 		AB4539B4271D76CF00CF1C04 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -401,9 +742,352 @@
 		ABAE84DE26F414BB00A93A7F /* GoalHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalHeaderView.swift; sourceTree = "<group>"; };
 		ABAE84E026F414CF00A93A7F /* GoalHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoalHeaderView.xib; sourceTree = "<group>"; };
 		ABBA350A26F93026001BAEEF /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		ABBF3439271EB36000CB3249 /* BlueGreen-Heart-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueGreen-Heart-White@3x.png"; sourceTree = "<group>"; };
+		ABBF343A271EB36000CB3249 /* Red_Blue-Wings-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red_Blue-Wings-White@3x.png"; sourceTree = "<group>"; };
+		ABBF343B271EB36000CB3249 /* Blue_Yellow-Wing-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue_Yellow-Wing-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF343C271EB36000CB3249 /* BlueGreen_LightBlue-Wings-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueGreen_LightBlue-Wings-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF343D271EB36000CB3249 /* Black-Wings-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Black-Wings-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF343E271EB36000CB3249 /* Pink-Wings-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pink-Wings-White.png"; sourceTree = "<group>"; };
+		ABBF343F271EB36000CB3249 /* Red_Pink-Wings-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red_Pink-Wings-White@2x.png"; sourceTree = "<group>"; };
+		ABBF3440271EB36000CB3249 /* LightBlue-Heart-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightBlue-Heart-White.png"; path = "../../../AppIcon/1x2x3xImages/LightBlue-Heart-White.png"; sourceTree = "<group>"; };
+		ABBF3441271EB36000CB3249 /* Purple-Heart-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Purple-Heart-White.png"; sourceTree = "<group>"; };
+		ABBF3442271EB36000CB3249 /* Blue_Yellow-Wings-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue_Yellow-Wings-White.png"; sourceTree = "<group>"; };
+		ABBF3443271EB36000CB3249 /* Black-Heart-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Black-Heart-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF3444271EB36000CB3249 /* LightBlue_Orange-Wings-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightBlue_Orange-Wings-Black@2x.png"; path = "../../../AppIcon/1x2x3xImages/LightBlue_Orange-Wings-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF3445271EB36000CB3249 /* BlueGreen_LightBlue-Wing-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueGreen_LightBlue-Wing-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF3446271EB36000CB3249 /* LightPink-Heart-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightPink-Heart-Black.png"; path = "../../../AppIcon/1x2x3xImages/LightPink-Heart-Black.png"; sourceTree = "<group>"; };
+		ABBF3447271EB36000CB3249 /* Blue_Yellow-Heart-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue_Yellow-Heart-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF3448271EB36000CB3249 /* LightPink-Wing-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightPink-Wing-Black.png"; path = "../../../AppIcon/1x2x3xImages/LightPink-Wing-Black.png"; sourceTree = "<group>"; };
+		ABBF3449271EB36000CB3249 /* LightBlue_Orange-Wing-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightBlue_Orange-Wing-Black@3x.png"; path = "../../../AppIcon/1x2x3xImages/LightBlue_Orange-Wing-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF344A271EB36000CB3249 /* BlueGreen-Wings-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueGreen-Wings-White.png"; sourceTree = "<group>"; };
+		ABBF344B271EB36000CB3249 /* Pink_Green-Heart-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pink_Green-Heart-Black@3x.png"; path = "../../../AppIcon/1x2x3xImages/Pink_Green-Heart-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF344C271EB36000CB3249 /* Red_Blue-Wing-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red_Blue-Wing-White@3x.png"; sourceTree = "<group>"; };
+		ABBF344D271EB36000CB3249 /* Blue_Purple-Heart-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue_Purple-Heart-Black.png"; sourceTree = "<group>"; };
+		ABBF344E271EB36000CB3249 /* Black-Heart-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Black-Heart-White.png"; sourceTree = "<group>"; };
+		ABBF344F271EB36000CB3249 /* Green-Heart-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green-Heart-White@3x.png"; sourceTree = "<group>"; };
+		ABBF3450271EB36000CB3249 /* Orange-Heart-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Orange-Heart-Black.png"; path = "../../../AppIcon/1x2x3xImages/Orange-Heart-Black.png"; sourceTree = "<group>"; };
+		ABBF3451271EB36000CB3249 /* Pink-Heart-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pink-Heart-Black.png"; path = "../../../AppIcon/1x2x3xImages/Pink-Heart-Black.png"; sourceTree = "<group>"; };
+		ABBF3452271EB36100CB3249 /* Red-Wings-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red-Wings-White@2x.png"; sourceTree = "<group>"; };
+		ABBF3453271EB36100CB3249 /* BlueGreen-Heart-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueGreen-Heart-White@2x.png"; sourceTree = "<group>"; };
+		ABBF3454271EB36100CB3249 /* Red_Blue-Wing-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red_Blue-Wing-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF3455271EB36100CB3249 /* LightPink-Heart-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightPink-Heart-Black@2x.png"; path = "../../../AppIcon/1x2x3xImages/LightPink-Heart-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF3456271EB36100CB3249 /* Pink_Green-Wing-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pink_Green-Wing-Black@2x.png"; path = "../../../AppIcon/1x2x3xImages/Pink_Green-Wing-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF3457271EB36100CB3249 /* Blue_Purple-Wing-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue_Purple-Wing-White.png"; sourceTree = "<group>"; };
+		ABBF3458271EB36100CB3249 /* Red-Heart-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red-Heart-White@3x.png"; sourceTree = "<group>"; };
+		ABBF3459271EB36100CB3249 /* Black-Wings-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Black-Wings-Black.png"; sourceTree = "<group>"; };
+		ABBF345A271EB36100CB3249 /* LightBlue_Orange-Heart-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightBlue_Orange-Heart-Black.png"; path = "../../../AppIcon/1x2x3xImages/LightBlue_Orange-Heart-Black.png"; sourceTree = "<group>"; };
+		ABBF345B271EB36100CB3249 /* Blue_Yellow-Heart-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue_Yellow-Heart-White@3x.png"; sourceTree = "<group>"; };
+		ABBF345C271EB36100CB3249 /* Yellow-Wings-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Yellow-Wings-White.png"; sourceTree = "<group>"; };
+		ABBF345D271EB36100CB3249 /* Green-Heart-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green-Heart-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF345E271EB36100CB3249 /* LightBlue_Orange-Wings-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightBlue_Orange-Wings-White.png"; path = "../../../AppIcon/1x2x3xImages/LightBlue_Orange-Wings-White.png"; sourceTree = "<group>"; };
+		ABBF345F271EB36100CB3249 /* Pink_Green-Wing-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pink_Green-Wing-White@3x.png"; path = "../../../AppIcon/1x2x3xImages/Pink_Green-Wing-White@3x.png"; sourceTree = "<group>"; };
+		ABBF3460271EB36100CB3249 /* Yellow-Heart-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Yellow-Heart-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF3461271EB36100CB3249 /* BlueGreen-Wing-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueGreen-Wing-Black.png"; sourceTree = "<group>"; };
+		ABBF3462271EB36100CB3249 /* Green-Heart-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green-Heart-Black.png"; sourceTree = "<group>"; };
+		ABBF3463271EB36100CB3249 /* Black-Wings-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Black-Wings-White.png"; sourceTree = "<group>"; };
+		ABBF3464271EB36100CB3249 /* Purple-Heart-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Purple-Heart-White@2x.png"; path = "../../../AppIcon/1x2x3xImages/Purple-Heart-White@2x.png"; sourceTree = "<group>"; };
+		ABBF3465271EB36100CB3249 /* Purple-Wing-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Purple-Wing-Black@2x.png"; path = "../../../AppIcon/1x2x3xImages/Purple-Wing-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF3466271EB36100CB3249 /* Green_Yellow-Wings-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green_Yellow-Wings-Black.png"; sourceTree = "<group>"; };
+		ABBF3467271EB36100CB3249 /* Green-Wings-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Green-Wings-White.png"; path = "../../../AppIcon/1x2x3xImages/Green-Wings-White.png"; sourceTree = "<group>"; };
+		ABBF3468271EB36100CB3249 /* Blue_Yellow-Wings-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue_Yellow-Wings-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF3469271EB36100CB3249 /* Pink-Wings-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pink-Wings-Black@2x.png"; path = "../../../AppIcon/1x2x3xImages/Pink-Wings-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF346A271EB36100CB3249 /* Blue-Wings-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue-Wings-White.png"; sourceTree = "<group>"; };
+		ABBF346B271EB36100CB3249 /* Red_Blue-Heart-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red_Blue-Heart-Black.png"; path = "../../../AppIcon/1x2x3xImages/Red_Blue-Heart-Black.png"; sourceTree = "<group>"; };
+		ABBF346C271EB36100CB3249 /* BlueGreen_LightBlue-Wings-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueGreen_LightBlue-Wings-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF346D271EB36100CB3249 /* Pink-Wing-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pink-Wing-Black@2x.png"; path = "../../../AppIcon/1x2x3xImages/Pink-Wing-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF346E271EB36100CB3249 /* Blue_Purple-Wings-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue_Purple-Wings-White.png"; sourceTree = "<group>"; };
+		ABBF346F271EB36100CB3249 /* Red-Wing-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red-Wing-Black.png"; sourceTree = "<group>"; };
+		ABBF3470271EB36100CB3249 /* Blue_Purple-Wings-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue_Purple-Wings-White@3x.png"; sourceTree = "<group>"; };
+		ABBF3471271EB36200CB3249 /* Yellow-Heart-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Yellow-Heart-Black.png"; sourceTree = "<group>"; };
+		ABBF3472271EB36200CB3249 /* Red_Blue-Wing-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red_Blue-Wing-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF3473271EB36200CB3249 /* BlueGreen-Wings-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueGreen-Wings-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF3474271EB36200CB3249 /* Blue_Yellow-Wing-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue_Yellow-Wing-White.png"; sourceTree = "<group>"; };
+		ABBF3475271EB36200CB3249 /* Orange-Heart-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Orange-Heart-Black@2x.png"; path = "../../../AppIcon/1x2x3xImages/Orange-Heart-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF3476271EB36200CB3249 /* Orange-Wing-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Orange-Wing-White@2x.png"; path = "../../../AppIcon/1x2x3xImages/Orange-Wing-White@2x.png"; sourceTree = "<group>"; };
+		ABBF3477271EB36200CB3249 /* LightPink-Wings-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightPink-Wings-Black.png"; path = "../../../AppIcon/1x2x3xImages/LightPink-Wings-Black.png"; sourceTree = "<group>"; };
+		ABBF3478271EB36200CB3249 /* Green_Yellow-Wing-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green_Yellow-Wing-Black.png"; sourceTree = "<group>"; };
+		ABBF3479271EB36200CB3249 /* Yellow-Wing-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Yellow-Wing-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF347A271EB36200CB3249 /* Blue_Purple-Wings-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue_Purple-Wings-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF347B271EB36200CB3249 /* Purple-Wing-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Purple-Wing-White@3x.png"; path = "../../../AppIcon/1x2x3xImages/Purple-Wing-White@3x.png"; sourceTree = "<group>"; };
+		ABBF347C271EB36200CB3249 /* Pink_Green-Heart-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pink_Green-Heart-White.png"; path = "../../../AppIcon/1x2x3xImages/Pink_Green-Heart-White.png"; sourceTree = "<group>"; };
+		ABBF347D271EB36200CB3249 /* Orange-Wings-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Orange-Wings-Black@2x.png"; path = "../../../AppIcon/1x2x3xImages/Orange-Wings-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF347E271EB36200CB3249 /* LightBlue-Wings-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightBlue-Wings-White@3x.png"; path = "../../../AppIcon/1x2x3xImages/LightBlue-Wings-White@3x.png"; sourceTree = "<group>"; };
+		ABBF347F271EB36200CB3249 /* Green_Yellow-Wing-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green_Yellow-Wing-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF3480271EB36200CB3249 /* Pink_Green-Wing-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pink_Green-Wing-Black@3x.png"; path = "../../../AppIcon/1x2x3xImages/Pink_Green-Wing-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF3481271EB36200CB3249 /* Orange-Wings-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Orange-Wings-White@2x.png"; path = "../../../AppIcon/1x2x3xImages/Orange-Wings-White@2x.png"; sourceTree = "<group>"; };
+		ABBF3482271EB36200CB3249 /* LightBlue_Orange-Wing-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightBlue_Orange-Wing-Black@2x.png"; path = "../../../AppIcon/1x2x3xImages/LightBlue_Orange-Wing-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF3483271EB36200CB3249 /* LightBlue-Wing-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightBlue-Wing-Black@2x.png"; path = "../../../AppIcon/1x2x3xImages/LightBlue-Wing-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF3484271EB36200CB3249 /* Green-Wing-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green-Wing-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF3485271EB36200CB3249 /* Red-Heart-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red-Heart-White.png"; sourceTree = "<group>"; };
+		ABBF3486271EB36200CB3249 /* Red_Pink-Wing-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red_Pink-Wing-White@2x.png"; sourceTree = "<group>"; };
+		ABBF3487271EB36200CB3249 /* Green_Yellow-Heart-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green_Yellow-Heart-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF3488271EB36200CB3249 /* Pink-Heart-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pink-Heart-Black@2x.png"; path = "../../../AppIcon/1x2x3xImages/Pink-Heart-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF3489271EB36200CB3249 /* Green-Wing-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green-Wing-Black.png"; sourceTree = "<group>"; };
+		ABBF348A271EB36200CB3249 /* LightBlue-Wings-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightBlue-Wings-White.png"; path = "../../../AppIcon/1x2x3xImages/LightBlue-Wings-White.png"; sourceTree = "<group>"; };
+		ABBF348B271EB36200CB3249 /* Black-Wing-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Black-Wing-White@3x.png"; sourceTree = "<group>"; };
+		ABBF348C271EB36200CB3249 /* Red-Heart-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red-Heart-White@2x.png"; sourceTree = "<group>"; };
+		ABBF348D271EB36300CB3249 /* Blue_Yellow-Wings-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue_Yellow-Wings-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF348E271EB36300CB3249 /* Red_Pink-Heart-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red_Pink-Heart-Black@2x.png"; path = "../../../AppIcon/1x2x3xImages/Red_Pink-Heart-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF348F271EB36300CB3249 /* Red_Pink-Heart-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red_Pink-Heart-White@2x.png"; path = "../../../AppIcon/1x2x3xImages/Red_Pink-Heart-White@2x.png"; sourceTree = "<group>"; };
+		ABBF3490271EB36300CB3249 /* Orange-Wings-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Orange-Wings-White.png"; path = "../../../AppIcon/1x2x3xImages/Orange-Wings-White.png"; sourceTree = "<group>"; };
+		ABBF3491271EB36300CB3249 /* Green-Wings-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Green-Wings-White@3x.png"; path = "../../../AppIcon/1x2x3xImages/Green-Wings-White@3x.png"; sourceTree = "<group>"; };
+		ABBF3492271EB36300CB3249 /* Yellow-Wings-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Yellow-Wings-Black.png"; sourceTree = "<group>"; };
+		ABBF3493271EB36300CB3249 /* LightBlue-Heart-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightBlue-Heart-White@3x.png"; path = "../../../AppIcon/1x2x3xImages/LightBlue-Heart-White@3x.png"; sourceTree = "<group>"; };
+		ABBF3494271EB36300CB3249 /* Blue-Heart-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue-Heart-White@3x.png"; sourceTree = "<group>"; };
+		ABBF3495271EB36300CB3249 /* LightPink-Wings-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightPink-Wings-White@3x.png"; path = "../../../AppIcon/1x2x3xImages/LightPink-Wings-White@3x.png"; sourceTree = "<group>"; };
+		ABBF3496271EB36300CB3249 /* Blue_Yellow-Wings-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue_Yellow-Wings-White@3x.png"; sourceTree = "<group>"; };
+		ABBF3497271EB36300CB3249 /* Red_Blue-Wings-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red_Blue-Wings-Black@3x.png"; path = "../../../AppIcon/1x2x3xImages/Red_Blue-Wings-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF3498271EB36300CB3249 /* Yellow-Wings-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Yellow-Wings-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF3499271EB36300CB3249 /* Blue_Purple-Wing-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue_Purple-Wing-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF349A271EB36300CB3249 /* Black-Heart-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Black-Heart-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF349B271EB36300CB3249 /* Green-Wing-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green-Wing-White.png"; sourceTree = "<group>"; };
+		ABBF349C271EB36300CB3249 /* Pink_Green-Heart-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pink_Green-Heart-Black@2x.png"; path = "../../../AppIcon/1x2x3xImages/Pink_Green-Heart-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF349D271EB36300CB3249 /* Pink-Wings-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pink-Wings-White@2x.png"; path = "../../../AppIcon/1x2x3xImages/Pink-Wings-White@2x.png"; sourceTree = "<group>"; };
+		ABBF349E271EB36300CB3249 /* Blue_Yellow-Wings-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue_Yellow-Wings-White@2x.png"; sourceTree = "<group>"; };
+		ABBF349F271EB36300CB3249 /* LightBlue-Heart-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightBlue-Heart-Black@3x.png"; path = "../../../AppIcon/1x2x3xImages/LightBlue-Heart-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF34A0271EB36300CB3249 /* LightPink-Wing-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightPink-Wing-White.png"; path = "../../../AppIcon/1x2x3xImages/LightPink-Wing-White.png"; sourceTree = "<group>"; };
+		ABBF34A1271EB36300CB3249 /* Pink-Wing-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pink-Wing-White.png"; path = "../../../AppIcon/1x2x3xImages/Pink-Wing-White.png"; sourceTree = "<group>"; };
+		ABBF34A2271EB36300CB3249 /* Red_Blue-Wing-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red_Blue-Wing-White.png"; path = "../../../AppIcon/1x2x3xImages/Red_Blue-Wing-White.png"; sourceTree = "<group>"; };
+		ABBF34A3271EB36300CB3249 /* LightBlue_Orange-Heart-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightBlue_Orange-Heart-White@2x.png"; path = "../../../AppIcon/1x2x3xImages/LightBlue_Orange-Heart-White@2x.png"; sourceTree = "<group>"; };
+		ABBF34A4271EB36300CB3249 /* Purple-Heart-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Purple-Heart-Black@3x.png"; path = "../../../AppIcon/1x2x3xImages/Purple-Heart-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF34A5271EB36300CB3249 /* BlueGreen_LightBlue-Heart-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueGreen_LightBlue-Heart-Black.png"; sourceTree = "<group>"; };
+		ABBF34A6271EB36300CB3249 /* Purple-Heart-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Purple-Heart-White@3x.png"; path = "../../../AppIcon/1x2x3xImages/Purple-Heart-White@3x.png"; sourceTree = "<group>"; };
+		ABBF34A7271EB36300CB3249 /* Yellow-Wing-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Yellow-Wing-White.png"; sourceTree = "<group>"; };
+		ABBF34A8271EB36300CB3249 /* Green_Yellow-Wings-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green_Yellow-Wings-White.png"; sourceTree = "<group>"; };
+		ABBF34A9271EB36300CB3249 /* Purple-Heart-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Purple-Heart-Black.png"; path = "../../../AppIcon/1x2x3xImages/Purple-Heart-Black.png"; sourceTree = "<group>"; };
+		ABBF34AA271EB36300CB3249 /* Green-Wing-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green-Wing-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF34AB271EB36300CB3249 /* Green_Yellow-Wing-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green_Yellow-Wing-White@2x.png"; sourceTree = "<group>"; };
+		ABBF34AC271EB36300CB3249 /* LightBlue_Orange-Wing-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightBlue_Orange-Wing-White@3x.png"; path = "../../../AppIcon/1x2x3xImages/LightBlue_Orange-Wing-White@3x.png"; sourceTree = "<group>"; };
+		ABBF34AD271EB36400CB3249 /* Yellow-Wing-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Yellow-Wing-White@2x.png"; sourceTree = "<group>"; };
+		ABBF34AE271EB36400CB3249 /* Green_Yellow-Heart-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green_Yellow-Heart-White.png"; sourceTree = "<group>"; };
+		ABBF34AF271EB36400CB3249 /* Orange-Wings-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Orange-Wings-Black@3x.png"; path = "../../../AppIcon/1x2x3xImages/Orange-Wings-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF34B0271EB36400CB3249 /* Pink_Green-Wing-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pink_Green-Wing-White@2x.png"; path = "../../../AppIcon/1x2x3xImages/Pink_Green-Wing-White@2x.png"; sourceTree = "<group>"; };
+		ABBF34B1271EB36400CB3249 /* Blue-Wing-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue-Wing-Black.png"; sourceTree = "<group>"; };
+		ABBF34B2271EB36400CB3249 /* Red_Pink-Wing-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red_Pink-Wing-White.png"; path = "../../../AppIcon/1x2x3xImages/Red_Pink-Wing-White.png"; sourceTree = "<group>"; };
+		ABBF34B3271EB36400CB3249 /* LightPink-Wing-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightPink-Wing-White@3x.png"; path = "../../../AppIcon/1x2x3xImages/LightPink-Wing-White@3x.png"; sourceTree = "<group>"; };
+		ABBF34B4271EB36400CB3249 /* Blue_Purple-Wing-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue_Purple-Wing-White@2x.png"; sourceTree = "<group>"; };
+		ABBF34B5271EB36400CB3249 /* Pink-Heart-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pink-Heart-White@2x.png"; path = "../../../AppIcon/1x2x3xImages/Pink-Heart-White@2x.png"; sourceTree = "<group>"; };
+		ABBF34B6271EB36400CB3249 /* Red-Wing-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red-Wing-Black@2x.png"; path = "../../../AppIcon/1x2x3xImages/Red-Wing-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF34B7271EB36400CB3249 /* BlueGreen-Wings-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueGreen-Wings-White@3x.png"; sourceTree = "<group>"; };
+		ABBF34B8271EB36400CB3249 /* Orange-Wing-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Orange-Wing-Black.png"; path = "../../../AppIcon/1x2x3xImages/Orange-Wing-Black.png"; sourceTree = "<group>"; };
+		ABBF34B9271EB36400CB3249 /* Purple-Wings-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Purple-Wings-White@3x.png"; path = "../../../AppIcon/1x2x3xImages/Purple-Wings-White@3x.png"; sourceTree = "<group>"; };
+		ABBF34BA271EB36400CB3249 /* Green_Yellow-Heart-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green_Yellow-Heart-Black.png"; sourceTree = "<group>"; };
+		ABBF34BB271EB36400CB3249 /* LightPink-Heart-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightPink-Heart-Black@3x.png"; path = "../../../AppIcon/1x2x3xImages/LightPink-Heart-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF34BC271EB36400CB3249 /* LightBlue_Orange-Heart-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightBlue_Orange-Heart-White.png"; path = "../../../AppIcon/1x2x3xImages/LightBlue_Orange-Heart-White.png"; sourceTree = "<group>"; };
+		ABBF34BD271EB36400CB3249 /* LightBlue-Wing-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightBlue-Wing-White@3x.png"; path = "../../../AppIcon/1x2x3xImages/LightBlue-Wing-White@3x.png"; sourceTree = "<group>"; };
+		ABBF34BE271EB36400CB3249 /* Black-Heart-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Black-Heart-White@2x.png"; sourceTree = "<group>"; };
+		ABBF34BF271EB36400CB3249 /* Purple-Wing-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Purple-Wing-Black@3x.png"; path = "../../../AppIcon/1x2x3xImages/Purple-Wing-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF34C0271EB36400CB3249 /* BlueGreen-Wing-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueGreen-Wing-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF34C1271EB36400CB3249 /* Green-Wings-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Green-Wings-Black.png"; path = "../../../AppIcon/1x2x3xImages/Green-Wings-Black.png"; sourceTree = "<group>"; };
+		ABBF34C2271EB36400CB3249 /* LightPink-Wing-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightPink-Wing-Black@3x.png"; path = "../../../AppIcon/1x2x3xImages/LightPink-Wing-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF34C3271EB36400CB3249 /* BlueGreen-Heart-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueGreen-Heart-Black.png"; sourceTree = "<group>"; };
+		ABBF34C4271EB36400CB3249 /* Blue_Purple-Wings-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue_Purple-Wings-Black.png"; sourceTree = "<group>"; };
+		ABBF34C5271EB36400CB3249 /* Yellow-Wings-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Yellow-Wings-White@2x.png"; path = "../../../AppIcon/1x2x3xImages/Yellow-Wings-White@2x.png"; sourceTree = "<group>"; };
+		ABBF34C6271EB36400CB3249 /* BlueGreen_LightBlue-Wing-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueGreen_LightBlue-Wing-White@3x.png"; sourceTree = "<group>"; };
+		ABBF34C7271EB36400CB3249 /* BlueGreen_LightBlue-Heart-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueGreen_LightBlue-Heart-White.png"; sourceTree = "<group>"; };
+		ABBF34C8271EB36400CB3249 /* Pink_Green-Wings-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pink_Green-Wings-White@3x.png"; path = "../../../AppIcon/1x2x3xImages/Pink_Green-Wings-White@3x.png"; sourceTree = "<group>"; };
+		ABBF34C9271EB36400CB3249 /* Red-Wings-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red-Wings-Black.png"; path = "../../../AppIcon/1x2x3xImages/Red-Wings-Black.png"; sourceTree = "<group>"; };
+		ABBF34CA271EB36400CB3249 /* Blue_Purple-Heart-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue_Purple-Heart-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF34CB271EB36400CB3249 /* Black-Wing-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Black-Wing-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF34CC271EB36400CB3249 /* Blue_Purple-Wing-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue_Purple-Wing-White@3x.png"; sourceTree = "<group>"; };
+		ABBF34CD271EB36400CB3249 /* LightPink-Wings-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightPink-Wings-White.png"; path = "../../../AppIcon/1x2x3xImages/LightPink-Wings-White.png"; sourceTree = "<group>"; };
+		ABBF34CE271EB36400CB3249 /* BlueGreen-Wing-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueGreen-Wing-White.png"; sourceTree = "<group>"; };
+		ABBF34CF271EB36400CB3249 /* Pink-Wings-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pink-Wings-White@3x.png"; path = "../../../AppIcon/1x2x3xImages/Pink-Wings-White@3x.png"; sourceTree = "<group>"; };
+		ABBF34D0271EB36400CB3249 /* Green_Yellow-Wings-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green_Yellow-Wings-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF34D1271EB36400CB3249 /* Purple-Wing-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Purple-Wing-White@2x.png"; path = "../../../AppIcon/1x2x3xImages/Purple-Wing-White@2x.png"; sourceTree = "<group>"; };
+		ABBF34D2271EB36400CB3249 /* Blue-Heart-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue-Heart-Black.png"; sourceTree = "<group>"; };
+		ABBF34D3271EB36400CB3249 /* BlueGreen-Wings-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueGreen-Wings-Black.png"; sourceTree = "<group>"; };
+		ABBF34D4271EB36400CB3249 /* LightBlue-Wings-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightBlue-Wings-Black.png"; path = "../../../AppIcon/1x2x3xImages/LightBlue-Wings-Black.png"; sourceTree = "<group>"; };
+		ABBF34D5271EB36400CB3249 /* Green_Yellow-Wing-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green_Yellow-Wing-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF34D6271EB36400CB3249 /* Black-Wings-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Black-Wings-White@3x.png"; sourceTree = "<group>"; };
+		ABBF34D7271EB36400CB3249 /* Black-Wing-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Black-Wing-Black.png"; sourceTree = "<group>"; };
+		ABBF34D8271EB36400CB3249 /* Orange-Heart-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Orange-Heart-White.png"; path = "../../../AppIcon/1x2x3xImages/Orange-Heart-White.png"; sourceTree = "<group>"; };
+		ABBF34D9271EB36400CB3249 /* Red_Blue-Wings-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red_Blue-Wings-White.png"; path = "../../../AppIcon/1x2x3xImages/Red_Blue-Wings-White.png"; sourceTree = "<group>"; };
+		ABBF34DA271EB36500CB3249 /* Blue_Yellow-Heart-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue_Yellow-Heart-White.png"; sourceTree = "<group>"; };
+		ABBF34DB271EB36500CB3249 /* Pink_Green-Wings-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pink_Green-Wings-Black@3x.png"; path = "../../../AppIcon/1x2x3xImages/Pink_Green-Wings-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF34DC271EB36500CB3249 /* Purple-Wing-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Purple-Wing-White.png"; path = "../../../AppIcon/1x2x3xImages/Purple-Wing-White.png"; sourceTree = "<group>"; };
+		ABBF34DD271EB36500CB3249 /* Orange-Wings-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Orange-Wings-Black.png"; path = "../../../AppIcon/1x2x3xImages/Orange-Wings-Black.png"; sourceTree = "<group>"; };
+		ABBF34DE271EB36500CB3249 /* LightBlue-Wing-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightBlue-Wing-Black@3x.png"; path = "../../../AppIcon/1x2x3xImages/LightBlue-Wing-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF34DF271EB36500CB3249 /* Red-Heart-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red-Heart-Black.png"; path = "../../../AppIcon/1x2x3xImages/Red-Heart-Black.png"; sourceTree = "<group>"; };
+		ABBF34E0271EB36500CB3249 /* BlueGreen_LightBlue-Wings-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueGreen_LightBlue-Wings-Black.png"; sourceTree = "<group>"; };
+		ABBF34E1271EB36500CB3249 /* Yellow-Wings-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Yellow-Wings-White@3x.png"; path = "../../../AppIcon/1x2x3xImages/Yellow-Wings-White@3x.png"; sourceTree = "<group>"; };
+		ABBF34E2271EB36500CB3249 /* Green-Heart-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green-Heart-White@2x.png"; sourceTree = "<group>"; };
+		ABBF34E3271EB36500CB3249 /* Red-Heart-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red-Heart-Black@2x.png"; path = "../../../AppIcon/1x2x3xImages/Red-Heart-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF34E4271EB36500CB3249 /* BlueGreen-Wing-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueGreen-Wing-White@2x.png"; sourceTree = "<group>"; };
+		ABBF34E5271EB36500CB3249 /* Blue_Yellow-Heart-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue_Yellow-Heart-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF34E6271EB36500CB3249 /* Red_Blue-Wings-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red_Blue-Wings-Black.png"; path = "../../../AppIcon/1x2x3xImages/Red_Blue-Wings-Black.png"; sourceTree = "<group>"; };
+		ABBF34E7271EB36500CB3249 /* Blue-Heart-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue-Heart-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF34E8271EB36500CB3249 /* BlueGreen_LightBlue-Heart-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueGreen_LightBlue-Heart-White@3x.png"; sourceTree = "<group>"; };
+		ABBF34E9271EB36500CB3249 /* Red-Wings-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red-Wings-Black@3x.png"; path = "../../../AppIcon/1x2x3xImages/Red-Wings-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF34EA271EB36500CB3249 /* LightBlue_Orange-Wing-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightBlue_Orange-Wing-White@2x.png"; path = "../../../AppIcon/1x2x3xImages/LightBlue_Orange-Wing-White@2x.png"; sourceTree = "<group>"; };
+		ABBF34EB271EB36500CB3249 /* Blue_Purple-Wings-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue_Purple-Wings-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF34EC271EB36500CB3249 /* LightBlue-Wings-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightBlue-Wings-Black@2x.png"; path = "../../../AppIcon/1x2x3xImages/LightBlue-Wings-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF34ED271EB36500CB3249 /* Orange-Heart-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Orange-Heart-White@2x.png"; path = "../../../AppIcon/1x2x3xImages/Orange-Heart-White@2x.png"; sourceTree = "<group>"; };
+		ABBF34EE271EB36500CB3249 /* LightBlue-Wings-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightBlue-Wings-Black@3x.png"; path = "../../../AppIcon/1x2x3xImages/LightBlue-Wings-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF34EF271EB36500CB3249 /* Purple-Wings-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Purple-Wings-Black@2x.png"; path = "../../../AppIcon/1x2x3xImages/Purple-Wings-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF34F0271EB36500CB3249 /* Blue_Purple-Wing-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue_Purple-Wing-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF34F1271EB36500CB3249 /* BlueGreen_LightBlue-Wing-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueGreen_LightBlue-Wing-White@2x.png"; sourceTree = "<group>"; };
+		ABBF34F2271EB36500CB3249 /* Green-Heart-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green-Heart-White.png"; sourceTree = "<group>"; };
+		ABBF34F3271EB36500CB3249 /* Blue_Purple-Wings-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue_Purple-Wings-White@2x.png"; sourceTree = "<group>"; };
+		ABBF34F4271EB36500CB3249 /* Pink_Green-Heart-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pink_Green-Heart-Black.png"; path = "../../../AppIcon/1x2x3xImages/Pink_Green-Heart-Black.png"; sourceTree = "<group>"; };
+		ABBF34F5271EB36500CB3249 /* Red-Wings-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red-Wings-Black@2x.png"; path = "../../../AppIcon/1x2x3xImages/Red-Wings-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF34F6271EB36500CB3249 /* BlueGreen_LightBlue-Wing-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueGreen_LightBlue-Wing-White.png"; sourceTree = "<group>"; };
+		ABBF34F7271EB36500CB3249 /* LightPink-Heart-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightPink-Heart-White@2x.png"; path = "../../../AppIcon/1x2x3xImages/LightPink-Heart-White@2x.png"; sourceTree = "<group>"; };
+		ABBF34F8271EB36500CB3249 /* Blue_Yellow-Wing-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue_Yellow-Wing-White@3x.png"; sourceTree = "<group>"; };
+		ABBF34F9271EB36500CB3249 /* Blue-Heart-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue-Heart-White.png"; sourceTree = "<group>"; };
+		ABBF34FA271EB36500CB3249 /* LightBlue_Orange-Heart-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightBlue_Orange-Heart-Black@3x.png"; path = "../../../AppIcon/1x2x3xImages/LightBlue_Orange-Heart-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF34FB271EB36500CB3249 /* Pink-Wing-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pink-Wing-White@3x.png"; path = "../../../AppIcon/1x2x3xImages/Pink-Wing-White@3x.png"; sourceTree = "<group>"; };
+		ABBF34FC271EB36500CB3249 /* LightBlue_Orange-Wings-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightBlue_Orange-Wings-Black.png"; path = "../../../AppIcon/1x2x3xImages/LightBlue_Orange-Wings-Black.png"; sourceTree = "<group>"; };
+		ABBF34FD271EB36500CB3249 /* Red_Blue-Wing-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red_Blue-Wing-Black.png"; path = "../../../AppIcon/1x2x3xImages/Red_Blue-Wing-Black.png"; sourceTree = "<group>"; };
+		ABBF34FE271EB36500CB3249 /* Red-Wings-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red-Wings-White@3x.png"; path = "../../../AppIcon/1x2x3xImages/Red-Wings-White@3x.png"; sourceTree = "<group>"; };
+		ABBF34FF271EB36500CB3249 /* Yellow-Wing-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Yellow-Wing-Black.png"; path = "../../../AppIcon/1x2x3xImages/Yellow-Wing-Black.png"; sourceTree = "<group>"; };
+		ABBF3500271EB36500CB3249 /* Red-Wing-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red-Wing-White.png"; path = "../../../AppIcon/1x2x3xImages/Red-Wing-White.png"; sourceTree = "<group>"; };
+		ABBF3501271EB36500CB3249 /* Green-Wing-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green-Wing-White@2x.png"; sourceTree = "<group>"; };
+		ABBF3502271EB36500CB3249 /* Pink-Wings-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pink-Wings-Black@3x.png"; path = "../../../AppIcon/1x2x3xImages/Pink-Wings-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF3503271EB36500CB3249 /* Pink_Green-Heart-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pink_Green-Heart-White@2x.png"; path = "../../../AppIcon/1x2x3xImages/Pink_Green-Heart-White@2x.png"; sourceTree = "<group>"; };
+		ABBF3504271EB36500CB3249 /* Pink_Green-Heart-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pink_Green-Heart-White@3x.png"; path = "../../../AppIcon/1x2x3xImages/Pink_Green-Heart-White@3x.png"; sourceTree = "<group>"; };
+		ABBF3505271EB36500CB3249 /* Green-Wings-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Green-Wings-Black@2x.png"; path = "../../../AppIcon/1x2x3xImages/Green-Wings-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF3506271EB36500CB3249 /* Green_Yellow-Wing-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green_Yellow-Wing-White.png"; sourceTree = "<group>"; };
+		ABBF3507271EB36500CB3249 /* Red_Blue-Heart-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red_Blue-Heart-Black@3x.png"; path = "../../../AppIcon/1x2x3xImages/Red_Blue-Heart-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF3508271EB36500CB3249 /* Green_Yellow-Heart-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green_Yellow-Heart-White@3x.png"; sourceTree = "<group>"; };
+		ABBF3509271EB36600CB3249 /* BlueGreen-Heart-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueGreen-Heart-White.png"; sourceTree = "<group>"; };
+		ABBF350A271EB36600CB3249 /* Pink_Green-Wings-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pink_Green-Wings-Black@2x.png"; path = "../../../AppIcon/1x2x3xImages/Pink_Green-Wings-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF350B271EB36600CB3249 /* Pink-Heart-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pink-Heart-White@3x.png"; path = "../../../AppIcon/1x2x3xImages/Pink-Heart-White@3x.png"; sourceTree = "<group>"; };
+		ABBF350C271EB36600CB3249 /* LightPink-Heart-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightPink-Heart-White@3x.png"; path = "../../../AppIcon/1x2x3xImages/LightPink-Heart-White@3x.png"; sourceTree = "<group>"; };
+		ABBF350D271EB36600CB3249 /* Yellow-Heart-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Yellow-Heart-White@2x.png"; path = "../../../AppIcon/1x2x3xImages/Yellow-Heart-White@2x.png"; sourceTree = "<group>"; };
+		ABBF350E271EB36600CB3249 /* Green_Yellow-Wings-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green_Yellow-Wings-White@3x.png"; sourceTree = "<group>"; };
+		ABBF350F271EB36600CB3249 /* BlueGreen_LightBlue-Wings-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueGreen_LightBlue-Wings-White@3x.png"; sourceTree = "<group>"; };
+		ABBF3510271EB36600CB3249 /* Red-Wings-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red-Wings-White.png"; path = "../../../AppIcon/1x2x3xImages/Red-Wings-White.png"; sourceTree = "<group>"; };
+		ABBF3511271EB36600CB3249 /* Blue_Purple-Heart-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue_Purple-Heart-White@3x.png"; sourceTree = "<group>"; };
+		ABBF3512271EB36600CB3249 /* Purple-Wings-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Purple-Wings-Black.png"; path = "../../../AppIcon/1x2x3xImages/Purple-Wings-Black.png"; sourceTree = "<group>"; };
+		ABBF3513271EB36600CB3249 /* Green-Wing-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green-Wing-White@3x.png"; sourceTree = "<group>"; };
+		ABBF3514271EB36600CB3249 /* Black-Wings-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Black-Wings-White@2x.png"; sourceTree = "<group>"; };
+		ABBF3515271EB36600CB3249 /* Yellow-Wings-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Yellow-Wings-Black@2x.png"; path = "../../../AppIcon/1x2x3xImages/Yellow-Wings-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF3516271EB36600CB3249 /* Green_Yellow-Wing-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green_Yellow-Wing-White@3x.png"; sourceTree = "<group>"; };
+		ABBF3517271EB36600CB3249 /* Black-Wing-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Black-Wing-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF3518271EB36600CB3249 /* LightPink-Heart-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightPink-Heart-White.png"; path = "../../../AppIcon/1x2x3xImages/LightPink-Heart-White.png"; sourceTree = "<group>"; };
+		ABBF3519271EB36600CB3249 /* Red_Pink-Wings-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red_Pink-Wings-Black.png"; path = "../../../AppIcon/1x2x3xImages/Red_Pink-Wings-Black.png"; sourceTree = "<group>"; };
+		ABBF351A271EB36600CB3249 /* LightBlue-Wings-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightBlue-Wings-White@2x.png"; path = "../../../AppIcon/1x2x3xImages/LightBlue-Wings-White@2x.png"; sourceTree = "<group>"; };
+		ABBF351B271EB36600CB3249 /* Purple-Wing-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Purple-Wing-Black.png"; path = "../../../AppIcon/1x2x3xImages/Purple-Wing-Black.png"; sourceTree = "<group>"; };
+		ABBF351C271EB36600CB3249 /* Pink-Heart-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pink-Heart-Black@3x.png"; path = "../../../AppIcon/1x2x3xImages/Pink-Heart-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF351D271EB36600CB3249 /* LightBlue_Orange-Heart-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightBlue_Orange-Heart-Black@2x.png"; path = "../../../AppIcon/1x2x3xImages/LightBlue_Orange-Heart-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF351E271EB36600CB3249 /* Blue-Wing-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue-Wing-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF351F271EB36600CB3249 /* BlueGreen_LightBlue-Wing-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueGreen_LightBlue-Wing-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF3520271EB36600CB3249 /* Blue-Wing-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue-Wing-White.png"; sourceTree = "<group>"; };
+		ABBF3521271EB36600CB3249 /* Blue-Wings-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue-Wings-Black.png"; sourceTree = "<group>"; };
+		ABBF3522271EB36600CB3249 /* Blue-Wing-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue-Wing-White@2x.png"; sourceTree = "<group>"; };
+		ABBF3523271EB36600CB3249 /* Orange-Heart-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Orange-Heart-Black@3x.png"; path = "../../../AppIcon/1x2x3xImages/Orange-Heart-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF3524271EB36600CB3249 /* LightBlue_Orange-Wings-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightBlue_Orange-Wings-White@3x.png"; path = "../../../AppIcon/1x2x3xImages/LightBlue_Orange-Wings-White@3x.png"; sourceTree = "<group>"; };
+		ABBF3525271EB36600CB3249 /* Purple-Wings-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Purple-Wings-Black@3x.png"; path = "../../../AppIcon/1x2x3xImages/Purple-Wings-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF3526271EB36600CB3249 /* Red_Blue-Wing-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red_Blue-Wing-White@2x.png"; path = "../../../AppIcon/1x2x3xImages/Red_Blue-Wing-White@2x.png"; sourceTree = "<group>"; };
+		ABBF3527271EB36600CB3249 /* Red-Wing-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red-Wing-White@2x.png"; path = "../../../AppIcon/1x2x3xImages/Red-Wing-White@2x.png"; sourceTree = "<group>"; };
+		ABBF3528271EB36600CB3249 /* Orange-Heart-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Orange-Heart-White@3x.png"; path = "../../../AppIcon/1x2x3xImages/Orange-Heart-White@3x.png"; sourceTree = "<group>"; };
+		ABBF3529271EB36600CB3249 /* Blue-Wing-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue-Wing-White@3x.png"; sourceTree = "<group>"; };
+		ABBF352A271EB36600CB3249 /* BlueGreen_LightBlue-Heart-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueGreen_LightBlue-Heart-White@2x.png"; sourceTree = "<group>"; };
+		ABBF352B271EB36600CB3249 /* Red-Wing-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red-Wing-Black@3x.png"; path = "../../../AppIcon/1x2x3xImages/Red-Wing-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF352C271EB36600CB3249 /* Pink-Heart-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pink-Heart-White.png"; path = "../../../AppIcon/1x2x3xImages/Pink-Heart-White.png"; sourceTree = "<group>"; };
+		ABBF352D271EB36600CB3249 /* Blue-Heart-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue-Heart-White@2x.png"; sourceTree = "<group>"; };
+		ABBF352E271EB36600CB3249 /* BlueGreen_LightBlue-Wing-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueGreen_LightBlue-Wing-Black.png"; sourceTree = "<group>"; };
+		ABBF352F271EB36600CB3249 /* BlueGreen-Wings-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueGreen-Wings-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF3530271EB36600CB3249 /* Pink-Wing-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pink-Wing-White@2x.png"; path = "../../../AppIcon/1x2x3xImages/Pink-Wing-White@2x.png"; sourceTree = "<group>"; };
+		ABBF3531271EB36600CB3249 /* Red_Pink-Wings-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red_Pink-Wings-White@3x.png"; path = "../../../AppIcon/1x2x3xImages/Red_Pink-Wings-White@3x.png"; sourceTree = "<group>"; };
+		ABBF3532271EB36600CB3249 /* BlueGreen_LightBlue-Wings-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueGreen_LightBlue-Wings-White.png"; sourceTree = "<group>"; };
+		ABBF3533271EB36600CB3249 /* Purple-Wings-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Purple-Wings-White.png"; path = "../../../AppIcon/1x2x3xImages/Purple-Wings-White.png"; sourceTree = "<group>"; };
+		ABBF3534271EB36600CB3249 /* BlueGreen_LightBlue-Heart-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueGreen_LightBlue-Heart-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF3535271EB36600CB3249 /* Red_Blue-Wings-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red_Blue-Wings-Black@2x.png"; path = "../../../AppIcon/1x2x3xImages/Red_Blue-Wings-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF3536271EB36600CB3249 /* BlueGreen_LightBlue-Heart-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueGreen_LightBlue-Heart-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF3537271EB36600CB3249 /* Green_Yellow-Wings-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green_Yellow-Wings-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF3538271EB36600CB3249 /* Orange-Wings-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Orange-Wings-White@3x.png"; path = "../../../AppIcon/1x2x3xImages/Orange-Wings-White@3x.png"; sourceTree = "<group>"; };
+		ABBF3539271EB36700CB3249 /* LightPink-Wing-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightPink-Wing-White@2x.png"; path = "../../../AppIcon/1x2x3xImages/LightPink-Wing-White@2x.png"; sourceTree = "<group>"; };
+		ABBF353A271EB36700CB3249 /* BlueGreen_LightBlue-Wings-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueGreen_LightBlue-Wings-White@2x.png"; sourceTree = "<group>"; };
+		ABBF353B271EB36700CB3249 /* Blue-Wings-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue-Wings-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF353C271EB36700CB3249 /* Blue_Yellow-Heart-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue_Yellow-Heart-White@2x.png"; sourceTree = "<group>"; };
+		ABBF353D271EB36700CB3249 /* Blue-Wings-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue-Wings-White@3x.png"; sourceTree = "<group>"; };
+		ABBF353E271EB36700CB3249 /* Blue_Purple-Heart-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue_Purple-Heart-White.png"; sourceTree = "<group>"; };
+		ABBF353F271EB36700CB3249 /* Black-Heart-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Black-Heart-White@3x.png"; sourceTree = "<group>"; };
+		ABBF3540271EB36700CB3249 /* LightBlue_Orange-Wing-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightBlue_Orange-Wing-White.png"; path = "../../../AppIcon/1x2x3xImages/LightBlue_Orange-Wing-White.png"; sourceTree = "<group>"; };
+		ABBF3541271EB36700CB3249 /* LightBlue_Orange-Wing-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightBlue_Orange-Wing-Black.png"; path = "../../../AppIcon/1x2x3xImages/LightBlue_Orange-Wing-Black.png"; sourceTree = "<group>"; };
+		ABBF3542271EB36700CB3249 /* Pink_Green-Wings-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pink_Green-Wings-Black.png"; path = "../../../AppIcon/1x2x3xImages/Pink_Green-Wings-Black.png"; sourceTree = "<group>"; };
+		ABBF3543271EB36700CB3249 /* LightBlue-Heart-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightBlue-Heart-Black@2x.png"; path = "../../../AppIcon/1x2x3xImages/LightBlue-Heart-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF3544271EB36700CB3249 /* LightBlue-Wing-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightBlue-Wing-White@2x.png"; path = "../../../AppIcon/1x2x3xImages/LightBlue-Wing-White@2x.png"; sourceTree = "<group>"; };
+		ABBF3545271EB36700CB3249 /* Black-Heart-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Black-Heart-Black.png"; sourceTree = "<group>"; };
+		ABBF3546271EB36700CB3249 /* Blue-Heart-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue-Heart-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF3547271EB36700CB3249 /* Red_Blue-Heart-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red_Blue-Heart-White@2x.png"; path = "../../../AppIcon/1x2x3xImages/Red_Blue-Heart-White@2x.png"; sourceTree = "<group>"; };
+		ABBF3548271EB36700CB3249 /* Yellow-Wing-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Yellow-Wing-Black@2x.png"; path = "../../../AppIcon/1x2x3xImages/Yellow-Wing-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF3549271EB36700CB3249 /* Black-Wings-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Black-Wings-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF354A271EB36700CB3249 /* BlueGreen-Heart-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueGreen-Heart-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF354B271EB36700CB3249 /* Red_Pink-Heart-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red_Pink-Heart-White@3x.png"; path = "../../../AppIcon/1x2x3xImages/Red_Pink-Heart-White@3x.png"; sourceTree = "<group>"; };
+		ABBF354C271EB36700CB3249 /* Red_Pink-Heart-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red_Pink-Heart-White.png"; path = "../../../AppIcon/1x2x3xImages/Red_Pink-Heart-White.png"; sourceTree = "<group>"; };
+		ABBF354D271EB36700CB3249 /* Red_Pink-Wing-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red_Pink-Wing-Black.png"; path = "../../../AppIcon/1x2x3xImages/Red_Pink-Wing-Black.png"; sourceTree = "<group>"; };
+		ABBF354E271EB36700CB3249 /* Blue-Wings-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue-Wings-White@2x.png"; sourceTree = "<group>"; };
+		ABBF354F271EB36700CB3249 /* Black-Wing-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Black-Wing-White.png"; sourceTree = "<group>"; };
+		ABBF3550271EB36700CB3249 /* BlueGreen-Wing-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueGreen-Wing-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF3551271EB36700CB3249 /* Purple-Heart-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Purple-Heart-Black@2x.png"; path = "../../../AppIcon/1x2x3xImages/Purple-Heart-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF3552271EB36700CB3249 /* Pink_Green-Wing-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pink_Green-Wing-White.png"; path = "../../../AppIcon/1x2x3xImages/Pink_Green-Wing-White.png"; sourceTree = "<group>"; };
+		ABBF3553271EB36700CB3249 /* Red_Blue-Heart-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red_Blue-Heart-Black@2x.png"; path = "../../../AppIcon/1x2x3xImages/Red_Blue-Heart-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF3554271EB36700CB3249 /* Blue_Purple-Heart-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue_Purple-Heart-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF3555271EB36700CB3249 /* Red_Pink-Wing-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red_Pink-Wing-White@3x.png"; path = "../../../AppIcon/1x2x3xImages/Red_Pink-Wing-White@3x.png"; sourceTree = "<group>"; };
+		ABBF3556271EB36700CB3249 /* Blue-Wing-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue-Wing-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF3557271EB36700CB3249 /* LightPink-Wings-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightPink-Wings-White@2x.png"; path = "../../../AppIcon/1x2x3xImages/LightPink-Wings-White@2x.png"; sourceTree = "<group>"; };
+		ABBF3558271EB36700CB3249 /* Pink-Wing-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pink-Wing-Black@3x.png"; path = "../../../AppIcon/1x2x3xImages/Pink-Wing-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF3559271EB36700CB3249 /* Red_Pink-Wings-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red_Pink-Wings-Black@3x.png"; path = "../../../AppIcon/1x2x3xImages/Red_Pink-Wings-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF355A271EB36700CB3249 /* Red-Wing-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red-Wing-White@3x.png"; path = "../../../AppIcon/1x2x3xImages/Red-Wing-White@3x.png"; sourceTree = "<group>"; };
+		ABBF355B271EB36700CB3249 /* Black-Wing-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Black-Wing-White@2x.png"; sourceTree = "<group>"; };
+		ABBF355C271EB36700CB3249 /* BlueGreen-Heart-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueGreen-Heart-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF355D271EB36700CB3249 /* Blue_Yellow-Wing-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue_Yellow-Wing-White@2x.png"; sourceTree = "<group>"; };
+		ABBF355E271EB36700CB3249 /* Blue_Purple-Heart-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue_Purple-Heart-White@2x.png"; sourceTree = "<group>"; };
+		ABBF355F271EB36800CB3249 /* LightBlue-Wing-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightBlue-Wing-White.png"; path = "../../../AppIcon/1x2x3xImages/LightBlue-Wing-White.png"; sourceTree = "<group>"; };
+		ABBF3560271EB36800CB3249 /* LightPink-Wings-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightPink-Wings-Black@2x.png"; path = "../../../AppIcon/1x2x3xImages/LightPink-Wings-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF3561271EB36800CB3249 /* LightBlue_Orange-Heart-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightBlue_Orange-Heart-White@3x.png"; path = "../../../AppIcon/1x2x3xImages/LightBlue_Orange-Heart-White@3x.png"; sourceTree = "<group>"; };
+		ABBF3562271EB36800CB3249 /* LightBlue_Orange-Wings-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightBlue_Orange-Wings-Black@3x.png"; path = "../../../AppIcon/1x2x3xImages/LightBlue_Orange-Wings-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF3563271EB36800CB3249 /* Red_Pink-Wing-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red_Pink-Wing-Black@2x.png"; path = "../../../AppIcon/1x2x3xImages/Red_Pink-Wing-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF3564271EB36800CB3249 /* Green_Yellow-Heart-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green_Yellow-Heart-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF3565271EB36800CB3249 /* Pink_Green-Wings-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pink_Green-Wings-White.png"; path = "../../../AppIcon/1x2x3xImages/Pink_Green-Wings-White.png"; sourceTree = "<group>"; };
+		ABBF3566271EB36800CB3249 /* LightBlue-Wing-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightBlue-Wing-Black.png"; path = "../../../AppIcon/1x2x3xImages/LightBlue-Wing-Black.png"; sourceTree = "<group>"; };
+		ABBF3567271EB36800CB3249 /* Orange-Wing-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Orange-Wing-Black@2x.png"; path = "../../../AppIcon/1x2x3xImages/Orange-Wing-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF3568271EB36800CB3249 /* Green-Heart-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green-Heart-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF3569271EB36800CB3249 /* LightPink-Wings-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightPink-Wings-Black@3x.png"; path = "../../../AppIcon/1x2x3xImages/LightPink-Wings-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF356A271EB36800CB3249 /* Blue_Yellow-Wing-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue_Yellow-Wing-Black.png"; sourceTree = "<group>"; };
+		ABBF356B271EB36800CB3249 /* Pink-Wing-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pink-Wing-Black.png"; path = "../../../AppIcon/1x2x3xImages/Pink-Wing-Black.png"; sourceTree = "<group>"; };
+		ABBF356C271EB36800CB3249 /* Blue_Yellow-Wing-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue_Yellow-Wing-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF356D271EB36800CB3249 /* Blue_Yellow-Wings-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue_Yellow-Wings-Black.png"; sourceTree = "<group>"; };
+		ABBF356E271EB36800CB3249 /* Green-Wings-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Green-Wings-White@2x.png"; path = "../../../AppIcon/1x2x3xImages/Green-Wings-White@2x.png"; sourceTree = "<group>"; };
+		ABBF356F271EB36800CB3249 /* Purple-Wings-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Purple-Wings-White@2x.png"; path = "../../../AppIcon/1x2x3xImages/Purple-Wings-White@2x.png"; sourceTree = "<group>"; };
+		ABBF3570271EB36800CB3249 /* Yellow-Heart-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Yellow-Heart-Black@2x.png"; path = "../../../AppIcon/1x2x3xImages/Yellow-Heart-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF3571271EB36800CB3249 /* Red_Blue-Heart-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red_Blue-Heart-White.png"; path = "../../../AppIcon/1x2x3xImages/Red_Blue-Heart-White.png"; sourceTree = "<group>"; };
+		ABBF3572271EB36800CB3249 /* Orange-Wing-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Orange-Wing-White.png"; path = "../../../AppIcon/1x2x3xImages/Orange-Wing-White.png"; sourceTree = "<group>"; };
+		ABBF3573271EB36800CB3249 /* LightPink-Wing-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightPink-Wing-Black@2x.png"; path = "../../../AppIcon/1x2x3xImages/LightPink-Wing-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF3574271EB36800CB3249 /* Red_Pink-Heart-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red_Pink-Heart-Black@3x.png"; path = "../../../AppIcon/1x2x3xImages/Red_Pink-Heart-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF3575271EB36800CB3249 /* Red_Pink-Wings-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red_Pink-Wings-White.png"; path = "../../../AppIcon/1x2x3xImages/Red_Pink-Wings-White.png"; sourceTree = "<group>"; };
+		ABBF3576271EB36800CB3249 /* Blue_Yellow-Heart-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue_Yellow-Heart-Black.png"; sourceTree = "<group>"; };
+		ABBF3577271EB36800CB3249 /* Orange-Wing-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Orange-Wing-Black@3x.png"; path = "../../../AppIcon/1x2x3xImages/Orange-Wing-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF3578271EB36800CB3249 /* Pink_Green-Wings-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pink_Green-Wings-White@2x.png"; path = "../../../AppIcon/1x2x3xImages/Pink_Green-Wings-White@2x.png"; sourceTree = "<group>"; };
+		ABBF3579271EB36800CB3249 /* Red_Blue-Wings-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red_Blue-Wings-White@2x.png"; path = "../../../AppIcon/1x2x3xImages/Red_Blue-Wings-White@2x.png"; sourceTree = "<group>"; };
+		ABBF357A271EB36800CB3249 /* LightBlue-Heart-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightBlue-Heart-Black.png"; path = "../../../AppIcon/1x2x3xImages/LightBlue-Heart-Black.png"; sourceTree = "<group>"; };
+		ABBF357B271EB36800CB3249 /* Yellow-Wing-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Yellow-Wing-White@3x.png"; path = "../../../AppIcon/1x2x3xImages/Yellow-Wing-White@3x.png"; sourceTree = "<group>"; };
+		ABBF357C271EB36800CB3249 /* Red_Pink-Wings-Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red_Pink-Wings-Black@2x.png"; path = "../../../AppIcon/1x2x3xImages/Red_Pink-Wings-Black@2x.png"; sourceTree = "<group>"; };
+		ABBF357D271EB36800CB3249 /* Blue_Purple-Wing-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue_Purple-Wing-Black.png"; sourceTree = "<group>"; };
+		ABBF357E271EB36800CB3249 /* Pink_Green-Wing-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pink_Green-Wing-Black.png"; path = "../../../AppIcon/1x2x3xImages/Pink_Green-Wing-Black.png"; sourceTree = "<group>"; };
+		ABBF357F271EB36800CB3249 /* Pink-Wings-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pink-Wings-Black.png"; path = "../../../AppIcon/1x2x3xImages/Pink-Wings-Black.png"; sourceTree = "<group>"; };
+		ABBF3580271EB36800CB3249 /* BlueGreen-Wings-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueGreen-Wings-White@2x.png"; sourceTree = "<group>"; };
+		ABBF3581271EB36800CB3249 /* LightBlue-Heart-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightBlue-Heart-White@2x.png"; path = "../../../AppIcon/1x2x3xImages/LightBlue-Heart-White@2x.png"; sourceTree = "<group>"; };
+		ABBF3582271EB36800CB3249 /* Blue-Wings-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue-Wings-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF3583271EB36800CB3249 /* Red-Heart-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red-Heart-Black@3x.png"; path = "../../../AppIcon/1x2x3xImages/Red-Heart-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF3584271EB36800CB3249 /* Yellow-Heart-White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Yellow-Heart-White.png"; path = "../../../AppIcon/1x2x3xImages/Yellow-Heart-White.png"; sourceTree = "<group>"; };
+		ABBF3585271EB36800CB3249 /* LightBlue_Orange-Wings-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LightBlue_Orange-Wings-White@2x.png"; path = "../../../AppIcon/1x2x3xImages/LightBlue_Orange-Wings-White@2x.png"; sourceTree = "<group>"; };
+		ABBF3586271EB36800CB3249 /* Green-Wings-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Green-Wings-Black@3x.png"; path = "../../../AppIcon/1x2x3xImages/Green-Wings-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF3587271EB36800CB3249 /* Yellow-Heart-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Yellow-Heart-White@3x.png"; path = "../../../AppIcon/1x2x3xImages/Yellow-Heart-White@3x.png"; sourceTree = "<group>"; };
+		ABBF3588271EB36800CB3249 /* Red_Blue-Heart-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red_Blue-Heart-White@3x.png"; path = "../../../AppIcon/1x2x3xImages/Red_Blue-Heart-White@3x.png"; sourceTree = "<group>"; };
+		ABBF3589271EB36800CB3249 /* BlueGreen-Wing-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueGreen-Wing-White@3x.png"; sourceTree = "<group>"; };
+		ABBF358A271EB36800CB3249 /* Green_Yellow-Wings-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green_Yellow-Wings-White@2x.png"; sourceTree = "<group>"; };
+		ABBF358B271EB36900CB3249 /* Orange-Wing-White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Orange-Wing-White@3x.png"; path = "../../../AppIcon/1x2x3xImages/Orange-Wing-White@3x.png"; sourceTree = "<group>"; };
+		ABBF358C271EB36900CB3249 /* Red_Pink-Heart-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red_Pink-Heart-Black.png"; path = "../../../AppIcon/1x2x3xImages/Red_Pink-Heart-Black.png"; sourceTree = "<group>"; };
+		ABBF358D271EB36900CB3249 /* Red_Pink-Wing-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red_Pink-Wing-Black@3x.png"; path = "../../../AppIcon/1x2x3xImages/Red_Pink-Wing-Black@3x.png"; sourceTree = "<group>"; };
+		ABBF358E271EB36900CB3249 /* Green_Yellow-Heart-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green_Yellow-Heart-White@2x.png"; sourceTree = "<group>"; };
 		ABCE16C8270994210014F618 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		ABCE16CA270994250014F618 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		ABDF66BD26E79543000D9FD5 /* TabBarCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCollectionViewController.swift; sourceTree = "<group>"; };
+		ABE8CF58271EA8D500705EE4 /* Reports.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Reports.storyboard; sourceTree = "<group>"; };
 		ABFAB15426DF802A0095EC20 /* PriorityStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityStackView.swift; sourceTree = "<group>"; };
 		ABFAB15626DF86920095EC20 /* GoalPhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPhotoTableViewCell.swift; sourceTree = "<group>"; };
 		ABFAB15726DF86920095EC20 /* GoalPhotoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoalPhotoTableViewCell.xib; sourceTree = "<group>"; };
@@ -659,7 +1343,7 @@
 				AB0C76B226ED254C00BF5B64 /* Passcode.storyboard */,
 				AB13E2A52706FE8C00063A0B /* PasscodeSetting.storyboard */,
 				AB0C76D826F0A06300BF5B64 /* DarkModeSetting.storyboard */,
-				AB4539AA271D57B700CF1C04 /* Reports.storyboard */,
+				ABE8CF58271EA8D500705EE4 /* Reports.storyboard */,
 				AB4539BA271DC82600CF1C04 /* SampleAppIcon.storyboard */,
 			);
 			path = Setting;
@@ -828,6 +1512,7 @@
 				AB93C23A266A234800C3AE8F /* AppDelegate.swift */,
 				AB93C23C266A234800C3AE8F /* SceneDelegate.swift */,
 				AB93C243266A234C00C3AE8F /* Assets.xcassets */,
+				ABBF3434271EB31C00CB3249 /* AppAlternateIcons */,
 				AB93C245266A234C00C3AE8F /* LaunchScreen.storyboard */,
 				AB93C248266A234C00C3AE8F /* Info.plist */,
 				ABCE16C9270994210014F618 /* InfoPlist.strings */,
@@ -963,6 +1648,355 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		ABBF3434271EB31C00CB3249 /* AppAlternateIcons */ = {
+			isa = PBXGroup;
+			children = (
+				ABBF3545271EB36700CB3249 /* Black-Heart-Black.png */,
+				ABBF349A271EB36300CB3249 /* Black-Heart-Black@2x.png */,
+				ABBF3443271EB36000CB3249 /* Black-Heart-Black@3x.png */,
+				ABBF344E271EB36000CB3249 /* Black-Heart-White.png */,
+				ABBF34BE271EB36400CB3249 /* Black-Heart-White@2x.png */,
+				ABBF353F271EB36700CB3249 /* Black-Heart-White@3x.png */,
+				ABBF34D7271EB36400CB3249 /* Black-Wing-Black.png */,
+				ABBF34CB271EB36400CB3249 /* Black-Wing-Black@2x.png */,
+				ABBF3517271EB36600CB3249 /* Black-Wing-Black@3x.png */,
+				ABBF354F271EB36700CB3249 /* Black-Wing-White.png */,
+				ABBF355B271EB36700CB3249 /* Black-Wing-White@2x.png */,
+				ABBF348B271EB36200CB3249 /* Black-Wing-White@3x.png */,
+				ABBF3459271EB36100CB3249 /* Black-Wings-Black.png */,
+				ABBF3549271EB36700CB3249 /* Black-Wings-Black@2x.png */,
+				ABBF343D271EB36000CB3249 /* Black-Wings-Black@3x.png */,
+				ABBF3463271EB36100CB3249 /* Black-Wings-White.png */,
+				ABBF3514271EB36600CB3249 /* Black-Wings-White@2x.png */,
+				ABBF34D6271EB36400CB3249 /* Black-Wings-White@3x.png */,
+				ABBF344D271EB36000CB3249 /* Blue_Purple-Heart-Black.png */,
+				ABBF3554271EB36700CB3249 /* Blue_Purple-Heart-Black@2x.png */,
+				ABBF34CA271EB36400CB3249 /* Blue_Purple-Heart-Black@3x.png */,
+				ABBF353E271EB36700CB3249 /* Blue_Purple-Heart-White.png */,
+				ABBF355E271EB36700CB3249 /* Blue_Purple-Heart-White@2x.png */,
+				ABBF3511271EB36600CB3249 /* Blue_Purple-Heart-White@3x.png */,
+				ABBF357D271EB36800CB3249 /* Blue_Purple-Wing-Black.png */,
+				ABBF3499271EB36300CB3249 /* Blue_Purple-Wing-Black@2x.png */,
+				ABBF34F0271EB36500CB3249 /* Blue_Purple-Wing-Black@3x.png */,
+				ABBF3457271EB36100CB3249 /* Blue_Purple-Wing-White.png */,
+				ABBF34B4271EB36400CB3249 /* Blue_Purple-Wing-White@2x.png */,
+				ABBF34CC271EB36400CB3249 /* Blue_Purple-Wing-White@3x.png */,
+				ABBF34C4271EB36400CB3249 /* Blue_Purple-Wings-Black.png */,
+				ABBF347A271EB36200CB3249 /* Blue_Purple-Wings-Black@2x.png */,
+				ABBF34EB271EB36500CB3249 /* Blue_Purple-Wings-Black@3x.png */,
+				ABBF346E271EB36100CB3249 /* Blue_Purple-Wings-White.png */,
+				ABBF34F3271EB36500CB3249 /* Blue_Purple-Wings-White@2x.png */,
+				ABBF3470271EB36100CB3249 /* Blue_Purple-Wings-White@3x.png */,
+				ABBF3576271EB36800CB3249 /* Blue_Yellow-Heart-Black.png */,
+				ABBF34E5271EB36500CB3249 /* Blue_Yellow-Heart-Black@2x.png */,
+				ABBF3447271EB36000CB3249 /* Blue_Yellow-Heart-Black@3x.png */,
+				ABBF34DA271EB36500CB3249 /* Blue_Yellow-Heart-White.png */,
+				ABBF353C271EB36700CB3249 /* Blue_Yellow-Heart-White@2x.png */,
+				ABBF345B271EB36100CB3249 /* Blue_Yellow-Heart-White@3x.png */,
+				ABBF356A271EB36800CB3249 /* Blue_Yellow-Wing-Black.png */,
+				ABBF343B271EB36000CB3249 /* Blue_Yellow-Wing-Black@2x.png */,
+				ABBF356C271EB36800CB3249 /* Blue_Yellow-Wing-Black@3x.png */,
+				ABBF3474271EB36200CB3249 /* Blue_Yellow-Wing-White.png */,
+				ABBF355D271EB36700CB3249 /* Blue_Yellow-Wing-White@2x.png */,
+				ABBF34F8271EB36500CB3249 /* Blue_Yellow-Wing-White@3x.png */,
+				ABBF356D271EB36800CB3249 /* Blue_Yellow-Wings-Black.png */,
+				ABBF348D271EB36300CB3249 /* Blue_Yellow-Wings-Black@2x.png */,
+				ABBF3468271EB36100CB3249 /* Blue_Yellow-Wings-Black@3x.png */,
+				ABBF3442271EB36000CB3249 /* Blue_Yellow-Wings-White.png */,
+				ABBF349E271EB36300CB3249 /* Blue_Yellow-Wings-White@2x.png */,
+				ABBF3496271EB36300CB3249 /* Blue_Yellow-Wings-White@3x.png */,
+				ABBF34D2271EB36400CB3249 /* Blue-Heart-Black.png */,
+				ABBF34E7271EB36500CB3249 /* Blue-Heart-Black@2x.png */,
+				ABBF3546271EB36700CB3249 /* Blue-Heart-Black@3x.png */,
+				ABBF34F9271EB36500CB3249 /* Blue-Heart-White.png */,
+				ABBF352D271EB36600CB3249 /* Blue-Heart-White@2x.png */,
+				ABBF3494271EB36300CB3249 /* Blue-Heart-White@3x.png */,
+				ABBF34B1271EB36400CB3249 /* Blue-Wing-Black.png */,
+				ABBF351E271EB36600CB3249 /* Blue-Wing-Black@2x.png */,
+				ABBF3556271EB36700CB3249 /* Blue-Wing-Black@3x.png */,
+				ABBF3520271EB36600CB3249 /* Blue-Wing-White.png */,
+				ABBF3522271EB36600CB3249 /* Blue-Wing-White@2x.png */,
+				ABBF3529271EB36600CB3249 /* Blue-Wing-White@3x.png */,
+				ABBF3521271EB36600CB3249 /* Blue-Wings-Black.png */,
+				ABBF353B271EB36700CB3249 /* Blue-Wings-Black@2x.png */,
+				ABBF3582271EB36800CB3249 /* Blue-Wings-Black@3x.png */,
+				ABBF346A271EB36100CB3249 /* Blue-Wings-White.png */,
+				ABBF354E271EB36700CB3249 /* Blue-Wings-White@2x.png */,
+				ABBF353D271EB36700CB3249 /* Blue-Wings-White@3x.png */,
+				ABBF34A5271EB36300CB3249 /* BlueGreen_LightBlue-Heart-Black.png */,
+				ABBF3534271EB36600CB3249 /* BlueGreen_LightBlue-Heart-Black@2x.png */,
+				ABBF3536271EB36600CB3249 /* BlueGreen_LightBlue-Heart-Black@3x.png */,
+				ABBF34C7271EB36400CB3249 /* BlueGreen_LightBlue-Heart-White.png */,
+				ABBF352A271EB36600CB3249 /* BlueGreen_LightBlue-Heart-White@2x.png */,
+				ABBF34E8271EB36500CB3249 /* BlueGreen_LightBlue-Heart-White@3x.png */,
+				ABBF352E271EB36600CB3249 /* BlueGreen_LightBlue-Wing-Black.png */,
+				ABBF3445271EB36000CB3249 /* BlueGreen_LightBlue-Wing-Black@2x.png */,
+				ABBF351F271EB36600CB3249 /* BlueGreen_LightBlue-Wing-Black@3x.png */,
+				ABBF34F6271EB36500CB3249 /* BlueGreen_LightBlue-Wing-White.png */,
+				ABBF34F1271EB36500CB3249 /* BlueGreen_LightBlue-Wing-White@2x.png */,
+				ABBF34C6271EB36400CB3249 /* BlueGreen_LightBlue-Wing-White@3x.png */,
+				ABBF34E0271EB36500CB3249 /* BlueGreen_LightBlue-Wings-Black.png */,
+				ABBF346C271EB36100CB3249 /* BlueGreen_LightBlue-Wings-Black@2x.png */,
+				ABBF343C271EB36000CB3249 /* BlueGreen_LightBlue-Wings-Black@3x.png */,
+				ABBF3532271EB36600CB3249 /* BlueGreen_LightBlue-Wings-White.png */,
+				ABBF353A271EB36700CB3249 /* BlueGreen_LightBlue-Wings-White@2x.png */,
+				ABBF350F271EB36600CB3249 /* BlueGreen_LightBlue-Wings-White@3x.png */,
+				ABBF34C3271EB36400CB3249 /* BlueGreen-Heart-Black.png */,
+				ABBF354A271EB36700CB3249 /* BlueGreen-Heart-Black@2x.png */,
+				ABBF355C271EB36700CB3249 /* BlueGreen-Heart-Black@3x.png */,
+				ABBF3509271EB36600CB3249 /* BlueGreen-Heart-White.png */,
+				ABBF3453271EB36100CB3249 /* BlueGreen-Heart-White@2x.png */,
+				ABBF3439271EB36000CB3249 /* BlueGreen-Heart-White@3x.png */,
+				ABBF3461271EB36100CB3249 /* BlueGreen-Wing-Black.png */,
+				ABBF34C0271EB36400CB3249 /* BlueGreen-Wing-Black@2x.png */,
+				ABBF3550271EB36700CB3249 /* BlueGreen-Wing-Black@3x.png */,
+				ABBF34CE271EB36400CB3249 /* BlueGreen-Wing-White.png */,
+				ABBF34E4271EB36500CB3249 /* BlueGreen-Wing-White@2x.png */,
+				ABBF3589271EB36800CB3249 /* BlueGreen-Wing-White@3x.png */,
+				ABBF34D3271EB36400CB3249 /* BlueGreen-Wings-Black.png */,
+				ABBF352F271EB36600CB3249 /* BlueGreen-Wings-Black@2x.png */,
+				ABBF3473271EB36200CB3249 /* BlueGreen-Wings-Black@3x.png */,
+				ABBF344A271EB36000CB3249 /* BlueGreen-Wings-White.png */,
+				ABBF3580271EB36800CB3249 /* BlueGreen-Wings-White@2x.png */,
+				ABBF34B7271EB36400CB3249 /* BlueGreen-Wings-White@3x.png */,
+				ABBF34BA271EB36400CB3249 /* Green_Yellow-Heart-Black.png */,
+				ABBF3564271EB36800CB3249 /* Green_Yellow-Heart-Black@2x.png */,
+				ABBF3487271EB36200CB3249 /* Green_Yellow-Heart-Black@3x.png */,
+				ABBF34AE271EB36400CB3249 /* Green_Yellow-Heart-White.png */,
+				ABBF358E271EB36900CB3249 /* Green_Yellow-Heart-White@2x.png */,
+				ABBF3508271EB36500CB3249 /* Green_Yellow-Heart-White@3x.png */,
+				ABBF3478271EB36200CB3249 /* Green_Yellow-Wing-Black.png */,
+				ABBF347F271EB36200CB3249 /* Green_Yellow-Wing-Black@2x.png */,
+				ABBF34D5271EB36400CB3249 /* Green_Yellow-Wing-Black@3x.png */,
+				ABBF3506271EB36500CB3249 /* Green_Yellow-Wing-White.png */,
+				ABBF34AB271EB36300CB3249 /* Green_Yellow-Wing-White@2x.png */,
+				ABBF3516271EB36600CB3249 /* Green_Yellow-Wing-White@3x.png */,
+				ABBF3466271EB36100CB3249 /* Green_Yellow-Wings-Black.png */,
+				ABBF3537271EB36600CB3249 /* Green_Yellow-Wings-Black@2x.png */,
+				ABBF34D0271EB36400CB3249 /* Green_Yellow-Wings-Black@3x.png */,
+				ABBF34A8271EB36300CB3249 /* Green_Yellow-Wings-White.png */,
+				ABBF358A271EB36800CB3249 /* Green_Yellow-Wings-White@2x.png */,
+				ABBF350E271EB36600CB3249 /* Green_Yellow-Wings-White@3x.png */,
+				ABBF3462271EB36100CB3249 /* Green-Heart-Black.png */,
+				ABBF345D271EB36100CB3249 /* Green-Heart-Black@2x.png */,
+				ABBF3568271EB36800CB3249 /* Green-Heart-Black@3x.png */,
+				ABBF34F2271EB36500CB3249 /* Green-Heart-White.png */,
+				ABBF34E2271EB36500CB3249 /* Green-Heart-White@2x.png */,
+				ABBF344F271EB36000CB3249 /* Green-Heart-White@3x.png */,
+				ABBF3489271EB36200CB3249 /* Green-Wing-Black.png */,
+				ABBF3484271EB36200CB3249 /* Green-Wing-Black@2x.png */,
+				ABBF34AA271EB36300CB3249 /* Green-Wing-Black@3x.png */,
+				ABBF349B271EB36300CB3249 /* Green-Wing-White.png */,
+				ABBF3501271EB36500CB3249 /* Green-Wing-White@2x.png */,
+				ABBF3513271EB36600CB3249 /* Green-Wing-White@3x.png */,
+				ABBF34C1271EB36400CB3249 /* Green-Wings-Black.png */,
+				ABBF3505271EB36500CB3249 /* Green-Wings-Black@2x.png */,
+				ABBF3586271EB36800CB3249 /* Green-Wings-Black@3x.png */,
+				ABBF3467271EB36100CB3249 /* Green-Wings-White.png */,
+				ABBF356E271EB36800CB3249 /* Green-Wings-White@2x.png */,
+				ABBF3491271EB36300CB3249 /* Green-Wings-White@3x.png */,
+				ABBF345A271EB36100CB3249 /* LightBlue_Orange-Heart-Black.png */,
+				ABBF351D271EB36600CB3249 /* LightBlue_Orange-Heart-Black@2x.png */,
+				ABBF34FA271EB36500CB3249 /* LightBlue_Orange-Heart-Black@3x.png */,
+				ABBF34BC271EB36400CB3249 /* LightBlue_Orange-Heart-White.png */,
+				ABBF34A3271EB36300CB3249 /* LightBlue_Orange-Heart-White@2x.png */,
+				ABBF3561271EB36800CB3249 /* LightBlue_Orange-Heart-White@3x.png */,
+				ABBF3541271EB36700CB3249 /* LightBlue_Orange-Wing-Black.png */,
+				ABBF3482271EB36200CB3249 /* LightBlue_Orange-Wing-Black@2x.png */,
+				ABBF3449271EB36000CB3249 /* LightBlue_Orange-Wing-Black@3x.png */,
+				ABBF3540271EB36700CB3249 /* LightBlue_Orange-Wing-White.png */,
+				ABBF34EA271EB36500CB3249 /* LightBlue_Orange-Wing-White@2x.png */,
+				ABBF34AC271EB36300CB3249 /* LightBlue_Orange-Wing-White@3x.png */,
+				ABBF34FC271EB36500CB3249 /* LightBlue_Orange-Wings-Black.png */,
+				ABBF3444271EB36000CB3249 /* LightBlue_Orange-Wings-Black@2x.png */,
+				ABBF3562271EB36800CB3249 /* LightBlue_Orange-Wings-Black@3x.png */,
+				ABBF345E271EB36100CB3249 /* LightBlue_Orange-Wings-White.png */,
+				ABBF3585271EB36800CB3249 /* LightBlue_Orange-Wings-White@2x.png */,
+				ABBF3524271EB36600CB3249 /* LightBlue_Orange-Wings-White@3x.png */,
+				ABBF357A271EB36800CB3249 /* LightBlue-Heart-Black.png */,
+				ABBF3543271EB36700CB3249 /* LightBlue-Heart-Black@2x.png */,
+				ABBF349F271EB36300CB3249 /* LightBlue-Heart-Black@3x.png */,
+				ABBF3440271EB36000CB3249 /* LightBlue-Heart-White.png */,
+				ABBF3581271EB36800CB3249 /* LightBlue-Heart-White@2x.png */,
+				ABBF3493271EB36300CB3249 /* LightBlue-Heart-White@3x.png */,
+				ABBF3566271EB36800CB3249 /* LightBlue-Wing-Black.png */,
+				ABBF3483271EB36200CB3249 /* LightBlue-Wing-Black@2x.png */,
+				ABBF34DE271EB36500CB3249 /* LightBlue-Wing-Black@3x.png */,
+				ABBF355F271EB36800CB3249 /* LightBlue-Wing-White.png */,
+				ABBF3544271EB36700CB3249 /* LightBlue-Wing-White@2x.png */,
+				ABBF34BD271EB36400CB3249 /* LightBlue-Wing-White@3x.png */,
+				ABBF34D4271EB36400CB3249 /* LightBlue-Wings-Black.png */,
+				ABBF34EC271EB36500CB3249 /* LightBlue-Wings-Black@2x.png */,
+				ABBF34EE271EB36500CB3249 /* LightBlue-Wings-Black@3x.png */,
+				ABBF348A271EB36200CB3249 /* LightBlue-Wings-White.png */,
+				ABBF351A271EB36600CB3249 /* LightBlue-Wings-White@2x.png */,
+				ABBF347E271EB36200CB3249 /* LightBlue-Wings-White@3x.png */,
+				ABBF3446271EB36000CB3249 /* LightPink-Heart-Black.png */,
+				ABBF3455271EB36100CB3249 /* LightPink-Heart-Black@2x.png */,
+				ABBF34BB271EB36400CB3249 /* LightPink-Heart-Black@3x.png */,
+				ABBF3518271EB36600CB3249 /* LightPink-Heart-White.png */,
+				ABBF34F7271EB36500CB3249 /* LightPink-Heart-White@2x.png */,
+				ABBF350C271EB36600CB3249 /* LightPink-Heart-White@3x.png */,
+				ABBF3448271EB36000CB3249 /* LightPink-Wing-Black.png */,
+				ABBF3573271EB36800CB3249 /* LightPink-Wing-Black@2x.png */,
+				ABBF34C2271EB36400CB3249 /* LightPink-Wing-Black@3x.png */,
+				ABBF34A0271EB36300CB3249 /* LightPink-Wing-White.png */,
+				ABBF3539271EB36700CB3249 /* LightPink-Wing-White@2x.png */,
+				ABBF34B3271EB36400CB3249 /* LightPink-Wing-White@3x.png */,
+				ABBF3477271EB36200CB3249 /* LightPink-Wings-Black.png */,
+				ABBF3560271EB36800CB3249 /* LightPink-Wings-Black@2x.png */,
+				ABBF3569271EB36800CB3249 /* LightPink-Wings-Black@3x.png */,
+				ABBF34CD271EB36400CB3249 /* LightPink-Wings-White.png */,
+				ABBF3557271EB36700CB3249 /* LightPink-Wings-White@2x.png */,
+				ABBF3495271EB36300CB3249 /* LightPink-Wings-White@3x.png */,
+				ABBF3450271EB36000CB3249 /* Orange-Heart-Black.png */,
+				ABBF3475271EB36200CB3249 /* Orange-Heart-Black@2x.png */,
+				ABBF3523271EB36600CB3249 /* Orange-Heart-Black@3x.png */,
+				ABBF34D8271EB36400CB3249 /* Orange-Heart-White.png */,
+				ABBF34ED271EB36500CB3249 /* Orange-Heart-White@2x.png */,
+				ABBF3528271EB36600CB3249 /* Orange-Heart-White@3x.png */,
+				ABBF34B8271EB36400CB3249 /* Orange-Wing-Black.png */,
+				ABBF3567271EB36800CB3249 /* Orange-Wing-Black@2x.png */,
+				ABBF3577271EB36800CB3249 /* Orange-Wing-Black@3x.png */,
+				ABBF3572271EB36800CB3249 /* Orange-Wing-White.png */,
+				ABBF3476271EB36200CB3249 /* Orange-Wing-White@2x.png */,
+				ABBF358B271EB36900CB3249 /* Orange-Wing-White@3x.png */,
+				ABBF34DD271EB36500CB3249 /* Orange-Wings-Black.png */,
+				ABBF347D271EB36200CB3249 /* Orange-Wings-Black@2x.png */,
+				ABBF34AF271EB36400CB3249 /* Orange-Wings-Black@3x.png */,
+				ABBF3490271EB36300CB3249 /* Orange-Wings-White.png */,
+				ABBF3481271EB36200CB3249 /* Orange-Wings-White@2x.png */,
+				ABBF3538271EB36600CB3249 /* Orange-Wings-White@3x.png */,
+				ABBF34F4271EB36500CB3249 /* Pink_Green-Heart-Black.png */,
+				ABBF349C271EB36300CB3249 /* Pink_Green-Heart-Black@2x.png */,
+				ABBF344B271EB36000CB3249 /* Pink_Green-Heart-Black@3x.png */,
+				ABBF347C271EB36200CB3249 /* Pink_Green-Heart-White.png */,
+				ABBF3503271EB36500CB3249 /* Pink_Green-Heart-White@2x.png */,
+				ABBF3504271EB36500CB3249 /* Pink_Green-Heart-White@3x.png */,
+				ABBF357E271EB36800CB3249 /* Pink_Green-Wing-Black.png */,
+				ABBF3456271EB36100CB3249 /* Pink_Green-Wing-Black@2x.png */,
+				ABBF3480271EB36200CB3249 /* Pink_Green-Wing-Black@3x.png */,
+				ABBF3552271EB36700CB3249 /* Pink_Green-Wing-White.png */,
+				ABBF34B0271EB36400CB3249 /* Pink_Green-Wing-White@2x.png */,
+				ABBF345F271EB36100CB3249 /* Pink_Green-Wing-White@3x.png */,
+				ABBF3542271EB36700CB3249 /* Pink_Green-Wings-Black.png */,
+				ABBF350A271EB36600CB3249 /* Pink_Green-Wings-Black@2x.png */,
+				ABBF34DB271EB36500CB3249 /* Pink_Green-Wings-Black@3x.png */,
+				ABBF3565271EB36800CB3249 /* Pink_Green-Wings-White.png */,
+				ABBF3578271EB36800CB3249 /* Pink_Green-Wings-White@2x.png */,
+				ABBF34C8271EB36400CB3249 /* Pink_Green-Wings-White@3x.png */,
+				ABBF3451271EB36000CB3249 /* Pink-Heart-Black.png */,
+				ABBF3488271EB36200CB3249 /* Pink-Heart-Black@2x.png */,
+				ABBF351C271EB36600CB3249 /* Pink-Heart-Black@3x.png */,
+				ABBF352C271EB36600CB3249 /* Pink-Heart-White.png */,
+				ABBF34B5271EB36400CB3249 /* Pink-Heart-White@2x.png */,
+				ABBF350B271EB36600CB3249 /* Pink-Heart-White@3x.png */,
+				ABBF356B271EB36800CB3249 /* Pink-Wing-Black.png */,
+				ABBF346D271EB36100CB3249 /* Pink-Wing-Black@2x.png */,
+				ABBF3558271EB36700CB3249 /* Pink-Wing-Black@3x.png */,
+				ABBF34A1271EB36300CB3249 /* Pink-Wing-White.png */,
+				ABBF3530271EB36600CB3249 /* Pink-Wing-White@2x.png */,
+				ABBF34FB271EB36500CB3249 /* Pink-Wing-White@3x.png */,
+				ABBF357F271EB36800CB3249 /* Pink-Wings-Black.png */,
+				ABBF3469271EB36100CB3249 /* Pink-Wings-Black@2x.png */,
+				ABBF3502271EB36500CB3249 /* Pink-Wings-Black@3x.png */,
+				ABBF343E271EB36000CB3249 /* Pink-Wings-White.png */,
+				ABBF349D271EB36300CB3249 /* Pink-Wings-White@2x.png */,
+				ABBF34CF271EB36400CB3249 /* Pink-Wings-White@3x.png */,
+				ABBF34A9271EB36300CB3249 /* Purple-Heart-Black.png */,
+				ABBF3551271EB36700CB3249 /* Purple-Heart-Black@2x.png */,
+				ABBF34A4271EB36300CB3249 /* Purple-Heart-Black@3x.png */,
+				ABBF3441271EB36000CB3249 /* Purple-Heart-White.png */,
+				ABBF3464271EB36100CB3249 /* Purple-Heart-White@2x.png */,
+				ABBF34A6271EB36300CB3249 /* Purple-Heart-White@3x.png */,
+				ABBF351B271EB36600CB3249 /* Purple-Wing-Black.png */,
+				ABBF3465271EB36100CB3249 /* Purple-Wing-Black@2x.png */,
+				ABBF34BF271EB36400CB3249 /* Purple-Wing-Black@3x.png */,
+				ABBF34DC271EB36500CB3249 /* Purple-Wing-White.png */,
+				ABBF34D1271EB36400CB3249 /* Purple-Wing-White@2x.png */,
+				ABBF347B271EB36200CB3249 /* Purple-Wing-White@3x.png */,
+				ABBF3512271EB36600CB3249 /* Purple-Wings-Black.png */,
+				ABBF34EF271EB36500CB3249 /* Purple-Wings-Black@2x.png */,
+				ABBF3525271EB36600CB3249 /* Purple-Wings-Black@3x.png */,
+				ABBF3533271EB36600CB3249 /* Purple-Wings-White.png */,
+				ABBF356F271EB36800CB3249 /* Purple-Wings-White@2x.png */,
+				ABBF34B9271EB36400CB3249 /* Purple-Wings-White@3x.png */,
+				ABBF346B271EB36100CB3249 /* Red_Blue-Heart-Black.png */,
+				ABBF3553271EB36700CB3249 /* Red_Blue-Heart-Black@2x.png */,
+				ABBF3507271EB36500CB3249 /* Red_Blue-Heart-Black@3x.png */,
+				ABBF3571271EB36800CB3249 /* Red_Blue-Heart-White.png */,
+				ABBF3547271EB36700CB3249 /* Red_Blue-Heart-White@2x.png */,
+				ABBF3588271EB36800CB3249 /* Red_Blue-Heart-White@3x.png */,
+				ABBF34FD271EB36500CB3249 /* Red_Blue-Wing-Black.png */,
+				ABBF3472271EB36200CB3249 /* Red_Blue-Wing-Black@2x.png */,
+				ABBF3454271EB36100CB3249 /* Red_Blue-Wing-Black@3x.png */,
+				ABBF34A2271EB36300CB3249 /* Red_Blue-Wing-White.png */,
+				ABBF3526271EB36600CB3249 /* Red_Blue-Wing-White@2x.png */,
+				ABBF344C271EB36000CB3249 /* Red_Blue-Wing-White@3x.png */,
+				ABBF34E6271EB36500CB3249 /* Red_Blue-Wings-Black.png */,
+				ABBF3535271EB36600CB3249 /* Red_Blue-Wings-Black@2x.png */,
+				ABBF3497271EB36300CB3249 /* Red_Blue-Wings-Black@3x.png */,
+				ABBF34D9271EB36400CB3249 /* Red_Blue-Wings-White.png */,
+				ABBF3579271EB36800CB3249 /* Red_Blue-Wings-White@2x.png */,
+				ABBF343A271EB36000CB3249 /* Red_Blue-Wings-White@3x.png */,
+				ABBF358C271EB36900CB3249 /* Red_Pink-Heart-Black.png */,
+				ABBF348E271EB36300CB3249 /* Red_Pink-Heart-Black@2x.png */,
+				ABBF3574271EB36800CB3249 /* Red_Pink-Heart-Black@3x.png */,
+				ABBF354C271EB36700CB3249 /* Red_Pink-Heart-White.png */,
+				ABBF348F271EB36300CB3249 /* Red_Pink-Heart-White@2x.png */,
+				ABBF354B271EB36700CB3249 /* Red_Pink-Heart-White@3x.png */,
+				ABBF354D271EB36700CB3249 /* Red_Pink-Wing-Black.png */,
+				ABBF3563271EB36800CB3249 /* Red_Pink-Wing-Black@2x.png */,
+				ABBF358D271EB36900CB3249 /* Red_Pink-Wing-Black@3x.png */,
+				ABBF34B2271EB36400CB3249 /* Red_Pink-Wing-White.png */,
+				ABBF3486271EB36200CB3249 /* Red_Pink-Wing-White@2x.png */,
+				ABBF3555271EB36700CB3249 /* Red_Pink-Wing-White@3x.png */,
+				ABBF3519271EB36600CB3249 /* Red_Pink-Wings-Black.png */,
+				ABBF357C271EB36800CB3249 /* Red_Pink-Wings-Black@2x.png */,
+				ABBF3559271EB36700CB3249 /* Red_Pink-Wings-Black@3x.png */,
+				ABBF3575271EB36800CB3249 /* Red_Pink-Wings-White.png */,
+				ABBF343F271EB36000CB3249 /* Red_Pink-Wings-White@2x.png */,
+				ABBF3531271EB36600CB3249 /* Red_Pink-Wings-White@3x.png */,
+				ABBF34DF271EB36500CB3249 /* Red-Heart-Black.png */,
+				ABBF34E3271EB36500CB3249 /* Red-Heart-Black@2x.png */,
+				ABBF3583271EB36800CB3249 /* Red-Heart-Black@3x.png */,
+				ABBF3485271EB36200CB3249 /* Red-Heart-White.png */,
+				ABBF348C271EB36200CB3249 /* Red-Heart-White@2x.png */,
+				ABBF3458271EB36100CB3249 /* Red-Heart-White@3x.png */,
+				ABBF346F271EB36100CB3249 /* Red-Wing-Black.png */,
+				ABBF34B6271EB36400CB3249 /* Red-Wing-Black@2x.png */,
+				ABBF352B271EB36600CB3249 /* Red-Wing-Black@3x.png */,
+				ABBF3500271EB36500CB3249 /* Red-Wing-White.png */,
+				ABBF3527271EB36600CB3249 /* Red-Wing-White@2x.png */,
+				ABBF355A271EB36700CB3249 /* Red-Wing-White@3x.png */,
+				ABBF34C9271EB36400CB3249 /* Red-Wings-Black.png */,
+				ABBF34F5271EB36500CB3249 /* Red-Wings-Black@2x.png */,
+				ABBF34E9271EB36500CB3249 /* Red-Wings-Black@3x.png */,
+				ABBF3510271EB36600CB3249 /* Red-Wings-White.png */,
+				ABBF3452271EB36100CB3249 /* Red-Wings-White@2x.png */,
+				ABBF34FE271EB36500CB3249 /* Red-Wings-White@3x.png */,
+				ABBF3471271EB36200CB3249 /* Yellow-Heart-Black.png */,
+				ABBF3570271EB36800CB3249 /* Yellow-Heart-Black@2x.png */,
+				ABBF3460271EB36100CB3249 /* Yellow-Heart-Black@3x.png */,
+				ABBF3584271EB36800CB3249 /* Yellow-Heart-White.png */,
+				ABBF350D271EB36600CB3249 /* Yellow-Heart-White@2x.png */,
+				ABBF3587271EB36800CB3249 /* Yellow-Heart-White@3x.png */,
+				ABBF34FF271EB36500CB3249 /* Yellow-Wing-Black.png */,
+				ABBF3548271EB36700CB3249 /* Yellow-Wing-Black@2x.png */,
+				ABBF3479271EB36200CB3249 /* Yellow-Wing-Black@3x.png */,
+				ABBF34A7271EB36300CB3249 /* Yellow-Wing-White.png */,
+				ABBF34AD271EB36400CB3249 /* Yellow-Wing-White@2x.png */,
+				ABBF357B271EB36800CB3249 /* Yellow-Wing-White@3x.png */,
+				ABBF3492271EB36300CB3249 /* Yellow-Wings-Black.png */,
+				ABBF3515271EB36600CB3249 /* Yellow-Wings-Black@2x.png */,
+				ABBF3498271EB36300CB3249 /* Yellow-Wings-Black@3x.png */,
+				ABBF345C271EB36100CB3249 /* Yellow-Wings-White.png */,
+				ABBF34C5271EB36400CB3249 /* Yellow-Wings-White@2x.png */,
+				ABBF34E1271EB36500CB3249 /* Yellow-Wings-White@3x.png */,
+			);
+			path = AppAlternateIcons;
+			sourceTree = "<group>";
+		};
 		ABFAB20A26E394B10095EC20 /* Graph */ = {
 			isa = PBXGroup;
 			children = (
@@ -1034,65 +2068,407 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABBF3620271EB36900CB3249 /* Blue_Purple-Heart-Black@3x.png in Resources */,
 				AB93C247266A234C00C3AE8F /* LaunchScreen.storyboard in Resources */,
 				ABFB3A62271024FF00BC6D3F /* GoalSort.storyboard in Resources */,
+				ABBF3595271EB36900CB3249 /* Red_Pink-Wings-White@2x.png in Resources */,
+				ABBF3649271EB36900CB3249 /* Blue_Purple-Wings-White@2x.png in Resources */,
+				ABBF3696271EB36900CB3249 /* LightBlue_Orange-Wing-White.png in Resources */,
 				AB14B46426DB515D007A5F16 /* ResetingPassword.storyboard in Resources */,
+				ABBF3634271EB36900CB3249 /* LightBlue-Wing-Black@3x.png in Resources */,
+				ABBF36AC271EB36900CB3249 /* Blue-Wing-Black@3x.png in Resources */,
+				ABBF35C0271EB36900CB3249 /* Blue-Wings-White.png in Resources */,
+				ABBF36A0271EB36900CB3249 /* BlueGreen-Heart-Black@2x.png in Resources */,
+				ABBF3690271EB36900CB3249 /* BlueGreen_LightBlue-Wings-White@2x.png in Resources */,
+				ABBF3682271EB36900CB3249 /* Pink-Heart-White.png in Resources */,
+				ABBF363D271EB36900CB3249 /* Blue-Heart-Black@2x.png in Resources */,
+				ABBF365F271EB36900CB3249 /* BlueGreen-Heart-White.png in Resources */,
 				AB20F81826E949BE00564B14 /* CustomScrollableGraphView.xib in Resources */,
 				AB4397EF26DD305B008C8CA8 /* AddAndEditGoal.storyboard in Resources */,
+				ABBF3688271EB36900CB3249 /* BlueGreen_LightBlue-Wings-White.png in Resources */,
 				AB43980926DE2D72008C8CA8 /* GoalPriorityTableViewCell.xib in Resources */,
+				ABBF3590271EB36900CB3249 /* Red_Blue-Wings-White@3x.png in Resources */,
+				ABBF3664271EB36900CB3249 /* Green_Yellow-Wings-White@3x.png in Resources */,
+				ABBF368C271EB36900CB3249 /* BlueGreen_LightBlue-Heart-Black@3x.png in Resources */,
+				ABBF36D4271EB36900CB3249 /* Pink_Green-Wing-Black.png in Resources */,
+				ABBF35F7271EB36900CB3249 /* Pink-Wing-White.png in Resources */,
+				ABBF3607271EB36900CB3249 /* Blue-Wing-Black.png in Resources */,
+				ABBF36B5271EB36900CB3249 /* LightBlue-Wing-White.png in Resources */,
+				ABBF366E271EB36900CB3249 /* LightPink-Heart-White.png in Resources */,
+				ABBF364F271EB36900CB3249 /* Blue-Heart-White.png in Resources */,
+				ABBF360C271EB36900CB3249 /* Red-Wing-Black@2x.png in Resources */,
+				ABBF369B271EB36900CB3249 /* Black-Heart-Black.png in Resources */,
 				AB13EDE126C64EBB002F56FF /* CustomTitleTableViewCell.xib in Resources */,
+				ABBF35C6271EB36900CB3249 /* Blue_Purple-Wings-White@3x.png in Resources */,
+				ABBF36B2271EB36900CB3249 /* BlueGreen-Heart-Black@3x.png in Resources */,
+				ABBF35BD271EB36900CB3249 /* Green-Wings-White.png in Resources */,
+				ABBF3632271EB36900CB3249 /* Purple-Wing-White.png in Resources */,
+				ABBF35E6271EB36900CB3249 /* Orange-Wings-White.png in Resources */,
+				ABBF367D271EB36900CB3249 /* Red-Wing-White@2x.png in Resources */,
+				ABBF3678271EB36900CB3249 /* Blue-Wing-White@2x.png in Resources */,
+				ABBF362B271EB36900CB3249 /* Green_Yellow-Wing-Black@3x.png in Resources */,
+				ABBF35F6271EB36900CB3249 /* LightPink-Wing-White.png in Resources */,
+				ABBF35D6271EB36900CB3249 /* Pink_Green-Wing-Black@3x.png in Resources */,
+				ABBF36CC271EB36900CB3249 /* Blue_Yellow-Heart-Black.png in Resources */,
+				ABBF361B271EB36900CB3249 /* Yellow-Wings-White@2x.png in Resources */,
+				ABBF3652271EB36900CB3249 /* LightBlue_Orange-Wings-Black.png in Resources */,
 				AB13ECDA26B7AF6F002F56FF /* ColorChoicesSlider.storyboard in Resources */,
+				ABBF3698271EB36900CB3249 /* Pink_Green-Wings-Black.png in Resources */,
+				ABBF366D271EB36900CB3249 /* Black-Wing-Black@3x.png in Resources */,
+				ABBF35C4271EB36900CB3249 /* Blue_Purple-Wings-White.png in Resources */,
+				ABBF35F8271EB36900CB3249 /* Red_Blue-Wing-White.png in Resources */,
+				ABBF360D271EB36900CB3249 /* BlueGreen-Wings-White@3x.png in Resources */,
+				ABBF35E0271EB36900CB3249 /* LightBlue-Wings-White.png in Resources */,
+				ABBF3630271EB36900CB3249 /* Blue_Yellow-Heart-White.png in Resources */,
+				ABBF36BB271EB36900CB3249 /* Pink_Green-Wings-White.png in Resources */,
+				ABBF3639271EB36900CB3249 /* Red-Heart-Black@2x.png in Resources */,
+				ABBF3621271EB36900CB3249 /* Black-Wing-Black@2x.png in Resources */,
+				ABBF3614271EB36900CB3249 /* Black-Heart-White@2x.png in Resources */,
 				AB13EDB526BFAB8B002F56FF /* StudyRecordSortTableViewCell.xib in Resources */,
+				ABBF3605271EB36900CB3249 /* Orange-Wings-Black@3x.png in Resources */,
+				ABBF35CC271EB36900CB3249 /* Orange-Wing-White@2x.png in Resources */,
+				ABBF35B1271EB36900CB3249 /* Blue_Yellow-Heart-White@3x.png in Resources */,
+				ABBF36A8271EB36900CB3249 /* Pink_Green-Wing-White.png in Resources */,
+				ABBF3625271EB36900CB3249 /* Pink-Wings-White@3x.png in Resources */,
+				ABBF369C271EB36900CB3249 /* Blue-Heart-Black@3x.png in Resources */,
 				AB93C251266A27B900C3AE8F /* StudyRecord.storyboard in Resources */,
+				ABBF3593271EB36900CB3249 /* Black-Wings-Black@3x.png in Resources */,
+				ABBF35EC271EB36900CB3249 /* Blue_Yellow-Wings-White@3x.png in Resources */,
+				ABBF362C271EB36900CB3249 /* Black-Wings-White@3x.png in Resources */,
+				ABBF3677271EB36900CB3249 /* Blue-Wings-Black.png in Resources */,
+				ABBF35D0271EB36900CB3249 /* Blue_Purple-Wings-Black@2x.png in Resources */,
+				ABBF3689271EB36900CB3249 /* Purple-Wings-White.png in Resources */,
+				ABBF359D271EB36900CB3249 /* Blue_Yellow-Heart-Black@3x.png in Resources */,
+				ABBF36C9271EB36900CB3249 /* LightPink-Wing-Black@2x.png in Resources */,
+				ABBF3648271EB36900CB3249 /* Green-Heart-White.png in Resources */,
+				ABBF35E1271EB36900CB3249 /* Black-Wing-White@3x.png in Resources */,
 				AB2B5BAB26A2D244009BD3C7 /* ColorConcept.storyboard in Resources */,
+				ABBF35BE271EB36900CB3249 /* Blue_Yellow-Wings-Black@3x.png in Resources */,
+				ABBF365A271EB36900CB3249 /* Pink_Green-Heart-White@3x.png in Resources */,
 				AB4539BB271DC82600CF1C04 /* SampleAppIcon.storyboard in Resources */,
+				ABBF360F271EB36900CB3249 /* Purple-Wings-White@3x.png in Resources */,
+				ABBF363A271EB36900CB3249 /* BlueGreen-Wing-White@2x.png in Resources */,
 				AB4F7C822719E3E1000A8D83 /* GoalStatisticsTableViewCell.xib in Resources */,
+				ABBF35E2271EB36900CB3249 /* Red-Heart-White@2x.png in Resources */,
+				ABBF36E5271EB42A00CB3249 /* Assets.xcassets in Resources */,
+				ABBF368F271EB36900CB3249 /* LightPink-Wing-White@2x.png in Resources */,
+				ABBF3613271EB36900CB3249 /* LightBlue-Wing-White@3x.png in Resources */,
 				AB8B705026D62FA90069FF67 /* Login.storyboard in Resources */,
+				ABBF36C4271EB36900CB3249 /* Green-Wings-White@2x.png in Resources */,
+				ABBF3641271EB36900CB3249 /* Blue_Purple-Wings-Black@3x.png in Resources */,
+				ABBF363E271EB36900CB3249 /* BlueGreen_LightBlue-Heart-White@3x.png in Resources */,
+				ABBF35F4271EB36900CB3249 /* Blue_Yellow-Wings-White@2x.png in Resources */,
+				ABBF35A1271EB36900CB3249 /* Pink_Green-Heart-Black@3x.png in Resources */,
+				ABBF3640271EB36900CB3249 /* LightBlue_Orange-Wing-White@2x.png in Resources */,
+				ABBF3686271EB36900CB3249 /* Pink-Wing-White@2x.png in Resources */,
+				ABBF36D3271EB36900CB3249 /* Blue_Purple-Wing-Black.png in Resources */,
+				ABBF35C3271EB36900CB3249 /* Pink-Wing-Black@2x.png in Resources */,
+				ABBF36C2271EB36900CB3249 /* Blue_Yellow-Wing-Black@3x.png in Resources */,
+				ABBF36A7271EB36900CB3249 /* Purple-Heart-Black@2x.png in Resources */,
+				ABBF3645271EB36900CB3249 /* Purple-Wings-Black@2x.png in Resources */,
+				ABBF36DC271EB36900CB3249 /* Green-Wings-Black@3x.png in Resources */,
+				ABBF35C7271EB36900CB3249 /* Yellow-Heart-Black.png in Resources */,
+				ABBF35C1271EB36900CB3249 /* Red_Blue-Heart-Black.png in Resources */,
+				ABBF36BE271EB36900CB3249 /* Green-Heart-Black@3x.png in Resources */,
+				ABBF3633271EB36900CB3249 /* Orange-Wings-Black.png in Resources */,
+				ABBF364B271EB36900CB3249 /* Red-Wings-Black@2x.png in Resources */,
+				ABBF35BB271EB36900CB3249 /* Purple-Wing-Black@2x.png in Resources */,
+				ABBF36E1271EB36900CB3249 /* Orange-Wing-White@3x.png in Resources */,
+				ABBF36D8271EB36900CB3249 /* Blue-Wings-Black@3x.png in Resources */,
+				ABBF35DB271EB36900CB3249 /* Red-Heart-White.png in Resources */,
+				ABBF3617271EB36900CB3249 /* Green-Wings-Black.png in Resources */,
+				ABBF3655271EB36900CB3249 /* Yellow-Wing-Black.png in Resources */,
+				ABBF368A271EB36900CB3249 /* BlueGreen_LightBlue-Heart-Black@2x.png in Resources */,
+				ABBF363F271EB36900CB3249 /* Red-Wings-Black@3x.png in Resources */,
+				ABBF3654271EB36900CB3249 /* Red-Wings-White@3x.png in Resources */,
+				ABBF36BD271EB36900CB3249 /* Orange-Wing-Black@2x.png in Resources */,
+				ABBF35F2271EB36900CB3249 /* Pink_Green-Heart-Black@2x.png in Resources */,
+				ABBF36CD271EB36900CB3249 /* Orange-Wing-Black@3x.png in Resources */,
+				ABBF3672271EB36900CB3249 /* Pink-Heart-Black@3x.png in Resources */,
 				AB8B704C26D600500069FF67 /* GoogleService-Info.plist in Resources */,
+				ABBF3647271EB36900CB3249 /* BlueGreen_LightBlue-Wing-White@2x.png in Resources */,
+				ABBF35A0271EB36900CB3249 /* BlueGreen-Wings-White.png in Resources */,
+				ABBF367B271EB36900CB3249 /* Purple-Wings-Black@3x.png in Resources */,
+				ABBF36D5271EB36900CB3249 /* Pink-Wings-Black.png in Resources */,
+				ABBF35B0271EB36900CB3249 /* LightBlue_Orange-Heart-Black.png in Resources */,
+				ABBF3624271EB36900CB3249 /* BlueGreen-Wing-White.png in Resources */,
+				ABBF35AD271EB36900CB3249 /* Blue_Purple-Wing-White.png in Resources */,
+				ABBF362D271EB36900CB3249 /* Black-Wing-Black.png in Resources */,
+				ABBF3683271EB36900CB3249 /* Blue-Heart-White@2x.png in Resources */,
+				ABBF359C271EB36900CB3249 /* LightPink-Heart-Black.png in Resources */,
+				ABBF35B6271EB36900CB3249 /* Yellow-Heart-Black@3x.png in Resources */,
 				AB4F7C7C2719E0C8000A8D83 /* GoalStatistics.storyboard in Resources */,
+				ABBF366B271EB36900CB3249 /* Yellow-Wings-Black@2x.png in Resources */,
+				ABBF35BF271EB36900CB3249 /* Pink-Wings-Black@2x.png in Resources */,
+				ABBF36C5271EB36900CB3249 /* Purple-Wings-White@2x.png in Resources */,
+				ABBF3670271EB36900CB3249 /* LightBlue-Wings-White@2x.png in Resources */,
 				AB0C76CC26EEA8C500BF5B64 /* Localizable.strings in Resources */,
+				ABBF36A4271EB36900CB3249 /* Blue-Wings-White@2x.png in Resources */,
 				ABFAB1E526E11FF80095EC20 /* GoalTime.storyboard in Resources */,
+				ABBF362A271EB36900CB3249 /* LightBlue-Wings-Black.png in Resources */,
+				ABBF36C0271EB36900CB3249 /* Blue_Yellow-Wing-Black.png in Resources */,
+				ABBF3601271EB36900CB3249 /* Green_Yellow-Wing-White@2x.png in Resources */,
+				ABBF36AB271EB36900CB3249 /* Red_Pink-Wing-White@3x.png in Resources */,
+				ABBF3681271EB36900CB3249 /* Red-Wing-Black@3x.png in Resources */,
+				ABBF368D271EB36900CB3249 /* Green_Yellow-Wings-Black@2x.png in Resources */,
+				ABBF3602271EB36900CB3249 /* LightBlue_Orange-Wing-White@3x.png in Resources */,
+				ABBF36D6271EB36900CB3249 /* BlueGreen-Wings-White@2x.png in Resources */,
+				ABBF367A271EB36900CB3249 /* LightBlue_Orange-Wings-White@3x.png in Resources */,
+				ABBF35E8271EB36900CB3249 /* Yellow-Wings-Black.png in Resources */,
+				ABBF35B3271EB36900CB3249 /* Green-Heart-Black@2x.png in Resources */,
 				AB20F81026E7F3DB00564B14 /* GraphKindSelecting.storyboard in Resources */,
+				ABBF361E271EB36900CB3249 /* Pink_Green-Wings-White@3x.png in Resources */,
 				AB43980526DE1DD6008C8CA8 /* GoalTableViewCell.xib in Resources */,
+				ABBF3658271EB36900CB3249 /* Pink-Wings-Black@3x.png in Resources */,
+				ABBF3684271EB36900CB3249 /* BlueGreen_LightBlue-Wing-Black.png in Resources */,
+				ABBF3693271EB36900CB3249 /* Blue-Wings-White@3x.png in Resources */,
+				ABBF36A1271EB36900CB3249 /* Red_Pink-Heart-White@3x.png in Resources */,
+				ABBF35F0271EB36900CB3249 /* Black-Heart-Black@2x.png in Resources */,
+				ABBF35E5271EB36900CB3249 /* Red_Pink-Heart-White@2x.png in Resources */,
+				ABBF3660271EB36900CB3249 /* Pink_Green-Wings-Black@2x.png in Resources */,
+				ABBF361F271EB36900CB3249 /* Red-Wings-Black.png in Resources */,
 				AB13ED7E26BE7061002F56FF /* StudyRecordHistoryTableViewCell.xib in Resources */,
+				ABBF3651271EB36900CB3249 /* Pink-Wing-White@3x.png in Resources */,
+				ABBF367E271EB36900CB3249 /* Orange-Heart-White@3x.png in Resources */,
 				AB2B5BB826A2D2C2009BD3C7 /* AccordionColorTableViewCell.xib in Resources */,
+				ABBF35D9271EB36900CB3249 /* LightBlue-Wing-Black@2x.png in Resources */,
+				ABBF36C7271EB36900CB3249 /* Red_Blue-Heart-White.png in Resources */,
 				AB4397F126DD3B2A008C8CA8 /* GoalPriority.storyboard in Resources */,
+				ABBF3643271EB36900CB3249 /* Orange-Heart-White@2x.png in Resources */,
+				ABBF35C9271EB36900CB3249 /* BlueGreen-Wings-Black@3x.png in Resources */,
+				ABBF35C2271EB36900CB3249 /* BlueGreen_LightBlue-Wings-Black@2x.png in Resources */,
+				ABBF359B271EB36900CB3249 /* BlueGreen_LightBlue-Wing-Black@2x.png in Resources */,
+				ABBF35A6271EB36900CB3249 /* Orange-Heart-Black.png in Resources */,
 				ABA0570326B50F7100E3DF01 /* StudyRecordGraphColor.storyboard in Resources */,
+				ABBF3623271EB36900CB3249 /* LightPink-Wings-White.png in Resources */,
+				ABBF3610271EB36900CB3249 /* Green_Yellow-Heart-Black.png in Resources */,
+				ABBF35BC271EB36900CB3249 /* Green_Yellow-Wings-Black.png in Resources */,
+				ABBF3653271EB36900CB3249 /* Red_Blue-Wing-Black.png in Resources */,
+				ABBF35CF271EB36900CB3249 /* Yellow-Wing-Black@3x.png in Resources */,
+				ABBF36B9271EB36900CB3249 /* Red_Pink-Wing-Black@2x.png in Resources */,
+				ABBF35FD271EB36900CB3249 /* Yellow-Wing-White.png in Resources */,
+				ABBF365E271EB36900CB3249 /* Green_Yellow-Heart-White@3x.png in Resources */,
+				ABBF365C271EB36900CB3249 /* Green_Yellow-Wing-White.png in Resources */,
+				ABBF3604271EB36900CB3249 /* Green_Yellow-Heart-White.png in Resources */,
+				ABBF35F9271EB36900CB3249 /* LightBlue_Orange-Heart-White@2x.png in Resources */,
+				ABBF36A9271EB36900CB3249 /* Red_Blue-Heart-Black@2x.png in Resources */,
 				AB16307C26CE123A00111F55 /* RecordTableViewCell.xib in Resources */,
+				ABBF35B8271EB36900CB3249 /* Green-Heart-Black.png in Resources */,
+				ABBF3597271EB36900CB3249 /* Purple-Heart-White.png in Resources */,
+				ABBF36CF271EB36900CB3249 /* Red_Blue-Wings-White@2x.png in Resources */,
+				ABBF360A271EB36900CB3249 /* Blue_Purple-Wing-White@2x.png in Resources */,
+				ABBF3699271EB36900CB3249 /* LightBlue-Heart-Black@2x.png in Resources */,
+				ABBF369D271EB36900CB3249 /* Red_Blue-Heart-White@2x.png in Resources */,
+				ABBF36B8271EB36900CB3249 /* LightBlue_Orange-Wings-Black@3x.png in Resources */,
+				ABBF35A9271EB36900CB3249 /* BlueGreen-Heart-White@2x.png in Resources */,
+				ABBF36E3271EB36900CB3249 /* Red_Pink-Wing-Black@3x.png in Resources */,
+				ABBF364C271EB36900CB3249 /* BlueGreen_LightBlue-Wing-White.png in Resources */,
+				ABBF3599271EB36900CB3249 /* Black-Heart-Black@3x.png in Resources */,
+				ABBF36AD271EB36900CB3249 /* LightPink-Wings-White@2x.png in Resources */,
+				ABBF3592271EB36900CB3249 /* BlueGreen_LightBlue-Wings-Black@3x.png in Resources */,
+				ABBF36C6271EB36900CB3249 /* Yellow-Heart-Black@2x.png in Resources */,
+				ABBF36AE271EB36900CB3249 /* Pink-Wing-Black@3x.png in Resources */,
+				ABBF35D8271EB36900CB3249 /* LightBlue_Orange-Wing-Black@2x.png in Resources */,
+				ABBF3644271EB36900CB3249 /* LightBlue-Wings-Black@3x.png in Resources */,
+				ABBF35BA271EB36900CB3249 /* Purple-Heart-White@2x.png in Resources */,
+				ABBF35D2271EB36900CB3249 /* Pink_Green-Heart-White.png in Resources */,
+				ABBF35FE271EB36900CB3249 /* Green_Yellow-Wings-White.png in Resources */,
 				AB16304F26CD6AF400111F55 /* WaveView.xib in Resources */,
+				ABBF366A271EB36900CB3249 /* Black-Wings-White@2x.png in Resources */,
+				ABBF3642271EB36900CB3249 /* LightBlue-Wings-Black@2x.png in Resources */,
 				ABA056FF26B50CC700E3DF01 /* GraphColorTileView.xib in Resources */,
+				ABBF35DE271EB36900CB3249 /* Pink-Heart-Black@2x.png in Resources */,
+				ABBF35FB271EB36900CB3249 /* BlueGreen_LightBlue-Heart-Black.png in Resources */,
+				ABBF35B5271EB36900CB3249 /* Pink_Green-Wing-White@3x.png in Resources */,
+				ABBF35AE271EB36900CB3249 /* Red-Heart-White@3x.png in Resources */,
+				ABBF36C1271EB36900CB3249 /* Pink-Wing-Black.png in Resources */,
+				ABBF35A3271EB36900CB3249 /* Blue_Purple-Heart-Black.png in Resources */,
+				ABBF3676271EB36900CB3249 /* Blue-Wing-White.png in Resources */,
+				ABBF36A2271EB36900CB3249 /* Red_Pink-Heart-White.png in Resources */,
+				ABBF359A271EB36900CB3249 /* LightBlue_Orange-Wings-Black@2x.png in Resources */,
 				ABA056F726B4C7D800E3DF01 /* StudyRecordGraphColorTableViewCell.xib in Resources */,
 				AB93C2C5266BC2D600C3AE8F /* EditStudyRecord.storyboard in Resources */,
 				AB8B705E26D6AD950069FF67 /* LoginAndSignUp.storyboard in Resources */,
+				ABBF3668271EB36900CB3249 /* Purple-Wings-Black.png in Resources */,
+				ABBF36D7271EB36900CB3249 /* LightBlue-Heart-White@2x.png in Resources */,
+				ABBF3671271EB36900CB3249 /* Purple-Wing-Black.png in Resources */,
+				ABBF3673271EB36900CB3249 /* LightBlue_Orange-Heart-Black@2x.png in Resources */,
+				ABBF363B271EB36900CB3249 /* Blue_Yellow-Heart-Black@2x.png in Resources */,
+				ABBF36BA271EB36900CB3249 /* Green_Yellow-Heart-Black@2x.png in Resources */,
+				ABBF35EF271EB36900CB3249 /* Blue_Purple-Wing-Black@2x.png in Resources */,
+				ABBF3687271EB36900CB3249 /* Red_Pink-Wings-White@3x.png in Resources */,
+				ABBF36AA271EB36900CB3249 /* Blue_Purple-Heart-Black@2x.png in Resources */,
+				ABBF3627271EB36900CB3249 /* Purple-Wing-White@2x.png in Resources */,
+				ABBF35EB271EB36900CB3249 /* LightPink-Wings-White@3x.png in Resources */,
 				AB13EDB126BFAA7D002F56FF /* StudyRecordSort.storyboard in Resources */,
 				AB9F30F627140DCE008A79A5 /* GoalSimpleTableViewCell.xib in Resources */,
+				ABBF35A4271EB36900CB3249 /* Black-Heart-White.png in Resources */,
+				ABBF3615271EB36900CB3249 /* Purple-Wing-Black@3x.png in Resources */,
+				ABBF3665271EB36900CB3249 /* BlueGreen_LightBlue-Wings-White@3x.png in Resources */,
+				ABBF35DC271EB36900CB3249 /* Red_Pink-Wing-White@2x.png in Resources */,
+				ABBF369F271EB36900CB3249 /* Black-Wings-Black@2x.png in Resources */,
+				ABBF3657271EB36900CB3249 /* Green-Wing-White@2x.png in Resources */,
 				AB16308426CEABD400111F55 /* NavigationButton.xib in Resources */,
 				ABFAB20926E394A60095EC20 /* GraphTableViewCell.xib in Resources */,
-				AB63B9F0271E8B6300987B66 /* Assets.xcassets in Resources */,
+				ABBF3697271EB36900CB3249 /* LightBlue_Orange-Wing-Black.png in Resources */,
+				ABBF36A5271EB36900CB3249 /* Black-Wing-White.png in Resources */,
+				ABBF367F271EB36900CB3249 /* Blue-Wing-White@3x.png in Resources */,
+				ABBF359F271EB36900CB3249 /* LightBlue_Orange-Wing-Black@3x.png in Resources */,
+				ABBF35AF271EB36900CB3249 /* Black-Wings-Black.png in Resources */,
+				ABBF35B4271EB36900CB3249 /* LightBlue_Orange-Wings-White.png in Resources */,
+				ABBF36B3271EB36900CB3249 /* Blue_Yellow-Wing-White@2x.png in Resources */,
+				ABBF362E271EB36900CB3249 /* Orange-Heart-White.png in Resources */,
+				ABBF35F1271EB36900CB3249 /* Green-Wing-White.png in Resources */,
 				ABCE16C7270994210014F618 /* InfoPlist.strings in Resources */,
+				ABBF3695271EB36900CB3249 /* Black-Heart-White@3x.png in Resources */,
 				AB4539B7271D7D0500CF1C04 /* ReportThankYouView.xib in Resources */,
+				ABBF3616271EB36900CB3249 /* BlueGreen-Wing-Black@2x.png in Resources */,
+				ABBF35C5271EB36900CB3249 /* Red-Wing-Black.png in Resources */,
+				ABBF3594271EB36900CB3249 /* Pink-Wings-White.png in Resources */,
+				ABBF36E4271EB36900CB3249 /* Green_Yellow-Heart-White@2x.png in Resources */,
 				ABAE84E126F414CF00A93A7F /* GoalHeaderView.xib in Resources */,
+				ABBF3675271EB36900CB3249 /* BlueGreen_LightBlue-Wing-Black@3x.png in Resources */,
+				ABBF364D271EB36900CB3249 /* LightPink-Heart-White@2x.png in Resources */,
+				ABBF3606271EB36900CB3249 /* Pink_Green-Wing-White@2x.png in Resources */,
+				ABBF363C271EB36900CB3249 /* Red_Blue-Wings-Black.png in Resources */,
+				ABBF3636271EB36900CB3249 /* BlueGreen_LightBlue-Wings-Black.png in Resources */,
+				ABBF3635271EB36900CB3249 /* Red-Heart-Black.png in Resources */,
+				ABBF36B6271EB36900CB3249 /* LightPink-Wings-Black@2x.png in Resources */,
+				ABBF36A3271EB36900CB3249 /* Red_Pink-Wing-Black.png in Resources */,
+				ABBF3663271EB36900CB3249 /* Yellow-Heart-White@2x.png in Resources */,
+				ABBF3662271EB36900CB3249 /* LightPink-Heart-White@3x.png in Resources */,
+				ABBF3628271EB36900CB3249 /* Blue-Heart-Black.png in Resources */,
+				ABBF36DB271EB36900CB3249 /* LightBlue_Orange-Wings-White@2x.png in Resources */,
+				ABBF3612271EB36900CB3249 /* LightBlue_Orange-Heart-White.png in Resources */,
+				ABBF35D4271EB36900CB3249 /* LightBlue-Wings-White@3x.png in Resources */,
+				ABBF3603271EB36900CB3249 /* Yellow-Wing-White@2x.png in Resources */,
+				ABBF3637271EB36900CB3249 /* Yellow-Wings-White@3x.png in Resources */,
+				ABBF3596271EB36900CB3249 /* LightBlue-Heart-White.png in Resources */,
+				ABBF36DD271EB36900CB3249 /* Yellow-Heart-White@3x.png in Resources */,
+				ABBF369E271EB36900CB3249 /* Yellow-Wing-Black@2x.png in Resources */,
+				ABBF35D7271EB36900CB3249 /* Orange-Wings-White@2x.png in Resources */,
+				ABBF364A271EB36900CB3249 /* Pink_Green-Heart-Black.png in Resources */,
+				ABBF360B271EB36900CB3249 /* Pink-Heart-White@2x.png in Resources */,
+				ABBF35EA271EB36900CB3249 /* Blue-Heart-White@3x.png in Resources */,
+				ABBF366C271EB36900CB3249 /* Green_Yellow-Wing-White@3x.png in Resources */,
+				ABBF3667271EB36900CB3249 /* Blue_Purple-Heart-White@3x.png in Resources */,
 				AB13ECD626B7AEA3002F56FF /* ColorChoicesConcept.storyboard in Resources */,
+				ABBF36DE271EB36900CB3249 /* Red_Blue-Heart-White@3x.png in Resources */,
+				ABBF3598271EB36900CB3249 /* Blue_Yellow-Wings-White.png in Resources */,
+				ABBF366F271EB36900CB3249 /* Red_Pink-Wings-Black.png in Resources */,
+				ABBF35FA271EB36900CB3249 /* Purple-Heart-Black@3x.png in Resources */,
 				AB2B5BAC26A2D244009BD3C7 /* ThemeColor.storyboard in Resources */,
+				ABBF36D0271EB36900CB3249 /* LightBlue-Heart-Black.png in Resources */,
 				AB13E2A62706FE8C00063A0B /* PasscodeSetting.storyboard in Resources */,
 				AB8B705726D6AD1F0069FF67 /* SignUp.storyboard in Resources */,
+				ABBF368B271EB36900CB3249 /* Red_Blue-Wings-Black@2x.png in Resources */,
+				ABBF35A2271EB36900CB3249 /* Red_Blue-Wing-White@3x.png in Resources */,
+				ABBF3679271EB36900CB3249 /* Orange-Heart-Black@3x.png in Resources */,
+				ABBF36D1271EB36900CB3249 /* Yellow-Wing-White@3x.png in Resources */,
+				ABBF361D271EB36900CB3249 /* BlueGreen_LightBlue-Heart-White.png in Resources */,
+				ABBF35DA271EB36900CB3249 /* Green-Wing-Black@2x.png in Resources */,
+				ABBF3685271EB36900CB3249 /* BlueGreen-Wings-Black@2x.png in Resources */,
+				ABBF36B1271EB36900CB3249 /* Black-Wing-White@2x.png in Resources */,
+				ABBF3659271EB36900CB3249 /* Pink_Green-Heart-White@2x.png in Resources */,
+				ABBF35E7271EB36900CB3249 /* Green-Wings-White@3x.png in Resources */,
+				ABBF3631271EB36900CB3249 /* Pink_Green-Wings-Black@3x.png in Resources */,
+				ABBF35FF271EB36900CB3249 /* Purple-Heart-Black.png in Resources */,
+				ABBF3611271EB36900CB3249 /* LightPink-Heart-Black@3x.png in Resources */,
+				ABBF36CA271EB36900CB3249 /* Red_Pink-Heart-Black@3x.png in Resources */,
+				ABBF35DD271EB36900CB3249 /* Green_Yellow-Heart-Black@3x.png in Resources */,
 				ABFAB15926DF86920095EC20 /* GoalPhotoTableViewCell.xib in Resources */,
 				AB13EDE926C7C4C0002F56FF /* Top.storyboard in Resources */,
+				ABBF36C3271EB36900CB3249 /* Blue_Yellow-Wings-Black.png in Resources */,
+				ABBF3622271EB36900CB3249 /* Blue_Purple-Wing-White@3x.png in Resources */,
+				ABBF36BF271EB36900CB3249 /* LightPink-Wings-Black@3x.png in Resources */,
+				ABBF358F271EB36900CB3249 /* BlueGreen-Heart-White@3x.png in Resources */,
 				AB13EDE526C78DB4002F56FF /* ScreenTransitionCollectionViewCell.xib in Resources */,
+				ABBF3626271EB36900CB3249 /* Green_Yellow-Wings-Black@3x.png in Resources */,
+				ABBF35E4271EB36900CB3249 /* Red_Pink-Heart-Black@2x.png in Resources */,
+				ABBF3661271EB36900CB3249 /* Pink-Heart-White@3x.png in Resources */,
+				ABBF36E0271EB36900CB3249 /* Green_Yellow-Wings-White@2x.png in Resources */,
+				ABBF3666271EB36900CB3249 /* Red-Wings-White.png in Resources */,
+				ABBF36AF271EB36900CB3249 /* Red_Pink-Wings-Black@3x.png in Resources */,
+				ABBF3646271EB36900CB3249 /* Blue_Purple-Wing-Black@3x.png in Resources */,
+				ABBF362F271EB36900CB3249 /* Red_Blue-Wings-White.png in Resources */,
+				ABBF35B2271EB36900CB3249 /* Yellow-Wings-White.png in Resources */,
+				ABBF36E2271EB36900CB3249 /* Red_Pink-Heart-Black.png in Resources */,
+				ABBF3669271EB36900CB3249 /* Green-Wing-White@3x.png in Resources */,
+				ABBF35E3271EB36900CB3249 /* Blue_Yellow-Wings-Black@2x.png in Resources */,
 				AB93C266266A7DEB00C3AE8F /* AdditionalStudyRecord.storyboard in Resources */,
+				ABBF3656271EB36900CB3249 /* Red-Wing-White.png in Resources */,
+				ABBF36A6271EB36900CB3249 /* BlueGreen-Wing-Black@3x.png in Resources */,
+				ABBF364E271EB36900CB3249 /* Blue_Yellow-Wing-White@3x.png in Resources */,
 				AB0C765826EB8B4300BF5B64 /* CustomButtonTableViewCell.xib in Resources */,
+				ABBF35FC271EB36900CB3249 /* Purple-Heart-White@3x.png in Resources */,
+				ABBF359E271EB36900CB3249 /* LightPink-Wing-Black.png in Resources */,
+				ABBF3608271EB36900CB3249 /* Red_Pink-Wing-White.png in Resources */,
+				ABBF35AA271EB36900CB3249 /* Red_Blue-Wing-Black@3x.png in Resources */,
+				ABBF36DF271EB36900CB3249 /* BlueGreen-Wing-White@3x.png in Resources */,
+				ABBF3629271EB36900CB3249 /* BlueGreen-Wings-Black.png in Resources */,
+				ABBF36CE271EB36900CB3249 /* Pink_Green-Wings-White@2x.png in Resources */,
+				ABBF36D2271EB36900CB3249 /* Red_Pink-Wings-Black@2x.png in Resources */,
+				ABBF35CE271EB36900CB3249 /* Green_Yellow-Wing-Black.png in Resources */,
 				AB13EDF426C8BAAC002F56FF /* Goal.storyboard in Resources */,
+				ABBF35ED271EB36900CB3249 /* Red_Blue-Wings-Black@3x.png in Resources */,
+				ABBF35B9271EB36900CB3249 /* Black-Wings-White.png in Resources */,
+				ABE8CF59271EA8D500705EE4 /* Reports.storyboard in Resources */,
+				ABBF35A7271EB36900CB3249 /* Pink-Heart-Black.png in Resources */,
+				ABBF36CB271EB36900CB3249 /* Red_Pink-Wings-White.png in Resources */,
+				ABBF35D1271EB36900CB3249 /* Purple-Wing-White@3x.png in Resources */,
 				AB0C768726ECD98E00BF5B64 /* PasscodeView.xib in Resources */,
+				ABBF35A8271EB36900CB3249 /* Red-Wings-White@2x.png in Resources */,
+				ABBF36DA271EB36900CB3249 /* Yellow-Heart-White.png in Resources */,
+				ABBF3694271EB36900CB3249 /* Blue_Purple-Heart-White.png in Resources */,
 				AB00DDCB26F4EECA008CC3F1 /* AdditionalCategory.storyboard in Resources */,
+				ABBF3618271EB36900CB3249 /* LightPink-Wing-Black@3x.png in Resources */,
+				ABBF3650271EB36900CB3249 /* LightBlue_Orange-Heart-Black@3x.png in Resources */,
+				ABBF360E271EB36900CB3249 /* Orange-Wing-Black.png in Resources */,
+				ABBF369A271EB36900CB3249 /* LightBlue-Wing-White@2x.png in Resources */,
+				ABBF36D9271EB36900CB3249 /* Red-Heart-Black@3x.png in Resources */,
+				ABBF35CA271EB36900CB3249 /* Blue_Yellow-Wing-White.png in Resources */,
+				ABBF361A271EB36900CB3249 /* Blue_Purple-Wings-Black.png in Resources */,
+				ABBF36BC271EB36900CB3249 /* LightBlue-Wing-Black.png in Resources */,
+				ABBF35A5271EB36900CB3249 /* Green-Heart-White@3x.png in Resources */,
+				ABBF36B7271EB36900CB3249 /* LightBlue_Orange-Heart-White@3x.png in Resources */,
 				AB0C765426EB889100BF5B64 /* CustomSwitchTableViewCell.xib in Resources */,
-				AB4539AB271D57B700CF1C04 /* Reports.storyboard in Resources */,
+				ABBF35AB271EB36900CB3249 /* LightPink-Heart-Black@2x.png in Resources */,
+				ABBF35D5271EB36900CB3249 /* Green_Yellow-Wing-Black@2x.png in Resources */,
+				ABBF367C271EB36900CB3249 /* Red_Blue-Wing-White@2x.png in Resources */,
+				ABBF368E271EB36900CB3249 /* Orange-Wings-White@3x.png in Resources */,
 				AB0C768126EBD9A800BF5B64 /* SubCustomNavigationBar.xib in Resources */,
+				ABBF3680271EB36900CB3249 /* BlueGreen_LightBlue-Heart-White@2x.png in Resources */,
+				ABBF35B7271EB36900CB3249 /* BlueGreen-Wing-Black.png in Resources */,
+				ABBF3638271EB36900CB3249 /* Green-Heart-White@2x.png in Resources */,
+				ABBF36C8271EB36900CB3249 /* Orange-Wing-White.png in Resources */,
 				AB13ED1626B8F5D0002F56FF /* StudyRecordMemo.storyboard in Resources */,
 				AB13EDD326C29DAF002F56FF /* StudyRecordTimeRecord.storyboard in Resources */,
+				ABBF36B0271EB36900CB3249 /* Red-Wing-White@3x.png in Resources */,
 				AB0C76B326ED254C00BF5B64 /* Passcode.storyboard in Resources */,
+				ABBF36B4271EB36900CB3249 /* Blue_Purple-Heart-White@2x.png in Resources */,
+				ABBF35D3271EB36900CB3249 /* Orange-Wings-Black@2x.png in Resources */,
+				ABBF35CB271EB36900CB3249 /* Orange-Heart-Black@2x.png in Resources */,
+				ABBF3600271EB36900CB3249 /* Green-Wing-Black@3x.png in Resources */,
+				ABBF35C8271EB36900CB3249 /* Red_Blue-Wing-Black@2x.png in Resources */,
+				ABBF3591271EB36900CB3249 /* Blue_Yellow-Wing-Black@2x.png in Resources */,
+				ABBF3692271EB36900CB3249 /* Blue_Yellow-Heart-White@2x.png in Resources */,
+				ABBF3619271EB36900CB3249 /* BlueGreen-Heart-Black.png in Resources */,
+				ABBF35F5271EB36900CB3249 /* LightBlue-Heart-Black@3x.png in Resources */,
+				ABBF35CD271EB36900CB3249 /* LightPink-Wings-Black.png in Resources */,
+				ABBF35AC271EB36900CB3249 /* Pink_Green-Wing-Black@2x.png in Resources */,
 				AB13EDF626C8BAB7002F56FF /* Graph.storyboard in Resources */,
+				ABBF35EE271EB36900CB3249 /* Yellow-Wings-Black@3x.png in Resources */,
+				ABBF365D271EB36900CB3249 /* Red_Blue-Heart-Black@3x.png in Resources */,
 				AB2B5BAA26A2D244009BD3C7 /* Setting.storyboard in Resources */,
+				ABBF3691271EB36900CB3249 /* Blue-Wings-Black@2x.png in Resources */,
+				ABBF35F3271EB36900CB3249 /* Pink-Wings-White@2x.png in Resources */,
+				ABBF365B271EB36900CB3249 /* Green-Wings-Black@2x.png in Resources */,
+				ABBF35DF271EB36900CB3249 /* Green-Wing-Black.png in Resources */,
 				AB0C76D926F0A06300BF5B64 /* DarkModeSetting.storyboard in Resources */,
+				ABBF35E9271EB36900CB3249 /* LightBlue-Heart-White@3x.png in Resources */,
+				ABBF361C271EB36900CB3249 /* BlueGreen_LightBlue-Wing-White@3x.png in Resources */,
+				ABBF3674271EB36900CB3249 /* Blue-Wing-Black@2x.png in Resources */,
+				ABBF3609271EB36900CB3249 /* LightPink-Wing-White@3x.png in Resources */,
 				AB13ECD826B7AF27002F56FF /* ColorChoicesTile.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

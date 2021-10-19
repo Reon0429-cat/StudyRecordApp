@@ -454,7 +454,7 @@ private extension TopViewController {
     }
     
     func setupReportThankYouView() {
-        reportThankYouView.setFade(.out)
+        reportThankYouView.isHidden = true
     }
     
     func setupReportThankYouViewLayout() {
