@@ -48,6 +48,8 @@ internal enum L10n {
   internal static let bar = L10n.tr("Localizable", "Bar")
   /// Beautiful
   internal static let beautiful = L10n.tr("Localizable", "beautiful")
+  /// black
+  internal static let black = L10n.tr("Localizable", "black")
   /// Botanical
   internal static let botanical = L10n.tr("Localizable", "botanical")
   /// Business
@@ -391,6 +393,8 @@ internal enum L10n {
   internal static let unselected = L10n.tr("Localizable", "unselected")
   /// Use authentication to unlock
   internal static let useAuthenticationToUnlock = L10n.tr("Localizable", "useAuthenticationToUnlock")
+  /// white
+  internal static let white = L10n.tr("Localizable", "white")
   /// Winter
   internal static let winter = L10n.tr("Localizable", "winter")
   /// year

@@ -24,22 +24,79 @@
                                     <constraint firstAttribute="height" constant="114" id="8Hp-ah-m9Z"/>
                                 </constraints>
                             </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vNe-5b-Dlf" customClass="CustomSegmentedControl" customModule="StudyRecordApp" customModuleProvider="target">
+                                <rect key="frame" x="299" y="140" width="105" height="32"/>
+                                <segments>
+                                    <segment title="white"/>
+                                    <segment title="black"/>
+                                </segments>
+                                <connections>
+                                    <action selector="iconBackgroundColorSegmentedControlValueDidChanged:" destination="Y6W-OH-hqX" eventType="valueChanged" id="phS-mh-zOk"/>
+                                </connections>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="zHt-r2-g4l" customClass="CustomSegmentedControl" customModule="StudyRecordApp" customModuleProvider="target">
+                                <rect key="frame" x="179" y="140" width="110" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="uSN-Qm-ebm"/>
+                                </constraints>
+                                <segments>
+                                    <segment title=""/>
+                                    <segment title=""/>
+                                    <segment title=""/>
+                                </segments>
+                                <connections>
+                                    <action selector="iconTypeSegmentedControlValueDidChanged:" destination="Y6W-OH-hqX" eventType="valueChanged" id="muG-wb-SbK"/>
+                                </connections>
+                            </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0ou-kx-Ofx">
+                                <rect key="frame" x="0.0" y="181" width="414" height="0.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="0.5" id="TOj-eo-tbi"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xjS-0g-dFW">
+                                <rect key="frame" x="0.0" y="181.5" width="414" height="680.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7IG-JI-cKb">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="0ou-kx-Ofx" firstAttribute="top" secondItem="vNe-5b-Dlf" secondAttribute="bottom" constant="10" id="FXr-Ot-xHN"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="0ou-kx-Ofx" secondAttribute="trailing" id="G4h-sj-M3N"/>
                             <constraint firstItem="qew-9o-L8H" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="GwF-si-xbg"/>
+                            <constraint firstItem="vNe-5b-Dlf" firstAttribute="top" secondItem="qew-9o-L8H" secondAttribute="bottom" constant="26" id="Qaj-eL-Soa"/>
+                            <constraint firstItem="0ou-kx-Ofx" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="RSC-B3-6g2"/>
                             <constraint firstItem="qew-9o-L8H" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="Zet-Wh-Jku"/>
+                            <constraint firstItem="zHt-r2-g4l" firstAttribute="centerY" secondItem="vNe-5b-Dlf" secondAttribute="centerY" id="aE2-ig-KnS"/>
+                            <constraint firstItem="xjS-0g-dFW" firstAttribute="top" secondItem="0ou-kx-Ofx" secondAttribute="bottom" id="cfl-0N-SH9"/>
+                            <constraint firstItem="xjS-0g-dFW" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="dET-zj-e43"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="vNe-5b-Dlf" secondAttribute="trailing" constant="10" id="ggU-ZR-Gb8"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="qew-9o-L8H" secondAttribute="trailing" id="j7S-IX-whS"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="xjS-0g-dFW" secondAttribute="trailing" id="m9P-QK-kxR"/>
+                            <constraint firstItem="vNe-5b-Dlf" firstAttribute="leading" secondItem="zHt-r2-g4l" secondAttribute="trailing" constant="10" id="se4-tB-L5i"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="xjS-0g-dFW" secondAttribute="bottom" id="ym2-wd-Jcg"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="collectionView" destination="xjS-0g-dFW" id="W72-0p-84F"/>
+                        <outlet property="iconBackgroundColorSegmentedControl" destination="vNe-5b-Dlf" id="nsc-y1-hl1"/>
+                        <outlet property="iconTypeSegmentedControl" destination="zHt-r2-g4l" id="ZGN-D2-HIx"/>
+                        <outlet property="separatorView" destination="0ou-kx-Ofx" id="W4S-0E-nGC"/>
                         <outlet property="subCustomNavigationBar" destination="qew-9o-L8H" id="m5g-Gx-987"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="111"/>
+            <point key="canvasLocation" x="137.68115942028987" y="110.49107142857143"/>
         </scene>
     </scenes>
     <resources>

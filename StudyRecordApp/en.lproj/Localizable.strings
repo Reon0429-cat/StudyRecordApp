@@ -225,10 +225,9 @@
 "allow" = "allow";
 "turnOffBiometricsFromThisApp" = "Or turn off biometrics from the settings of this app";
 
-"" = "";
-"" = "";
-"" = "";
-"" = "";
+"black" = "black";
+"white" = "white";
+
 "" = "";
 "" = "";
 "" = "";
