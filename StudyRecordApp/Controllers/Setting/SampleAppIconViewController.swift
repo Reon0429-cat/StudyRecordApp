@@ -26,8 +26,8 @@ final class SampleAppIconViewController: UIViewController {
         topWaveView.create(isFill: true, marginY: 50)
         bottomWaveView.create(isFill: false, marginY: 30)
         self.view.backgroundColor = .dynamicColor(light: .white, dark: .black)
-        imageView.tintColor = .dynamicColor(light: .black, dark: .white)
         segmentedControl.create(ImageType.allCases.map { $0.rawValue }, selectedIndex: 0)
+        imageView.image = Asset.purpleWingWhite.image
         
     }
     
@@ -37,7 +37,7 @@ final class SampleAppIconViewController: UIViewController {
     }
     
     @IBAction private func changeIconButtonDidTapped(_ sender: Any) {
-        changeIcon(name: "Yellow-Wings-Black")
+        changeIcon(name: Asset.orangeWingBlack.name)
     }
     
     private func changeIcon(name: String) {

@@ -10,7 +10,6 @@
 		AB00DDC726F4E75E008CC3F1 /* CategoryKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00DDC626F4E75E008CC3F1 /* CategoryKeyboardView.swift */; };
 		AB00DDC926F4EEC3008CC3F1 /* AdditionalCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00DDC826F4EEC3008CC3F1 /* AdditionalCategoryViewController.swift */; };
 		AB00DDCB26F4EECA008CC3F1 /* AdditionalCategory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB00DDCA26F4EECA008CC3F1 /* AdditionalCategory.storyboard */; };
-		AB058831270D80A400DC10C7 /* strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB058830270D80A400DC10C7 /* strings.swift */; };
 		AB0C765326EB889100BF5B64 /* CustomSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C765126EB889100BF5B64 /* CustomSwitchTableViewCell.swift */; };
 		AB0C765426EB889100BF5B64 /* CustomSwitchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB0C765226EB889100BF5B64 /* CustomSwitchTableViewCell.xib */; };
 		AB0C765726EB8B4300BF5B64 /* CustomButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C765526EB8B4300BF5B64 /* CustomButtonTableViewCell.swift */; };
@@ -530,7 +529,9 @@
 		ABBF36E2271EB36900CB3249 /* Red_Pink-Heart-Black.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF358C271EB36900CB3249 /* Red_Pink-Heart-Black.png */; };
 		ABBF36E3271EB36900CB3249 /* Red_Pink-Wing-Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF358D271EB36900CB3249 /* Red_Pink-Wing-Black@3x.png */; };
 		ABBF36E4271EB36900CB3249 /* Green_Yellow-Heart-White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABBF358E271EB36900CB3249 /* Green_Yellow-Heart-White@2x.png */; };
-		ABBF36E5271EB42A00CB3249 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB93C243266A234C00C3AE8F /* Assets.xcassets */; };
+		ABBF36E7271EC29E00CB3249 /* SwiftGen-Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBF36E6271EC29E00CB3249 /* SwiftGen-Assets.swift */; };
+		ABBF36E9271EC30500CB3249 /* L10n-Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBF36E8271EC30500CB3249 /* L10n-Strings.swift */; };
+		ABBF36EA271ECD6E00CB3249 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB93C243266A234C00C3AE8F /* Assets.xcassets */; };
 		ABCE16C7270994210014F618 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ABCE16C9270994210014F618 /* InfoPlist.strings */; };
 		ABDF66BE26E79543000D9FD5 /* TabBarCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDF66BD26E79543000D9FD5 /* TabBarCollectionViewController.swift */; };
 		ABE8CF59271EA8D500705EE4 /* Reports.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABE8CF58271EA8D500705EE4 /* Reports.storyboard */; };
@@ -558,7 +559,6 @@
 		AB00DDC626F4E75E008CC3F1 /* CategoryKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryKeyboardView.swift; sourceTree = "<group>"; };
 		AB00DDC826F4EEC3008CC3F1 /* AdditionalCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalCategoryViewController.swift; sourceTree = "<group>"; };
 		AB00DDCA26F4EECA008CC3F1 /* AdditionalCategory.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AdditionalCategory.storyboard; sourceTree = "<group>"; };
-		AB058830270D80A400DC10C7 /* strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = strings.swift; sourceTree = "<group>"; };
 		AB0C765126EB889100BF5B64 /* CustomSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSwitchTableViewCell.swift; sourceTree = "<group>"; };
 		AB0C765226EB889100BF5B64 /* CustomSwitchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomSwitchTableViewCell.xib; sourceTree = "<group>"; };
 		AB0C765526EB8B4300BF5B64 /* CustomButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonTableViewCell.swift; sourceTree = "<group>"; };
@@ -1084,6 +1084,8 @@
 		ABBF358C271EB36900CB3249 /* Red_Pink-Heart-Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red_Pink-Heart-Black.png"; path = "../../../AppIcon/1x2x3xImages/Red_Pink-Heart-Black.png"; sourceTree = "<group>"; };
 		ABBF358D271EB36900CB3249 /* Red_Pink-Wing-Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Red_Pink-Wing-Black@3x.png"; path = "../../../AppIcon/1x2x3xImages/Red_Pink-Wing-Black@3x.png"; sourceTree = "<group>"; };
 		ABBF358E271EB36900CB3249 /* Green_Yellow-Heart-White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green_Yellow-Heart-White@2x.png"; sourceTree = "<group>"; };
+		ABBF36E6271EC29E00CB3249 /* SwiftGen-Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwiftGen-Assets.swift"; sourceTree = "<group>"; };
+		ABBF36E8271EC30500CB3249 /* L10n-Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "L10n-Strings.swift"; sourceTree = "<group>"; };
 		ABCE16C8270994210014F618 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		ABCE16CA270994250014F618 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		ABDF66BD26E79543000D9FD5 /* TabBarCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCollectionViewController.swift; sourceTree = "<group>"; };
@@ -1142,9 +1144,10 @@
 		AB05882D270D7EE400DC10C7 /* Generated */ = {
 			isa = PBXGroup;
 			children = (
-				AB058830270D80A400DC10C7 /* strings.swift */,
+				ABBF36E8271EC30500CB3249 /* L10n-Strings.swift */,
 				AB372789270D9F94005DBAB3 /* StoryboardScenes.swift */,
 				AB372788270D9F94005DBAB3 /* StoryboardSegues.swift */,
+				ABBF36E6271EC29E00CB3249 /* SwiftGen-Assets.swift */,
 			);
 			path = Generated;
 			sourceTree = "<group>";
@@ -2150,7 +2153,7 @@
 				ABBF363A271EB36900CB3249 /* BlueGreen-Wing-White@2x.png in Resources */,
 				AB4F7C822719E3E1000A8D83 /* GoalStatisticsTableViewCell.xib in Resources */,
 				ABBF35E2271EB36900CB3249 /* Red-Heart-White@2x.png in Resources */,
-				ABBF36E5271EB42A00CB3249 /* Assets.xcassets in Resources */,
+				ABBF36EA271ECD6E00CB3249 /* Assets.xcassets in Resources */,
 				ABBF368F271EB36900CB3249 /* LightPink-Wing-White@2x.png in Resources */,
 				ABBF3613271EB36900CB3249 /* LightBlue-Wing-White@3x.png in Resources */,
 				AB8B705026D62FA90069FF67 /* Login.storyboard in Resources */,
@@ -2552,6 +2555,7 @@
 				ABFAB21426E67A2E0095EC20 /* Alert.swift in Sources */,
 				AB0C76C026EE9B4600BF5B64 /* CustomButton.swift in Sources */,
 				AB13EDDB26C3C163002F56FF /* Converter.swift in Sources */,
+				ABBF36E9271EC30500CB3249 /* L10n-Strings.swift in Sources */,
 				AB2B5BC526A2D36F009BD3C7 /* ColorChoicesTileViewController.swift in Sources */,
 				AB93C24F266A271E00C3AE8F /* StudyRecordViewController.swift in Sources */,
 				AB43980826DE2D72008C8CA8 /* GoalPriorityTableViewCell.swift in Sources */,
@@ -2571,7 +2575,6 @@
 				AB13ED4D26BB9241002F56FF /* RecordUseCase.swift in Sources */,
 				AB0C76DB26F0A06F00BF5B64 /* DarkModeSettingViewController.swift in Sources */,
 				AB0C765326EB889100BF5B64 /* CustomSwitchTableViewCell.swift in Sources */,
-				AB058831270D80A400DC10C7 /* strings.swift in Sources */,
 				AB16305126CD6B1400111F55 /* WaveView.swift in Sources */,
 				AB4F7C812719E3E1000A8D83 /* GoalStatisticsTableViewCell.swift in Sources */,
 				AB2B5B8726A2D0FD009BD3C7 /* UICollectionView+Extension.swift in Sources */,
@@ -2680,6 +2683,7 @@
 				AB2B5B9626A2D19E009BD3C7 /* ThemeColor.swift in Sources */,
 				AB13EDFC26C8C596002F56FF /* GraphViewController.swift in Sources */,
 				AB2B5B9526A2D19E009BD3C7 /* ColorConcept.swift in Sources */,
+				ABBF36E7271EC29E00CB3249 /* SwiftGen-Assets.swift in Sources */,
 				AB2B5BC826A2D36F009BD3C7 /* ColorConceptViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
