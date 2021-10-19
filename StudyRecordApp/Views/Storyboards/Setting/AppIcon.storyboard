@@ -56,7 +56,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xjS-0g-dFW">
-                                <rect key="frame" x="0.0" y="181.5" width="414" height="680.5"/>
+                                <rect key="frame" x="0.0" y="181.5" width="414" height="714.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7IG-JI-cKb">
                                     <size key="itemSize" width="128" height="128"/>
@@ -82,8 +82,8 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="vNe-5b-Dlf" secondAttribute="trailing" constant="10" id="ggU-ZR-Gb8"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="qew-9o-L8H" secondAttribute="trailing" id="j7S-IX-whS"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="xjS-0g-dFW" secondAttribute="trailing" id="m9P-QK-kxR"/>
+                            <constraint firstAttribute="bottom" secondItem="xjS-0g-dFW" secondAttribute="bottom" id="rf4-eq-GE9"/>
                             <constraint firstItem="vNe-5b-Dlf" firstAttribute="leading" secondItem="zHt-r2-g4l" secondAttribute="trailing" constant="10" id="se4-tB-L5i"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="xjS-0g-dFW" secondAttribute="bottom" id="ym2-wd-Jcg"/>
                         </constraints>
                     </view>
                     <connections>

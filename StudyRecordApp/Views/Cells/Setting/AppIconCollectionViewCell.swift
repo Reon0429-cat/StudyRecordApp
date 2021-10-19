@@ -18,13 +18,6 @@ final class AppIconCollectionViewCell: UICollectionViewCell {
         
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        
-        iconImageView.image = nil
-        
-    }
-    
     func configure(image: UIImage) {
         iconImageView.image = image
     }

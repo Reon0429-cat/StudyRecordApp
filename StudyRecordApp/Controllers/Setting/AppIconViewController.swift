@@ -7,7 +7,7 @@
 
 import UIKit
 
-private enum IconBackground: CaseIterable {
+private enum IconBackground: Int, CaseIterable {
     case black
     case white
     var title: String {
@@ -16,9 +16,15 @@ private enum IconBackground: CaseIterable {
             case .white: return L10n.white
         }
     }
+    var condition: String {
+        switch self {
+            case .black: return "-Black"
+            case .white: return "-White"
+        }
+    }
 }
 
-private enum IconType: CaseIterable {
+private enum IconType: Int, CaseIterable {
     case wing
     case wings
     case heartWings
@@ -27,6 +33,24 @@ private enum IconType: CaseIterable {
             case .wing: return Asset.wing.image
             case .wings: return Asset.wings.image
             case .heartWings: return Asset.heartWings.image
+        }
+    }
+    var condition: String {
+        switch self {
+            case .wing: return "-Wing-"
+            case .wings: return "-Wings-"
+            case .heartWings: return "-Heart-"
+        }
+    }
+}
+
+private enum SectionType: Int, CaseIterable {
+    case normal
+    case mixed
+    var title: String {
+        switch self {
+            case .normal: return L10n.normal
+            case .mixed: return L10n.mixed
         }
     }
 }
@@ -39,18 +63,39 @@ final class AppIconViewController: UIViewController {
     @IBOutlet private weak var iconTypeSegmentedControl: CustomSegmentedControl!
     @IBOutlet private weak var separatorView: UIView!
     
-    private let imageAssets = Asset.allImages
+    private var normalImageAssets: [ImageAsset] {
+        let iconBackgroundIndex = iconBackgroundColorSegmentedControl.selectedSegmentIndex
+        let iconBackground = IconBackground(rawValue: iconBackgroundIndex) ?? .white
+        let iconTypeIndex = iconTypeSegmentedControl.selectedSegmentIndex
+        let iconType = IconType(rawValue: iconTypeIndex) ?? .wing
+        let backgroundImageAssets = Asset.allImages.filter { $0.name.hasSuffix(iconBackground.condition) }
+        let iconTypeImageAssets = backgroundImageAssets.filter { $0.name.contains(iconType.condition) }
+        let isMixedColor: (String) -> Bool = { $0.contains("_") }
+        let normalImageAssets = iconTypeImageAssets.filter { !isMixedColor($0.name) }
+        return normalImageAssets
+    }
+    private var mixedImageAssets: [ImageAsset] {
+        let iconBackgroundIndex = iconBackgroundColorSegmentedControl.selectedSegmentIndex
+        let iconBackground = IconBackground(rawValue: iconBackgroundIndex) ?? .white
+        let iconTypeIndex = iconTypeSegmentedControl.selectedSegmentIndex
+        let iconType = IconType(rawValue: iconTypeIndex) ?? .wing
+        let backgroundImageAssets = Asset.allImages.filter { $0.name.hasSuffix(iconBackground.condition) }
+        let iconTypeImageAssets = backgroundImageAssets.filter { $0.name.contains(iconType.condition) }
+        let isMixedColor: (String) -> Bool = { $0.contains("_") }
+        let mixedImageAssets = iconTypeImageAssets.filter { isMixedColor($0.name) }
+        return mixedImageAssets
+    }
     private let iconBackgroundKey = "iconBackgroundKey"
     private let iconTypeKey = "iconTypeKey"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupIconBackgroundColorSegmentedControl()
+        setupIconTypeSegmentedControl()
         setupSubCustomNavigationBar()
         setupCollectionView()
         setupSeparatorView()
-        setupIconBackgroundColorSegmentedControl()
-        setupIconTypeSegmentedControl()
         
     }
     
@@ -93,9 +138,15 @@ extension AppIconViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
-        collectionView.deselectItem(at: indexPath, animated: true)
-        let name = Asset.allImages[indexPath.item].name
-        changeIcon(name: name)
+        let sectionType = SectionType(rawValue: indexPath.section) ?? .normal
+        switch sectionType {
+            case .normal:
+                let name = normalImageAssets[indexPath.item].name
+                changeIcon(name: name)
+            case .mixed:
+                let name = mixedImageAssets[indexPath.item].name
+                changeIcon(name: name)
+        }
     }
     
 }
@@ -104,17 +155,64 @@ extension AppIconViewController: UICollectionViewDelegate {
 extension AppIconViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
+                        willDisplaySupplementaryView view: UICollectionReusableView,
+                        forElementKind elementKind: String,
+                        at indexPath: IndexPath) {
+        view.subviews.forEach { $0.removeFromSuperview() }
+        let sectionType = SectionType(rawValue: indexPath.section) ?? .normal
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 20)
+        label.text = sectionType.title
+        label.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(label)
+        NSLayoutConstraint.activate([
+            label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            label.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+        view.backgroundColor = .clear
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return SectionType.allCases.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return imageAssets.count
+        let sectionType = SectionType(rawValue: section) ?? .normal
+        switch sectionType {
+            case .normal:
+                return normalImageAssets.count
+            case .mixed:
+                return mixedImageAssets.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCustomCell(with: AppIconCollectionViewCell.self,
                                                             indexPath: indexPath)
-        let image = imageAssets[indexPath.item].image
-        cell.configure(image: image)
+        let sectionType = SectionType(rawValue: indexPath.section) ?? .normal
+        switch sectionType {
+            case .normal:
+                let image = normalImageAssets[indexPath.item].image
+                cell.configure(image: image)
+            case .mixed:
+                let image = mixedImageAssets[indexPath.item].image
+                cell.configure(image: image)
+        }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        viewForSupplementaryElementOfKind kind: String,
+                        at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.elementKindSectionHeader {
+            let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                       withReuseIdentifier: AppIconCollectionReusableView.identifier,
+                                                                       for: indexPath) as! AppIconCollectionReusableView
+            return view
+        }
+        return UICollectionReusableView()
     }
     
 }
@@ -154,10 +252,14 @@ private extension AppIconViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.registerCustomCell(AppIconCollectionViewCell.self)
+        collectionView.register(AppIconCollectionReusableView.self,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                withReuseIdentifier: AppIconCollectionReusableView.identifier)
         let layout = UICollectionViewFlowLayout()
-        let spacing: CGFloat = 21
+        let spacing: CGFloat = 21 // horizontalSpaceの3/4倍にする
         layout.minimumLineSpacing = spacing
         layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
+        layout.headerReferenceSize = CGSize(width: collectionView.frame.width, height: 50)
         collectionView.collectionViewLayout = layout
     }
     

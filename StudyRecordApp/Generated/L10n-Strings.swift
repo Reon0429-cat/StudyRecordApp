@@ -216,6 +216,8 @@ internal enum L10n {
   internal static let memo = L10n.tr("Localizable", "memo")
   /// minute
   internal static let minute = L10n.tr("Localizable", "minute")
+  /// mixed
+  internal static let mixed = L10n.tr("Localizable", "mixed")
   /// Moist
   internal static let moist = L10n.tr("Localizable", "moist")
   /// month
@@ -232,6 +234,8 @@ internal enum L10n {
   internal static let natural = L10n.tr("Localizable", "natural")
   /// No
   internal static let no = L10n.tr("Localizable", "no")
+  /// normal
+  internal static let normal = L10n.tr("Localizable", "normal")
   /// Do not fill
   internal static let notFill = L10n.tr("Localizable", "notFill")
   /// November
