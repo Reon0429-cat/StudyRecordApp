@@ -152,7 +152,7 @@
 		AB4F7C7E2719E0E5000A8D83 /* GoalStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4F7C7D2719E0E5000A8D83 /* GoalStatisticsViewController.swift */; };
 		AB4F7C812719E3E1000A8D83 /* GoalStatisticsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4F7C7F2719E3E1000A8D83 /* GoalStatisticsTableViewCell.swift */; };
 		AB4F7C822719E3E1000A8D83 /* GoalStatisticsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB4F7C802719E3E1000A8D83 /* GoalStatisticsTableViewCell.xib */; };
-		AB63B9EF271E099D00987B66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB93C243266A234C00C3AE8F /* Assets.xcassets */; };
+		AB63B9F0271E8B6300987B66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB93C243266A234C00C3AE8F /* Assets.xcassets */; };
 		AB71076F26F94E4A00F4F695 /* DateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB71076E26F94E4A00F4F695 /* DateType.swift */; };
 		AB86A85A26D4915700EA990A /* HalfModalDismissInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86A85426D4915700EA990A /* HalfModalDismissInteractiveTransition.swift */; };
 		AB86A85B26D4915700EA990A /* HalfModalDismissAnimatedTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86A85526D4915700EA990A /* HalfModalDismissAnimatedTransition.swift */; };
@@ -1068,7 +1068,7 @@
 				AB9F30F627140DCE008A79A5 /* GoalSimpleTableViewCell.xib in Resources */,
 				AB16308426CEABD400111F55 /* NavigationButton.xib in Resources */,
 				ABFAB20926E394A60095EC20 /* GraphTableViewCell.xib in Resources */,
-				AB63B9EF271E099D00987B66 /* Assets.xcassets in Resources */,
+				AB63B9F0271E8B6300987B66 /* Assets.xcassets in Resources */,
 				ABCE16C7270994210014F618 /* InfoPlist.strings in Resources */,
 				AB4539B7271D7D0500CF1C04 /* ReportThankYouView.xib in Resources */,
 				ABAE84E126F414CF00A93A7F /* GoalHeaderView.xib in Resources */,
