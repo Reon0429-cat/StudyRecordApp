@@ -63,28 +63,33 @@ final class AppIconViewController: UIViewController {
     @IBOutlet private weak var iconTypeSegmentedControl: CustomSegmentedControl!
     @IBOutlet private weak var separatorView: UIView!
     
-    private var normalImageAssets: [ImageAsset] {
+    private var isSameBackground: (String) -> Bool {
         let iconBackgroundIndex = iconBackgroundColorSegmentedControl.selectedSegmentIndex
         let iconBackground = IconBackground(rawValue: iconBackgroundIndex) ?? .white
+        return { $0.contains(iconBackground.condition) }
+    }
+    private var isSameIconType: (String) -> Bool {
         let iconTypeIndex = iconTypeSegmentedControl.selectedSegmentIndex
         let iconType = IconType(rawValue: iconTypeIndex) ?? .wing
-        let backgroundImageAssets = Asset.allImages.filter { $0.name.hasSuffix(iconBackground.condition) }
-        let iconTypeImageAssets = backgroundImageAssets.filter { $0.name.contains(iconType.condition) }
-        let isMixedColor: (String) -> Bool = { $0.contains("_") }
-        let normalImageAssets = iconTypeImageAssets.filter { !isMixedColor($0.name) }
-        return normalImageAssets
+        return { $0.contains(iconType.condition) }
+    }
+    private let isMixedColor: (String) -> Bool = { $0.contains("_") }
+    
+    private var normalImageAssets: [ImageAsset] {
+        Asset.allImages.filter {
+            isSameBackground($0.name)
+            && isSameIconType($0.name)
+            && !isMixedColor($0.name)
+        }
     }
     private var mixedImageAssets: [ImageAsset] {
-        let iconBackgroundIndex = iconBackgroundColorSegmentedControl.selectedSegmentIndex
-        let iconBackground = IconBackground(rawValue: iconBackgroundIndex) ?? .white
-        let iconTypeIndex = iconTypeSegmentedControl.selectedSegmentIndex
-        let iconType = IconType(rawValue: iconTypeIndex) ?? .wing
-        let backgroundImageAssets = Asset.allImages.filter { $0.name.hasSuffix(iconBackground.condition) }
-        let iconTypeImageAssets = backgroundImageAssets.filter { $0.name.contains(iconType.condition) }
-        let isMixedColor: (String) -> Bool = { $0.contains("_") }
-        let mixedImageAssets = iconTypeImageAssets.filter { isMixedColor($0.name) }
-        return mixedImageAssets
+        Asset.allImages.filter {
+            isSameBackground($0.name)
+            && isSameIconType($0.name)
+            && isMixedColor($0.name)
+        }
     }
+    
     private let iconBackgroundKey = "iconBackgroundKey"
     private let iconTypeKey = "iconTypeKey"
     
