@@ -234,8 +234,6 @@ internal enum L10n {
   internal static let natural = L10n.tr("Localizable", "natural")
   /// No
   internal static let no = L10n.tr("Localizable", "no")
-  /// normal
-  internal static let normal = L10n.tr("Localizable", "normal")
   /// Do not fill
   internal static let notFill = L10n.tr("Localizable", "notFill")
   /// November

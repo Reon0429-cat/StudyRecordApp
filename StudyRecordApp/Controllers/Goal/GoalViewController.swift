@@ -47,9 +47,6 @@ final class GoalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        goalUseCase.deleteAllCategory()
-        createMockCategory()
-        
         setupSegmentedControl()
         setupSimpleButton()
         setupTableView()
@@ -63,49 +60,6 @@ final class GoalViewController: UIViewController {
         delegate?.screenDidPresented(screenType: .goal,
                                      isEnabledNavigationButton: !categories.isEmpty)
         
-    }
-    
-    // MARK: - ToDo 消す
-    func createMockCategory() {
-        ["A", "BBB", "CCCC", "DD"].enumerated().forEach { index, categoryTitle in
-            let goalTitles = ["000000", "111111", "222222"]
-            var goals = [Category.Goal]()
-            goalTitles.enumerated().forEach { index, title in
-                let a = categoryTitle + title + categoryTitle + title + categoryTitle + title
-                let prioritys: [Category.Goal.Priority] = [.init(mark: .star, number: .one),
-                                                           .init(mark: .star, number: .two),
-                                                           .init(mark: .star, number: .three),
-                                                           .init(mark: .star, number: .four),
-                                                           .init(mark: .star, number: .five),
-                                                           .init(mark: .heart, number: .one),
-                                                           .init(mark: .heart, number: .two),
-                                                           .init(mark: .heart, number: .three),
-                                                           .init(mark: .heart, number: .four),
-                                                           .init(mark: .heart, number: .five)]
-                let goal = Category.Goal(title: a + a + a,
-                                         memo: title + title + title,
-                                         isExpanded: false,
-                                         priority: prioritys.randomElement()!,
-                                         isChecked: Bool.random(),
-                                         dueDate: Date(),
-                                         createdDate: Date(),
-                                         imageData: nil,
-                                         order: index,
-                                         identifier: UUID().uuidString)
-                goals.append(goal)
-            }
-            var title = ""
-            for _ in 0..<20 {
-                title += categoryTitle
-            }
-            let category = Category(title: title,
-                                    isExpanded: false,
-                                    goals: goals,
-                                    isAchieved: false,
-                                    order: index,
-                                    identifier: UUID().uuidString)
-            goalUseCase.save(category: category)
-        }
     }
     
     func reloadTableView() {

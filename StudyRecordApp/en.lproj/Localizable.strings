@@ -228,7 +228,7 @@
 "black" = "black";
 "white" = "white";
 
-"normal" = "normal";
+"simple" = "simple";
 "mixed" = "mixed";
 
 "" = "";

@@ -200,7 +200,8 @@ extension SettingViewController: UITableViewDelegate {
             case .howToUseApp:
                 break
             case .backup:
-                break
+                present(BackupViewController.self,
+                        modalPresentationStyle: .fullScreen)
             case .privacyPolicy:
                 break
             case .logout:

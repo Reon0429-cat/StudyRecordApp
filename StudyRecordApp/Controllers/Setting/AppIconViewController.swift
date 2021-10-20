@@ -45,11 +45,11 @@ private enum IconType: Int, CaseIterable {
 }
 
 private enum SectionType: Int, CaseIterable {
-    case normal
+    case simple
     case mixed
     var title: String {
         switch self {
-            case .normal: return L10n.normal
+            case .simple: return L10n.simple
             case .mixed: return L10n.mixed
         }
     }
@@ -119,7 +119,7 @@ private extension AppIconViewController {
     }
     
     func getSectionType(section: Int) -> SectionType {
-        return SectionType(rawValue: section) ?? .normal
+        return SectionType(rawValue: section) ?? .simple
     }
     
 }
@@ -147,7 +147,7 @@ extension AppIconViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
         switch getSectionType(section: indexPath.section) {
-            case .normal:
+            case .simple:
                 let name = normalImageAssets[indexPath.item].name
                 changeIcon(name: name)
             case .mixed:
@@ -185,7 +185,7 @@ extension AppIconViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
         switch getSectionType(section: section) {
-            case .normal:
+            case .simple:
                 return normalImageAssets.count
             case .mixed:
                 return mixedImageAssets.count
@@ -197,7 +197,7 @@ extension AppIconViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCustomCell(with: AppIconCollectionViewCell.self,
                                                             indexPath: indexPath)
         switch getSectionType(section: indexPath.section) {
-            case .normal:
+            case .simple:
                 let image = normalImageAssets[indexPath.item].image
                 cell.configure(image: image)
             case .mixed:

@@ -123,6 +123,8 @@
 		AB37278B270D9F94005DBAB3 /* StoryboardScenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB372789270D9F94005DBAB3 /* StoryboardScenes.swift */; };
 		AB37278D270DA181005DBAB3 /* SystemName.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB37278C270DA181005DBAB3 /* SystemName.swift */; };
 		AB372791270DCC2A005DBAB3 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB372790270DCC2A005DBAB3 /* RealmManager.swift */; };
+		AB40A07C27209B62003E8030 /* Backup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB40A07B27209B62003E8030 /* Backup.storyboard */; };
+		AB40A07E27209B7E003E8030 /* BackupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40A07D27209B7E003E8030 /* BackupViewController.swift */; };
 		AB4397ED26DD3051008C8CA8 /* AddAndEditGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4397EC26DD3051008C8CA8 /* AddAndEditGoalViewController.swift */; };
 		AB4397EF26DD305B008C8CA8 /* AddAndEditGoal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB4397EE26DD305B008C8CA8 /* AddAndEditGoal.storyboard */; };
 		AB4397F126DD3B2A008C8CA8 /* GoalPriority.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB4397F026DD3B2A008C8CA8 /* GoalPriority.storyboard */; };
@@ -680,6 +682,8 @@
 		AB372789270D9F94005DBAB3 /* StoryboardScenes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardScenes.swift; sourceTree = "<group>"; };
 		AB37278C270DA181005DBAB3 /* SystemName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemName.swift; sourceTree = "<group>"; };
 		AB372790270DCC2A005DBAB3 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		AB40A07B27209B62003E8030 /* Backup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Backup.storyboard; sourceTree = "<group>"; };
+		AB40A07D27209B7E003E8030 /* BackupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackupViewController.swift; sourceTree = "<group>"; };
 		AB4397EC26DD3051008C8CA8 /* AddAndEditGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAndEditGoalViewController.swift; sourceTree = "<group>"; };
 		AB4397EE26DD305B008C8CA8 /* AddAndEditGoal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddAndEditGoal.storyboard; sourceTree = "<group>"; };
 		AB4397F026DD3B2A008C8CA8 /* GoalPriority.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoalPriority.storyboard; sourceTree = "<group>"; };
@@ -1361,6 +1365,7 @@
 				ABE8CF58271EA8D500705EE4 /* Reports.storyboard */,
 				AB4539BA271DC82600CF1C04 /* SampleAppIcon.storyboard */,
 				ABB7F835271EDDB1003F928D /* AppIcon.storyboard */,
+				AB40A07B27209B62003E8030 /* Backup.storyboard */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -1393,6 +1398,7 @@
 				AB4539A0271CBF8C00CF1C04 /* ReportsViewController.swift */,
 				AB4539BC271DC84600CF1C04 /* SampleAppIconViewController.swift */,
 				ABB7F837271EDDBC003F928D /* AppIconViewController.swift */,
+				AB40A07D27209B7E003E8030 /* BackupViewController.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -1501,11 +1507,11 @@
 		AB93C22E266A234800C3AE8F = {
 			isa = PBXGroup;
 			children = (
+				AB45399B271CBB0F00CF1C04 /* StudyRecordApp-Bridging-Header.h */,
 				AB93C239266A234800C3AE8F /* StudyRecordApp */,
 				AB93C238266A234800C3AE8F /* Products */,
 				6ED773C562BE78F875EC7183 /* Pods */,
 				635B9A72C0918FAFFC219E8A /* Frameworks */,
-				AB45399B271CBB0F00CF1C04 /* StudyRecordApp-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2421,6 +2427,7 @@
 				AB93C266266A7DEB00C3AE8F /* AdditionalStudyRecord.storyboard in Resources */,
 				ABBF3656271EB36900CB3249 /* Red-Wing-White.png in Resources */,
 				ABBF36A6271EB36900CB3249 /* BlueGreen-Wing-Black@3x.png in Resources */,
+				AB40A07C27209B62003E8030 /* Backup.storyboard in Resources */,
 				ABBF364E271EB36900CB3249 /* Blue_Yellow-Wing-White@3x.png in Resources */,
 				AB0C765826EB8B4300BF5B64 /* CustomButtonTableViewCell.xib in Resources */,
 				ABBF35FC271EB36900CB3249 /* Purple-Heart-White@3x.png in Resources */,
@@ -2697,6 +2704,7 @@
 				AB13EDD126C29D9E002F56FF /* StudyRecordTimeRecordViewController.swift in Sources */,
 				ABFB3A5C270FDB6900BC6D3F /* Compatible.swift in Sources */,
 				AB275FFE26DCAA56009F63B3 /* Indicator.swift in Sources */,
+				AB40A07E27209B7E003E8030 /* BackupViewController.swift in Sources */,
 				AB2B5BA226A2D1B7009BD3C7 /* ElegantConcept.swift in Sources */,
 				AB0C766726EBAF3400BF5B64 /* SettingRepository.swift in Sources */,
 				ABFAB1E326E11FEC0095EC20 /* GoalTimeViewController.swift in Sources */,
