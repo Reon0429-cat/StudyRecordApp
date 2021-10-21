@@ -1191,97 +1191,20 @@
 			path = Realm;
 			sourceTree = "<group>";
 		};
-		AB13EDE626C78DD0002F56FF /* All */ = {
-			isa = PBXGroup;
-			children = (
-				AB13EDE226C78DB4002F56FF /* ScreenTransitionCollectionViewCell.swift */,
-				AB13EDE326C78DB4002F56FF /* ScreenTransitionCollectionViewCell.xib */,
-				AB13EDDE26C64EBB002F56FF /* CustomTitleTableViewCell.swift */,
-				AB13EDDF26C64EBB002F56FF /* CustomTitleTableViewCell.xib */,
-				AB0C765126EB889100BF5B64 /* CustomSwitchTableViewCell.swift */,
-				AB0C765226EB889100BF5B64 /* CustomSwitchTableViewCell.xib */,
-				AB0C765526EB8B4300BF5B64 /* CustomButtonTableViewCell.swift */,
-				AB0C765626EB8B4300BF5B64 /* CustomButtonTableViewCell.xib */,
-			);
-			path = All;
-			sourceTree = "<group>";
-		};
-		AB13EDE726C7C4B7002F56FF /* Top */ = {
-			isa = PBXGroup;
-			children = (
-				AB3BD6BC272203D40052CCA9 /* Top.storyboard */,
-			);
-			path = Top;
-			sourceTree = "<group>";
-		};
-		AB13EDEC26C7C561002F56FF /* Top */ = {
-			isa = PBXGroup;
-			children = (
-				AB13EDEA26C7C556002F56FF /* TopViewController.swift */,
-				ABDF66BD26E79543000D9FD5 /* TabBarCollectionViewController.swift */,
-			);
-			path = Top;
-			sourceTree = "<group>";
-		};
-		AB13EDED26C8BA0F002F56FF /* Goal */ = {
-			isa = PBXGroup;
-			children = (
-				AB13EDF926C8C585002F56FF /* GoalViewController.swift */,
-				AB4397EC26DD3051008C8CA8 /* AddAndEditGoalViewController.swift */,
-				AB00DDC826F4EEC3008CC3F1 /* AdditionalCategoryViewController.swift */,
-				AB4397F226DD3B32008C8CA8 /* GoalPriorityViewController.swift */,
-				ABFAB1E226E11FEC0095EC20 /* GoalTimeViewController.swift */,
-				ABFB3A5F271024F400BC6D3F /* GoalSortViewController.swift */,
-				AB4F7C7D2719E0E5000A8D83 /* GoalStatisticsViewController.swift */,
-			);
-			path = Goal;
-			sourceTree = "<group>";
-		};
-		AB13EDEE26C8BA18002F56FF /* Graph */ = {
-			isa = PBXGroup;
-			children = (
-				AB13EDFB26C8C596002F56FF /* GraphViewController.swift */,
-				AB20F81126E7F3E100564B14 /* GraphKindSelectingViewController.swift */,
-			);
-			path = Graph;
-			sourceTree = "<group>";
-		};
-		AB13EDF026C8BA80002F56FF /* Goal */ = {
-			isa = PBXGroup;
-			children = (
-				AB13EDF326C8BAAC002F56FF /* Goal.storyboard */,
-				AB4397EE26DD305B008C8CA8 /* AddAndEditGoal.storyboard */,
-				AB00DDCA26F4EECA008CC3F1 /* AdditionalCategory.storyboard */,
-				AB4397F026DD3B2A008C8CA8 /* GoalPriority.storyboard */,
-				ABFAB1E426E11FF80095EC20 /* GoalTime.storyboard */,
-				ABFB3A61271024FF00BC6D3F /* GoalSort.storyboard */,
-				AB4F7C7B2719E0C8000A8D83 /* GoalStatistics.storyboard */,
-			);
-			path = Goal;
-			sourceTree = "<group>";
-		};
-		AB13EDF126C8BA88002F56FF /* Graph */ = {
-			isa = PBXGroup;
-			children = (
-				AB13EDF526C8BAB7002F56FF /* Graph.storyboard */,
-				AB20F80F26E7F3DB00564B14 /* GraphKindSelecting.storyboard */,
-			);
-			path = Graph;
-			sourceTree = "<group>";
-		};
-		AB13EDFF26C8E0E9002F56FF /* Setting */ = {
+		AB13EDFF26C8E0E9002F56FF /* ThemeColors */ = {
 			isa = PBXGroup;
 			children = (
 				AB2B5B9326A2D19E009BD3C7 /* ThemeColor.swift */,
 				AB2B5B9226A2D19E009BD3C7 /* ColorConcept.swift */,
 				AB2B5BA526A2D1C1009BD3C7 /* SubConcepts */,
 			);
-			path = Setting;
+			path = ThemeColors;
 			sourceTree = "<group>";
 		};
 		AB16304D26CD68A200111F55 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				AB86A85326D4912C00EA990A /* HalfModal */,
 				AB0C768026EBD9A800BF5B64 /* SubCustomNavigationBar.xib */,
 				AB0C768226EBD9B900BF5B64 /* SubCustomNavigationBar.swift */,
 				AB13EE6926CB6965002F56FF /* RippleView.swift */,
@@ -1308,25 +1231,6 @@
 				AB4539B8271D7D1500CF1C04 /* ReportThankYouView.swift */,
 			);
 			path = CustomViews;
-			sourceTree = "<group>";
-		};
-		AB275FFF26DCDDD3009F63B3 /* Goal */ = {
-			isa = PBXGroup;
-			children = (
-				AB43980226DE1DD6008C8CA8 /* GoalTableViewCell.swift */,
-				AB43980326DE1DD6008C8CA8 /* GoalTableViewCell.xib */,
-				ABAE84DE26F414BB00A93A7F /* GoalHeaderView.swift */,
-				ABAE84E026F414CF00A93A7F /* GoalHeaderView.xib */,
-				AB43980626DE2D72008C8CA8 /* GoalPriorityTableViewCell.swift */,
-				AB43980726DE2D72008C8CA8 /* GoalPriorityTableViewCell.xib */,
-				ABFAB15626DF86920095EC20 /* GoalPhotoTableViewCell.swift */,
-				ABFAB15726DF86920095EC20 /* GoalPhotoTableViewCell.xib */,
-				AB9F30F327140DCE008A79A5 /* GoalSimpleTableViewCell.swift */,
-				AB9F30F427140DCE008A79A5 /* GoalSimpleTableViewCell.xib */,
-				AB4F7C7F2719E3E1000A8D83 /* GoalStatisticsTableViewCell.swift */,
-				AB4F7C802719E3E1000A8D83 /* GoalStatisticsTableViewCell.xib */,
-			);
-			path = Goal;
 			sourceTree = "<group>";
 		};
 		AB2B5B9026A2D13C009BD3C7 /* UIKit+Extension */ = {
@@ -1361,7 +1265,305 @@
 			path = SubConcepts;
 			sourceTree = "<group>";
 		};
-		AB2B5BA626A2D232009BD3C7 /* Setting */ = {
+		AB3BD6B12721FE240052CCA9 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				AB93C245266A234C00C3AE8F /* LaunchScreen.storyboard */,
+			);
+			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		AB3BD6C627220E050052CCA9 /* StudyRecord */ = {
+			isa = PBXGroup;
+			children = (
+				AB3BD6C727220E370052CCA9 /* Views */,
+				AB3BD6CA27220ED60052CCA9 /* Controllers */,
+			);
+			path = StudyRecord;
+			sourceTree = "<group>";
+		};
+		AB3BD6C727220E370052CCA9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AB3BD6C827220E420052CCA9 /* Storyboards */,
+				AB3BD6C927220E4F0052CCA9 /* Cells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AB3BD6C827220E420052CCA9 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				AB93C250266A27B900C3AE8F /* StudyRecord.storyboard */,
+				AB93C265266A7DEB00C3AE8F /* AdditionalStudyRecord.storyboard */,
+				AB93C2C4266BC2D600C3AE8F /* EditStudyRecord.storyboard */,
+				ABA0570226B50F7100E3DF01 /* StudyRecordGraphColor.storyboard */,
+				AB13ED1526B8F5D0002F56FF /* StudyRecordMemo.storyboard */,
+				AB13EDD226C29DAF002F56FF /* StudyRecordTimeRecord.storyboard */,
+				AB13EDB026BFAA7D002F56FF /* StudyRecordSort.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		AB3BD6C927220E4F0052CCA9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				AB16307926CE123A00111F55 /* RecordTableViewCell.swift */,
+				AB16307A26CE123A00111F55 /* RecordTableViewCell.xib */,
+				ABA056F426B4C7D800E3DF01 /* StudyRecordGraphColorTableViewCell.swift */,
+				ABA056F526B4C7D800E3DF01 /* StudyRecordGraphColorTableViewCell.xib */,
+				AB13ED7B26BE7061002F56FF /* StudyRecordHistoryTableViewCell.swift */,
+				AB13ED7C26BE7061002F56FF /* StudyRecordHistoryTableViewCell.xib */,
+				AB13EDB226BFAB8B002F56FF /* StudyRecordSortTableViewCell.swift */,
+				AB13EDB326BFAB8B002F56FF /* StudyRecordSortTableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		AB3BD6CA27220ED60052CCA9 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AB93C24E266A271E00C3AE8F /* StudyRecordViewController.swift */,
+				AB93C267266A7DFF00C3AE8F /* AdditionalStudyRecordViewController.swift */,
+				AB93C2C2266BC28E00C3AE8F /* EditStudyRecordViewController.swift */,
+				ABA0570426B50F8100E3DF01 /* StudyRecordGraphColorViewController.swift */,
+				AB13ED1726B8F5EA002F56FF /* StudyRecordMemoViewController.swift */,
+				AB13EDD026C29D9E002F56FF /* StudyRecordTimeRecordViewController.swift */,
+				AB13EDAE26BFAA62002F56FF /* StudyRecordSortViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		AB3BD6CB27220F140052CCA9 /* Top */ = {
+			isa = PBXGroup;
+			children = (
+				AB3BD6CD27220F230052CCA9 /* Views */,
+				AB3BD6CF27220F430052CCA9 /* Controllers */,
+			);
+			path = Top;
+			sourceTree = "<group>";
+		};
+		AB3BD6CC27220F1E0052CCA9 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				AB3BD6BC272203D40052CCA9 /* Top.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		AB3BD6CD27220F230052CCA9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AB3BD6DD272210D40052CCA9 /* Cells */,
+				AB3BD6CC27220F1E0052CCA9 /* Storyboards */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AB3BD6CF27220F430052CCA9 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AB13EDEA26C7C556002F56FF /* TopViewController.swift */,
+				ABDF66BD26E79543000D9FD5 /* TabBarCollectionViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		AB3BD6D027220FFA0052CCA9 /* LoginAndSignUp */ = {
+			isa = PBXGroup;
+			children = (
+				AB3BD6D22722100E0052CCA9 /* Views */,
+				AB3BD6D1272210010052CCA9 /* Controllers */,
+			);
+			path = LoginAndSignUp;
+			sourceTree = "<group>";
+		};
+		AB3BD6D1272210010052CCA9 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AB8B705F26D6AD9E0069FF67 /* LoginAndSignUpViewController.swift */,
+				AB8B704D26D62F800069FF67 /* LoginViewController.swift */,
+				AB8B705826D6AD290069FF67 /* SignUpViewController.swift */,
+				AB14B46526DB516E007A5F16 /* ResetingPasswordViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		AB3BD6D22722100E0052CCA9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AB3BD6D3272210160052CCA9 /* Storyboards */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AB3BD6D3272210160052CCA9 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				AB8B705D26D6AD950069FF67 /* LoginAndSignUp.storyboard */,
+				AB8B704F26D62FA90069FF67 /* Login.storyboard */,
+				AB8B705626D6AD1F0069FF67 /* SignUp.storyboard */,
+				AB14B46326DB515C007A5F16 /* ResetingPassword.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		AB3BD6D4272210260052CCA9 /* Goal */ = {
+			isa = PBXGroup;
+			children = (
+				AB3BD6D6272210440052CCA9 /* Views */,
+				AB3BD6D52722102C0052CCA9 /* Controllers */,
+			);
+			path = Goal;
+			sourceTree = "<group>";
+		};
+		AB3BD6D52722102C0052CCA9 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AB13EDF926C8C585002F56FF /* GoalViewController.swift */,
+				AB4397EC26DD3051008C8CA8 /* AddAndEditGoalViewController.swift */,
+				AB00DDC826F4EEC3008CC3F1 /* AdditionalCategoryViewController.swift */,
+				AB4397F226DD3B32008C8CA8 /* GoalPriorityViewController.swift */,
+				ABFAB1E226E11FEC0095EC20 /* GoalTimeViewController.swift */,
+				ABFB3A5F271024F400BC6D3F /* GoalSortViewController.swift */,
+				AB4F7C7D2719E0E5000A8D83 /* GoalStatisticsViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		AB3BD6D6272210440052CCA9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AB3BD6D72722104B0052CCA9 /* Storyboards */,
+				AB3BD6D8272210500052CCA9 /* Cells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AB3BD6D72722104B0052CCA9 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				AB13EDF326C8BAAC002F56FF /* Goal.storyboard */,
+				AB4397EE26DD305B008C8CA8 /* AddAndEditGoal.storyboard */,
+				AB00DDCA26F4EECA008CC3F1 /* AdditionalCategory.storyboard */,
+				AB4397F026DD3B2A008C8CA8 /* GoalPriority.storyboard */,
+				ABFAB1E426E11FF80095EC20 /* GoalTime.storyboard */,
+				ABFB3A61271024FF00BC6D3F /* GoalSort.storyboard */,
+				AB4F7C7B2719E0C8000A8D83 /* GoalStatistics.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		AB3BD6D8272210500052CCA9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				AB43980226DE1DD6008C8CA8 /* GoalTableViewCell.swift */,
+				AB43980326DE1DD6008C8CA8 /* GoalTableViewCell.xib */,
+				ABAE84DE26F414BB00A93A7F /* GoalHeaderView.swift */,
+				ABAE84E026F414CF00A93A7F /* GoalHeaderView.xib */,
+				AB43980626DE2D72008C8CA8 /* GoalPriorityTableViewCell.swift */,
+				AB43980726DE2D72008C8CA8 /* GoalPriorityTableViewCell.xib */,
+				ABFAB15626DF86920095EC20 /* GoalPhotoTableViewCell.swift */,
+				ABFAB15726DF86920095EC20 /* GoalPhotoTableViewCell.xib */,
+				AB9F30F327140DCE008A79A5 /* GoalSimpleTableViewCell.swift */,
+				AB9F30F427140DCE008A79A5 /* GoalSimpleTableViewCell.xib */,
+				AB4F7C7F2719E3E1000A8D83 /* GoalStatisticsTableViewCell.swift */,
+				AB4F7C802719E3E1000A8D83 /* GoalStatisticsTableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		AB3BD6D92722107D0052CCA9 /* Graph */ = {
+			isa = PBXGroup;
+			children = (
+				AB3BD6DB2722108A0052CCA9 /* Views */,
+				AB3BD6DA272210810052CCA9 /* Controllers */,
+			);
+			path = Graph;
+			sourceTree = "<group>";
+		};
+		AB3BD6DA272210810052CCA9 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AB13EDFB26C8C596002F56FF /* GraphViewController.swift */,
+				AB20F81126E7F3E100564B14 /* GraphKindSelectingViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		AB3BD6DB2722108A0052CCA9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AB3BD6DC2722108E0052CCA9 /* Storyboards */,
+				ABFAB20A26E394B10095EC20 /* Cells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AB3BD6DC2722108E0052CCA9 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				AB13EDF526C8BAB7002F56FF /* Graph.storyboard */,
+				AB20F80F26E7F3DB00564B14 /* GraphKindSelecting.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		AB3BD6DD272210D40052CCA9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				AB13EDE226C78DB4002F56FF /* ScreenTransitionCollectionViewCell.swift */,
+				AB13EDE326C78DB4002F56FF /* ScreenTransitionCollectionViewCell.xib */,
+				AB13EDDE26C64EBB002F56FF /* CustomTitleTableViewCell.swift */,
+				AB13EDDF26C64EBB002F56FF /* CustomTitleTableViewCell.xib */,
+				AB0C765126EB889100BF5B64 /* CustomSwitchTableViewCell.swift */,
+				AB0C765226EB889100BF5B64 /* CustomSwitchTableViewCell.xib */,
+				AB0C765526EB8B4300BF5B64 /* CustomButtonTableViewCell.swift */,
+				AB0C765626EB8B4300BF5B64 /* CustomButtonTableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		AB3BD6DE272210F40052CCA9 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				AB3BD6E02722111B0052CCA9 /* Views */,
+				AB3BD6DF272210FA0052CCA9 /* Controllers */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		AB3BD6DF272210FA0052CCA9 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AB2B5BC326A2D36F009BD3C7 /* SettingViewController.swift */,
+				AB2B5BC426A2D36F009BD3C7 /* ThemeColorViewController.swift */,
+				AB2B5BC226A2D36F009BD3C7 /* ColorConceptViewController.swift */,
+				AB2B5BC126A2D36F009BD3C7 /* ColorChoicesConceptViewController.swift */,
+				AB2B5BBF26A2D36F009BD3C7 /* ColorChoicesTileViewController.swift */,
+				AB2B5BC026A2D36F009BD3C7 /* ColorChoicesSliderViewController.swift */,
+				AB0C76B426ED256000BF5B64 /* PasscodeViewController.swift */,
+				AB13E2A32706FE6000063A0B /* PasscodeSettingViewController.swift */,
+				AB0C76DA26F0A06F00BF5B64 /* DarkModeSettingViewController.swift */,
+				AB4539A0271CBF8C00CF1C04 /* ReportsViewController.swift */,
+				AB4539BC271DC84600CF1C04 /* SampleAppIconViewController.swift */,
+				ABB7F837271EDDBC003F928D /* AppIconViewController.swift */,
+				AB40A07D27209B7E003E8030 /* BackupViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		AB3BD6E02722111B0052CCA9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AB3BD6EB272215F20052CCA9 /* CustomViews */,
+				AB3BD6E1272211200052CCA9 /* Storyboards */,
+				AB3BD6E2272211250052CCA9 /* Cells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AB3BD6E1272211200052CCA9 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
 				AB2B5BA726A2D244009BD3C7 /* Setting.storyboard */,
@@ -1378,10 +1580,10 @@
 				ABB7F835271EDDB1003F928D /* AppIcon.storyboard */,
 				AB40A07B27209B62003E8030 /* Backup.storyboard */,
 			);
-			path = Setting;
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		AB2B5BAD26A2D2A8009BD3C7 /* Setting */ = {
+		AB3BD6E2272211250052CCA9 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				AB2B5BB126A2D2C2009BD3C7 /* AccordionColorTableViewCell.swift */,
@@ -1393,35 +1595,101 @@
 				AB3BD6AC2721DBF80052CCA9 /* AppVersionTableViewCell.swift */,
 				AB3BD6AD2721DBF80052CCA9 /* AppVersionTableViewCell.xib */,
 			);
-			path = Setting;
+			path = Cells;
 			sourceTree = "<group>";
 		};
-		AB2B5BBE26A2D352009BD3C7 /* Setting */ = {
+		AB3BD6E32722129B0052CCA9 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				AB2B5BC326A2D36F009BD3C7 /* SettingViewController.swift */,
-				AB2B5BC426A2D36F009BD3C7 /* ThemeColorViewController.swift */,
-				AB3BD6AA2721D4E40052CCA9 /* LocalLanguage.swift */,
-				AB2B5BC126A2D36F009BD3C7 /* ColorChoicesConceptViewController.swift */,
-				AB2B5BBF26A2D36F009BD3C7 /* ColorChoicesTileViewController.swift */,
-				AB2B5BC026A2D36F009BD3C7 /* ColorChoicesSliderViewController.swift */,
-				AB0C76B426ED256000BF5B64 /* PasscodeViewController.swift */,
-				AB13E2A32706FE6000063A0B /* PasscodeSettingViewController.swift */,
-				AB0C76DA26F0A06F00BF5B64 /* DarkModeSettingViewController.swift */,
-				AB4539A0271CBF8C00CF1C04 /* ReportsViewController.swift */,
-				AB4539BC271DC84600CF1C04 /* SampleAppIconViewController.swift */,
-				ABB7F837271EDDBC003F928D /* AppIconViewController.swift */,
-				AB40A07D27209B7E003E8030 /* BackupViewController.swift */,
+				ABFB3A5D2710247A00BC6D3F /* SortableViewControllerProtocol.swift */,
+				ABFB3A5B270FDB6900BC6D3F /* Compatible.swift */,
 			);
-			path = Setting;
+			path = Protocols;
 			sourceTree = "<group>";
 		};
-		AB3BD6B12721FE240052CCA9 /* LaunchScreen */ = {
+		AB3BD6E5272213600052CCA9 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				AB93C245266A234C00C3AE8F /* LaunchScreen.storyboard */,
+				AB8B704726D5EF1B0069FF67 /* Entities */,
+				AB8B704A26D5EF3F0069FF67 /* DataStores */,
 			);
-			path = LaunchScreen;
+			path = Data;
+			sourceTree = "<group>";
+		};
+		AB3BD6E6272213700052CCA9 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				AB8B704926D5EF290069FF67 /* Repositories */,
+				AB8B704826D5EF210069FF67 /* UseCases */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		AB3BD6E7272213800052CCA9 /* Presentaion */ = {
+			isa = PBXGroup;
+			children = (
+				AB3BD6EC272217010052CCA9 /* Utilities */,
+				AB3BD6B12721FE240052CCA9 /* LaunchScreen */,
+				AB3BD6CB27220F140052CCA9 /* Top */,
+				AB3BD6D027220FFA0052CCA9 /* LoginAndSignUp */,
+				AB3BD6C627220E050052CCA9 /* StudyRecord */,
+				AB3BD6D92722107D0052CCA9 /* Graph */,
+				AB3BD6D4272210260052CCA9 /* Goal */,
+				AB3BD6DE272210F40052CCA9 /* Setting */,
+			);
+			path = Presentaion;
+			sourceTree = "<group>";
+		};
+		AB3BD6E8272213F50052CCA9 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				AB93C23A266A234800C3AE8F /* AppDelegate.swift */,
+				AB93C23C266A234800C3AE8F /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		AB3BD6E92722152C0052CCA9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AB93C243266A234C00C3AE8F /* Assets.xcassets */,
+				ABBF3434271EB31C00CB3249 /* AppAlternateIcons */,
+				AB0C76CE26EEA8C500BF5B64 /* Localizable.strings */,
+				AB93C248266A234C00C3AE8F /* Info.plist */,
+				ABCE16C9270994210014F618 /* InfoPlist.strings */,
+				AB8B704B26D600500069FF67 /* GoogleService-Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		AB3BD6EA2722159C0052CCA9 /* Converter */ = {
+			isa = PBXGroup;
+			children = (
+				AB13EDDA26C3C163002F56FF /* Converter.swift */,
+			);
+			path = Converter;
+			sourceTree = "<group>";
+		};
+		AB3BD6EB272215F20052CCA9 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				AB0C768426ECB63C00BF5B64 /* TileView.swift */,
+				AB0C767E26EBD5A700BF5B64 /* ThemeColorView.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		AB3BD6EC272217010052CCA9 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				ABFAB21326E67A2E0095EC20 /* Alert.swift */,
+				AB13E2AB2707316200063A0B /* BiometricsManager.swift */,
+				AB4539B2271D6F9400CF1C04 /* MailSender.swift */,
+				AB275FFD26DCAA56009F63B3 /* Indicator.swift */,
+				AB4397FA26DDF78A008C8CA8 /* HUDIndicator.swift */,
+				AB14B46126DA855F007A5F16 /* CommunicationStatus.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		AB4539B1271D6E9000CF1C04 /* Constants */ = {
@@ -1431,14 +1699,6 @@
 				AB4539B4271D76CF00CF1C04 /* Constant.swift */,
 			);
 			path = Constants;
-			sourceTree = "<group>";
-		};
-		AB86A85226D4912500EA990A /* All */ = {
-			isa = PBXGroup;
-			children = (
-				AB86A85326D4912C00EA990A /* HalfModal */,
-			);
-			path = All;
 			sourceTree = "<group>";
 		};
 		AB86A85326D4912C00EA990A /* HalfModal */ = {
@@ -1505,28 +1765,6 @@
 			path = DataStores;
 			sourceTree = "<group>";
 		};
-		AB8B705B26D6AD460069FF67 /* LoginAndSignUp */ = {
-			isa = PBXGroup;
-			children = (
-				AB8B705D26D6AD950069FF67 /* LoginAndSignUp.storyboard */,
-				AB8B704F26D62FA90069FF67 /* Login.storyboard */,
-				AB8B705626D6AD1F0069FF67 /* SignUp.storyboard */,
-				AB14B46326DB515C007A5F16 /* ResetingPassword.storyboard */,
-			);
-			path = LoginAndSignUp;
-			sourceTree = "<group>";
-		};
-		AB8B705C26D6AD570069FF67 /* LoginAndSignUp */ = {
-			isa = PBXGroup;
-			children = (
-				AB8B705F26D6AD9E0069FF67 /* LoginAndSignUpViewController.swift */,
-				AB8B704D26D62F800069FF67 /* LoginViewController.swift */,
-				AB8B705826D6AD290069FF67 /* SignUpViewController.swift */,
-				AB14B46526DB516E007A5F16 /* ResetingPasswordViewController.swift */,
-			);
-			path = LoginAndSignUp;
-			sourceTree = "<group>";
-		};
 		AB93C22E266A234800C3AE8F = {
 			isa = PBXGroup;
 			children = (
@@ -1549,24 +1787,18 @@
 		AB93C239266A234800C3AE8F /* StudyRecordApp */ = {
 			isa = PBXGroup;
 			children = (
-				AB8B704726D5EF1B0069FF67 /* Entities */,
-				AB8B704A26D5EF3F0069FF67 /* DataStores */,
-				AB8B704926D5EF290069FF67 /* Repositories */,
-				AB8B704826D5EF210069FF67 /* UseCases */,
+				AB3BD6E5272213600052CCA9 /* Data */,
+				AB3BD6E6272213700052CCA9 /* Domain */,
+				AB3BD6E7272213800052CCA9 /* Presentaion */,
+				AB16304D26CD68A200111F55 /* CustomViews */,
 				AB93C25A266A5A0D00C3AE8F /* Utilities */,
-				AB93C25B266A5A2800C3AE8F /* Views */,
-				AB93C25C266A5A2C00C3AE8F /* Controllers */,
 				AB93C2CB266C84CA00C3AE8F /* Extensions */,
+				AB3BD6E32722129B0052CCA9 /* Protocols */,
 				AB4539B1271D6E9000CF1C04 /* Constants */,
-				AB93C23A266A234800C3AE8F /* AppDelegate.swift */,
-				AB93C23C266A234800C3AE8F /* SceneDelegate.swift */,
-				AB0C76CE26EEA8C500BF5B64 /* Localizable.strings */,
-				AB93C243266A234C00C3AE8F /* Assets.xcassets */,
-				ABBF3434271EB31C00CB3249 /* AppAlternateIcons */,
-				AB93C248266A234C00C3AE8F /* Info.plist */,
-				ABCE16C9270994210014F618 /* InfoPlist.strings */,
-				AB8B704B26D600500069FF67 /* GoogleService-Info.plist */,
+				AB3BD6EA2722159C0052CCA9 /* Converter */,
 				AB05882D270D7EE400DC10C7 /* Generated */,
+				AB3BD6E8272213F50052CCA9 /* Application */,
+				AB3BD6E92722152C0052CCA9 /* Resources */,
 			);
 			path = StudyRecordApp;
 			sourceTree = "<group>";
@@ -1574,118 +1806,14 @@
 		AB93C25A266A5A0D00C3AE8F /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				AB2B5BC226A2D36F009BD3C7 /* ColorConceptViewController.swift */,
-				ABFB3A5D2710247A00BC6D3F /* SortableViewControllerProtocol.swift */,
-				AB4539B2271D6F9400CF1C04 /* MailSender.swift */,
-				AB372782270D84C0005DBAB3 /* Month.swift */,
-				ABFB3A5B270FDB6900BC6D3F /* Compatible.swift */,
-				AB37278C270DA181005DBAB3 /* SystemName.swift */,
-				ABFAB21326E67A2E0095EC20 /* Alert.swift */,
-				AB275FFD26DCAA56009F63B3 /* Indicator.swift */,
-				AB4397FA26DDF78A008C8CA8 /* HUDIndicator.swift */,
-				AB14B46126DA855F007A5F16 /* CommunicationStatus.swift */,
 				AB13EE6526CAC989002F56FF /* ScreenType.swift */,
-				AB13EDDA26C3C163002F56FF /* Converter.swift */,
-				AB0C767E26EBD5A700BF5B64 /* ThemeColorView.swift */,
-				AB0C768426ECB63C00BF5B64 /* TileView.swift */,
+				AB3BD6AA2721D4E40052CCA9 /* LocalLanguage.swift */,
+				AB372782270D84C0005DBAB3 /* Month.swift */,
+				AB37278C270DA181005DBAB3 /* SystemName.swift */,
 				AB71076E26F94E4A00F4F695 /* DateType.swift */,
-				AB13E2AB2707316200063A0B /* BiometricsManager.swift */,
-				AB13EDFF26C8E0E9002F56FF /* Setting */,
+				AB13EDFF26C8E0E9002F56FF /* ThemeColors */,
 			);
 			path = Utilities;
-			sourceTree = "<group>";
-		};
-		AB93C25B266A5A2800C3AE8F /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				AB3BD6B12721FE240052CCA9 /* LaunchScreen */,
-				AB16304D26CD68A200111F55 /* CustomViews */,
-				AB93C25D266A5A5E00C3AE8F /* Storyboards */,
-				AB93C25E266A5A6600C3AE8F /* Cells */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		AB93C25C266A5A2C00C3AE8F /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				AB86A85226D4912500EA990A /* All */,
-				AB8B705C26D6AD570069FF67 /* LoginAndSignUp */,
-				AB13EDEC26C7C561002F56FF /* Top */,
-				AB93C2C6266BC4B000C3AE8F /* StudyRecord */,
-				AB13EDED26C8BA0F002F56FF /* Goal */,
-				AB13EDEE26C8BA18002F56FF /* Graph */,
-				AB2B5BBE26A2D352009BD3C7 /* Setting */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		AB93C25D266A5A5E00C3AE8F /* Storyboards */ = {
-			isa = PBXGroup;
-			children = (
-				AB8B705B26D6AD460069FF67 /* LoginAndSignUp */,
-				AB13EDE726C7C4B7002F56FF /* Top */,
-				AB93C2C7266BC4F000C3AE8F /* StudyRecord */,
-				AB13EDF026C8BA80002F56FF /* Goal */,
-				AB13EDF126C8BA88002F56FF /* Graph */,
-				AB2B5BA626A2D232009BD3C7 /* Setting */,
-			);
-			path = Storyboards;
-			sourceTree = "<group>";
-		};
-		AB93C25E266A5A6600C3AE8F /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				AB13EDE626C78DD0002F56FF /* All */,
-				AB93C2C8266BC50600C3AE8F /* StudyRecord */,
-				AB275FFF26DCDDD3009F63B3 /* Goal */,
-				ABFAB20A26E394B10095EC20 /* Graph */,
-				AB2B5BAD26A2D2A8009BD3C7 /* Setting */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		AB93C2C6266BC4B000C3AE8F /* StudyRecord */ = {
-			isa = PBXGroup;
-			children = (
-				AB93C24E266A271E00C3AE8F /* StudyRecordViewController.swift */,
-				AB93C267266A7DFF00C3AE8F /* AdditionalStudyRecordViewController.swift */,
-				AB93C2C2266BC28E00C3AE8F /* EditStudyRecordViewController.swift */,
-				ABA0570426B50F8100E3DF01 /* StudyRecordGraphColorViewController.swift */,
-				AB13ED1726B8F5EA002F56FF /* StudyRecordMemoViewController.swift */,
-				AB13EDD026C29D9E002F56FF /* StudyRecordTimeRecordViewController.swift */,
-				AB13EDAE26BFAA62002F56FF /* StudyRecordSortViewController.swift */,
-			);
-			path = StudyRecord;
-			sourceTree = "<group>";
-		};
-		AB93C2C7266BC4F000C3AE8F /* StudyRecord */ = {
-			isa = PBXGroup;
-			children = (
-				AB93C250266A27B900C3AE8F /* StudyRecord.storyboard */,
-				AB93C265266A7DEB00C3AE8F /* AdditionalStudyRecord.storyboard */,
-				AB93C2C4266BC2D600C3AE8F /* EditStudyRecord.storyboard */,
-				ABA0570226B50F7100E3DF01 /* StudyRecordGraphColor.storyboard */,
-				AB13ED1526B8F5D0002F56FF /* StudyRecordMemo.storyboard */,
-				AB13EDD226C29DAF002F56FF /* StudyRecordTimeRecord.storyboard */,
-				AB13EDB026BFAA7D002F56FF /* StudyRecordSort.storyboard */,
-			);
-			path = StudyRecord;
-			sourceTree = "<group>";
-		};
-		AB93C2C8266BC50600C3AE8F /* StudyRecord */ = {
-			isa = PBXGroup;
-			children = (
-				AB16307926CE123A00111F55 /* RecordTableViewCell.swift */,
-				AB16307A26CE123A00111F55 /* RecordTableViewCell.xib */,
-				ABA056F426B4C7D800E3DF01 /* StudyRecordGraphColorTableViewCell.swift */,
-				ABA056F526B4C7D800E3DF01 /* StudyRecordGraphColorTableViewCell.xib */,
-				AB13ED7B26BE7061002F56FF /* StudyRecordHistoryTableViewCell.swift */,
-				AB13ED7C26BE7061002F56FF /* StudyRecordHistoryTableViewCell.xib */,
-				AB13EDB226BFAB8B002F56FF /* StudyRecordSortTableViewCell.swift */,
-				AB13EDB326BFAB8B002F56FF /* StudyRecordSortTableViewCell.xib */,
-			);
-			path = StudyRecord;
 			sourceTree = "<group>";
 		};
 		AB93C2CB266C84CA00C3AE8F /* Extensions */ = {
@@ -2048,13 +2176,13 @@
 			path = AppAlternateIcons;
 			sourceTree = "<group>";
 		};
-		ABFAB20A26E394B10095EC20 /* Graph */ = {
+		ABFAB20A26E394B10095EC20 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				ABFAB20626E394A60095EC20 /* GraphTableViewCell.swift */,
 				ABFAB20726E394A60095EC20 /* GraphTableViewCell.xib */,
 			);
-			path = Graph;
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
