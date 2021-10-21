@@ -32,6 +32,10 @@ internal enum L10n {
   internal static let anUnknownErrorHasOccurred = L10n.tr("Localizable", "anUnknownErrorHasOccurred")
   /// App Icon
   internal static let appIcon = L10n.tr("Localizable", "appIcon")
+  /// Recommended task management app!
+  /// Easy operation of daily activities and abundant customization functions make it fun to manage!
+  /// Task Management App-TaskR
+  internal static let appShareDescription = L10n.tr("Localizable", "appShareDescription")
   /// April
   internal static let april = L10n.tr("Localizable", "april")
   /// Are you sure you want to log out?

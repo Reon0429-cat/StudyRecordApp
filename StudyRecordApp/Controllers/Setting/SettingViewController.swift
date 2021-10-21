@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import StoreKit
 
 private enum SettingRowType: Int, CaseIterable {
     case themeColor
@@ -150,10 +151,10 @@ private extension SettingViewController {
     }
     
     func presentActivityVC() {
-        // MARK: - ToDo 決まり次第、テキストとimageを切り替える
-        let text = "テストテキスト"
-        guard let image = UIImage(systemName: "star") else { return }
-        let activityVC = UIActivityViewController(activityItems: [text, image],
+        let text = L10n.appShareDescription
+        // MARK: - ToDo store url 入れる
+        guard let shareURL = URL(string: "") else { return }
+        let activityVC = UIActivityViewController(activityItems: [text, shareURL],
                                                   applicationActivities: nil)
         activityVC.excludedActivityTypes = [
             .saveToCameraRoll,
@@ -161,6 +162,12 @@ private extension SettingViewController {
             .print
         ]
         present(activityVC, animated: true)
+    }
+    
+    func requestReview() {
+        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            SKStoreReviewController.requestReview(in: scene)
+        }
     }
     
 }
@@ -184,7 +191,7 @@ extension SettingViewController: UITableViewDelegate {
                     self.halfModalPresenter.viewController = vc
                 }
             case .evaluationApp:
-                break
+                requestReview()
             case .appIcon:
                 present(AppIconViewController.self,
                         modalPresentationStyle: .fullScreen)

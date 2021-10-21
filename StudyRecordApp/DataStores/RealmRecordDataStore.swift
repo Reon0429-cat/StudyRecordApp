@@ -37,7 +37,7 @@ final class RealmRecordDataStore: RealmRecordDataStoreProtocol {
     func sort(sourceObject: RecordRealm,
               destinationObject: RecordRealm) {
         RealmManager().sort(sourceObject: sourceObject,
-                          destinationObject: destinationObject)
+                            destinationObject: destinationObject)
     }
     
 }

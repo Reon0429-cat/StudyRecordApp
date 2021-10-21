@@ -15,8 +15,6 @@ ib:
 xcassets:
   inputs:
     - StudyRecordApp/Assets.xcassets
-    - StudyRecordApp/Images.xcassets
-    - StudyRecordApp/Colors.xcassets
   outputs:
     - templateName: swift5
       params:
