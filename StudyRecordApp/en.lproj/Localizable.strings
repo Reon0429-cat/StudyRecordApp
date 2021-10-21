@@ -231,10 +231,15 @@
 "simple" = "simple";
 "mixed" = "mixed";
 
-"" = "";
-"" = "";
-"" = "";
-"" = "";
+"backupTitle" = "Back up recorded data";
+"backupDetail" = "Outputs the recorded data to a text file.
+Save the file to any location on iCloud Drive.
+Be sure to make a backup when changing models.";
+"restoreTitle" = "Restore recorded data";
+"restoreDetail" = "You can read the backed up file and restore the recorded data.
+Select the file you saved in iCloud Drive.";
+"restore" = "Restore";
+
 "" = "";
 "" = "";
 "" = "";

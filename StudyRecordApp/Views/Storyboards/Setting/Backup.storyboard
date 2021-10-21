@@ -24,36 +24,140 @@
                                     <constraint firstAttribute="height" constant="114" id="pac-Jy-mJA"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dG0-Pi-Daz">
-                                <rect key="frame" x="171" y="214" width="72" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="backup"/>
-                                <connections>
-                                    <action selector="backupButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ioj-hs-gJn"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C0K-zF-g52">
-                                <rect key="frame" x="172" y="345" width="70" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="restore"/>
-                                <connections>
-                                    <action selector="restoreButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="0J5-0u-Rin"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="qDE-ro-UEC">
+                                <rect key="frame" x="20" y="144" width="374" height="648"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N6b-rp-9YS">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="314"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="utG-N6-3fg" customClass="CustomButton" customModule="StudyRecordApp" customModuleProvider="target">
+                                                <rect key="frame" x="90" y="234" width="194" height="60"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="Srm-FS-Ncp"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="バックアップ">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="backupButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="YdI-Yg-ZH0"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="FrO-OR-fmn">
+                                                <rect key="frame" x="10" y="51.5" width="349.5" height="95.5"/>
+                                                <string key="text">記録データをテキストファイルに出力します。
+iCloud Driveのお好きな場所にファイルを保存してください。
+機種変更などをする際は、必ずバックアップを行うようにしてください。</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="記録データをバックアップする" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9QH-tj-mhP">
+                                                <rect key="frame" x="10" y="10" width="257" height="21.5"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="utG-N6-3fg" secondAttribute="trailing" constant="90" id="88m-Wy-1Je"/>
+                                            <constraint firstItem="FrO-OR-fmn" firstAttribute="leading" secondItem="9QH-tj-mhP" secondAttribute="leading" id="9lF-8N-FQ6"/>
+                                            <constraint firstItem="utG-N6-3fg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="FrO-OR-fmn" secondAttribute="bottom" constant="10" id="APd-cc-h7q"/>
+                                            <constraint firstItem="utG-N6-3fg" firstAttribute="centerX" secondItem="N6b-rp-9YS" secondAttribute="centerX" id="Cfv-XU-tvV"/>
+                                            <constraint firstItem="9QH-tj-mhP" firstAttribute="leading" secondItem="N6b-rp-9YS" secondAttribute="leading" constant="10" id="LTr-Uw-3QN"/>
+                                            <constraint firstItem="FrO-OR-fmn" firstAttribute="top" secondItem="9QH-tj-mhP" secondAttribute="bottom" constant="20" id="k8E-pH-Mc3"/>
+                                            <constraint firstItem="9QH-tj-mhP" firstAttribute="top" secondItem="N6b-rp-9YS" secondAttribute="top" constant="10" id="pAJ-Cd-92p"/>
+                                            <constraint firstAttribute="bottom" secondItem="utG-N6-3fg" secondAttribute="bottom" constant="20" id="txD-We-Rgx"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="FrO-OR-fmn" secondAttribute="trailing" constant="10" id="w1W-KA-qHs"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="9QH-tj-mhP" secondAttribute="trailing" constant="10" id="xoN-dF-KtN"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f1G-FQ-ZKr">
+                                        <rect key="frame" x="0.0" y="334" width="374" height="314"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c89-kE-oLN" customClass="CustomButton" customModule="StudyRecordApp" customModuleProvider="target">
+                                                <rect key="frame" x="90" y="234" width="194" height="60"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="tSv-cw-Etx"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="復元">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="restoreButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="x44-w3-0yB"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000001192092896" translatesAutoresizingMaskIntoConstraints="NO" id="DyR-Ws-IXU">
+                                                <rect key="frame" x="10" y="51.5" width="333" height="76.5"/>
+                                                <string key="text">バックアップしたファイルを読み込み、記録データを復元することができます。
+iCloud Driveに保存したファイルを選択してください。</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="記録データを復元する" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="krx-li-nB1">
+                                                <rect key="frame" x="10" y="10" width="183.5" height="21.5"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="c89-kE-oLN" firstAttribute="centerX" secondItem="f1G-FQ-ZKr" secondAttribute="centerX" id="42h-Wj-bJT"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="krx-li-nB1" secondAttribute="trailing" constant="10" id="AF6-YX-LL3"/>
+                                            <constraint firstAttribute="bottom" secondItem="c89-kE-oLN" secondAttribute="bottom" constant="20" id="Lwp-cX-fp3"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="DyR-Ws-IXU" secondAttribute="trailing" constant="10" id="T6A-Co-PtO"/>
+                                            <constraint firstItem="c89-kE-oLN" firstAttribute="top" relation="greaterThanOrEqual" secondItem="DyR-Ws-IXU" secondAttribute="bottom" constant="10" id="TIv-C6-8hq"/>
+                                            <constraint firstAttribute="trailing" secondItem="c89-kE-oLN" secondAttribute="trailing" constant="90" id="X8q-Tn-Kh5"/>
+                                            <constraint firstItem="DyR-Ws-IXU" firstAttribute="leading" secondItem="krx-li-nB1" secondAttribute="leading" id="a22-fx-zcd"/>
+                                            <constraint firstItem="krx-li-nB1" firstAttribute="leading" secondItem="f1G-FQ-ZKr" secondAttribute="leading" constant="10" id="sbI-v8-PEV"/>
+                                            <constraint firstItem="krx-li-nB1" firstAttribute="top" secondItem="f1G-FQ-ZKr" secondAttribute="top" constant="10" id="uAc-ke-m1I"/>
+                                            <constraint firstItem="DyR-Ws-IXU" firstAttribute="top" secondItem="krx-li-nB1" secondAttribute="bottom" constant="20" id="uP7-2d-Zev"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p6b-kx-URU" customClass="WaveView" customModule="StudyRecordApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="772" width="414" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="MW9-aU-3aB"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="C0K-zF-g52" firstAttribute="top" secondItem="dG0-Pi-Daz" secondAttribute="bottom" constant="100" id="3VI-WW-nfd"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Zzu-LK-xrX" secondAttribute="trailing" id="4xz-4q-4xb"/>
-                            <constraint firstItem="C0K-zF-g52" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="8Kv-qN-8EG"/>
+                            <constraint firstItem="p6b-kx-URU" firstAttribute="top" secondItem="qDE-ro-UEC" secondAttribute="bottom" constant="-20" id="ADz-aa-Cg9"/>
                             <constraint firstItem="Zzu-LK-xrX" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="EPO-BW-hDo"/>
-                            <constraint firstItem="dG0-Pi-Daz" firstAttribute="top" secondItem="Zzu-LK-xrX" secondAttribute="bottom" constant="100" id="FjF-Et-FIA"/>
-                            <constraint firstItem="dG0-Pi-Daz" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="eiG-V4-lnF"/>
+                            <constraint firstItem="p6b-kx-URU" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="S0l-yL-crz"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="p6b-kx-URU" secondAttribute="bottom" constant="50" id="SA3-qy-Bbu"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="p6b-kx-URU" secondAttribute="trailing" id="f9K-bE-grG"/>
                             <constraint firstItem="Zzu-LK-xrX" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="gCx-iU-Jqd"/>
+                            <constraint firstItem="qDE-ro-UEC" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="okK-vM-CZG"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="qDE-ro-UEC" secondAttribute="trailing" constant="20" id="v3a-XS-4lY"/>
+                            <constraint firstItem="qDE-ro-UEC" firstAttribute="top" secondItem="Zzu-LK-xrX" secondAttribute="bottom" constant="30" id="zfK-HV-o1Z"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backupBaseView" destination="N6b-rp-9YS" id="O8z-q9-N6r"/>
+                        <outlet property="backupButton" destination="utG-N6-3fg" id="Q2D-3c-xAN"/>
+                        <outlet property="backupDetailLabel" destination="FrO-OR-fmn" id="RTa-AX-m69"/>
+                        <outlet property="backupTitleLabel" destination="9QH-tj-mhP" id="Fcn-1C-ccy"/>
+                        <outlet property="bottomWaveView" destination="p6b-kx-URU" id="edB-va-RhG"/>
+                        <outlet property="restoreBaseView" destination="f1G-FQ-ZKr" id="8Ff-6X-uVf"/>
+                        <outlet property="restoreButton" destination="c89-kE-oLN" id="nnL-lv-cl4"/>
+                        <outlet property="restoreDetailLabel" destination="DyR-Ws-IXU" id="PSV-eV-3K5"/>
+                        <outlet property="restoreTitleLabel" destination="krx-li-nB1" id="EYY-ZY-vPU"/>
                         <outlet property="subCustomNavigationBar" destination="Zzu-LK-xrX" id="pvj-RI-sci"/>
                     </connections>
                 </viewController>
