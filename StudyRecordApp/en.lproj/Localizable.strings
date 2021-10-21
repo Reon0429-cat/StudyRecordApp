@@ -164,6 +164,7 @@
 "reports" = "Reports";
 "backup" = "Backup";
 "privacyPolicy" = "Privacy Policy";
+"version" = "Version";
 "logout" = "Logout";
 
 "areYouSureYouWantToLogOut" = "Are you sure you want to log out?";

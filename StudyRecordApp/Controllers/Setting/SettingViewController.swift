@@ -21,6 +21,7 @@ private enum SettingRowType: Int, CaseIterable {
     case howToUseApp
     case backup
     case privacyPolicy
+    case version
     case logout
     
     var title: String {
@@ -36,6 +37,7 @@ private enum SettingRowType: Int, CaseIterable {
             case .howToUseApp: return L10n.howToUseApp
             case .backup: return L10n.backup
             case .privacyPolicy: return L10n.privacyPolicy
+            case .version: return L10n.version
             case .logout: return L10n.logout
         }
     }
@@ -153,8 +155,7 @@ private extension SettingViewController {
     
     func presentActivityVC() {
         let text = L10n.appShareDescription
-        // MARK: - ToDo store url 入れる
-        guard let shareURL = URL(string: "") else { return }
+        guard let shareURL = URL(string: Constant.appShareURLString) else { return }
         let activityVC = UIActivityViewController(activityItems: [text, shareURL],
                                                   applicationActivities: nil)
         activityVC.excludedActivityTypes = [
@@ -225,6 +226,8 @@ extension SettingViewController: UITableViewDelegate {
                         modalPresentationStyle: .fullScreen)
             case .privacyPolicy:
                 presentPrivacyPolicyWebPage()
+            case .version:
+                break
             case .logout:
                 break
         }
@@ -232,7 +235,7 @@ extension SettingViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 70
     }
     
     func tableView(_ tableView: UITableView,
@@ -278,6 +281,11 @@ extension SettingViewController: UITableViewDataSource {
                 cell.configure(title: rowType.title)
                 cell.onTapEvent = { self.presentLogoutAlert() }
                 return cell
+            case .version:
+                let cell = tableView.dequeueReusableCustomCell(with: AppVersionTableViewCell.self)
+                cell.configure(title: rowType.title,
+                               version: Constant.appVersion)
+                return cell
             default:
                 let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
                 cell.configure(titleText: rowType.title)
@@ -304,6 +312,7 @@ private extension SettingViewController {
         tableView.dataSource = self
         tableView.registerCustomCell(CustomTitleTableViewCell.self)
         tableView.registerCustomCell(CustomButtonTableViewCell.self)
+        tableView.registerCustomCell(AppVersionTableViewCell.self)
         tableView.tableFooterView = UIView()
         tableView.rowHeight = UITableView.automaticDimension
         if #available(iOS 15.0, *) {

@@ -124,6 +124,8 @@
 		AB37278D270DA181005DBAB3 /* SystemName.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB37278C270DA181005DBAB3 /* SystemName.swift */; };
 		AB372791270DCC2A005DBAB3 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB372790270DCC2A005DBAB3 /* RealmManager.swift */; };
 		AB3BD6AB2721D4E40052CCA9 /* LocalLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3BD6AA2721D4E40052CCA9 /* LocalLanguage.swift */; };
+		AB3BD6AE2721DBF80052CCA9 /* AppVersionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3BD6AC2721DBF80052CCA9 /* AppVersionTableViewCell.swift */; };
+		AB3BD6AF2721DBF80052CCA9 /* AppVersionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB3BD6AD2721DBF80052CCA9 /* AppVersionTableViewCell.xib */; };
 		AB40A07C27209B62003E8030 /* Backup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB40A07B27209B62003E8030 /* Backup.storyboard */; };
 		AB40A07E27209B7E003E8030 /* BackupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40A07D27209B7E003E8030 /* BackupViewController.swift */; };
 		AB40A0CF272190EB003E8030 /* BackupUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40A0CE272190EB003E8030 /* BackupUseCase.swift */; };
@@ -686,6 +688,8 @@
 		AB37278C270DA181005DBAB3 /* SystemName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemName.swift; sourceTree = "<group>"; };
 		AB372790270DCC2A005DBAB3 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		AB3BD6AA2721D4E40052CCA9 /* LocalLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLanguage.swift; sourceTree = "<group>"; };
+		AB3BD6AC2721DBF80052CCA9 /* AppVersionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionTableViewCell.swift; sourceTree = "<group>"; };
+		AB3BD6AD2721DBF80052CCA9 /* AppVersionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppVersionTableViewCell.xib; sourceTree = "<group>"; };
 		AB40A07B27209B62003E8030 /* Backup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Backup.storyboard; sourceTree = "<group>"; };
 		AB40A07D27209B7E003E8030 /* BackupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackupViewController.swift; sourceTree = "<group>"; };
 		AB40A0CE272190EB003E8030 /* BackupUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupUseCase.swift; sourceTree = "<group>"; };
@@ -1385,6 +1389,8 @@
 				ABB7F83E271EEBF5003F928D /* AppIconCollectionViewCell.xib */,
 				ABB7F845271F0D79003F928D /* AppIconCollectionReusableView.swift */,
 				ABB7F846271F0D79003F928D /* AppIconCollectionReusableView.xib */,
+				AB3BD6AC2721DBF80052CCA9 /* AppVersionTableViewCell.swift */,
+				AB3BD6AD2721DBF80052CCA9 /* AppVersionTableViewCell.xib */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -2351,6 +2357,7 @@
 				ABBF359F271EB36900CB3249 /* LightBlue_Orange-Wing-Black@3x.png in Resources */,
 				ABBF35AF271EB36900CB3249 /* Black-Wings-Black.png in Resources */,
 				ABBF35B4271EB36900CB3249 /* LightBlue_Orange-Wings-White.png in Resources */,
+				AB3BD6AF2721DBF80052CCA9 /* AppVersionTableViewCell.xib in Resources */,
 				ABBF36B3271EB36900CB3249 /* Blue_Yellow-Wing-White@2x.png in Resources */,
 				ABBF362E271EB36900CB3249 /* Orange-Heart-White.png in Resources */,
 				ABBF35F1271EB36900CB3249 /* Green-Wing-White.png in Resources */,
@@ -2723,6 +2730,7 @@
 				AB93C23D266A234800C3AE8F /* SceneDelegate.swift in Sources */,
 				AB8B706026D6AD9E0069FF67 /* LoginAndSignUpViewController.swift in Sources */,
 				ABFAB21226E63B350095EC20 /* GraphUseCase.swift in Sources */,
+				AB3BD6AE2721DBF80052CCA9 /* AppVersionTableViewCell.swift in Sources */,
 				AB13EE6826CACB16002F56FF /* UIView+Extension.swift in Sources */,
 				AB2B5B9626A2D19E009BD3C7 /* ThemeColor.swift in Sources */,
 				AB13EDFC26C8C596002F56FF /* GraphViewController.swift in Sources */,

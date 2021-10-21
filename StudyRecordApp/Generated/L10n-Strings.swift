@@ -412,6 +412,8 @@ internal enum L10n {
   internal static let unselected = L10n.tr("Localizable", "unselected")
   /// Use authentication to unlock
   internal static let useAuthenticationToUnlock = L10n.tr("Localizable", "useAuthenticationToUnlock")
+  /// Version
+  internal static let version = L10n.tr("Localizable", "version")
   /// white
   internal static let white = L10n.tr("Localizable", "white")
   /// Winter
