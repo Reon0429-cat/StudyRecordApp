@@ -14,6 +14,7 @@ extension Notification.Name {
     static let graphSaveButtonDidTappped = Notification.Name("graphSaveButtonDidTappped")
     static let brightnessDidChanged = Notification.Name("BrightnessDidChanged")
     static let changedThemeColor = Notification.Name("changedThemeColor")
-
+    static let reloadLocalData = Notification.Name("reloadLocalData")
+    
 }
 

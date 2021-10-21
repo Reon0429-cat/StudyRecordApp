@@ -21,7 +21,7 @@ final class RealmGraphDataStore: GraphDataStoreProtocol {
     
     func readAll() -> [GraphRealm] {
         return RealmManager().readAll(type: GraphRealm.self,
-                                    byKeyPath: nil)
+                                      byKeyPath: nil)
     }
     
     func update(graph: GraphRealm) {

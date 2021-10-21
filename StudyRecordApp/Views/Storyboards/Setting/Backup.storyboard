@@ -16,13 +16,50 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zzu-LK-xrX" customClass="SubCustomNavigationBar" customModule="StudyRecordApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="114"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="114" id="pac-Jy-mJA"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dG0-Pi-Daz">
+                                <rect key="frame" x="171" y="214" width="72" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="backup"/>
+                                <connections>
+                                    <action selector="backupButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ioj-hs-gJn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C0K-zF-g52">
+                                <rect key="frame" x="172" y="345" width="70" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="restore"/>
+                                <connections>
+                                    <action selector="restoreButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="0J5-0u-Rin"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="C0K-zF-g52" firstAttribute="top" secondItem="dG0-Pi-Daz" secondAttribute="bottom" constant="100" id="3VI-WW-nfd"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Zzu-LK-xrX" secondAttribute="trailing" id="4xz-4q-4xb"/>
+                            <constraint firstItem="C0K-zF-g52" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="8Kv-qN-8EG"/>
+                            <constraint firstItem="Zzu-LK-xrX" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="EPO-BW-hDo"/>
+                            <constraint firstItem="dG0-Pi-Daz" firstAttribute="top" secondItem="Zzu-LK-xrX" secondAttribute="bottom" constant="100" id="FjF-Et-FIA"/>
+                            <constraint firstItem="dG0-Pi-Daz" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="eiG-V4-lnF"/>
+                            <constraint firstItem="Zzu-LK-xrX" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="gCx-iU-Jqd"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="subCustomNavigationBar" destination="Zzu-LK-xrX" id="pvj-RI-sci"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="102"/>
+            <point key="canvasLocation" x="137.68115942028987" y="101.78571428571428"/>
         </scene>
     </scenes>
     <resources>

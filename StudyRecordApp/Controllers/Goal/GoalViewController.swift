@@ -51,6 +51,7 @@ final class GoalViewController: UIViewController {
         setupSimpleButton()
         setupTableView()
         setupStatisticsButton()
+        setObserver()
         
     }
     
@@ -407,6 +408,18 @@ private extension GoalViewController {
     
     func setupStatisticsButton() {
         statisticsButton.backgroundColor = .clear
+    }
+    
+    func setObserver() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(reloadLocalData),
+                                               name: .reloadLocalData,
+                                               object: nil)
+    }
+    
+    @objc
+    func reloadLocalData() {
+        tableView.reloadData()
     }
     
 }
