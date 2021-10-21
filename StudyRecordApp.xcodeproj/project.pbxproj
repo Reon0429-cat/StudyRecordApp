@@ -60,7 +60,6 @@
 		AB13EDE126C64EBB002F56FF /* CustomTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB13EDDF26C64EBB002F56FF /* CustomTitleTableViewCell.xib */; };
 		AB13EDE426C78DB4002F56FF /* ScreenTransitionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EDE226C78DB4002F56FF /* ScreenTransitionCollectionViewCell.swift */; };
 		AB13EDE526C78DB4002F56FF /* ScreenTransitionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB13EDE326C78DB4002F56FF /* ScreenTransitionCollectionViewCell.xib */; };
-		AB13EDE926C7C4C0002F56FF /* Top.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13EDE826C7C4C0002F56FF /* Top.storyboard */; };
 		AB13EDEB26C7C556002F56FF /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB13EDEA26C7C556002F56FF /* TopViewController.swift */; };
 		AB13EDF426C8BAAC002F56FF /* Goal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13EDF326C8BAAC002F56FF /* Goal.storyboard */; };
 		AB13EDF626C8BAB7002F56FF /* Graph.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB13EDF526C8BAB7002F56FF /* Graph.storyboard */; };
@@ -126,6 +125,7 @@
 		AB3BD6AB2721D4E40052CCA9 /* LocalLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3BD6AA2721D4E40052CCA9 /* LocalLanguage.swift */; };
 		AB3BD6AE2721DBF80052CCA9 /* AppVersionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3BD6AC2721DBF80052CCA9 /* AppVersionTableViewCell.swift */; };
 		AB3BD6AF2721DBF80052CCA9 /* AppVersionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB3BD6AD2721DBF80052CCA9 /* AppVersionTableViewCell.xib */; };
+		AB3BD6BA272203D40052CCA9 /* Top.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB3BD6BC272203D40052CCA9 /* Top.storyboard */; };
 		AB40A07C27209B62003E8030 /* Backup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB40A07B27209B62003E8030 /* Backup.storyboard */; };
 		AB40A07E27209B7E003E8030 /* BackupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40A07D27209B7E003E8030 /* BackupViewController.swift */; };
 		AB40A0CF272190EB003E8030 /* BackupUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40A0CE272190EB003E8030 /* BackupUseCase.swift */; };
@@ -624,7 +624,6 @@
 		AB13EDDF26C64EBB002F56FF /* CustomTitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTitleTableViewCell.xib; sourceTree = "<group>"; };
 		AB13EDE226C78DB4002F56FF /* ScreenTransitionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTransitionCollectionViewCell.swift; sourceTree = "<group>"; };
 		AB13EDE326C78DB4002F56FF /* ScreenTransitionCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScreenTransitionCollectionViewCell.xib; sourceTree = "<group>"; };
-		AB13EDE826C7C4C0002F56FF /* Top.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Top.storyboard; sourceTree = "<group>"; };
 		AB13EDEA26C7C556002F56FF /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		AB13EDF326C8BAAC002F56FF /* Goal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Goal.storyboard; sourceTree = "<group>"; };
 		AB13EDF526C8BAB7002F56FF /* Graph.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Graph.storyboard; sourceTree = "<group>"; };
@@ -690,6 +689,8 @@
 		AB3BD6AA2721D4E40052CCA9 /* LocalLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLanguage.swift; sourceTree = "<group>"; };
 		AB3BD6AC2721DBF80052CCA9 /* AppVersionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionTableViewCell.swift; sourceTree = "<group>"; };
 		AB3BD6AD2721DBF80052CCA9 /* AppVersionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppVersionTableViewCell.xib; sourceTree = "<group>"; };
+		AB3BD6B9272203100052CCA9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		AB3BD6BB272203D40052CCA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Top.storyboard; sourceTree = "<group>"; };
 		AB40A07B27209B62003E8030 /* Backup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Backup.storyboard; sourceTree = "<group>"; };
 		AB40A07D27209B7E003E8030 /* BackupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackupViewController.swift; sourceTree = "<group>"; };
 		AB40A0CE272190EB003E8030 /* BackupUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupUseCase.swift; sourceTree = "<group>"; };
@@ -1208,7 +1209,7 @@
 		AB13EDE726C7C4B7002F56FF /* Top */ = {
 			isa = PBXGroup;
 			children = (
-				AB13EDE826C7C4C0002F56FF /* Top.storyboard */,
+				AB3BD6BC272203D40052CCA9 /* Top.storyboard */,
 			);
 			path = Top;
 			sourceTree = "<group>";
@@ -1415,6 +1416,14 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
+		AB3BD6B12721FE240052CCA9 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				AB93C245266A234C00C3AE8F /* LaunchScreen.storyboard */,
+			);
+			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
 		AB4539B1271D6E9000CF1C04 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
@@ -1549,12 +1558,11 @@
 				AB93C25C266A5A2C00C3AE8F /* Controllers */,
 				AB93C2CB266C84CA00C3AE8F /* Extensions */,
 				AB4539B1271D6E9000CF1C04 /* Constants */,
-				AB0C76CE26EEA8C500BF5B64 /* Localizable.strings */,
 				AB93C23A266A234800C3AE8F /* AppDelegate.swift */,
 				AB93C23C266A234800C3AE8F /* SceneDelegate.swift */,
+				AB0C76CE26EEA8C500BF5B64 /* Localizable.strings */,
 				AB93C243266A234C00C3AE8F /* Assets.xcassets */,
 				ABBF3434271EB31C00CB3249 /* AppAlternateIcons */,
-				AB93C245266A234C00C3AE8F /* LaunchScreen.storyboard */,
 				AB93C248266A234C00C3AE8F /* Info.plist */,
 				ABCE16C9270994210014F618 /* InfoPlist.strings */,
 				AB8B704B26D600500069FF67 /* GoogleService-Info.plist */,
@@ -1590,6 +1598,7 @@
 		AB93C25B266A5A2800C3AE8F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AB3BD6B12721FE240052CCA9 /* LaunchScreen */,
 				AB16304D26CD68A200111F55 /* CustomViews */,
 				AB93C25D266A5A5E00C3AE8F /* Storyboards */,
 				AB93C25E266A5A6600C3AE8F /* Cells */,
@@ -2422,7 +2431,7 @@
 				ABBF36CA271EB36900CB3249 /* Red_Pink-Heart-Black@3x.png in Resources */,
 				ABBF35DD271EB36900CB3249 /* Green_Yellow-Heart-Black@3x.png in Resources */,
 				ABFAB15926DF86920095EC20 /* GoalPhotoTableViewCell.xib in Resources */,
-				AB13EDE926C7C4C0002F56FF /* Top.storyboard in Resources */,
+				AB3BD6BA272203D40052CCA9 /* Top.storyboard in Resources */,
 				ABBF36C3271EB36900CB3249 /* Blue_Yellow-Wings-Black.png in Resources */,
 				ABBF3622271EB36900CB3249 /* Blue_Purple-Wing-White@3x.png in Resources */,
 				ABBF36BF271EB36900CB3249 /* LightPink-Wings-Black@3x.png in Resources */,
@@ -2772,11 +2781,20 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
+		AB3BD6BC272203D40052CCA9 /* Top.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AB3BD6BB272203D40052CCA9 /* Base */,
+			);
+			name = Top.storyboard;
+			sourceTree = "<group>";
+		};
 		AB93C245266A234C00C3AE8F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				AB93C246266A234C00C3AE8F /* Base */,
 				AB0C76C926EEA8A600BF5B64 /* ja */,
+				AB3BD6B9272203100052CCA9 /* en */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -2917,6 +2935,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -2942,6 +2961,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 242KS3V77L;
