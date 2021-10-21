@@ -123,6 +123,7 @@
 		AB37278B270D9F94005DBAB3 /* StoryboardScenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB372789270D9F94005DBAB3 /* StoryboardScenes.swift */; };
 		AB37278D270DA181005DBAB3 /* SystemName.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB37278C270DA181005DBAB3 /* SystemName.swift */; };
 		AB372791270DCC2A005DBAB3 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB372790270DCC2A005DBAB3 /* RealmManager.swift */; };
+		AB3BD6AB2721D4E40052CCA9 /* LocalLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3BD6AA2721D4E40052CCA9 /* LocalLanguage.swift */; };
 		AB40A07C27209B62003E8030 /* Backup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB40A07B27209B62003E8030 /* Backup.storyboard */; };
 		AB40A07E27209B7E003E8030 /* BackupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40A07D27209B7E003E8030 /* BackupViewController.swift */; };
 		AB40A0CF272190EB003E8030 /* BackupUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40A0CE272190EB003E8030 /* BackupUseCase.swift */; };
@@ -684,6 +685,7 @@
 		AB372789270D9F94005DBAB3 /* StoryboardScenes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardScenes.swift; sourceTree = "<group>"; };
 		AB37278C270DA181005DBAB3 /* SystemName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemName.swift; sourceTree = "<group>"; };
 		AB372790270DCC2A005DBAB3 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		AB3BD6AA2721D4E40052CCA9 /* LocalLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLanguage.swift; sourceTree = "<group>"; };
 		AB40A07B27209B62003E8030 /* Backup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Backup.storyboard; sourceTree = "<group>"; };
 		AB40A07D27209B7E003E8030 /* BackupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackupViewController.swift; sourceTree = "<group>"; };
 		AB40A0CE272190EB003E8030 /* BackupUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupUseCase.swift; sourceTree = "<group>"; };
@@ -1392,7 +1394,7 @@
 			children = (
 				AB2B5BC326A2D36F009BD3C7 /* SettingViewController.swift */,
 				AB2B5BC426A2D36F009BD3C7 /* ThemeColorViewController.swift */,
-				AB2B5BC226A2D36F009BD3C7 /* ColorConceptViewController.swift */,
+				AB3BD6AA2721D4E40052CCA9 /* LocalLanguage.swift */,
 				AB2B5BC126A2D36F009BD3C7 /* ColorChoicesConceptViewController.swift */,
 				AB2B5BBF26A2D36F009BD3C7 /* ColorChoicesTileViewController.swift */,
 				AB2B5BC026A2D36F009BD3C7 /* ColorChoicesSliderViewController.swift */,
@@ -1558,6 +1560,7 @@
 		AB93C25A266A5A0D00C3AE8F /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				AB2B5BC226A2D36F009BD3C7 /* ColorConceptViewController.swift */,
 				ABFB3A5D2710247A00BC6D3F /* SortableViewControllerProtocol.swift */,
 				AB4539B2271D6F9400CF1C04 /* MailSender.swift */,
 				AB372782270D84C0005DBAB3 /* Month.swift */,
@@ -2634,6 +2637,7 @@
 				AB93C268266A7DFF00C3AE8F /* AdditionalStudyRecordViewController.swift in Sources */,
 				ABFAB20E26E638390095EC20 /* RealmGraphDataStore.swift in Sources */,
 				AB4539B9271D7D1500CF1C04 /* ReportThankYouView.swift in Sources */,
+				AB3BD6AB2721D4E40052CCA9 /* LocalLanguage.swift in Sources */,
 				AB2B5B9E26A2D1B7009BD3C7 /* NaturalConcept.swift in Sources */,
 				AB86A85C26D4915700EA990A /* HalfModalIndicatorView.swift in Sources */,
 				ABA0570126B50D1900E3DF01 /* GraphColorTileView.swift in Sources */,

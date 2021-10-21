@@ -10,5 +10,7 @@ import Foundation
 struct Constant {
     
     static let appName = "TaskR"
+    static let privacyPolicyJaWebPage = "https://Reon0429-cat.github.io/Reon0429.github.io/index.html"
+    static let privacyPolicyEnWebPage = "https://Reon0429-cat.github.io/Reon0429.github.io/index_en.html"
     
 }

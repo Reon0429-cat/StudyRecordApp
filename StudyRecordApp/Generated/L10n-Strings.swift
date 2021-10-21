@@ -287,7 +287,7 @@ internal enum L10n {
   internal static let pop = L10n.tr("Localizable", "pop")
   /// priority
   internal static let priority = L10n.tr("Localizable", "priority")
-  /// Privacy policy
+  /// Privacy Policy
   internal static let privacyPolicy = L10n.tr("Localizable", "privacyPolicy")
   /// Push Notification
   internal static let pushNotification = L10n.tr("Localizable", "pushNotification")

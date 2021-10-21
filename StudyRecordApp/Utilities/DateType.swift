@@ -29,20 +29,20 @@ enum DateType: Int, CaseIterable {
     func title(row: Int) -> String {
         switch self {
             case .year:
-                if Locale.current.languageCode == "ja" {
-                    return "\(self.numbers[row])" + L10n.year
+                switch Locale.language {
+                    case .ja: return "\(self.numbers[row])" + L10n.year
+                    case .en: return "\(self.numbers[row])"
                 }
-                return "\(self.numbers[row])"
             case .month:
-                if Locale.current.languageCode == "ja" {
-                    return "\(self.numbers[row])" + L10n.month
+                switch Locale.language {
+                    case .ja: return "\(self.numbers[row])" + L10n.month
+                    case .en: return "\(Month(rawValue: row)!.text.prefix(3))"
                 }
-                return "\(Month(rawValue: row)!.text.prefix(3))"
             case .day:
-                if Locale.current.languageCode == "ja" {
-                    return "\(self.numbers[row])" + L10n.day
+                switch Locale.language {
+                    case .ja: return "\(self.numbers[row])" + L10n.day
+                    case .en: return "\(self.numbers[row])"
                 }
-                return "\(self.numbers[row])"
             case .hour: return "\(self.numbers[row])" + L10n.shortHour
             case .minutes: return "\(self.numbers[row])" + L10n.shortMinute
         }

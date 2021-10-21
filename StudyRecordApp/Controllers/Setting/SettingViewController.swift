@@ -7,6 +7,7 @@
 
 import UIKit
 import StoreKit
+import SafariServices
 
 private enum SettingRowType: Int, CaseIterable {
     case themeColor
@@ -170,6 +171,19 @@ private extension SettingViewController {
         }
     }
     
+    func presentPrivacyPolicyWebPage() {
+        let urlString: String = {
+            switch Locale.language {
+                case .ja: return Constant.privacyPolicyJaWebPage
+                case .en: return Constant.privacyPolicyEnWebPage
+            }
+        }()
+        guard let url = URL(string: urlString) else { return }
+        let safariVC = SFSafariViewController(url: url)
+        safariVC.modalPresentationStyle = .fullScreen
+        present(safariVC, animated: true)
+    }
+    
 }
 
 // MARK: - UITableViewDelegate
@@ -210,7 +224,7 @@ extension SettingViewController: UITableViewDelegate {
                 present(BackupViewController.self,
                         modalPresentationStyle: .fullScreen)
             case .privacyPolicy:
-                break
+                presentPrivacyPolicyWebPage()
             case .logout:
                 break
         }
