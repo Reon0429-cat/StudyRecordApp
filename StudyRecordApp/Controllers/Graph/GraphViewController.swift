@@ -47,6 +47,7 @@ final class GraphViewController: UIViewController {
         delegate?.screenDidPresented(screenType: .graph,
                                      isEnabledNavigationButton: !recordUseCase.records.isEmpty)
         reloadRows()
+        
     }
     
 }
@@ -90,6 +91,10 @@ private extension GraphViewController {
                                                selector: #selector(changedThemeColor),
                                                name: .changedThemeColor,
                                                object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(reloadLocalData),
+                                               name: .reloadLocalData,
+                                               object: nil)
     }
     
     @objc
@@ -102,6 +107,11 @@ private extension GraphViewController {
     
     @objc
     func changedThemeColor() {
+        tableView.reloadData()
+    }
+    
+    @objc
+    func reloadLocalData() {
         tableView.reloadData()
     }
     

@@ -8,9 +8,9 @@
 import Foundation
 import RealmSwift
 
-struct RealmManager {
+final class RealmManager {
     
-    private let realm = try! Realm()
+    private var realm = try! Realm()
     
     func create<T: Object>(object: T) {
         try! realm.write {
@@ -80,6 +80,39 @@ struct RealmManager {
                 object.setValue(index, forKey: .order)
             }
             RealmManager().update(object: object)
+        }
+    }
+    
+    func backup(documentURL: URL) {
+        do {
+            realm.beginWrite()
+            try realm.writeCopy(toFile: documentURL)
+            realm.cancelWrite()
+        } catch {
+            print("DEBUG_PRINT: ", error.localizedDescription)
+        }
+    }
+    
+    func getRealmFileURL() -> URL? {
+        guard let fileURL = Realm.Configuration.defaultConfiguration.fileURL else {
+            print("DEBUG_PRINT: ",
+                  NSError(domain: "Realmのファイルパスが取得できませんでした。",
+                          code: -1,
+                          userInfo: nil)
+            )
+            return nil
+        }
+        return fileURL
+    }
+    
+    func updateRealm(fileURL: URL) {
+        do {
+            let configuration = Realm.Configuration(fileURL: fileURL)
+            Realm.Configuration.defaultConfiguration = configuration
+            let realm = try Realm(configuration: configuration)
+            self.realm = realm
+        } catch {
+            print("DEBUG_PRINT: ", error.localizedDescription)
         }
     }
     

@@ -39,6 +39,7 @@ final class StudyRecordViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
+        setObserver()
         
     }
     
@@ -47,7 +48,6 @@ final class StudyRecordViewController: UIViewController {
         
         delegate?.screenDidPresented(screenType: .record,
                                      isEnabledNavigationButton: !records.isEmpty)
-        tableView.reloadData()
         
     }
     
@@ -179,6 +179,18 @@ private extension StudyRecordViewController {
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
         }
+    }
+    
+    func setObserver() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(reloadLocalData),
+                                               name: .reloadLocalData,
+                                               object: nil)
+    }
+    
+    @objc
+    func reloadLocalData() {
+        tableView.reloadData()
     }
     
 }

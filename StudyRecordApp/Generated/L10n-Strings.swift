@@ -44,6 +44,12 @@ internal enum L10n {
   internal static let autumn = L10n.tr("Localizable", "autumn")
   /// Backup
   internal static let backup = L10n.tr("Localizable", "backup")
+  /// Outputs the recorded data to a text file.
+  /// Save the file to any location on iCloud Drive.
+  /// Be sure to make a backup when changing models.
+  internal static let backupDetail = L10n.tr("Localizable", "backupDetail")
+  /// Back up recorded data
+  internal static let backupTitle = L10n.tr("Localizable", "backupTitle")
   /// Bar
   internal static let bar = L10n.tr("Localizable", "Bar")
   /// Beautiful
@@ -234,8 +240,6 @@ internal enum L10n {
   internal static let natural = L10n.tr("Localizable", "natural")
   /// No
   internal static let no = L10n.tr("Localizable", "no")
-  /// normal
-  internal static let normal = L10n.tr("Localizable", "normal")
   /// Do not fill
   internal static let notFill = L10n.tr("Localizable", "notFill")
   /// November
@@ -305,6 +309,13 @@ internal enum L10n {
   /// The transmission is complete.
   /// We look forward to working with you in the future.
   internal static let reportThankYouTitle = L10n.tr("Localizable", "reportThankYouTitle")
+  /// Restore
+  internal static let restore = L10n.tr("Localizable", "restore")
+  /// You can read the backed up file and restore the recorded data.
+  /// Select the file you saved in iCloud Drive.
+  internal static let restoreDetail = L10n.tr("Localizable", "restoreDetail")
+  /// Restore recorded data
+  internal static let restoreTitle = L10n.tr("Localizable", "restoreTitle")
   /// Retro
   internal static let retro = L10n.tr("Localizable", "retro")
   /// save

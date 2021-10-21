@@ -38,6 +38,13 @@ internal enum StoryboardScene {
 
     internal static let appIconViewController = SceneType<StudyRecordApp.AppIconViewController>(storyboard: AppIcon.self, identifier: "AppIconViewController")
   }
+  internal enum Backup: StoryboardType {
+    internal static let storyboardName = "Backup"
+
+    internal static let initialScene = InitialSceneType<StudyRecordApp.BackupViewController>(storyboard: Backup.self)
+
+    internal static let backupViewController = SceneType<StudyRecordApp.BackupViewController>(storyboard: Backup.self, identifier: "BackupViewController")
+  }
   internal enum ColorChoicesConcept: StoryboardType {
     internal static let storyboardName = "ColorChoicesConcept"
 
