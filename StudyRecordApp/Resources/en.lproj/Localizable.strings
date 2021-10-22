@@ -157,7 +157,7 @@
 "pushNotification" = "Push Notification";
 "multilingual" = "Multilingual";
 "howToUseApp" = "How To Use App";
-"evaluationApp" = "Evaluation App";
+"evaluateApp" = "Evaluate App";
 "appIcon" = "App Icon";
 "language" = "Language";
 "shareApp" = "Share App";
@@ -247,7 +247,7 @@ Task Management App-TaskR";
 "doYouWantToMoveToTheSettingScreen" = "Do you want to move to the setting screen to change the language in this app?";
 "ifYouChangeTheLanguageOnTheSettingScreenAndOpenThisAppAgain" = "If you change the language on the setting screen and open this app again, the language change will be reflected.";
 "settings" = "settings";
-"" = "";
+"license" = "License";
 "" = "";
 "" = "";
 "" = "";

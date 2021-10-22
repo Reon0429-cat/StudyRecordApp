@@ -9,10 +9,14 @@ import UIKit
 
 final class AppVersionTableViewCell: UITableViewCell {
     
+    @IBOutlet private weak var myImageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
     
-    func configure(title: String, version: String) {
+    func configure(title: String,
+                   version: String,
+                   image: UIImage) {
+        myImageView.image = image
         titleLabel.text = title
         descriptionLabel.text = version
     }

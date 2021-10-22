@@ -154,6 +154,10 @@
 		AB4539B9271D7D1500CF1C04 /* ReportThankYouView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4539B8271D7D1500CF1C04 /* ReportThankYouView.swift */; };
 		AB4539BB271DC82600CF1C04 /* SampleAppIcon.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB4539BA271DC82600CF1C04 /* SampleAppIcon.storyboard */; };
 		AB4539BD271DC84600CF1C04 /* SampleAppIconViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4539BC271DC84600CF1C04 /* SampleAppIconViewController.swift */; };
+		AB46936E27236060007F1C66 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB46936C27236060007F1C66 /* SettingTableViewCell.swift */; };
+		AB46936F27236060007F1C66 /* SettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB46936D27236060007F1C66 /* SettingTableViewCell.xib */; };
+		AB46937227236B0F007F1C66 /* AppIconTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB46937027236B0F007F1C66 /* AppIconTableViewCell.swift */; };
+		AB46937327236B0F007F1C66 /* AppIconTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB46937127236B0F007F1C66 /* AppIconTableViewCell.xib */; };
 		AB4D6BBE2672099C00E5286E /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4D6BBD2672099C00E5286E /* UIButton+Extension.swift */; };
 		AB4F7C7C2719E0C8000A8D83 /* GoalStatistics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB4F7C7B2719E0C8000A8D83 /* GoalStatistics.storyboard */; };
 		AB4F7C7E2719E0E5000A8D83 /* GoalStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4F7C7D2719E0E5000A8D83 /* GoalStatisticsViewController.swift */; };
@@ -722,6 +726,10 @@
 		AB4539B8271D7D1500CF1C04 /* ReportThankYouView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportThankYouView.swift; sourceTree = "<group>"; };
 		AB4539BA271DC82600CF1C04 /* SampleAppIcon.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SampleAppIcon.storyboard; sourceTree = "<group>"; };
 		AB4539BC271DC84600CF1C04 /* SampleAppIconViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAppIconViewController.swift; sourceTree = "<group>"; };
+		AB46936C27236060007F1C66 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		AB46936D27236060007F1C66 /* SettingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingTableViewCell.xib; sourceTree = "<group>"; };
+		AB46937027236B0F007F1C66 /* AppIconTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconTableViewCell.swift; sourceTree = "<group>"; };
+		AB46937127236B0F007F1C66 /* AppIconTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppIconTableViewCell.xib; sourceTree = "<group>"; };
 		AB4D6BBD2672099C00E5286E /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		AB4F7C7B2719E0C8000A8D83 /* GoalStatistics.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoalStatistics.storyboard; sourceTree = "<group>"; };
 		AB4F7C7D2719E0E5000A8D83 /* GoalStatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalStatisticsViewController.swift; sourceTree = "<group>"; };
@@ -1600,6 +1608,10 @@
 				ABB7F846271F0D79003F928D /* AppIconCollectionReusableView.xib */,
 				AB3BD6AC2721DBF80052CCA9 /* AppVersionTableViewCell.swift */,
 				AB3BD6AD2721DBF80052CCA9 /* AppVersionTableViewCell.xib */,
+				AB46936C27236060007F1C66 /* SettingTableViewCell.swift */,
+				AB46936D27236060007F1C66 /* SettingTableViewCell.xib */,
+				AB46937027236B0F007F1C66 /* AppIconTableViewCell.swift */,
+				AB46937127236B0F007F1C66 /* AppIconTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -2355,6 +2367,7 @@
 				AB43980526DE1DD6008C8CA8 /* GoalTableViewCell.xib in Resources */,
 				AB13ED7E26BE7061002F56FF /* StudyRecordHistoryTableViewCell.xib in Resources */,
 				AB6D753B2722E750004AA0B5 /* Orange-Wing-Black@2x.png in Resources */,
+				AB46936F27236060007F1C66 /* SettingTableViewCell.xib in Resources */,
 				AB6D75F42722E751004AA0B5 /* Red_Blue-Wing-Black@2x.png in Resources */,
 				AB6D75A72722E750004AA0B5 /* Red-Wing-Black.png in Resources */,
 				AB6D75FF2722E751004AA0B5 /* Red_Blue-Heart-Black@2x.png in Resources */,
@@ -2563,6 +2576,7 @@
 				AB6D753A2722E750004AA0B5 /* Blue-Heart-White.png in Resources */,
 				AB6D75962722E750004AA0B5 /* Green-Heart-White.png in Resources */,
 				AB6D75A22722E750004AA0B5 /* LightPink-Wing-White@3x.png in Resources */,
+				AB46937327236B0F007F1C66 /* AppIconTableViewCell.xib in Resources */,
 				AB6D75DC2722E751004AA0B5 /* LightBlue-Wing-Black@2x.png in Resources */,
 				AB6D76402722E751004AA0B5 /* Pink-Wings-Black@2x.png in Resources */,
 				AB6D75562722E750004AA0B5 /* Pink-Wings-White@2x.png in Resources */,
@@ -2770,6 +2784,7 @@
 				AB43980826DE2D72008C8CA8 /* GoalPriorityTableViewCell.swift in Sources */,
 				AB13EDAF26BFAA62002F56FF /* StudyRecordSortViewController.swift in Sources */,
 				AB37278B270D9F94005DBAB3 /* StoryboardScenes.swift in Sources */,
+				AB46937227236B0F007F1C66 /* AppIconTableViewCell.swift in Sources */,
 				AB4397FF26DE141E008C8CA8 /* GoalRepository.swift in Sources */,
 				AB2B5BCA26A2D36F009BD3C7 /* ThemeColorViewController.swift in Sources */,
 				AB8B705926D6AD290069FF67 /* SignUpViewController.swift in Sources */,
@@ -2879,6 +2894,7 @@
 				ABB7F83F271EEBF5003F928D /* AppIconCollectionViewCell.swift in Sources */,
 				AB8B704E26D62F800069FF67 /* LoginViewController.swift in Sources */,
 				ABA056F626B4C7D800E3DF01 /* StudyRecordGraphColorTableViewCell.swift in Sources */,
+				AB46936E27236060007F1C66 /* SettingTableViewCell.swift in Sources */,
 				AB13ED4B26BB9155002F56FF /* RecordRepository.swift in Sources */,
 				AB40A0D12721913E003E8030 /* BackupRepository.swift in Sources */,
 				AB37278D270DA181005DBAB3 /* SystemName.swift in Sources */,

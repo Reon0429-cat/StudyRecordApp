@@ -13,31 +13,81 @@ private enum SettingRowType: Int, CaseIterable {
     case darkMode
     case passcode
     case language
-    case evaluationApp
+    case evaluateApp
     case appIcon
     case shareApp
     case reports
     case howToUseApp
     case backup
     case privacyPolicy
+    case license
     case version
     case logout
     
     var title: String {
         switch self {
-            case .themeColor: return L10n.themeColor
-            case .darkMode: return L10n.darkMode
-            case .passcode: return L10n.passcode
-            case .evaluationApp: return L10n.evaluationApp
-            case .appIcon: return L10n.appIcon
-            case .language: return L10n.language
-            case .shareApp: return L10n.shareApp
-            case .reports: return L10n.reports
-            case .howToUseApp: return L10n.howToUseApp
-            case .backup: return L10n.backup
-            case .privacyPolicy: return L10n.privacyPolicy
-            case .version: return L10n.version
-            case .logout: return L10n.logout
+            case .themeColor:
+                return L10n.themeColor
+            case .darkMode:
+                return L10n.darkMode
+            case .passcode:
+                return L10n.passcode
+            case .evaluateApp:
+                return L10n.evaluateApp
+            case .appIcon:
+                return L10n.appIcon
+            case .language:
+                return L10n.language
+            case .shareApp:
+                return L10n.shareApp
+            case .reports:
+                return L10n.reports
+            case .howToUseApp:
+                return L10n.howToUseApp
+            case .backup:
+                return L10n.backup
+            case .privacyPolicy:
+                return L10n.privacyPolicy
+            case .license:
+                return L10n.license
+            case .version:
+                return L10n.version
+            case .logout:
+                return L10n.logout
+        }
+    }
+    
+    var image: UIImage {
+        switch self {
+            case .themeColor:
+                return UIImage(systemName: .paintPaletteFill)
+            case .darkMode:
+                return UIImage(systemName: .circleRightHalfFilled)
+            case .passcode:
+                return UIImage(systemName: .keyFill)
+            case .evaluateApp:
+                return UIImage(systemName: .starFill)
+            case .appIcon:
+                let iconName = UserDefaults.standard.string(forKey: "IconName")
+                return UIImage(named: iconName ?? "wings")!
+            case .language:
+                return UIImage(systemName: .globe)
+            case .shareApp:
+                return UIImage(systemName: .squareAndArrowUp)
+            case .reports:
+                return UIImage(systemName: .docText)
+            case .howToUseApp:
+                return UIImage(systemName: .circleHexagongridFill)
+            case .backup:
+                return UIImage(systemName: .icloudAndArrowUp)
+            case .privacyPolicy:
+                return UIImage(systemName: .lockDoc)
+            case .license:
+                return UIImage(systemName: .personTextRectangle)
+            case .version:
+                return UIImage(systemName: .checkerboardShield)
+            case .logout:
+                return UIImage()
         }
     }
 }
@@ -216,7 +266,7 @@ extension SettingViewController: UITableViewDelegate {
                 present(PasscodeSettingViewController.self) { vc in
                     self.halfModalPresenter.viewController = vc
                 }
-            case .evaluationApp:
+            case .evaluateApp:
                 requestReview()
             case .appIcon:
                 present(AppIconViewController.self,
@@ -237,6 +287,8 @@ extension SettingViewController: UITableViewDelegate {
                         modalPresentationStyle: .fullScreen)
             case .privacyPolicy:
                 presentPrivacyPolicyWebPage()
+            case .license:
+                break
             case .version:
                 break
             case .logout:
@@ -295,11 +347,18 @@ extension SettingViewController: UITableViewDataSource {
             case .version:
                 let cell = tableView.dequeueReusableCustomCell(with: AppVersionTableViewCell.self)
                 cell.configure(title: rowType.title,
-                               version: Constant.appVersion)
+                               version: Constant.appVersion,
+                               image: rowType.image.setColor(.mainColor ?? .black))
+                return cell
+            case .appIcon:
+                let cell = tableView.dequeueReusableCustomCell(with: AppIconTableViewCell.self)
+                cell.configure(title: rowType.title,
+                               image: rowType.image.setColor(.mainColor ?? .black))
                 return cell
             default:
-                let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
-                cell.configure(titleText: rowType.title)
+                let cell = tableView.dequeueReusableCustomCell(with: SettingTableViewCell.self)
+                cell.configure(title: rowType.title,
+                               image: rowType.image.setColor(.mainColor ?? .black))
                 return cell
         }
     }
@@ -321,9 +380,10 @@ private extension SettingViewController {
     func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.registerCustomCell(CustomTitleTableViewCell.self)
+        tableView.registerCustomCell(SettingTableViewCell.self)
         tableView.registerCustomCell(CustomButtonTableViewCell.self)
         tableView.registerCustomCell(AppVersionTableViewCell.self)
+        tableView.registerCustomCell(AppIconTableViewCell.self)
         tableView.tableFooterView = UIView()
         tableView.rowHeight = UITableView.automaticDimension
         if #available(iOS 15.0, *) {

@@ -30,6 +30,19 @@ enum SystemName: String {
     case flag
     case trash
     case flagSlash = "flag.slash"
+    
+    case paintPaletteFill = "paintpalette.fill"
+    case circleRightHalfFilled = "circle.righthalf.filled"
+    case keyFill = "key.fill"
+    case globe = "globe"
+    case starFill = "star.fill"
+    case squareAndArrowUp = "square.and.arrow.up"
+    case docText = "doc.text"
+    case circleHexagongridFill = "circle.hexagongrid.fill"
+    case icloudAndArrowUp = "icloud.and.arrow.up"
+    case lockDoc = "lock.doc"
+    case personTextRectangle = "person.text.rectangle"
+    case checkerboardShield = "checkerboard.shield"
 }
 
 extension UIImage {

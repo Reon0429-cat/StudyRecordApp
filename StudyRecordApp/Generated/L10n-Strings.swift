@@ -134,8 +134,8 @@ internal enum L10n {
   internal static let edit = L10n.tr("Localizable", "edit")
   /// Elegant
   internal static let elegant = L10n.tr("Localizable", "elegant")
-  /// Evaluation App
-  internal static let evaluationApp = L10n.tr("Localizable", "evaluationApp")
+  /// Evaluate App
+  internal static let evaluateApp = L10n.tr("Localizable", "evaluateApp")
   /// Failed to send.
   internal static let failedToSend = L10n.tr("Localizable", "failedToSend.")
   /// February
@@ -206,6 +206,8 @@ internal enum L10n {
   internal static let largeSort = L10n.tr("Localizable", "largeSort")
   /// Title
   internal static let largeTitle = L10n.tr("Localizable", "largeTitle")
+  /// License
+  internal static let license = L10n.tr("Localizable", "license")
   /// Line
   internal static let line = L10n.tr("Localizable", "Line")
   /// Living

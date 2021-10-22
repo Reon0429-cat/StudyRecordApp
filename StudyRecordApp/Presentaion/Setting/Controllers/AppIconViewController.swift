@@ -25,8 +25,8 @@ private enum IconBackground: Int, CaseIterable {
 }
 
 private enum IconType: Int, CaseIterable {
-    case wing
     case wings
+    case wing
     case heartWings
     var image: UIImage {
         switch self {
@@ -154,6 +154,17 @@ extension AppIconViewController: UICollectionViewDelegate {
                 let name = mixedImageAssets[indexPath.item].name
                 changeIcon(name: name)
         }
+        
+        let index = iconTypeSegmentedControl.selectedSegmentIndex
+        let imageName: String = {
+            let iconType = IconType(rawValue: index) ?? .wings
+            switch iconType {
+                case .wing: return Asset.wing.name
+                case .wings: return Asset.wings.name
+                case .heartWings: return Asset.heartWings.name
+            }
+        }()
+        UserDefaults.standard.set(imageName, forKey: "IconName")
     }
     
 }
