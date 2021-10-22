@@ -245,9 +245,9 @@ iCloud Driveに保存したファイルを選択してください。";
 "appShareDescription" = "おすすめのタスク管理アプリです！
 毎日のやることを簡単操作、豊富なカスタマイズ機能搭載で楽しく管理できます！
 「タスク管理アプリ - TaskR(タスクル)」";
-"" = "";
-"" = "";
-"" = "";
+"doYouWantToMoveToTheSettingScreen" = "このアプリ内の言語を変更するために、設定画面に遷移しますか。";
+"ifYouChangeTheLanguageOnTheSettingScreenAndOpenThisAppAgain" = "設定画面で言語を変更し、再度このアプリを開くと言語の変更が反映されます。";
+"settings" = "設定";
 "" = "";
 "" = "";
 "" = "";

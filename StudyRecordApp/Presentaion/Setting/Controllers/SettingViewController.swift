@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import StoreKit
 import SafariServices
 
 private enum SettingRowType: Int, CaseIterable {
@@ -167,9 +166,7 @@ private extension SettingViewController {
     }
     
     func requestReview() {
-        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-            SKStoreReviewController.requestReview(in: scene)
-        }
+        // MARK: - ToDo App Storeに遷移する
     }
     
     func presentPrivacyPolicyWebPage() {
@@ -183,6 +180,20 @@ private extension SettingViewController {
         let safariVC = SFSafariViewController(url: url)
         safariVC.modalPresentationStyle = .fullScreen
         present(safariVC, animated: true)
+    }
+    
+    func presentOpenIPhoneSettingsAlert() {
+        let title = L10n.doYouWantToMoveToTheSettingScreen
+        let message = L10n.ifYouChangeTheLanguageOnTheSettingScreenAndOpenThisAppAgain
+        let alert = Alert.create(title: title,
+                                 message: message)
+            .addAction(title: L10n.close)
+            .addAction(title: L10n.settings) {
+                let settingsURLString = UIApplication.openSettingsURLString
+                guard let url = URL(string: settingsURLString) else { return }
+                UIApplication.shared.open(url)
+            }
+        present(alert, animated: true)
     }
     
 }
@@ -211,7 +222,7 @@ extension SettingViewController: UITableViewDelegate {
                 present(AppIconViewController.self,
                         modalPresentationStyle: .fullScreen)
             case .language:
-                break
+                presentOpenIPhoneSettingsAlert()
             case .shareApp:
                 presentActivityVC()
             case .reports:

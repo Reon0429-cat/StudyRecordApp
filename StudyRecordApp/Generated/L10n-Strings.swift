@@ -124,6 +124,8 @@ internal enum L10n {
   internal static let doYouWantToCloseWithoutSaving = L10n.tr("Localizable", "doYouWantToCloseWithoutSaving")
   /// Do you want to discard your edits?
   internal static let doYouWantToDiscardYourEdits = L10n.tr("Localizable", "doYouWantToDiscardYourEdits")
+  /// Do you want to move to the setting screen to change the language in this app?
+  internal static let doYouWantToMoveToTheSettingScreen = L10n.tr("Localizable", "doYouWantToMoveToTheSettingScreen")
   /// Do you want to send with this content?
   internal static let doYouWantToSendWithThisContent = L10n.tr("Localizable", "doYouWantToSendWithThisContent?")
   /// Due Date
@@ -166,6 +168,8 @@ internal enum L10n {
   internal static let hour = L10n.tr("Localizable", "hour")
   /// How To Use App
   internal static let howToUseApp = L10n.tr("Localizable", "howToUseApp")
+  /// If you change the language on the setting screen and open this app again, the language change will be reflected.
+  internal static let ifYouChangeTheLanguageOnTheSettingScreenAndOpenThisAppAgain = L10n.tr("Localizable", "ifYouChangeTheLanguageOnTheSettingScreenAndOpenThisAppAgain")
   /// Intelligence
   internal static let intelligence = L10n.tr("Localizable", "intelligence")
   /// January
@@ -336,6 +340,8 @@ internal enum L10n {
   internal static let service = L10n.tr("Localizable", "service")
   /// Setting
   internal static let setting = L10n.tr("Localizable", "setting")
+  /// settings
+  internal static let settings = L10n.tr("Localizable", "settings")
   /// Share App
   internal static let shareApp = L10n.tr("Localizable", "shareApp")
   /// Shop

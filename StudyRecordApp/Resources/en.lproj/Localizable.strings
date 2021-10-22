@@ -244,9 +244,9 @@ Select the file you saved in iCloud Drive.";
 "appShareDescription" = "Recommended task management app!
 Easy operation of daily activities and abundant customization functions make it fun to manage!
 Task Management App-TaskR";
-"" = "";
-"" = "";
-"" = "";
+"doYouWantToMoveToTheSettingScreen" = "Do you want to move to the setting screen to change the language in this app?";
+"ifYouChangeTheLanguageOnTheSettingScreenAndOpenThisAppAgain" = "If you change the language on the setting screen and open this app again, the language change will be reflected.";
+"settings" = "settings";
 "" = "";
 "" = "";
 "" = "";
