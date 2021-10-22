@@ -13,9 +13,9 @@ private enum SettingRowType: Int, CaseIterable {
     case themeColor
     case darkMode
     case passcode
+    case language
     case evaluationApp
     case appIcon
-    case language
     case shareApp
     case reports
     case howToUseApp
@@ -220,7 +220,7 @@ extension SettingViewController: UITableViewDelegate {
                     vc.delegate = self
                 }
             case .howToUseApp:
-                break
+                present(HowToUseViewController.self)
             case .backup:
                 present(BackupViewController.self,
                         modalPresentationStyle: .fullScreen)
