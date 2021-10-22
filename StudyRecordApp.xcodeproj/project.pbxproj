@@ -531,6 +531,7 @@
 		AB93C2BD266BABA900C3AE8F /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C2BC266BABA900C3AE8F /* Record.swift */; };
 		AB93C2C3266BC28E00C3AE8F /* EditStudyRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C2C2266BC28E00C3AE8F /* EditStudyRecordViewController.swift */; };
 		AB93C2C5266BC2D600C3AE8F /* EditStudyRecord.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB93C2C4266BC2D600C3AE8F /* EditStudyRecord.storyboard */; };
+		AB9898B12723863700498F0D /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AB9898B02723863700498F0D /* Settings.bundle */; };
 		AB9B4FD626D771C5001A7BAB /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9B4FD526D771C5001A7BAB /* UITextField+Extension.swift */; };
 		AB9F30F527140DCE008A79A5 /* GoalSimpleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9F30F327140DCE008A79A5 /* GoalSimpleTableViewCell.swift */; };
 		AB9F30F627140DCE008A79A5 /* GoalSimpleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB9F30F427140DCE008A79A5 /* GoalSimpleTableViewCell.xib */; };
@@ -1107,6 +1108,7 @@
 		AB93C2BC266BABA900C3AE8F /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		AB93C2C2266BC28E00C3AE8F /* EditStudyRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStudyRecordViewController.swift; sourceTree = "<group>"; };
 		AB93C2C4266BC2D600C3AE8F /* EditStudyRecord.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditStudyRecord.storyboard; sourceTree = "<group>"; };
+		AB9898B02723863700498F0D /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = StudyRecordApp/Settings.bundle; sourceTree = "<group>"; };
 		AB9B4FD526D771C5001A7BAB /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		AB9F30F327140DCE008A79A5 /* GoalSimpleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSimpleTableViewCell.swift; sourceTree = "<group>"; };
 		AB9F30F427140DCE008A79A5 /* GoalSimpleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoalSimpleTableViewCell.xib; sourceTree = "<group>"; };
@@ -2136,6 +2138,7 @@
 				AB93C238266A234800C3AE8F /* Products */,
 				6ED773C562BE78F875EC7183 /* Pods */,
 				E3EAB4061749707E9B01C0B2 /* Frameworks */,
+				AB9898B02723863700498F0D /* Settings.bundle */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2314,6 +2317,7 @@
 				AB13EDB526BFAB8B002F56FF /* StudyRecordSortTableViewCell.xib in Resources */,
 				AB6D75B02722E750004AA0B5 /* Red-Wings-White@2x.png in Resources */,
 				AB6D76192722E751004AA0B5 /* Black-Wing-White@3x.png in Resources */,
+				AB9898B12723863700498F0D /* Settings.bundle in Resources */,
 				AB6D75552722E750004AA0B5 /* Pink_Green-Wing-Black.png in Resources */,
 				AB6D75942722E750004AA0B5 /* BlueGreen_LightBlue-Wings-White@2x.png in Resources */,
 				AB93C251266A27B900C3AE8F /* StudyRecord.storyboard in Resources */,
@@ -2755,7 +2759,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\nif which swiftlint >/dev/null; then swiftlint\nfi\n\n$PODS_ROOT/SwiftGen/bin/swiftgen config run --config $SRCROOT/swiftgen.yml\n";
+			shellScript = "\nif which swiftlint >/dev/null; then swiftlint\nfi\n\n$PODS_ROOT/SwiftGen/bin/swiftgen config run --config $SRCROOT/swiftgen.yml\n\nif [ $CONFIGURATION = \"Debug\" ]; then\n${PODS_ROOT}/LicensePlist/license-plist --output-path $PRODUCT_NAME/Settings.bundle --github-token YOUR_GITHUB_TOKEN\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

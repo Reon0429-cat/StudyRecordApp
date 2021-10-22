@@ -16,6 +16,7 @@ target 'StudyRecordApp' do
    pod 'Firebase/Crashlytics' 
    pod 'SwiftGen'
    pod 'mailcore2-ios'
+   pod 'LicensePlist'
    
 end
 

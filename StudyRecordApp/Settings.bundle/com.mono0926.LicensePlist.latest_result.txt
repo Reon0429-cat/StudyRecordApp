@@ -1,0 +1,133 @@
+name: abseil, nameSpecified: 
+body: 
+                   …
+version: 0.20200225.0
+
+name: BoringSSL-GRPC, nameSpecified: 
+body: BoringSSL is a fork …
+version: 0.0.7
+
+name: Firebase, nameSpecified: 
+body: 
+                   …
+version: 8.8.0
+
+name: FirebaseAnalytics, nameSpecified: 
+body: Copyright 2021 Googl…
+version: 8.8.0
+
+name: FirebaseAuth, nameSpecified: 
+body: 
+                   …
+version: 8.8.0
+
+name: FirebaseCore, nameSpecified: 
+body: 
+                   …
+version: 8.8.0
+
+name: FirebaseCoreDiagnostics, nameSpecified: 
+body: 
+                   …
+version: 8.8.0
+
+name: FirebaseCrashlytics, nameSpecified: 
+body: 
+                   …
+version: 8.8.0
+
+name: FirebaseFirestore, nameSpecified: 
+body: 
+                   …
+version: 8.8.0
+
+name: FirebaseInstallations, nameSpecified: 
+body: 
+                   …
+version: 8.8.0
+
+name: GoogleAppMeasurement, nameSpecified: 
+body: Copyright 2021 Googl…
+version: 8.8.0
+
+name: GoogleDataTransport, nameSpecified: 
+body: 
+                   …
+version: 9.1.2
+
+name: GoogleUtilities, nameSpecified: 
+body: 
+                   …
+version: 7.6.0
+
+name: gRPC-C++, nameSpecified: 
+body: 
+                   …
+version: 
+
+name: gRPC-Core, nameSpecified: 
+body: 
+                   …
+version: 1.28.2
+
+name: GTMSessionFetcher, nameSpecified: 
+body: 
+                   …
+version: 1.7.0
+
+name: leveldb-library, nameSpecified: 
+body: Copyright (c) 2011 T…
+version: 1.22.1
+
+name: LicensePlist, nameSpecified: 
+body: MIT License
+
+Copyrig…
+version: 3.14.4
+
+name: mailcore2-ios, nameSpecified: 
+body: <html><body>You are …
+version: 0.6.4
+
+name: nanopb, nameSpecified: 
+body: Copyright (c) 2011 P…
+version: 2.30908.0
+
+name: PKHUD, nameSpecified: 
+body: The MIT License (MIT…
+version: 5.3.0
+
+name: PromisesObjC, nameSpecified: 
+body: 
+                   …
+version: 2.0.0
+
+name: ReachabilitySwift, nameSpecified: 
+body: Copyright (c) 2016 A…
+version: 5.0.0
+
+name: Realm, nameSpecified: 
+body: TABLE OF CONTENTS
+
+1…
+version: 10.17.0
+
+name: RealmSwift, nameSpecified: 
+body: TABLE OF CONTENTS
+
+1…
+version: 10.17.0
+
+name: ScrollableGraphView, nameSpecified: 
+body: The MIT License (MIT…
+version: 4.0.6
+
+name: SwiftGen, nameSpecified: 
+body: MIT Licence
+
+Copyrig…
+version: 6.5.1
+
+add-version-numbers: false
+
+LicensePlist Version: 3.14.4

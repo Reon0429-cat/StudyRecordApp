@@ -486,6 +486,7 @@ PODS:
   - gRPC-Core/Interface (1.28.2)
   - GTMSessionFetcher/Core (1.7.0)
   - leveldb-library (1.22.1)
+  - LicensePlist (3.14.4)
   - mailcore2-ios (0.6.4)
   - nanopb (2.30908.0):
     - nanopb/decode (= 2.30908.0)
@@ -508,6 +509,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Crashlytics
   - Firebase/Firestore
+  - LicensePlist
   - mailcore2-ios
   - PKHUD (~> 5.0)
   - ReachabilitySwift
@@ -534,6 +536,7 @@ SPEC REPOS:
     - gRPC-Core
     - GTMSessionFetcher
     - leveldb-library
+    - LicensePlist
     - mailcore2-ios
     - nanopb
     - PKHUD
@@ -562,6 +565,7 @@ SPEC CHECKSUMS:
   gRPC-Core: 4afa11bfbedf7cdecd04de535a9e046893404ed5
   GTMSessionFetcher: 43748f93435c2aa068b1cbe39655aaf600652e91
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
+  LicensePlist: 7cf61d222446422aacd4e3526989e8394dd4bea0
   mailcore2-ios: 3ff0be2fa553d4da9c11d39c11d51863c768f24f
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
@@ -572,6 +576,6 @@ SPEC CHECKSUMS:
   ScrollableGraphView: 4af35d4ea9ecdec665d34a74da51da161ddff8ac
   SwiftGen: a6d22010845f08fe18fbdf3a07a8e380fd22e0ea
 
-PODFILE CHECKSUM: 60f25c3ade9d3b5e9f630d10efb746acd2a73035
+PODFILE CHECKSUM: d6211ef0d2ec7638fe71415c3d56dc30dc50fef5
 
 COCOAPODS: 1.10.2
