@@ -58,15 +58,23 @@ private extension GoalStatisticsTableViewCell {
     }
     
     func setupAchievementScoreLabel(category: Category) {
-        let achievedCount = category.goals.filter { $0.isChecked }.count
-        let achievedCountAsPercentage = Int(Double(achievedCount) / Double(category.goals.count) * 100)
-        achievementScoreLabel.text = "\(achievedCount) (\(achievedCountAsPercentage)%)"
+        if category.goals.isEmpty {
+            achievementScoreLabel.text = "---"
+        } else {
+            let achievedCount = category.goals.filter { $0.isChecked }.count
+            let achievedCountAsPercentage = Int(Double(achievedCount) / Double(category.goals.count) * 100)
+            achievementScoreLabel.text = "\(achievedCount) (\(achievedCountAsPercentage)%)"
+        }
     }
     
     func setupUnarchivementScoreLabel(category: Category) {
-        let unarchievedCount = category.goals.filter { !$0.isChecked }.count
-        let unarchievedCountAsPercentage = Int(Double(unarchievedCount) / Double(category.goals.count) * 100)
-        unarchievementScoreLabel.text = "\(unarchievedCount) (\(unarchievedCountAsPercentage)%)"
+        if category.goals.isEmpty {
+            unarchievementScoreLabel.text = "---"
+        } else {
+            let unarchievedCount = category.goals.filter { !$0.isChecked }.count
+            let unarchievedCountAsPercentage = Int(Double(unarchievedCount) / Double(category.goals.count) * 100)
+            unarchievementScoreLabel.text = "\(unarchievedCount) (\(unarchievedCountAsPercentage)%)"
+        }
     }
     
     func setupStarPriorityLabel(category: Category) {
