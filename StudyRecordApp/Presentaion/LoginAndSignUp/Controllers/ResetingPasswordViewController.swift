@@ -108,7 +108,6 @@ private extension ResetingPasswordViewController {
     func setupMailAddressTextField() {
         mailAddressTextField.delegate = self
         mailAddressTextField.keyboardType = .emailAddress
-        mailAddressTextField.setUnderLine()
     }
     
     func setupTitleLabel() {

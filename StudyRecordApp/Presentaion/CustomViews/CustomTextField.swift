@@ -26,7 +26,9 @@ final class CustomTextField: UITextField {
     func setup() {
         tintColor = .dynamicColor(light: .black,
                                   dark: .white)
-        setUnderLine()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.setUnderLine()
+        }
     }
     
 }

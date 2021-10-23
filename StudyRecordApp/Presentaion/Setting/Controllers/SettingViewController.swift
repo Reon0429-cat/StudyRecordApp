@@ -286,8 +286,14 @@ extension SettingViewController: UITableViewDelegate {
             case .howToUseApp:
                 present(HowToUseViewController.self)
             case .backup:
-                present(BackupViewController.self,
-                        modalPresentationStyle: .fullScreen)
+                if userUseCase.isLoggedInAsAnonymously {
+                    let alert = Alert.create(message: L10n.onlyAvailableNotAnonymousUser)
+                        .addAction(title: L10n.close)
+                    present(alert, animated: true)
+                } else {
+                    present(BackupViewController.self,
+                            modalPresentationStyle: .fullScreen)
+                }
             case .privacyPolicy:
                 presentPrivacyPolicyWebPage()
             case .license:
