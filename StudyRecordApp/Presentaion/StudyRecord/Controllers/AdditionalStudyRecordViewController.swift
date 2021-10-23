@@ -65,9 +65,8 @@ private extension AdditionalStudyRecordViewController {
     }
     
     func showAlert() {
-        let alert = Alert.create(title: L10n.doYouWantToCloseWithoutSaving)
-            .addAction(title: L10n.close,
-                       style: .destructive) {
+        let alert = Alert.create(message: L10n.doYouWantToCloseWithoutSaving)
+            .addAction(title: L10n.close) {
                 self.dismiss(animated: true)
             }
             .addAction(title: L10n.save) {
@@ -84,8 +83,7 @@ private extension AdditionalStudyRecordViewController {
                 textField.text = self.inputtedTitle
                 textField.delegate = self
             }
-            .addAction(title: L10n.close,
-                       style: .destructive) {
+            .addAction(title: L10n.close) {
                 self.inputtedTitle = self.oldInputtedTitle
             }
             .addAction(title: L10n.add) {

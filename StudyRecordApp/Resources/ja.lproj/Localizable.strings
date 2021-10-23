@@ -77,6 +77,7 @@
 "largeSort" = "並び替え";
 "sort" = "並び替え";
 "largeDiscard" = "破棄する";
+"discard" = "破棄する";
 "recordTime" = "時間を記録する";
 "largeSend" = "送信";
 "send" = "送信";

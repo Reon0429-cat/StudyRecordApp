@@ -30,11 +30,10 @@ final class CategoryKeyboardView: UIView {
     }
     
     private func setup() {
-        backgroundColor = .dynamicColor(light: .white,
-                                        dark: .secondarySystemGroupedBackground)
+        backgroundColor = .secondarySystemGroupedBackground
         
         let categoryButton = UIButton()
-        categoryButton.setTitle(L10n.category + " >")
+        categoryButton.setTitle(L10n.largeCategory + " >")
         categoryButton.titleLabel?.font = .systemFont(ofSize: 20)
         categoryButton.addTarget(self,
                                  action: #selector(categoryButtonDidTapped),

@@ -136,7 +136,7 @@ final class SettingViewController: UIViewController {
 private extension SettingViewController {
     
     func presentLogoutAlert() {
-        let alert = Alert.create(title: L10n.areYouSureYouWantToLogOut)
+        let alert = Alert.create(message: L10n.areYouSureYouWantToLogOut)
             .addAction(title: L10n.logout,
                        style: .destructive) {
                 self.indicator.show(.progress)
@@ -167,7 +167,7 @@ private extension SettingViewController {
     }
     
     func presentThemeColorActionSheet() {
-        let alert = Alert.create(preferredStyle: .alert)
+        let alert = Alert.create(preferredStyle: .actionSheet)
             .addAction(title: L10n.default) {
                 self.presentDefaultAlert()
             }
@@ -183,8 +183,7 @@ private extension SettingViewController {
                 self.present(ColorConceptViewController.self,
                              modalPresentationStyle: .fullScreen)
             }
-            .addAction(title: L10n.close,
-                       style: .destructive)
+            .addAction(title: L10n.close, style: .cancel)
         present(alert, animated: true)
     }
     
@@ -235,10 +234,9 @@ private extension SettingViewController {
     func presentOpenIPhoneSettingsAlert() {
         let title = L10n.doYouWantToMoveToTheSettingScreen
         let message = L10n.ifYouChangeTheLanguageOnTheSettingScreenAndOpenThisAppAgain
-        let alert = Alert.create(title: title,
-                                 message: message)
-            .addAction(title: L10n.close)
-            .addAction(title: L10n.settings) {
+        let alert = Alert.create(message: title + "\n" + message)
+            .addAction(title: L10n.no)
+            .addAction(title: L10n.yes) {
                 self.openSettings()
             }
         present(alert, animated: true)

@@ -112,6 +112,8 @@ internal enum L10n {
   internal static let deletePhoto = L10n.tr("Localizable", "deletePhoto")
   /// Digital
   internal static let digital = L10n.tr("Localizable", "digital")
+  /// discard
+  internal static let discard = L10n.tr("Localizable", "discard")
   /// Dot
   internal static let dot = L10n.tr("Localizable", "Dot")
   /// Do you really want to delete this?

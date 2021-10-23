@@ -7,8 +7,6 @@
 
 import UIKit
 
-// MARK: - ToDo 全てのアラートをボタンの位置などを修正する
-
 final class TopViewController: UIViewController {
     
     @IBOutlet private weak var titleLabel: UILabel!

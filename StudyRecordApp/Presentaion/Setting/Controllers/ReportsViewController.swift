@@ -51,7 +51,7 @@ final class ReportsViewController: UIViewController {
 private extension ReportsViewController {
     
     @IBAction func sendButtonDidTapped(_ sender: Any) {
-        let alert = Alert.create(title: L10n.doYouWantToSendWithThisContent)
+        let alert = Alert.create(message: L10n.doYouWantToSendWithThisContent)
             .addAction(title: L10n.close)
             .addAction(title: L10n.send) {
                 self.sendReportsToMail()

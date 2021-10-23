@@ -290,15 +290,15 @@ extension GoalViewController: GoalHeaderViewDelegate {
     func editButtonDidTapped(convertedSection: Int) {
         let category = categories[convertedSection]
         var _textField = UITextField()
-        let alert = Alert.create(title: L10n.largeTitle, preferredStyle: .alert)
+        let alert = Alert.create(title: L10n.largeTitle)
             .setTextField { textField in
                 textField.tintColor = .dynamicColor(light: .black, dark: .white)
                 let isUncategorized = (category.title == L10n.uncategorized)
                 textField.text = isUncategorized ? "" : category.title
                 _textField = textField
             }
-            .addAction(title: L10n.close, style: .destructive)
-            .addAction(title: L10n.edit, style: .default) {
+            .addAction(title: L10n.close)
+            .addAction(title: L10n.edit) {
                 guard let text = _textField.text else { return }
                 let categoryTitle = text.isEmpty ? L10n.uncategorized : text
                 let newCategory = Category(category: category, title: categoryTitle)

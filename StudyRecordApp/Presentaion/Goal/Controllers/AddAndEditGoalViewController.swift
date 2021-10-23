@@ -113,8 +113,7 @@ private extension AddAndEditGoalViewController {
                 textField.tag = rowType.rawValue
                 textField.delegate = self
             }
-            .addAction(title: L10n.close,
-                       style: .destructive) {
+            .addAction(title: L10n.close) {
                 self.inputtedTitle = self.oldInputtedTitle
             }
             .addAction(title: L10n.add) {
@@ -140,8 +139,7 @@ private extension AddAndEditGoalViewController {
                     textField.inputAccessoryView = keyboardView
                 }
             }
-            .addAction(title: L10n.close,
-                       style: .destructive) {
+            .addAction(title: L10n.close) {
                 self.inputtedCategoryTitle = self.oldInputtedCategoryTitle
             }
             .addAction(title: L10n.add) {

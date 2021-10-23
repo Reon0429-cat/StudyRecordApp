@@ -37,7 +37,8 @@ final class PasscodeViewController: UIViewController {
         )
     )
     private var shouldPresentBiometrics: Bool {
-        settingUseCase.setting.isBiometricsSetted && passcodeMode != .create
+        settingUseCase.setting.isBiometricsSetted
+        && passcodeMode == .certification
     }
     var passcodeMode: PasscodeMode = .create
     
@@ -202,8 +203,7 @@ private extension PasscodeViewController {
                                  message: message)
             .addAction(title: L10n.close,
                        style: .destructive)
-            .addAction(title: L10n.allow,
-                       style: .default) {
+            .addAction(title: L10n.allow) {
                 if let url = URL(string: UIApplication.openSettingsURLString) {
                     UIApplication.shared.open(url)
                 }

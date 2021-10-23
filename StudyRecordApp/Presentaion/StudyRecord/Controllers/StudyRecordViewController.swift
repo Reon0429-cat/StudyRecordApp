@@ -164,7 +164,7 @@ extension StudyRecordViewController: RecordTableViewCellDelegate {
     }
     
     func deleteButtonDidTappped(row: Int) {
-        let alert = Alert.create(title: L10n.doYouReallyWantToDeleteThis)
+        let alert = Alert.create(message: L10n.doYouReallyWantToDeleteThis)
             .addAction(title: L10n.delete, style: .destructive) {
                 self.recordUseCase.delete(record: self.records[row])
                 self.tableView.reloadData()

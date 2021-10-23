@@ -78,6 +78,7 @@
 "delete" = "delete";
 "decision" = "decision";
 "largeDiscard" = "Discard";
+"discard" = "discard";
 "achieved" = "achieved";
 "achieve" = "achieve";
 "unarchive" = "unarchive";

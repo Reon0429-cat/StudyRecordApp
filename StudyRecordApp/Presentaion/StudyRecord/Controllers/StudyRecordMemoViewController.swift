@@ -67,7 +67,7 @@ private extension StudyRecordMemoViewController {
 private extension StudyRecordMemoViewController {
     
     func showAlert() {
-        let alert = Alert.create(title: L10n.doYouWantToCloseTheNoteWithoutSaving)
+        let alert = Alert.create(message: L10n.doYouWantToCloseTheNoteWithoutSaving)
             .addAction(title: L10n.close, style: .destructive) {
                 self.dismiss(animated: true)
             }

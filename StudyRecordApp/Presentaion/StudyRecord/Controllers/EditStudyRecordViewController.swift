@@ -68,7 +68,7 @@ private extension EditStudyRecordViewController {
                 textField.text = self.selectedRecord.title
                 textField.delegate = self
             }
-            .addAction(title: L10n.close, style: .destructive) {
+            .addAction(title: L10n.close) {
                 self.selectedRecord.title = self.oldInputtedTitle
             }
             .addAction(title: L10n.edit) {
@@ -82,8 +82,8 @@ private extension EditStudyRecordViewController {
     }
     
     func showAlert() {
-        let alert = Alert.create(title: L10n.doYouWantToDiscardYourEdits)
-            .addAction(title: L10n.largeDiscard,
+        let alert = Alert.create(message: L10n.doYouWantToDiscardYourEdits)
+            .addAction(title: L10n.discard,
                        style: .destructive) {
                 self.dismiss(animated: true)
             }
@@ -280,10 +280,10 @@ extension EditStudyRecordViewController: StudyRecordTimeRecordVCDelegate {
                     minutes -= 60
                 }
                 if hour >= 24 {
-                    let title = L10n.moreThan24Hours("\(history.year)",
+                    let message = L10n.moreThan24Hours("\(history.year)",
                                                      NSLocalizedString("\(Month(rawValue: history.month)!)", comment: ""),
                                                      "\(history.day)")
-                    let alert = Alert.create(title: title)
+                    let alert = Alert.create(message: message)
                         .addAction(title: L10n.close)
                     dismiss(animated: true) {
                         self.present(alert, animated: true)
