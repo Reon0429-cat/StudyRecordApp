@@ -19,7 +19,7 @@ final class ResetingPasswordViewController: UIViewController {
     @IBOutlet private weak var detailLabel: UILabel!
     @IBOutlet private weak var stackViewTopConstraint: NSLayoutConstraint!
     
-    private var userUseCase = UserUseCase(
+    private let userUseCase = UserUseCase(
         repository: UserRepository(
             dataStore: FirebaseUserDataStore()
         )

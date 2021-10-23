@@ -21,7 +21,7 @@ final class DarkModeSettingViewController: UIViewController {
     @IBOutlet private weak var settingDarkModeSwitch: CustomSwitch!
     @IBOutlet private weak var settingAutoSwitch: CustomSwitch!
     
-    private var settingUseCase = SettingUseCase(
+    private let settingUseCase = SettingUseCase(
         repository: SettingRepository(
             dataStore: RealmSettingDataStore()
         )

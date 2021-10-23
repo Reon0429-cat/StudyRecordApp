@@ -9,12 +9,12 @@ import UIKit
 
 final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
-    private var userUseCase = UserUseCase(
+    private let userUseCase = UserUseCase(
         repository: UserRepository(
             dataStore: FirebaseUserDataStore()
         )
     )
-    private var settingUseCase = SettingUseCase(
+    private let settingUseCase = SettingUseCase(
         repository: SettingRepository(
             dataStore: RealmSettingDataStore()
         )

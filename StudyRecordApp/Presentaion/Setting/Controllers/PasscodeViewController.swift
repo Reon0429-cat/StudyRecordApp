@@ -31,7 +31,7 @@ final class PasscodeViewController: UIViewController {
     @IBOutlet private weak var changePasscodeButton: UIButton!
     
     private let indicator = Indicator(kinds: PKHUDIndicator())
-    private var settingUseCase = SettingUseCase(
+    private let settingUseCase = SettingUseCase(
         repository: SettingRepository(
             dataStore: RealmSettingDataStore()
         )

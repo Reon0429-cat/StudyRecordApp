@@ -101,12 +101,12 @@ final class SettingViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     
     weak var delegate: SettingVCDelegate?
-    private var userUseCase = UserUseCase(
+    private let userUseCase = UserUseCase(
         repository: UserRepository(
             dataStore: FirebaseUserDataStore()
         )
     )
-    private var settingUseCase = SettingUseCase(
+    private let settingUseCase = SettingUseCase(
         repository: SettingRepository(
             dataStore: RealmSettingDataStore()
         )

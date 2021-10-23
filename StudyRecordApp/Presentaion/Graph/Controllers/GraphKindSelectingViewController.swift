@@ -53,7 +53,7 @@ final class GraphKindSelectingViewController: UIViewController {
     @IBOutlet private weak var widthSlider: CustomSlider!
     @IBOutlet private weak var sliderLabel: UILabel!
     
-    private var graphUseCase = GraphUseCase(
+    private let graphUseCase = GraphUseCase(
         repository: GraphRepository(
             dataStore: RealmGraphDataStore()
         )

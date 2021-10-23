@@ -32,7 +32,7 @@ final class EditStudyRecordViewController: UIViewController {
     private func isHistoryType(row: Int) -> Bool {
         return getHistoryCount(row: row) >= 0
     }
-    private var recordUseCase = RecordUseCase(
+    private let recordUseCase = RecordUseCase(
         repository: RecordRepository(
             dataStore: RealmRecordDataStore()
         )

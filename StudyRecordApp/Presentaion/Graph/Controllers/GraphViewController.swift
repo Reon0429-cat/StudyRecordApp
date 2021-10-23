@@ -18,12 +18,12 @@ final class GraphViewController: UIViewController {
     @IBOutlet private weak var registerButton: CustomButton!
     
     weak var delegate: GraphVCDelegate?
-    private var recordUseCase = RecordUseCase(
+    private let recordUseCase = RecordUseCase(
         repository: RecordRepository(
             dataStore: RealmRecordDataStore()
         )
     )
-    private var graphUseCase = GraphUseCase(
+    private let graphUseCase = GraphUseCase(
         repository: GraphRepository(
             dataStore: RealmGraphDataStore()
         )

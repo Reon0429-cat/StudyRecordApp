@@ -62,7 +62,7 @@ final class AddAndEditGoalViewController: UIViewController {
     private var isMandatoryItemFilled: Bool {
         !inputtedTitle.isEmpty
     }
-    private var goalUseCase = GoalUseCase(
+    private let goalUseCase = GoalUseCase(
         repository: GoalRepository(
             dataStore: RealmGoalDataStore()
         )

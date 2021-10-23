@@ -23,7 +23,7 @@ final class GoalViewController: UIViewController {
     weak var delegate: GoalVCDelegate?
     private let selectedSegmentIndexKey = "selectedSegmentIndexKey"
     private let isSimpleModeKey = "simpleButtonIsFilledKey"
-    private var goalUseCase = GoalUseCase(
+    private let goalUseCase = GoalUseCase(
         repository: GoalRepository(
             dataStore: RealmGoalDataStore()
         )

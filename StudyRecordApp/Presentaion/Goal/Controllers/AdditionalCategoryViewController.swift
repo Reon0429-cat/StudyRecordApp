@@ -19,7 +19,7 @@ final class AdditionalCategoryViewController: UIViewController {
     
     weak var delegate: AdditionalCategoryVCDelegate?
     
-    private var goalUseCase = GoalUseCase(
+    private let goalUseCase = GoalUseCase(
         repository: GoalRepository(
             dataStore: RealmGoalDataStore()
         )

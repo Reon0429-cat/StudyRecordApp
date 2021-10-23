@@ -32,7 +32,7 @@ final class SignUpViewController: UIViewController {
     private var isPasswordHidden = true
     private var isPasswordConfirmationHidden = true
     private var isKeyboardHidden = true
-    private var userUseCase = UserUseCase(
+    private let userUseCase = UserUseCase(
         repository: UserRepository(
             dataStore: FirebaseUserDataStore()
         )

@@ -31,7 +31,7 @@ final class LoginViewController: UIViewController {
     weak var delegate: LoginVCDelegate?
     private var isPasswordHidden = true
     private var isKeyboardHidden = true
-    private var userUseCase = UserUseCase(
+    private let userUseCase = UserUseCase(
         repository: UserRepository(
             dataStore: FirebaseUserDataStore()
         )
