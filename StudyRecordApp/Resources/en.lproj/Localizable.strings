@@ -16,6 +16,7 @@
 "thisEmailAddressIsAlreadyRegistered" = "This email address is already registered";
 "loginFailed" = "Login failed";
 "anUnknownErrorHasOccurred" = "An unknown error has occurred";
+"adminRestrictedOperation" = "Anonymous login failed";
 
 "record" = "Record";
 "graph" = "Graph";
@@ -249,7 +250,7 @@ Task Management App-TaskR";
 "ifYouChangeTheLanguageOnTheSettingScreenAndOpenThisAppAgain" = "If you change the language on the setting screen and open this app again, the language change will be reflected.";
 "settings" = "settings";
 "license" = "License";
-"" = "";
+"useAsAGuestUser" = "Use as a guest user";
 "" = "";
 "" = "";
 "" = "";

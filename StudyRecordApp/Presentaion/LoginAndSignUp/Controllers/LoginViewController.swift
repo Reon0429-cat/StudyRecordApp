@@ -11,8 +11,6 @@ protocol LoginVCDelegate: AnyObject {
     func leftSwipeDid()
 }
 
-// MARK: - ToDo ゲストユーザー機能を実装する
-
 final class LoginViewController: UIViewController {
     
     @IBOutlet private weak var stackViewTopConstraint: NSLayoutConstraint!

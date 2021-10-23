@@ -16,6 +16,7 @@
 "thisEmailAddressIsAlreadyRegistered" = "こちらのメールアドレスは既に登録されています。";
 "loginFailed" = "ログインに失敗しました";
 "anUnknownErrorHasOccurred" = "不明なエラーが発生しました。";
+"adminRestrictedOperation" = "匿名ログインに失敗しました。";
 
 "record" = "記録";
 "graph" = "グラフ";
@@ -250,7 +251,7 @@ iCloud Driveに保存したファイルを選択してください。";
 "ifYouChangeTheLanguageOnTheSettingScreenAndOpenThisAppAgain" = "設定画面で言語を変更し、再度このアプリを開くと言語の変更が反映されます。";
 "settings" = "設定";
 "license" = "ライセンス";
-"" = "";
+"useAsAGuestUser" = "ゲストユーザーとして利用する";
 "" = "";
 "" = "";
 "" = "";

@@ -52,4 +52,8 @@ final class UserUseCase {
                                          completion: completion)
     }
     
+    func signInAnonymously(completion: @escaping ResultHandler<Any?>) {
+        repository.signInAnonymously(completion: completion)
+    }
+    
 }

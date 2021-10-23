@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -128,6 +128,17 @@
                                     <action selector="passwordConfirmationSecureButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Ojl-2V-MkM"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yud-ju-o8C" customClass="CustomButton" customModule="StudyRecordApp" customModuleProvider="target">
+                                <rect key="frame" x="189" y="812" width="215" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="ゲストユーザーとして利用する"/>
+                                <connections>
+                                    <action selector="guestUserButtonDidTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="QLl-04-dti"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -140,6 +151,7 @@
                             <constraint firstItem="KDq-eX-Hdg" firstAttribute="centerY" secondItem="4zx-Mw-kMb" secondAttribute="centerY" id="CKI-4V-JqH"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="unj-IW-pzZ" secondAttribute="trailing" constant="100" id="EUJ-wp-kRy"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="2yc-xT-gBp" secondAttribute="trailing" constant="10" id="F1n-07-qyA"/>
+                            <constraint firstItem="yud-ju-o8C" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="10" id="FXT-ZX-QcS"/>
                             <constraint firstItem="hbs-9T-FZn" firstAttribute="leading" secondItem="KDq-eX-Hdg" secondAttribute="trailing" constant="5" id="HAu-5X-24H"/>
                             <constraint firstItem="hbs-9T-FZn" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="JwP-B7-twD"/>
                             <constraint firstItem="xan-pL-kZd" firstAttribute="centerY" secondItem="AVF-2V-ebq" secondAttribute="centerY" id="MVt-dY-PXe"/>
@@ -157,9 +169,13 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="hbs-9T-FZn" secondAttribute="trailing" constant="50" id="fsk-Bl-1FK"/>
                             <constraint firstItem="a9k-bA-YKK" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="gQT-pB-42b"/>
                             <constraint firstItem="2yc-xT-gBp" firstAttribute="width" secondItem="2yc-xT-gBp" secondAttribute="height" multiplier="1:1" id="i3f-v3-JmL"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="yud-ju-o8C" secondAttribute="bottom" constant="20" id="pmW-Op-eMX"/>
+                            <constraint firstItem="yud-ju-o8C" firstAttribute="top" relation="greaterThanOrEqual" secondItem="unj-IW-pzZ" secondAttribute="bottom" constant="20" id="uhf-iY-Yq1"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="yud-ju-o8C" secondAttribute="trailing" constant="10" id="zbm-pw-iBk"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="guestUserButton" destination="yud-ju-o8C" id="tGO-AC-5Hg"/>
                         <outlet property="mailAddressImage" destination="xan-pL-kZd" id="GYy-h1-B0t"/>
                         <outlet property="mailAddressLabel" destination="mVY-Qg-5YY" id="txG-qi-Vdl"/>
                         <outlet property="mailAddressTextField" destination="AVF-2V-ebq" id="fuF-oj-bjY"/>
