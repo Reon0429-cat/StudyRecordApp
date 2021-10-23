@@ -17,26 +17,20 @@ final class LoginAndSignUpViewController: UIViewController {
     @IBOutlet private weak var signUpButton: UIButton!
     @IBOutlet private weak var containerView: UIView!
     
-    private enum ViewType {
+    enum AuthViewType {
         case login
         case signUp
     }
-    private var viewType: ViewType = .login {
-        didSet {
-            bringContainerView()
-            setToggleViewColor()
-            setContainerViewCorners()
-        }
-    }
+    var authViewType: AuthViewType = .login
     private let cornerRadiusConstant: CGFloat = 15
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewType = .login
         setupBaseView()
         setupLoginButton()
         setupSignUpButton()
+        changeViewType(authViewType)
         
     }
     
@@ -66,11 +60,11 @@ final class LoginAndSignUpViewController: UIViewController {
 private extension LoginAndSignUpViewController {
     
     @IBAction func loginButtonDidTapped(_ sender: Any) {
-        viewType = .login
+        changeViewType(.login)
     }
     
     @IBAction func signUpButtonDidTapped(_ sender: Any) {
-        viewType = .signUp
+        changeViewType(.signUp)
     }
     
 }
@@ -78,7 +72,13 @@ private extension LoginAndSignUpViewController {
 // MARK: - func
 private extension LoginAndSignUpViewController {
     
-    func bringContainerView() {
+    func changeViewType(_ viewType: AuthViewType) {
+        bringContainerView(viewType)
+        setToggleViewColor(viewType)
+        setContainerViewCorners(viewType)
+    }
+    
+    func bringContainerView(_ viewType: AuthViewType) {
         switch viewType {
             case .login:
                 containerView.bringSubviewToFront(loginContainerView)
@@ -87,7 +87,7 @@ private extension LoginAndSignUpViewController {
         }
     }
     
-    func setToggleViewColor() {
+    func setToggleViewColor(_ viewType: AuthViewType) {
         switch viewType {
             case .login:
                 loginButton.backgroundColor = .dynamicColor(light: .white, dark: .secondarySystemBackground)
@@ -102,7 +102,7 @@ private extension LoginAndSignUpViewController {
         }
     }
     
-    func setContainerViewCorners() {
+    func setContainerViewCorners(_ viewType: AuthViewType) {
         switch viewType {
             case .login:
                 containerView.layer.cornerRadius = cornerRadiusConstant
@@ -134,7 +134,7 @@ private extension LoginAndSignUpViewController {
 extension LoginAndSignUpViewController: LoginVCDelegate {
     
     func leftSwipeDid() {
-        viewType = .signUp
+        changeViewType(.signUp)
     }
     
 }
@@ -143,7 +143,7 @@ extension LoginAndSignUpViewController: LoginVCDelegate {
 extension LoginAndSignUpViewController: SignUpVCDelegate {
     
     func rightSwipeDid() {
-        viewType = .login
+        changeViewType(.login)
     }
     
 }

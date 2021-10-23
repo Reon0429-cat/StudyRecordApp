@@ -31,6 +31,7 @@ protocol UserDataStoreProtocol {
     func logout(completion: @escaping ResultHandler<Any?>)
     func sendPasswordResetMail(email: String,
                                completion: @escaping ResultHandler<Any?>)
+    func signInAnonymously(completion: @escaping ResultHandler<Any?>)
 }
 
 final class FirebaseUserDataStore: UserDataStoreProtocol {
@@ -50,7 +51,7 @@ final class FirebaseUserDataStore: UserDataStoreProtocol {
                 return
             }
             if let user = result?.user {
-                let user = User(id: user.uid)
+                let user = User(id: user.uid, isAnonymous: false)
                 completion(.success(user))
             } else if let error = error {
                 completion(.failure(error.localizedDescription))
@@ -109,6 +110,17 @@ final class FirebaseUserDataStore: UserDataStoreProtocol {
         }
     }
     
+    func signInAnonymously(completion: @escaping ResultHandler<Any?>) {
+        Auth.auth().signInAnonymously { _, error in
+            if let error = error {
+                let message = self.authErrorMessage(error)
+                completion(.failure(message))
+                return
+            }
+            completion(.success(nil))
+        }
+    }
+    
     private func authErrorMessage(_ error: Error) -> String {
         if let errorCode = AuthErrorCode(rawValue: error._code) {
             switch errorCode {
@@ -122,6 +134,8 @@ final class FirebaseUserDataStore: UserDataStoreProtocol {
                     return L10n.thisEmailAddressIsNotRegistered
                 case .emailAlreadyInUse:
                     return L10n.thisEmailAddressIsAlreadyRegistered
+                case .adminRestrictedOperation:
+                    return L10n.adminRestrictedOperation
                 default:
                     return L10n.loginFailed + "\(error.localizedDescription)"
             }
@@ -138,6 +152,7 @@ private extension User {
             return nil
         }
         self.id = user.uid
+        self.isAnonymous = user.isAnonymous
     }
     
 }

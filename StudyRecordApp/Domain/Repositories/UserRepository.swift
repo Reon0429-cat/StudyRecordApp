@@ -21,6 +21,7 @@ protocol UserRepositoryProtocol {
     func logout(completion: @escaping ResultHandler<Any?>)
     func sendPasswordResetMail(email: String,
                                completion: @escaping ResultHandler<Any?>)
+    func signInAnonymously(completion: @escaping ResultHandler<Any?>)
 }
 
 final class UserRepository: UserRepositoryProtocol {
@@ -66,6 +67,10 @@ final class UserRepository: UserRepositoryProtocol {
                                completion: @escaping ResultHandler<Any?>) {
         dataStore.sendPasswordResetMail(email: email,
                                         completion: completion)
+    }
+    
+    func signInAnonymously(completion: @escaping ResultHandler<Any?>) {
+        dataStore.signInAnonymously(completion: completion)
     }
     
 }

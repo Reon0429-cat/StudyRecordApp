@@ -24,6 +24,8 @@ internal enum L10n {
   internal static let addDot = L10n.tr("Localizable", "addDot")
   /// Do not add dotsAdd dots
   internal static let addNotDot = L10n.tr("Localizable", "addNotDot")
+  /// Anonymous login failed
+  internal static let adminRestrictedOperation = L10n.tr("Localizable", "adminRestrictedOperation")
   /// AdultColor
   internal static let adultColor = L10n.tr("Localizable", "adultColor")
   /// allow
@@ -260,6 +262,8 @@ internal enum L10n {
   internal static let october = L10n.tr("Localizable", "october")
   /// 1 time left
   internal static let oneTimeLeft = L10n.tr("Localizable", "oneTimeLeft")
+  /// Only available to those who have logged in after creating an account.
+  internal static let onlyAvailableNotAnonymousUser = L10n.tr("Localizable", "onlyAvailableNotAnonymousUser")
   /// Organic
   internal static let organic = L10n.tr("Localizable", "organic")
   /// overall
@@ -420,6 +424,8 @@ internal enum L10n {
   internal static let unknownError = L10n.tr("Localizable", "unknownError")
   /// unselected
   internal static let unselected = L10n.tr("Localizable", "unselected")
+  /// Use as a guest user
+  internal static let useAsAGuestUser = L10n.tr("Localizable", "useAsAGuestUser")
   /// Use authentication to unlock
   internal static let useAuthenticationToUnlock = L10n.tr("Localizable", "useAuthenticationToUnlock")
   /// Version

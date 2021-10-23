@@ -159,7 +159,8 @@ private extension SettingViewController {
     
     func presentLoginAndSignUpVC() {
         present(LoginAndSignUpViewController.self,
-                modalPresentationStyle: .fullScreen) { _ in
+                modalPresentationStyle: .fullScreen) { vc in
+            vc.authViewType = .login
             self.delegate?.scroll(sourceScreenType: .setting,
                                   destinationScreenType: .record,
                                   completion: nil)

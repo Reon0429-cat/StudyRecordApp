@@ -27,6 +27,7 @@ final class SignUpViewController: UIViewController {
     @IBOutlet private weak var passwordConfirmationSecureButton: UIButton!
     @IBOutlet private weak var signUpButton: CustomButton!
     @IBOutlet private weak var signUpButtonTopConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var guestUserButton: CustomButton!
     
     weak var delegate: SignUpVCDelegate?
     private var isPasswordHidden = true
@@ -55,6 +56,7 @@ final class SignUpViewController: UIViewController {
         setupPasswordImage()
         setupPasswordConfirmationLabel()
         setupPasswordConfirmationImage()
+        setupGuestUserButton()
         setupKeyboardObserver()
         self.view.backgroundColor = .dynamicColor(light: .white,
                                                   dark: .secondarySystemBackground)
@@ -97,6 +99,27 @@ private extension SignUpViewController {
         }
         indicator.show(.progress)
         registerUser(email: email, password: password)
+    }
+    
+    @IBAction func guestUserButtonDidTapped(_ sender: Any) {
+        if CommunicationStatus().unstable() {
+            showErrorAlert(title: L10n.communicationEnvironmentIsNotGood)
+            return
+        }
+        indicator.show(.progress)
+        userUseCase.signInAnonymously { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+                case .failure(let message):
+                    self.indicator.flash(.error) {
+                        self.showErrorAlert(title: message)
+                    }
+                case .success:
+                    self.indicator.flash(.success) {
+                        self.changeRootVC(TopViewController.self)
+                    }
+            }
+        }
     }
     
 }
@@ -246,6 +269,13 @@ private extension SignUpViewController {
     func setupPasswordConfirmationImage() {
         let lockImage = UIImage(systemName: .lock)
         passwordConfirmationImage.image = lockImage.setColor(.dynamicColor(light: .black, dark: .white))
+    }
+    
+    func setupGuestUserButton() {
+        guestUserButton.setTitle(L10n.useAsAGuestUser)
+        guestUserButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        guestUserButton.titleLabel?.minimumScaleFactor = 0.8
+        guestUserButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
     }
     
     func setupKeyboardObserver() {
