@@ -13,6 +13,13 @@ final class AppVersionTableViewCell: UITableViewCell {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        selectionStyle = .none
+        
+    }
+    
     func configure(title: String,
                    version: String,
                    image: UIImage) {

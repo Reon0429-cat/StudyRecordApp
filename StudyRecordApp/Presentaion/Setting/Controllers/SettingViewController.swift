@@ -239,11 +239,15 @@ private extension SettingViewController {
                                  message: message)
             .addAction(title: L10n.close)
             .addAction(title: L10n.settings) {
-                let settingsURLString = UIApplication.openSettingsURLString
-                guard let url = URL(string: settingsURLString) else { return }
-                UIApplication.shared.open(url)
+                self.openSettings()
             }
         present(alert, animated: true)
+    }
+    
+    func openSettings() {
+        let settingsURLString = UIApplication.openSettingsURLString
+        guard let url = URL(string: settingsURLString) else { return }
+        UIApplication.shared.open(url)
     }
     
 }
@@ -288,7 +292,7 @@ extension SettingViewController: UITableViewDelegate {
             case .privacyPolicy:
                 presentPrivacyPolicyWebPage()
             case .license:
-                break
+                openSettings()
             case .version:
                 break
             case .logout:
