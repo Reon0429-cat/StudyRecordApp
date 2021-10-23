@@ -1,44 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TGE-gS-zNx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xmH-At-BAK">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Study Record View Controller-->
-        <scene sceneID="R2w-MH-Cwh">
+        <scene sceneID="Ggj-bw-crO">
             <objects>
-                <viewController storyboardIdentifier="StudyRecordViewController" id="TGE-gS-zNx" customClass="StudyRecordViewController" customModule="StudyRecordApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="fWS-px-dSh">
+                <viewController storyboardIdentifier="StudyRecordViewController" id="xmH-At-BAK" customClass="StudyRecordViewController" customModule="StudyRecordApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pQb-Kf-Pda">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mVe-tZ-ajk">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Csh-g0-XSk">
+                                <rect key="frame" x="115.5" y="379" width="183.5" height="48"/>
+                                <string key="text">記録データが
+登録されていません</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hkC-WI-9Qw" customClass="CustomButton" customModule="StudyRecordApp" customModuleProvider="target">
+                                <rect key="frame" x="120" y="473" width="174" height="60"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="1qW-SB-wR7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="登録する"/>
+                                <connections>
+                                    <action selector="registerButtonDidTapped:" destination="xmH-At-BAK" eventType="touchUpInside" id="iYy-dQ-bvv"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Liv-Nj-iCU">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="TQ8-8f-sGS"/>
+                        <viewLayoutGuide key="safeArea" id="IxY-TA-1Gu"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="TQ8-8f-sGS" firstAttribute="trailing" secondItem="mVe-tZ-ajk" secondAttribute="trailing" id="601-0J-d7k"/>
-                            <constraint firstItem="mVe-tZ-ajk" firstAttribute="leading" secondItem="TQ8-8f-sGS" secondAttribute="leading" id="kOG-UW-xzm"/>
-                            <constraint firstItem="TQ8-8f-sGS" firstAttribute="bottom" secondItem="mVe-tZ-ajk" secondAttribute="bottom" id="mYn-gz-M8V"/>
-                            <constraint firstItem="mVe-tZ-ajk" firstAttribute="top" secondItem="TQ8-8f-sGS" secondAttribute="top" id="zYO-xx-i67"/>
+                            <constraint firstItem="Liv-Nj-iCU" firstAttribute="top" secondItem="IxY-TA-1Gu" secondAttribute="top" id="0GD-UI-xmr"/>
+                            <constraint firstItem="hkC-WI-9Qw" firstAttribute="centerY" secondItem="IxY-TA-1Gu" secondAttribute="centerY" constant="50" id="2qj-rQ-NGs"/>
+                            <constraint firstItem="Csh-g0-XSk" firstAttribute="centerY" secondItem="IxY-TA-1Gu" secondAttribute="centerY" constant="-50" id="Lnc-QD-MW8"/>
+                            <constraint firstItem="IxY-TA-1Gu" firstAttribute="trailing" secondItem="Liv-Nj-iCU" secondAttribute="trailing" id="UfI-nO-Y1Z"/>
+                            <constraint firstItem="Liv-Nj-iCU" firstAttribute="leading" secondItem="IxY-TA-1Gu" secondAttribute="leading" id="fVb-Ej-roc"/>
+                            <constraint firstItem="IxY-TA-1Gu" firstAttribute="bottom" secondItem="Liv-Nj-iCU" secondAttribute="bottom" id="ksU-Bk-OLm"/>
+                            <constraint firstItem="hkC-WI-9Qw" firstAttribute="centerX" secondItem="IxY-TA-1Gu" secondAttribute="centerX" id="mrd-yG-8xl"/>
+                            <constraint firstItem="IxY-TA-1Gu" firstAttribute="trailing" secondItem="hkC-WI-9Qw" secondAttribute="trailing" constant="120" id="pgw-P1-sIX"/>
+                            <constraint firstItem="Csh-g0-XSk" firstAttribute="centerX" secondItem="pQb-Kf-Pda" secondAttribute="centerX" id="rzQ-cF-Vib"/>
+                            <constraint firstItem="IxY-TA-1Gu" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Csh-g0-XSk" secondAttribute="trailing" constant="30" id="uWm-TS-S1R"/>
                         </constraints>
                     </view>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="tableView" destination="mVe-tZ-ajk" id="wFu-JT-WT8"/>
+                        <outlet property="descriptionLabel" destination="Csh-g0-XSk" id="6Lt-4D-BuI"/>
+                        <outlet property="registerButton" destination="hkC-WI-9Qw" id="SdZ-xH-O3b"/>
+                        <outlet property="tableView" destination="Liv-Nj-iCU" id="2Qb-q0-khB"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3V3-ZY-amu" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c0s-bq-Ggy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5405.7971014492759" y="123.88392857142857"/>
+            <point key="canvasLocation" x="137.68115942028987" y="123.88392857142857"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

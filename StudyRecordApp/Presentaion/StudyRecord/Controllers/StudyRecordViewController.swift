@@ -23,6 +23,8 @@ protocol StudyRecordVCDelegate: ScreenPresentationDelegate,
 
 final class StudyRecordViewController: UIViewController {
     
+    @IBOutlet private weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var registerButton: CustomButton!
     @IBOutlet private weak var tableView: UITableView!
     
     private let recordUseCase = RecordUseCase(
@@ -39,6 +41,8 @@ final class StudyRecordViewController: UIViewController {
         super.viewDidLoad()
         
         setupTableView()
+        setupRegisterButton()
+        setupDescriptionLabel()
         setObserver()
         
     }
@@ -46,6 +50,7 @@ final class StudyRecordViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        tableView.isHidden = recordUseCase.records.isEmpty
         delegate?.screenDidPresented(screenType: .record,
                                      isEnabledNavigationButton: !records.isEmpty)
         
@@ -53,6 +58,16 @@ final class StudyRecordViewController: UIViewController {
     
     func reloadTableView() {
         tableView.reloadData()
+    }
+    
+}
+
+// MARK: - IBAction func
+private extension StudyRecordViewController {
+    
+    @IBAction func registerButtonDidTapped(_ sender: Any) {
+        present(AdditionalStudyRecordViewController.self,
+                modalPresentationStyle: .fullScreen)
     }
     
 }
@@ -154,6 +169,7 @@ extension StudyRecordViewController: RecordTableViewCellDelegate {
                 self.recordUseCase.delete(record: self.records[row])
                 self.tableView.reloadData()
                 self.delegate?.deleteButtonDidTappped(isEmpty: self.records.isEmpty)
+                self.tableView.isHidden = self.records.isEmpty
                 self.dismiss(animated: true)
             }
             .addAction(title: L10n.close) {
@@ -179,6 +195,14 @@ private extension StudyRecordViewController {
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
         }
+    }
+    
+    func setupRegisterButton() {
+        registerButton.setTitle(L10n.register)
+    }
+    
+    func setupDescriptionLabel() {
+        descriptionLabel.text = L10n.recordedDataIsNotRegistered
     }
     
     func setObserver() {

@@ -17,6 +17,8 @@ final class GoalViewController: UIViewController {
     @IBOutlet private weak var segmentedControl: CustomSegmentedControl!
     @IBOutlet private weak var statisticsButton: UIButton!
     @IBOutlet private weak var simpleButton: RadioButton!
+    @IBOutlet private weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var registerButton: CustomButton!
     
     weak var delegate: GoalVCDelegate?
     private let selectedSegmentIndexKey = "selectedSegmentIndexKey"
@@ -50,6 +52,8 @@ final class GoalViewController: UIViewController {
         setupSegmentedControl()
         setupSimpleButton()
         setupTableView()
+        setupRegisterButton()
+        setupDescriptionLabel()
         setupStatisticsButton()
         setObserver()
         
@@ -60,6 +64,7 @@ final class GoalViewController: UIViewController {
         
         delegate?.screenDidPresented(screenType: .goal,
                                      isEnabledNavigationButton: !categories.isEmpty)
+        hideConponents(categories.isEmpty)
         
     }
     
@@ -94,10 +99,24 @@ private extension GoalViewController {
         present(GoalStatisticsViewController.self)
     }
     
+    @IBAction func registerButtonDidTapped(_ sender: Any) {
+        present(AddAndEditGoalViewController.self,
+                modalPresentationStyle: .fullScreen) { vc in
+            vc.goalScreenType = .add
+        }
+    }
+    
 }
 
 // MARK: - func
 private extension GoalViewController {
+    
+    func hideConponents(_ isHidden: Bool) {
+        tableView.isHidden = isHidden
+        segmentedControl.isHidden = isHidden
+        simpleButton.isHidden = isHidden
+        statisticsButton.isHidden = isHidden
+    }
     
     func getRowHeight(at indexPath: IndexPath) -> CGFloat {
         let category = categories[convert(section: indexPath.section)]
@@ -303,6 +322,7 @@ extension GoalViewController: GoalHeaderViewDelegate {
             .addAction(title: L10n.delete, style: .destructive) {
                 self.goalUseCase.deleteCategory(at: convertedSection)
                 self.delegate?.deleteButtonDidTappped(isEmpty: self.categories.isEmpty)
+                self.hideConponents(self.categories.isEmpty)
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
@@ -408,6 +428,14 @@ private extension GoalViewController {
     
     func setupStatisticsButton() {
         statisticsButton.backgroundColor = .clear
+    }
+    
+    func setupRegisterButton() {
+        registerButton.setTitle(L10n.register)
+    }
+    
+    func setupDescriptionLabel() {
+        descriptionLabel.text = L10n.recordedDataIsNotRegistered
     }
     
     func setObserver() {
