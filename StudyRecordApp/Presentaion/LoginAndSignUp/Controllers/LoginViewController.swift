@@ -11,7 +11,6 @@ protocol LoginVCDelegate: AnyObject {
     func leftSwipeDid()
 }
 
-// MARK: - ToDo ユーザー削除機能実装する
 // MARK: - ToDo ゲストユーザー機能を実装する
 
 final class LoginViewController: UIViewController {

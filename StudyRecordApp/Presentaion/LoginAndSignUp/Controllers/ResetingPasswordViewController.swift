@@ -7,8 +7,6 @@
 
 import UIKit
 
-// MARK: - ToDo　メールのアプリ名などを変える
-
 final class ResetingPasswordViewController: UIViewController {
     
     @IBOutlet private weak var titleLabel: UILabel!

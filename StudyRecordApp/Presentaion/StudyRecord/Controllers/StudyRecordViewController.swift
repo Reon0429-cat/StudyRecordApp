@@ -8,7 +8,6 @@
 import UIKit
 
 // MARK: - ToDo リアルタイムで同期して更新する処理も実装する(realm)
-// MARK: - ToDo グラフカラー選択時に該当の色を丸くする(追加と編集画面でそれぞれ確認する)
 // MARK: - ToDo rowの高さを可変にする
 
 protocol EditButtonSelectable {
