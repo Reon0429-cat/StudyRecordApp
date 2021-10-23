@@ -252,7 +252,7 @@ iCloud Driveに保存したファイルを選択してください。";
 "settings" = "設定";
 "license" = "ライセンス";
 "useAsAGuestUser" = "ゲストユーザーとして利用する";
-"" = "";
+"onlyAvailableNotAnonymousUser" = "アカウント作成後にログインされた方のみご利用いただけます。";
 "" = "";
 "" = "";
 "" = "";
