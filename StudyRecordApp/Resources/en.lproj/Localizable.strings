@@ -1,0 +1,272 @@
+/* 
+ Localizable.strings
+ StudyRecordApp
+ 
+ Created by 大西玲音 on 2021/09/13.
+ 
+ */
+
+// English
+
+"languageCode" = "en";
+"theEmailAddressFormatContainsAnError" = "The email address format contains an error";
+"pleaseEnterThePasswordWithAtLeast6Characters" = "Please enter the password with at least 6 characters";
+"thePasswordIsIncorrect" = "The password is incorrect";
+"thisEmailAddressIsNotRegistered" = "This email address is not registered";
+"thisEmailAddressIsAlreadyRegistered" = "This email address is already registered";
+"loginFailed" = "Login failed";
+"anUnknownErrorHasOccurred" = "An unknown error has occurred";
+
+"record" = "Record";
+"graph" = "Graph";
+"goal" = "Goal";
+"setting" = "Setting";
+"natural" = "Natural";
+"pop" = "Pop";
+"elegant" = "Elegant";
+"season" = "Season";
+"japan" = "Japan";
+"overseas" = "Overseas";
+"service" = "Service";
+"adultColor" = "AdultColor";
+"gorgeous" = "Gorgeous";
+"art" = "Art";
+"intelligence" = "Intelligence";
+"beautiful" = "Beautiful";
+"tradition" = "Tradition";
+"moist" = "Moist";
+"relax" = "Relax";
+"feminine" = "Feminine";
+"organic" = "Organic";
+"craft" = "Craft";
+"living" = "Living";
+"botanical" = "Botanical";
+"foreignCountries" = "ForeignCountries";
+"journey" = "Journey";
+"mysterious" = "Mysterious";
+"colorful" = "Colorful";
+"retro" = "Retro";
+"kids" = "Kids";
+"girly" = "Girly";
+"active" = "Active";
+"catchu" = "Catchu";
+"happy" = "Happy";
+"spring" = "Spring";
+"summer" = "Summer";
+"autumn" = "Autumn";
+"winter" = "Winter";
+"business" = "Business";
+"digital" = "Digital";
+"shop" = "Shop";
+
+"save" = "save";
+"close" = "close";
+"edit" = "edit";
+"largeEdit" = "Edit";
+"completion" = "completion";
+"title" = "title";
+"largeTitle" = "Title";
+"add" = "add";
+"largeAdd" = "Add";
+"memo" = "memo";
+"largeMemo" = "Memo";
+"graphColor" = "Graph Color";
+"largeSort" = "Sort";
+"sort" = "sort";
+"largeSend" = "Send";
+"send" = "send";
+"delete" = "delete";
+"decision" = "decision";
+"largeDiscard" = "Discard";
+"discard" = "discard";
+"achieved" = "achieved";
+"achieve" = "achieve";
+"unarchive" = "unarchive";
+"unarchived" = "unarchived";
+"overall" = "overall";
+"showOnlyCategoryUnachieved" = "Show only category unachieved.";
+"doYouWantToSendWithThisContent?" = "Do you want to send with this content?";
+"failedToSend." = "Failed to send.";
+"reportThankYouTitle" = "The transmission is complete.\nWe look forward to working with you in the future.";
+
+"login" = "Login";
+"signUp" = "SignUp";
+
+"mailAddress" = "email address";
+"password" = "password";
+"passwordConfirmation" = "password(check)";
+"passwordForgot" = "if you have forgotten your password.";
+"here" = "here";
+
+"communicationEnvironmentIsNotGood" = "Communication environment is not good";
+"passwordsDoNotMatch" = "Passwords do not match";
+"passwordForgotDetail" = "Password to the above email address\nSend the URL for resetting.";
+"passwordForgotTitle" = "If you forget your password";
+"doYouReallyWantToDeleteThis" = "Do you really want to delete this?";
+"doYouWantToCloseWithoutSaving" = "Do you want to close without saving?";
+"doYouWantToDiscardYourEdits" = "Do you want to discard your edits?";
+"doYouWantToCloseTheNoteWithoutSaving" = "Do you want to close the note without saving?";
+"recordTime" = "Record time";
+"moreThan24Hours" = "The recording time on %2$@ %3$@, %1$@ will be more than 24 hours.";
+
+"january" = "January";
+"february" = "February";
+"march" = "March";
+"april" = "April";
+"may" = "May";
+"june" = "June";
+"july" = "July";
+"august" = "August";
+"september" = "September";
+"october" = "October";
+"november" = "November";
+"december" = "December";
+"category" = "category";
+"largeCategory" = "Category";
+"simple" = "simple";
+
+"largePriority" = "Priority";
+"priority" = "priority";
+
+"dueDate" = "Due Date";
+"createdDate" = "Created Date";
+"photo" = "Photo";
+"takeAPhoto" = "Take a photo";
+"selectFromLibrary" = "Select from library";
+"deletePhoto" = "Delete photo";
+"today" = "Today";
+
+"recordedDataIsNotRegistered" = "Recorded data is not registered.";
+"Register" = "Register";
+
+"Line" = "Line";
+"Bar" = "Bar";
+"Dot" = "Dot";
+
+"straight" = "Straight line";
+"smooth" = "Smooth";
+"notFill" = "Do not fill";
+"fill" = "Fill";
+"addNotDot" = "Do not add dotsAdd dots";
+"addDot" = "Add dots";
+"circleDot" = "Round dots";
+"squareDot" = "Square dots";
+
+"themeColor" = "Theme Color";
+"darkMode" = "Dark Mode";
+"passcode" = "Passcode";
+"pushNotification" = "Push Notification";
+"multilingual" = "Multilingual";
+"howToUseApp" = "How To Use App";
+"evaluateApp" = "Evaluate App";
+"appIcon" = "App Icon";
+"language" = "Language";
+"shareApp" = "Share App";
+"reports" = "Reports";
+"backup" = "Backup";
+"privacyPolicy" = "Privacy Policy";
+"version" = "Version";
+"logout" = "Logout";
+
+"areYouSureYouWantToLogOut" = "Are you sure you want to log out?";
+"default" = "default";
+"custom" = "custom";
+"recommendation" = "recommendation";
+"yes" = "Yes";
+"no" = "No";
+"doYouWantTheDefaultColor" = "Do you want the default color?";
+
+"reportAttention" = "We will use the contents you received as a reference for future service development.\nPlease enter your email address only if you need a reply, and refrain from entering any other personal information.";
+"reportsDetail" = "Please enter your opinions, requests, and details of the problem.";
+
+"main" = "Main";
+"sub" = "Sub";
+"accent" = "Accent";
+"tile" = "tile";
+"slider" = "slider";
+
+"certification" = "Certification";
+"create" = "Create";
+"change" = "Change";
+
+"oneTimeLeft" = "1 time left";
+"twoTimeLeft" = "2 time left";
+
+"pleaseEnterANewPasscode" = "Please enter a new passcode";
+"pleaseEnterYourCurrentPasscode" = "Please enter your current passcode";
+"changePasscode" = "Change passcode";
+
+"mandatory" = "mandatory";
+"unselected" = "unselected";
+
+"year" = "year";
+"month" = "month";
+"day" = "day";
+"hour" = "hour";
+"minute" = "minute";
+"total" = "Total";
+"shortHour" = "h";
+"shortMinute" = "m";
+
+"thereIsNoData" = "there is no data";
+"graphDataIsNotRegistered" = "Graph data is not registered";
+
+"darkModeSettingApp" = "Set with this app";
+"darkModeSettingAuto" = "Set automatically";
+
+"uncategorized" = "uncategorized";
+
+"fixed" = "fixed";
+
+"turnOnFaceID" = "Turn on Face ID";
+"turnOnTouchID" = "Turn on Touch ID";
+"useAuthenticationToUnlock" = "Use authentication to unlock";
+"pleaseAllowBiometrics" = "Please allow biometrics";
+"turnOnBiometrics" = "Turn on biometrics";
+"unknownError" = "Unknown error";
+"allow" = "allow";
+"turnOffBiometricsFromThisApp" = "Or turn off biometrics from the settings of this app";
+
+"black" = "black";
+"white" = "white";
+
+"simple" = "simple";
+"mixed" = "mixed";
+
+"backupTitle" = "Back up recorded data";
+"backupDetail" = "Outputs the recorded data to a text file.
+Save the file to any location on iCloud Drive.
+Be sure to make a backup when changing models.";
+"restoreTitle" = "Restore recorded data";
+"restoreDetail" = "You can read the backed up file and restore the recorded data.
+Select the file you saved in iCloud Drive.";
+"restore" = "Restore";
+
+"appShareDescription" = "Recommended task management app!
+Easy operation of daily activities and abundant customization functions make it fun to manage!
+Task Management App-TaskR";
+"doYouWantToMoveToTheSettingScreen" = "Do you want to move to the setting screen to change the language in this app?";
+"ifYouChangeTheLanguageOnTheSettingScreenAndOpenThisAppAgain" = "If you change the language on the setting screen and open this app again, the language change will be reflected.";
+"settings" = "settings";
+"license" = "License";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+
+
+
+
+
+
+

@@ -32,6 +32,10 @@ internal enum L10n {
   internal static let anUnknownErrorHasOccurred = L10n.tr("Localizable", "anUnknownErrorHasOccurred")
   /// App Icon
   internal static let appIcon = L10n.tr("Localizable", "appIcon")
+  /// Recommended task management app!
+  /// Easy operation of daily activities and abundant customization functions make it fun to manage!
+  /// Task Management App-TaskR
+  internal static let appShareDescription = L10n.tr("Localizable", "appShareDescription")
   /// April
   internal static let april = L10n.tr("Localizable", "april")
   /// Are you sure you want to log out?
@@ -108,6 +112,8 @@ internal enum L10n {
   internal static let deletePhoto = L10n.tr("Localizable", "deletePhoto")
   /// Digital
   internal static let digital = L10n.tr("Localizable", "digital")
+  /// discard
+  internal static let discard = L10n.tr("Localizable", "discard")
   /// Dot
   internal static let dot = L10n.tr("Localizable", "Dot")
   /// Do you really want to delete this?
@@ -120,6 +126,8 @@ internal enum L10n {
   internal static let doYouWantToCloseWithoutSaving = L10n.tr("Localizable", "doYouWantToCloseWithoutSaving")
   /// Do you want to discard your edits?
   internal static let doYouWantToDiscardYourEdits = L10n.tr("Localizable", "doYouWantToDiscardYourEdits")
+  /// Do you want to move to the setting screen to change the language in this app?
+  internal static let doYouWantToMoveToTheSettingScreen = L10n.tr("Localizable", "doYouWantToMoveToTheSettingScreen")
   /// Do you want to send with this content?
   internal static let doYouWantToSendWithThisContent = L10n.tr("Localizable", "doYouWantToSendWithThisContent?")
   /// Due Date
@@ -128,8 +136,8 @@ internal enum L10n {
   internal static let edit = L10n.tr("Localizable", "edit")
   /// Elegant
   internal static let elegant = L10n.tr("Localizable", "elegant")
-  /// Evaluation App
-  internal static let evaluationApp = L10n.tr("Localizable", "evaluationApp")
+  /// Evaluate App
+  internal static let evaluateApp = L10n.tr("Localizable", "evaluateApp")
   /// Failed to send.
   internal static let failedToSend = L10n.tr("Localizable", "failedToSend.")
   /// February
@@ -162,6 +170,8 @@ internal enum L10n {
   internal static let hour = L10n.tr("Localizable", "hour")
   /// How To Use App
   internal static let howToUseApp = L10n.tr("Localizable", "howToUseApp")
+  /// If you change the language on the setting screen and open this app again, the language change will be reflected.
+  internal static let ifYouChangeTheLanguageOnTheSettingScreenAndOpenThisAppAgain = L10n.tr("Localizable", "ifYouChangeTheLanguageOnTheSettingScreenAndOpenThisAppAgain")
   /// Intelligence
   internal static let intelligence = L10n.tr("Localizable", "intelligence")
   /// January
@@ -198,6 +208,8 @@ internal enum L10n {
   internal static let largeSort = L10n.tr("Localizable", "largeSort")
   /// Title
   internal static let largeTitle = L10n.tr("Localizable", "largeTitle")
+  /// License
+  internal static let license = L10n.tr("Localizable", "license")
   /// Line
   internal static let line = L10n.tr("Localizable", "Line")
   /// Living
@@ -283,7 +295,7 @@ internal enum L10n {
   internal static let pop = L10n.tr("Localizable", "pop")
   /// priority
   internal static let priority = L10n.tr("Localizable", "priority")
-  /// Privacy policy
+  /// Privacy Policy
   internal static let privacyPolicy = L10n.tr("Localizable", "privacyPolicy")
   /// Push Notification
   internal static let pushNotification = L10n.tr("Localizable", "pushNotification")
@@ -332,6 +344,8 @@ internal enum L10n {
   internal static let service = L10n.tr("Localizable", "service")
   /// Setting
   internal static let setting = L10n.tr("Localizable", "setting")
+  /// settings
+  internal static let settings = L10n.tr("Localizable", "settings")
   /// Share App
   internal static let shareApp = L10n.tr("Localizable", "shareApp")
   /// Shop
@@ -408,6 +422,8 @@ internal enum L10n {
   internal static let unselected = L10n.tr("Localizable", "unselected")
   /// Use authentication to unlock
   internal static let useAuthenticationToUnlock = L10n.tr("Localizable", "useAuthenticationToUnlock")
+  /// Version
+  internal static let version = L10n.tr("Localizable", "version")
   /// white
   internal static let white = L10n.tr("Localizable", "white")
   /// Winter

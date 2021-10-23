@@ -1,0 +1,286 @@
+/* 
+  Localizable.strings
+  StudyRecordApp
+
+  Created by 大西玲音 on 2021/09/13.
+  
+*/
+
+// Japanese
+
+"languageCode" = "ja_JP";
+"theEmailAddressFormatContainsAnError" = "メールアドレスの形式に誤りが含まれます。";
+"pleaseEnterThePasswordWithAtLeast6Characters" = "パスワードは６文字以上で入力してください。";
+"thePasswordIsIncorrect" = "パスワードに誤りがあります。";
+"thisEmailAddressIsNotRegistered" = "こちらのメールアドレスは登録されていません。";
+"thisEmailAddressIsAlreadyRegistered" = "こちらのメールアドレスは既に登録されています。";
+"loginFailed" = "ログインに失敗しました";
+"anUnknownErrorHasOccurred" = "不明なエラーが発生しました。";
+
+"record" = "記録";
+"graph" = "グラフ";
+"goal" = "目標";
+"setting" = "設定";
+
+"natural" = "ナチュラル";
+"pop" = "ポップ";
+"elegant" = "エレガント";
+"season" = "シーズン";
+"japan" = "ジャパン";
+"overseas" = "オーバーシーズ";
+"service" = "サービス";
+"adultColor" = "アダルトカラー";
+"gorgeous" = "ゴージャス";
+"art" = "アート";
+"intelligence" = "インテリジェンス";
+"beautiful" = "華やか";
+"tradition" = "伝統";
+"moist" = "しっとり";
+"relax" = "リラックス";
+"feminine" = "フェミニン";
+"organic" = "オーガニック";
+"craft" = "クラフト";
+"living" = "リビング";
+"botanical" = "ボタニカル";
+"foreignCountries" = "外国";
+"journey" = "旅行";
+"mysterious" = "不思議";
+"colorful" = "カラフル";
+"retro" = "レトロ";
+"kids" = "キッズ";
+"girly" = "ガーリー";
+"active" = "アクティブ";
+"catchu" = "キャッチュ";
+"happy" = "ハッピー";
+"spring" = "春";
+"summer" = "夏";
+"autumn" = "秋";
+"winter" = "冬";
+"business" = "ビジネス";
+"digital" = "デジタル";
+"shop" = "ショップ";
+
+"save" = "保存";
+"close" = "閉じる";
+"edit" = "編集";
+"largeEdit" = "編集";
+"completion" = "完了";
+"delete" = "削除";
+"title" = "タイトル";
+"largeTitle" = "タイトル";
+"add" = "追加";
+"largeAdd" = "追加";
+"memo" = "メモ";
+"largeMemo" = "メモ";
+"graphColor" = "グラフカラー";
+"decision" = "決定";
+"largeSort" = "並び替え";
+"sort" = "並び替え";
+"largeDiscard" = "破棄する";
+"discard" = "破棄する";
+"recordTime" = "時間を記録する";
+"largeSend" = "送信";
+"send" = "送信";
+"achieved" = "達成済み";
+"achieve" = "達成";
+"unarchive" = "未達成";
+"unarchived" = "未達成";
+"overall" = "全体";
+"showOnlyCategoryUnachieved" = "カテゴリ未達成のみ表示";
+"doYouWantToSendWithThisContent?" = "こちらの内容で送信しますか？";
+"failedToSend." = "送信に失敗しました。";
+
+"reportAttention" = "頂いた内容は今後のサービス開発の参考にさせていただきます。\n返信が必要の場合のみメールアドレスを記載していただき、その他の個人情報の記載はご遠慮ください。";
+"reportThankYouTitle" = "送信が完了しました。\n今後ともよろしくお願いいたします。";
+
+"login" = "ログイン";
+"signUp" = "サインアップ";
+
+"mailAddress" = "メールアドレス";
+"password" = "パスワード";
+"passwordConfirmation" = "パスワード(確認用)";
+"passwordForgot" = "パスワードをお忘れの方は";
+"here" = "こちら";
+
+"communicationEnvironmentIsNotGood" = "通信環境が良くありません";
+"passwordsDoNotMatch" = "パスワードが一致しません";
+"passwordForgotDetail" = "上記のメールアドレスにパスワード\n再設定用のURLを送信します。";
+"passwordForgotTitle" = "パスワードをお忘れの場合";
+"doYouWantToCloseTheNoteWithoutSaving" = "保存せずにメモを閉じますか？";
+"doYouReallyWantToDeleteThis" = "本当に削除しますか？";
+"doYouWantToCloseWithoutSaving" = "保存せずに閉じますか？";
+"doYouWantToDiscardYourEdits" = "編集内容を破棄しますか？";
+"moreThan24Hours" = "%1$@年%2$@%3$@日の記録時間が24時間以上です。";
+
+"january" = "1月";
+"february" = "2月";
+"march" = "3月";
+"april" = "4月";
+"may" = "5月";
+"june" = "6月";
+"july" = "7月";
+"august" = "8月";
+"september" = "9月";
+"october" = "10月";
+"november" = "11月";
+"december" = "12月";
+
+"category" = "カテゴリ";
+"largeCategory" = "カテゴリ";
+"simple" = "シンプル";
+"priority" = "優先度";
+"largePriority" = "優先度";
+"dueDate" = "期日";
+"createdDate" = "作成日";
+"photo" = "写真";
+"takeAPhoto" = "写真を撮る";
+"selectFromLibrary" = "ライブラリから選択する";
+"deletePhoto" = "写真を削除する";
+
+"today" = "今日";
+"recordedDataIsNotRegistered" = "記録データが\n登録されていません";
+"Register" = "登録";
+
+"Line" = "ライン";
+"Bar" = "バー";
+"Dot" = "ドット";
+
+"straight" = "直線";
+"smooth" = "なめらか";
+"notFill" = "塗りつぶさない";
+"fill" = "塗りつぶす";
+"addNotDot" = "ドットをつけない";
+"addDot" = "ドットをつける";
+"circleDot" = "丸いドット";
+"squareDot" = "四角いドット";
+
+"themeColor" = "テーマカラー";
+"darkMode" = "ダークモード";
+"passcode" = "パスコード";
+"pushNotification" = "プッシュ通知";
+"multilingual" = "言語";
+"howToUseApp" = "アプリの使い方";
+"evaluateApp" = "アプリを評価する";
+"appIcon" = "アプリアイコン";
+"language" = "言語";
+"shareApp" = "アプリを共有する";
+"reports" = "ご意見、ご要望、不具合の報告";
+"reportsDetail" = "ご意見、ご要望、不具合の内容をご記入ください。";
+
+"backup" = "バックアップ";
+"privacyPolicy" = "プライバシーポリシー";
+"version" = "バージョン";
+"logout" = "ログアウト";
+
+"areYouSureYouWantToLogOut" = "本当にログアウトしてもよろしいですか";
+
+"default" = "デフォルト";
+"custom" = "カスタム";
+"recommendation" = "オススメ";
+"yes" = "はい";
+"no" = "いいえ";
+
+"doYouWantTheDefaultColor" = "デフォルトカラーにしますか？";
+
+"main" = "メイン";
+"sub" = "サブ";
+"accent" = "アクセント";
+"tile" = "タイル";
+"slider" = "スライダー";
+
+"certification" = "認証";
+"create" = "作成";
+"change" = "変更";
+
+"oneTimeLeft" = "残り１回";
+"twoTimeLeft" = "残り２回";
+"pleaseEnterANewPasscode" = "新しいパスコードを\n入力してください";
+"pleaseEnterYourCurrentPasscode" = "現在のパスコードを\n入力してください";
+"changePasscode" = "パスコードを変更";
+
+"mandatory" = "必須";
+"unselected" = "未選択";
+
+"year" = "年";
+"month" = "月";
+"day" = "日";
+"hour" = "時間";
+"minute" = "分";
+"total" = "合計";
+"shortMinute" = "分";
+"shortHour" = "時間";
+
+"thereIsNoData" = "データがありません";
+"graphDataIsNotRegistered" = "グラフデータが登録されていません";
+
+"darkModeSettingApp" = "このアプリで設定する";
+"darkModeSettingAuto" = "自動で設定する";
+
+"uncategorized" = "未分類";
+"fixed" = "固定";
+
+"turnOnFaceID" = "FaceIDをオンにする";
+"turnOnTouchID" = "TouchIDをオンにする";
+"useAuthenticationToUnlock" = "ロックの解除に、認証を使用します";
+"pleaseAllowBiometrics" = "生体認証を許可してください";
+"turnOnBiometrics" = "生体認証をオンにする";
+"unknownError" = "不明なエラー";
+"allow" = "許可する";
+"turnOffBiometricsFromThisApp" = "またはこのアプリの設定から生体認証をオフにしてください";
+
+"black" = "黒";
+"white" = "白";
+
+"simple" = "シンプル";
+"mixed" = "ミックス";
+
+"backupTitle" = "記録データをバックアップする";
+"backupDetail" = "記録データをテキストファイルに出力します。
+iCloud Driveのお好きな場所にファイルを保存してください。
+機種変更などをする際は、必ずバックアップを行うようにしてください。";
+"restoreTitle" = "記録データを復元する";
+"restoreDetail" = "バックアップしたファイルを読み込み、記録データを復元することができます。
+iCloud Driveに保存したファイルを選択してください。";
+"restore" = "復元";
+
+"appShareDescription" = "おすすめのタスク管理アプリです！
+毎日のやることを簡単操作、豊富なカスタマイズ機能搭載で楽しく管理できます！
+「タスク管理アプリ - TaskR(タスクル)」";
+"doYouWantToMoveToTheSettingScreen" = "このアプリ内の言語を変更するために、設定画面に遷移しますか。";
+"ifYouChangeTheLanguageOnTheSettingScreenAndOpenThisAppAgain" = "設定画面で言語を変更し、再度このアプリを開くと言語の変更が反映されます。";
+"settings" = "設定";
+"license" = "ライセンス";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+"" = "";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
