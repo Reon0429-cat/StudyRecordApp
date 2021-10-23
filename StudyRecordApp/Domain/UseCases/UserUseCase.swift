@@ -18,6 +18,13 @@ final class UserUseCase {
         repository.currentUser != nil
     }
     
+    var isLoggedInAsAnonymously: Bool {
+        if let user = repository.currentUser {
+            return user.isAnonymous
+        }
+        return false
+    }
+    
     func registerUser(email: String,
                       password: String,
                       completion: @escaping ResultHandler<User>) {

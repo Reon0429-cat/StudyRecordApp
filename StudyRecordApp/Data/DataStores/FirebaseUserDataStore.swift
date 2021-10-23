@@ -51,7 +51,7 @@ final class FirebaseUserDataStore: UserDataStoreProtocol {
                 return
             }
             if let user = result?.user {
-                let user = User(id: user.uid)
+                let user = User(id: user.uid, isAnonymous: false)
                 completion(.success(user))
             } else if let error = error {
                 completion(.failure(error.localizedDescription))
@@ -152,6 +152,7 @@ private extension User {
             return nil
         }
         self.id = user.uid
+        self.isAnonymous = user.isAnonymous
     }
     
 }

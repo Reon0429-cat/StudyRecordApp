@@ -9,4 +9,5 @@ import Foundation
 
 struct User {
     let id: String
+    let isAnonymous: Bool
 }

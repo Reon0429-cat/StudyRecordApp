@@ -18,6 +18,11 @@ final class GraphViewController: UIViewController {
     @IBOutlet private weak var registerButton: CustomButton!
     
     weak var delegate: GraphVCDelegate?
+    private let userUseCase = UserUseCase(
+        repository: UserRepository(
+            dataStore: FirebaseUserDataStore()
+        )
+    )
     private let recordUseCase = RecordUseCase(
         repository: RecordRepository(
             dataStore: RealmRecordDataStore()
@@ -33,6 +38,7 @@ final class GraphViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupAnonymousView()
         setupRegisterButton()
         setupDescriptionLabel()
         setupTableView()
@@ -203,6 +209,28 @@ private extension GraphViewController {
     
     func setupDescriptionLabel() {
         descriptionLabel.text = L10n.recordedDataIsNotRegistered
+    }
+    
+    func setupAnonymousView() {
+        let isAnonymousUser = userUseCase.isLoggedInAsAnonymously
+        if isAnonymousUser {
+            let anonymousView = AnonymousUserView()
+            anonymousView.signUpButtonEvent = { [weak self] in
+                guard let self = self else { return }
+                self.present(LoginAndSignUpViewController.self,
+                             modalPresentationStyle: .fullScreen) { vc in
+                    vc.authViewType = .signUp
+                }
+            }
+            anonymousView.translatesAutoresizingMaskIntoConstraints = false
+            self.view.addSubview(anonymousView)
+            NSLayoutConstraint.activate([
+                anonymousView.topAnchor.constraint(equalTo: self.view.topAnchor),
+                anonymousView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+                anonymousView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+                anonymousView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
+            ])
+        }
     }
     
 }

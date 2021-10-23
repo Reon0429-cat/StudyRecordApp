@@ -532,6 +532,8 @@
 		AB93C2C3266BC28E00C3AE8F /* EditStudyRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB93C2C2266BC28E00C3AE8F /* EditStudyRecordViewController.swift */; };
 		AB93C2C5266BC2D600C3AE8F /* EditStudyRecord.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB93C2C4266BC2D600C3AE8F /* EditStudyRecord.storyboard */; };
 		AB9898B12723863700498F0D /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AB9898B02723863700498F0D /* Settings.bundle */; };
+		AB9898F32724C21F00498F0D /* AnonymousUserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB9898F22724C21F00498F0D /* AnonymousUserView.xib */; };
+		AB9898F52724C22500498F0D /* AnonymousUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9898F42724C22500498F0D /* AnonymousUserView.swift */; };
 		AB9B4FD626D771C5001A7BAB /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9B4FD526D771C5001A7BAB /* UITextField+Extension.swift */; };
 		AB9F30F527140DCE008A79A5 /* GoalSimpleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9F30F327140DCE008A79A5 /* GoalSimpleTableViewCell.swift */; };
 		AB9F30F627140DCE008A79A5 /* GoalSimpleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB9F30F427140DCE008A79A5 /* GoalSimpleTableViewCell.xib */; };
@@ -1109,6 +1111,8 @@
 		AB93C2C2266BC28E00C3AE8F /* EditStudyRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStudyRecordViewController.swift; sourceTree = "<group>"; };
 		AB93C2C4266BC2D600C3AE8F /* EditStudyRecord.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditStudyRecord.storyboard; sourceTree = "<group>"; };
 		AB9898B02723863700498F0D /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = StudyRecordApp/Settings.bundle; sourceTree = "<group>"; };
+		AB9898F22724C21F00498F0D /* AnonymousUserView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnonymousUserView.xib; sourceTree = "<group>"; };
+		AB9898F42724C22500498F0D /* AnonymousUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymousUserView.swift; sourceTree = "<group>"; };
 		AB9B4FD526D771C5001A7BAB /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		AB9F30F327140DCE008A79A5 /* GoalSimpleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSimpleTableViewCell.swift; sourceTree = "<group>"; };
 		AB9F30F427140DCE008A79A5 /* GoalSimpleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoalSimpleTableViewCell.xib; sourceTree = "<group>"; };
@@ -1235,6 +1239,8 @@
 				AB4539A5271D560500CF1C04 /* PlaceHolderTextView.swift */,
 				AB4539B6271D7D0500CF1C04 /* ReportThankYouView.xib */,
 				AB4539B8271D7D1500CF1C04 /* ReportThankYouView.swift */,
+				AB9898F22724C21F00498F0D /* AnonymousUserView.xib */,
+				AB9898F42724C22500498F0D /* AnonymousUserView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -2095,8 +2101,8 @@
 		AB8B704826D5EF210069FF67 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
-				AB13ED4C26BB9241002F56FF /* RecordUseCase.swift */,
 				AB14B45F26DA3381007A5F16 /* UserUseCase.swift */,
+				AB13ED4C26BB9241002F56FF /* RecordUseCase.swift */,
 				AB43980026DE157E008C8CA8 /* GoalUseCase.swift */,
 				ABFAB21126E63B350095EC20 /* GraphUseCase.swift */,
 				AB0C766826EBB10700BF5B64 /* SettingUseCase.swift */,
@@ -2610,6 +2616,7 @@
 				AB6D75D72722E751004AA0B5 /* Green_Yellow-Heart-Black.png in Resources */,
 				AB6D75CD2722E751004AA0B5 /* LightBlue-Wings-Black.png in Resources */,
 				AB6D75132722E750004AA0B5 /* Red_Blue-Heart-White@2x.png in Resources */,
+				AB9898F32724C21F00498F0D /* AnonymousUserView.xib in Resources */,
 				AB6D75352722E750004AA0B5 /* Black-Heart-White.png in Resources */,
 				AB6D754E2722E750004AA0B5 /* Red_Pink-Wings-White@3x.png in Resources */,
 				AB6D75542722E750004AA0B5 /* Green-Wing-White.png in Resources */,
@@ -2874,6 +2881,7 @@
 				AB14B46C26DBA80A007A5F16 /* User.swift in Sources */,
 				AB00DDC726F4E75E008CC3F1 /* CategoryKeyboardView.swift in Sources */,
 				AB93C23B266A234800C3AE8F /* AppDelegate.swift in Sources */,
+				AB9898F52724C22500498F0D /* AnonymousUserView.swift in Sources */,
 				AB2B5BC926A2D36F009BD3C7 /* SettingViewController.swift in Sources */,
 				AB2B5BB926A2D2C2009BD3C7 /* AccordionColorTableViewCell.swift in Sources */,
 				AB0C765C26EBABC200BF5B64 /* RecordRealm.swift in Sources */,

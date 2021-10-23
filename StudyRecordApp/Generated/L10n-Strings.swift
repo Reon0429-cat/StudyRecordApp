@@ -262,6 +262,8 @@ internal enum L10n {
   internal static let october = L10n.tr("Localizable", "october")
   /// 1 time left
   internal static let oneTimeLeft = L10n.tr("Localizable", "oneTimeLeft")
+  /// Only available to those who have logged in after creating an account.
+  internal static let onlyAvailableNotAnonymousUser = L10n.tr("Localizable", "onlyAvailableNotAnonymousUser")
   /// Organic
   internal static let organic = L10n.tr("Localizable", "organic")
   /// overall
