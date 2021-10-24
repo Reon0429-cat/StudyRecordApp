@@ -8,7 +8,6 @@
 import UIKit
 
 // MARK: - ToDo リアルタイムで同期して更新する処理も実装する(realm)
-// MARK: - ToDo rowの高さを可変にする
 
 protocol EditButtonSelectable {
     var isEdit: Bool { get }

@@ -51,8 +51,6 @@ enum TileColorType: Int {
     }
 }
 
-// MARK: - ToDo タイルを選択した時のバグを直す
-
 protocol ColorChoicesTileVCDelegate: AnyObject {
     func tileViewDidTapped(selectedView: UIView, isSameView: Bool)
 }

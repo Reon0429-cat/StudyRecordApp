@@ -36,8 +36,6 @@ enum StackViewSubViewType: Int, CaseIterable {
     case width
 }
 
-// MARK: - ToDo スイッチを他のものに変える
-
 final class GraphKindSelectingViewController: UIViewController {
     
     @IBOutlet private weak var contentView: UIView!

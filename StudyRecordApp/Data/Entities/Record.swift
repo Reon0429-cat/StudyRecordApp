@@ -7,9 +7,6 @@
 
 import UIKit
 
-// MARK: - ToDo Realmのプロパティを増やしたときに、リリース後に落ちる対策をする
-// -> Sirenというライブラリを用いて強制アップデートさせる
-
 // 共通の型
 struct Record: Equatable {
     var title: String

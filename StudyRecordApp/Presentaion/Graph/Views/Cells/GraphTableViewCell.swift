@@ -12,8 +12,6 @@ protocol GraphTableViewCellDelegate: AnyObject {
     func registerButtonDidTapped(index: Int)
 }
 
-// MARK: - ToDo 月のセグメントにはAllを追加する
-
 final class GraphTableViewCell: UITableViewCell {
     
     @IBOutlet private weak var titleLabel: UILabel!
