@@ -18,9 +18,7 @@ final class RecordTableViewCell: UITableViewCell {
     
     @IBOutlet private weak var baseView: UIView!
     @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var memoButtonBaseView: UIView!
     @IBOutlet private weak var memoButton: UIButton!
-    @IBOutlet private weak var stackView: UIStackView!
     @IBOutlet private weak var todayStudyTimeLabel: UILabel!
     @IBOutlet private weak var totalStudyTimeLabel: UILabel!
     @IBOutlet private weak var deleteButton: UIButton!
@@ -128,7 +126,6 @@ private extension RecordTableViewCell {
         let titleTriangle = record.isExpanded ?  "▲ " : "▼ "
         memoButton.setTitle(titleTriangle + L10n.memo)
         memoButton.isHidden = record.memo.isEmpty
-        memoButtonBaseView.isHidden = record.memo.isEmpty
     }
     
     func setupMemoTextView(record: Record) {

@@ -31,35 +31,50 @@
                             <rect key="frame" x="10" y="4" width="423" height="94"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="プログラミングを勉強するプログラミングを勉強するプログラミングを勉強するプログラミングを勉強するプログラミングを勉強する" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="yWN-gs-jsp">
-                                    <rect key="frame" x="0.0" y="0.0" width="423" height="69"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="423" height="72"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qUt-h7-SSl">
-                                    <rect key="frame" x="0.0" y="69" width="423" height="25"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ewv-Hv-yux">
+                                    <rect key="frame" x="0.0" y="72" width="423" height="22"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="300" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="445-9j-MLR">
-                                            <rect key="frame" x="0.0" y="0.0" width="55" height="25"/>
-                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <state key="normal" title="▼ メモ">
-                                                <color key="titleColor" systemColor="labelColor"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="memoButtonDidTapped:" destination="Fth-yB-6nH" eventType="touchUpInside" id="l5b-iN-Azg"/>
-                                            </connections>
-                                        </button>
-                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ewv-Hv-yux">
-                                            <rect key="frame" x="75" y="0.0" width="348" height="25"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lAr-yD-HXX">
+                                            <rect key="frame" x="0.0" y="0.0" width="70" height="22"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="300" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="445-9j-MLR">
+                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <state key="normal" title="▼ メモ">
+                                                        <color key="titleColor" systemColor="labelColor"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="memoButtonDidTapped:" destination="Fth-yB-6nH" eventType="touchUpInside" id="l5b-iN-Azg"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="70" id="0qg-2c-RQI"/>
+                                                <constraint firstAttribute="height" constant="22" id="206-7M-BnX"/>
+                                                <constraint firstItem="445-9j-MLR" firstAttribute="leading" secondItem="lAr-yD-HXX" secondAttribute="leading" id="S44-8o-UYM"/>
+                                                <constraint firstItem="445-9j-MLR" firstAttribute="top" secondItem="lAr-yD-HXX" secondAttribute="top" id="Tge-Hc-WN0"/>
+                                                <constraint firstAttribute="bottom" secondItem="445-9j-MLR" secondAttribute="bottom" id="VRg-HN-Zp6"/>
+                                                <constraint firstAttribute="trailing" secondItem="445-9j-MLR" secondAttribute="trailing" id="WWa-RF-5Es"/>
+                                            </constraints>
+                                        </view>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="M9A-M3-D65">
+                                            <rect key="frame" x="80" y="0.0" width="343" height="22"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今日: 30分" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="w5p-bu-Zak">
-                                                    <rect key="frame" x="0.0" y="0.0" width="174" height="25"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="166.5" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合計: 200分" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="Du5-l1-2IM">
-                                                    <rect key="frame" x="174" y="0.0" width="174" height="25"/>
+                                                    <rect key="frame" x="176.5" y="0.0" width="166.5" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -67,20 +82,14 @@
                                             </subviews>
                                         </stackView>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="ewv-Hv-yux" secondAttribute="bottom" id="6MT-16-ntz"/>
-                                        <constraint firstItem="445-9j-MLR" firstAttribute="leading" secondItem="qUt-h7-SSl" secondAttribute="leading" id="NQC-mV-xjP"/>
-                                        <constraint firstItem="445-9j-MLR" firstAttribute="top" secondItem="qUt-h7-SSl" secondAttribute="top" id="OM1-cK-tda"/>
-                                        <constraint firstItem="ewv-Hv-yux" firstAttribute="centerY" secondItem="qUt-h7-SSl" secondAttribute="centerY" id="Sez-iR-qYQ"/>
-                                        <constraint firstAttribute="trailing" secondItem="ewv-Hv-yux" secondAttribute="trailing" id="hOu-rL-T0v"/>
-                                        <constraint firstItem="ewv-Hv-yux" firstAttribute="leading" secondItem="445-9j-MLR" secondAttribute="trailing" constant="20" id="htf-F5-5tx"/>
-                                        <constraint firstAttribute="bottom" secondItem="445-9j-MLR" secondAttribute="bottom" id="n7o-mA-xsv"/>
-                                        <constraint firstItem="ewv-Hv-yux" firstAttribute="top" secondItem="qUt-h7-SSl" secondAttribute="top" id="pkT-Ke-uBb"/>
-                                        <constraint firstAttribute="height" constant="25" id="sdV-H0-Bxh"/>
-                                    </constraints>
-                                </view>
+                                </stackView>
                             </subviews>
+                            <constraints>
+                                <constraint firstItem="ewv-Hv-yux" firstAttribute="top" secondItem="yWN-gs-jsp" secondAttribute="bottom" id="A36-OE-Nyx"/>
+                                <constraint firstAttribute="trailing" secondItem="ewv-Hv-yux" secondAttribute="trailing" id="G01-3H-Csx"/>
+                                <constraint firstAttribute="bottom" secondItem="ewv-Hv-yux" secondAttribute="bottom" id="JJk-B5-Zvg"/>
+                                <constraint firstItem="ewv-Hv-yux" firstAttribute="leading" secondItem="OwJ-PD-2gb" secondAttribute="leading" id="y5K-Zn-U47"/>
+                            </constraints>
                         </stackView>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -129,7 +138,6 @@
                 <outlet property="baseView" destination="XF1-Gs-Il9" id="hU0-4n-9Xo"/>
                 <outlet property="deleteButton" destination="Iei-QV-bIm" id="VnX-cO-DAl"/>
                 <outlet property="memoButton" destination="445-9j-MLR" id="Wjq-n9-FMz"/>
-                <outlet property="memoButtonBaseView" destination="qUt-h7-SSl" id="dwV-hE-24u"/>
                 <outlet property="memoTextView" destination="bzP-vE-c94" id="dkZ-SR-DAs"/>
                 <outlet property="titleLabel" destination="yWN-gs-jsp" id="a2K-Hs-Wxu"/>
                 <outlet property="todayStudyTimeLabel" destination="w5p-bu-Zak" id="8if-KA-hAj"/>
