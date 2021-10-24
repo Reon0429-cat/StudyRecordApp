@@ -13,7 +13,6 @@ protocol GraphTableViewCellDelegate: AnyObject {
 }
 
 // MARK: - ToDo 月のセグメントにはAllを追加する
-// MARK: - ToDo セグメントをUIMenuにする（月と年でそれぞれ）
 
 final class GraphTableViewCell: UITableViewCell {
     
