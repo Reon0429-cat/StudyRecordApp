@@ -60,6 +60,21 @@ final class StudyRecordViewController: UIViewController {
     
 }
 
+// MARK: - func
+private extension StudyRecordViewController {
+    
+    func getCellHeight(at indexPath: IndexPath) -> CGFloat {
+        let record = records[indexPath.row]
+        let isExpanded = record.isExpanded
+        let memoTextIsEmpty = record.memo.isEmpty
+        if isExpanded && !memoTextIsEmpty {
+            return tableView.rowHeight
+        }
+        return 120
+    }
+    
+}
+
 // MARK: - IBAction func
 private extension StudyRecordViewController {
     
@@ -75,12 +90,12 @@ extension StudyRecordViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
                    estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return records[indexPath.row].isExpanded ? tableView.rowHeight : 120
+        return getCellHeight(at: indexPath)
     }
     
     func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return records[indexPath.row].isExpanded ? tableView.rowHeight : 120
+        return getCellHeight(at: indexPath)
     }
     
     func tableView(_ tableView: UITableView,
