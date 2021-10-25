@@ -226,7 +226,7 @@ internal enum L10n {
   internal static let mailAddress = L10n.tr("Localizable", "mailAddress")
   /// Main
   internal static let main = L10n.tr("Localizable", "main")
-  /// mandatory
+  /// ※mandatory
   internal static let mandatory = L10n.tr("Localizable", "mandatory")
   /// March
   internal static let march = L10n.tr("Localizable", "march")

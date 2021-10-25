@@ -52,7 +52,6 @@
                 <constraints>
                     <constraint firstItem="eif-h9-MZD" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="DuM-O8-Lz0"/>
                     <constraint firstItem="kPf-se-hNj" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Gf1-XP-Kmn"/>
-                    <constraint firstAttribute="bottom" secondItem="HuK-cv-8tS" secondAttribute="bottom" id="ILU-qt-64m"/>
                     <constraint firstItem="kPf-se-hNj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eif-h9-MZD" secondAttribute="trailing" constant="10" id="KK0-IE-bcR"/>
                     <constraint firstItem="kPf-se-hNj" firstAttribute="leading" secondItem="HuK-cv-8tS" secondAttribute="trailing" constant="10" id="KbB-cT-a2Z"/>
                     <constraint firstItem="eif-h9-MZD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Kug-uo-fS2"/>
@@ -62,6 +61,7 @@
                     <constraint firstItem="HuK-cv-8tS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8B0-1i-5j6" secondAttribute="trailing" constant="50" id="eRj-4Z-ZSC"/>
                     <constraint firstItem="8B0-1i-5j6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="jea-CQ-Cf3"/>
                     <constraint firstItem="eif-h9-MZD" firstAttribute="top" secondItem="8B0-1i-5j6" secondAttribute="bottom" id="shM-st-nfU"/>
+                    <constraint firstItem="HuK-cv-8tS" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="uUL-xL-KQa"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

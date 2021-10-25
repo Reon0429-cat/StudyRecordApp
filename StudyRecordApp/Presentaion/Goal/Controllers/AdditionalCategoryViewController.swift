@@ -73,7 +73,7 @@ extension AdditionalCategoryViewController: UITableViewDataSource {
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
         let title = goalUseCase.categories[indexPath.row].title
-        cell.configure(titleText: title)
+        cell.configure(titleText: title, isMemo: false)
         return cell
     }
     
