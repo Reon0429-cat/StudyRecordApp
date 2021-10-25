@@ -61,6 +61,7 @@ private extension SettingRealm {
                               isBiometricsSetted: setting.isBiometricsSetted,
                               language: setting.language,
                               identifier: setting.identifier)
+        self.isDarkMode = setting.isDarkMode
         self.darkModeSettingType = setting.darkModeSettingType
         self.isPasscodeSetted = setting.isPasscodeSetted
         self.passcode = setting.passcode

@@ -7,8 +7,6 @@
 
 import UIKit
 
-// MARK: - ToDo バグなおす
-
 final class DarkModeSettingViewController: UIViewController {
     
     @IBOutlet private weak var contentView: UIView!
