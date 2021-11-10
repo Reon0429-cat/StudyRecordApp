@@ -134,13 +134,6 @@ internal enum StoryboardScene {
 
     internal static let graphKindSelectingViewController = SceneType<StudyRecordApp.GraphKindSelectingViewController>(storyboard: GraphKindSelecting.self, identifier: "GraphKindSelectingViewController")
   }
-  internal enum HowToUse: StoryboardType {
-    internal static let storyboardName = "HowToUse"
-
-    internal static let initialScene = InitialSceneType<StudyRecordApp.HowToUseViewController>(storyboard: HowToUse.self)
-
-    internal static let howToUseViewController = SceneType<StudyRecordApp.HowToUseViewController>(storyboard: HowToUse.self, identifier: "HowToUseViewController")
-  }
   internal enum LaunchScreen: StoryboardType {
     internal static let storyboardName = "LaunchScreen"
 

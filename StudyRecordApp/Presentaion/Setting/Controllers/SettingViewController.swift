@@ -17,7 +17,6 @@ private enum SettingRowType: Int, CaseIterable {
     case appIcon
     case shareApp
     case reports
-    case howToUseApp
     case backup
     case privacyPolicy
     case license
@@ -42,8 +41,6 @@ private enum SettingRowType: Int, CaseIterable {
                 return L10n.shareApp
             case .reports:
                 return L10n.reports
-            case .howToUseApp:
-                return L10n.howToUseApp
             case .backup:
                 return L10n.backup
             case .privacyPolicy:
@@ -76,8 +73,6 @@ private enum SettingRowType: Int, CaseIterable {
                 return UIImage(systemName: .squareAndArrowUp)
             case .reports:
                 return UIImage(systemName: .docText)
-            case .howToUseApp:
-                return UIImage(systemName: .circleHexagongridFill)
             case .backup:
                 return UIImage(systemName: .icloudAndArrowUp)
             case .privacyPolicy:
@@ -284,8 +279,6 @@ extension SettingViewController: UITableViewDelegate {
                         modalPresentationStyle: .fullScreen) { vc in
                     vc.delegate = self
                 }
-            case .howToUseApp:
-                present(HowToUseViewController.self)
             case .backup:
                 if userUseCase.isLoggedInAsAnonymously {
                     let alert = Alert.create(message: L10n.onlyAvailableNotAnonymousUser)
