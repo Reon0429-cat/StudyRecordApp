@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -29,25 +30,23 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbx-fK-Xu5">
-                        <rect key="frame" x="330.5" y="25.5" width="12.5" height="24"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="2zE-If-Sns">
+                        <rect key="frame" x="323" y="29.5" width="20" height="16.5"/>
+                        <color key="tintColor" systemColor="labelColor"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="12.5" id="p1l-t6-g4k"/>
+                            <constraint firstAttribute="width" constant="20" id="2Vu-5a-QWx"/>
+                            <constraint firstAttribute="width" secondItem="2zE-If-Sns" secondAttribute="height" id="Di2-7a-PoA"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="GK4-R4-uA2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="22" id="PC8-Tr-XRo"/>
+                    <constraint firstAttribute="trailing" secondItem="2zE-If-Sns" secondAttribute="trailing" constant="20" id="PRI-h5-eNw"/>
                     <constraint firstItem="GK4-R4-uA2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="XUW-U2-38y"/>
-                    <constraint firstAttribute="trailing" secondItem="rbx-fK-Xu5" secondAttribute="trailing" constant="20" id="Z8Z-mr-fgk"/>
-                    <constraint firstItem="rbx-fK-Xu5" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="c1M-B5-x81"/>
+                    <constraint firstItem="2zE-If-Sns" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="drv-kD-qay"/>
                     <constraint firstItem="Yhc-q2-fyB" firstAttribute="leading" secondItem="GK4-R4-uA2" secondAttribute="trailing" constant="10" id="nph-oX-UhL"/>
                     <constraint firstItem="Yhc-q2-fyB" firstAttribute="centerY" secondItem="GK4-R4-uA2" secondAttribute="centerY" id="o3g-El-3uF"/>
                     <constraint firstItem="GK4-R4-uA2" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="pyv-de-jdo"/>
-                    <constraint firstItem="rbx-fK-Xu5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Yhc-q2-fyB" secondAttribute="trailing" constant="10" id="u4w-WI-mOS"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -58,4 +57,10 @@
             <point key="canvasLocation" x="163.04347826086959" y="154.35267857142856"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="chevron.right" catalog="system" width="96" height="128"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

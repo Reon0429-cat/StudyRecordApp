@@ -13,8 +13,8 @@
 		AB00DDCB26F4EECA008CC3F1 /* AdditionalCategory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB00DDCA26F4EECA008CC3F1 /* AdditionalCategory.storyboard */; };
 		AB0C765326EB889100BF5B64 /* CustomSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C765126EB889100BF5B64 /* CustomSwitchTableViewCell.swift */; };
 		AB0C765426EB889100BF5B64 /* CustomSwitchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB0C765226EB889100BF5B64 /* CustomSwitchTableViewCell.xib */; };
-		AB0C765726EB8B4300BF5B64 /* CustomButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C765526EB8B4300BF5B64 /* CustomButtonTableViewCell.swift */; };
-		AB0C765826EB8B4300BF5B64 /* CustomButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB0C765626EB8B4300BF5B64 /* CustomButtonTableViewCell.xib */; };
+		AB0C765726EB8B4300BF5B64 /* SettingLogoutCustomButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C765526EB8B4300BF5B64 /* SettingLogoutCustomButtonTableViewCell.swift */; };
+		AB0C765826EB8B4300BF5B64 /* SettingLogoutCustomButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB0C765626EB8B4300BF5B64 /* SettingLogoutCustomButtonTableViewCell.xib */; };
 		AB0C765A26EBA91D00BF5B64 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C765926EBA91D00BF5B64 /* Setting.swift */; };
 		AB0C765C26EBABC200BF5B64 /* RecordRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C765B26EBABC200BF5B64 /* RecordRealm.swift */; };
 		AB0C765E26EBABDF00BF5B64 /* GoalRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0C765D26EBABDF00BF5B64 /* GoalRealm.swift */; };
@@ -585,8 +585,8 @@
 		AB00DDCA26F4EECA008CC3F1 /* AdditionalCategory.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AdditionalCategory.storyboard; sourceTree = "<group>"; };
 		AB0C765126EB889100BF5B64 /* CustomSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSwitchTableViewCell.swift; sourceTree = "<group>"; };
 		AB0C765226EB889100BF5B64 /* CustomSwitchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomSwitchTableViewCell.xib; sourceTree = "<group>"; };
-		AB0C765526EB8B4300BF5B64 /* CustomButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonTableViewCell.swift; sourceTree = "<group>"; };
-		AB0C765626EB8B4300BF5B64 /* CustomButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomButtonTableViewCell.xib; sourceTree = "<group>"; };
+		AB0C765526EB8B4300BF5B64 /* SettingLogoutCustomButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLogoutCustomButtonTableViewCell.swift; sourceTree = "<group>"; };
+		AB0C765626EB8B4300BF5B64 /* SettingLogoutCustomButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingLogoutCustomButtonTableViewCell.xib; sourceTree = "<group>"; };
 		AB0C765926EBA91D00BF5B64 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		AB0C765B26EBABC200BF5B64 /* RecordRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRealm.swift; sourceTree = "<group>"; };
 		AB0C765D26EBABDF00BF5B64 /* GoalRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalRealm.swift; sourceTree = "<group>"; };
@@ -1530,8 +1530,6 @@
 				AB13EDDF26C64EBB002F56FF /* CustomTitleTableViewCell.xib */,
 				AB0C765126EB889100BF5B64 /* CustomSwitchTableViewCell.swift */,
 				AB0C765226EB889100BF5B64 /* CustomSwitchTableViewCell.xib */,
-				AB0C765526EB8B4300BF5B64 /* CustomButtonTableViewCell.swift */,
-				AB0C765626EB8B4300BF5B64 /* CustomButtonTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1612,6 +1610,8 @@
 				AB46936D27236060007F1C66 /* SettingTableViewCell.xib */,
 				AB46937027236B0F007F1C66 /* AppIconTableViewCell.swift */,
 				AB46937127236B0F007F1C66 /* AppIconTableViewCell.xib */,
+				AB0C765526EB8B4300BF5B64 /* SettingLogoutCustomButtonTableViewCell.swift */,
+				AB0C765626EB8B4300BF5B64 /* SettingLogoutCustomButtonTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -2601,7 +2601,7 @@
 				AB6D76292722E751004AA0B5 /* Pink-Wings-White.png in Resources */,
 				AB6D75BD2722E750004AA0B5 /* Pink-Heart-White@3x.png in Resources */,
 				AB6D763B2722E751004AA0B5 /* Pink_Green-Wings-White@3x.png in Resources */,
-				AB0C765826EB8B4300BF5B64 /* CustomButtonTableViewCell.xib in Resources */,
+				AB0C765826EB8B4300BF5B64 /* SettingLogoutCustomButtonTableViewCell.xib in Resources */,
 				AB13EDF426C8BAAC002F56FF /* Goal.storyboard in Resources */,
 				AB6D75502722E750004AA0B5 /* Red_Blue-Wing-White@2x.png in Resources */,
 				ABE8CF59271EA8D500705EE4 /* Reports.storyboard in Resources */,
@@ -2855,7 +2855,7 @@
 				AB2B5B8526A2D0FD009BD3C7 /* UIColor+Extension.swift in Sources */,
 				AB4397F326DD3B32008C8CA8 /* GoalPriorityViewController.swift in Sources */,
 				AB20F80E26E7CBAE00564B14 /* CustomScrollableGraphView.swift in Sources */,
-				AB0C765726EB8B4300BF5B64 /* CustomButtonTableViewCell.swift in Sources */,
+				AB0C765726EB8B4300BF5B64 /* SettingLogoutCustomButtonTableViewCell.swift in Sources */,
 				AB13EDFA26C8C585002F56FF /* GoalViewController.swift in Sources */,
 				AB4397F526DD57B9008C8CA8 /* Goal.swift in Sources */,
 				AB0C766926EBB10700BF5B64 /* SettingUseCase.swift in Sources */,

@@ -199,7 +199,7 @@
 "pleaseEnterYourCurrentPasscode" = "現在のパスコードを\n入力してください";
 "changePasscode" = "パスコードを変更";
 
-"mandatory" = "必須";
+"mandatory" = "※必須";
 "unselected" = "未選択";
 
 "year" = "年";

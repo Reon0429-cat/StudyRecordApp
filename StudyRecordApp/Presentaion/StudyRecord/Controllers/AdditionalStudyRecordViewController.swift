@@ -156,7 +156,8 @@ extension AdditionalStudyRecordViewController: UITableViewDataSource {
                 let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
                 cell.configure(titleText: L10n.largeTitle,
                                mandatoryIsHidden: false,
-                               auxiliaryText: inputtedTitle)
+                               auxiliaryText: inputtedTitle,
+                               isMemo: false)
                 return cell
             case .graphColor:
                 let cell = tableView.dequeueReusableCustomCell(with: StudyRecordGraphColorTableViewCell.self)
@@ -166,7 +167,8 @@ extension AdditionalStudyRecordViewController: UITableViewDataSource {
                 let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
                 cell.configure(titleText: L10n.largeMemo,
                                mandatoryIsHidden: true,
-                               auxiliaryText: inputtedMemo)
+                               auxiliaryText: inputtedMemo,
+                               isMemo: true)
                 return cell
         }
     }

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -23,30 +24,29 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OJd-0M-d0A">
-                        <rect key="frame" x="330.5" y="25.5" width="12.5" height="24"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="12.5" id="q2o-Lf-aTf"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nyS-nG-CKz">
                         <rect key="frame" x="6" y="13" width="49" height="49"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="nyS-nG-CKz" secondAttribute="height" id="yWz-Se-Rcj"/>
                         </constraints>
                     </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="80K-2K-o5o">
+                        <rect key="frame" x="323" y="29.5" width="20" height="16.5"/>
+                        <color key="tintColor" systemColor="labelColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="cD0-5r-fM5"/>
+                            <constraint firstAttribute="width" constant="20" id="nLh-dc-UOS"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="OJd-0M-d0A" secondAttribute="trailing" constant="20" id="IyN-LB-d3G"/>
-                    <constraint firstItem="OJd-0M-d0A" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ULB-WG-o1k" secondAttribute="trailing" constant="10" id="LYB-h6-aQk"/>
-                    <constraint firstItem="OJd-0M-d0A" firstAttribute="centerY" secondItem="Etg-4D-FqG" secondAttribute="centerY" id="Nyr-ek-bzt"/>
+                    <constraint firstItem="80K-2K-o5o" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ULB-WG-o1k" secondAttribute="trailing" constant="10" id="J5m-ax-hKR"/>
                     <constraint firstItem="ULB-WG-o1k" firstAttribute="leading" secondItem="Etg-4D-FqG" secondAttribute="leading" constant="51.5" id="RZB-Do-OQK"/>
+                    <constraint firstItem="80K-2K-o5o" firstAttribute="centerY" secondItem="Etg-4D-FqG" secondAttribute="centerY" id="Seo-iO-NFQ"/>
                     <constraint firstItem="nyS-nG-CKz" firstAttribute="top" secondItem="Etg-4D-FqG" secondAttribute="top" constant="13" id="TUa-bv-0U2"/>
                     <constraint firstItem="nyS-nG-CKz" firstAttribute="leading" secondItem="Etg-4D-FqG" secondAttribute="leading" constant="6" id="e4K-vS-Nrn"/>
                     <constraint firstItem="nyS-nG-CKz" firstAttribute="centerY" secondItem="Etg-4D-FqG" secondAttribute="centerY" id="nw2-UC-zcj"/>
+                    <constraint firstAttribute="trailing" secondItem="80K-2K-o5o" secondAttribute="trailing" constant="20" id="peZ-1Y-Liq"/>
                     <constraint firstItem="ULB-WG-o1k" firstAttribute="centerY" secondItem="Etg-4D-FqG" secondAttribute="centerY" id="rFX-0p-wgv"/>
                 </constraints>
             </tableViewCellContentView>
@@ -58,4 +58,10 @@
             <point key="canvasLocation" x="163.04347826086959" y="154.35267857142856"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="chevron.right" catalog="system" width="96" height="128"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

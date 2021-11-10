@@ -66,8 +66,9 @@ extension ColorConceptViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
-        let title = ColorConcept.allCases[indexPath.row].title
-        cell.configure(titleText: title)
+        let colorConcept = ColorConcept.allCases[indexPath.row]
+        cell.configure(titleText: colorConcept.title,
+                       isMemo: false)
         return cell
     }
     

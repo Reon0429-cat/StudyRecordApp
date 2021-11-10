@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CustomButtonTableViewCell: UITableViewCell {
+final class SettingLogoutCustomButtonTableViewCell: UITableViewCell {
     
     @IBOutlet private weak var button: UIButton!
     

@@ -497,7 +497,8 @@ private extension AddAndEditGoalViewController {
         let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
         cell.configure(titleText: rowType.title,
                        mandatoryIsHidden: false,
-                       auxiliaryText: inputtedTitle)
+                       auxiliaryText: inputtedTitle,
+                       isMemo: false)
         return cell
     }
     
@@ -508,12 +509,14 @@ private extension AddAndEditGoalViewController {
             case .add:
                 cell.configure(titleText: rowType.title,
                                mandatoryIsHidden: true,
-                               auxiliaryText: inputtedCategoryTitle)
+                               auxiliaryText: inputtedCategoryTitle,
+                               isMemo: false)
             case .sectionAdd, .categoryAdd, .edit:
                 cell.configure(titleText: rowType.title,
                                mandatoryText: L10n.fixed,
                                mandatoryIsHidden: false,
-                               auxiliaryText: inputtedCategoryTitle)
+                               auxiliaryText: inputtedCategoryTitle,
+                               isMemo: false)
         }
         return cell
     }
@@ -522,7 +525,8 @@ private extension AddAndEditGoalViewController {
         let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
         cell.configure(titleText: rowType.title,
                        mandatoryIsHidden: true,
-                       auxiliaryText: inputtedMemo)
+                       auxiliaryText: inputtedMemo,
+                       isMemo: true)
         return cell
     }
     
@@ -539,7 +543,8 @@ private extension AddAndEditGoalViewController {
         let auxiliaryText = Converter.convertToString(from: inputtedDate)
         cell.configure(titleText: rowType.title,
                        mandatoryIsHidden: true,
-                       auxiliaryText: auxiliaryText)
+                       auxiliaryText: auxiliaryText,
+                       isMemo: false)
         return cell
     }
     

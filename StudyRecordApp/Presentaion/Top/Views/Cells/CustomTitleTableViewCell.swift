@@ -16,11 +16,19 @@ final class CustomTitleTableViewCell: UITableViewCell {
     func configure(titleText: String,
                    mandatoryText: String = L10n.mandatory,
                    mandatoryIsHidden: Bool = true,
-                   auxiliaryText: String = "") {
+                   auxiliaryText: String = "",
+                   isMemo: Bool) {
         titleLabel.text = titleText
         mandatoryLabel.isHidden = mandatoryIsHidden
         mandatoryLabel.text = mandatoryText
-        auxiliaryLabel.text = auxiliaryText
+        if isMemo {
+            auxiliaryLabel.isHidden = auxiliaryText.isEmpty
+            if !auxiliaryText.isEmpty {
+                auxiliaryLabel.text = "..."
+            }
+        } else {
+            auxiliaryLabel.text = auxiliaryText
+        }
     }
     
 }
