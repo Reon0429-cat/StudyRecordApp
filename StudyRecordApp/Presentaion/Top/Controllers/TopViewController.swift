@@ -16,10 +16,8 @@ final class TopViewController: UIViewController {
     @IBOutlet private weak var addButtonRightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var editButton: NavigationButton!
     @IBOutlet private weak var editButtonRightConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var bottomSeparatorView: UIView!
     @IBOutlet private weak var topWaveView: WaveView!
     @IBOutlet private weak var middleWaveView: WaveView!
-    @IBOutlet private weak var bottomWaveView: WaveView!
     @IBOutlet private weak var verticalSeparatorView: UIView!
     
     private struct LayoutConstant {
@@ -425,7 +423,6 @@ private extension TopViewController {
     func setupWaveViews() {
         topWaveView.create(isFill: true, marginY: 60)
         middleWaveView.create(isFill: false, marginY: 20)
-        bottomWaveView.create(isFill: false, marginY: 23)
     }
     
     func setupAnimation() {
