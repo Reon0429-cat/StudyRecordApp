@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -25,7 +25,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yBE-kM-0ed">
-                        <rect key="frame" x="256.5" y="20" width="80" height="39"/>
+                        <rect key="frame" x="249" y="20" width="80" height="39"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未選択" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jW5-PK-wbL">
                                 <rect key="frame" x="0.0" y="0.0" width="80" height="39"/>
@@ -45,28 +45,30 @@
                             <constraint firstAttribute="width" constant="80" id="y68-jN-Yk0"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hxd-d3-3iV">
-                        <rect key="frame" x="346.5" y="27.5" width="12.5" height="24"/>
-                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="※必須" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2F9-ws-4Iv">
                         <rect key="frame" x="20" y="0.0" width="34.5" height="29.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" systemColor="systemRedColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="YU7-RO-F6d">
+                        <rect key="frame" x="339" y="31.5" width="20" height="16.5"/>
+                        <color key="tintColor" systemColor="labelColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="ozf-1z-KbK"/>
+                            <constraint firstAttribute="width" constant="20" id="pn4-Hq-rzH"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="YU7-RO-F6d" secondAttribute="trailing" constant="20" id="10V-ZV-jcD"/>
                     <constraint firstItem="yBE-kM-0ed" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="50f-61-ISj"/>
-                    <constraint firstAttribute="trailing" secondItem="hxd-d3-3iV" secondAttribute="trailing" constant="20" id="7xB-CU-Jx5"/>
-                    <constraint firstItem="hxd-d3-3iV" firstAttribute="leading" secondItem="yBE-kM-0ed" secondAttribute="trailing" constant="10" id="9wO-Vg-YOz"/>
+                    <constraint firstItem="YU7-RO-F6d" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="7pq-oP-qPA"/>
                     <constraint firstItem="yBE-kM-0ed" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="HvO-R6-QC0"/>
                     <constraint firstItem="EVI-V5-Vsa" firstAttribute="top" secondItem="2F9-ws-4Iv" secondAttribute="bottom" id="PLi-7U-B2r"/>
-                    <constraint firstItem="hxd-d3-3iV" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="dRh-dk-e4O"/>
                     <constraint firstItem="2F9-ws-4Iv" firstAttribute="leading" secondItem="EVI-V5-Vsa" secondAttribute="leading" id="eqZ-Km-xj5"/>
                     <constraint firstItem="EVI-V5-Vsa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="hlX-jY-Z0e"/>
+                    <constraint firstItem="YU7-RO-F6d" firstAttribute="leading" secondItem="yBE-kM-0ed" secondAttribute="trailing" constant="10" id="jbX-N2-cHh"/>
                     <constraint firstItem="EVI-V5-Vsa" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="lKB-me-BWE"/>
                     <constraint firstItem="2F9-ws-4Iv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="uMg-gw-3fU"/>
                 </constraints>
@@ -82,6 +84,10 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="chevron.right" catalog="system" width="96" height="128"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

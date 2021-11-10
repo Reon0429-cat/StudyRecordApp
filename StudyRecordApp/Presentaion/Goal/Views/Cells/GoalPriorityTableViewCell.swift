@@ -10,7 +10,7 @@ import UIKit
 final class GoalPriorityTableViewCell: UITableViewCell {
     
     @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var arrowLabel: UILabel!
+    @IBOutlet private weak var chevronImageView: UIImageView!
     
     private var stackView = UIStackView()
     
@@ -25,7 +25,7 @@ final class GoalPriorityTableViewCell: UITableViewCell {
         self.addSubview(priorityStackView)
         NSLayoutConstraint.activate([
             priorityStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            priorityStackView.trailingAnchor.constraint(equalTo: arrowLabel.leadingAnchor, constant: -10)
+            priorityStackView.trailingAnchor.constraint(equalTo: chevronImageView.leadingAnchor, constant: -10)
         ])
         self.stackView = priorityStackView
     }

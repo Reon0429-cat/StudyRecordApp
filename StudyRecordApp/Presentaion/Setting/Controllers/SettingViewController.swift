@@ -90,6 +90,7 @@ private enum SettingRowType: Int, CaseIterable {
                 return UIImage()
         }
     }
+    
 }
 
 protocol SettingVCDelegate: ScreenPresentationDelegate {
@@ -349,7 +350,7 @@ extension SettingViewController: UITableViewDataSource {
         let rowType = SettingRowType.allCases[indexPath.row]
         switch rowType {
             case .logout:
-                let cell = tableView.dequeueReusableCustomCell(with: CustomButtonTableViewCell.self)
+                let cell = tableView.dequeueReusableCustomCell(with: SettingLogoutCustomButtonTableViewCell.self)
                 cell.configure(title: rowType.title)
                 cell.onTapEvent = { self.presentLogoutAlert() }
                 return cell
@@ -390,7 +391,7 @@ private extension SettingViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.registerCustomCell(SettingTableViewCell.self)
-        tableView.registerCustomCell(CustomButtonTableViewCell.self)
+        tableView.registerCustomCell(SettingLogoutCustomButtonTableViewCell.self)
         tableView.registerCustomCell(AppVersionTableViewCell.self)
         tableView.registerCustomCell(AppIconTableViewCell.self)
         tableView.tableFooterView = UIView()
