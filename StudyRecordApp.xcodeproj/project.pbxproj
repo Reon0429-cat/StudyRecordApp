@@ -127,8 +127,6 @@
 		AB3BD6AE2721DBF80052CCA9 /* AppVersionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3BD6AC2721DBF80052CCA9 /* AppVersionTableViewCell.swift */; };
 		AB3BD6AF2721DBF80052CCA9 /* AppVersionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB3BD6AD2721DBF80052CCA9 /* AppVersionTableViewCell.xib */; };
 		AB3BD6BA272203D40052CCA9 /* Top.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB3BD6BC272203D40052CCA9 /* Top.storyboard */; };
-		AB3BD72A2722DFD60052CCA9 /* HowToUse.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB3BD7292722DFD60052CCA9 /* HowToUse.storyboard */; };
-		AB3BD72C2722DFE40052CCA9 /* HowToUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3BD72B2722DFE40052CCA9 /* HowToUseViewController.swift */; };
 		AB40A07C27209B62003E8030 /* Backup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB40A07B27209B62003E8030 /* Backup.storyboard */; };
 		AB40A07E27209B7E003E8030 /* BackupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40A07D27209B7E003E8030 /* BackupViewController.swift */; };
 		AB40A0CF272190EB003E8030 /* BackupUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB40A0CE272190EB003E8030 /* BackupUseCase.swift */; };
@@ -702,8 +700,6 @@
 		AB3BD6AD2721DBF80052CCA9 /* AppVersionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppVersionTableViewCell.xib; sourceTree = "<group>"; };
 		AB3BD6B9272203100052CCA9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		AB3BD6BB272203D40052CCA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Top.storyboard; sourceTree = "<group>"; };
-		AB3BD7292722DFD60052CCA9 /* HowToUse.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HowToUse.storyboard; sourceTree = "<group>"; };
-		AB3BD72B2722DFE40052CCA9 /* HowToUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToUseViewController.swift; sourceTree = "<group>"; };
 		AB40A07B27209B62003E8030 /* Backup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Backup.storyboard; sourceTree = "<group>"; };
 		AB40A07D27209B7E003E8030 /* BackupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackupViewController.swift; sourceTree = "<group>"; };
 		AB40A0CE272190EB003E8030 /* BackupUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupUseCase.swift; sourceTree = "<group>"; };
@@ -1559,7 +1555,6 @@
 				AB4539BC271DC84600CF1C04 /* SampleAppIconViewController.swift */,
 				ABB7F837271EDDBC003F928D /* AppIconViewController.swift */,
 				AB40A07D27209B7E003E8030 /* BackupViewController.swift */,
-				AB3BD72B2722DFE40052CCA9 /* HowToUseViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1590,7 +1585,6 @@
 				AB4539BA271DC82600CF1C04 /* SampleAppIcon.storyboard */,
 				ABB7F835271EDDB1003F928D /* AppIcon.storyboard */,
 				AB40A07B27209B62003E8030 /* Backup.storyboard */,
-				AB3BD7292722DFD60052CCA9 /* HowToUse.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -2674,7 +2668,6 @@
 				AB2B5BAA26A2D244009BD3C7 /* Setting.storyboard in Resources */,
 				AB6D75DA2722E751004AA0B5 /* Pink_Green-Wing-Black@3x.png in Resources */,
 				AB6D760F2722E751004AA0B5 /* Pink_Green-Wings-White.png in Resources */,
-				AB3BD72A2722DFD60052CCA9 /* HowToUse.storyboard in Resources */,
 				AB6D75592722E750004AA0B5 /* Pink_Green-Wings-Black@2x.png in Resources */,
 				AB6D757F2722E750004AA0B5 /* Green_Yellow-Wings-Black.png in Resources */,
 				AB6D75D12722E751004AA0B5 /* BlueGreen-Wings-White@3x.png in Resources */,
@@ -2893,7 +2886,6 @@
 				AB0C765A26EBA91D00BF5B64 /* Setting.swift in Sources */,
 				AB0C76B526ED256000BF5B64 /* PasscodeViewController.swift in Sources */,
 				AB93C2C3266BC28E00C3AE8F /* EditStudyRecordViewController.swift in Sources */,
-				AB3BD72C2722DFE40052CCA9 /* HowToUseViewController.swift in Sources */,
 				AB13E2AC2707316200063A0B /* BiometricsManager.swift in Sources */,
 				AB0C768526ECB63C00BF5B64 /* TileView.swift in Sources */,
 				AB4397ED26DD3051008C8CA8 /* AddAndEditGoalViewController.swift in Sources */,
