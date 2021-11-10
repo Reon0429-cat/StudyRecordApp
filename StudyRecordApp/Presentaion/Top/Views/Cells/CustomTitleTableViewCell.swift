@@ -22,11 +22,17 @@ final class CustomTitleTableViewCell: UITableViewCell {
         mandatoryLabel.isHidden = mandatoryIsHidden
         mandatoryLabel.text = mandatoryText
         if isMemo {
-            auxiliaryLabel.isHidden = auxiliaryText.isEmpty
-            if !auxiliaryText.isEmpty {
+            if auxiliaryText.isEmpty {
+                auxiliaryLabel.isHidden = true
+            } else {
+                auxiliaryLabel.isHidden = false
                 auxiliaryLabel.text = "..."
             }
+            if !auxiliaryText.isEmpty {
+                
+            }
         } else {
+            auxiliaryLabel.isHidden = false
             auxiliaryLabel.text = auxiliaryText
         }
     }
