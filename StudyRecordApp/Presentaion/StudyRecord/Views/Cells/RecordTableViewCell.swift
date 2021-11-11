@@ -23,6 +23,7 @@ final class RecordTableViewCell: UITableViewCell {
     @IBOutlet private weak var totalStudyTimeLabel: UILabel!
     @IBOutlet private weak var deleteButton: UIButton!
     @IBOutlet private weak var memoTextView: UITextView!
+    @IBOutlet private weak var memoTextViewBaseView: UIView!
     
     weak var delegate: RecordTableViewCellDelegate?
     
@@ -135,6 +136,7 @@ private extension RecordTableViewCell {
         memoTextView.clipsToBounds = false
         memoTextView.backgroundColor = .dynamicColor(light: .white,
                                                      dark: .secondarySystemGroupedBackground)
+        memoTextViewBaseView.isHidden = !record.isExpanded
     }
     
     func setColor() {

@@ -59,7 +59,7 @@ final class RecordRepository: RecordRepositoryProtocol {
     
 }
 
-private extension RecordRealm {
+extension RecordRealm {
     
     convenience init(record: Record) {
         self.init()
@@ -89,7 +89,7 @@ private extension RecordRealm {
     
 }
 
-private extension Record {
+extension Record {
     
     init(record: RecordRealm) {
         self = Record(title: record.title,

@@ -10,45 +10,45 @@ version: 0.0.7
 name: Firebase, nameSpecified: 
 body: 
                    …
-version: 8.8.0
+version: 8.9.1
 
 name: FirebaseAnalytics, nameSpecified: 
 body: Copyright 2021 Googl…
-version: 8.8.0
+version: 8.9.1
 
 name: FirebaseAuth, nameSpecified: 
 body: 
                    …
-version: 8.8.0
+version: 8.9.0
 
 name: FirebaseCore, nameSpecified: 
 body: 
                    …
-version: 8.8.0
+version: 8.9.1
 
 name: FirebaseCoreDiagnostics, nameSpecified: 
 body: 
                    …
-version: 8.8.0
+version: 8.9.0
 
 name: FirebaseCrashlytics, nameSpecified: 
 body: 
                    …
-version: 8.8.0
+version: 8.9.0
 
 name: FirebaseFirestore, nameSpecified: 
 body: 
                    …
-version: 8.8.0
+version: 8.9.1
 
 name: FirebaseInstallations, nameSpecified: 
 body: 
                    …
-version: 8.8.0
+version: 8.9.0
 
 name: GoogleAppMeasurement, nameSpecified: 
 body: Copyright 2021 Googl…
-version: 8.8.0
+version: 8.9.1
 
 name: GoogleDataTransport, nameSpecified: 
 body: 
@@ -110,13 +110,28 @@ name: Realm, nameSpecified:
 body: TABLE OF CONTENTS
 
 1…
-version: 10.17.0
+version: 10.19.0
 
 name: RealmSwift, nameSpecified: 
 body: TABLE OF CONTENTS
 
 1…
-version: 10.17.0
+version: 10.19.0
+
+name: RxCocoa, nameSpecified: 
+body: **The MIT License**
+…
+version: 6.2.0
+
+name: RxRelay, nameSpecified: 
+body: **The MIT License**
+…
+version: 6.2.0
+
+name: RxSwift, nameSpecified: 
+body: **The MIT License**
+…
+version: 6.2.0
 
 name: ScrollableGraphView, nameSpecified: 
 body: The MIT License (MIT…

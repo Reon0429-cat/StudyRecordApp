@@ -511,6 +511,9 @@
 		AB86A85D26D4915700EA990A /* HalfModalOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86A85726D4915700EA990A /* HalfModalOverlayView.swift */; };
 		AB86A85E26D4915700EA990A /* HalfModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86A85826D4915700EA990A /* HalfModalPresentationController.swift */; };
 		AB86A85F26D4915700EA990A /* HalfModalPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB86A85926D4915700EA990A /* HalfModalPresenter.swift */; };
+		AB87261F273C8E2F0094544E /* StudyRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB87261E273C8E2F0094544E /* StudyRecordViewModel.swift */; };
+		AB872622273CBC7D0094544E /* RxRecordUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB872621273CBC7D0094544E /* RxRecordUseCase.swift */; };
+		AB872625273CBC990094544E /* RxRecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB872624273CBC990094544E /* RxRecordRepository.swift */; };
 		AB8B703F26D4A2410069FF67 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8B703E26D4A2410069FF67 /* UIViewController+Extension.swift */; };
 		AB8B704C26D600500069FF67 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB8B704B26D600500069FF67 /* GoogleService-Info.plist */; };
 		AB8B704E26D62F800069FF67 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8B704D26D62F800069FF67 /* LoginViewController.swift */; };
@@ -1085,6 +1088,9 @@
 		AB86A85726D4915700EA990A /* HalfModalOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalOverlayView.swift; sourceTree = "<group>"; };
 		AB86A85826D4915700EA990A /* HalfModalPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalPresentationController.swift; sourceTree = "<group>"; };
 		AB86A85926D4915700EA990A /* HalfModalPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfModalPresenter.swift; sourceTree = "<group>"; };
+		AB87261E273C8E2F0094544E /* StudyRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRecordViewModel.swift; sourceTree = "<group>"; };
+		AB872621273CBC7D0094544E /* RxRecordUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxRecordUseCase.swift; sourceTree = "<group>"; };
+		AB872624273CBC990094544E /* RxRecordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxRecordRepository.swift; sourceTree = "<group>"; };
 		AB8B703E26D4A2410069FF67 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		AB8B704B26D600500069FF67 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AB8B704D26D62F800069FF67 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -1286,6 +1292,7 @@
 			children = (
 				AB3BD6C727220E370052CCA9 /* Views */,
 				AB3BD6CA27220ED60052CCA9 /* Controllers */,
+				AB87261D273C8E080094544E /* ViewModels */,
 			);
 			path = StudyRecord;
 			sourceTree = "<group>";
@@ -2079,6 +2086,30 @@
 			path = HalfModal;
 			sourceTree = "<group>";
 		};
+		AB87261D273C8E080094544E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				AB87261E273C8E2F0094544E /* StudyRecordViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		AB872620273CBC6E0094544E /* Rx */ = {
+			isa = PBXGroup;
+			children = (
+				AB872621273CBC7D0094544E /* RxRecordUseCase.swift */,
+			);
+			path = Rx;
+			sourceTree = "<group>";
+		};
+		AB872623273CBC840094544E /* Rx */ = {
+			isa = PBXGroup;
+			children = (
+				AB872624273CBC990094544E /* RxRecordRepository.swift */,
+			);
+			path = Rx;
+			sourceTree = "<group>";
+		};
 		AB8B704726D5EF1B0069FF67 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
@@ -2101,6 +2132,7 @@
 				ABFAB21126E63B350095EC20 /* GraphUseCase.swift */,
 				AB0C766826EBB10700BF5B64 /* SettingUseCase.swift */,
 				AB40A0CE272190EB003E8030 /* BackupUseCase.swift */,
+				AB872620273CBC6E0094544E /* Rx */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -2114,6 +2146,7 @@
 				ABFAB20F26E63A830095EC20 /* GraphRepository.swift */,
 				AB0C766626EBAF3400BF5B64 /* SettingRepository.swift */,
 				AB40A0D02721913E003E8030 /* BackupRepository.swift */,
+				AB872623273CBC840094544E /* Rx */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -2796,6 +2829,7 @@
 				ABA0570526B50F8100E3DF01 /* StudyRecordGraphColorViewController.swift in Sources */,
 				AB2B5B8426A2D0FD009BD3C7 /* NotificationName+Extension.swift in Sources */,
 				AB0C766026EBABE800BF5B64 /* GraphRealm.swift in Sources */,
+				AB872622273CBC7D0094544E /* RxRecordUseCase.swift in Sources */,
 				AB93C2BD266BABA900C3AE8F /* Record.swift in Sources */,
 				AB86A85A26D4915700EA990A /* HalfModalDismissInteractiveTransition.swift in Sources */,
 				AB2B5BA026A2D1B7009BD3C7 /* ServiceConcept.swift in Sources */,
@@ -2809,6 +2843,7 @@
 				AB86A85F26D4915700EA990A /* HalfModalPresenter.swift in Sources */,
 				AB13E2A42706FE6000063A0B /* PasscodeSettingViewController.swift in Sources */,
 				AB4D6BBE2672099C00E5286E /* UIButton+Extension.swift in Sources */,
+				AB872625273CBC990094544E /* RxRecordRepository.swift in Sources */,
 				AB16307B26CE123A00111F55 /* RecordTableViewCell.swift in Sources */,
 				AB2B5BA426A2D1B7009BD3C7 /* PopConcept.swift in Sources */,
 				AB20F81626E80E1900564B14 /* CustomSlider.swift in Sources */,
@@ -2908,6 +2943,7 @@
 				ABFB3A5C270FDB6900BC6D3F /* Compatible.swift in Sources */,
 				AB275FFE26DCAA56009F63B3 /* Indicator.swift in Sources */,
 				AB40A07E27209B7E003E8030 /* BackupViewController.swift in Sources */,
+				AB87261F273C8E2F0094544E /* StudyRecordViewModel.swift in Sources */,
 				AB2B5BA226A2D1B7009BD3C7 /* ElegantConcept.swift in Sources */,
 				AB0C766726EBAF3400BF5B64 /* SettingRepository.swift in Sources */,
 				AB40A0CF272190EB003E8030 /* BackupUseCase.swift in Sources */,
