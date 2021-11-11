@@ -17,6 +17,8 @@ target 'StudyRecordApp' do
    pod 'SwiftGen'
    pod 'mailcore2-ios'
    pod 'LicensePlist'
+   pod 'RxSwift'
+   pod 'RxCocoa'
    
 end
 
