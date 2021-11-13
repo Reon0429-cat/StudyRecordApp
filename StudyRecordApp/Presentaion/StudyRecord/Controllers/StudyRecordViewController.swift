@@ -26,7 +26,14 @@ final class StudyRecordViewController: UIViewController {
     @IBOutlet private weak var registerButton: CustomButton!
     @IBOutlet private weak var tableView: UITableView!
     
-    private let viewModel: StudyRecordViewModelType = StudyRecordViewModel()
+    private lazy var viewModel: StudyRecordViewModelType = StudyRecordViewModel(
+        recordUseCase: recordUseCase
+    )
+    private let recordUseCase = RxRecordUseCase(
+        repository: RxRecordRepository(
+            dataStore: RealmRecordDataStore()
+        )
+    )
     private let disposeBag = DisposeBag()
     weak var delegate: StudyRecordVCDelegate?
     

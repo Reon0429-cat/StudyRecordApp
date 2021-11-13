@@ -13,45 +13,26 @@ import RxRelay
 final class RxRecordUseCase {
     
     private var repository: RxRecordRepositoryProtocol
-    private var deleteRecordTrigger = PublishRelay<Record>()
-    private var updateRecordTrigger = PublishRelay<Record>()
-    private var readRecordsTrigger = PublishRelay<Void>()
-    private var recordsRelay = BehaviorRelay<[Record]>(value: [])
     private let disposeBag = DisposeBag()
-    var records: Observable<[Record]> {
-        recordsRelay.asObservable()
-    }
     
     init(repository: RxRecordRepositoryProtocol) {
         self.repository = repository
-        
-        deleteRecordTrigger
-            .flatMapLatest(repository.delete(record:))
-            .subscribe()
-            .disposed(by: disposeBag)
-        
-        updateRecordTrigger
-            .flatMapLatest(repository.update(record:))
-            .subscribe()
-            .disposed(by: disposeBag)
-        
-        readRecordsTrigger
-            .flatMapLatest(repository.readAll)
-            .bind(to: recordsRelay)
-            .disposed(by: disposeBag)
-        
     }
     
     func deleteRecord(record: Record) {
-        deleteRecordTrigger.accept(record)
+        repository.delete(record: record)
+            .subscribe()
+            .disposed(by: disposeBag)
     }
     
-    func readRecords() {
-        readRecordsTrigger.accept(())
+    func readRecords() -> Single<[Record]> {
+        repository.readAll()
     }
     
     func updateRecord(record: Record) {
-        updateRecordTrigger.accept(record)
+        repository.update(record: record)
+            .subscribe()
+            .disposed(by: disposeBag)
     }
     
     func changeOpeningAndClosing(at index: Int) {
@@ -59,7 +40,9 @@ final class RxRecordUseCase {
             .subscribe(onSuccess: { record in
                 let newRecord = Record(record: record,
                                        isExpanded: !record.isExpanded)
-                self.updateRecordTrigger.accept(newRecord)
+                self.repository.update(record: newRecord)
+                    .subscribe()
+                    .disposed(by: self.disposeBag)
             })
             .disposed(by: disposeBag)
     }

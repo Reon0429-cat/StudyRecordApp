@@ -31,25 +31,18 @@ protocol StudyRecordViewModelType {
 
 final class StudyRecordViewModel {
     
-    private let recordUseCase = RxRecordUseCase(
-        repository: RxRecordRepository(
-            dataStore: RealmRecordDataStore()
-        )
-    )
     private let eventRelay = PublishRelay<Event>()
     private let isHiddenTableViewRelay = PublishRelay<Bool>()
     private let itemRelay = BehaviorRelay<[Item]>(value: [])
     private var records: [Record] {
         itemRelay.value.map { $0.record }
     }
+    private let recordUseCase: RxRecordUseCase
     private let disposeBag = DisposeBag()
     
-    init() {
-        recordUseCase.readRecords()
-        recordUseCase.records
-            .compactMap { [weak self] in self?.convertToItems(records: $0) }
-            .subscribe(onNext: { [weak self] in self?.itemRelay.accept($0) })
-            .disposed(by: disposeBag)
+    init(recordUseCase: RxRecordUseCase) {
+        self.recordUseCase = recordUseCase
+        readItems()
     }
     
     enum Event {
@@ -61,8 +54,7 @@ final class StudyRecordViewModel {
     }
     struct Item {
         let record: Record
-        let studyTime: (todayText: String,
-                        totalText: String)
+        let studyTime: (todayText: String, totalText: String)
     }
     
     private func convertToItems(records: [Record]) -> [Item] {
@@ -73,6 +65,15 @@ final class StudyRecordViewModel {
             )
         }
     }
+    private func readItems() {
+        recordUseCase.readRecords()
+            .compactMap { [weak self] in self?.convertToItems(records: $0) }
+            .subscribe(
+                onSuccess: { [weak self] in self?.itemRelay.accept($0) },
+                onError: { print("DEBUG_PRINT: ", $0.localizedDescription) }
+            )
+            .disposed(by: disposeBag)
+    }
     
 }
 
@@ -82,7 +83,7 @@ extension StudyRecordViewModel: StudyRecordViewModelInput {
     func viewWillAppear() {
         isHiddenTableViewRelay.accept(records.isEmpty)
         itemRelay.accept(convertToItems(records: records))
-        recordUseCase.readRecords()
+        readItems()
     }
     
     func baseViewTapDidRecognized(row: Int) {
@@ -95,7 +96,7 @@ extension StudyRecordViewModel: StudyRecordViewModelInput {
     
     func memoButtonDidTapped(row: Int) {
         recordUseCase.changeOpeningAndClosing(at: row)
-        recordUseCase.readRecords()
+        readItems()
         eventRelay.accept(.scrollToTop(row: row, records: records))
     }
     
@@ -105,7 +106,7 @@ extension StudyRecordViewModel: StudyRecordViewModelInput {
     
     func recordDeleteAlertDeleteButtonDidTapped(row: Int) {
         recordUseCase.deleteRecord(record: records[row])
-        recordUseCase.readRecords()
+        readItems()
         eventRelay.accept(.notifyDelete(records.isEmpty))
         isHiddenTableViewRelay.accept(records.isEmpty)
     }
