@@ -69,8 +69,8 @@ final class StudyRecordViewController: UIViewController {
                         strongSelf.presentDeleteAlert(row: row)
                     case .notifyDelete(let isEmpty):
                         strongSelf.delegate?.deleteButtonDidTappped(isEmpty: isEmpty)
-                    case .reloadTableView:
-                        strongSelf.tableView.reloadData()
+                    case .scrollToTop(row: let row, records: let records):
+                        strongSelf.scrollToTop(row: row, records: records)
                 }
             })
             .disposed(by: disposeBag)
@@ -85,8 +85,12 @@ final class StudyRecordViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.outputs.items
-            .bind(to: tableView.rx.items) { tableView, row, element in
-                let cell = tableView.dequeueReusableCustomCell(with: RecordTableViewCell.self)
+            .drive(
+                tableView.rx.items(
+                    cellIdentifier: RecordTableViewCell.identifier,
+                    cellType: RecordTableViewCell.self
+                )
+            ) { row, element, cell in
                 let isEdit = self.delegate?.isEdit ?? false
                 cell.configure(record: element.record,
                                studyTime: element.studyTime)
@@ -94,9 +98,9 @@ final class StudyRecordViewController: UIViewController {
                                 isEvenIndex: row.isMultiple(of: 2))
                 cell.tag = row
                 cell.delegate = self
-                return cell
             }
             .disposed(by: disposeBag)
+        
     }
     
     func reloadTableView() {
@@ -125,6 +129,24 @@ private extension StudyRecordViewController {
                 self.dismiss(animated: true)
             }
         present(alert, animated: true)
+    }
+    
+    private func scrollToTop(row: Int, records: [Record]) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+            let cell = self.tableView.cellForRow(
+                at: IndexPath(row: row, section: 0)
+            ) as? RecordTableViewCell
+            let isExpanded = records[row].isExpanded
+            let isLastRow = (row == records.count - 1)
+            let isManyMemo = (cell?.frame.height ?? 0.0 > self.tableView.frame.height / 2)
+            let isCellNil = (cell == nil)
+            let shouldScrollToTop = isExpanded && (isManyMemo || isLastRow || isCellNil)
+            if shouldScrollToTop {
+                self.tableView.scrollToRow(at: IndexPath(row: row, section: 0),
+                                           at: .top,
+                                           animated: true)
+            }
+        }
     }
     
 }
@@ -170,7 +192,7 @@ extension StudyRecordViewController: RecordTableViewCellDelegate {
     }
     
     func memoButtonDidTapped(row: Int) {
-        viewModel.inputs.memoButtonDidTapped(row: row, tableView: tableView)
+        viewModel.inputs.memoButtonDidTapped(row: row)
     }
     
     func deleteButtonDidTappped(row: Int) {

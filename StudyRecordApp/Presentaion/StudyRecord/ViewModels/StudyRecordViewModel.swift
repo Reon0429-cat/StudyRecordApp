@@ -13,14 +13,14 @@ protocol StudyRecordViewModelInput {
     func viewWillAppear()
     func baseViewTapDidRecognized(row: Int)
     func baseViewLongPressDidRecognized()
-    func memoButtonDidTapped(row: Int, tableView: UITableView)
+    func memoButtonDidTapped(row: Int)
     func deleteButtonDidTappped(row: Int)
     func recordDeleteAlertDeleteButtonDidTapped(row: Int)
 }
 
 protocol StudyRecordViewModelOutput: AnyObject {
     var event: Driver<StudyRecordViewModel.Event> { get }
-    var items: Observable<[StudyRecordViewModel.Item]> { get }
+    var items: Driver<[StudyRecordViewModel.Item]> { get }
     var isHiddenTableView: Driver<Bool> { get }
 }
 
@@ -47,9 +47,8 @@ final class StudyRecordViewModel {
     init() {
         recordUseCase.readRecords()
         recordUseCase.records
-            .subscribe(onNext: { records in
-                self.itemRelay.accept(self.convertToItems(records: records))
-            })
+            .compactMap { [weak self] in self?.convertToItems(records: $0) }
+            .subscribe(onNext: { [weak self] in self?.itemRelay.accept($0) })
             .disposed(by: disposeBag)
     }
     
@@ -58,7 +57,7 @@ final class StudyRecordViewModel {
         case presentRecordDeleteAlert(Int)
         case notifyLongPress
         case notifyDelete(Bool)
-        case reloadTableView
+        case scrollToTop(row: Int, records: [Record])
     }
     struct Item {
         let record: Record
@@ -94,27 +93,10 @@ extension StudyRecordViewModel: StudyRecordViewModelInput {
         eventRelay.accept(.notifyLongPress)
     }
     
-    func memoButtonDidTapped(row: Int, tableView: UITableView) {
+    func memoButtonDidTapped(row: Int) {
         recordUseCase.changeOpeningAndClosing(at: row)
         recordUseCase.readRecords()
-        DispatchQueue.main.async {
-            self.eventRelay.accept(.reloadTableView)
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-            let cell = tableView.cellForRow(
-                at: IndexPath(row: row, section: 0)
-            ) as? RecordTableViewCell
-            let isExpanded = self.records[row].isExpanded
-            let isLastRow = (row == self.records.count - 1)
-            let isManyMemo = (cell?.frame.height ?? 0.0 > tableView.frame.height / 2)
-            let isCellNil = (cell == nil)
-            let shouldScrollToTop = isExpanded && (isManyMemo || isLastRow || isCellNil)
-            if shouldScrollToTop {
-                tableView.scrollToRow(at: IndexPath(row: row, section: 0),
-                                      at: .top,
-                                      animated: true)
-            }
-        }
+        eventRelay.accept(.scrollToTop(row: row, records: records))
     }
     
     func deleteButtonDidTappped(row: Int) {
@@ -124,7 +106,6 @@ extension StudyRecordViewModel: StudyRecordViewModelInput {
     func recordDeleteAlertDeleteButtonDidTapped(row: Int) {
         recordUseCase.deleteRecord(record: records[row])
         recordUseCase.readRecords()
-        eventRelay.accept(.reloadTableView)
         eventRelay.accept(.notifyDelete(records.isEmpty))
         isHiddenTableViewRelay.accept(records.isEmpty)
     }
@@ -138,8 +119,8 @@ extension StudyRecordViewModel: StudyRecordViewModelOutput {
         eventRelay.asDriver(onErrorDriveWith: .empty())
     }
     
-    var items: Observable<[Item]> {
-        itemRelay.asObservable()
+    var items: Driver<[Item]> {
+        itemRelay.asDriver()
     }
     
     var isHiddenTableView: Driver<Bool> {
