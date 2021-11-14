@@ -16,6 +16,8 @@ protocol StudyRecordViewModelInput {
     func memoButtonDidTapped(row: Int)
     func deleteButtonDidTappped(row: Int)
     func recordDeleteAlertDeleteButtonDidTapped(row: Int)
+    func reloadLocalData()
+    func recordAdded()
 }
 
 protocol StudyRecordViewModelOutput: AnyObject {
@@ -58,10 +60,10 @@ final class StudyRecordViewModel {
     }
     
     private func convertToItems(records: [Record]) -> [Item] {
-        return records.enumerated().map { index, record in
+        return records.map { record in
             Item(
                 record: record,
-                studyTime: recordUseCase.getStudyTime(at: index)
+                studyTime: recordUseCase.getStudyTime(record: record)
             )
         }
     }
@@ -82,8 +84,6 @@ extension StudyRecordViewModel: StudyRecordViewModelInput {
     
     func viewWillAppear() {
         isHiddenTableViewRelay.accept(records.isEmpty)
-        itemRelay.accept(convertToItems(records: records))
-        readItems()
     }
     
     func baseViewTapDidRecognized(row: Int) {
@@ -95,7 +95,9 @@ extension StudyRecordViewModel: StudyRecordViewModelInput {
     }
     
     func memoButtonDidTapped(row: Int) {
-        recordUseCase.changeOpeningAndClosing(at: row)
+        recordUseCase.changeOpeningAndClosing(record: records[row])
+            .subscribe()
+            .disposed(by: disposeBag)
         readItems()
         eventRelay.accept(.scrollToTop(row: row, records: records))
     }
@@ -106,9 +108,19 @@ extension StudyRecordViewModel: StudyRecordViewModelInput {
     
     func recordDeleteAlertDeleteButtonDidTapped(row: Int) {
         recordUseCase.deleteRecord(record: records[row])
+            .subscribe()
+            .disposed(by: disposeBag)
         readItems()
         eventRelay.accept(.notifyDelete(records.isEmpty))
         isHiddenTableViewRelay.accept(records.isEmpty)
+    }
+    
+    func reloadLocalData() {
+        readItems()
+    }
+    
+    func recordAdded() {
+        readItems()
     }
     
 }

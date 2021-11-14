@@ -15,6 +15,7 @@ extension Notification.Name {
     static let brightnessDidChanged = Notification.Name("BrightnessDidChanged")
     static let changedThemeColor = Notification.Name("changedThemeColor")
     static let reloadLocalData = Notification.Name("reloadLocalData")
-    
+    static let recordAdded = Notification.Name("recordAdded")
+
 }
 

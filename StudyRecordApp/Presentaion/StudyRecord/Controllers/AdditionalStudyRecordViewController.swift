@@ -93,6 +93,10 @@ private extension AdditionalStudyRecordViewController {
         present(alert, animated: true)
     }
     
+    func notifyRecordAdded() {
+        NotificationCenter.default.post(name: .recordAdded, object: nil)
+    }
+    
 }
 
 // MARK: - UITableViewDelegate
@@ -211,6 +215,7 @@ extension AdditionalStudyRecordViewController: SubCustomNavigationBarDelegate {
     
     func saveButtonDidTapped() {
         saveRecord()
+        notifyRecordAdded()
         dismiss(animated: true)
     }
     

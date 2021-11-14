@@ -12,44 +12,32 @@ import RxRelay
 
 final class RxRecordUseCase {
     
-    private var repository: RxRecordRepositoryProtocol
-    private let disposeBag = DisposeBag()
+    private let repository: RxRecordRepositoryProtocol
     
     init(repository: RxRecordRepositoryProtocol) {
         self.repository = repository
     }
     
-    func deleteRecord(record: Record) {
+    func deleteRecord(record: Record) -> Completable {
         repository.delete(record: record)
-            .subscribe()
-            .disposed(by: disposeBag)
     }
     
     func readRecords() -> Single<[Record]> {
         repository.readAll()
     }
     
-    func updateRecord(record: Record) {
+    func updateRecord(record: Record) -> Completable {
         repository.update(record: record)
-            .subscribe()
-            .disposed(by: disposeBag)
     }
     
-    func changeOpeningAndClosing(at index: Int) {
-        repository.read(at: index)
-            .subscribe(onSuccess: { record in
-                let newRecord = Record(record: record,
-                                       isExpanded: !record.isExpanded)
-                self.repository.update(record: newRecord)
-                    .subscribe()
-                    .disposed(by: self.disposeBag)
-            })
-            .disposed(by: disposeBag)
+    func changeOpeningAndClosing(record: Record) -> Completable {
+        let newRecord = Record(record: record,
+                               isExpanded: !record.isExpanded)
+        return repository.update(record: newRecord)
     }
     
-    func getStudyTime(at index: Int) -> (todayText: String,
-                                         totalText: String) {
-        let studyTime = calculateStudyTime(at: index)
+    func getStudyTime(record: Record) -> (todayText: String, totalText: String) {
+        let studyTime = calculateStudyTime(record: record)
         let studyTimeText = convertToStudyTimeText(from: studyTime)
         return studyTimeText
     }
@@ -76,18 +64,12 @@ final class RxRecordUseCase {
         return (todayText: todayText, totalText: totalText)
     }
     
-    private func calculateStudyTime(at index: Int) -> (today: Int, total: Int) {
-        var today = 0
-        var total = 0
-        repository.read(at: index)
-            .subscribe(onSuccess: { record in
-                today = record.histories?
-                    .filter { self.isToday($0) }
-                    .reduce(0) { $0 + $1.hour * 60 + $1.minutes } ?? 0
-                total = record.histories?
-                    .reduce(0) { $0 + $1.hour * 60 + $1.minutes } ?? 0
-            })
-            .disposed(by: disposeBag)
+    private func calculateStudyTime(record: Record) -> (today: Int, total: Int) {
+        let today = record.histories?
+            .filter { self.isToday($0) }
+            .reduce(0) { $0 + $1.hour * 60 + $1.minutes } ?? 0
+        let total = record.histories?
+            .reduce(0) { $0 + $1.hour * 60 + $1.minutes } ?? 0
         return (today: today, total: total)
     }
     

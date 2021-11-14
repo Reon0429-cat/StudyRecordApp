@@ -43,7 +43,6 @@ final class StudyRecordViewController: UIViewController {
         setupTableView()
         setupRegisterButton()
         setupDescriptionLabel()
-        setObserver()
         setupBindings()
         
     }
@@ -108,6 +107,16 @@ final class StudyRecordViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
+        NotificationCenter.default.rx.notification(.reloadLocalData)
+            .subscribe(onNext: { [weak self] _ in
+                self?.viewModel.inputs.reloadLocalData()
+            })
+            .disposed(by: disposeBag)
+        NotificationCenter.default.rx.notification(.recordAdded)
+            .subscribe(onNext: { [weak self] _ in
+                self?.viewModel.inputs.recordAdded()
+            })
+            .disposed(by: disposeBag)
     }
     
     func reloadTableView() {
@@ -230,18 +239,6 @@ private extension StudyRecordViewController {
     
     func setupDescriptionLabel() {
         descriptionLabel.text = L10n.recordedDataIsNotRegistered
-    }
-    
-    func setObserver() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(reloadLocalData),
-                                               name: .reloadLocalData,
-                                               object: nil)
-    }
-    
-    @objc
-    func reloadLocalData() {
-        tableView.reloadData()
     }
     
 }
