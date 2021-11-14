@@ -19,36 +19,36 @@ protocol RxRecordRepositoryProtocol {
 }
 
 final class RxRecordRepository: RxRecordRepositoryProtocol {
-    
+
     private var dataStore: RealmRecordDataStoreProtocol
     init(dataStore: RealmRecordDataStoreProtocol) {
         self.dataStore = dataStore
     }
-    
+
     func create(record: Record) -> Completable {
         dataStore.create(record: RecordRealm(record: record))
         return .empty()
     }
-    
+
     func readAll() -> Single<[Record]> {
         .just(dataStore.readAll().map { Record(record: $0) })
     }
-    
+
     func read(at index: Int) -> Single<Record> {
         let record = dataStore.readAll()[index]
         return .just(Record(record: record))
     }
-    
+
     func update(record: Record) -> Completable {
         dataStore.update(record: RecordRealm(record: record))
         return .empty()
     }
-    
+
     func delete(record: Record) -> Completable {
         dataStore.delete(record: RecordRealm(record: record))
         return .empty()
     }
-    
+
     func sort(sourceObject: Record,
               destinationObject: Record) -> Completable {
         let sourceRealmObject = RecordRealm(record: sourceObject)
@@ -57,5 +57,5 @@ final class RxRecordRepository: RxRecordRepositoryProtocol {
                        destinationObject: destinationRealmObject)
         return .empty()
     }
-    
+
 }

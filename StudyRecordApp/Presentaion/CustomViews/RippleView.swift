@@ -8,15 +8,15 @@
 import UIKit
 
 final class RippleView: UIView {
-    
+
     override func touchesBegan(_ touches: Set<UITouch>,
                                with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        
+
         drawRipple(touch: touches.first!)
-        
+
     }
-    
+
     private func drawRipple(touch: UITouch) {
         let width: CGFloat = 200
         let rippleView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: width))
@@ -30,11 +30,11 @@ final class RippleView: UIView {
                        delay: 0,
                        options: .curveEaseIn,
                        animations: {
-                        rippleView.transform = CGAffineTransform(scaleX: 1, y: 1)
-                        rippleView.backgroundColor = .clear
+                           rippleView.transform = CGAffineTransform(scaleX: 1, y: 1)
+                           rippleView.backgroundColor = .clear
                        }, completion: { _ in
-                        rippleView.removeFromSuperview()
+                           rippleView.removeFromSuperview()
                        })
     }
-    
+
 }

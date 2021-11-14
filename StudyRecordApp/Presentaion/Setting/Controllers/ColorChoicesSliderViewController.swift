@@ -12,7 +12,7 @@ protocol ColorChoicesSliderVCDelegate: AnyObject {
 }
 
 final class ColorChoicesSliderViewController: UIViewController {
-    
+
     @IBOutlet private weak var redNumberLabel: UILabel!
     @IBOutlet private weak var greenNumberLabel: UILabel!
     @IBOutlet private weak var blueNumberLabel: UILabel!
@@ -21,27 +21,28 @@ final class ColorChoicesSliderViewController: UIViewController {
     @IBOutlet private weak var greenSlider: UISlider!
     @IBOutlet private weak var blueSlider: UISlider!
     @IBOutlet private weak var alphaSlider: UISlider!
-    
+
     weak var delegate: ColorChoicesSliderVCDelegate?
     private var sliderView: UIView!
     private struct RGBA {
         var red, green, blue, alpha: CGFloat
     }
+
     private var rgba: RGBA!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setObserver()
         setupAlphaSlider()
-        
+
     }
-    
+
 }
 
 // MARK: - IBAction func
 private extension ColorChoicesSliderViewController {
-    
+
     @IBAction func redSliderValueDidChanged(_ sender: UISlider) {
         let redValue = CGFloat(sender.value)
         sliderView.backgroundColor = UIColor.rgba(red: redValue, green: rgba.green, blue: rgba.blue, alpha: rgba.alpha)
@@ -49,7 +50,7 @@ private extension ColorChoicesSliderViewController {
         NotificationCenter.default.post(name: .initTileView, object: nil)
         redNumberLabel.text = String(Int(sender.value))
     }
-    
+
     @IBAction func greenSliderValueDidChanged(_ sender: UISlider) {
         let greenValue = CGFloat(sender.value)
         sliderView.backgroundColor = UIColor.rgba(red: rgba.red, green: greenValue, blue: rgba.blue, alpha: rgba.alpha)
@@ -57,7 +58,7 @@ private extension ColorChoicesSliderViewController {
         NotificationCenter.default.post(name: .initTileView, object: nil)
         greenNumberLabel.text = String(Int(sender.value))
     }
-    
+
     @IBAction func blueSliderValueDidChanged(_ sender: UISlider) {
         let blueValue = CGFloat(sender.value)
         sliderView.backgroundColor = UIColor.rgba(red: rgba.red, green: rgba.green, blue: blueValue, alpha: rgba.alpha)
@@ -65,7 +66,7 @@ private extension ColorChoicesSliderViewController {
         NotificationCenter.default.post(name: .initTileView, object: nil)
         blueNumberLabel.text = String(Int(sender.value))
     }
-    
+
     @IBAction func alphaSliderValueDidChanged(_ sender: UISlider) {
         let alphaValue = CGFloat(sender.value)
         sliderView.backgroundColor = UIColor.rgba(red: rgba.red, green: rgba.green, blue: rgba.blue, alpha: alphaValue)
@@ -73,19 +74,19 @@ private extension ColorChoicesSliderViewController {
         NotificationCenter.default.post(name: .initTileView, object: nil)
         alphaNumberLabel.text = String(Int(sender.value))
     }
-    
+
 }
 
 // MARK: - func
 private extension ColorChoicesSliderViewController {
-    
+
     func setObserver() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(adjustSliders),
                                                name: .themeColor,
                                                object: nil)
     }
-    
+
     @objc
     func adjustSliders(notification: Notification) {
         let nextSelectedView = notification.userInfo!["selectedView"] as! UIView
@@ -104,10 +105,10 @@ private extension ColorChoicesSliderViewController {
         blueSlider.value = Float(blueValue)
         alphaSlider.value = Float(alphaValue)
     }
-    
+
     func setupAlphaSlider() {
         alphaSlider.thumbTintColor = .dynamicColor(light: .black, dark: .white)
         alphaSlider.minimumTrackTintColor = .dynamicColor(light: .black, dark: .white)
     }
-    
+
 }

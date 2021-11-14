@@ -8,11 +8,11 @@
 import UIKit
 
 final class GoalPhotoTableViewCell: UITableViewCell {
-    
+
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var unselectedLabel: UILabel!
     @IBOutlet private weak var photoImageView: UIImageView!
-    
+
     func configure(title: String, image: UIImage?) {
         titleLabel.text = title
         photoImageView.image = image
@@ -22,5 +22,5 @@ final class GoalPhotoTableViewCell: UITableViewCell {
         unselectedLabel.layer.borderWidth = 0.5
         unselectedLabel.layer.borderColor = UIColor.gray.cgColor
     }
-    
+
 }

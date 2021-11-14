@@ -17,15 +17,14 @@ protocol EditButtonSelectable {
 }
 
 protocol StudyRecordVCDelegate: ScreenPresentationDelegate,
-                                EditButtonSelectable {
-}
+    EditButtonSelectable {}
 
 final class StudyRecordViewController: UIViewController {
-    
+
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var registerButton: CustomButton!
     @IBOutlet private weak var tableView: UITableView!
-    
+
     private lazy var viewModel: StudyRecordViewModelType = StudyRecordViewModel(
         recordUseCase: recordUseCase
     )
@@ -36,24 +35,24 @@ final class StudyRecordViewController: UIViewController {
     )
     private let disposeBag = DisposeBag()
     weak var delegate: StudyRecordVCDelegate?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupTableView()
         setupRegisterButton()
         setupDescriptionLabel()
         setupBindings()
-        
+
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         viewModel.inputs.viewWillAppear()
-        
+
     }
-    
+
     private func setupBindings() {
         registerButton.rx.tap
             .subscribe(onNext: { [weak self] in
@@ -62,25 +61,25 @@ final class StudyRecordViewController: UIViewController {
                                    modalPresentationStyle: .fullScreen)
             })
             .disposed(by: disposeBag)
-        
+
         viewModel.outputs.event
             .drive(onNext: { [weak self] event in
                 guard let strongSelf = self else { return }
                 switch event {
-                    case .presentEditStudyRecordVC(let row):
-                        strongSelf.presentEditStudyRecordVC(row: row)
-                    case .notifyLongPress:
-                        strongSelf.delegate?.baseViewLongPressDidRecognized()
-                    case .presentRecordDeleteAlert(let row):
-                        strongSelf.presentDeleteAlert(row: row)
-                    case .notifyDelete(let isEmpty):
-                        strongSelf.delegate?.deleteButtonDidTappped(isEmpty: isEmpty)
-                    case .scrollToTop(row: let row, records: let records):
-                        strongSelf.scrollToTop(row: row, records: records)
+                case .presentEditStudyRecordVC(let row):
+                    strongSelf.presentEditStudyRecordVC(row: row)
+                case .notifyLongPress:
+                    strongSelf.delegate?.baseViewLongPressDidRecognized()
+                case .presentRecordDeleteAlert(let row):
+                    strongSelf.presentDeleteAlert(row: row)
+                case .notifyDelete(let isEmpty):
+                    strongSelf.delegate?.deleteButtonDidTappped(isEmpty: isEmpty)
+                case .scrollToTop(row: let row, records: let records):
+                    strongSelf.scrollToTop(row: row, records: records)
                 }
             })
             .disposed(by: disposeBag)
-        
+
         viewModel.outputs.isHiddenTableView
             .drive(onNext: { [weak self] isHidden in
                 guard let strongSelf = self else { return }
@@ -89,7 +88,7 @@ final class StudyRecordViewController: UIViewController {
                                                         isEnabledNavigationButton: !isHidden)
             })
             .disposed(by: disposeBag)
-        
+
         viewModel.outputs.items
             .drive(
                 tableView.rx.items(
@@ -106,7 +105,7 @@ final class StudyRecordViewController: UIViewController {
                 cell.delegate = self
             }
             .disposed(by: disposeBag)
-        
+
         NotificationCenter.default.rx.notification(.reloadLocalData)
             .subscribe(onNext: { [weak self] _ in
                 self?.viewModel.inputs.reloadLocalData()
@@ -118,23 +117,23 @@ final class StudyRecordViewController: UIViewController {
             })
             .disposed(by: disposeBag)
     }
-    
+
     func reloadTableView() {
         tableView.reloadData()
     }
-    
+
 }
 
 // MARK: - func
 private extension StudyRecordViewController {
-    
+
     func presentEditStudyRecordVC(row: Int) {
         present(EditStudyRecordViewController.self,
                 modalPresentationStyle: .fullScreen) { vc in
             vc.selectedRow = row
         }
     }
-    
+
     func presentDeleteAlert(row: Int) {
         let alert = Alert.create(message: L10n.doYouReallyWantToDeleteThis)
             .addAction(title: L10n.delete, style: .destructive) {
@@ -146,7 +145,7 @@ private extension StudyRecordViewController {
             }
         present(alert, animated: true)
     }
-    
+
     private func scrollToTop(row: Int, records: [Record]) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
             let cell = self.tableView.cellForRow(
@@ -164,62 +163,62 @@ private extension StudyRecordViewController {
             }
         }
     }
-    
+
 }
 
 // MARK: - UITableViewDelegate
 extension StudyRecordViewController: UITableViewDelegate {
-    
+
     func tableView(_ tableView: UITableView,
                    heightForHeaderInSection section: Int) -> CGFloat {
         return 20
     }
-    
+
     func tableView(_ tableView: UITableView,
                    viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
         view.backgroundColor = .clear
         return view
     }
-    
+
     func tableView(_ tableView: UITableView,
                    heightForFooterInSection section: Int) -> CGFloat {
         return 20
     }
-    
+
     func tableView(_ tableView: UITableView,
                    viewForFooterInSection section: Int) -> UIView? {
         let view = UIView()
         view.backgroundColor = .clear
         return view
     }
-    
+
 }
 
 // MARK: - RecordTableViewCellDelegate
 extension StudyRecordViewController: RecordTableViewCellDelegate {
-    
+
     func baseViewTapDidRecognized(row: Int) {
         viewModel.inputs.baseViewTapDidRecognized(row: row)
     }
-    
+
     func baseViewLongPressDidRecognized() {
         viewModel.inputs.baseViewLongPressDidRecognized()
     }
-    
+
     func memoButtonDidTapped(row: Int) {
         viewModel.inputs.memoButtonDidTapped(row: row)
     }
-    
+
     func deleteButtonDidTappped(row: Int) {
         viewModel.inputs.deleteButtonDidTappped(row: row)
     }
-    
+
 }
 
 // MARK: - setup
 private extension StudyRecordViewController {
-    
+
     func setupTableView() {
         tableView.rx.setDelegate(self).disposed(by: disposeBag)
         tableView.registerCustomCell(RecordTableViewCell.self)
@@ -232,13 +231,13 @@ private extension StudyRecordViewController {
             tableView.sectionHeaderTopPadding = 0
         }
     }
-    
+
     func setupRegisterButton() {
         registerButton.setTitle(L10n.register)
     }
-    
+
     func setupDescriptionLabel() {
         descriptionLabel.text = L10n.recordedDataIsNotRegistered
     }
-    
+
 }

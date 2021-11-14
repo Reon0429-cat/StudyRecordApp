@@ -7,16 +7,14 @@
 
 import UIKit
 
-protocol GraphVCDelegate: ScreenPresentationDelegate {
-    
-}
+protocol GraphVCDelegate: ScreenPresentationDelegate {}
 
 final class GraphViewController: UIViewController {
-    
+
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var registerButton: CustomButton!
-    
+
     weak var delegate: GraphVCDelegate?
     private let userUseCase = UserUseCase(
         repository: UserRepository(
@@ -34,33 +32,33 @@ final class GraphViewController: UIViewController {
         )
     )
     private var oldRecords: [Record]?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupAnonymousView()
         setupRegisterButton()
         setupDescriptionLabel()
         setupTableView()
         setObserver()
-        
+
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         tableView(isHidden: recordUseCase.records.isEmpty)
         delegate?.screenDidPresented(screenType: .graph,
                                      isEnabledNavigationButton: !recordUseCase.records.isEmpty)
         reloadRows()
-        
+
     }
-    
+
 }
 
 // MARK: - IBAction func
 private extension GraphViewController {
-    
+
     @IBAction func registerButtonDidTapped(_ sender: Any) {
         delegate?.scroll(sourceScreenType: .graph,
                          destinationScreenType: .record) {
@@ -68,12 +66,12 @@ private extension GraphViewController {
                          modalPresentationStyle: .fullScreen)
         }
     }
-    
+
 }
 
 // MARK: - func
 private extension GraphViewController {
-    
+
     func reloadRows() {
         let validation = recordUseCase.validateGraphData(oldRecords: oldRecords)
         if validation.shouldReloadAll {
@@ -83,11 +81,11 @@ private extension GraphViewController {
         }
         oldRecords = recordUseCase.records
     }
-    
+
     func tableView(isHidden: Bool) {
         tableView.isHidden = isHidden
     }
-    
+
     func setObserver() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(cameBackFromEditScreen),
@@ -102,7 +100,7 @@ private extension GraphViewController {
                                                name: .reloadLocalData,
                                                object: nil)
     }
-    
+
     @objc
     func cameBackFromEditScreen(notification: Notification) {
         guard let isChanged = notification.userInfo?["isChanged"] as? Bool else { return }
@@ -110,49 +108,49 @@ private extension GraphViewController {
             tableView.reloadData()
         }
     }
-    
+
     @objc
     func changedThemeColor() {
         tableView.reloadData()
     }
-    
+
     @objc
     func reloadLocalData() {
         tableView.reloadData()
     }
-    
+
 }
 
 // MARK: - UITableViewDelegate
 extension GraphViewController: UITableViewDelegate {
-    
+
     func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-    
+
     func tableView(_ tableView: UITableView,
                    heightForHeaderInSection section: Int) -> CGFloat {
         return 30
     }
-    
+
     func tableView(_ tableView: UITableView,
                    viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
         view.backgroundColor = .clear
         return view
     }
-    
+
 }
 
 // MARK: - UITableViewDataSource
 extension GraphViewController: UITableViewDataSource {
-    
+
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
         return recordUseCase.records.count
     }
-    
+
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCustomCell(with: GraphTableViewCell.self)
@@ -165,18 +163,18 @@ extension GraphViewController: UITableViewDataSource {
         cell.tag = indexPath.row
         return cell
     }
-    
+
 }
 
 // MARK: - GraphTableViewCellDelegate
 extension GraphViewController: GraphTableViewCellDelegate {
-    
+
     func segmentedControlDidTapped(index: Int) {
         tableView.reloadRows(at: [IndexPath(row: index,
                                             section: 0)],
-                             with: .automatic)
+        with: .automatic)
     }
-    
+
     func registerButtonDidTapped(index: Int) {
         delegate?.scroll(sourceScreenType: .graph,
                          destinationScreenType: .record) {
@@ -186,12 +184,12 @@ extension GraphViewController: GraphTableViewCellDelegate {
             }
         }
     }
-    
+
 }
 
 // MARK: - setup
 private extension GraphViewController {
-    
+
     func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -202,15 +200,15 @@ private extension GraphViewController {
             tableView.sectionHeaderTopPadding = 0
         }
     }
-    
+
     func setupRegisterButton() {
         registerButton.setTitle(L10n.register)
     }
-    
+
     func setupDescriptionLabel() {
         descriptionLabel.text = L10n.recordedDataIsNotRegistered
     }
-    
+
     func setupAnonymousView() {
         let isAnonymousUser = userUseCase.isLoggedInAsAnonymously
         if isAnonymousUser {
@@ -232,7 +230,5 @@ private extension GraphViewController {
             ])
         }
     }
-    
+
 }
-
-

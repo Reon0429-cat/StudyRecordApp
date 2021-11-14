@@ -8,19 +8,19 @@
 import UIKit
 
 extension UIButton {
-    
+
     func setTitle(_ title: String) {
         UIView.setAnimationsEnabled(false)
         self.setTitle(title, for: .normal)
         self.layoutIfNeeded()
         UIView.setAnimationsEnabled(true)
     }
-    
+
     func setImage(_ image: UIImage) {
         UIView.setAnimationsEnabled(false)
         self.setImage(image, for: .normal)
         self.layoutIfNeeded()
         UIView.setAnimationsEnabled(true)
     }
-    
+
 }

@@ -12,306 +12,342 @@ import UIKit
 
 // swiftlint:disable explicit_type_interface identifier_name line_length type_body_length type_name
 internal enum StoryboardScene {
-  internal enum AddAndEditGoal: StoryboardType {
-    internal static let storyboardName = "AddAndEditGoal"
+    internal enum AddAndEditGoal: StoryboardType {
+        internal static let storyboardName = "AddAndEditGoal"
 
-    internal static let addAndEditGoalViewController = SceneType<StudyRecordApp.AddAndEditGoalViewController>(storyboard: AddAndEditGoal.self, identifier: "AddAndEditGoalViewController")
-  }
-  internal enum AdditionalCategory: StoryboardType {
-    internal static let storyboardName = "AdditionalCategory"
+        internal static let addAndEditGoalViewController = SceneType<StudyRecordApp.AddAndEditGoalViewController>(storyboard: AddAndEditGoal.self, identifier: "AddAndEditGoalViewController")
+    }
 
-    internal static let initialScene = InitialSceneType<StudyRecordApp.AdditionalCategoryViewController>(storyboard: AdditionalCategory.self)
+    internal enum AdditionalCategory: StoryboardType {
+        internal static let storyboardName = "AdditionalCategory"
 
-    internal static let additionalCategoryViewController = SceneType<StudyRecordApp.AdditionalCategoryViewController>(storyboard: AdditionalCategory.self, identifier: "AdditionalCategoryViewController")
-  }
-  internal enum AdditionalStudyRecord: StoryboardType {
-    internal static let storyboardName = "AdditionalStudyRecord"
+        internal static let initialScene = InitialSceneType<StudyRecordApp.AdditionalCategoryViewController>(storyboard: AdditionalCategory.self)
 
-    internal static let initialScene = InitialSceneType<StudyRecordApp.AdditionalStudyRecordViewController>(storyboard: AdditionalStudyRecord.self)
+        internal static let additionalCategoryViewController = SceneType<StudyRecordApp.AdditionalCategoryViewController>(storyboard: AdditionalCategory.self, identifier: "AdditionalCategoryViewController")
+    }
 
-    internal static let additionalStudyRecordViewController = SceneType<StudyRecordApp.AdditionalStudyRecordViewController>(storyboard: AdditionalStudyRecord.self, identifier: "AdditionalStudyRecordViewController")
-  }
-  internal enum AppIcon: StoryboardType {
-    internal static let storyboardName = "AppIcon"
+    internal enum AdditionalStudyRecord: StoryboardType {
+        internal static let storyboardName = "AdditionalStudyRecord"
 
-    internal static let initialScene = InitialSceneType<StudyRecordApp.AppIconViewController>(storyboard: AppIcon.self)
+        internal static let initialScene = InitialSceneType<StudyRecordApp.AdditionalStudyRecordViewController>(storyboard: AdditionalStudyRecord.self)
 
-    internal static let appIconViewController = SceneType<StudyRecordApp.AppIconViewController>(storyboard: AppIcon.self, identifier: "AppIconViewController")
-  }
-  internal enum Backup: StoryboardType {
-    internal static let storyboardName = "Backup"
+        internal static let additionalStudyRecordViewController = SceneType<StudyRecordApp.AdditionalStudyRecordViewController>(storyboard: AdditionalStudyRecord.self, identifier: "AdditionalStudyRecordViewController")
+    }
 
-    internal static let initialScene = InitialSceneType<StudyRecordApp.BackupViewController>(storyboard: Backup.self)
+    internal enum AppIcon: StoryboardType {
+        internal static let storyboardName = "AppIcon"
 
-    internal static let backupViewController = SceneType<StudyRecordApp.BackupViewController>(storyboard: Backup.self, identifier: "BackupViewController")
-  }
-  internal enum ColorChoicesConcept: StoryboardType {
-    internal static let storyboardName = "ColorChoicesConcept"
+        internal static let initialScene = InitialSceneType<StudyRecordApp.AppIconViewController>(storyboard: AppIcon.self)
 
-    internal static let initialScene = InitialSceneType<StudyRecordApp.ColorChoicesConceptViewController>(storyboard: ColorChoicesConcept.self)
+        internal static let appIconViewController = SceneType<StudyRecordApp.AppIconViewController>(storyboard: AppIcon.self, identifier: "AppIconViewController")
+    }
 
-    internal static let colorChoicesConceptViewController = SceneType<StudyRecordApp.ColorChoicesConceptViewController>(storyboard: ColorChoicesConcept.self, identifier: "ColorChoicesConceptViewController")
-  }
-  internal enum ColorChoicesSlider: StoryboardType {
-    internal static let storyboardName = "ColorChoicesSlider"
+    internal enum Backup: StoryboardType {
+        internal static let storyboardName = "Backup"
 
-    internal static let initialScene = InitialSceneType<StudyRecordApp.ColorChoicesSliderViewController>(storyboard: ColorChoicesSlider.self)
+        internal static let initialScene = InitialSceneType<StudyRecordApp.BackupViewController>(storyboard: Backup.self)
 
-    internal static let colorChoicesSliderViewController = SceneType<StudyRecordApp.ColorChoicesSliderViewController>(storyboard: ColorChoicesSlider.self, identifier: "ColorChoicesSliderViewController")
-  }
-  internal enum ColorChoicesTile: StoryboardType {
-    internal static let storyboardName = "ColorChoicesTile"
+        internal static let backupViewController = SceneType<StudyRecordApp.BackupViewController>(storyboard: Backup.self, identifier: "BackupViewController")
+    }
 
-    internal static let initialScene = InitialSceneType<StudyRecordApp.ColorChoicesTileViewController>(storyboard: ColorChoicesTile.self)
+    internal enum ColorChoicesConcept: StoryboardType {
+        internal static let storyboardName = "ColorChoicesConcept"
 
-    internal static let colorChoicesTileViewController = SceneType<StudyRecordApp.ColorChoicesTileViewController>(storyboard: ColorChoicesTile.self, identifier: "ColorChoicesTileViewController")
-  }
-  internal enum ColorConcept: StoryboardType {
-    internal static let storyboardName = "ColorConcept"
+        internal static let initialScene = InitialSceneType<StudyRecordApp.ColorChoicesConceptViewController>(storyboard: ColorChoicesConcept.self)
 
-    internal static let initialScene = InitialSceneType<StudyRecordApp.ColorConceptViewController>(storyboard: ColorConcept.self)
+        internal static let colorChoicesConceptViewController = SceneType<StudyRecordApp.ColorChoicesConceptViewController>(storyboard: ColorChoicesConcept.self, identifier: "ColorChoicesConceptViewController")
+    }
 
-    internal static let colorConceptViewController = SceneType<StudyRecordApp.ColorConceptViewController>(storyboard: ColorConcept.self, identifier: "ColorConceptViewController")
-  }
-  internal enum DarkModeSetting: StoryboardType {
-    internal static let storyboardName = "DarkModeSetting"
+    internal enum ColorChoicesSlider: StoryboardType {
+        internal static let storyboardName = "ColorChoicesSlider"
 
-    internal static let initialScene = InitialSceneType<StudyRecordApp.DarkModeSettingViewController>(storyboard: DarkModeSetting.self)
+        internal static let initialScene = InitialSceneType<StudyRecordApp.ColorChoicesSliderViewController>(storyboard: ColorChoicesSlider.self)
 
-    internal static let darkModeSettingViewController = SceneType<StudyRecordApp.DarkModeSettingViewController>(storyboard: DarkModeSetting.self, identifier: "DarkModeSettingViewController")
-  }
-  internal enum EditStudyRecord: StoryboardType {
-    internal static let storyboardName = "EditStudyRecord"
+        internal static let colorChoicesSliderViewController = SceneType<StudyRecordApp.ColorChoicesSliderViewController>(storyboard: ColorChoicesSlider.self, identifier: "ColorChoicesSliderViewController")
+    }
 
-    internal static let initialScene = InitialSceneType<StudyRecordApp.EditStudyRecordViewController>(storyboard: EditStudyRecord.self)
+    internal enum ColorChoicesTile: StoryboardType {
+        internal static let storyboardName = "ColorChoicesTile"
 
-    internal static let editStudyRecordViewController = SceneType<StudyRecordApp.EditStudyRecordViewController>(storyboard: EditStudyRecord.self, identifier: "EditStudyRecordViewController")
-  }
-  internal enum Goal: StoryboardType {
-    internal static let storyboardName = "Goal"
+        internal static let initialScene = InitialSceneType<StudyRecordApp.ColorChoicesTileViewController>(storyboard: ColorChoicesTile.self)
 
-    internal static let initialScene = InitialSceneType<StudyRecordApp.GoalViewController>(storyboard: Goal.self)
+        internal static let colorChoicesTileViewController = SceneType<StudyRecordApp.ColorChoicesTileViewController>(storyboard: ColorChoicesTile.self, identifier: "ColorChoicesTileViewController")
+    }
 
-    internal static let goalViewController = SceneType<StudyRecordApp.GoalViewController>(storyboard: Goal.self, identifier: "GoalViewController")
-  }
-  internal enum GoalPriority: StoryboardType {
-    internal static let storyboardName = "GoalPriority"
+    internal enum ColorConcept: StoryboardType {
+        internal static let storyboardName = "ColorConcept"
 
-    internal static let initialScene = InitialSceneType<StudyRecordApp.GoalPriorityViewController>(storyboard: GoalPriority.self)
+        internal static let initialScene = InitialSceneType<StudyRecordApp.ColorConceptViewController>(storyboard: ColorConcept.self)
 
-    internal static let goalPriorityViewController = SceneType<StudyRecordApp.GoalPriorityViewController>(storyboard: GoalPriority.self, identifier: "GoalPriorityViewController")
-  }
-  internal enum GoalSort: StoryboardType {
-    internal static let storyboardName = "GoalSort"
+        internal static let colorConceptViewController = SceneType<StudyRecordApp.ColorConceptViewController>(storyboard: ColorConcept.self, identifier: "ColorConceptViewController")
+    }
 
-    internal static let initialScene = InitialSceneType<StudyRecordApp.GoalSortViewController>(storyboard: GoalSort.self)
+    internal enum DarkModeSetting: StoryboardType {
+        internal static let storyboardName = "DarkModeSetting"
 
-    internal static let goalSortViewController = SceneType<StudyRecordApp.GoalSortViewController>(storyboard: GoalSort.self, identifier: "GoalSortViewController")
-  }
-  internal enum GoalStatistics: StoryboardType {
-    internal static let storyboardName = "GoalStatistics"
+        internal static let initialScene = InitialSceneType<StudyRecordApp.DarkModeSettingViewController>(storyboard: DarkModeSetting.self)
 
-    internal static let goalStatisticsViewController = SceneType<StudyRecordApp.GoalStatisticsViewController>(storyboard: GoalStatistics.self, identifier: "GoalStatisticsViewController")
-  }
-  internal enum GoalTime: StoryboardType {
-    internal static let storyboardName = "GoalTime"
+        internal static let darkModeSettingViewController = SceneType<StudyRecordApp.DarkModeSettingViewController>(storyboard: DarkModeSetting.self, identifier: "DarkModeSettingViewController")
+    }
 
-    internal static let initialScene = InitialSceneType<StudyRecordApp.GoalTimeViewController>(storyboard: GoalTime.self)
+    internal enum EditStudyRecord: StoryboardType {
+        internal static let storyboardName = "EditStudyRecord"
 
-    internal static let goalTimeViewController = SceneType<StudyRecordApp.GoalTimeViewController>(storyboard: GoalTime.self, identifier: "GoalTimeViewController")
-  }
-  internal enum Graph: StoryboardType {
-    internal static let storyboardName = "Graph"
+        internal static let initialScene = InitialSceneType<StudyRecordApp.EditStudyRecordViewController>(storyboard: EditStudyRecord.self)
 
-    internal static let initialScene = InitialSceneType<StudyRecordApp.GraphViewController>(storyboard: Graph.self)
+        internal static let editStudyRecordViewController = SceneType<StudyRecordApp.EditStudyRecordViewController>(storyboard: EditStudyRecord.self, identifier: "EditStudyRecordViewController")
+    }
 
-    internal static let graphViewController = SceneType<StudyRecordApp.GraphViewController>(storyboard: Graph.self, identifier: "GraphViewController")
-  }
-  internal enum GraphKindSelecting: StoryboardType {
-    internal static let storyboardName = "GraphKindSelecting"
+    internal enum Goal: StoryboardType {
+        internal static let storyboardName = "Goal"
 
-    internal static let initialScene = InitialSceneType<StudyRecordApp.GraphKindSelectingViewController>(storyboard: GraphKindSelecting.self)
+        internal static let initialScene = InitialSceneType<StudyRecordApp.GoalViewController>(storyboard: Goal.self)
 
-    internal static let graphKindSelectingViewController = SceneType<StudyRecordApp.GraphKindSelectingViewController>(storyboard: GraphKindSelecting.self, identifier: "GraphKindSelectingViewController")
-  }
-  internal enum LaunchScreen: StoryboardType {
-    internal static let storyboardName = "LaunchScreen"
+        internal static let goalViewController = SceneType<StudyRecordApp.GoalViewController>(storyboard: Goal.self, identifier: "GoalViewController")
+    }
 
-    internal static let initialScene = InitialSceneType<UIKit.UIViewController>(storyboard: LaunchScreen.self)
-  }
-  internal enum Login: StoryboardType {
-    internal static let storyboardName = "Login"
+    internal enum GoalPriority: StoryboardType {
+        internal static let storyboardName = "GoalPriority"
 
-    internal static let initialScene = InitialSceneType<StudyRecordApp.LoginViewController>(storyboard: Login.self)
+        internal static let initialScene = InitialSceneType<StudyRecordApp.GoalPriorityViewController>(storyboard: GoalPriority.self)
 
-    internal static let loginViewController = SceneType<StudyRecordApp.LoginViewController>(storyboard: Login.self, identifier: "LoginViewController")
-  }
-  internal enum LoginAndSignUp: StoryboardType {
-    internal static let storyboardName = "LoginAndSignUp"
+        internal static let goalPriorityViewController = SceneType<StudyRecordApp.GoalPriorityViewController>(storyboard: GoalPriority.self, identifier: "GoalPriorityViewController")
+    }
 
-    internal static let initialScene = InitialSceneType<StudyRecordApp.LoginAndSignUpViewController>(storyboard: LoginAndSignUp.self)
+    internal enum GoalSort: StoryboardType {
+        internal static let storyboardName = "GoalSort"
 
-    internal static let loginAndSignUpViewController = SceneType<StudyRecordApp.LoginAndSignUpViewController>(storyboard: LoginAndSignUp.self, identifier: "LoginAndSignUpViewController")
-  }
-  internal enum Passcode: StoryboardType {
-    internal static let storyboardName = "Passcode"
+        internal static let initialScene = InitialSceneType<StudyRecordApp.GoalSortViewController>(storyboard: GoalSort.self)
 
-    internal static let initialScene = InitialSceneType<StudyRecordApp.PasscodeViewController>(storyboard: Passcode.self)
+        internal static let goalSortViewController = SceneType<StudyRecordApp.GoalSortViewController>(storyboard: GoalSort.self, identifier: "GoalSortViewController")
+    }
 
-    internal static let passcodeViewController = SceneType<StudyRecordApp.PasscodeViewController>(storyboard: Passcode.self, identifier: "PasscodeViewController")
-  }
-  internal enum PasscodeSetting: StoryboardType {
-    internal static let storyboardName = "PasscodeSetting"
+    internal enum GoalStatistics: StoryboardType {
+        internal static let storyboardName = "GoalStatistics"
 
-    internal static let initialScene = InitialSceneType<StudyRecordApp.PasscodeSettingViewController>(storyboard: PasscodeSetting.self)
+        internal static let goalStatisticsViewController = SceneType<StudyRecordApp.GoalStatisticsViewController>(storyboard: GoalStatistics.self, identifier: "GoalStatisticsViewController")
+    }
 
-    internal static let passcodeSettingViewController = SceneType<StudyRecordApp.PasscodeSettingViewController>(storyboard: PasscodeSetting.self, identifier: "PasscodeSettingViewController")
-  }
-  internal enum Reports: StoryboardType {
-    internal static let storyboardName = "Reports"
+    internal enum GoalTime: StoryboardType {
+        internal static let storyboardName = "GoalTime"
 
-    internal static let initialScene = InitialSceneType<StudyRecordApp.ReportsViewController>(storyboard: Reports.self)
+        internal static let initialScene = InitialSceneType<StudyRecordApp.GoalTimeViewController>(storyboard: GoalTime.self)
 
-    internal static let reportsViewController = SceneType<StudyRecordApp.ReportsViewController>(storyboard: Reports.self, identifier: "ReportsViewController")
-  }
-  internal enum ResetingPassword: StoryboardType {
-    internal static let storyboardName = "ResetingPassword"
+        internal static let goalTimeViewController = SceneType<StudyRecordApp.GoalTimeViewController>(storyboard: GoalTime.self, identifier: "GoalTimeViewController")
+    }
 
-    internal static let initialScene = InitialSceneType<StudyRecordApp.ResetingPasswordViewController>(storyboard: ResetingPassword.self)
+    internal enum Graph: StoryboardType {
+        internal static let storyboardName = "Graph"
 
-    internal static let resetingPasswordViewController = SceneType<StudyRecordApp.ResetingPasswordViewController>(storyboard: ResetingPassword.self, identifier: "ResetingPasswordViewController")
-  }
-  internal enum SampleAppIcon: StoryboardType {
-    internal static let storyboardName = "SampleAppIcon"
+        internal static let initialScene = InitialSceneType<StudyRecordApp.GraphViewController>(storyboard: Graph.self)
 
-    internal static let initialScene = InitialSceneType<StudyRecordApp.SampleAppIconViewController>(storyboard: SampleAppIcon.self)
+        internal static let graphViewController = SceneType<StudyRecordApp.GraphViewController>(storyboard: Graph.self, identifier: "GraphViewController")
+    }
 
-    internal static let sampleAppIconViewController = SceneType<StudyRecordApp.SampleAppIconViewController>(storyboard: SampleAppIcon.self, identifier: "SampleAppIconViewController")
-  }
-  internal enum Setting: StoryboardType {
-    internal static let storyboardName = "Setting"
+    internal enum GraphKindSelecting: StoryboardType {
+        internal static let storyboardName = "GraphKindSelecting"
 
-    internal static let initialScene = InitialSceneType<StudyRecordApp.SettingViewController>(storyboard: Setting.self)
+        internal static let initialScene = InitialSceneType<StudyRecordApp.GraphKindSelectingViewController>(storyboard: GraphKindSelecting.self)
 
-    internal static let settingViewController = SceneType<StudyRecordApp.SettingViewController>(storyboard: Setting.self, identifier: "SettingViewController")
-  }
-  internal enum SignUp: StoryboardType {
-    internal static let storyboardName = "SignUp"
+        internal static let graphKindSelectingViewController = SceneType<StudyRecordApp.GraphKindSelectingViewController>(storyboard: GraphKindSelecting.self, identifier: "GraphKindSelectingViewController")
+    }
 
-    internal static let initialScene = InitialSceneType<StudyRecordApp.SignUpViewController>(storyboard: SignUp.self)
+    internal enum LaunchScreen: StoryboardType {
+        internal static let storyboardName = "LaunchScreen"
 
-    internal static let signUpViewController = SceneType<StudyRecordApp.SignUpViewController>(storyboard: SignUp.self, identifier: "SignUpViewController")
-  }
-  internal enum StudyRecord: StoryboardType {
-    internal static let storyboardName = "StudyRecord"
+        internal static let initialScene = InitialSceneType<UIKit.UIViewController>(storyboard: LaunchScreen.self)
+    }
 
-    internal static let initialScene = InitialSceneType<StudyRecordApp.StudyRecordViewController>(storyboard: StudyRecord.self)
+    internal enum Login: StoryboardType {
+        internal static let storyboardName = "Login"
 
-    internal static let studyRecordViewController = SceneType<StudyRecordApp.StudyRecordViewController>(storyboard: StudyRecord.self, identifier: "StudyRecordViewController")
-  }
-  internal enum StudyRecordGraphColor: StoryboardType {
-    internal static let storyboardName = "StudyRecordGraphColor"
+        internal static let initialScene = InitialSceneType<StudyRecordApp.LoginViewController>(storyboard: Login.self)
 
-    internal static let initialScene = InitialSceneType<StudyRecordApp.StudyRecordGraphColorViewController>(storyboard: StudyRecordGraphColor.self)
+        internal static let loginViewController = SceneType<StudyRecordApp.LoginViewController>(storyboard: Login.self, identifier: "LoginViewController")
+    }
 
-    internal static let studyRecordGraphColorViewController = SceneType<StudyRecordApp.StudyRecordGraphColorViewController>(storyboard: StudyRecordGraphColor.self, identifier: "StudyRecordGraphColorViewController")
-  }
-  internal enum StudyRecordMemo: StoryboardType {
-    internal static let storyboardName = "StudyRecordMemo"
+    internal enum LoginAndSignUp: StoryboardType {
+        internal static let storyboardName = "LoginAndSignUp"
 
-    internal static let initialScene = InitialSceneType<StudyRecordApp.StudyRecordMemoViewController>(storyboard: StudyRecordMemo.self)
+        internal static let initialScene = InitialSceneType<StudyRecordApp.LoginAndSignUpViewController>(storyboard: LoginAndSignUp.self)
 
-    internal static let studyRecordMemoViewController = SceneType<StudyRecordApp.StudyRecordMemoViewController>(storyboard: StudyRecordMemo.self, identifier: "StudyRecordMemoViewController")
-  }
-  internal enum StudyRecordSort: StoryboardType {
-    internal static let storyboardName = "StudyRecordSort"
+        internal static let loginAndSignUpViewController = SceneType<StudyRecordApp.LoginAndSignUpViewController>(storyboard: LoginAndSignUp.self, identifier: "LoginAndSignUpViewController")
+    }
 
-    internal static let initialScene = InitialSceneType<StudyRecordApp.StudyRecordSortViewController>(storyboard: StudyRecordSort.self)
+    internal enum Passcode: StoryboardType {
+        internal static let storyboardName = "Passcode"
 
-    internal static let studyRecordSortViewController = SceneType<StudyRecordApp.StudyRecordSortViewController>(storyboard: StudyRecordSort.self, identifier: "StudyRecordSortViewController")
-  }
-  internal enum StudyRecordTimeRecord: StoryboardType {
-    internal static let storyboardName = "StudyRecordTimeRecord"
+        internal static let initialScene = InitialSceneType<StudyRecordApp.PasscodeViewController>(storyboard: Passcode.self)
 
-    internal static let initialScene = InitialSceneType<StudyRecordApp.StudyRecordTimeRecordViewController>(storyboard: StudyRecordTimeRecord.self)
+        internal static let passcodeViewController = SceneType<StudyRecordApp.PasscodeViewController>(storyboard: Passcode.self, identifier: "PasscodeViewController")
+    }
 
-    internal static let studyRecordTimeRecordViewController = SceneType<StudyRecordApp.StudyRecordTimeRecordViewController>(storyboard: StudyRecordTimeRecord.self, identifier: "StudyRecordTimeRecordViewController")
-  }
-  internal enum ThemeColor: StoryboardType {
-    internal static let storyboardName = "ThemeColor"
+    internal enum PasscodeSetting: StoryboardType {
+        internal static let storyboardName = "PasscodeSetting"
 
-    internal static let initialScene = InitialSceneType<StudyRecordApp.ThemeColorViewController>(storyboard: ThemeColor.self)
+        internal static let initialScene = InitialSceneType<StudyRecordApp.PasscodeSettingViewController>(storyboard: PasscodeSetting.self)
 
-    internal static let themeColorViewController = SceneType<StudyRecordApp.ThemeColorViewController>(storyboard: ThemeColor.self, identifier: "ThemeColorViewController")
-  }
-  internal enum Top: StoryboardType {
-    internal static let storyboardName = "Top"
+        internal static let passcodeSettingViewController = SceneType<StudyRecordApp.PasscodeSettingViewController>(storyboard: PasscodeSetting.self, identifier: "PasscodeSettingViewController")
+    }
 
-    internal static let initialScene = InitialSceneType<StudyRecordApp.TopViewController>(storyboard: Top.self)
+    internal enum Reports: StoryboardType {
+        internal static let storyboardName = "Reports"
 
-    internal static let topViewController = SceneType<StudyRecordApp.TopViewController>(storyboard: Top.self, identifier: "TopViewController")
-  }
+        internal static let initialScene = InitialSceneType<StudyRecordApp.ReportsViewController>(storyboard: Reports.self)
+
+        internal static let reportsViewController = SceneType<StudyRecordApp.ReportsViewController>(storyboard: Reports.self, identifier: "ReportsViewController")
+    }
+
+    internal enum ResetingPassword: StoryboardType {
+        internal static let storyboardName = "ResetingPassword"
+
+        internal static let initialScene = InitialSceneType<StudyRecordApp.ResetingPasswordViewController>(storyboard: ResetingPassword.self)
+
+        internal static let resetingPasswordViewController = SceneType<StudyRecordApp.ResetingPasswordViewController>(storyboard: ResetingPassword.self, identifier: "ResetingPasswordViewController")
+    }
+
+    internal enum SampleAppIcon: StoryboardType {
+        internal static let storyboardName = "SampleAppIcon"
+
+        internal static let initialScene = InitialSceneType<StudyRecordApp.SampleAppIconViewController>(storyboard: SampleAppIcon.self)
+
+        internal static let sampleAppIconViewController = SceneType<StudyRecordApp.SampleAppIconViewController>(storyboard: SampleAppIcon.self, identifier: "SampleAppIconViewController")
+    }
+
+    internal enum Setting: StoryboardType {
+        internal static let storyboardName = "Setting"
+
+        internal static let initialScene = InitialSceneType<StudyRecordApp.SettingViewController>(storyboard: Setting.self)
+
+        internal static let settingViewController = SceneType<StudyRecordApp.SettingViewController>(storyboard: Setting.self, identifier: "SettingViewController")
+    }
+
+    internal enum SignUp: StoryboardType {
+        internal static let storyboardName = "SignUp"
+
+        internal static let initialScene = InitialSceneType<StudyRecordApp.SignUpViewController>(storyboard: SignUp.self)
+
+        internal static let signUpViewController = SceneType<StudyRecordApp.SignUpViewController>(storyboard: SignUp.self, identifier: "SignUpViewController")
+    }
+
+    internal enum StudyRecord: StoryboardType {
+        internal static let storyboardName = "StudyRecord"
+
+        internal static let initialScene = InitialSceneType<StudyRecordApp.StudyRecordViewController>(storyboard: StudyRecord.self)
+
+        internal static let studyRecordViewController = SceneType<StudyRecordApp.StudyRecordViewController>(storyboard: StudyRecord.self, identifier: "StudyRecordViewController")
+    }
+
+    internal enum StudyRecordGraphColor: StoryboardType {
+        internal static let storyboardName = "StudyRecordGraphColor"
+
+        internal static let initialScene = InitialSceneType<StudyRecordApp.StudyRecordGraphColorViewController>(storyboard: StudyRecordGraphColor.self)
+
+        internal static let studyRecordGraphColorViewController = SceneType<StudyRecordApp.StudyRecordGraphColorViewController>(storyboard: StudyRecordGraphColor.self, identifier: "StudyRecordGraphColorViewController")
+    }
+
+    internal enum StudyRecordMemo: StoryboardType {
+        internal static let storyboardName = "StudyRecordMemo"
+
+        internal static let initialScene = InitialSceneType<StudyRecordApp.StudyRecordMemoViewController>(storyboard: StudyRecordMemo.self)
+
+        internal static let studyRecordMemoViewController = SceneType<StudyRecordApp.StudyRecordMemoViewController>(storyboard: StudyRecordMemo.self, identifier: "StudyRecordMemoViewController")
+    }
+
+    internal enum StudyRecordSort: StoryboardType {
+        internal static let storyboardName = "StudyRecordSort"
+
+        internal static let initialScene = InitialSceneType<StudyRecordApp.StudyRecordSortViewController>(storyboard: StudyRecordSort.self)
+
+        internal static let studyRecordSortViewController = SceneType<StudyRecordApp.StudyRecordSortViewController>(storyboard: StudyRecordSort.self, identifier: "StudyRecordSortViewController")
+    }
+
+    internal enum StudyRecordTimeRecord: StoryboardType {
+        internal static let storyboardName = "StudyRecordTimeRecord"
+
+        internal static let initialScene = InitialSceneType<StudyRecordApp.StudyRecordTimeRecordViewController>(storyboard: StudyRecordTimeRecord.self)
+
+        internal static let studyRecordTimeRecordViewController = SceneType<StudyRecordApp.StudyRecordTimeRecordViewController>(storyboard: StudyRecordTimeRecord.self, identifier: "StudyRecordTimeRecordViewController")
+    }
+
+    internal enum ThemeColor: StoryboardType {
+        internal static let storyboardName = "ThemeColor"
+
+        internal static let initialScene = InitialSceneType<StudyRecordApp.ThemeColorViewController>(storyboard: ThemeColor.self)
+
+        internal static let themeColorViewController = SceneType<StudyRecordApp.ThemeColorViewController>(storyboard: ThemeColor.self, identifier: "ThemeColorViewController")
+    }
+
+    internal enum Top: StoryboardType {
+        internal static let storyboardName = "Top"
+
+        internal static let initialScene = InitialSceneType<StudyRecordApp.TopViewController>(storyboard: Top.self)
+
+        internal static let topViewController = SceneType<StudyRecordApp.TopViewController>(storyboard: Top.self, identifier: "TopViewController")
+    }
 }
+
 // swiftlint:enable explicit_type_interface identifier_name line_length type_body_length type_name
 
 // MARK: - Implementation Details
 
 internal protocol StoryboardType {
-  static var storyboardName: String { get }
+    static var storyboardName: String { get }
 }
 
 internal extension StoryboardType {
-  static var storyboard: UIStoryboard {
-    let name = self.storyboardName
-    return UIStoryboard(name: name, bundle: BundleToken.bundle)
-  }
+    static var storyboard: UIStoryboard {
+        let name = self.storyboardName
+        return UIStoryboard(name: name, bundle: BundleToken.bundle)
+    }
 }
 
 internal struct SceneType<T: UIViewController> {
-  internal let storyboard: StoryboardType.Type
-  internal let identifier: String
+    internal let storyboard: StoryboardType.Type
+    internal let identifier: String
 
-  internal func instantiate() -> T {
-    let identifier = self.identifier
-    guard let controller = storyboard.storyboard.instantiateViewController(withIdentifier: identifier) as? T else {
-      fatalError("ViewController '\(identifier)' is not of the expected class \(T.self).")
+    internal func instantiate() -> T {
+        let identifier = self.identifier
+        guard let controller = storyboard.storyboard.instantiateViewController(withIdentifier: identifier) as? T else {
+            fatalError("ViewController '\(identifier)' is not of the expected class \(T.self).")
+        }
+        return controller
     }
-    return controller
-  }
 
-  @available(iOS 13.0, tvOS 13.0, *)
-  internal func instantiate(creator block: @escaping (NSCoder) -> T?) -> T {
-    return storyboard.storyboard.instantiateViewController(identifier: identifier, creator: block)
-  }
+    @available(iOS 13.0, tvOS 13.0, *)
+    internal func instantiate(creator block: @escaping (NSCoder) -> T?) -> T {
+        return storyboard.storyboard.instantiateViewController(identifier: identifier, creator: block)
+    }
 }
 
 internal struct InitialSceneType<T: UIViewController> {
-  internal let storyboard: StoryboardType.Type
+    internal let storyboard: StoryboardType.Type
 
-  internal func instantiate() -> T {
-    guard let controller = storyboard.storyboard.instantiateInitialViewController() as? T else {
-      fatalError("ViewController is not of the expected class \(T.self).")
+    internal func instantiate() -> T {
+        guard let controller = storyboard.storyboard.instantiateInitialViewController() as? T else {
+            fatalError("ViewController is not of the expected class \(T.self).")
+        }
+        return controller
     }
-    return controller
-  }
 
-  @available(iOS 13.0, tvOS 13.0, *)
-  internal func instantiate(creator block: @escaping (NSCoder) -> T?) -> T {
-    guard let controller = storyboard.storyboard.instantiateInitialViewController(creator: block) else {
-      fatalError("Storyboard \(storyboard.storyboardName) does not have an initial scene.")
+    @available(iOS 13.0, tvOS 13.0, *)
+    internal func instantiate(creator block: @escaping (NSCoder) -> T?) -> T {
+        guard let controller = storyboard.storyboard.instantiateInitialViewController(creator: block) else {
+            fatalError("Storyboard \(storyboard.storyboardName) does not have an initial scene.")
+        }
+        return controller
     }
-    return controller
-  }
 }
 
 // swiftlint:disable convenience_type
 private final class BundleToken {
-  static let bundle: Bundle = {
-    #if SWIFT_PACKAGE
-    return Bundle.module
-    #else
-    return Bundle(for: BundleToken.self)
-    #endif
-  }()
+    static let bundle: Bundle = {
+        #if SWIFT_PACKAGE
+            return Bundle.module
+        #else
+            return Bundle(for: BundleToken.self)
+        #endif
+    }()
 }
+
 // swiftlint:enable convenience_type

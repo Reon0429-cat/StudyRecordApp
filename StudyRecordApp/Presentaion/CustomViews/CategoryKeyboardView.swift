@@ -12,26 +12,26 @@ protocol CategoryKeyboardViewDelegate: AnyObject {
 }
 
 final class CategoryKeyboardView: UIView {
-    
+
     weak var delegate: CategoryKeyboardViewDelegate?
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+
         setup()
-        
+
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
+
         setup()
-        
+
     }
-    
+
     private func setup() {
         backgroundColor = .secondarySystemGroupedBackground
-        
+
         let categoryButton = UIButton()
         categoryButton.setTitle(L10n.largeCategory + " >")
         categoryButton.titleLabel?.font = .systemFont(ofSize: 20)
@@ -47,10 +47,10 @@ final class CategoryKeyboardView: UIView {
             categoryButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20)
         ])
     }
-    
+
     @objc
     private func categoryButtonDidTapped() {
         delegate?.categoryButtonDidTapped()
     }
-    
+
 }

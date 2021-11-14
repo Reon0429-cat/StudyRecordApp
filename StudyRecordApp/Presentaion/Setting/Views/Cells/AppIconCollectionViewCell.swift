@@ -8,18 +8,18 @@
 import UIKit
 
 final class AppIconCollectionViewCell: UICollectionViewCell {
-    
+
     @IBOutlet private weak var iconImageView: UIImageView!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         iconImageView.layer.cornerRadius = 10
-        
+
     }
-    
+
     func configure(image: UIImage) {
         iconImageView.image = image
     }
-    
+
 }

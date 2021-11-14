@@ -13,7 +13,7 @@ protocol GraphTableViewCellDelegate: AnyObject {
 }
 
 final class GraphTableViewCell: UITableViewCell {
-    
+
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var graphBaseView: UIView!
     @IBOutlet private weak var myGraphViewRightConstraint: NSLayoutConstraint!
@@ -22,7 +22,7 @@ final class GraphTableViewCell: UITableViewCell {
     @IBOutlet private weak var yAxisLabel: UILabel!
     @IBOutlet private weak var noGraphDataLabel: UILabel!
     @IBOutlet private weak var registerButton: CustomButton!
-    
+
     private var graphView: CustomScrollableGraphView!
     private var indicator: UIActivityIndicatorView!
     private var lineData = [(color: UIColor, identifier: String, xTitle: String)]()
@@ -39,27 +39,31 @@ final class GraphTableViewCell: UITableViewCell {
         }
         return years[yearSegmentedControl.selectedSegmentIndex]
     }
+
     private var selectedMonth: Int {
         if months.isEmpty {
             return 0
         }
         return months[monthSegmentedControl.selectedSegmentIndex]
     }
+
     private var filteredLineData: [(color: UIColor, identifier: String, xTitle: String)] {
         lineData.filter { $0.identifier.hasPrefix("\(selectedYear)-\(selectedMonth)-") }
     }
+
     private var filteredSumData: [String: Double] {
         sumData.filter { $0.key.hasPrefix("\(selectedYear)-\(selectedMonth)-") }
     }
+
     weak var delegate: GraphTableViewCellDelegate?
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         selectionStyle = .none
-        
+
     }
-    
+
     func configure(record: Record, graph: Graph) {
         years.removeAll()
         months.removeAll()
@@ -80,42 +84,42 @@ final class GraphTableViewCell: UITableViewCell {
         setupRegisterButton()
         setupNoGraphDataLabel()
     }
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+
         self.graphView.scrollToRight()
-        
+
     }
-    
+
 }
 
 // MARK: - IBAction func
 private extension GraphTableViewCell {
-    
+
     @IBAction func yearSegmentedControlDidSelected(_ sender: UISegmentedControl) {
         UserDefaults.standard.set(sender.selectedSegmentIndex,
                                   forKey: yearSegmentedControlID)
         delegate?.segmentedControlDidTapped(index: self.tag)
         simpleNoGraphDataLabel(isHidden: !filteredSumData.isEmpty)
     }
-    
+
     @IBAction func monthSegmentedControlDidSelected(_ sender: UISegmentedControl) {
         UserDefaults.standard.set(sender.selectedSegmentIndex,
                                   forKey: monthSegmentedControlID)
         delegate?.segmentedControlDidTapped(index: self.tag)
         simpleNoGraphDataLabel(isHidden: !filteredSumData.isEmpty)
     }
-    
+
     @IBAction func registerButtonDidTapped(_ sender: Any) {
         delegate?.registerButtonDidTapped(index: self.tag)
     }
-    
+
 }
 
 // MARK: - func
 private extension GraphTableViewCell {
-    
+
     func setupBeforeYearAndMonth(record: Record) {
         record.histories?.forEach { history in
             if !years.contains(history.year) {
@@ -128,16 +132,16 @@ private extension GraphTableViewCell {
             }
         }
     }
-    
+
     func simpleNoGraphDataLabel(isHidden: Bool) {
         simpleNoGraphDataLabel.isHidden = isHidden
     }
-    
+
 }
 
 // MARK: - CustomScrollableGraphViewDelegate
 extension GraphTableViewCell: CustomScrollableGraphViewDelegate {
-    
+
     func value(at index: Int) -> Double {
         let identifier = filteredLineData[index].identifier
         guard let sumData = filteredSumData[identifier] else { return 0.0 }
@@ -145,30 +149,30 @@ extension GraphTableViewCell: CustomScrollableGraphViewDelegate {
         let minutes = Double(Int(sumData) % 60 / 60)
         return hour + minutes
     }
-    
+
     func label(at index: Int) -> String {
         return filteredLineData[index].xTitle
     }
-    
+
     func numberOfPoints() -> Int {
         guard !sumData.isEmpty,
               yearSegmentedControl.selectedSegmentIndex != -1,
               monthSegmentedControl.selectedSegmentIndex != -1 else { return 0 }
         return filteredSumData.count
     }
-    
+
 }
 
 // MARK: - setup
 private extension GraphTableViewCell {
-    
+
     func setupGraphView() {
         graphView = CustomScrollableGraphView()
         graphView.delegate = self
         graphView.layer.cornerRadius = 10
         setupGraphViewLayout()
     }
-    
+
     func setupGraphBaseView() {
         graphBaseView.backgroundColor = .dynamicColor(light: .white,
                                                       dark: .secondarySystemGroupedBackground)
@@ -179,18 +183,18 @@ private extension GraphTableViewCell {
                                 opacity: 0.8,
                                 size: (width: 2, height: 2))
     }
-    
+
     func setupTitleLabel(record: Record) {
         titleLabel.text = record.title
     }
-    
+
     func setupSegmentedControl(record: Record) {
         let yearIndex = UserDefaults.standard.integer(forKey: yearSegmentedControlID)
         yearSegmentedControl.create(years.map { String($0) }, selectedIndex: yearIndex)
         let monthIndex = UserDefaults.standard.integer(forKey: monthSegmentedControlID)
         monthSegmentedControl.create(months.map { String($0) }, selectedIndex: monthIndex)
     }
-    
+
     func setupIndicator(record: Record) {
         indicator = UIActivityIndicatorView()
         indicator.layer.cornerRadius = 10
@@ -212,7 +216,7 @@ private extension GraphTableViewCell {
         }
         setupIndicatorLayout()
     }
-    
+
     func setupLineData(record: Record, graph: Graph) {
         guard let histories = record.histories else { return }
         histories.forEach { historiy in
@@ -231,7 +235,7 @@ private extension GraphTableViewCell {
         }
         graphView.create(color: UIColor(record: record), graph: graph)
     }
-    
+
     func setupIfNoGraphData(record: Record) {
         if record.histories?.isEmpty ?? true {
             noGraphDataLabel.isHidden = false
@@ -246,29 +250,29 @@ private extension GraphTableViewCell {
             simpleNoGraphDataLabel(isHidden: !filteredSumData.isEmpty)
         }
     }
-    
+
     func setupSimpleNoGraphDataLabel() {
         simpleNoGraphDataLabel.text = L10n.thereIsNoData
         setupSimpleNoGraphDataLabelLayout()
     }
-    
+
     func setupYAxisLabel() {
         yAxisLabel.text = L10n.hour
     }
-    
+
     func setupRegisterButton() {
         registerButton.setTitle(L10n.register)
     }
-    
+
     func setupNoGraphDataLabel() {
         noGraphDataLabel.text = L10n.graphDataIsNotRegistered
     }
-    
+
 }
 
 // MARK: - setup layout
 extension GraphTableViewCell {
-    
+
     func setupGraphViewLayout() {
         graphBaseView.subviews.forEach { $0.removeFromSuperview() }
         graphView.translatesAutoresizingMaskIntoConstraints = false
@@ -280,7 +284,7 @@ extension GraphTableViewCell {
             graphView.trailingAnchor.constraint(equalTo: graphBaseView.trailingAnchor)
         ])
     }
-    
+
     func setupIndicatorLayout() {
         indicator.translatesAutoresizingMaskIntoConstraints = false
         graphView.addSubview(indicator)
@@ -291,7 +295,7 @@ extension GraphTableViewCell {
             indicator.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10)
         ])
     }
-    
+
     func setupSimpleNoGraphDataLabelLayout() {
         simpleNoGraphDataLabel.translatesAutoresizingMaskIntoConstraints = false
         graphView.addSubview(simpleNoGraphDataLabel)
@@ -300,8 +304,5 @@ extension GraphTableViewCell {
             simpleNoGraphDataLabel.centerYAnchor.constraint(equalTo: graphView.centerYAnchor)
         ])
     }
-    
+
 }
-
-
-

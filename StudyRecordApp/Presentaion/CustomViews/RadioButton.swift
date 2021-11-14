@@ -8,29 +8,27 @@
 import UIKit
 
 final class RadioButton: UIButton {
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+
         setup()
-        
+
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
+
         setup()
-        
+
     }
-    
-    private func setup() {
-        
-    }
-    
+
+    private func setup() {}
+
     func setImage(isFilled: Bool) {
         self.setImage(radioButtonImage(isFilled: isFilled))
     }
-    
+
     private func radioButtonImage(isFilled: Bool) -> UIImage {
         let imageName: SystemName = {
             if isFilled {
@@ -40,5 +38,5 @@ final class RadioButton: UIButton {
         }()
         return UIImage(systemName: imageName)
     }
-    
+
 }

@@ -8,17 +8,17 @@
 import UIKit
 
 final class GoalPriorityTableViewCell: UITableViewCell {
-    
+
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var chevronImageView: UIImageView!
-    
+
     private var stackView = UIStackView()
-    
+
     func configure(title: String, priority: Category.Goal.Priority) {
         titleLabel.text = title
         setupStackView(priority: priority)
     }
-    
+
     private func setupStackView(priority: Category.Goal.Priority) {
         self.stackView.removeFromSuperview()
         let priorityStackView = PriorityStackView(priority: priority)
@@ -29,5 +29,5 @@ final class GoalPriorityTableViewCell: UITableViewCell {
         ])
         self.stackView = priorityStackView
     }
-    
+
 }

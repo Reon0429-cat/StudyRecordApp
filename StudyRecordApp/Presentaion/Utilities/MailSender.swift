@@ -8,7 +8,7 @@
 import Foundation
 
 struct MailSender {
-    
+
     func send(emailText: String,
               passwordText: String,
               titleText: String,
@@ -42,5 +42,5 @@ struct MailSender {
             handler(.success(nil))
         }
     }
-    
+
 }

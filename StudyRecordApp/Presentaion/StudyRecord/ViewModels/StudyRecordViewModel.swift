@@ -32,21 +32,22 @@ protocol StudyRecordViewModelType {
 }
 
 final class StudyRecordViewModel {
-    
+
     private let eventRelay = PublishRelay<Event>()
     private let isHiddenTableViewRelay = PublishRelay<Bool>()
     private let itemRelay = BehaviorRelay<[Item]>(value: [])
     private var records: [Record] {
         itemRelay.value.map { $0.record }
     }
+
     private let recordUseCase: RxRecordUseCase
     private let disposeBag = DisposeBag()
-    
+
     init(recordUseCase: RxRecordUseCase) {
         self.recordUseCase = recordUseCase
         readItems()
     }
-    
+
     enum Event {
         case presentEditStudyRecordVC(Int)
         case presentRecordDeleteAlert(Int)
@@ -54,11 +55,12 @@ final class StudyRecordViewModel {
         case notifyDelete(Bool)
         case scrollToTop(row: Int, records: [Record])
     }
+
     struct Item {
         let record: Record
         let studyTime: (todayText: String, totalText: String)
     }
-    
+
     private func convertToItems(records: [Record]) -> [Item] {
         return records.map { record in
             Item(
@@ -67,6 +69,7 @@ final class StudyRecordViewModel {
             )
         }
     }
+
     private func readItems() {
         recordUseCase.readRecords()
             .compactMap { [weak self] in self?.convertToItems(records: $0) }
@@ -76,24 +79,24 @@ final class StudyRecordViewModel {
             )
             .disposed(by: disposeBag)
     }
-    
+
 }
 
 // MARK: - Input
 extension StudyRecordViewModel: StudyRecordViewModelInput {
-    
+
     func viewWillAppear() {
         isHiddenTableViewRelay.accept(records.isEmpty)
     }
-    
+
     func baseViewTapDidRecognized(row: Int) {
         eventRelay.accept(.presentEditStudyRecordVC(row))
     }
-    
+
     func baseViewLongPressDidRecognized() {
         eventRelay.accept(.notifyLongPress)
     }
-    
+
     func memoButtonDidTapped(row: Int) {
         recordUseCase.changeOpeningAndClosing(record: records[row])
             .subscribe()
@@ -101,11 +104,11 @@ extension StudyRecordViewModel: StudyRecordViewModelInput {
         readItems()
         eventRelay.accept(.scrollToTop(row: row, records: records))
     }
-    
+
     func deleteButtonDidTappped(row: Int) {
         eventRelay.accept(.presentRecordDeleteAlert(row))
     }
-    
+
     func recordDeleteAlertDeleteButtonDidTapped(row: Int) {
         recordUseCase.deleteRecord(record: records[row])
             .subscribe()
@@ -114,42 +117,42 @@ extension StudyRecordViewModel: StudyRecordViewModelInput {
         eventRelay.accept(.notifyDelete(records.isEmpty))
         isHiddenTableViewRelay.accept(records.isEmpty)
     }
-    
+
     func reloadLocalData() {
         readItems()
     }
-    
+
     func recordAdded() {
         readItems()
     }
-    
+
 }
 
 // MARK: - Output
 extension StudyRecordViewModel: StudyRecordViewModelOutput {
-    
+
     var event: Driver<Event> {
         eventRelay.asDriver(onErrorDriveWith: .empty())
     }
-    
+
     var items: Driver<[Item]> {
         itemRelay.asDriver()
     }
-    
+
     var isHiddenTableView: Driver<Bool> {
         isHiddenTableViewRelay.asDriver(onErrorDriveWith: .empty())
     }
-    
+
 }
 
 extension StudyRecordViewModel: StudyRecordViewModelType {
-    
+
     var inputs: StudyRecordViewModelInput {
         return self
     }
-    
+
     var outputs: StudyRecordViewModelOutput {
         return self
     }
-    
+
 }

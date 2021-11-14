@@ -18,24 +18,24 @@ enum VibrateAction {
 }
 
 extension UIView {
-    
+
     func setFade(_ fadeType: FadeType) {
         switch fadeType {
-            case .out:
-                animate {
-                    self.alpha = 0
-                } completion: {
-                    self.isHidden = true
-                }
-            case .in:
-                animate {
-                    self.isHidden = false
-                } completion: {
-                    self.alpha = 1
-                }
+        case .out:
+            animate {
+                self.alpha = 0
+            } completion: {
+                self.isHidden = true
+            }
+        case .in:
+            animate {
+                self.isHidden = false
+            } completion: {
+                self.alpha = 1
+            }
         }
     }
-    
+
     private func animate(animations: @escaping () -> Void,
                          completion: @escaping () -> Void) {
         UIView.animate(withDuration: 0.2,
@@ -48,40 +48,40 @@ extension UIView {
             }
         }
     }
-    
+
     func vibrate(_ vibrateAction: VibrateAction,
                  isEvenIndex: Bool = false,
                  range: Double = 1.2) {
         let vibrateKey = "VibrateAnimationKey"
         let rotationKey = "transform.rotation"
         switch vibrateAction {
-            case .start:
-                guard self.layer.animation(forKey: vibrateKey) == nil else { return }
-                let animation = CABasicAnimation(keyPath: rotationKey)
-                animation.beginTime = 0.1
-                animation.isRemovedOnCompletion = false
-                animation.duration = 0.12
-                let range = isEvenIndex ? range : -range
-                animation.fromValue = range * Double.pi / 180
-                animation.toValue = -range * Double.pi / 180
-                animation.repeatCount = .infinity
-                animation.autoreverses = true
-                self.layer.add(animation, forKey: vibrateKey)
-            case .stop:
-                self.layer.removeAnimation(forKey: vibrateKey)
+        case .start:
+            guard self.layer.animation(forKey: vibrateKey) == nil else { return }
+            let animation = CABasicAnimation(keyPath: rotationKey)
+            animation.beginTime = 0.1
+            animation.isRemovedOnCompletion = false
+            animation.duration = 0.12
+            let range = isEvenIndex ? range : -range
+            animation.fromValue = range * Double.pi / 180
+            animation.toValue = -range * Double.pi / 180
+            animation.repeatCount = .infinity
+            animation.autoreverses = true
+            self.layer.add(animation, forKey: vibrateKey)
+        case .stop:
+            self.layer.removeAnimation(forKey: vibrateKey)
         }
     }
-    
+
     func cutToCircle(borderColor: UIColor?, width: CGFloat?) {
         self.cutToCircle()
         self.layer.borderColor = borderColor?.cgColor ?? UIColor.clear.cgColor
         self.layer.borderWidth = width ?? 0
     }
-    
+
     func cutToCircle() {
         self.layer.cornerRadius = self.frame.height / 2
     }
-    
+
     static func animate(deadlineFromNow: Double,
                         duration: Double = 1,
                         _ animation: @escaping () -> Void) {
@@ -95,7 +95,7 @@ extension UIView {
             }
         }
     }
-    
+
     func setShadow(color: UIColor = .black,
                    radius: CGFloat = 2,
                    opacity: Float = 0.8,
@@ -123,7 +123,7 @@ extension UIView {
         )
         self.layer.shadowPath = UIBezierPath(ovalIn: _rect).cgPath
     }
-    
+
     func setGradation(frame: CGRect? = nil,
                       colors: [UIColor] = [.gray, .black],
                       startPoint: (x: CGFloat, y: CGFloat) = (x: 0.5, y: 0),
@@ -150,5 +150,5 @@ extension UIView {
         self.layer.masksToBounds = masksToBounds
         gradientLayer.mask = layer
     }
-    
+
 }

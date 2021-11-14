@@ -8,7 +8,7 @@
 import UIKit
 
 struct Converter {
-    
+
     static func convertToString(from date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
@@ -20,19 +20,19 @@ struct Converter {
                                                         locale: locale)
         return formatter.string(from: date)
     }
-    
+
     static func convertToImage(from data: Data?) -> UIImage? {
         if let data = data {
             return UIImage(data: data)
         }
         return nil
     }
-    
+
     static func convertToData(from image: UIImage?) -> Data? {
         if let image = image {
             return image.jpegData(compressionQuality: 1)
         }
         return nil
     }
-    
+
 }

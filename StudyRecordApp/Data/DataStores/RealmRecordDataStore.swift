@@ -17,28 +17,27 @@ protocol RealmRecordDataStoreProtocol {
 }
 
 final class RealmRecordDataStore: RealmRecordDataStoreProtocol {
-    
+
     func create(record: RecordRealm) {
         RealmManager().create(object: record)
     }
-    
+
     func readAll() -> [RecordRealm] {
         return RealmManager().readAll(type: RecordRealm.self)
     }
-    
+
     func update(record: RecordRealm) {
         RealmManager().update(object: record)
     }
-    
+
     func delete(record: RecordRealm) {
         RealmManager().delete(object: record)
     }
-    
+
     func sort(sourceObject: RecordRealm,
               destinationObject: RecordRealm) {
         RealmManager().sort(sourceObject: sourceObject,
                             destinationObject: destinationObject)
     }
-    
-}
 
+}

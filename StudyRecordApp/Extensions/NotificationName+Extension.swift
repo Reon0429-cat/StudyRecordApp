@@ -8,7 +8,7 @@
 import Foundation
 
 extension Notification.Name {
-    
+
     static let themeColor = Notification.Name("themeColor")
     static let initTileView = Notification.Name("initTileView")
     static let graphSaveButtonDidTappped = Notification.Name("graphSaveButtonDidTappped")
@@ -18,4 +18,3 @@ extension Notification.Name {
     static let recordAdded = Notification.Name("recordAdded")
 
 }
-

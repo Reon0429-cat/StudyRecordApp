@@ -8,17 +8,17 @@
 import UIKit
 
 final class PriorityStackView: UIStackView {
-    
+
     convenience init(frame: CGRect = .zero,
                      priority: Category.Goal.Priority,
                      imageSize: CGFloat = 20) {
         self.init()
-        
+
         setup(priority: priority,
               imageSize: imageSize)
-        
+
     }
-    
+
     private func setup(priority: Category.Goal.Priority,
                        imageSize: CGFloat) {
         self.translatesAutoresizingMaskIntoConstraints = false
@@ -26,7 +26,7 @@ final class PriorityStackView: UIStackView {
         self.alignment = .fill
         self.spacing = 10
         self.axis = .horizontal
-        (0...priority.number.rawValue).forEach { _ in
+        (0 ... priority.number.rawValue).forEach { _ in
             let imageView = UIImageView()
             imageView.tintColor = .dynamicColor(light: .black, dark: .white)
             imageView.preferredSymbolConfiguration = .init(pointSize: imageSize)
@@ -34,5 +34,5 @@ final class PriorityStackView: UIStackView {
             self.addArrangedSubview(imageView)
         }
     }
-    
+
 }

@@ -17,41 +17,41 @@ protocol SettingRepositoryProtocol {
 }
 
 final class SettingRepository: SettingRepositoryProtocol {
-    
+
     private var dataStore: SettingDataStoreProtocol
     init(dataStore: SettingDataStoreProtocol) {
         self.dataStore = dataStore
     }
-    
+
     func create(setting: Setting) {
         let settingRealm = SettingRealm(setting: setting)
         dataStore.create(setting: settingRealm)
     }
-    
+
     func read(at index: Int) -> Setting {
         let setting = Setting(setting: dataStore.readAll()[index])
         return setting
     }
-    
+
     func readAll() -> [Setting] {
         let settings = dataStore.readAll().map { Setting(setting: $0) }
         return settings
     }
-    
+
     func update(setting: Setting) {
         let settingRealm = SettingRealm(setting: setting)
         dataStore.update(setting: settingRealm)
     }
-    
+
     func delete(setting: Setting) {
         let settingRealm = SettingRealm(setting: setting)
         dataStore.delete(setting: settingRealm)
     }
-    
+
 }
 
 private extension SettingRealm {
-    
+
     convenience init(setting: Setting) {
         self.init()
         let setting = Setting(isDarkMode: setting.isDarkMode,
@@ -69,11 +69,11 @@ private extension SettingRealm {
         self.language = setting.language
         self.identifier = setting.identifier
     }
-    
+
 }
 
 private extension Setting {
-    
+
     init(setting: SettingRealm) {
         self.init(isDarkMode: setting.isDarkMode,
                   darkModeSettingType: setting.darkModeSettingType,
@@ -83,5 +83,5 @@ private extension Setting {
                   language: setting.language,
                   identifier: setting.identifier)
     }
-    
+
 }

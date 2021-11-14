@@ -23,39 +23,39 @@ protocol GoalDataStoreProtocol {
 }
 
 final class RealmGoalDataStore: GoalDataStoreProtocol {
-    
+
     func create(category: CategoryRealm) {
         RealmManager().create(object: category)
     }
-    
+
     func readAll() -> [CategoryRealm] {
         return RealmManager().readAll(type: CategoryRealm.self)
     }
-    
+
     func update(category: CategoryRealm) {
         RealmManager().update(object: category)
     }
-    
+
     func delete(category: CategoryRealm) {
         RealmManager().delete(object: category)
     }
-    
+
     func deleteAllCategory() {
         RealmManager().deleteAll(type: CategoryRealm.self)
     }
-    
+
     func deleteGoal(category: CategoryRealm,
                     indexPath: IndexPath) {
         RealmManager().ex.deleteList(objects: category.goals,
                                      at: indexPath.row)
     }
-    
+
     func sortCategory(from sourceCategory: CategoryRealm,
                       to destinationCategory: CategoryRealm) {
         RealmManager().sort(sourceObject: sourceCategory,
                             destinationObject: destinationCategory)
     }
-    
+
     func sortGoal(category: CategoryRealm,
                   from sourceGoal: GoalRealm,
                   to destinationGoal: GoalRealm) {
@@ -63,5 +63,5 @@ final class RealmGoalDataStore: GoalDataStoreProtocol {
                                    sourceObject: sourceGoal,
                                    destinationObject: destinationGoal)
     }
-    
+
 }

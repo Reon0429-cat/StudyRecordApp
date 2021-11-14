@@ -18,7 +18,7 @@ final class RecordRealm: Object {
     @objc dynamic var monthID: String = ""
     @objc dynamic var order: Int = 0
     @objc dynamic var identifier = UUID().uuidString
-    
+
     override class func primaryKey() -> String? {
         return "identifier"
     }
@@ -40,7 +40,7 @@ final class GraphColorRealm: Object {
 }
 
 extension Record {
-    
+
     init(record: Record) {
         self.init(title: record.title,
                   histories: record.histories,
@@ -52,47 +52,47 @@ extension Record {
                   order: record.order,
                   identifier: record.identifier)
     }
-    
+
 }
 
 extension UIColor {
-    
+
     convenience init(record: Record) {
         self.init(red: record.graphColor.redValue,
                   green: record.graphColor.greenValue,
                   blue: record.graphColor.blueValue,
                   alpha: record.graphColor.alphaValue)
     }
-    
+
 }
 
 extension GraphColor {
-    
+
     init(record: RecordRealm) {
         self.init(redValue: CGFloat(record.graphColor?.redValue ?? 0.0),
                   greenValue: CGFloat(record.graphColor?.greenValue ?? 0.0),
                   blueValue: CGFloat(record.graphColor?.blueValue ?? 0.0),
                   alphaValue: CGFloat(record.graphColor?.alphaValue ?? 0.0))
     }
-    
+
     init(record: Record) {
         self.init(redValue: CGFloat(record.graphColor.redValue),
                   greenValue: CGFloat(record.graphColor.greenValue),
                   blueValue: CGFloat(record.graphColor.blueValue),
                   alphaValue: CGFloat(record.graphColor.alphaValue))
     }
-    
+
     init(color: UIColor) {
         self.init(redValue: color.redValue,
                   greenValue: color.greenValue,
                   blueValue: color.blueValue,
                   alphaValue: color.alphaValue)
     }
-    
+
 }
 
 extension HistoryRealm {
-    
+
     convenience init(history: History) {
         let historyRealm = HistoryRealm(value: ["year": history.year,
                                                 "month": history.month,
@@ -101,11 +101,11 @@ extension HistoryRealm {
                                                 "minutes": history.minutes])
         self.init(value: historyRealm)
     }
-    
+
 }
 
 extension History {
-    
+
     init(history: HistoryRealm) {
         self.init(year: history.year,
                   month: history.month,
@@ -113,5 +113,5 @@ extension History {
                   hour: history.hour,
                   minutes: history.minutes)
     }
-    
+
 }

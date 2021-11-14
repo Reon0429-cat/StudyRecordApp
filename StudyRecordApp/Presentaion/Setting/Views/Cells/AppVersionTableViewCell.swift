@@ -8,18 +8,18 @@
 import UIKit
 
 final class AppVersionTableViewCell: UITableViewCell {
-    
+
     @IBOutlet private weak var myImageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         selectionStyle = .none
-        
+
     }
-    
+
     func configure(title: String,
                    version: String,
                    image: UIImage) {
@@ -27,5 +27,5 @@ final class AppVersionTableViewCell: UITableViewCell {
         titleLabel.text = title
         descriptionLabel.text = version
     }
-    
+
 }

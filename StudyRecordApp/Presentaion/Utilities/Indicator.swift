@@ -21,23 +21,23 @@ protocol IndicatorProtocol {
 }
 
 struct Indicator {
-    
+
     private let indicator: IndicatorProtocol
     init(kinds indicator: IndicatorProtocol) {
         self.indicator = indicator
     }
-    
+
     func flash(_ type: IndicatorType,
                completion: @escaping () -> Void) {
         indicator.flash(type, completion: completion)
     }
-    
+
     func show(_ type: IndicatorType) {
         indicator.show(type)
     }
-    
+
     func hide() {
         indicator.hide()
     }
-    
+
 }

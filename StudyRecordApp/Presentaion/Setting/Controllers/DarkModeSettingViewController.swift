@@ -8,7 +8,7 @@
 import UIKit
 
 final class DarkModeSettingViewController: UIViewController {
-    
+
     @IBOutlet private weak var contentView: UIView!
     @IBOutlet private weak var stackView: UIStackView!
     @IBOutlet private weak var darkModeBaseView: UIView!
@@ -18,16 +18,16 @@ final class DarkModeSettingViewController: UIViewController {
     @IBOutlet private weak var settingAppSwitch: CustomSwitch!
     @IBOutlet private weak var settingDarkModeSwitch: CustomSwitch!
     @IBOutlet private weak var settingAutoSwitch: CustomSwitch!
-    
+
     private let settingUseCase = SettingUseCase(
         repository: SettingRepository(
             dataStore: RealmSettingDataStore()
         )
     )
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupSettingAppLabel()
         setupDarkModeLabel()
         setupSettingAutoLabel()
@@ -36,14 +36,14 @@ final class DarkModeSettingViewController: UIViewController {
         setupSettingAutoSwitch()
         setupContentView()
         setupDarkModeBaseView()
-        
+
     }
-    
+
 }
 
 // MARK: - IBAction func
 private extension DarkModeSettingViewController {
-    
+
     @IBAction func settingAppSwitchValueDidChanged(_ settingAppSwitch: UISwitch) {
         settingAutoSwitch.isOn.toggle()
         darkModeBaseView.isHidden.toggle()
@@ -57,13 +57,13 @@ private extension DarkModeSettingViewController {
             notifyBrightnessDidChanged(mode: mode)
         }
     }
-    
+
     @IBAction func settingDarkModeSwitchValueDidChanged(_ settingDarkModeSwitch: UISwitch) {
         settingUseCase.change(isDarkMode: settingDarkModeSwitch.isOn)
         let mode: UIUserInterfaceStyle = settingDarkModeSwitch.isOn ? .dark : .light
         notifyBrightnessDidChanged(mode: mode)
     }
-    
+
     @IBAction func settingAutoSwitchValueDidChanged(_ settingAutoSwitch: UISwitch) {
         settingAppSwitch.isOn.toggle()
         darkModeBaseView.isHidden.toggle()
@@ -80,63 +80,63 @@ private extension DarkModeSettingViewController {
             notifyBrightnessDidChanged(mode: mode)
         }
     }
-    
+
 }
 
 // MARK: - func
 private extension DarkModeSettingViewController {
-    
+
     func notifyBrightnessDidChanged(mode: UIUserInterfaceStyle) {
         NotificationCenter.default.post(name: .brightnessDidChanged,
                                         object: nil,
                                         userInfo: ["mode": mode])
     }
-    
+
 }
 
 // MARK: - HalfModalPresenterDelegate
 extension DarkModeSettingViewController: HalfModalPresenterDelegate {
-    
+
     var halfModalContentHeight: CGFloat {
         return contentView.frame.height
     }
-    
+
 }
 
 // MARK: - setup
 private extension DarkModeSettingViewController {
-    
+
     func setupContentView() {
         contentView.backgroundColor = .dynamicColor(light: .white,
                                                     dark: .secondarySystemGroupedBackground)
     }
-    
+
     func setupSettingAppLabel() {
         settingAppLabel.text = L10n.darkModeSettingApp
     }
-    
+
     func setupDarkModeLabel() {
         settingDarkModeLabel.text = L10n.darkMode
     }
-    
+
     func setupSettingAutoLabel() {
         settingAutoLabel.text = L10n.darkModeSettingAuto
     }
-    
+
     func setupSettingAppSwitch() {
         settingAppSwitch.isOn = settingUseCase.setting.darkModeSettingType == .app
     }
-    
+
     func setupDarkModeSwitch() {
         settingDarkModeSwitch.isOn = settingUseCase.setting.isDarkMode
     }
-    
+
     func setupSettingAutoSwitch() {
         settingAutoSwitch.isOn = settingUseCase.setting.darkModeSettingType == .auto
     }
-    
+
     func setupDarkModeBaseView() {
         darkModeBaseView.isHidden = !settingAppSwitch.isOn
     }
-    
+
 }

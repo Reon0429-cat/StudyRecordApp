@@ -8,23 +8,23 @@
 import UIKit
 
 final class UserUseCase {
-    
+
     private var repository: UserRepositoryProtocol
     init(repository: UserRepositoryProtocol) {
         self.repository = repository
     }
-    
+
     var isLoggedIn: Bool {
         repository.currentUser != nil
     }
-    
+
     var isLoggedInAsAnonymously: Bool {
         if let user = repository.currentUser {
             return user.isAnonymous
         }
         return false
     }
-    
+
     func registerUser(email: String,
                       password: String,
                       completion: @escaping ResultHandler<User>) {
@@ -32,7 +32,7 @@ final class UserUseCase {
                                 password: password,
                                 completion: completion)
     }
-    
+
     func createUser(userId: String,
                     email: String,
                     completion: @escaping ResultHandler<Any?>) {
@@ -40,7 +40,7 @@ final class UserUseCase {
                               email: email,
                               completion: completion)
     }
-    
+
     func login(email: String,
                password: String,
                completion: @escaping ResultHandler<Any?>) {
@@ -48,19 +48,19 @@ final class UserUseCase {
                          password: password,
                          completion: completion)
     }
-    
+
     func logout(completion: @escaping ResultHandler<Any?>) {
         repository.logout(completion: completion)
     }
-    
+
     func sendPasswordResetMail(email: String,
                                completion: @escaping ResultHandler<Any?>) {
         repository.sendPasswordResetMail(email: email,
                                          completion: completion)
     }
-    
+
     func signInAnonymously(completion: @escaping ResultHandler<Any?>) {
         repository.signInAnonymously(completion: completion)
     }
-    
+
 }

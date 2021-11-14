@@ -8,23 +8,23 @@
 import UIKit
 
 final class ColorConceptViewController: UIViewController {
-    
+
     @IBOutlet private weak var subCustomNavigationBar: SubCustomNavigationBar!
     @IBOutlet private weak var tableView: UITableView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupTableView()
         setupSubCustomNavigationBar()
-        
+
     }
-    
+
 }
 
 // MARK: - UITableViewDelegate
 extension ColorConceptViewController: UITableViewDelegate {
-    
+
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -35,34 +35,34 @@ extension ColorConceptViewController: UITableViewDelegate {
             vc.navigationTitle = ColorConcept.allCases[indexPath.row].title
         }
     }
-    
+
     func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
-    
+
     func tableView(_ tableView: UITableView,
                    heightForHeaderInSection section: Int) -> CGFloat {
         return 30
     }
-    
+
     func tableView(_ tableView: UITableView,
                    viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
         view.backgroundColor = .clear
         return view
     }
-    
+
 }
 
 // MARK: - UITableViewDataSource
 extension ColorConceptViewController: UITableViewDataSource {
-    
+
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
         return ColorConcept.allCases.count
     }
-    
+
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
@@ -71,26 +71,26 @@ extension ColorConceptViewController: UITableViewDataSource {
                        isMemo: false)
         return cell
     }
-    
+
 }
 
 extension ColorConceptViewController: SubCustomNavigationBarDelegate {
-    
-    func saveButtonDidTapped() { }
-    
+
+    func saveButtonDidTapped() {}
+
     func dismissButtonDidTapped() {
         dismiss(animated: true)
     }
-    
+
     var navTitle: String {
         return L10n.recommendation
     }
-    
+
 }
 
 // MARK: - setup
 private extension ColorConceptViewController {
-    
+
     func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -100,10 +100,10 @@ private extension ColorConceptViewController {
             tableView.sectionHeaderTopPadding = 0
         }
     }
-    
+
     func setupSubCustomNavigationBar() {
         subCustomNavigationBar.delegate = self
         subCustomNavigationBar.saveButton(isHidden: true)
     }
-    
+
 }

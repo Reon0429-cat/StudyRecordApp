@@ -12,7 +12,7 @@ protocol HalfModalPresenterDelegate: AnyObject {
 }
 
 final class HalfModalPresenter: NSObject {
-    
+
     weak var viewController: UIViewController? {
         didSet {
             if let viewController = viewController {
@@ -23,6 +23,7 @@ final class HalfModalPresenter: NSObject {
             }
         }
     }
+
     private let dismissInteractiveTransition = HalfModalDismissInteractiveTransition()
 
     private lazy var overlayView: HalfModalOverlayView = {
@@ -40,7 +41,7 @@ final class HalfModalPresenter: NSObject {
         indicator.addGestureRecognizer(tapGR)
         return indicator
     }()
-    
+
     @objc
     private func overlayViewDidTapped(_ sender: AnyObject) {
         viewController?.dismiss(animated: true)
@@ -50,12 +51,12 @@ final class HalfModalPresenter: NSObject {
     private func indicatorViewDidTapped(_ sender: AnyObject) {
         viewController?.dismiss(animated: true)
     }
-    
+
 }
 
 // MARK: - UIViewControllerTransitioningDelegate
 extension HalfModalPresenter: UIViewControllerTransitioningDelegate {
-    
+
     func presentationController(forPresented presented: UIViewController,
                                 presenting: UIViewController?,
                                 source: UIViewController) -> UIPresentationController? {
@@ -64,11 +65,11 @@ extension HalfModalPresenter: UIViewControllerTransitioningDelegate {
                                                overlayView: overlayView,
                                                indicator: indicator)
     }
-    
+
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return HalfModalDismissAnimatedTransition()
     }
-    
+
     func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         guard dismissInteractiveTransition.isInteractiveDismalTransition else { return nil }
         return dismissInteractiveTransition

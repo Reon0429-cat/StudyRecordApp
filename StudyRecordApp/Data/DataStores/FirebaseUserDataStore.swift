@@ -35,11 +35,11 @@ protocol UserDataStoreProtocol {
 }
 
 final class FirebaseUserDataStore: UserDataStoreProtocol {
-    
+
     var currentUser: User? {
         return User()
     }
-    
+
     func registerUser(email: String,
                       password: String,
                       completion: @escaping ResultHandler<User>) {
@@ -58,7 +58,7 @@ final class FirebaseUserDataStore: UserDataStoreProtocol {
             }
         }
     }
-    
+
     func createUser(userId: String,
                     email: String,
                     completion: @escaping ResultHandler<Any?>) {
@@ -72,7 +72,7 @@ final class FirebaseUserDataStore: UserDataStoreProtocol {
             completion(.success(nil))
         }
     }
-    
+
     func login(email: String,
                password: String,
                completion: @escaping ResultHandler<Any?>) {
@@ -86,7 +86,7 @@ final class FirebaseUserDataStore: UserDataStoreProtocol {
             completion(.success(nil))
         }
     }
-    
+
     func logout(completion: @escaping ResultHandler<Any?>) {
         do {
             try Auth.auth().signOut()
@@ -96,7 +96,7 @@ final class FirebaseUserDataStore: UserDataStoreProtocol {
             completion(.failure(message))
         }
     }
-    
+
     func sendPasswordResetMail(email: String,
                                completion: @escaping ResultHandler<Any?>) {
         Auth.auth().languageCode = L10n.languageCode
@@ -109,7 +109,7 @@ final class FirebaseUserDataStore: UserDataStoreProtocol {
             completion(.success(nil))
         }
     }
-    
+
     func signInAnonymously(completion: @escaping ResultHandler<Any?>) {
         Auth.auth().signInAnonymously { _, error in
             if let error = error {
@@ -120,33 +120,33 @@ final class FirebaseUserDataStore: UserDataStoreProtocol {
             completion(.success(nil))
         }
     }
-    
+
     private func authErrorMessage(_ error: Error) -> String {
         if let errorCode = AuthErrorCode(rawValue: error._code) {
             switch errorCode {
-                case .invalidEmail:
-                    return L10n.theEmailAddressFormatContainsAnError
-                case .weakPassword:
-                    return L10n.pleaseEnterThePasswordWithAtLeast6Characters
-                case .wrongPassword:
-                    return L10n.thePasswordIsIncorrect
-                case .userNotFound:
-                    return L10n.thisEmailAddressIsNotRegistered
-                case .emailAlreadyInUse:
-                    return L10n.thisEmailAddressIsAlreadyRegistered
-                case .adminRestrictedOperation:
-                    return L10n.adminRestrictedOperation
-                default:
-                    return L10n.loginFailed + "\(error.localizedDescription)"
+            case .invalidEmail:
+                return L10n.theEmailAddressFormatContainsAnError
+            case .weakPassword:
+                return L10n.pleaseEnterThePasswordWithAtLeast6Characters
+            case .wrongPassword:
+                return L10n.thePasswordIsIncorrect
+            case .userNotFound:
+                return L10n.thisEmailAddressIsNotRegistered
+            case .emailAlreadyInUse:
+                return L10n.thisEmailAddressIsAlreadyRegistered
+            case .adminRestrictedOperation:
+                return L10n.adminRestrictedOperation
+            default:
+                return L10n.loginFailed + "\(error.localizedDescription)"
             }
         }
         return L10n.anUnknownErrorHasOccurred
     }
-    
+
 }
 
 private extension User {
-    
+
     init?() {
         guard let user = Auth.auth().currentUser else {
             return nil
@@ -154,5 +154,5 @@ private extension User {
         self.id = user.uid
         self.isAnonymous = user.isAnonymous
     }
-    
+
 }

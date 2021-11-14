@@ -29,4 +29,3 @@ struct Bar: Equatable {
 struct Dot: Equatable {
     let isSquare: Bool
 }
-

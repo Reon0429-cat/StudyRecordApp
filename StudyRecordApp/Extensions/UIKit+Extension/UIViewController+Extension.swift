@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIViewController {
-    
+
     func present<T: UIViewController>(_ ViewControllerType: T.Type,
                                       modalPresentationStyle: UIModalPresentationStyle = .automatic,
                                       modalTransitionStyle: UIModalTransitionStyle = .coverVertical,
@@ -20,21 +20,21 @@ extension UIViewController {
         handler?(vc)
         present(vc, animated: true, completion: completion)
     }
-    
+
     func push<T: UIViewController>(_ ViewControllerType: T.Type,
                                    handler: ((T) -> Void)? = nil) {
         let vc = ViewControllerType.instantiate()
         handler?(vc)
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
+
     func changeRootVC<T: UIViewController>(_ ViewControllerType: T.Type) {
         let connectedScenes = UIApplication.shared.connectedScenes
         guard let sceneDelegate = connectedScenes.first?.delegate as? SceneDelegate else { return }
         let vc = ViewControllerType.instantiate()
         sceneDelegate.window?.rootViewController = vc
     }
-    
+
     func getPresentedVC() -> UIViewController? {
         let window = UIApplication.shared.windows.first { $0.isKeyWindow }
         guard var vc = window?.rootViewController else { return nil }
@@ -43,7 +43,7 @@ extension UIViewController {
         }
         return vc
     }
-    
+
     static func instantiate() -> Self {
         var storyboardName = String(describing: self)
         if let result = storyboardName.range(of: "ViewController") {
@@ -57,7 +57,7 @@ extension UIViewController {
         ) as! Self
         return vc
     }
-    
+
     func showErrorAlert(title: String,
                         message: String? = nil,
                         handler: (() -> Void)? = nil) {
@@ -67,5 +67,5 @@ extension UIViewController {
                        handler: handler)
         present(alert, animated: true)
     }
-    
+
 }

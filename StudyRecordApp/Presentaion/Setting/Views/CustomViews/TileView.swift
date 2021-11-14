@@ -12,30 +12,31 @@ protocol TileViewDelegate: AnyObject {
 }
 
 final class TileView: UIView {
-    
+
     weak var delegate: TileViewDelegate?
     enum State {
         case circle
         case square
-        
+
         mutating func toggle() {
             switch self {
-                case .circle: self = .square
-                case .square: self = .circle
+            case .circle: self = .square
+            case .square: self = .circle
             }
         }
     }
+
     private var state: State = .square {
         didSet {
             switch state {
-                case .circle:
-                    self.cutToCircle()
-                case .square:
-                    self.layer.cornerRadius = 0
+            case .circle:
+                self.cutToCircle()
+            case .square:
+                self.layer.cornerRadius = 0
             }
         }
     }
-    
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         UIView.animate(withDuration: 0, animations: {
             self.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
@@ -47,17 +48,17 @@ final class TileView: UIView {
         })
         delegate?.tileViewDidTapped(selectedView: self)
     }
-    
+
     func change(color: UIColor) {
         self.backgroundColor = color
     }
-    
+
     func change(state: State) {
         self.state = state
     }
-    
+
     func getState() -> State {
         return self.state
     }
-    
+
 }

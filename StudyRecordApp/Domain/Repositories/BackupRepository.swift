@@ -14,17 +14,17 @@ protocol BackupRepositoryProtocol {
 }
 
 final class BackupRepository: BackupRepositoryProtocol {
-    
+
     func backup(documentURL: URL) {
         RealmManager().backup(documentURL: documentURL)
     }
-    
+
     func getRealmFileURL() -> URL? {
         return RealmManager().getRealmFileURL()
     }
-    
+
     func updateRealm(fileURL: URL) {
         RealmManager().updateRealm(fileURL: fileURL)
     }
-    
+
 }

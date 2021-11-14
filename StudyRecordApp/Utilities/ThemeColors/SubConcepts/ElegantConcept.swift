@@ -15,59 +15,63 @@ enum ElegantConcept: CaseIterable {
 }
 
 extension ElegantConcept {
-    
+
     var title: String {
         switch self {
-            case .adultColor: return L10n.adultColor
-            case .gorgeous: return L10n.gorgeous
-            case .art: return L10n.art
-            case .intelligence: return L10n.intelligence
+        case .adultColor: return L10n.adultColor
+        case .gorgeous: return L10n.gorgeous
+        case .art: return L10n.art
+        case .intelligence: return L10n.intelligence
         }
     }
+
     var colors: [UIColor] {
         switch self {
-            case .adultColor:
-                return [.AdultColor.queenCharcoal,
-                        .AdultColor.fireSalamander,
-                        .AdultColor.concreteGray]
-            case .gorgeous:
-                return [.Gorgeous.parisGold,
-                        .Gorgeous.lakebottom,
-                        .Gorgeous.rembrandtMader]
-            case .art:
-                return [.Art.spaceBlue,
-                        .Art.mondrianRed,
-                        .Art.rikiYellow]
-            case .intelligence:
-                return [.Intelligence.gentryBlue,
-                        .Intelligence.pipeBlue,
-                        .Intelligence.gentryBlue]
+        case .adultColor:
+            return [.AdultColor.queenCharcoal,
+                    .AdultColor.fireSalamander,
+                    .AdultColor.concreteGray]
+        case .gorgeous:
+            return [.Gorgeous.parisGold,
+                    .Gorgeous.lakebottom,
+                    .Gorgeous.rembrandtMader]
+        case .art:
+            return [.Art.spaceBlue,
+                    .Art.mondrianRed,
+                    .Art.rikiYellow]
+        case .intelligence:
+            return [.Intelligence.gentryBlue,
+                    .Intelligence.pipeBlue,
+                    .Intelligence.gentryBlue]
         }
     }
-    
+
 }
 
 private extension UIColor {
-    
+
     struct AdultColor {
         static let queenCharcoal = UIColor(hex: "494544")
         static let fireSalamander = UIColor(hex: "c41a30")
         static let concreteGray = UIColor(hex: "bac8c6")
     }
+
     struct Gorgeous {
         static let parisGold = UIColor(hex: "d4b572")
         static let lakebottom = UIColor(hex: "003740")
         static let rembrandtMader = UIColor(hex: "b15a5e")
     }
+
     struct Art {
         static let spaceBlue = UIColor(hex: "303967")
         static let mondrianRed = UIColor(hex: "e60012")
         static let rikiYellow = UIColor(hex: "ffe200")
     }
+
     struct Intelligence {
         static let gentryBlue = UIColor(hex: "34485e")
         static let pipeBlue = UIColor(hex: "3c7d9b")
         static let greenGarnet = UIColor(hex: "5b9f8a")
     }
-    
+
 }

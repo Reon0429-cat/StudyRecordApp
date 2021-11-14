@@ -10,7 +10,6 @@
 --rules consecutiveSpaces
 --rules duplicateImports
 --rules emptyBraces
---rules hoistPatternLet
 --rules indent
 --rules isEmpty
 --rules leadingDelimiters
@@ -27,10 +26,8 @@
 --rules redundantPattern
 --rules redundantRawValues
 --rules redundantReturn
---rules redundantSelf
 --rules redundantVoidReturnType
 --rules semicolons
---rules spaceAroundBraces
 --rules spaceAroundBrackets
 --rules spaceAroundComments
 --rules spaceAroundGenerics
@@ -45,10 +42,7 @@
 --rules todos
 --rules trailingSpace
 --rules typeSugar
---rules unusedArguments
 --rules void
---rules wrapAttributes --funcattributes prev-line
-
 
 
 
@@ -61,7 +55,6 @@
 --enable consecutiveSpaces
 --enable duplicateImports
 --enable emptyBraces
---enable hoistPatternLet
 --enable indent
 --enable isEmpty
 --enable leadingDelimiters
@@ -78,10 +71,8 @@
 --enable redundantPattern
 --enable redundantRawValues
 --enable redundantReturn
---enable redundantSelf
 --enable redundantVoidReturnType
 --enable semicolons
---enable spaceAroundBraces
 --enable spaceAroundBrackets
 --enable spaceAroundComments
 --enable spaceAroundGenerics
@@ -96,6 +87,4 @@
 --enable todos
 --enable trailingSpace
 --enable typeSugar
---enable unusedArguments
 --enable void
---enable wrapAttributes --funcattributes prev-line

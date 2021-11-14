@@ -30,11 +30,11 @@ enum SystemName: String {
     case flag
     case trash
     case flagSlash = "flag.slash"
-    
+
     case paintPaletteFill = "paintpalette.fill"
     case circleRightHalfFilled = "circle.righthalf.filled"
     case keyFill = "key.fill"
-    case globe = "globe"
+    case globe
     case starFill = "star.fill"
     case squareAndArrowUp = "square.and.arrow.up"
     case docText = "doc.text"
@@ -46,9 +46,9 @@ enum SystemName: String {
 }
 
 extension UIImage {
-    
+
     convenience init(systemName: SystemName) {
         self.init(systemName: systemName.rawValue)!
     }
-    
+
 }

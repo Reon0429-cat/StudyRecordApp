@@ -12,7 +12,7 @@ final class StudyRecordSortTableViewCell: UITableViewCell {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var listImageButton: UIButton!
     @IBOutlet private weak var achievedLabel: UILabel!
-    
+
     func configure(title: String,
                    isAchieved: Bool = false) {
         titleLabel.text = title
@@ -24,5 +24,5 @@ final class StudyRecordSortTableViewCell: UITableViewCell {
             achievedLabel.text = ""
         }
     }
-    
+
 }
