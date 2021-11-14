@@ -2792,7 +2792,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\nif which swiftlint >/dev/null; then swiftlint\nfi\n\n$PODS_ROOT/SwiftGen/bin/swiftgen config run --config $SRCROOT/swiftgen.yml\n\nif [ $CONFIGURATION = \"Debug\" ]; then\n${PODS_ROOT}/LicensePlist/license-plist --output-path $PRODUCT_NAME/Settings.bundle --github-token YOUR_GITHUB_TOKEN\nfi\n";
+			shellScript = "\nif which swiftlint >/dev/null; then swiftlint\nfi\n\n$PODS_ROOT/SwiftGen/bin/swiftgen config run --config $SRCROOT/swiftgen.yml\n\nif [ $CONFIGURATION = \"Debug\" ]; then\n${PODS_ROOT}/LicensePlist/license-plist --output-path $PRODUCT_NAME/Settings.bundle --github-token YOUR_GITHUB_TOKEN\nfi\n\n\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" \"$SRCROOT\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

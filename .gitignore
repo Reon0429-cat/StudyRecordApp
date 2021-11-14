@@ -27,4 +27,8 @@ Pods/*
 .DS_Store
 docs
 
+# SwiftFormat
+BuildTools/.build
+BuildTools/.swiftpm
+
 *SecretConstant.swift

@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '13.0'
+platform :ios, '14.0'
 
 target 'StudyRecordApp' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -19,6 +19,7 @@ target 'StudyRecordApp' do
    pod 'LicensePlist'
    pod 'RxSwift'
    pod 'RxCocoa'
+   pod 'SwiftFormat/CLI'
    
 end
 

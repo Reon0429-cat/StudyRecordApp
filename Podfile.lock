@@ -508,6 +508,7 @@ PODS:
     - RxSwift (= 6.2.0)
   - RxSwift (6.2.0)
   - ScrollableGraphView (4.0.6)
+  - SwiftFormat/CLI (0.48.18)
   - SwiftGen (6.5.1)
 
 DEPENDENCIES:
@@ -523,6 +524,7 @@ DEPENDENCIES:
   - RxCocoa
   - RxSwift
   - ScrollableGraphView
+  - SwiftFormat/CLI
   - SwiftGen
 
 SPEC REPOS:
@@ -556,6 +558,7 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - ScrollableGraphView
+    - SwiftFormat
     - SwiftGen
 
 SPEC CHECKSUMS:
@@ -588,8 +591,9 @@ SPEC CHECKSUMS:
   RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
   RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
   ScrollableGraphView: 4af35d4ea9ecdec665d34a74da51da161ddff8ac
+  SwiftFormat: 7dd2b33a0a3d61095b61c911b6d89ff962ae695c
   SwiftGen: a6d22010845f08fe18fbdf3a07a8e380fd22e0ea
 
-PODFILE CHECKSUM: a1c5da7239186affc263f3884252b78f7fee5dca
+PODFILE CHECKSUM: bcc594d4432ae0c18957ff1908090d2563b446dc
 
 COCOAPODS: 1.10.2
