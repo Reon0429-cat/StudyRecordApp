@@ -20,9 +20,7 @@ final class DarkModeSettingViewController: UIViewController {
     @IBOutlet private weak var settingAutoSwitch: CustomSwitch!
 
     private let settingUseCase = SettingUseCase(
-        repository: SettingRepository(
-            dataStore: RealmSettingDataStore()
-        )
+        repository: SettingRepository()
     )
 
     override func viewDidLoad() {

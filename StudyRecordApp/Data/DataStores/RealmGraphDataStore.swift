@@ -7,13 +7,7 @@
 
 import Foundation
 
-protocol GraphDataStoreProtocol {
-    func create(graph: GraphRealm)
-    func readAll() -> [GraphRealm]
-    func update(graph: GraphRealm)
-}
-
-final class RealmGraphDataStore: GraphDataStoreProtocol {
+final class RealmGraphDataStore {
 
     func create(graph: GraphRealm) {
         RealmManager().create(object: graph)

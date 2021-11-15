@@ -15,9 +15,7 @@ final class PasscodeSettingViewController: UIViewController {
     @IBOutlet private weak var biometricsButton: RadioButton!
 
     private let settingUseCase = SettingUseCase(
-        repository: SettingRepository(
-            dataStore: RealmSettingDataStore()
-        )
+        repository: SettingRepository()
     )
 
     override func viewDidLoad() {

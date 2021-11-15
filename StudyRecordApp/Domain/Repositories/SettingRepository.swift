@@ -18,10 +18,7 @@ protocol SettingRepositoryProtocol {
 
 final class SettingRepository: SettingRepositoryProtocol {
 
-    private var dataStore: SettingDataStoreProtocol
-    init(dataStore: SettingDataStoreProtocol) {
-        self.dataStore = dataStore
-    }
+    private let dataStore = RealmSettingDataStore()
 
     func create(setting: Setting) {
         let settingRealm = SettingRealm(setting: setting)

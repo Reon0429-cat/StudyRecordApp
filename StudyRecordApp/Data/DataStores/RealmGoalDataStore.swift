@@ -7,22 +7,7 @@
 
 import Foundation
 
-protocol GoalDataStoreProtocol {
-    func create(category: CategoryRealm)
-    func readAll() -> [CategoryRealm]
-    func update(category: CategoryRealm)
-    func delete(category: CategoryRealm)
-    func deleteAllCategory()
-    func deleteGoal(category: CategoryRealm,
-                    indexPath: IndexPath)
-    func sortCategory(from sourceCategory: CategoryRealm,
-                      to destinationCategory: CategoryRealm)
-    func sortGoal(category: CategoryRealm,
-                  from sourceGoal: GoalRealm,
-                  to destinationGoal: GoalRealm)
-}
-
-final class RealmGoalDataStore: GoalDataStoreProtocol {
+final class RealmGoalDataStore {
 
     func create(category: CategoryRealm) {
         RealmManager().create(object: category)

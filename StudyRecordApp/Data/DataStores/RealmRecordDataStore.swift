@@ -7,16 +7,7 @@
 
 import Foundation
 
-protocol RealmRecordDataStoreProtocol {
-    func create(record: RecordRealm)
-    func readAll() -> [RecordRealm]
-    func update(record: RecordRealm)
-    func delete(record: RecordRealm)
-    func sort(sourceObject: RecordRealm,
-              destinationObject: RecordRealm)
-}
-
-final class RealmRecordDataStore: RealmRecordDataStoreProtocol {
+final class RealmRecordDataStore {
 
     func create(record: RecordRealm) {
         RealmManager().create(object: record)

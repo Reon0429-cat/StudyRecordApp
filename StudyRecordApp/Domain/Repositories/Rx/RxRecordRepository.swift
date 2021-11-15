@@ -20,10 +20,7 @@ protocol RxRecordRepositoryProtocol {
 
 final class RxRecordRepository: RxRecordRepositoryProtocol {
 
-    private var dataStore: RealmRecordDataStoreProtocol
-    init(dataStore: RealmRecordDataStoreProtocol) {
-        self.dataStore = dataStore
-    }
+    private let dataStore = RealmRecordDataStore()
 
     func create(record: Record) -> Completable {
         dataStore.create(record: RecordRealm(record: record))

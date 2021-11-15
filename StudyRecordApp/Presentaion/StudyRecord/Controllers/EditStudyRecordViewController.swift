@@ -37,9 +37,7 @@ final class EditStudyRecordViewController: UIViewController {
     }
 
     private let recordUseCase = RecordUseCase(
-        repository: RecordRepository(
-            dataStore: RealmRecordDataStore()
-        )
+        repository: RecordRepository()
     )
     private var rowCount: Int {
         (CellType.allCases.count - 1) + (selectedRecord.histories?.count ?? 0)

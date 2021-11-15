@@ -15,9 +15,7 @@ final class GoalStatisticsViewController: UIViewController {
 
     private let settingUnachievedCategoryKey = "SettingUnachievedCategoryKey"
     private var goalUseCase = GoalUseCase(
-        repository: GoalRepository(
-            dataStore: RealmGoalDataStore()
-        )
+        repository: GoalRepository()
     )
     private var categories: [Category] {
         goalUseCase.categories

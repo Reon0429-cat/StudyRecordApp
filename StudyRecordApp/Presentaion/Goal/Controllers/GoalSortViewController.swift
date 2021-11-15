@@ -15,9 +15,7 @@ final class GoalSortViewController: UIViewController {
 
     var tappedSection: Int?
     private let goalUseCase = GoalUseCase(
-        repository: GoalRepository(
-            dataStore: RealmGoalDataStore()
-        )
+        repository: GoalRepository()
     )
     private var categories: [Category] {
         goalUseCase.categories

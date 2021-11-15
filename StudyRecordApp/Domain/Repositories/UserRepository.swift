@@ -26,10 +26,7 @@ protocol UserRepositoryProtocol {
 
 final class UserRepository: UserRepositoryProtocol {
 
-    private var dataStore: UserDataStoreProtocol
-    init(dataStore: UserDataStoreProtocol) {
-        self.dataStore = dataStore
-    }
+    private let dataStore = FirebaseUserDataStore()
 
     var currentUser: User? {
         dataStore.currentUser

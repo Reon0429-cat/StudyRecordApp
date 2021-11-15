@@ -24,10 +24,7 @@ protocol GoalRepositoryProtocol {
 
 final class GoalRepository: GoalRepositoryProtocol {
 
-    private var dataStore: GoalDataStoreProtocol
-    init(dataStore: GoalDataStoreProtocol) {
-        self.dataStore = dataStore
-    }
+    private let dataStore = RealmGoalDataStore()
 
     func create(category: Category) {
         let categoryRealm = CategoryRealm(category: category)

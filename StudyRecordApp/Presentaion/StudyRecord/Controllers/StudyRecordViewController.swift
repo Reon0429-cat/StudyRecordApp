@@ -29,9 +29,7 @@ final class StudyRecordViewController: UIViewController {
         recordUseCase: recordUseCase
     )
     private let recordUseCase = RxRecordUseCase(
-        repository: RxRecordRepository(
-            dataStore: RealmRecordDataStore()
-        )
+        repository: RxRecordRepository()
     )
     private let disposeBag = DisposeBag()
     weak var delegate: StudyRecordVCDelegate?

@@ -7,14 +7,7 @@
 
 import Foundation
 
-protocol SettingDataStoreProtocol {
-    func create(setting: SettingRealm)
-    func readAll() -> [SettingRealm]
-    func update(setting: SettingRealm)
-    func delete(setting: SettingRealm)
-}
-
-final class RealmSettingDataStore: SettingDataStoreProtocol {
+final class RealmSettingDataStore {
 
     func create(setting: SettingRealm) {
         RealmManager().create(object: setting)

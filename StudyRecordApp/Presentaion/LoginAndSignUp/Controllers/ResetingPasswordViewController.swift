@@ -18,9 +18,7 @@ final class ResetingPasswordViewController: UIViewController {
     @IBOutlet private weak var stackViewTopConstraint: NSLayoutConstraint!
 
     private let userUseCase = UserUseCase(
-        repository: UserRepository(
-            dataStore: FirebaseUserDataStore()
-        )
+        repository: UserRepository()
     )
     private var isKeyboardHidden = true
     private let indicator = Indicator(kinds: PKHUDIndicator())

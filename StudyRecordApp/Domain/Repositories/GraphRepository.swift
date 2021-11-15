@@ -16,10 +16,7 @@ protocol GraphRepositoryProtocol {
 
 final class GraphRepository: GraphRepositoryProtocol {
 
-    private var dataStore: GraphDataStoreProtocol
-    init(dataStore: GraphDataStoreProtocol) {
-        self.dataStore = dataStore
-    }
+    private let dataStore = RealmGraphDataStore()
 
     func create(graph: Graph) {
         let graphRealm = GraphRealm(graph: graph)

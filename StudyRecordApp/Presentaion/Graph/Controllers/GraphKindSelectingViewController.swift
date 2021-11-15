@@ -53,9 +53,7 @@ final class GraphKindSelectingViewController: UIViewController {
     @IBOutlet private weak var sliderLabel: UILabel!
 
     private let graphUseCase = GraphUseCase(
-        repository: GraphRepository(
-            dataStore: RealmGraphDataStore()
-        )
+        repository: GraphRepository()
     )
     private var isSmooth: Bool = false
     private var isFilled: Bool = false

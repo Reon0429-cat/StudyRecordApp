@@ -64,9 +64,7 @@ final class AddAndEditGoalViewController: UIViewController {
     }
 
     private let goalUseCase = GoalUseCase(
-        repository: GoalRepository(
-            dataStore: RealmGoalDataStore()
-        )
+        repository: GoalRepository()
     )
     private func getDateType(type: AddAndEditGoalRowType) -> GoalDateType {
         switch type {

@@ -14,9 +14,7 @@ final class StudyRecordSortViewController: UIViewController {
     @IBOutlet private weak var bottomWaveView: WaveView!
 
     private let recordUseCase = RecordUseCase(
-        repository: RecordRepository(
-            dataStore: RealmRecordDataStore()
-        )
+        repository: RecordRepository()
     )
     private var records: [Record] {
         recordUseCase.records

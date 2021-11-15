@@ -32,9 +32,7 @@ final class PasscodeViewController: UIViewController {
 
     private let indicator = Indicator(kinds: PKHUDIndicator())
     private let settingUseCase = SettingUseCase(
-        repository: SettingRepository(
-            dataStore: RealmSettingDataStore()
-        )
+        repository: SettingRepository()
     )
     private var shouldPresentBiometrics: Bool {
         settingUseCase.setting.isBiometricsSetted

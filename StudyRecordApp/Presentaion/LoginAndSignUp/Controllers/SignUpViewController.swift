@@ -34,9 +34,7 @@ final class SignUpViewController: UIViewController {
     private var isPasswordConfirmationHidden = true
     private var isKeyboardHidden = true
     private let userUseCase = UserUseCase(
-        repository: UserRepository(
-            dataStore: FirebaseUserDataStore()
-        )
+        repository: UserRepository()
     )
     private let indicator = Indicator(kinds: PKHUDIndicator())
 

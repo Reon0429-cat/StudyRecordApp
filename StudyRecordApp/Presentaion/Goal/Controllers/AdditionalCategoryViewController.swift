@@ -20,9 +20,7 @@ final class AdditionalCategoryViewController: UIViewController {
     weak var delegate: AdditionalCategoryVCDelegate?
 
     private let goalUseCase = GoalUseCase(
-        repository: GoalRepository(
-            dataStore: RealmGoalDataStore()
-        )
+        repository: GoalRepository()
     )
 
     override func viewDidLoad() {

@@ -23,9 +23,7 @@ final class GoalViewController: UIViewController {
     private let selectedSegmentIndexKey = "selectedSegmentIndexKey"
     private let isSimpleModeKey = "simpleButtonIsFilledKey"
     private let goalUseCase = GoalUseCase(
-        repository: GoalRepository(
-            dataStore: RealmGoalDataStore()
-        )
+        repository: GoalRepository()
     )
     private var categories: [Category] {
         goalUseCase.categories

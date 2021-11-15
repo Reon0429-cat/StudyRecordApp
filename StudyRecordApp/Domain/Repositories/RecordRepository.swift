@@ -20,10 +20,7 @@ protocol RecordRepositoryProtocol {
 
 final class RecordRepository: RecordRepositoryProtocol {
 
-    private var dataStore: RealmRecordDataStoreProtocol
-    init(dataStore: RealmRecordDataStoreProtocol) {
-        self.dataStore = dataStore
-    }
+    private let dataStore = RealmRecordDataStore()
 
     func create(record: Record) {
         let recordRealm = RecordRealm(record: record)
