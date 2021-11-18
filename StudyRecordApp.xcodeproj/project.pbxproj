@@ -130,6 +130,7 @@
 		AB2B5BC826A2D36F009BD3C7 /* ColorConceptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5BC226A2D36F009BD3C7 /* ColorConceptViewController.swift */; };
 		AB2B5BC926A2D36F009BD3C7 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5BC326A2D36F009BD3C7 /* SettingViewController.swift */; };
 		AB2B5BCA26A2D36F009BD3C7 /* ThemeColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5BC426A2D36F009BD3C7 /* ThemeColorViewController.swift */; };
+		AB34FCBF27463190008EE062 /* ResetingPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB34FCBE27463190008EE062 /* ResetingPasswordViewModel.swift */; };
 		AB372783270D84C0005DBAB3 /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB372782270D84C0005DBAB3 /* Month.swift */; };
 		AB37278A270D9F94005DBAB3 /* StoryboardSegues.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB372788270D9F94005DBAB3 /* StoryboardSegues.swift */; };
 		AB37278B270D9F94005DBAB3 /* StoryboardScenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB372789270D9F94005DBAB3 /* StoryboardScenes.swift */; };
@@ -717,6 +718,7 @@
 		AB2B5BC226A2D36F009BD3C7 /* ColorConceptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorConceptViewController.swift; sourceTree = "<group>"; };
 		AB2B5BC326A2D36F009BD3C7 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		AB2B5BC426A2D36F009BD3C7 /* ThemeColorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeColorViewController.swift; sourceTree = "<group>"; };
+		AB34FCBE27463190008EE062 /* ResetingPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetingPasswordViewModel.swift; sourceTree = "<group>"; };
 		AB372782270D84C0005DBAB3 /* Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
 		AB372788270D9F94005DBAB3 /* StoryboardSegues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardSegues.swift; sourceTree = "<group>"; };
 		AB372789270D9F94005DBAB3 /* StoryboardScenes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardScenes.swift; sourceTree = "<group>"; };
@@ -1360,6 +1362,7 @@
 			children = (
 				AB14B46326DB515C007A5F16 /* ResetingPassword.storyboard */,
 				AB14B46526DB516E007A5F16 /* ResetingPasswordViewController.swift */,
+				AB34FCBE27463190008EE062 /* ResetingPasswordViewModel.swift */,
 			);
 			path = ResetingPassword;
 			sourceTree = "<group>";
@@ -2936,6 +2939,7 @@
 				ABB7F847271F0D79003F928D /* AppIconCollectionReusableView.swift in Sources */,
 				AB372791270DCC2A005DBAB3 /* RealmManager.swift in Sources */,
 				AB0C768326EBD9B900BF5B64 /* SubCustomNavigationBar.swift in Sources */,
+				AB34FCBF27463190008EE062 /* ResetingPasswordViewModel.swift in Sources */,
 				AB4539A1271CBF8C00CF1C04 /* ReportsViewController.swift in Sources */,
 				AB2B5BA126A2D1B7009BD3C7 /* SeasonConcept.swift in Sources */,
 				AB2B5B8526A2D0FD009BD3C7 /* UIColor+Extension.swift in Sources */,
