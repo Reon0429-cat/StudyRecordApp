@@ -8,16 +8,6 @@
 import Foundation
 import RealmSwift
 
-protocol RecordRepositoryProtocol {
-    func create(record: Record)
-    func read(at index: Int) -> Record
-    func readAll() -> [Record]
-    func update(record: Record)
-    func delete(record: Record)
-    func sort(from sourceIndexPath: IndexPath,
-              to destinationIndexPath: IndexPath)
-}
-
 final class RecordRepository: RecordRepositoryProtocol {
 
     private let dataStore = RealmRecordDataStore()

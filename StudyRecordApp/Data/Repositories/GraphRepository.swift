@@ -8,12 +8,6 @@
 import Foundation
 import RealmSwift
 
-protocol GraphRepositoryProtocol {
-    func create(graph: Graph)
-    func readAll() -> [Graph]
-    func update(graph: Graph)
-}
-
 final class GraphRepository: GraphRepositoryProtocol {
 
     private let dataStore = RealmGraphDataStore()

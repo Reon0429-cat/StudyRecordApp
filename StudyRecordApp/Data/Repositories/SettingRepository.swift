@@ -8,14 +8,6 @@
 import Foundation
 import RealmSwift
 
-protocol SettingRepositoryProtocol {
-    func create(setting: Setting)
-    func read(at index: Int) -> Setting
-    func readAll() -> [Setting]
-    func update(setting: Setting)
-    func delete(setting: Setting)
-}
-
 final class SettingRepository: SettingRepositoryProtocol {
 
     private let dataStore = RealmSettingDataStore()

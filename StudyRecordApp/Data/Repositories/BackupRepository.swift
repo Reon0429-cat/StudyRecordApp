@@ -7,12 +7,6 @@
 
 import Foundation
 
-protocol BackupRepositoryProtocol {
-    func backup(documentURL: URL)
-    func getRealmFileURL() -> URL?
-    func updateRealm(fileURL: URL)
-}
-
 final class BackupRepository: BackupRepositoryProtocol {
 
     func backup(documentURL: URL) {
