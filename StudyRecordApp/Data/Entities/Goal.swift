@@ -15,7 +15,7 @@ struct Category {
     let isAchieved: Bool
     let order: Int
     let identifier: String
-    
+
     struct Goal {
         let title: String
         let memo: String
@@ -27,23 +27,23 @@ struct Category {
         let imageData: Data?
         let order: Int
         let identifier: String
-        
+
         struct Priority {
             var mark: PriorityMark
             var number: PriorityNumber
         }
     }
-    
+
 }
 
 enum PriorityMark: Int {
     case star
     case heart
-    
+
     var imageName: String {
         switch self {
-            case .star: return "star.fill"
-            case .heart: return "heart.fill"
+        case .star: return "star.fill"
+        case .heart: return "heart.fill"
         }
     }
 }
@@ -57,7 +57,7 @@ enum PriorityNumber: Int, CaseIterable {
 }
 
 extension Category {
-    
+
     init(category: Category,
          title: String? = nil,
          isExpanded: Bool? = nil,
@@ -96,11 +96,11 @@ extension Category {
             self.identifier = category.identifier
         }
     }
-    
+
 }
 
 extension Category.Goal {
-    
+
     init(goal: Category.Goal,
          title: String? = nil,
          memo: String? = nil,
@@ -162,7 +162,7 @@ extension Category.Goal {
         } else {
             self.identifier = goal.identifier
         }
-        
+
     }
-    
+
 }

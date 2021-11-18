@@ -6,7 +6,8 @@
 //
 
 import UIKit
-
+import RxSwift
+import RxCocoa
 // MARK: - ToDo リアルタイムで同期して更新する処理も実装する(realm)
 
 protocol EditButtonSelectable {
@@ -16,155 +17,140 @@ protocol EditButtonSelectable {
 }
 
 protocol StudyRecordVCDelegate: ScreenPresentationDelegate,
-                                EditButtonSelectable {
-}
+    EditButtonSelectable {}
 
 final class StudyRecordViewController: UIViewController {
-    
+
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var registerButton: CustomButton!
     @IBOutlet private weak var tableView: UITableView!
-    
-    private let recordUseCase = RecordUseCase(
-        repository: RecordRepository(
-            dataStore: RealmRecordDataStore()
-        )
+
+    private lazy var viewModel: StudyRecordViewModelType = StudyRecordViewModel(
+        recordUseCase: recordUseCase
     )
-    private var records: [Record] {
-        recordUseCase.records
-    }
+    private let recordUseCase = RxRecordUseCase(
+        repository: RxRecordRepository()
+    )
+    private let disposeBag = DisposeBag()
     weak var delegate: StudyRecordVCDelegate?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupTableView()
         setupRegisterButton()
         setupDescriptionLabel()
-        setObserver()
-        
+        setupBindings()
+
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        tableView.isHidden = recordUseCase.records.isEmpty
-        delegate?.screenDidPresented(screenType: .record,
-                                     isEnabledNavigationButton: !records.isEmpty)
-        
+
+        viewModel.inputs.viewWillAppear()
+
     }
-    
+
+    private func setupBindings() {
+        registerButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let strongSelf = self else { return }
+                strongSelf.present(AdditionalStudyRecordViewController.self,
+                                   modalPresentationStyle: .fullScreen)
+            })
+            .disposed(by: disposeBag)
+
+        viewModel.outputs.event
+            .drive(onNext: { [weak self] event in
+                guard let strongSelf = self else { return }
+                switch event {
+                case .presentEditStudyRecordVC(let row):
+                    strongSelf.presentEditStudyRecordVC(row: row)
+                case .notifyLongPress:
+                    strongSelf.delegate?.baseViewLongPressDidRecognized()
+                case .presentRecordDeleteAlert(let row):
+                    strongSelf.presentDeleteAlert(row: row)
+                case .notifyDelete(let isEmpty):
+                    strongSelf.delegate?.deleteButtonDidTappped(isEmpty: isEmpty)
+                case .scrollToTop(row: let row, records: let records):
+                    strongSelf.scrollToTop(row: row, records: records)
+                }
+            })
+            .disposed(by: disposeBag)
+
+        viewModel.outputs.isHiddenTableView
+            .drive(onNext: { [weak self] isHidden in
+                guard let strongSelf = self else { return }
+                strongSelf.tableView.isHidden = isHidden
+                strongSelf.delegate?.screenDidPresented(screenType: .record,
+                                                        isEnabledNavigationButton: !isHidden)
+            })
+            .disposed(by: disposeBag)
+
+        viewModel.outputs.items
+            .drive(
+                tableView.rx.items(
+                    cellIdentifier: RecordTableViewCell.identifier,
+                    cellType: RecordTableViewCell.self
+                )
+            ) { row, element, cell in
+                let isEdit = self.delegate?.isEdit ?? false
+                cell.configure(record: element.record,
+                               studyTime: element.studyTime)
+                cell.changeMode(isEdit: isEdit,
+                                isEvenIndex: row.isMultiple(of: 2))
+                cell.tag = row
+                cell.delegate = self
+            }
+            .disposed(by: disposeBag)
+
+        NotificationCenter.default.rx.notification(.reloadLocalData)
+            .subscribe(onNext: { [weak self] _ in
+                self?.viewModel.inputs.reloadLocalData()
+            })
+            .disposed(by: disposeBag)
+        NotificationCenter.default.rx.notification(.recordAdded)
+            .subscribe(onNext: { [weak self] _ in
+                self?.viewModel.inputs.recordAdded()
+            })
+            .disposed(by: disposeBag)
+    }
+
     func reloadTableView() {
         tableView.reloadData()
     }
-    
+
 }
 
 // MARK: - func
 private extension StudyRecordViewController {
-    
-    func getCellHeight(at indexPath: IndexPath) -> CGFloat {
-        let record = records[indexPath.row]
-        let isExpanded = record.isExpanded
-        let memoTextIsEmpty = record.memo.isEmpty
-        if isExpanded && !memoTextIsEmpty {
-            return tableView.rowHeight
-        }
-        return 120
-    }
-    
-}
 
-// MARK: - IBAction func
-private extension StudyRecordViewController {
-    
-    @IBAction func registerButtonDidTapped(_ sender: Any) {
-        present(AdditionalStudyRecordViewController.self,
-                modalPresentationStyle: .fullScreen)
-    }
-    
-}
-
-// MARK: - UITableViewDelegate
-extension StudyRecordViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView,
-                   estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return getCellHeight(at: indexPath)
-    }
-    
-    func tableView(_ tableView: UITableView,
-                   heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return getCellHeight(at: indexPath)
-    }
-    
-    func tableView(_ tableView: UITableView,
-                   heightForHeaderInSection section: Int) -> CGFloat {
-        return 20
-    }
-    
-    func tableView(_ tableView: UITableView,
-                   viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView()
-        view.backgroundColor = .clear
-        return view
-    }
-    
-}
-
-// MARK: - UITableViewDataSource
-extension StudyRecordViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView,
-                   numberOfRowsInSection section: Int) -> Int {
-        return records.count
-    }
-    
-    func tableView(_ tableView: UITableView,
-                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCustomCell(with: RecordTableViewCell.self)
-        let record = records[indexPath.row]
-        let studyTime = recordUseCase.getStudyTime(at: indexPath.row)
-        let isEdit = delegate?.isEdit ?? false
-        cell.configure(record: record,
-                       studyTime: studyTime)
-        cell.changeMode(isEdit: isEdit,
-                        isEvenIndex: indexPath.row.isMultiple(of: 2))
-        cell.tag = indexPath.row
-        cell.delegate = self
-        return cell
-    }
-    
-}
-
-// MARK: - RecordTableViewCellDelegate
-extension StudyRecordViewController: RecordTableViewCellDelegate {
-    
-    func baseViewTapDidRecognized(row: Int) {
+    func presentEditStudyRecordVC(row: Int) {
         present(EditStudyRecordViewController.self,
                 modalPresentationStyle: .fullScreen) { vc in
             vc.selectedRow = row
         }
     }
-    
-    func baseViewLongPressDidRecognized() {
-        delegate?.baseViewLongPressDidRecognized()
+
+    func presentDeleteAlert(row: Int) {
+        let alert = Alert.create(message: L10n.doYouReallyWantToDeleteThis)
+            .addAction(title: L10n.delete, style: .destructive) {
+                self.viewModel.inputs.recordDeleteAlertDeleteButtonDidTapped(row: row)
+                self.dismiss(animated: true)
+            }
+            .addAction(title: L10n.close) {
+                self.dismiss(animated: true)
+            }
+        present(alert, animated: true)
     }
-    
-    func memoButtonDidTapped(row: Int) {
-        recordUseCase.changeOpeningAndClosing(at: row)
-        DispatchQueue.main.async {
-            self.tableView.beginUpdates()
-            self.tableView.reloadRows(at: [IndexPath(row: row, section: 0)],
-                                      with: .automatic)
-            self.tableView.endUpdates()
-        }
+
+    private func scrollToTop(row: Int, records: [Record]) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
             let cell = self.tableView.cellForRow(
                 at: IndexPath(row: row, section: 0)
             ) as? RecordTableViewCell
-            let isExpanded = self.records[row].isExpanded
-            let isLastRow = (row == self.records.count - 1)
+            let isExpanded = records[row].isExpanded
+            let isLastRow = (row == records.count - 1)
             let isManyMemo = (cell?.frame.height ?? 0.0 > self.tableView.frame.height / 2)
             let isCellNil = (cell == nil)
             let shouldScrollToTop = isExpanded && (isManyMemo || isLastRow || isCellNil)
@@ -175,30 +161,64 @@ extension StudyRecordViewController: RecordTableViewCellDelegate {
             }
         }
     }
-    
-    func deleteButtonDidTappped(row: Int) {
-        let alert = Alert.create(message: L10n.doYouReallyWantToDeleteThis)
-            .addAction(title: L10n.delete, style: .destructive) {
-                self.recordUseCase.delete(record: self.records[row])
-                self.tableView.reloadData()
-                self.delegate?.deleteButtonDidTappped(isEmpty: self.records.isEmpty)
-                self.tableView.isHidden = self.records.isEmpty
-                self.dismiss(animated: true)
-            }
-            .addAction(title: L10n.close) {
-                self.dismiss(animated: true)
-            }
-        present(alert, animated: true)
+
+}
+
+// MARK: - UITableViewDelegate
+extension StudyRecordViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView,
+                   heightForHeaderInSection section: Int) -> CGFloat {
+        return 20
     }
-    
+
+    func tableView(_ tableView: UITableView,
+                   viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
+    }
+
+    func tableView(_ tableView: UITableView,
+                   heightForFooterInSection section: Int) -> CGFloat {
+        return 20
+    }
+
+    func tableView(_ tableView: UITableView,
+                   viewForFooterInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
+    }
+
+}
+
+// MARK: - RecordTableViewCellDelegate
+extension StudyRecordViewController: RecordTableViewCellDelegate {
+
+    func baseViewTapDidRecognized(row: Int) {
+        viewModel.inputs.baseViewTapDidRecognized(row: row)
+    }
+
+    func baseViewLongPressDidRecognized() {
+        viewModel.inputs.baseViewLongPressDidRecognized()
+    }
+
+    func memoButtonDidTapped(row: Int) {
+        viewModel.inputs.memoButtonDidTapped(row: row)
+    }
+
+    func deleteButtonDidTappped(row: Int) {
+        viewModel.inputs.deleteButtonDidTappped(row: row)
+    }
+
 }
 
 // MARK: - setup
 private extension StudyRecordViewController {
-    
+
     func setupTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
+        tableView.rx.setDelegate(self).disposed(by: disposeBag)
         tableView.registerCustomCell(RecordTableViewCell.self)
         tableView.tableFooterView = UIView()
         tableView.sectionFooterHeight = 0
@@ -209,25 +229,13 @@ private extension StudyRecordViewController {
             tableView.sectionHeaderTopPadding = 0
         }
     }
-    
+
     func setupRegisterButton() {
         registerButton.setTitle(L10n.register)
     }
-    
+
     func setupDescriptionLabel() {
         descriptionLabel.text = L10n.recordedDataIsNotRegistered
     }
-    
-    func setObserver() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(reloadLocalData),
-                                               name: .reloadLocalData,
-                                               object: nil)
-    }
-    
-    @objc
-    func reloadLocalData() {
-        tableView.reloadData()
-    }
-    
+
 }

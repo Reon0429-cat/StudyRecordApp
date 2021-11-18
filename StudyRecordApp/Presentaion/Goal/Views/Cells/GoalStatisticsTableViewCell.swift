@@ -8,7 +8,7 @@
 import UIKit
 
 final class GoalStatisticsTableViewCell: UITableViewCell {
-    
+
     @IBOutlet private weak var categoryNameLabel: UILabel!
     @IBOutlet private weak var achievementLabel: UILabel!
     @IBOutlet private weak var achievementSeparatorView: UIView!
@@ -28,18 +28,18 @@ final class GoalStatisticsTableViewCell: UITableViewCell {
     @IBOutlet private weak var threeHeartPriorityCountLabel: UILabel!
     @IBOutlet private weak var fourHeartPriorityCountLabel: UILabel!
     @IBOutlet private weak var fiveHeartPriorityCountLabel: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         selectionStyle = .none
         achievementLabel.text = L10n.achieved
         unarchievementLabel.text = L10n.unarchived
         priorityLabel.text = L10n.priority
         setupSeparatorView()
-        
+
     }
-    
+
     func configure(category: Category) {
         setupCategoryNameLabel(category: category)
         setupAchievementScoreLabel(category: category)
@@ -47,16 +47,16 @@ final class GoalStatisticsTableViewCell: UITableViewCell {
         setupStarPriorityLabel(category: category)
         setupHeartPriorityLabel(category: category)
     }
-    
+
 }
 
 // MARK: - setup
 private extension GoalStatisticsTableViewCell {
-    
+
     func setupCategoryNameLabel(category: Category) {
         categoryNameLabel.text = category.title
     }
-    
+
     func setupAchievementScoreLabel(category: Category) {
         if category.goals.isEmpty {
             achievementScoreLabel.text = "---"
@@ -66,7 +66,7 @@ private extension GoalStatisticsTableViewCell {
             achievementScoreLabel.text = "\(achievedCount) (\(achievedCountAsPercentage)%)"
         }
     }
-    
+
     func setupUnarchivementScoreLabel(category: Category) {
         if category.goals.isEmpty {
             unarchievementScoreLabel.text = "---"
@@ -76,7 +76,7 @@ private extension GoalStatisticsTableViewCell {
             unarchievementScoreLabel.text = "\(unarchievedCount) (\(unarchievedCountAsPercentage)%)"
         }
     }
-    
+
     func setupStarPriorityLabel(category: Category) {
         let starGoals = category.goals.filter { $0.priority.mark == .star }
         oneStarPriorityCountLabel.text = "\(starGoals.filter { $0.priority.number == .one }.count)"
@@ -85,7 +85,7 @@ private extension GoalStatisticsTableViewCell {
         fourStarPriorityCountLabel.text = "\(starGoals.filter { $0.priority.number == .four }.count)"
         fiveStarPriorityCountLabel.text = "\(starGoals.filter { $0.priority.number == .five }.count)"
     }
-    
+
     func setupHeartPriorityLabel(category: Category) {
         let heartGoals = category.goals.filter { $0.priority.mark == .heart }
         oneHeartPriorityCountLabel.text = "\(heartGoals.filter { $0.priority.number == .one }.count)"
@@ -94,7 +94,7 @@ private extension GoalStatisticsTableViewCell {
         fourHeartPriorityCountLabel.text = "\(heartGoals.filter { $0.priority.number == .four }.count)"
         fiveHeartPriorityCountLabel.text = "\(heartGoals.filter { $0.priority.number == .five }.count)"
     }
-    
+
     func setupSeparatorView() {
         achievementSeparatorView.backgroundColor = .dynamicColor(light: .subColor ?? .black,
                                                                  dark: .subColor ?? .white)
@@ -103,5 +103,5 @@ private extension GoalStatisticsTableViewCell {
         prioritySeparatorView.backgroundColor = .dynamicColor(light: .subColor ?? .black,
                                                               dark: .subColor ?? .white)
     }
-    
+
 }

@@ -14,27 +14,27 @@ protocol CustomScrollableGraphViewDelegate: AnyObject {
 }
 
 final class CustomScrollableGraphView: UIView {
-    
+
     @IBOutlet private weak var graphView: ScrollableGraphView!
-    
+
     weak var delegate: CustomScrollableGraphViewDelegate!
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadNib()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         loadNib()
     }
-    
+
     private func loadNib() {
         guard let view = UINib(nibName: String(describing: type(of: self)),
                                bundle: nil)
-                .instantiate(withOwner: self,
-                             options: nil)
-                .first as? UIView else {
+            .instantiate(withOwner: self,
+                         options: nil)
+            .first as? UIView else {
             return
         }
         view.frame = self.bounds
@@ -43,7 +43,7 @@ final class CustomScrollableGraphView: UIView {
         createGraphView()
         createReferenceLines()
     }
-    
+
     func scrollToRight() {
         let offset = CGPoint(x: max(-graphView.contentInset.left,
                                     graphView.contentSize.width
@@ -52,31 +52,31 @@ final class CustomScrollableGraphView: UIView {
                              y: graphView.contentOffset.y)
         graphView.setContentOffset(offset, animated: false)
     }
-    
+
     func create(color: UIColor, graph: Graph) {
         switch graph.selectedType {
-            case .line:
-                createLine(color: color,
-                           isFilled: graph.line.isFilled,
-                           isSmooth: graph.line.isSmooth)
-                if graph.line.withDots {
-                    createDot(color: color,
-                              isSquare: graph.dot.isSquare)
-                }
-            case .bar:
-                createBar(color: color,
-                          width: CGFloat(graph.bar.width))
-            case .dot:
+        case .line:
+            createLine(color: color,
+                       isFilled: graph.line.isFilled,
+                       isSmooth: graph.line.isSmooth)
+            if graph.line.withDots {
                 createDot(color: color,
                           isSquare: graph.dot.isSquare)
+            }
+        case .bar:
+            createBar(color: color,
+                      width: CGFloat(graph.bar.width))
+        case .dot:
+            createDot(color: color,
+                      isSquare: graph.dot.isSquare)
         }
     }
-    
+
 }
 
 // MARK: - create func
 private extension CustomScrollableGraphView {
-    
+
     func createGraphView() {
         graphView.dataSource = self
         graphView.rangeMin = 0
@@ -91,7 +91,7 @@ private extension CustomScrollableGraphView {
         graphView.dataPointSpacing = 30
         graphView.backgroundColor = .clear
     }
-    
+
     func createReferenceLines() {
         let referenceLines = ReferenceLines()
         referenceLines.referenceLineLabelFont = .boldSystemFont(ofSize: 10)
@@ -101,10 +101,10 @@ private extension CustomScrollableGraphView {
         referenceLines.referenceLineLabelColor = .black
         referenceLines.includeMinMax = false
         referenceLines.positionType = .absolute
-        referenceLines.absolutePositions = [Int](0...24).map { Double($0) }
+        referenceLines.absolutePositions = [Int](0 ... 24).map { Double($0) }
         graphView.addReferenceLines(referenceLines: referenceLines)
     }
-    
+
     func createLine(color: UIColor, isFilled: Bool, isSmooth: Bool) {
         let linePlot = LinePlot(identifier: "")
         linePlot.lineColor = color
@@ -125,7 +125,7 @@ private extension CustomScrollableGraphView {
         }
         graphView.addPlot(plot: linePlot)
     }
-    
+
     func createDot(color: UIColor, isSquare: Bool) {
         let dotPlot = DotPlot(identifier: "")
         dotPlot.dataPointType = .circle
@@ -140,7 +140,7 @@ private extension CustomScrollableGraphView {
         }
         graphView.addPlot(plot: dotPlot)
     }
-    
+
     func createBar(color: UIColor, width: CGFloat) {
         let barPlot = BarPlot(identifier: "")
         barPlot.animationDuration = 0.1
@@ -151,23 +151,23 @@ private extension CustomScrollableGraphView {
         barPlot.barLineColor = color.withAlphaComponent(0.6)
         graphView.addPlot(plot: barPlot)
     }
-    
+
 }
 
 // MARK: - ScrollableGraphViewDataSource
 extension CustomScrollableGraphView: ScrollableGraphViewDataSource {
-    
+
     func value(forPlot plot: Plot,
                atIndex pointIndex: Int) -> Double {
         return delegate.value(at: pointIndex)
     }
-    
+
     func label(atIndex pointIndex: Int) -> String {
         return delegate.label(at: pointIndex)
     }
-    
+
     func numberOfPoints() -> Int {
         return delegate.numberOfPoints()
     }
-    
+
 }

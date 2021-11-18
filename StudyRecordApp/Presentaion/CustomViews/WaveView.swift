@@ -8,21 +8,21 @@
 import UIKit
 
 final class WaveView: UIView {
-    
+
     @IBOutlet private weak var topView: UIView!
     @IBOutlet private weak var middleView: UIView!
     @IBOutlet private weak var bottomView: UIView!
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadNib()
     }
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         loadNib()
     }
-    
+
     private func loadNib() {
         guard let view = UINib(
             nibName: String(describing: type(of: self)),
@@ -35,20 +35,20 @@ final class WaveView: UIView {
         }
         view.frame = self.bounds
         self.addSubview(view)
-        
+
         view.backgroundColor = .clear
         topView.backgroundColor = .clear
         middleView.backgroundColor = .clear
         bottomView.backgroundColor = .clear
-        
+
     }
-    
+
     func create(isFill: Bool, marginY: CGFloat, isShuffled: Bool = false) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.cutToWaveView(isFill: isFill, marginY: marginY, isShuffled: isShuffled)
         }
     }
-    
+
     private func cutToWaveView(isFill: Bool, marginY: CGFloat, isShuffled: Bool) {
         let alpha: CGFloat = 0.5
         let alphaMargin: CGFloat = 0.2
@@ -75,7 +75,7 @@ final class WaveView: UIView {
                                       isFill: isFill)
         bottomView.cutView(info: bottomInfo)
     }
-    
+
 }
 
 struct WaveViewInfo {
@@ -96,23 +96,23 @@ enum Math: CaseIterable {
     case minusCos
     case plusSin
     case plusCos
-    
+
     func trigonometricFunc(_ x: Double) -> Double {
         switch self {
-            case .minusSin: return -sin(x)
-            case .minusCos: return -cos(x)
-            case .plusSin: return sin(x)
-            case .plusCos: return cos(x)
+        case .minusSin: return -sin(x)
+        case .minusCos: return -cos(x)
+        case .plusSin: return sin(x)
+        case .plusCos: return cos(x)
         }
     }
-    
+
     static func random() -> [Self] {
         return Math.allCases.shuffled()
     }
 }
 
 private extension UIView {
-    
+
     func cutView(info: WaveViewInfo) {
         let layer = CAShapeLayer()
         layer.frame = CGRect(x: 0,
@@ -128,7 +128,7 @@ private extension UIView {
             layer.removeFromSuperlayer()
         }
         self.layer.addSublayer(layer)
-        
+
         self.setGradation(frame: CGRect(x: 0,
                                         y: 0,
                                         width: self.frame.width,
@@ -139,13 +139,13 @@ private extension UIView {
                           locations: [0, 0.9],
                           masksToBounds: false,
                           layer: layer)
-        
+
         self.setShadow(color: .subColor ?? .black,
                        radius: 10,
                        size: (width: 3,
                               height: 3))
     }
-    
+
     private func createPath(layer: CAShapeLayer, info: WaveViewInfo) -> CGPath {
         let div: Double = 1 / 100
         let path = UIBezierPath()
@@ -156,7 +156,7 @@ private extension UIView {
         let xRatioToFill = Double(layer.frame.width) / (Double.pi / div)
         path.move(to: CGPoint(x: origin.x, y: 0))
         path.addLine(to: CGPoint(x: origin.x, y: origin.y))
-        for i in 0...Int(Double.pi / div * count) {
+        for i in 0 ... Int(Double.pi / div * count) {
             let x = div * Double(i)
             let y = info.math.trigonometricFunc(x)
             path.addLine(
@@ -167,5 +167,5 @@ private extension UIView {
         path.addLine(to: CGPoint(x: layer.frame.width + originX, y: 0))
         return path.cgPath
     }
-    
+
 }

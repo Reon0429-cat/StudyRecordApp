@@ -8,20 +8,20 @@
 import Foundation
 
 final class GoalUseCase {
-    
+
     private let repository: GoalRepositoryProtocol
     init(repository: GoalRepositoryProtocol) {
         self.repository = repository
     }
-    
+
     var categories: [Category] {
         return repository.readAll()
     }
-    
+
     func save(category: Category) {
         repository.create(category: category)
     }
-    
+
     func save(goal: Category.Goal, section: Int) {
         let category = repository.read(at: section)
         let newGoals = category.goals + [goal]
@@ -29,11 +29,11 @@ final class GoalUseCase {
                                    goals: newGoals)
         repository.update(category: newCategory)
     }
-    
+
     func update(category: Category) {
         repository.update(category: category)
     }
-    
+
     func update(goal: Category.Goal, at indexPath: IndexPath) {
         let category = repository.read(at: indexPath.section)
         var goals = category.goals
@@ -42,7 +42,7 @@ final class GoalUseCase {
                                    goals: goals)
         repository.update(category: newCategory)
     }
-    
+
     func toggleGoalIsChecked(at indexPath: IndexPath) {
         let category = repository.read(at: indexPath.section)
         let goal = category.goals[indexPath.row]
@@ -54,7 +54,7 @@ final class GoalUseCase {
                                    goals: newGoals)
         repository.update(category: newCategory)
     }
-    
+
     func toggleGoalIsExpanded(at indexPath: IndexPath) {
         let category = repository.read(at: indexPath.section)
         let goal = category.goals[indexPath.row]
@@ -66,33 +66,33 @@ final class GoalUseCase {
                                    goals: newGoals)
         repository.update(category: newCategory)
     }
-    
+
     func toggleCategoryIsExpanded(at section: Int) {
         let category = repository.readAll()[section]
         let newCategory = Category(category: category,
                                    isExpanded: !category.isExpanded)
         repository.update(category: newCategory)
     }
-    
+
     func deleteAllCategory() {
         repository.deleteAllCategory()
     }
-    
+
     func deleteGoal(at indexPath: IndexPath) {
         repository.deleteGoal(indexPath: indexPath)
     }
-    
+
     func deleteCategory(at section: Int) {
         let category = repository.readAll()[section]
         repository.delete(category: category)
     }
-    
+
     func sortCategory(from sourceIndexPath: IndexPath,
                       to destinationIndexPath: IndexPath) {
         repository.sortCategory(from: sourceIndexPath,
                                 to: destinationIndexPath)
     }
-    
+
     func sortGoal(tappedSection: Int,
                   from sourceIndex: Int,
                   to destinationIndex: Int) {
@@ -103,12 +103,12 @@ final class GoalUseCase {
         repository.sortGoal(from: sourceIndexPath,
                             to: destinationIndexPath)
     }
-    
+
     func toggleIsAchieved(at section: Int) {
         let category = repository.readAll()[section]
         let newCategory = Category(category: category,
                                    isAchieved: !category.isAchieved)
         repository.update(category: newCategory)
     }
-    
+
 }

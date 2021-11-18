@@ -8,19 +8,19 @@
 import UIKit
 
 final class CustomSwitchTableViewCell: UITableViewCell {
-    
+
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var customSwitch: CustomSwitch!
-    
+
     var onSelectedEvent: ((Bool) -> Void)?
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         selectionStyle = .none
-        
+
     }
-    
+
     func configure(title: String,
                    isOn: Bool,
                    onSelectedEvent: ((Bool) -> Void)?) {
@@ -28,9 +28,9 @@ final class CustomSwitchTableViewCell: UITableViewCell {
         titleLabel.text = title
         customSwitch.isOn = isOn
     }
-    
+
     @IBAction private func customSwitchDidSelected(_ sender: UISwitch) {
         onSelectedEvent?(sender.isOn)
     }
-    
+
 }

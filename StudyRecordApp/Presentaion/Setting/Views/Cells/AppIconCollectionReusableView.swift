@@ -8,7 +8,7 @@
 import UIKit
 
 final class AppIconCollectionReusableView: UICollectionReusableView {
-    
+
     static var identifier: String { String(describing: self) }
-    
+
 }

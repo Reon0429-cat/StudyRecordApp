@@ -15,7 +15,7 @@ protocol RecordTableViewCellDelegate: AnyObject {
 }
 
 final class RecordTableViewCell: UITableViewCell {
-    
+
     @IBOutlet private weak var baseView: UIView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var memoButton: UIButton!
@@ -23,26 +23,27 @@ final class RecordTableViewCell: UITableViewCell {
     @IBOutlet private weak var totalStudyTimeLabel: UILabel!
     @IBOutlet private weak var deleteButton: UIButton!
     @IBOutlet private weak var memoTextView: UITextView!
-    
+    @IBOutlet private weak var memoTextViewBaseView: UIView!
+
     weak var delegate: RecordTableViewCellDelegate?
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         selectionStyle = .none
-        
+
         setupBaseView()
         setupDeleteButton()
-        
+
     }
-    
+
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         guard let traitCollection = previousTraitCollection else { return }
         if traitCollection.hasDifferentColorAppearance(comparedTo: self.traitCollection) {
             setColor()
         }
     }
-    
+
     func configure(record: Record,
                    studyTime: (todayText: String,
                                totalText: String)) {
@@ -53,7 +54,7 @@ final class RecordTableViewCell: UITableViewCell {
         setupMemoTextView(record: record)
         setColor()
     }
-    
+
     func changeMode(isEdit: Bool, isEvenIndex: Bool) {
         if isEdit {
             deleteButton.setFade(.in)
@@ -63,30 +64,30 @@ final class RecordTableViewCell: UITableViewCell {
             baseView.vibrate(.stop)
         }
     }
-    
+
 }
 
 // MARK: - IBAction func
 private extension RecordTableViewCell {
-    
+
     @IBAction func memoButtonDidTapped(_ sender: Any) {
         delegate?.memoButtonDidTapped(row: self.tag)
     }
-    
+
     @IBAction func deleteButtonDidTappped(_ sender: Any) {
         delegate?.deleteButtonDidTappped(row: self.tag)
     }
-    
+
 }
 
 // MARK: - setup
 private extension RecordTableViewCell {
-    
+
     func setupBaseView() {
         baseView.layer.cornerRadius = 20
         baseView.backgroundColor = .dynamicColor(light: .white,
                                                  dark: .secondarySystemGroupedBackground)
-        
+
         let tapGR = UITapGestureRecognizer(target: self,
                                            action: #selector(baseViewTapDidRecognized))
         baseView.addGestureRecognizer(tapGR)
@@ -95,39 +96,39 @@ private extension RecordTableViewCell {
         longPressGR.minimumPressDuration = 1
         baseView.addGestureRecognizer(longPressGR)
     }
-    
+
     @objc
     func baseViewTapDidRecognized() {
         delegate?.baseViewTapDidRecognized(row: self.tag)
     }
-    
+
     @objc
     func baseViewLongPressDidRecognized() {
         delegate?.baseViewLongPressDidRecognized()
     }
-    
+
     func setupDeleteButton() {
         deleteButton.isHidden = true
         deleteButton.cutToCircle()
     }
-    
+
     func setupTitleLabel(record: Record) {
         titleLabel.text = record.title
     }
-    
+
     func setupTimeLabel(record: Record,
                         studyTime: (todayText: String,
                                     totalText: String)) {
         todayStudyTimeLabel.text = studyTime.todayText
         totalStudyTimeLabel.text = studyTime.totalText
     }
-    
+
     func setupMemoButton(record: Record) {
-        let titleTriangle = record.isExpanded ?  "▲ " : "▼ "
+        let titleTriangle = record.isExpanded ? "▲ " : "▼ "
         memoButton.setTitle(titleTriangle + L10n.memo)
         memoButton.isHidden = record.memo.isEmpty
     }
-    
+
     func setupMemoTextView(record: Record) {
         memoTextView.layer.cornerRadius = 10
         memoTextView.isEditable = false
@@ -135,8 +136,9 @@ private extension RecordTableViewCell {
         memoTextView.clipsToBounds = false
         memoTextView.backgroundColor = .dynamicColor(light: .white,
                                                      dark: .secondarySystemGroupedBackground)
+        memoTextViewBaseView.isHidden = !record.isExpanded
     }
-    
+
     func setColor() {
         baseView.setShadow(color: .dynamicColor(light: .accentColor ?? .black,
                                                 dark: .accentColor ?? .white),
@@ -153,5 +155,5 @@ private extension RecordTableViewCell {
                                            dark: .mainColor ?? .white)
         deleteButton.setImage(image.setColor(color))
     }
-    
+
 }

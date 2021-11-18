@@ -8,12 +8,12 @@
 import Foundation
 
 final class GraphUseCase {
-    
+
     private let repository: GraphRepositoryProtocol
     init(repository: GraphRepositoryProtocol) {
         self.repository = repository
     }
-    
+
     var graph: Graph {
         if repository.readAll().isEmpty {
             let graph = Graph(selectedType: .line,
@@ -28,9 +28,9 @@ final class GraphUseCase {
         }
         return repository.readAll()[0]
     }
-    
+
     func update(graph: Graph) {
         repository.update(graph: graph)
     }
-    
+
 }

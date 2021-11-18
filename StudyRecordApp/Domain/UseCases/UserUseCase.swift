@@ -2,65 +2,58 @@
 //  UserUseCase.swift
 //  StudyRecordApp
 //
-//  Created by 大西玲音 on 2021/08/28.
+//  Created by 大西玲音 on 2021/11/18.
 //
 
-import UIKit
+import Foundation
+import RxSwift
+import RxRelay
 
 final class UserUseCase {
-    
+
     private var repository: UserRepositoryProtocol
+
     init(repository: UserRepositoryProtocol) {
         self.repository = repository
     }
-    
-    var isLoggedIn: Bool {
-        repository.currentUser != nil
+
+    var isLoggedIn: Single<Bool> {
+        repository.fetchCurrentUser()
+            .map { $0 != nil }
     }
-    
-    var isLoggedInAsAnonymously: Bool {
-        if let user = repository.currentUser {
-            return user.isAnonymous
-        }
-        return false
+
+    var isLoggedInAsAnonymously: Single<Bool> {
+        repository.fetchCurrentUser()
+            .map {
+                if let user = $0 {
+                    return user.isAnonymous
+                }
+                return false
+            }
     }
-    
-    func registerUser(email: String,
-                      password: String,
-                      completion: @escaping ResultHandler<User>) {
-        repository.registerUser(email: email,
-                                password: password,
-                                completion: completion)
+
+    func registerUser(email: String, password: String) -> Single<User> {
+        repository.registerUser(email: email, password: password)
     }
-    
-    func createUser(userId: String,
-                    email: String,
-                    completion: @escaping ResultHandler<Any?>) {
-        repository.createUser(userId: userId,
-                              email: email,
-                              completion: completion)
+
+    func createUser(userId: String, email: String) -> Completable {
+        repository.createUser(userId: userId, email: email)
     }
-    
-    func login(email: String,
-               password: String,
-               completion: @escaping ResultHandler<Any?>) {
-        repository.login(email: email,
-                         password: password,
-                         completion: completion)
+
+    func login(email: String, password: String) -> Completable {
+        repository.login(email: email, password: password)
     }
-    
-    func logout(completion: @escaping ResultHandler<Any?>) {
-        repository.logout(completion: completion)
+
+    func logout() -> Completable {
+        repository.logout()
     }
-    
-    func sendPasswordResetMail(email: String,
-                               completion: @escaping ResultHandler<Any?>) {
-        repository.sendPasswordResetMail(email: email,
-                                         completion: completion)
+
+    func sendPasswordResetMail(email: String) -> Completable {
+        repository.sendPasswordResetMail(email: email)
     }
-    
-    func signInAnonymously(completion: @escaping ResultHandler<Any?>) {
-        repository.signInAnonymously(completion: completion)
+
+    func signInAnonymously() -> Completable {
+        repository.signInAnonymously()
     }
-    
+
 }

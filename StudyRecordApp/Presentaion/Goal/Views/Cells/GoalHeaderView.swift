@@ -17,36 +17,36 @@ protocol GoalHeaderViewDelegate: AnyObject {
 }
 
 final class GoalHeaderView: UITableViewHeaderFooterView {
-    
+
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var foldingButton: UIButton!
     @IBOutlet private weak var settingButton: UIButton!
     @IBOutlet private weak var separatorView: UIView!
-    
+
     static let estimatedHeight: CGFloat = 50
     weak var delegate: GoalHeaderViewDelegate?
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         setupSeparatorView()
-        
+
     }
-    
+
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         guard let traitCollection = previousTraitCollection else { return }
         if traitCollection.hasDifferentColorAppearance(comparedTo: self.traitCollection) {
             setColor()
         }
     }
-    
+
     func configure(category: Category, isAchieved: Bool) {
         setupTitleLabel(category: category)
         setupfoldingButton(category: category)
         setupSettingButton(isAchieved: isAchieved)
         setColor()
     }
-    
+
     private func createUIMenu(isAchieved: Bool) -> UIMenu {
         let addAction = UIAction(title: L10n.add,
                                  image: UIImage(systemName: .plus)) { _ in
@@ -76,34 +76,32 @@ final class GoalHeaderView: UITableViewHeaderFooterView {
                       options: .displayInline,
                       children: actions)
     }
-    
+
 }
 
 // MARK: - IBAction func
 private extension GoalHeaderView {
-    
-    @IBAction func settingButtonDidTapped(_ sender: Any) {
-        
-    }
-    
+
+    @IBAction func settingButtonDidTapped(_ sender: Any) {}
+
     @IBAction func foldingButtonDidTapped(_ sender: Any) {
         delegate?.foldingButtonDidTapped(convertedSection: self.tag)
     }
-    
+
 }
 
 // MARK: - setup
 private extension GoalHeaderView {
-    
+
     func setupTitleLabel(category: Category) {
         titleLabel.text = category.title + " (\(category.goals.count))"
     }
-    
+
     func setupSettingButton(isAchieved: Bool) {
         settingButton.showsMenuAsPrimaryAction = true
         settingButton.menu = createUIMenu(isAchieved: isAchieved)
     }
-    
+
     func setupfoldingButton(category: Category) {
         let image: UIImage = {
             if category.isExpanded {
@@ -114,18 +112,17 @@ private extension GoalHeaderView {
         foldingButton.setImage(image)
         foldingButton.isHidden = category.goals.isEmpty
     }
-    
+
     func setupSeparatorView() {
         separatorView.backgroundColor = .separatorColor
     }
-    
-    func setColor() {
-    }
-    
+
+    func setColor() {}
+
 }
 
 private extension UIView {
-    
+
     func setShadow() {
         self.setShadow(color: .dynamicColor(light: .accentColor ?? .black,
                                             dark: .accentColor ?? .white),
@@ -133,5 +130,5 @@ private extension UIView {
                        opacity: 0.8,
                        size: (width: 2, height: 2))
     }
-    
+
 }

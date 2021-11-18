@@ -8,7 +8,7 @@
 import Foundation
 
 struct MailSender {
-    
+
     func send(emailText: String,
               passwordText: String,
               titleText: String,
@@ -36,11 +36,11 @@ struct MailSender {
         let sendOperation = session.sendOperation(with: builder.data()!)
         sendOperation?.start { error in
             if let error = error {
-                handler(.failure(error.localizedDescription))
+                handler(.failure(error))
                 return
             }
             handler(.success(nil))
         }
     }
-    
+
 }

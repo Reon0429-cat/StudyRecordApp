@@ -8,7 +8,7 @@
 import PKHUD
 
 struct PKHUDIndicator: IndicatorProtocol {
-    
+
     func flash(_ type: IndicatorType,
                completion: @escaping () -> Void) {
         let type = convertToHUDContentType(from: type)
@@ -18,23 +18,22 @@ struct PKHUDIndicator: IndicatorProtocol {
             completion()
         }
     }
-    
+
     func show(_ type: IndicatorType) {
         let type = convertToHUDContentType(from: type)
         HUD.show(type)
     }
-    
+
     func hide() {
         HUD.hide()
     }
-    
+
     private func convertToHUDContentType(from type: IndicatorType) -> HUDContentType {
         switch type {
-            case .progress: return .progress
-            case .success: return .success
-            case .error: return .error
+        case .progress: return .progress
+        case .success: return .success
+        case .error: return .error
         }
     }
-    
-}
 
+}

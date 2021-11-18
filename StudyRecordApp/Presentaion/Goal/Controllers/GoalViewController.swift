@@ -8,47 +8,45 @@
 import UIKit
 
 protocol GoalVCDelegate: ScreenPresentationDelegate,
-                         EditButtonSelectable {
-}
+    EditButtonSelectable {}
 
 final class GoalViewController: UIViewController {
-    
+
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var segmentedControl: CustomSegmentedControl!
     @IBOutlet private weak var statisticsButton: UIButton!
     @IBOutlet private weak var simpleButton: RadioButton!
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var registerButton: CustomButton!
-    
+
     weak var delegate: GoalVCDelegate?
     private let selectedSegmentIndexKey = "selectedSegmentIndexKey"
     private let isSimpleModeKey = "simpleButtonIsFilledKey"
     private let goalUseCase = GoalUseCase(
-        repository: GoalRepository(
-            dataStore: RealmGoalDataStore()
-        )
+        repository: GoalRepository()
     )
     private var categories: [Category] {
         goalUseCase.categories
     }
+
     private var isSimpleMode: Bool {
         UserDefaults.standard.bool(forKey: isSimpleModeKey)
     }
-    
+
     enum ListType: CaseIterable {
         case category
         case achieved
         var title: String {
             switch self {
-                case .category: return L10n.category
-                case .achieved: return L10n.achieved
+            case .category: return L10n.category
+            case .achieved: return L10n.achieved
             }
         }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupSegmentedControl()
         setupSimpleButton()
         setupTableView()
@@ -56,29 +54,29 @@ final class GoalViewController: UIViewController {
         setupDescriptionLabel()
         setupStatisticsButton()
         setObserver()
-        
+
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         delegate?.screenDidPresented(screenType: .goal,
                                      isEnabledNavigationButton: !categories.isEmpty)
         hideConponents(categories.isEmpty)
-        
+
     }
-    
+
     func reloadTableView() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
-    
+
 }
 
 // MARK: - IBAction func
 private extension GoalViewController {
-    
+
     @IBAction func segmentedControlValueDidChanged(_ sender: Any) {
         UserDefaults.standard.set(segmentedControl.selectedSegmentIndex,
                                   forKey: selectedSegmentIndexKey)
@@ -86,7 +84,7 @@ private extension GoalViewController {
             self.tableView.reloadData()
         }
     }
-    
+
     @IBAction func simpleButtonDidTapped(_ sender: Any) {
         simpleButton.setImage(isFilled: !isSimpleMode)
         UserDefaults.standard.set(!isSimpleMode, forKey: isSimpleModeKey)
@@ -94,30 +92,30 @@ private extension GoalViewController {
             self.tableView.reloadData()
         }
     }
-    
+
     @IBAction func statisticsButtonDidTapped(_ sender: Any) {
         present(GoalStatisticsViewController.self)
     }
-    
+
     @IBAction func registerButtonDidTapped(_ sender: Any) {
         present(AddAndEditGoalViewController.self,
                 modalPresentationStyle: .fullScreen) { vc in
             vc.goalScreenType = .add
         }
     }
-    
+
 }
 
 // MARK: - func
 private extension GoalViewController {
-    
+
     func hideConponents(_ isHidden: Bool) {
         tableView.isHidden = isHidden
         segmentedControl.isHidden = isHidden
         simpleButton.isHidden = isHidden
         statisticsButton.isHidden = isHidden
     }
-    
+
     func getRowHeight(at indexPath: IndexPath) -> CGFloat {
         let category = categories[convert(section: indexPath.section)]
         guard category.isExpanded else { return 0 }
@@ -129,27 +127,27 @@ private extension GoalViewController {
         // GoalTableViewCellのbaseViewの高さ(180) + padding(20)
         return isSimpleMode ? 90 : 200
     }
-    
+
     func getListType() -> ListType {
         let index = segmentedControl.selectedSegmentIndex
         let listType = ListType.allCases[index]
         return listType
     }
-    
+
     func convert(section: Int) -> Int {
         let filterdCategories: [Category] = {
             if getListType() == .achieved {
                 let achievedCategories = categories.filter { $0.isAchieved }
-                return categories[0...achievedCategories[section].order].filter { !$0.isAchieved }
+                return categories[0 ... achievedCategories[section].order].filter { !$0.isAchieved }
             }
             let unarchievedCategories = categories.filter { !$0.isAchieved }
-            return categories[0...unarchievedCategories[section].order].filter { $0.isAchieved }
+            return categories[0 ... unarchievedCategories[section].order].filter { $0.isAchieved }
         }()
         return section + filterdCategories.count
     }
-    
+
     func reconvert(convertedSection: Int) -> Int {
-        let categories = categories[0...convertedSection]
+        let categories = categories[0 ... convertedSection]
         if getListType() == .achieved {
             let unAchievedCount = categories.filter { !$0.isAchieved }.count
             return convertedSection - unAchievedCount
@@ -158,49 +156,49 @@ private extension GoalViewController {
             return convertedSection - achievedCount
         }
     }
-    
+
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
 extension GoalViewController: UITableViewDelegate, UITableViewDataSource {
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return categories.filter {
             getListType() == .achieved ? $0.isAchieved : !$0.isAchieved
         }.count
     }
-    
+
     func tableView(_ tableView: UITableView,
                    estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return getRowHeight(at: indexPath)
     }
-    
+
     func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
         return getRowHeight(at: indexPath)
     }
-    
+
     func tableView(_ tableView: UITableView,
                    estimatedHeightForHeaderInSection section: Int) -> CGFloat {
         return GoalHeaderView.estimatedHeight
     }
-    
+
     func tableView(_ tableView: UITableView,
                    heightForHeaderInSection section: Int) -> CGFloat {
         return tableView.sectionHeaderHeight
     }
-    
+
     func tableView(_ tableView: UITableView,
                    heightForFooterInSection section: Int) -> CGFloat {
         let filteredCategories = categories.filter {
-            return getListType() == .achieved ? $0.isAchieved : !$0.isAchieved
+            getListType() == .achieved ? $0.isAchieved : !$0.isAchieved
         }
         if section == filteredCategories.count - 1 {
             return 30
         }
         return 0
     }
-    
+
     func tableView(_ tableView: UITableView,
                    viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableCustomHeaderFooterView(with: GoalHeaderView.self)
@@ -211,19 +209,19 @@ extension GoalViewController: UITableViewDelegate, UITableViewDataSource {
         headerView.delegate = self
         return headerView
     }
-    
+
     func tableView(_ tableView: UITableView,
                    viewForFooterInSection section: Int) -> UIView? {
         let view = UIView()
         return view
     }
-    
+
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
         let category = categories[convert(section: section)]
         return category.goals.count
     }
-    
+
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: GoalTableViewCellProtocol = {
@@ -242,26 +240,26 @@ extension GoalViewController: UITableViewDelegate, UITableViewDataSource {
         cell.delegate = self
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView,
                    willDisplayHeaderView view: UIView,
                    forSection section: Int) {
         view.tintColor = .dynamicColor(light: .white,
                                        dark: .black)
     }
-    
+
     func tableView(_ tableView: UITableView,
                    willDisplayFooterView view: UIView,
                    forSection section: Int) {
         view.tintColor = .dynamicColor(light: .white,
                                        dark: .black)
     }
-    
+
 }
 
 // MARK: - GoalHeaderViewDelegate
 extension GoalViewController: GoalHeaderViewDelegate {
-    
+
     func foldingButtonDidTapped(convertedSection: Int) {
         goalUseCase.toggleCategoryIsExpanded(at: convertedSection)
         DispatchQueue.main.async {
@@ -270,14 +268,14 @@ extension GoalViewController: GoalHeaderViewDelegate {
             }
         }
     }
-    
+
     func achieveButtonDidTapped(convertedSection: Int) {
         goalUseCase.toggleIsAchieved(at: convertedSection)
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
-    
+
     func addButtonDidTapped(convertedSection: Int) {
         present(AddAndEditGoalViewController.self,
                 modalPresentationStyle: .fullScreen) { vc in
@@ -286,7 +284,7 @@ extension GoalViewController: GoalHeaderViewDelegate {
             vc.goalScreenType = .sectionAdd
         }
     }
-    
+
     func editButtonDidTapped(convertedSection: Int) {
         let category = categories[convertedSection]
         var _textField = UITextField()
@@ -309,14 +307,14 @@ extension GoalViewController: GoalHeaderViewDelegate {
             }
         present(alert, animated: true)
     }
-    
+
     func sortButtonDidTapped(convertedSection: Int) {
         present(GoalSortViewController.self,
                 modalPresentationStyle: .fullScreen) { vc in
             vc.tappedSection = convertedSection
         }
     }
-    
+
     func deleteButtonDidTapped(convertedSection: Int) {
         let alert = Alert.create(title: L10n.doYouReallyWantToDeleteThis)
             .addAction(title: L10n.delete, style: .destructive) {
@@ -333,12 +331,12 @@ extension GoalViewController: GoalHeaderViewDelegate {
             }
         present(alert, animated: true)
     }
-    
+
 }
 
 // MARK: - GoalTableViewCellDelegate
 extension GoalViewController: GoalTableViewCellDelegate {
-    
+
     func memoButtonDidTapped(indexPath: IndexPath) {
         let convertedIndexPath = IndexPath(row: indexPath.row,
                                            section: convert(section: indexPath.section))
@@ -350,7 +348,7 @@ extension GoalViewController: GoalTableViewCellDelegate {
             }
         }
     }
-    
+
     func deleteButtonDidTapped(indexPath: IndexPath) {
         let convertedIndexPath = IndexPath(row: indexPath.row,
                                            section: convert(section: indexPath.section))
@@ -368,7 +366,7 @@ extension GoalViewController: GoalTableViewCellDelegate {
             }
         present(alert, animated: true)
     }
-    
+
     func achievementButtonDidTapped(indexPath: IndexPath) {
         let convertedIndexPath = IndexPath(row: indexPath.row,
                                            section: convert(section: indexPath.section))
@@ -380,7 +378,7 @@ extension GoalViewController: GoalTableViewCellDelegate {
             self.tableView.reloadRows(at: [indexPath], with: .automatic)
         }
     }
-    
+
     func goalViewDidTapped(indexPath: IndexPath) {
         let convertedIndexPath = IndexPath(row: indexPath.row,
                                            section: convert(section: indexPath.section))
@@ -390,16 +388,16 @@ extension GoalViewController: GoalTableViewCellDelegate {
             vc.goalScreenType = .edit
         }
     }
-    
+
     func baseViewLongPressDidRecognized() {
         delegate?.baseViewLongPressDidRecognized()
     }
-    
+
 }
 
 // MARK: - setup
 private extension GoalViewController {
-    
+
     func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -413,41 +411,41 @@ private extension GoalViewController {
             tableView.sectionHeaderTopPadding = 0
         }
     }
-    
+
     func setupSegmentedControl() {
         let titles = ListType.allCases.map { $0.title }
         let index = UserDefaults.standard.integer(forKey: selectedSegmentIndexKey)
         segmentedControl.create(titles, selectedIndex: index)
     }
-    
+
     func setupSimpleButton() {
         simpleButton.setImage(isFilled: isSimpleMode)
         simpleButton.setTitle(L10n.simple)
         simpleButton.backgroundColor = .clear
     }
-    
+
     func setupStatisticsButton() {
         statisticsButton.backgroundColor = .clear
     }
-    
+
     func setupRegisterButton() {
         registerButton.setTitle(L10n.register)
     }
-    
+
     func setupDescriptionLabel() {
         descriptionLabel.text = L10n.recordedDataIsNotRegistered
     }
-    
+
     func setObserver() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(reloadLocalData),
                                                name: .reloadLocalData,
                                                object: nil)
     }
-    
+
     @objc
     func reloadLocalData() {
         tableView.reloadData()
     }
-    
+
 }

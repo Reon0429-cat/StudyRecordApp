@@ -11,7 +11,7 @@ final class Alert {
     var title: String?
     var message: String?
     var preferredStyle: UIAlertController.Style = .alert
-    
+
     static func create(title: String? = nil,
                        message: String? = nil,
                        preferredStyle: UIAlertController.Style = .alert) -> UIAlertController {
@@ -23,7 +23,7 @@ final class Alert {
 }
 
 extension UIAlertController {
-    
+
     func addAction(title: String,
                    style: UIAlertAction.Style = .default,
                    handler: (() -> Void)? = nil) -> Self {
@@ -34,12 +34,12 @@ extension UIAlertController {
         addAction(action)
         return self
     }
-    
+
     func setTextField(handler: @escaping (UITextField) -> Void) -> Self {
         addTextField { textField in
             handler(textField)
         }
         return self
     }
-    
+
 }

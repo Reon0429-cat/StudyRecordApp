@@ -19,6 +19,7 @@ final class SettingRealm: Object {
             darkModeSettingTypeRawValue = newValue.rawValue
         }
     }
+
     @objc dynamic var isPasscodeSetted: Bool = false
     @objc dynamic var passcode: String = ""
     @objc dynamic var isBiometricsSetted: Bool = false
@@ -31,8 +32,9 @@ final class SettingRealm: Object {
             languageRawValue = newValue.rawValue
         }
     }
+
     @objc dynamic var identifier: String = UUID().uuidString
-    
+
     override class func primaryKey() -> String? {
         return "identifier"
     }

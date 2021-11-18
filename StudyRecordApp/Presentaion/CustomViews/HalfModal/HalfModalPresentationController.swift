@@ -8,7 +8,7 @@
 import UIKit
 
 final class HalfModalPresentationController: UIPresentationController {
-    
+
     override var frameOfPresentedViewInContainerView: CGRect {
         guard let containerView = containerView else { return CGRect.zero }
         var presentedViewFrame = CGRect.zero
@@ -22,7 +22,7 @@ final class HalfModalPresentationController: UIPresentationController {
     private let overlay: HalfModalOverlayView
     private let indicator: HalfModalIndicatorView
     private let presentedViewControllerHeightRatio: CGFloat = 0.5
-    
+
     init(presentedViewController: UIViewController,
          presenting presentingViewController: UIViewController?,
          overlayView: HalfModalOverlayView,
@@ -78,5 +78,5 @@ final class HalfModalPresentationController: UIPresentationController {
             overlay.removeFromSuperview()
         }
     }
-    
+
 }

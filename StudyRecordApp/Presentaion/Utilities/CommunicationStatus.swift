@@ -9,10 +9,10 @@ import Foundation
 import Reachability
 
 struct CommunicationStatus {
-    
+
     func unstable() -> Bool {
         let reachability = try! Reachability()
         return reachability.connection == .unavailable
     }
-    
+
 }

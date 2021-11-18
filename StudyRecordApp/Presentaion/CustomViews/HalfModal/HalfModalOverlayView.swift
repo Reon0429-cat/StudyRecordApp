@@ -8,13 +8,13 @@
 import UIKit
 
 final class HalfModalOverlayView: UIView {
-    
+
     var isActive: Bool = false {
         didSet {
             alpha = isActive ? 0.5 : 0
         }
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupSelf()
@@ -24,10 +24,10 @@ final class HalfModalOverlayView: UIView {
         super.init(frame: frame)
         setupSelf()
     }
-    
+
     private func setupSelf() {
         backgroundColor = .black
         alpha = 0.5
     }
-    
+
 }

@@ -7,16 +7,14 @@
 
 import UIKit
 
-final class HalfModalDismissAnimatedTransition: NSObject {
-    
-}
+final class HalfModalDismissAnimatedTransition: NSObject {}
 
 extension HalfModalDismissAnimatedTransition: UIViewControllerAnimatedTransitioning {
-    
+
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.4
     }
-    
+
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         UIView.animate(withDuration: transitionDuration(using: transitionContext),
                        delay: 0,
@@ -27,5 +25,5 @@ extension HalfModalDismissAnimatedTransition: UIViewControllerAnimatedTransition
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         }
     }
-    
+
 }

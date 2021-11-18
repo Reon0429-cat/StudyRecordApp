@@ -8,14 +8,14 @@
 import Foundation
 
 extension Date {
-    
+
     var calendar: Calendar {
         var calendar = Calendar(identifier: .gregorian)
         calendar.timeZone = .current
-        calendar.locale   = .current
+        calendar.locale = .current
         return calendar
     }
-    
+
     func fixed(year: Int? = nil,
                month: Int? = nil,
                day: Int? = nil,
@@ -31,7 +31,7 @@ extension Date {
         component.second = second ?? calendar.component(.second, from: self)
         return calendar.date(from: component) ?? Date()
     }
-    
+
     init(year: Int? = nil,
          month: Int? = nil,
          day: Int? = nil,
@@ -49,29 +49,29 @@ extension Date {
             ).timeIntervalSince1970
         )
     }
-    
+
     var year: Int {
         return calendar.component(.year, from: self)
     }
-    
+
     var month: Int {
         return calendar.component(.month, from: self)
     }
-    
+
     var day: Int {
         return calendar.component(.day, from: self)
     }
-    
+
     var hour: Int {
         return calendar.component(.hour, from: self)
     }
-    
+
     var minute: Int {
         return calendar.component(.minute, from: self)
     }
-    
+
     var second: Int {
         return calendar.component(.second, from: self)
     }
-    
+
 }

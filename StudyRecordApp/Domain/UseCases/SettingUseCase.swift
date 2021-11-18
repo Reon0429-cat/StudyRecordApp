@@ -9,12 +9,12 @@ import Foundation
 import CryptoKit
 
 final class SettingUseCase {
-    
+
     private let repository: SettingRepositoryProtocol
     init(repository: SettingRepositoryProtocol) {
         self.repository = repository
     }
-    
+
     var setting: Setting {
         if repository.readAll().isEmpty {
             let setting = Setting(isDarkMode: false,
@@ -29,11 +29,11 @@ final class SettingUseCase {
         }
         return repository.read(at: 0)
     }
-    
+
     func update(setting: Setting) {
         repository.update(setting: setting)
     }
-    
+
     func change(isDarkMode: Bool) {
         let newSetting = Setting(isDarkMode: isDarkMode,
                                  darkModeSettingType: setting.darkModeSettingType,
@@ -44,7 +44,7 @@ final class SettingUseCase {
                                  identifier: setting.identifier)
         repository.update(setting: newSetting)
     }
-    
+
     func change(darkModeSettingType: DarkModeSettingType) {
         let newSetting = Setting(isDarkMode: setting.isDarkMode,
                                  darkModeSettingType: darkModeSettingType,
@@ -55,7 +55,7 @@ final class SettingUseCase {
                                  identifier: setting.identifier)
         repository.update(setting: newSetting)
     }
-    
+
     func change(isPasscodeSetted: Bool) {
         let newSetting = Setting(isDarkMode: setting.isDarkMode,
                                  darkModeSettingType: setting.darkModeSettingType,
@@ -66,23 +66,23 @@ final class SettingUseCase {
                                  identifier: setting.identifier)
         repository.update(setting: newSetting)
     }
-    
+
     var isPasscodeCreated: Bool {
         return !setting.passcode.isEmpty
     }
-    
+
     func isSame(passcode: String) -> Bool {
         return setting.passcode == passcode.toHash()
     }
-    
+
     func create(passcode: String) {
         updatePasscode(passcode: passcode)
     }
-    
+
     func update(passcode: String) {
         updatePasscode(passcode: passcode)
     }
-    
+
     func update(isBiometricsSetted: Bool) {
         let newSetting = Setting(isDarkMode: setting.isDarkMode,
                                  darkModeSettingType: setting.darkModeSettingType,
@@ -93,7 +93,7 @@ final class SettingUseCase {
                                  identifier: setting.identifier)
         repository.update(setting: newSetting)
     }
-    
+
     private func updatePasscode(passcode: String) {
         let newSetting = Setting(isDarkMode: setting.isDarkMode,
                                  darkModeSettingType: setting.darkModeSettingType,
@@ -104,16 +104,16 @@ final class SettingUseCase {
                                  identifier: setting.identifier)
         repository.update(setting: newSetting)
     }
-    
+
 }
 
 private extension String {
-    
+
     func toHash() -> String {
         let data = self.data(using: .utf8)!
         let hashed = SHA256.hash(data: data)
         let hashString = hashed.compactMap { String(format: "%02x", $0) }.joined()
         return hashString
     }
-    
+
 }

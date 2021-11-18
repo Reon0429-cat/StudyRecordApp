@@ -9,25 +9,30 @@ import Foundation
 import LocalAuthentication
 
 struct BiometricsManager {
-    
+
     private var context: LAContext {
         let context = LAContext()
         context.localizedFallbackTitle = ""
         return context
     }
-    
+
     var title: String {
         switch context.biometryType {
-            case .faceID:
-                return L10n.turnOnFaceID
-            case .touchID:
-                return L10n.turnOnTouchID
-            default:
-                return L10n.turnOnBiometrics
+        case .faceID:
+            return L10n.turnOnFaceID
+        case .touchID:
+            return L10n.turnOnTouchID
+        default:
+            return L10n.turnOnBiometrics
         }
     }
-    
-    func canUseBiometrics(completion: ResultHandler<Any?>) {
+
+    enum Result<Success, String> {
+        case success(Success)
+        case failure(String)
+    }
+
+    func canUseBiometrics(completion: @escaping (Result<Any?, String>) -> Void) {
         var error: NSError?
         if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics,
                                      error: &error) {
@@ -36,15 +41,15 @@ struct BiometricsManager {
             completion(.failure(""))
         }
     }
-    
-    func authenticate(completion: @escaping ResultHandler<Any?>) {
+
+    func authenticate(completion: @escaping (Result<Any?, String>) -> Void) {
         let localizedReason = L10n.useAuthenticationToUnlock
         context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics,
                                localizedReason: localizedReason) { isSuccess, error in
             if let error = error {
                 switch LAError(_nsError: error as NSError).code {
-                    default:
-                        break
+                default:
+                    break
                 }
                 return
             }
@@ -55,5 +60,5 @@ struct BiometricsManager {
             }
         }
     }
-    
+
 }

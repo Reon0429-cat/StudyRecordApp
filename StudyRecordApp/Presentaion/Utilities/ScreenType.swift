@@ -20,17 +20,17 @@ enum ScreenType: Int, CaseIterable {
     case graph
     case goal
     case setting
-    
+
     var title: String {
         switch self {
-            case .record:
-                return L10n.record
-            case .graph:
-                return L10n.graph
-            case .goal:
-                return L10n.goal
-            case .setting:
-                return L10n.setting
+        case .record:
+            return L10n.record
+        case .graph:
+            return L10n.graph
+        case .goal:
+            return L10n.goal
+        case .setting:
+            return L10n.setting
         }
     }
 }

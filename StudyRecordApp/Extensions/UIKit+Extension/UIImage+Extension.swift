@@ -8,12 +8,11 @@
 import UIKit
 
 extension UIImage {
-    
+
     func setColor(_ color: UIColor) -> UIImage {
         let image = self.withTintColor(color,
                                        renderingMode: .alwaysOriginal)
         return image
     }
-    
-}
 
+}

@@ -13,10 +13,10 @@ enum LocalLanguage: String {
 }
 
 extension Locale {
-    
+
     static var language: LocalLanguage {
         let languageCode = Locale.current.languageCode ?? ""
         return LocalLanguage(rawValue: languageCode) ?? .ja
     }
-    
+
 }

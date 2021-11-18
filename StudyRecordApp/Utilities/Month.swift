@@ -20,34 +20,33 @@ enum Month: Int {
     case october
     case november
     case december
-    
+
     var text: String {
         switch self {
-            case .january:
-                return L10n.january
-            case .february:
-                return L10n.february
-            case .march:
-                return L10n.march
-            case .april:
-                return L10n.april
-            case .may:
-                return L10n.may
-            case .june:
-                return L10n.june
-            case .july:
-                return L10n.july
-            case .august:
-                return L10n.august
-            case .september:
-                return L10n.september
-            case .october:
-                return L10n.october
-            case .november:
-                return L10n.november
-            case .december:
-                return L10n.december
+        case .january:
+            return L10n.january
+        case .february:
+            return L10n.february
+        case .march:
+            return L10n.march
+        case .april:
+            return L10n.april
+        case .may:
+            return L10n.may
+        case .june:
+            return L10n.june
+        case .july:
+            return L10n.july
+        case .august:
+            return L10n.august
+        case .september:
+            return L10n.september
+        case .october:
+            return L10n.october
+        case .november:
+            return L10n.november
+        case .december:
+            return L10n.december
         }
     }
 }
-

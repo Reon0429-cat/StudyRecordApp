@@ -8,18 +8,18 @@
 import UIKit
 
 extension UIColor {
-    
+
     // hex(16進数) -> rgb
     convenience init(hex: String) {
         var cString = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
-        
+
         if cString.hasPrefix("#") {
             cString.remove(at: cString.startIndex)
         }
-        
+
         var rgbValue: UInt64 = 0
         Scanner(string: cString).scanHexInt64(&rgbValue)
-        
+
         self.init(
             red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
             green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
@@ -27,7 +27,7 @@ extension UIColor {
             alpha: CGFloat(1.0)
         )
     }
-    
+
     // 0 〜　255で入力可能
     static func rgba(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) -> UIColor {
         let rgb = [red, green, blue].map { value -> CGFloat in
@@ -42,24 +42,24 @@ extension UIColor {
         }()
         return self.init(red: rgb[0], green: rgb[1], blue: rgb[2], alpha: alpha)
     }
-    
+
     // UIColor -> それぞれのrgb値
     var redValue: CGFloat {
         return getRed().red
     }
-    
+
     var greenValue: CGFloat {
         return getRed().green
     }
-    
+
     var blueValue: CGFloat {
         return getRed().blue
     }
-    
+
     var alphaValue: CGFloat {
         return getRed().alpha
     }
-    
+
     private func getRed() -> (red: CGFloat,
                               green: CGFloat,
                               blue: CGFloat,
@@ -71,7 +71,7 @@ extension UIColor {
         getRed(&red, green: &green, blue: &blue, alpha: &alpha)
         return (red: red, green: green, blue: blue, alpha: alpha)
     }
-    
+
     static func dynamicColor(light: UIColor, dark: UIColor) -> UIColor {
         if #available(iOS 13, *) {
             return UIColor { traitCollection in
@@ -84,10 +84,10 @@ extension UIColor {
         }
         return light
     }
-    
+
     static var separatorColor: UIColor {
         return .dynamicColor(light: .black.withAlphaComponent(0.2),
                              dark: .gray.withAlphaComponent(0.5))
     }
-    
+
 }

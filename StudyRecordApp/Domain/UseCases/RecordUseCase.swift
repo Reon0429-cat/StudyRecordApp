@@ -8,44 +8,45 @@
 import Foundation
 
 final class RecordUseCase {
-    
+
     private let repository: RecordRepositoryProtocol
     init(repository: RecordRepositoryProtocol) {
         self.repository = repository
     }
+
     var records: [Record] {
         repository.readAll()
     }
-    
+
     func changeOpeningAndClosing(at index: Int) {
         let record = repository.read(at: index)
         let newRecord = Record(record: record,
                                isExpanded: !record.isExpanded)
         repository.update(record: newRecord)
     }
-    
+
     func save(record: Record) {
         repository.create(record: record)
     }
-    
+
     func delete(record: Record) {
         repository.delete(record: record)
     }
-    
+
     func sort(from sourceIndexPath: IndexPath,
               to destinationIndexPath: IndexPath) {
         repository.sort(from: sourceIndexPath,
                         to: destinationIndexPath)
     }
-    
+
     func update(record: Record) {
         repository.update(record: record)
     }
-    
+
     func read(at index: Int) -> Record {
         repository.read(at: index)
     }
-    
+
     func sorted(histories: [History], at index: Int) -> [History] {
         let histories = histories.sorted {
             if $0.year == $1.year {
@@ -58,14 +59,14 @@ final class RecordUseCase {
         }
         return histories
     }
-    
+
     func getStudyTime(at index: Int) -> (todayText: String,
                                          totalText: String) {
         let studyTime = calculateStudyTime(at: index)
         let studyTimeText = convertToStudyTimeText(from: studyTime)
         return studyTimeText
     }
-    
+
     func validateGraphData(oldRecords: [Record]?) -> (indexPaths: [IndexPath],
                                                       shouldReloadAll: Bool) {
         guard let oldRecords = oldRecords,
@@ -83,7 +84,7 @@ final class RecordUseCase {
         return (indexPaths: indexPaths,
                 shouldReloadAll: false)
     }
-    
+
     private func convertToStudyTimeText(from studyTime: (today: Int,
                                                          total: Int)) -> (todayText: String,
                                                                           totalText: String) {
@@ -105,7 +106,7 @@ final class RecordUseCase {
         }()
         return (todayText: todayText, totalText: totalText)
     }
-    
+
     private func calculateStudyTime(at index: Int) -> (today: Int, total: Int) {
         let record = repository.read(at: index)
         let today = record.histories?
@@ -115,11 +116,11 @@ final class RecordUseCase {
             .reduce(0) { $0 + $1.hour * 60 + $1.minutes } ?? 0
         return (today, total)
     }
-    
+
     private func isToday(_ history: History) -> Bool {
         return Date().year == history.year
-        && Date().month == history.month
-        && Date().day == history.day
+            && Date().month == history.month
+            && Date().day == history.day
     }
-    
+
 }

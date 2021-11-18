@@ -1,0 +1,90 @@
+# file options
+--exclude Pods
+
+# opt in rules
+
+--rules anyObjectProtocol
+--rules blankLinesBetweenScopes
+--rules braces
+--rules consecutiveBlankLines
+--rules consecutiveSpaces
+--rules duplicateImports
+--rules emptyBraces
+--rules indent
+--rules isEmpty
+--rules leadingDelimiters
+--rules linebreakAtEndOfFile
+--rules redundantBackticks
+--rules redundantBreak
+--rules redundantGet
+--rules redundantInit
+--rules redundantLet
+--rules redundantLetError
+--rules redundantNilInit
+--rules redundantObjc
+--rules redundantParens
+--rules redundantPattern
+--rules redundantRawValues
+--rules redundantReturn
+--rules redundantVoidReturnType
+--rules semicolons
+--rules spaceAroundBrackets
+--rules spaceAroundComments
+--rules spaceAroundGenerics
+--rules spaceAroundOperators
+--rules spaceAroundParens
+--rules spaceInsideBraces
+--rules spaceInsideBrackets
+--rules spaceInsideComments
+--rules spaceInsideGenerics
+--rules spaceInsideParens
+--rules strongifiedSelf
+--rules todos
+--rules trailingSpace
+--rules typeSugar
+--rules void
+
+
+
+# enable rules
+
+--enable anyObjectProtocol
+--enable blankLinesBetweenScopes
+--enable braces
+--enable consecutiveBlankLines
+--enable consecutiveSpaces
+--enable duplicateImports
+--enable emptyBraces
+--enable indent
+--enable isEmpty
+--enable leadingDelimiters
+--enable linebreakAtEndOfFile
+--enable redundantBackticks
+--enable redundantBreak
+--enable redundantGet
+--enable redundantInit
+--enable redundantLet
+--enable redundantLetError
+--enable redundantNilInit
+--enable redundantObjc
+--enable redundantParens
+--enable redundantPattern
+--enable redundantRawValues
+--enable redundantReturn
+--enable redundantVoidReturnType
+--enable semicolons
+--enable spaceAroundBrackets
+--enable spaceAroundComments
+--enable spaceAroundGenerics
+--enable spaceAroundOperators
+--enable spaceAroundParens
+--enable spaceInsideBraces
+--enable spaceInsideBrackets
+--enable spaceInsideComments
+--enable spaceInsideGenerics
+--enable spaceInsideParens
+--enable strongifiedSelf
+--enable todos
+--enable trailingSpace
+--enable typeSugar
+--enable void

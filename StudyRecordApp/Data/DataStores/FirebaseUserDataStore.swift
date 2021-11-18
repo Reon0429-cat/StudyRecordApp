@@ -10,55 +10,31 @@ import FirebaseAuth
 import FirebaseFirestore
 import Firebase
 
-enum Result<Success, Failure> {
-    case success(Success)
-    case failure(Failure)
-}
+typealias ResultHandler<T> = (Result<T, Error>) -> Void
 
-typealias ResultHandler<T> = (Result<T, String>) -> Void
+final class FirebaseUserDataStore {
 
-protocol UserDataStoreProtocol {
-    var currentUser: User? { get }
-    func registerUser(email: String,
-                      password: String,
-                      completion: @escaping ResultHandler<User>)
-    func createUser(userId: String,
-                    email: String,
-                    completion: @escaping ResultHandler<Any?>)
-    func login(email: String,
-               password: String,
-               completion: @escaping ResultHandler<Any?>)
-    func logout(completion: @escaping ResultHandler<Any?>)
-    func sendPasswordResetMail(email: String,
-                               completion: @escaping ResultHandler<Any?>)
-    func signInAnonymously(completion: @escaping ResultHandler<Any?>)
-}
-
-final class FirebaseUserDataStore: UserDataStoreProtocol {
-    
-    var currentUser: User? {
-        return User()
+    var currentUser: FirebaseAuth.User? {
+        return Auth.auth().currentUser
     }
-    
+
     func registerUser(email: String,
                       password: String,
-                      completion: @escaping ResultHandler<User>) {
+                      completion: @escaping ResultHandler<FirebaseAuth.User>) {
         Auth.auth().createUser(withEmail: email,
                                password: password) { result, error in
             if let error = error {
-                let message = self.authErrorMessage(error)
-                completion(.failure(message))
+                completion(.failure(error))
                 return
             }
             if let user = result?.user {
-                let user = User(id: user.uid, isAnonymous: false)
                 completion(.success(user))
             } else if let error = error {
-                completion(.failure(error.localizedDescription))
+                completion(.failure(error))
             }
         }
     }
-    
+
     func createUser(userId: String,
                     email: String,
                     completion: @escaping ResultHandler<Any?>) {
@@ -66,93 +42,81 @@ final class FirebaseUserDataStore: UserDataStoreProtocol {
         let data = [String: Any]()
         userRef.document(userId).setData(data) { error in
             if let error = error {
-                completion(.failure(error.localizedDescription))
+                completion(.failure(error))
                 return
             }
             completion(.success(nil))
         }
     }
-    
+
     func login(email: String,
                password: String,
                completion: @escaping ResultHandler<Any?>) {
         Auth.auth().signIn(withEmail: email,
                            password: password) { _, error in
             if let error = error {
-                let message = self.authErrorMessage(error)
-                completion(.failure(message))
+                completion(.failure(error))
                 return
             }
             completion(.success(nil))
         }
     }
-    
+
     func logout(completion: @escaping ResultHandler<Any?>) {
         do {
             try Auth.auth().signOut()
             completion(.success(nil))
         } catch {
-            let message = authErrorMessage(error)
-            completion(.failure(message))
+            completion(.failure(error))
         }
     }
-    
+
     func sendPasswordResetMail(email: String,
                                completion: @escaping ResultHandler<Any?>) {
         Auth.auth().languageCode = L10n.languageCode
         Auth.auth().sendPasswordReset(withEmail: email) { error in
             if let error = error {
-                let message = self.authErrorMessage(error)
-                completion(.failure(message))
+                completion(.failure(error))
                 return
             }
             completion(.success(nil))
         }
     }
-    
+
     func signInAnonymously(completion: @escaping ResultHandler<Any?>) {
         Auth.auth().signInAnonymously { _, error in
             if let error = error {
-                let message = self.authErrorMessage(error)
-                completion(.failure(message))
+                completion(.failure(error))
                 return
             }
             completion(.success(nil))
         }
     }
-    
-    private func authErrorMessage(_ error: Error) -> String {
-        if let errorCode = AuthErrorCode(rawValue: error._code) {
+
+}
+
+extension Error {
+
+    var toAuthErrorMessage: String {
+        if let errorCode = AuthErrorCode(rawValue: self._code) {
             switch errorCode {
-                case .invalidEmail:
-                    return L10n.theEmailAddressFormatContainsAnError
-                case .weakPassword:
-                    return L10n.pleaseEnterThePasswordWithAtLeast6Characters
-                case .wrongPassword:
-                    return L10n.thePasswordIsIncorrect
-                case .userNotFound:
-                    return L10n.thisEmailAddressIsNotRegistered
-                case .emailAlreadyInUse:
-                    return L10n.thisEmailAddressIsAlreadyRegistered
-                case .adminRestrictedOperation:
-                    return L10n.adminRestrictedOperation
-                default:
-                    return L10n.loginFailed + "\(error.localizedDescription)"
+            case .invalidEmail:
+                return L10n.theEmailAddressFormatContainsAnError
+            case .weakPassword:
+                return L10n.pleaseEnterThePasswordWithAtLeast6Characters
+            case .wrongPassword:
+                return L10n.thePasswordIsIncorrect
+            case .userNotFound:
+                return L10n.thisEmailAddressIsNotRegistered
+            case .emailAlreadyInUse:
+                return L10n.thisEmailAddressIsAlreadyRegistered
+            case .adminRestrictedOperation:
+                return L10n.adminRestrictedOperation
+            default:
+                return L10n.loginFailed + "\(self.localizedDescription)"
             }
         }
         return L10n.anUnknownErrorHasOccurred
     }
-    
-}
 
-private extension User {
-    
-    init?() {
-        guard let user = Auth.auth().currentUser else {
-            return nil
-        }
-        self.id = user.uid
-        self.isAnonymous = user.isAnonymous
-    }
-    
 }

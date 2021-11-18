@@ -12,13 +12,13 @@ enum NavigationButtonType {
     case dismiss
     case edit
     case completion
-    
+
     var title: String {
         switch self {
-            case .save: return L10n.save
-            case .dismiss: return L10n.close
-            case .edit: return L10n.edit
-            case .completion: return L10n.completion
+        case .save: return L10n.save
+        case .dismiss: return L10n.close
+        case .edit: return L10n.edit
+        case .completion: return L10n.completion
         }
     }
 }
@@ -28,10 +28,10 @@ protocol NavigationButtonDelegate: AnyObject {
 }
 
 final class NavigationButton: UIButton {
-    
+
     @IBOutlet private weak var titleButton: UIButton!
     @IBOutlet private weak var bottomView: UIView!
-    
+
     weak var delegate: NavigationButtonDelegate?
     var type: NavigationButtonType? {
         didSet {
@@ -40,40 +40,40 @@ final class NavigationButton: UIButton {
             }
         }
     }
-    
+
     @IBAction private func titleButtonDidTapped(_ sender: Any) {
         if let type = type {
             delegate?.titleButtonDidTapped(type: type)
         }
     }
-    
+
     func isEnabled(_ bool: Bool) {
         titleButton.isEnabled = bool
         bottomView.backgroundColor = bool ? .black : .gray
     }
-    
+
     func changeType(to type: NavigationButtonType) {
         self.type = type
     }
-    
+
     func isType(_ type: NavigationButtonType) -> Bool {
         self.type == type
     }
-    
+
     func changeTitle(_ title: String) {
         titleButton.setTitle(title)
     }
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadNib()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         loadNib()
     }
-    
+
     private func loadNib() {
         guard let view = UINib(
             nibName: String(describing: Swift.type(of: self)),
@@ -88,11 +88,11 @@ final class NavigationButton: UIButton {
         self.addSubview(view)
         setup()
     }
-    
+
     private func setup() {
         bottomView.backgroundColor = .black
         self.setShadow()
         titleButton.setTitle(type?.title ?? "")
     }
-    
+
 }

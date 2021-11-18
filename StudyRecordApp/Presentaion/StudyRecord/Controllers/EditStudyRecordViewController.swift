@@ -8,11 +8,11 @@
 import UIKit
 
 final class EditStudyRecordViewController: UIViewController {
-    
+
     @IBOutlet private weak var subCustomNavigationBar: SubCustomNavigationBar!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var bottomWaveView: WaveView!
-    
+
     private enum CellType: Int, CaseIterable {
         case title
         case graphColor
@@ -20,46 +20,49 @@ final class EditStudyRecordViewController: UIViewController {
         case timeRecord
         case history
     }
+
     private func getCellType(row: Int) -> CellType {
         if isHistoryType(row: row) {
             return .history
         }
         return CellType(rawValue: row) ?? .title
     }
+
     private func getHistoryCount(row: Int) -> Int {
         return row - (CellType.allCases.count - 1)
     }
+
     private func isHistoryType(row: Int) -> Bool {
         return getHistoryCount(row: row) >= 0
     }
+
     private let recordUseCase = RecordUseCase(
-        repository: RecordRepository(
-            dataStore: RealmRecordDataStore()
-        )
+        repository: RecordRepository()
     )
     private var rowCount: Int {
         (CellType.allCases.count - 1) + (selectedRecord.histories?.count ?? 0)
     }
+
     private var selectedRecord: Record!
     private var oldInputtedTitle: String = ""
     private var halfModalPresenter = HalfModalPresenter()
     var selectedRow: Int!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         selectedRecord = recordUseCase.records[selectedRow]
         setupTableView()
         setupSubCustomNavigationBar()
         setupWaveViews()
-        
+
     }
-    
+
 }
 
 // MARK: - func
 private extension EditStudyRecordViewController {
-    
+
     func showAlertWithTextField() {
         oldInputtedTitle = selectedRecord.title
         let alert = Alert.create(title: L10n.largeTitle)
@@ -80,7 +83,7 @@ private extension EditStudyRecordViewController {
             }
         present(alert, animated: true)
     }
-    
+
     func showAlert() {
         let alert = Alert.create(message: L10n.doYouWantToDiscardYourEdits)
             .addAction(title: L10n.discard,
@@ -91,124 +94,124 @@ private extension EditStudyRecordViewController {
                        style: .default)
         present(alert, animated: true)
     }
-    
+
 }
 
 // MARK: - UITableViewDelegate
 extension EditStudyRecordViewController: UITableViewDelegate {
-    
+
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let cellType = getCellType(row: indexPath.row)
         switch cellType {
-            case .title:
-                showAlertWithTextField()
-            case .graphColor:
-                present(StudyRecordGraphColorViewController.self,
-                        modalPresentationStyle: .overCurrentContext,
-                        modalTransitionStyle: .crossDissolve) { vc in
-                    vc.delegate = self
+        case .title:
+            showAlertWithTextField()
+        case .graphColor:
+            present(StudyRecordGraphColorViewController.self,
+                    modalPresentationStyle: .overCurrentContext,
+                    modalTransitionStyle: .crossDissolve) { vc in
+                vc.delegate = self
+            }
+        case .memo:
+            present(StudyRecordMemoViewController.self,
+                    modalPresentationStyle: .overCurrentContext,
+                    modalTransitionStyle: .crossDissolve) { vc in
+                vc.inputtedMemo = self.selectedRecord.memo
+                vc.delegate = self
+            }
+        case .timeRecord:
+            present(StudyRecordTimeRecordViewController.self) { vc in
+                vc.isHistoryDidTapped = false
+                self.halfModalPresenter.viewController = vc
+                vc.delegate = self
+            }
+        case .history:
+            present(StudyRecordTimeRecordViewController.self) { vc in
+                let index = self.getHistoryCount(row: indexPath.row)
+                if let history = self.selectedRecord.histories?[index] {
+                    vc.history = history
                 }
-            case .memo:
-                present(StudyRecordMemoViewController.self,
-                        modalPresentationStyle: .overCurrentContext,
-                        modalTransitionStyle: .crossDissolve) { vc in
-                    vc.inputtedMemo = self.selectedRecord.memo
-                    vc.delegate = self
-                }
-            case .timeRecord:
-                present(StudyRecordTimeRecordViewController.self) { vc in
-                    vc.isHistoryDidTapped = false
-                    self.halfModalPresenter.viewController = vc
-                    vc.delegate = self
-                }
-            case .history:
-                present(StudyRecordTimeRecordViewController.self) { vc in
-                    let index = self.getHistoryCount(row: indexPath.row)
-                    if let history = self.selectedRecord.histories?[index] {
-                        vc.history = history
-                    }
-                    vc.tappedHistoryIndex = index
-                    vc.isHistoryDidTapped = true
-                    self.halfModalPresenter.viewController = vc
-                    vc.delegate = self
-                }
+                vc.tappedHistoryIndex = index
+                vc.isHistoryDidTapped = true
+                self.halfModalPresenter.viewController = vc
+                vc.delegate = self
+            }
         }
     }
-    
+
     func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
         return isHistoryType(row: indexPath.row) ? 50 : 80
     }
-    
+
     func tableView(_ tableView: UITableView,
                    heightForHeaderInSection section: Int) -> CGFloat {
         return 30
     }
-    
+
     func tableView(_ tableView: UITableView,
                    viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
         view.backgroundColor = .clear
         return view
     }
-    
+
 }
 
 // MARK: - UITableViewDataSource
 extension EditStudyRecordViewController: UITableViewDataSource {
-    
+
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
         return rowCount
     }
-    
+
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let isEnabled = (rowCount > 7)
         tableView.isScrollEnabled = isEnabled
         bottomWaveView.isHidden = isEnabled
-        
+
         let cellType = getCellType(row: indexPath.row)
         switch cellType {
-            case .title:
-                let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
-                cell.configure(titleText: L10n.largeTitle,
-                               mandatoryIsHidden: false,
-                               auxiliaryText: selectedRecord.title,
-                               isMemo: false)
-                return cell
-            case .graphColor:
-                let cell = tableView.dequeueReusableCustomCell(with: StudyRecordGraphColorTableViewCell.self)
-                let color = UIColor(record: selectedRecord)
-                cell.configure(color: color)
-                return cell
-            case .memo:
-                let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
-                cell.configure(titleText: L10n.largeMemo,
-                               mandatoryIsHidden: true,
-                               auxiliaryText: selectedRecord.memo,
-                               isMemo: true)
-                return cell
-            case .timeRecord:
-                let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
-                cell.configure(titleText: L10n.recordTime,
-                               mandatoryIsHidden: true,
-                               auxiliaryText: "",
-                               isMemo: false)
-                return cell
-            case .history:
-                let cell = tableView.dequeueReusableCustomCell(with: StudyRecordHistoryTableViewCell.self)
-                let index = getHistoryCount(row: indexPath.row)
-                guard var histories = selectedRecord.histories else { fatalError("history is nil") }
-                histories = recordUseCase.sorted(histories: histories, at: selectedRow)
-                selectedRecord.histories = histories
-                cell.configure(history: histories[index])
-                return cell
+        case .title:
+            let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
+            cell.configure(titleText: L10n.largeTitle,
+                           mandatoryIsHidden: false,
+                           auxiliaryText: selectedRecord.title,
+                           isMemo: false)
+            return cell
+        case .graphColor:
+            let cell = tableView.dequeueReusableCustomCell(with: StudyRecordGraphColorTableViewCell.self)
+            let color = UIColor(record: selectedRecord)
+            cell.configure(color: color)
+            return cell
+        case .memo:
+            let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
+            cell.configure(titleText: L10n.largeMemo,
+                           mandatoryIsHidden: true,
+                           auxiliaryText: selectedRecord.memo,
+                           isMemo: true)
+            return cell
+        case .timeRecord:
+            let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
+            cell.configure(titleText: L10n.recordTime,
+                           mandatoryIsHidden: true,
+                           auxiliaryText: "",
+                           isMemo: false)
+            return cell
+        case .history:
+            let cell = tableView.dequeueReusableCustomCell(with: StudyRecordHistoryTableViewCell.self)
+            let index = getHistoryCount(row: indexPath.row)
+            guard var histories = selectedRecord.histories else { fatalError("history is nil") }
+            histories = recordUseCase.sorted(histories: histories, at: selectedRow)
+            selectedRecord.histories = histories
+            cell.configure(history: histories[index])
+            return cell
         }
     }
-    
+
     func tableView(_ tableView: UITableView,
                    commit editingStyle: UITableViewCell.EditingStyle,
                    forRowAt indexPath: IndexPath) {
@@ -220,43 +223,43 @@ extension EditStudyRecordViewController: UITableViewDataSource {
             tableView.endUpdates()
         }
     }
-    
+
     func tableView(_ tableView: UITableView,
                    canEditRowAt indexPath: IndexPath) -> Bool {
         return isHistoryType(row: indexPath.row)
     }
-    
+
     func tableView(_ tableView: UITableView,
                    titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         return L10n.delete
     }
-    
+
 }
 
 // MARK: - StudyRecordGraphColorVCDelegate
 extension EditStudyRecordViewController: StudyRecordGraphColorVCDelegate {
-    
+
     func graphColorDidSelected(color: UIColor) {
         selectedRecord.graphColor = GraphColor(color: color)
         subCustomNavigationBar.saveButton(isEnabled: color != .clear)
         tableView.reloadData()
     }
-    
+
 }
 
 // MARK: - StudyRecordMemoVCDelegate
 extension EditStudyRecordViewController: StudyRecordMemoVCDelegate {
-    
+
     func savedMemo(memo: String) {
         selectedRecord.memo = memo
         tableView.reloadData()
     }
-    
+
 }
 
 // MARK: - StudyRecordTimeRecordVCDelegate
 extension EditStudyRecordViewController: StudyRecordTimeRecordVCDelegate {
-    
+
     func saveButtonDidTapped(history: History, isHistory: Bool) {
         if isHistory {
             selectedRecord.histories?.append(history)
@@ -269,7 +272,7 @@ extension EditStudyRecordViewController: StudyRecordTimeRecordVCDelegate {
         }
         tableView.reloadData()
     }
-    
+
     private func isSameDateValidation(history: History) -> Bool {
         guard let histories = selectedRecord.histories else { return false }
         for (index, _history) in histories.enumerated() {
@@ -284,8 +287,8 @@ extension EditStudyRecordViewController: StudyRecordTimeRecordVCDelegate {
                 }
                 if hour >= 24 {
                     let message = L10n.moreThan24Hours("\(history.year)",
-                                                     NSLocalizedString("\(Month(rawValue: history.month)!)", comment: ""),
-                                                     "\(history.day)")
+                                                       NSLocalizedString("\(Month(rawValue: history.month)!)", comment: ""),
+                                                       "\(history.day)")
                     let alert = Alert.create(message: message)
                         .addAction(title: L10n.close)
                     dismiss(animated: true) {
@@ -304,36 +307,36 @@ extension EditStudyRecordViewController: StudyRecordTimeRecordVCDelegate {
         }
         return false
     }
-    
+
     func deleteButtonDidTapped(index: Int) {
         selectedRecord.histories?.remove(at: index)
         tableView.reloadData()
     }
-    
+
     func editButtonDidTapped(index: Int, history: History) {
         selectedRecord.histories?[index] = history
         tableView.reloadData()
     }
-    
+
 }
 
 // MARK: - UITextFieldDelegate
 extension EditStudyRecordViewController: UITextFieldDelegate {
-    
+
     func textFieldDidChangeSelection(_ textField: UITextField) {
         selectedRecord.title = textField.text ?? ""
     }
-    
+
 }
 
 // MARK: - SubCustomNavigationBarDelegate
 extension EditStudyRecordViewController: SubCustomNavigationBarDelegate {
-    
+
     func saveButtonDidTapped() {
         recordUseCase.update(record: selectedRecord)
         dismiss(animated: true)
     }
-    
+
     func dismissButtonDidTapped() {
         if selectedRecord == recordUseCase.records[selectedRow] {
             dismiss(animated: true)
@@ -341,16 +344,16 @@ extension EditStudyRecordViewController: SubCustomNavigationBarDelegate {
             showAlert()
         }
     }
-    
+
     var navTitle: String {
         return L10n.largeEdit
     }
-    
+
 }
 
 // MARK: - setup
 extension EditStudyRecordViewController {
-    
+
     func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -362,13 +365,13 @@ extension EditStudyRecordViewController {
             tableView.sectionHeaderTopPadding = 0
         }
     }
-    
+
     func setupSubCustomNavigationBar() {
         subCustomNavigationBar.delegate = self
     }
-    
+
     func setupWaveViews() {
         bottomWaveView.create(isFill: false, marginY: 30, isShuffled: true)
     }
-    
+
 }

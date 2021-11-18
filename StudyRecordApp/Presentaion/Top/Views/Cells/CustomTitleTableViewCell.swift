@@ -8,11 +8,11 @@
 import UIKit
 
 final class CustomTitleTableViewCell: UITableViewCell {
-    
+
     @IBOutlet private weak var mandatoryLabel: UILabel!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var auxiliaryLabel: UILabel!
-    
+
     func configure(titleText: String,
                    mandatoryText: String = L10n.mandatory,
                    mandatoryIsHidden: Bool = true,
@@ -28,13 +28,10 @@ final class CustomTitleTableViewCell: UITableViewCell {
                 auxiliaryLabel.isHidden = false
                 auxiliaryLabel.text = "..."
             }
-            if !auxiliaryText.isEmpty {
-                
-            }
         } else {
             auxiliaryLabel.isHidden = false
             auxiliaryLabel.text = auxiliaryText
         }
     }
-    
+
 }

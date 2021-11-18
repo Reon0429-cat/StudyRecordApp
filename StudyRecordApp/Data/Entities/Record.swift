@@ -36,7 +36,7 @@ struct GraphColor: Equatable {
 }
 
 extension Record {
-    
+
     init(record: Record,
          title: String? = nil,
          histories: [History]? = nil,
@@ -93,5 +93,5 @@ extension Record {
             self.identifier = record.identifier
         }
     }
-    
+
 }

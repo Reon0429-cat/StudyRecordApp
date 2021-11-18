@@ -17,7 +17,7 @@ protocol GoalTableViewCellProtocol where Self: UITableViewCell {
 }
 
 extension GoalTableViewCellProtocol {
-    
+
     func changeMode(isEdit: Bool,
                     isEvenIndex: Bool,
                     deleteButton: UIButton,
@@ -30,7 +30,7 @@ extension GoalTableViewCellProtocol {
             baseView.vibrate(.stop, range: 0.8)
         }
     }
-    
+
 }
 
 protocol GoalTableViewCellDelegate: AnyObject {
@@ -41,10 +41,10 @@ protocol GoalTableViewCellDelegate: AnyObject {
     func achievementButtonDidTapped(indexPath: IndexPath)
 }
 
-extension GoalTableViewCell: GoalTableViewCellProtocol { }
+extension GoalTableViewCell: GoalTableViewCellProtocol {}
 
 final class GoalTableViewCell: UITableViewCell {
-    
+
     @IBOutlet private weak var priorityStackViewBaseView: UIView!
     @IBOutlet private weak var baseView: UIView!
     @IBOutlet private weak var titleLabel: UILabel!
@@ -56,14 +56,14 @@ final class GoalTableViewCell: UITableViewCell {
     @IBOutlet private weak var memoTextView: UITextView!
     @IBOutlet private weak var deleteButton: UIButton!
     @IBOutlet private weak var achievementButton: UIButton!
-    
+
     weak var delegate: GoalTableViewCellDelegate?
     private var priorityStackView = UIStackView()
     var indexPath: IndexPath?
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         backgroundColor = .clear
         selectionStyle = .none
         myImageView.layer.cornerRadius = 10
@@ -72,23 +72,23 @@ final class GoalTableViewCell: UITableViewCell {
                                                      dark: .secondarySystemGroupedBackground)
         priorityStackViewBaseView.backgroundColor = .clear
         setupBaseView()
-        
+
     }
-    
+
     override func prepareForReuse() {
         super.prepareForReuse()
-        
+
         myImageView.image = nil
-        
+
     }
-    
+
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         guard let traitCollection = previousTraitCollection else { return }
         if traitCollection.hasDifferentColorAppearance(comparedTo: self.traitCollection) {
             setColor()
         }
     }
-    
+
     func configure(goal: Category.Goal) {
         setupMemoButton(goal: goal)
         setupPriorityStackView(goal: goal)
@@ -103,49 +103,49 @@ final class GoalTableViewCell: UITableViewCell {
         setupAchievementButton(goal: goal)
         setColor()
     }
-    
+
     func changeMode(isEdit: Bool, isEvenIndex: Bool) {
         changeMode(isEdit: isEdit,
                    isEvenIndex: isEvenIndex,
                    deleteButton: deleteButton,
                    baseView: baseView)
     }
-    
+
     func isHidden(_ isHidden: Bool) {
         self.isHidden = isHidden
     }
-    
+
 }
 
 // MARK: - IBAction func
 private extension GoalTableViewCell {
-    
+
     @IBAction func memoButtonDidTapped(_ sender: Any) {
         guard let indexPath = indexPath else { return }
         delegate?.memoButtonDidTapped(indexPath: indexPath)
     }
-    
+
     @IBAction func deleteButtonDidTapped(_ sender: Any) {
         guard let indexPath = indexPath else { return }
         delegate?.deleteButtonDidTapped(indexPath: indexPath)
     }
-    
+
     @IBAction func achievementButtonDidTapped(_ sender: Any) {
         guard let indexPath = indexPath else { return }
         delegate?.achievementButtonDidTapped(indexPath: indexPath)
     }
-    
+
 }
 
 // MARK: - setup
 private extension GoalTableViewCell {
-    
+
     func setupMemoButton(goal: Category.Goal) {
-        let titleTriangle = goal.isExpanded ?  "▲ " : "▼ "
+        let titleTriangle = goal.isExpanded ? "▲ " : "▼ "
         memoButton.setTitle(titleTriangle + L10n.memo)
         memoButton.isHidden = goal.memo.isEmpty
     }
-    
+
     func setupPriorityStackView(goal: Category.Goal) {
         self.priorityStackView.removeFromSuperview()
         let priorityStackView = PriorityStackView(priority: goal.priority,
@@ -161,7 +161,7 @@ private extension GoalTableViewCell {
         ])
         self.priorityStackView = priorityStackView
     }
-    
+
     func setupAchievementButton(goal: Category.Goal) {
         let image: UIImage = {
             if goal.isChecked {
@@ -171,12 +171,12 @@ private extension GoalTableViewCell {
         }()
         achievementButton.setImage(image)
     }
-    
+
     func setupBaseView() {
         baseView.layer.cornerRadius = 10
         baseView.backgroundColor = .dynamicColor(light: .white,
                                                  dark: .secondarySystemGroupedBackground)
-        
+
         let panGR = UITapGestureRecognizer(target: self,
                                            action: #selector(goalViewDidTapped))
         baseView.addGestureRecognizer(panGR)
@@ -185,25 +185,25 @@ private extension GoalTableViewCell {
         longPressGR.minimumPressDuration = 1
         baseView.addGestureRecognizer(longPressGR)
     }
-    
+
     @objc
     func goalViewDidTapped() {
         guard let indexPath = indexPath else { return }
         delegate?.goalViewDidTapped(indexPath: indexPath)
     }
-    
+
     @objc
     func goalViewDidLongPressed() {
         delegate?.baseViewLongPressDidRecognized()
     }
-    
+
     func setupMemoTextView(goal: Category.Goal) {
         memoTextView.text = goal.memo
         memoTextView.layer.cornerRadius = 10
         memoTextView.isEditable = false
         memoTextView.clipsToBounds = false
     }
-    
+
     func setColor() {
         baseView.setShadow(color: .dynamicColor(light: .accentColor ?? .black,
                                                 dark: .accentColor ?? .white),
@@ -220,5 +220,5 @@ private extension GoalTableViewCell {
                                            dark: .mainColor ?? .white)
         deleteButton.setImage(image.setColor(color))
     }
-    
+
 }

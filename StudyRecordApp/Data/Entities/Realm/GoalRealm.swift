@@ -15,7 +15,7 @@ final class CategoryRealm: Object {
     @objc dynamic var isAchieved: Bool = false
     @objc dynamic var order: Int = 0
     @objc dynamic var identifier = UUID().uuidString
-    
+
     override class func primaryKey() -> String? {
         return "identifier"
     }
@@ -32,7 +32,7 @@ final class GoalRealm: Object {
     @objc dynamic var imageData: Data?
     @objc dynamic var order: Int = 0
     @objc dynamic var identifier = UUID().uuidString
-    
+
     override class func primaryKey() -> String? {
         return "identifier"
     }
@@ -44,6 +44,7 @@ final class PriorityRealm: Object {
         get { return PriorityMark(rawValue: markRawValue) ?? .star }
         set { markRawValue = newValue.rawValue }
     }
+
     @objc private dynamic var numberRawValue = 0
     var number: PriorityNumber {
         get { return PriorityNumber(rawValue: numberRawValue) ?? .one }

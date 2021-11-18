@@ -8,59 +8,46 @@
 import Foundation
 import RealmSwift
 
-protocol RecordRepositoryProtocol {
-    func create(record: Record)
-    func read(at index: Int) -> Record
-    func readAll() -> [Record]
-    func update(record: Record)
-    func delete(record: Record)
-    func sort(from sourceIndexPath: IndexPath,
-              to destinationIndexPath: IndexPath)
-}
-
 final class RecordRepository: RecordRepositoryProtocol {
-    
-    private var dataStore: RealmRecordDataStoreProtocol
-    init(dataStore: RealmRecordDataStoreProtocol) {
-        self.dataStore = dataStore
-    }
-    
+
+    private let dataStore = RealmRecordDataStore()
+
     func create(record: Record) {
         let recordRealm = RecordRealm(record: record)
         dataStore.create(record: recordRealm)
     }
-    
+
     func read(at index: Int) -> Record {
         let record = Record(record: dataStore.readAll()[index])
         return record
     }
-    
+
     func readAll() -> [Record] {
         let records = dataStore.readAll().map { Record(record: $0) }
         return records
     }
-    
+
     func update(record: Record) {
         let recordRealm = RecordRealm(record: record)
         dataStore.update(record: recordRealm)
     }
-    
+
     func delete(record: Record) {
         let recordRealm = RecordRealm(record: record)
         dataStore.delete(record: recordRealm)
     }
-    
+
     func sort(from sourceIndexPath: IndexPath,
               to destinationIndexPath: IndexPath) {
         let objects = dataStore.readAll()
         dataStore.sort(sourceObject: objects[sourceIndexPath.row],
                        destinationObject: objects[destinationIndexPath.row])
     }
-    
+
 }
 
-private extension RecordRealm {
-    
+extension RecordRealm {
+
     convenience init(record: Record) {
         self.init()
         // Recordのプロパティが増えたときにコンパイルで漏れを防ぐためにインスタンスを再生成している。
@@ -86,11 +73,11 @@ private extension RecordRealm {
         self.order = record.order
         self.identifier = record.identifier
     }
-    
+
 }
 
-private extension Record {
-    
+extension Record {
+
     init(record: RecordRealm) {
         self = Record(title: record.title,
                       histories: record.historiesArray,
@@ -102,12 +89,12 @@ private extension Record {
                       order: record.order,
                       identifier: record.identifier)
     }
-    
+
 }
 
 // [History]に変換 ->  List<HistoryRealm>
 private extension Record {
-    
+
     var historiesList: List<HistoryRealm> {
         let histories = List<HistoryRealm>()
         self.histories?.forEach { history in
@@ -116,12 +103,12 @@ private extension Record {
         }
         return histories
     }
-    
+
 }
 
 // List<HistoryRealm> -> [History]に変換
 private extension RecordRealm {
-    
+
     var historiesArray: [History] {
         var histories = [History]()
         self.histories.forEach { history in
@@ -130,5 +117,5 @@ private extension RecordRealm {
         }
         return histories
     }
-    
+
 }

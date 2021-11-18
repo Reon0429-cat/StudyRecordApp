@@ -11,12 +11,12 @@ final class ScreenTransitionCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var rippleView: RippleView!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
     }
-    
+
     func configure(title: String) {
         titleLabel.text = title
         titleLabel.textColor = .white

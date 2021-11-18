@@ -8,7 +8,7 @@
 import UIKit
 
 extension UITextField {
-    
+
     func setUnderLine() {
         self.borderStyle = .none
         let underline = UIView()
@@ -20,5 +20,5 @@ extension UITextField {
         self.addSubview(underline)
         self.bringSubviewToFront(underline)
     }
-    
+
 }
