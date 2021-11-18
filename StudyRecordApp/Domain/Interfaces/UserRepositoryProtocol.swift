@@ -6,20 +6,14 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol UserRepositoryProtocol {
-    var currentUser: User? { get }
-    func registerUser(email: String,
-                      password: String,
-                      completion: @escaping ResultHandler<User>)
-    func createUser(userId: String,
-                    email: String,
-                    completion: @escaping ResultHandler<Any?>)
-    func login(email: String,
-               password: String,
-               completion: @escaping ResultHandler<Any?>)
-    func logout(completion: @escaping ResultHandler<Any?>)
-    func sendPasswordResetMail(email: String,
-                               completion: @escaping ResultHandler<Any?>)
-    func signInAnonymously(completion: @escaping ResultHandler<Any?>)
+    func fetchCurrentUser() -> Single<User?>
+    func registerUser(email: String, password: String) -> Single<User>
+    func createUser(userId: String, email: String) -> Completable
+    func login(email: String, password: String) -> Completable
+    func logout() -> Completable
+    func sendPasswordResetMail(email: String) -> Completable
+    func signInAnonymously() -> Completable
 }

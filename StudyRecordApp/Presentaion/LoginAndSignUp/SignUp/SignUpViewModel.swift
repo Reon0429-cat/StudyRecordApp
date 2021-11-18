@@ -60,7 +60,7 @@ final class SignUpViewModel {
         let image: UIImage
     }
 
-    init(userUseCase: RxUserUseCase,
+    init(userUseCase: UserUseCase,
          signUpButton: Signal<Void>,
          guestUserButton: Signal<Void>,
          passwordSecureButton: Signal<Void>,
@@ -146,7 +146,7 @@ final class SignUpViewModel {
 
     }
 
-    private func registerUser(userUseCase: RxUserUseCase,
+    private func registerUser(userUseCase: UserUseCase,
                               mailAddressText: String,
                               passwordText: String) {
         userUseCase.registerUser(email: mailAddressText, password: passwordText)
@@ -167,7 +167,7 @@ final class SignUpViewModel {
             .disposed(by: disposeBag)
     }
 
-    private func createUser(userUseCase: RxUserUseCase,
+    private func createUser(userUseCase: UserUseCase,
                             user: User,
                             mailAddressText: String) {
         userUseCase.createUser(userId: user.id, email: mailAddressText)
@@ -188,7 +188,7 @@ final class SignUpViewModel {
             .disposed(by: disposeBag)
     }
 
-    private func signInAnonymously(userUseCase: RxUserUseCase) {
+    private func signInAnonymously(userUseCase: UserUseCase) {
         userUseCase.signInAnonymously()
             .subscribe(
                 onCompleted: { [weak self] in

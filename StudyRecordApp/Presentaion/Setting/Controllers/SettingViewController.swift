@@ -7,6 +7,8 @@
 
 import UIKit
 import SafariServices
+import RxSwift
+import RxCocoa
 
 private enum SettingRowType: Int, CaseIterable {
     case themeColor
@@ -96,6 +98,7 @@ final class SettingViewController: UIViewController {
 
     @IBOutlet private weak var tableView: UITableView!
 
+    private let disposeBag = DisposeBag()
     weak var delegate: SettingVCDelegate?
     private let userUseCase = UserUseCase(
         repository: UserRepository()
@@ -132,18 +135,19 @@ private extension SettingViewController {
             .addAction(title: L10n.logout,
                        style: .destructive) {
                 self.indicator.show(.progress)
-                self.userUseCase.logout { result in
-                    switch result {
-                    case .failure(let error):
-                        self.indicator.flash(.error) {
-                            self.showErrorAlert(title: error.toAuthErrorMessage)
-                        }
-                    case .success:
-                        self.indicator.flash(.success) {
-                            self.presentLoginAndSignUpVC()
-                        }
-                    }
-                }
+                self.userUseCase.logout()
+                    .subscribe(
+                        onCompleted: { [weak self] in
+                            guard let self = self else { return }
+                            self.indicator.flash(.success) {
+                                self.presentLoginAndSignUpVC()
+                            }
+                        }, onError: { error in
+                            self.indicator.flash(.error) {
+                                self.showErrorAlert(title: error.toAuthErrorMessage)
+                            }
+                        })
+                    .disposed(by: self.disposeBag)
             }
             .addAction(title: L10n.close)
         present(alert, animated: true)
@@ -275,14 +279,22 @@ extension SettingViewController: UITableViewDelegate {
                 vc.delegate = self
             }
         case .backup:
-            if userUseCase.isLoggedInAsAnonymously {
-                let alert = Alert.create(message: L10n.onlyAvailableNotAnonymousUser)
-                    .addAction(title: L10n.close)
-                present(alert, animated: true)
-            } else {
-                present(BackupViewController.self,
-                        modalPresentationStyle: .fullScreen)
-            }
+            userUseCase.isLoggedInAsAnonymously
+                .subscribe(onSuccess: { [weak self] isLoggedInAsAnonymously in
+                    guard let self = self else { return }
+                    if isLoggedInAsAnonymously {
+                        let alert = Alert.create(message: L10n.onlyAvailableNotAnonymousUser)
+                            .addAction(title: L10n.close)
+                        self.present(alert, animated: true)
+                    } else {
+                        self.present(BackupViewController.self,
+                                     modalPresentationStyle: .fullScreen)
+                    }
+                }, onFailure: { [weak self] error in
+                    guard let self = self else { return }
+                    self.showErrorAlert(title: error.localizedDescription)
+                })
+                .disposed(by: disposeBag)
         case .privacyPolicy:
             presentPrivacyPolicyWebPage()
         case .license:

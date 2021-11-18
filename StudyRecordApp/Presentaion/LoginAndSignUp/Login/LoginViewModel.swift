@@ -47,7 +47,7 @@ final class LoginViewModel {
         case showErrorAlert(title: String)
     }
 
-    init(userUseCase: RxUserUseCase,
+    init(userUseCase: UserUseCase,
          mailText: Driver<String>,
          passwordText: Driver<String>,
          loginButton: Signal<Void>,

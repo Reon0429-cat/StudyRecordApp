@@ -29,7 +29,7 @@ final class LoginViewController: UIViewController {
 
     weak var delegate: LoginVCDelegate?
     private lazy var viewModel: LoginViewModelType = LoginViewModel(
-        userUseCase: RxUserUseCase(repository: RxUserRepository()),
+        userUseCase: UserUseCase(repository: UserRepository()),
         mailText: mailAddressTextField.rx.text.orEmpty.asDriver(),
         passwordText: passwordTextField.rx.text.orEmpty.asDriver(),
         loginButton: loginButton.rx.tap.asSignal(),

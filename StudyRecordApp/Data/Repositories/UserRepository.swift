@@ -2,60 +2,107 @@
 //  UserRepository.swift
 //  StudyRecordApp
 //
-//  Created by 大西玲音 on 2021/08/29.
+//  Created by 大西玲音 on 2021/11/18.
 //
 
 import Foundation
+import RxSwift
 import FirebaseAuth
 
 final class UserRepository: UserRepositoryProtocol {
 
-    private let dataStore = FirebaseUserDataStore()
+    private var dataStore = FirebaseUserDataStore()
 
-    var currentUser: User? {
+    func fetchCurrentUser() -> Single<User?> {
         if let user = dataStore.currentUser {
-            return User(user: user)
+            return .just(User(user: user))
         }
-        return nil
+        return .just(nil)
     }
 
-    func registerUser(email: String,
-                      password: String,
-                      completion: @escaping ResultHandler<User>) {
-        dataStore.registerUser(email: email,
-                               password: password) {
-            completion($0.map { User(user: $0) })
+    func registerUser(email: String, password: String) -> Single<User> {
+        Single<User>.create { observer in
+            self.dataStore.registerUser(email: email, password: password) { result in
+                switch result {
+                case .failure(let error):
+                    observer(.failure(error))
+                case .success(let user):
+                    observer(.success(User(user: user)))
+                }
+            }
+            return Disposables.create()
         }
     }
 
-    func createUser(userId: String,
-                    email: String,
-                    completion: @escaping ResultHandler<Any?>) {
-        dataStore.createUser(userId: userId,
-                             email: email,
-                             completion: completion)
+    func createUser(userId: String, email: String) -> Completable {
+        Completable.create { observer in
+            self.dataStore.createUser(userId: userId, email: email) { result in
+                switch result {
+                case .failure(let error):
+                    observer(.error(error))
+                case .success:
+                    observer(.completed)
+                }
+            }
+            return Disposables.create()
+        }
     }
 
-    func login(email: String,
-               password: String,
-               completion: @escaping ResultHandler<Any?>) {
-        dataStore.login(email: email,
-                        password: password,
-                        completion: completion)
+    func signInAnonymously() -> Completable {
+        Completable.create { observer in
+            self.dataStore.signInAnonymously { result in
+                switch result {
+                case .failure(let error):
+                    observer(.error(error))
+                case .success:
+                    observer(.completed)
+                }
+            }
+            return Disposables.create()
+        }
     }
 
-    func logout(completion: @escaping ResultHandler<Any?>) {
-        dataStore.logout(completion: completion)
+    func login(email: String, password: String) -> Completable {
+        Completable.create { observer in
+            self.dataStore.login(email: email,
+                                 password: password) { result in
+                switch result {
+                case .failure(let error):
+                    observer(.error(error))
+                case .success:
+                    observer(.completed)
+                }
+            }
+            return Disposables.create()
+        }
     }
 
-    func sendPasswordResetMail(email: String,
-                               completion: @escaping ResultHandler<Any?>) {
-        dataStore.sendPasswordResetMail(email: email,
-                                        completion: completion)
+    func logout() -> Completable {
+        Completable.create { observer in
+            self.dataStore.logout { result in
+                switch result {
+                case .failure(let error):
+                    observer(.error(error))
+                case .success:
+                    observer(.completed)
+                }
+            }
+            return Disposables.create()
+        }
     }
 
-    func signInAnonymously(completion: @escaping ResultHandler<Any?>) {
-        dataStore.signInAnonymously(completion: completion)
+    func sendPasswordResetMail(email: String) -> Completable {
+        Completable.create { observer in
+            self.dataStore.sendPasswordResetMail(email: email) { result in
+                switch result {
+                case .failure(let error):
+                    observer(.error(error))
+                case .success:
+                    observer(.completed)
+                }
+            }
+            return Disposables.create()
+        }
     }
 
 }

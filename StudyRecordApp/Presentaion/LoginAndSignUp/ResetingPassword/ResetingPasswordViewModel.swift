@@ -40,7 +40,7 @@ final class ResetingPasswordViewModel {
         case presentErrorAlert(title: String)
     }
 
-    init(userUseCase: RxUserUseCase,
+    init(userUseCase: UserUseCase,
          mailAddressText: Driver<String>,
          sendButton: Signal<Void>) {
 

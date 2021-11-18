@@ -33,7 +33,7 @@ final class SignUpViewController: UIViewController {
 
     weak var delegate: SignUpVCDelegate?
     private lazy var viewModel: SignUpViewModelType = SignUpViewModel(
-        userUseCase: RxUserUseCase(repository: RxUserRepository()),
+        userUseCase: UserUseCase(repository: UserRepository()),
         signUpButton: signUpButton.rx.tap.asSignal(),
         guestUserButton: guestUserButton.rx.tap.asSignal(),
         passwordSecureButton: passwordSecureButton.rx.tap.asSignal(),

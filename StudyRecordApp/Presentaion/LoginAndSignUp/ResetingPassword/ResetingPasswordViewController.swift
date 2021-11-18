@@ -20,7 +20,7 @@ final class ResetingPasswordViewController: UIViewController {
     @IBOutlet private weak var stackViewTopConstraint: NSLayoutConstraint!
 
     private lazy var viewModel: ResetingPasswordViewModelType = ResetingPasswordViewModel(
-        userUseCase: RxUserUseCase(repository: RxUserRepository()),
+        userUseCase: UserUseCase(repository: UserRepository()),
         mailAddressText: mailAddressTextField.rx.text.orEmpty.asDriver(),
         sendButton: sendButton.rx.tap.asSignal()
     )

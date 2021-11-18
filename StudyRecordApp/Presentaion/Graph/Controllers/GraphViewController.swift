@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 protocol GraphVCDelegate: ScreenPresentationDelegate {}
 
@@ -15,6 +17,7 @@ final class GraphViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var registerButton: CustomButton!
 
+    private let disposeBag = DisposeBag()
     weak var delegate: GraphVCDelegate?
     private let userUseCase = UserUseCase(
         repository: UserRepository()
@@ -204,23 +207,33 @@ private extension GraphViewController {
     }
 
     func setupAnonymousView() {
-        let isAnonymousUser = userUseCase.isLoggedInAsAnonymously
-        if isAnonymousUser {
-            let anonymousView = AnonymousUserView()
-            anonymousView.signUpButtonEvent = { [weak self] in
-                guard let self = self else { return }
-                self.present(LoginAndSignUpViewController.self,
-                             modalPresentationStyle: .fullScreen)
-            }
-            anonymousView.translatesAutoresizingMaskIntoConstraints = false
-            self.view.addSubview(anonymousView)
-            NSLayoutConstraint.activate([
-                anonymousView.topAnchor.constraint(equalTo: self.view.topAnchor),
-                anonymousView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-                anonymousView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-                anonymousView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
-            ])
-        }
+        userUseCase.isLoggedInAsAnonymously
+            .subscribe(
+                onSuccess: { [weak self] isAnonymousUser in
+                    guard let self = self else { return }
+                    if isAnonymousUser {
+                        let anonymousView = AnonymousUserView()
+                        anonymousView.signUpButtonEvent = { [weak self] in
+                            guard let self = self else { return }
+                            self.present(LoginAndSignUpViewController.self,
+                                         modalPresentationStyle: .fullScreen)
+                        }
+                        anonymousView.translatesAutoresizingMaskIntoConstraints = false
+                        self.view.addSubview(anonymousView)
+                        NSLayoutConstraint.activate([
+                            anonymousView.topAnchor.constraint(equalTo: self.view.topAnchor),
+                            anonymousView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+                            anonymousView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+                            anonymousView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
+                        ])
+                    }
+                },
+                onFailure: { [weak self] error in
+                    guard let self = self else { return }
+                    self.showErrorAlert(title: error.localizedDescription)
+                }
+            )
+            .disposed(by: disposeBag)
     }
 
 }

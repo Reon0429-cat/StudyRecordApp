@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -15,6 +17,8 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private let settingUseCase = SettingUseCase(
         repository: SettingRepository()
     )
+    private let disposeBag = DisposeBag()
+
     var window: UIWindow?
 
     func scene(_ scene: UIScene,
@@ -24,17 +28,22 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: scene)
         self.window = window
         window.makeKeyAndVisible()
-        if userUseCase.isLoggedIn {
-            if settingUseCase.setting.isPasscodeSetted {
-                window.setRootVC(PasscodeViewController.self) { vc in
-                    vc.passcodeMode = .certification
+        userUseCase.isLoggedIn
+            .subscribe(onSuccess: { [weak self] isLoggedIn in
+                guard let self = self else { return }
+                if isLoggedIn {
+                    if self.settingUseCase.setting.isPasscodeSetted {
+                        window.setRootVC(PasscodeViewController.self) { vc in
+                            vc.passcodeMode = .certification
+                        }
+                    } else {
+                        window.setRootVC(TopViewController.self)
+                    }
+                } else {
+                    window.setRootVC(LoginAndSignUpViewController.self)
                 }
-            } else {
-                window.setRootVC(TopViewController.self)
-            }
-        } else {
-            window.setRootVC(LoginAndSignUpViewController.self)
-        }
+            })
+            .disposed(by: disposeBag)
 
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(brightnessDidChanged),
@@ -54,15 +63,20 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
-        if userUseCase.isLoggedIn {
-            if settingUseCase.setting.isPasscodeSetted {
-                self.window?.setRootVC(PasscodeViewController.self) { vc in
-                    vc.passcodeMode = .certification
+        userUseCase.isLoggedIn
+            .subscribe(onSuccess: { [weak self] isLoggedIn in
+                guard let self = self else { return }
+                if isLoggedIn {
+                    if self.settingUseCase.setting.isPasscodeSetted {
+                        self.window?.setRootVC(PasscodeViewController.self) { vc in
+                            vc.passcodeMode = .certification
+                        }
+                    }
+                } else {
+                    self.window?.setRootVC(LoginAndSignUpViewController.self)
                 }
-            }
-        } else {
-            self.window?.setRootVC(LoginAndSignUpViewController.self)
-        }
+            })
+            .disposed(by: disposeBag)
     }
 
     @objc
