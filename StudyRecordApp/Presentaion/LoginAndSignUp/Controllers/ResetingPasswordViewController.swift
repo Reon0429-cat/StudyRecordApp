@@ -36,10 +36,6 @@ final class ResetingPasswordViewController: UIViewController {
 
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-
     override func touchesBegan(_ touches: Set<UITouch>,
                                with event: UIEvent?) {
         self.view.endEditing(true)
@@ -65,9 +61,9 @@ private extension ResetingPasswordViewController {
         userUseCase.sendPasswordResetMail(email: email) { [weak self] result in
             guard let self = self else { return }
             switch result {
-            case .failure(let title):
+            case .failure(let error):
                 self.indicator.flash(.error) {
-                    self.showErrorAlert(title: title)
+                    self.showErrorAlert(title: error.toAuthErrorMessage)
                 }
             case .success:
                 self.indicator.flash(.success) {

@@ -186,7 +186,7 @@ private extension PasscodeViewController {
         BiometricsManager().canUseBiometrics { result in
             switch result {
             case .success:
-                performBiometrics()
+                self.performBiometrics()
             case .failure:
                 DispatchQueue.main.async {
                     self.presentCanNotAllowBiometricsAlert()

@@ -92,6 +92,8 @@
 		AB1B1DD327461B91000F8220 /* RxUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1B1DD227461B91000F8220 /* RxUserRepository.swift */; };
 		AB1B1DD527461B9E000F8220 /* RxUserRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1B1DD427461B9E000F8220 /* RxUserRepositoryProtocol.swift */; };
 		AB1B1DD727461C42000F8220 /* RxUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1B1DD627461C42000F8220 /* RxUserUseCase.swift */; };
+		AB1B1DDA274620B6000F8220 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1B1DD9274620B6000F8220 /* LoginViewModel.swift */; };
+		AB1B1DDC274620BE000F8220 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1B1DDB274620BE000F8220 /* SignUpViewModel.swift */; };
 		AB20F80C26E7B50D00564B14 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB20F80B26E7B50D00564B14 /* UIImage+Extension.swift */; };
 		AB20F80E26E7CBAE00564B14 /* CustomScrollableGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB20F80D26E7CBAE00564B14 /* CustomScrollableGraphView.swift */; };
 		AB20F81026E7F3DB00564B14 /* GraphKindSelecting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB20F80F26E7F3DB00564B14 /* GraphKindSelecting.storyboard */; };
@@ -677,6 +679,8 @@
 		AB1B1DD227461B91000F8220 /* RxUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxUserRepository.swift; sourceTree = "<group>"; };
 		AB1B1DD427461B9E000F8220 /* RxUserRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxUserRepositoryProtocol.swift; sourceTree = "<group>"; };
 		AB1B1DD627461C42000F8220 /* RxUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxUserUseCase.swift; sourceTree = "<group>"; };
+		AB1B1DD9274620B6000F8220 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		AB1B1DDB274620BE000F8220 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		AB20F80B26E7B50D00564B14 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		AB20F80D26E7CBAE00564B14 /* CustomScrollableGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScrollableGraphView.swift; sourceTree = "<group>"; };
 		AB20F80F26E7F3DB00564B14 /* GraphKindSelecting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GraphKindSelecting.storyboard; sourceTree = "<group>"; };
@@ -1293,6 +1297,8 @@
 		AB1B1DD827462077000F8220 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				AB1B1DD9274620B6000F8220 /* LoginViewModel.swift */,
+				AB1B1DDB274620BE000F8220 /* SignUpViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -2868,6 +2874,7 @@
 				AB93C24F266A271E00C3AE8F /* StudyRecordViewController.swift in Sources */,
 				AB43980826DE2D72008C8CA8 /* GoalPriorityTableViewCell.swift in Sources */,
 				AB13EDAF26BFAA62002F56FF /* StudyRecordSortViewController.swift in Sources */,
+				AB1B1DDA274620B6000F8220 /* LoginViewModel.swift in Sources */,
 				AB37278B270D9F94005DBAB3 /* StoryboardScenes.swift in Sources */,
 				AB46937227236B0F007F1C66 /* AppIconTableViewCell.swift in Sources */,
 				AB4397FF26DE141E008C8CA8 /* GoalRepository.swift in Sources */,
@@ -2900,6 +2907,7 @@
 				AB4397FB26DDF78A008C8CA8 /* HUDIndicator.swift in Sources */,
 				ABFAB15826DF86920095EC20 /* GoalPhotoTableViewCell.swift in Sources */,
 				AB14B46226DA855F007A5F16 /* CommunicationStatus.swift in Sources */,
+				AB1B1DDC274620BE000F8220 /* SignUpViewModel.swift in Sources */,
 				AB1B1DD327461B91000F8220 /* RxUserRepository.swift in Sources */,
 				AB37278A270D9F94005DBAB3 /* StoryboardSegues.swift in Sources */,
 				ABFAB15526DF802A0095EC20 /* PriorityStackView.swift in Sources */,

@@ -9,16 +9,16 @@ import Foundation
 import FirebaseAuth
 
 final class UserRepository: UserRepositoryProtocol {
-    
+
     private let dataStore = FirebaseUserDataStore()
-    
+
     var currentUser: User? {
         if let user = dataStore.currentUser {
             return User(user: user)
         }
         return nil
     }
-    
+
     func registerUser(email: String,
                       password: String,
                       completion: @escaping ResultHandler<User>) {
@@ -27,7 +27,7 @@ final class UserRepository: UserRepositoryProtocol {
             completion($0.map { User(user: $0) })
         }
     }
-    
+
     func createUser(userId: String,
                     email: String,
                     completion: @escaping ResultHandler<Any?>) {
@@ -35,7 +35,7 @@ final class UserRepository: UserRepositoryProtocol {
                              email: email,
                              completion: completion)
     }
-    
+
     func login(email: String,
                password: String,
                completion: @escaping ResultHandler<Any?>) {
@@ -43,29 +43,28 @@ final class UserRepository: UserRepositoryProtocol {
                         password: password,
                         completion: completion)
     }
-    
+
     func logout(completion: @escaping ResultHandler<Any?>) {
         dataStore.logout(completion: completion)
     }
-    
+
     func sendPasswordResetMail(email: String,
                                completion: @escaping ResultHandler<Any?>) {
         dataStore.sendPasswordResetMail(email: email,
                                         completion: completion)
     }
-    
+
     func signInAnonymously(completion: @escaping ResultHandler<Any?>) {
         dataStore.signInAnonymously(completion: completion)
     }
-    
+
 }
 
 private extension User {
-    
+
     init(user: FirebaseAuth.User) {
         self.id = user.uid
         self.isAnonymous = user.isAnonymous
     }
-    
-}
 
+}

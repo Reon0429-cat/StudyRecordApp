@@ -134,9 +134,9 @@ private extension SettingViewController {
                 self.indicator.show(.progress)
                 self.userUseCase.logout { result in
                     switch result {
-                    case .failure(let title):
+                    case .failure(let error):
                         self.indicator.flash(.error) {
-                            self.showErrorAlert(title: title)
+                            self.showErrorAlert(title: error.toAuthErrorMessage)
                         }
                     case .success:
                         self.indicator.flash(.success) {

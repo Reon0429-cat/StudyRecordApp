@@ -27,7 +27,12 @@ struct BiometricsManager {
         }
     }
 
-    func canUseBiometrics(completion: ResultHandler<Any?>) {
+    enum Result<Success, String> {
+        case success(Success)
+        case failure(String)
+    }
+
+    func canUseBiometrics(completion: @escaping (Result<Any?, String>) -> Void) {
         var error: NSError?
         if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics,
                                      error: &error) {
@@ -37,7 +42,7 @@ struct BiometricsManager {
         }
     }
 
-    func authenticate(completion: @escaping ResultHandler<Any?>) {
+    func authenticate(completion: @escaping (Result<Any?, String>) -> Void) {
         let localizedReason = L10n.useAuthenticationToUnlock
         context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics,
                                localizedReason: localizedReason) { isSuccess, error in

@@ -80,13 +80,13 @@ private extension PasscodeSettingViewController {
         BiometricsManager().canUseBiometrics { result in
             switch result {
             case .success:
-                biometricsButton.setTitle(BiometricsManager().title)
+                self.biometricsButton.setTitle(BiometricsManager().title)
             case .failure:
-                biometricsButton.setTitle(L10n.turnOnBiometrics)
+                self.biometricsButton.setTitle(L10n.turnOnBiometrics)
             }
         }
         let isFilled = settingUseCase.setting.isBiometricsSetted
-        biometricsButton.setImage(isFilled: isFilled)
+        self.biometricsButton.setImage(isFilled: isFilled)
     }
 
 }

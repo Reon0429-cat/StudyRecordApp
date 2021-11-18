@@ -13,11 +13,11 @@ import Firebase
 typealias ResultHandler<T> = (Result<T, Error>) -> Void
 
 final class FirebaseUserDataStore {
-    
+
     var currentUser: FirebaseAuth.User? {
         return Auth.auth().currentUser
     }
-    
+
     func registerUser(email: String,
                       password: String,
                       completion: @escaping ResultHandler<FirebaseAuth.User>) {
@@ -34,7 +34,7 @@ final class FirebaseUserDataStore {
             }
         }
     }
-    
+
     func createUser(userId: String,
                     email: String,
                     completion: @escaping ResultHandler<Any?>) {
@@ -48,7 +48,7 @@ final class FirebaseUserDataStore {
             completion(.success(nil))
         }
     }
-    
+
     func login(email: String,
                password: String,
                completion: @escaping ResultHandler<Any?>) {
@@ -61,7 +61,7 @@ final class FirebaseUserDataStore {
             completion(.success(nil))
         }
     }
-    
+
     func logout(completion: @escaping ResultHandler<Any?>) {
         do {
             try Auth.auth().signOut()
@@ -70,7 +70,7 @@ final class FirebaseUserDataStore {
             completion(.failure(error))
         }
     }
-    
+
     func sendPasswordResetMail(email: String,
                                completion: @escaping ResultHandler<Any?>) {
         Auth.auth().languageCode = L10n.languageCode
@@ -82,7 +82,7 @@ final class FirebaseUserDataStore {
             completion(.success(nil))
         }
     }
-    
+
     func signInAnonymously(completion: @escaping ResultHandler<Any?>) {
         Auth.auth().signInAnonymously { _, error in
             if let error = error {
@@ -92,32 +92,31 @@ final class FirebaseUserDataStore {
             completion(.success(nil))
         }
     }
-    
+
 }
 
 extension Error {
-    
+
     var toAuthErrorMessage: String {
         if let errorCode = AuthErrorCode(rawValue: self._code) {
             switch errorCode {
-                case .invalidEmail:
-                    return L10n.theEmailAddressFormatContainsAnError
-                case .weakPassword:
-                    return L10n.pleaseEnterThePasswordWithAtLeast6Characters
-                case .wrongPassword:
-                    return L10n.thePasswordIsIncorrect
-                case .userNotFound:
-                    return L10n.thisEmailAddressIsNotRegistered
-                case .emailAlreadyInUse:
-                    return L10n.thisEmailAddressIsAlreadyRegistered
-                case .adminRestrictedOperation:
-                    return L10n.adminRestrictedOperation
-                default:
-                    return L10n.loginFailed + "\(self.localizedDescription)"
+            case .invalidEmail:
+                return L10n.theEmailAddressFormatContainsAnError
+            case .weakPassword:
+                return L10n.pleaseEnterThePasswordWithAtLeast6Characters
+            case .wrongPassword:
+                return L10n.thePasswordIsIncorrect
+            case .userNotFound:
+                return L10n.thisEmailAddressIsNotRegistered
+            case .emailAlreadyInUse:
+                return L10n.thisEmailAddressIsAlreadyRegistered
+            case .adminRestrictedOperation:
+                return L10n.adminRestrictedOperation
+            default:
+                return L10n.loginFailed + "\(self.localizedDescription)"
             }
         }
         return L10n.anUnknownErrorHasOccurred
     }
-    
-}
 
+}
