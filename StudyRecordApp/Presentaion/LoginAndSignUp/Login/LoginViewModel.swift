@@ -84,7 +84,8 @@ final class LoginViewModel {
                                 self.eventRelay.accept(.showErrorAlert(title: error.toAuthErrorMessage))
                             }
                         }
-                    ).disposed(by: self.disposeBag)
+                    )
+                    .disposed(by: self.disposeBag)
             })
             .disposed(by: disposeBag)
 

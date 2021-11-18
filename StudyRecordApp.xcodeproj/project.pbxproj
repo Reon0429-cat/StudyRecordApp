@@ -1294,15 +1294,6 @@
 			path = Rx;
 			sourceTree = "<group>";
 		};
-		AB1B1DD827462077000F8220 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				AB1B1DD9274620B6000F8220 /* LoginViewModel.swift */,
-				AB1B1DDB274620BE000F8220 /* SignUpViewModel.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
 		AB2B5B9026A2D13C009BD3C7 /* UIKit+Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -1333,6 +1324,44 @@
 				AB2B5B9726A2D1B7009BD3C7 /* ServiceConcept.swift */,
 			);
 			path = SubConcepts;
+			sourceTree = "<group>";
+		};
+		AB34FCBA274630BF008EE062 /* LoginAndSignUp */ = {
+			isa = PBXGroup;
+			children = (
+				AB8B705D26D6AD950069FF67 /* LoginAndSignUp.storyboard */,
+				AB8B705F26D6AD9E0069FF67 /* LoginAndSignUpViewController.swift */,
+			);
+			path = LoginAndSignUp;
+			sourceTree = "<group>";
+		};
+		AB34FCBB274630CB008EE062 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				AB8B704F26D62FA90069FF67 /* Login.storyboard */,
+				AB8B704D26D62F800069FF67 /* LoginViewController.swift */,
+				AB1B1DD9274620B6000F8220 /* LoginViewModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		AB34FCBC274630D1008EE062 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				AB8B705626D6AD1F0069FF67 /* SignUp.storyboard */,
+				AB8B705826D6AD290069FF67 /* SignUpViewController.swift */,
+				AB1B1DDB274620BE000F8220 /* SignUpViewModel.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		AB34FCBD274630D7008EE062 /* ResetingPassword */ = {
+			isa = PBXGroup;
+			children = (
+				AB14B46326DB515C007A5F16 /* ResetingPassword.storyboard */,
+				AB14B46526DB516E007A5F16 /* ResetingPasswordViewController.swift */,
+			);
+			path = ResetingPassword;
 			sourceTree = "<group>";
 		};
 		AB3BD6B12721FE240052CCA9 /* LaunchScreen */ = {
@@ -1443,41 +1472,12 @@
 		AB3BD6D027220FFA0052CCA9 /* LoginAndSignUp */ = {
 			isa = PBXGroup;
 			children = (
-				AB3BD6D22722100E0052CCA9 /* Views */,
-				AB3BD6D1272210010052CCA9 /* Controllers */,
-				AB1B1DD827462077000F8220 /* ViewModels */,
+				AB34FCBA274630BF008EE062 /* LoginAndSignUp */,
+				AB34FCBB274630CB008EE062 /* Login */,
+				AB34FCBC274630D1008EE062 /* SignUp */,
+				AB34FCBD274630D7008EE062 /* ResetingPassword */,
 			);
 			path = LoginAndSignUp;
-			sourceTree = "<group>";
-		};
-		AB3BD6D1272210010052CCA9 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				AB8B705F26D6AD9E0069FF67 /* LoginAndSignUpViewController.swift */,
-				AB8B704D26D62F800069FF67 /* LoginViewController.swift */,
-				AB8B705826D6AD290069FF67 /* SignUpViewController.swift */,
-				AB14B46526DB516E007A5F16 /* ResetingPasswordViewController.swift */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		AB3BD6D22722100E0052CCA9 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				AB3BD6D3272210160052CCA9 /* Storyboards */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		AB3BD6D3272210160052CCA9 /* Storyboards */ = {
-			isa = PBXGroup;
-			children = (
-				AB8B705D26D6AD950069FF67 /* LoginAndSignUp.storyboard */,
-				AB8B704F26D62FA90069FF67 /* Login.storyboard */,
-				AB8B705626D6AD1F0069FF67 /* SignUp.storyboard */,
-				AB14B46326DB515C007A5F16 /* ResetingPassword.storyboard */,
-			);
-			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		AB3BD6D4272210260052CCA9 /* Goal */ = {
