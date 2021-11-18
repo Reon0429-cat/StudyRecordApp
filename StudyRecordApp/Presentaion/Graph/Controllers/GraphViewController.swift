@@ -210,9 +210,7 @@ private extension GraphViewController {
             anonymousView.signUpButtonEvent = { [weak self] in
                 guard let self = self else { return }
                 self.present(LoginAndSignUpViewController.self,
-                             modalPresentationStyle: .fullScreen) { vc in
-                    vc.authViewType = .signUp
-                }
+                             modalPresentationStyle: .fullScreen)
             }
             anonymousView.translatesAutoresizingMaskIntoConstraints = false
             self.view.addSubview(anonymousView)

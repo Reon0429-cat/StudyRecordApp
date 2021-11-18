@@ -131,6 +131,7 @@
 		AB2B5BC926A2D36F009BD3C7 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5BC326A2D36F009BD3C7 /* SettingViewController.swift */; };
 		AB2B5BCA26A2D36F009BD3C7 /* ThemeColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2B5BC426A2D36F009BD3C7 /* ThemeColorViewController.swift */; };
 		AB34FCBF27463190008EE062 /* ResetingPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB34FCBE27463190008EE062 /* ResetingPasswordViewModel.swift */; };
+		AB34FCC1274638E6008EE062 /* LoginAndSignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB34FCC0274638E6008EE062 /* LoginAndSignUpViewModel.swift */; };
 		AB372783270D84C0005DBAB3 /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB372782270D84C0005DBAB3 /* Month.swift */; };
 		AB37278A270D9F94005DBAB3 /* StoryboardSegues.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB372788270D9F94005DBAB3 /* StoryboardSegues.swift */; };
 		AB37278B270D9F94005DBAB3 /* StoryboardScenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB372789270D9F94005DBAB3 /* StoryboardScenes.swift */; };
@@ -719,6 +720,7 @@
 		AB2B5BC326A2D36F009BD3C7 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		AB2B5BC426A2D36F009BD3C7 /* ThemeColorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeColorViewController.swift; sourceTree = "<group>"; };
 		AB34FCBE27463190008EE062 /* ResetingPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetingPasswordViewModel.swift; sourceTree = "<group>"; };
+		AB34FCC0274638E6008EE062 /* LoginAndSignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAndSignUpViewModel.swift; sourceTree = "<group>"; };
 		AB372782270D84C0005DBAB3 /* Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
 		AB372788270D9F94005DBAB3 /* StoryboardSegues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardSegues.swift; sourceTree = "<group>"; };
 		AB372789270D9F94005DBAB3 /* StoryboardScenes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardScenes.swift; sourceTree = "<group>"; };
@@ -1333,6 +1335,7 @@
 			children = (
 				AB8B705D26D6AD950069FF67 /* LoginAndSignUp.storyboard */,
 				AB8B705F26D6AD9E0069FF67 /* LoginAndSignUpViewController.swift */,
+				AB34FCC0274638E6008EE062 /* LoginAndSignUpViewModel.swift */,
 			);
 			path = LoginAndSignUp;
 			sourceTree = "<group>";
@@ -2884,6 +2887,7 @@
 				AB2B5BCA26A2D36F009BD3C7 /* ThemeColorViewController.swift in Sources */,
 				AB8B705926D6AD290069FF67 /* SignUpViewController.swift in Sources */,
 				AB2B5B8C26A2D106009BD3C7 /* UITableViewHeaderFooterView+Extension.swift in Sources */,
+				AB34FCC1274638E6008EE062 /* LoginAndSignUpViewModel.swift in Sources */,
 				ABA0570526B50F8100E3DF01 /* StudyRecordGraphColorViewController.swift in Sources */,
 				AB2B5B8426A2D0FD009BD3C7 /* NotificationName+Extension.swift in Sources */,
 				AB0C766026EBABE800BF5B64 /* GraphRealm.swift in Sources */,

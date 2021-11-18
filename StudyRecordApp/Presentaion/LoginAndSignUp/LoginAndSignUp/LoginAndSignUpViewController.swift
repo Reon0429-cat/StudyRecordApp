@@ -6,7 +6,8 @@
 //
 
 import UIKit
-import SwiftUI
+import RxSwift
+import RxCocoa
 
 final class LoginAndSignUpViewController: UIViewController {
 
@@ -17,13 +18,12 @@ final class LoginAndSignUpViewController: UIViewController {
     @IBOutlet private weak var signUpButton: UIButton!
     @IBOutlet private weak var containerView: UIView!
 
-    enum AuthViewType {
-        case login
-        case signUp
-    }
-
-    var authViewType: AuthViewType = .login
     private let cornerRadiusConstant: CGFloat = 15
+    private lazy var viewModel: LoginAndSignUpViewModelType = LoginAndSignUpViewModel(
+        loginButton: loginButton.rx.tap.asSignal(),
+        signUpButton: signUpButton.rx.tap.asSignal()
+    )
+    private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +31,7 @@ final class LoginAndSignUpViewController: UIViewController {
         setupBaseView()
         setupLoginButton()
         setupSignUpButton()
-        changeViewType(authViewType)
+        setupBindings()
 
     }
 
@@ -55,70 +55,19 @@ final class LoginAndSignUpViewController: UIViewController {
         }
     }
 
-}
-
-// MARK: - IBAction func
-private extension LoginAndSignUpViewController {
-
-    @IBAction func loginButtonDidTapped(_ sender: Any) {
-        changeViewType(.login)
-    }
-
-    @IBAction func signUpButtonDidTapped(_ sender: Any) {
-        changeViewType(.signUp)
+    private func setupBindings() {
+        viewModel.outputs.authViewType
+            .drive(onNext: { [weak self] authViewType in
+                guard let self = self else { return }
+                self.changeViewType(authViewType)
+            })
+            .disposed(by: disposeBag)
     }
 
 }
 
 // MARK: - func
 private extension LoginAndSignUpViewController {
-
-    func changeViewType(_ viewType: AuthViewType) {
-        bringContainerView(viewType)
-        setToggleViewColor(viewType)
-        setContainerViewCorners(viewType)
-    }
-
-    func bringContainerView(_ viewType: AuthViewType) {
-        switch viewType {
-        case .login:
-            containerView.bringSubviewToFront(loginContainerView)
-        case .signUp:
-            containerView.bringSubviewToFront(signUpContainerView)
-        }
-    }
-
-    func setToggleViewColor(_ viewType: AuthViewType) {
-        switch viewType {
-        case .login:
-            loginButton.backgroundColor = .dynamicColor(light: .white, dark: .secondarySystemBackground)
-            signUpButton.backgroundColor = .dynamicColor(light: .clear, dark: .clear)
-            loginButton.tintColor = .dynamicColor(light: .black, dark: .white)
-            signUpButton.tintColor = .dynamicColor(light: .gray, dark: .gray)
-        case .signUp:
-            loginButton.backgroundColor = .dynamicColor(light: .clear, dark: .clear)
-            signUpButton.backgroundColor = .dynamicColor(light: .white, dark: .secondarySystemBackground)
-            loginButton.tintColor = .dynamicColor(light: .gray, dark: .gray)
-            signUpButton.tintColor = .dynamicColor(light: .black, dark: .white)
-        }
-    }
-
-    func setContainerViewCorners(_ viewType: AuthViewType) {
-        switch viewType {
-        case .login:
-            containerView.layer.cornerRadius = cornerRadiusConstant
-            containerView.layer.maskedCorners = [.layerMaxXMinYCorner,
-                                                 .layerMinXMaxYCorner,
-                                                 .layerMaxXMaxYCorner]
-            containerView.layer.masksToBounds = true
-        case .signUp:
-            containerView.layer.cornerRadius = cornerRadiusConstant
-            containerView.layer.maskedCorners = [.layerMinXMinYCorner,
-                                                 .layerMinXMaxYCorner,
-                                                 .layerMaxXMaxYCorner]
-            containerView.layer.masksToBounds = true
-        }
-    }
 
     func setBaseViewLayerColor() {
         baseView.setShadow(color: .dynamicColor(light: .black,
@@ -129,13 +78,40 @@ private extension LoginAndSignUpViewController {
                                   height: 3))
     }
 
+    func changeViewType(_ viewType: LoginAndSignUpViewModel.AuthViewType) {
+        switch viewType {
+        case .login:
+            containerView.bringSubviewToFront(loginContainerView)
+            loginButton.backgroundColor = .dynamicColor(light: .white, dark: .secondarySystemBackground)
+            signUpButton.backgroundColor = .dynamicColor(light: .clear, dark: .clear)
+            loginButton.tintColor = .dynamicColor(light: .black, dark: .white)
+            signUpButton.tintColor = .dynamicColor(light: .gray, dark: .gray)
+            containerView.layer.cornerRadius = cornerRadiusConstant
+            containerView.layer.maskedCorners = [.layerMaxXMinYCorner,
+                                                 .layerMinXMaxYCorner,
+                                                 .layerMaxXMaxYCorner]
+            containerView.layer.masksToBounds = true
+        case .signUp:
+            containerView.bringSubviewToFront(signUpContainerView)
+            loginButton.backgroundColor = .dynamicColor(light: .clear, dark: .clear)
+            signUpButton.backgroundColor = .dynamicColor(light: .white, dark: .secondarySystemBackground)
+            loginButton.tintColor = .dynamicColor(light: .gray, dark: .gray)
+            signUpButton.tintColor = .dynamicColor(light: .black, dark: .white)
+            containerView.layer.cornerRadius = cornerRadiusConstant
+            containerView.layer.maskedCorners = [.layerMinXMinYCorner,
+                                                 .layerMinXMaxYCorner,
+                                                 .layerMaxXMaxYCorner]
+            containerView.layer.masksToBounds = true
+        }
+    }
+
 }
 
 // MARK: - LoginVCDelegate
 extension LoginAndSignUpViewController: LoginVCDelegate {
 
     func leftSwipeDid() {
-        changeViewType(.signUp)
+        viewModel.inputs.swipeToLeft()
     }
 
 }
@@ -144,7 +120,7 @@ extension LoginAndSignUpViewController: LoginVCDelegate {
 extension LoginAndSignUpViewController: SignUpVCDelegate {
 
     func rightSwipeDid() {
-        changeViewType(.login)
+        viewModel.inputs.swipeToRight()
     }
 
 }
