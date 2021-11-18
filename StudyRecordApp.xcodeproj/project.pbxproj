@@ -1647,7 +1647,6 @@
 		AB3BD6E7272213800052CCA9 /* Presentaion */ = {
 			isa = PBXGroup;
 			children = (
-				AB3BD6EC272217010052CCA9 /* Utilities */,
 				AB16304D26CD68A200111F55 /* CustomViews */,
 				AB3BD6B12721FE240052CCA9 /* LaunchScreen */,
 				AB3BD6CB27220F140052CCA9 /* Top */,
@@ -1682,14 +1681,6 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		AB3BD6EA2722159C0052CCA9 /* Converter */ = {
-			isa = PBXGroup;
-			children = (
-				AB13EDDA26C3C163002F56FF /* Converter.swift */,
-			);
-			path = Converter;
-			sourceTree = "<group>";
-		};
 		AB3BD6EB272215F20052CCA9 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -1711,8 +1702,10 @@
 				AB275FFD26DCAA56009F63B3 /* Indicator.swift */,
 				AB4397FA26DDF78A008C8CA8 /* HUDIndicator.swift */,
 				AB14B46126DA855F007A5F16 /* CommunicationStatus.swift */,
+				AB13EDDA26C3C163002F56FF /* Converter.swift */,
 			);
-			path = Utilities;
+			name = Utilities;
+			path = Presentaion/Utilities;
 			sourceTree = "<group>";
 		};
 		AB4539B1271D6E9000CF1C04 /* Constants */ = {
@@ -2186,6 +2179,7 @@
 		AB93C239266A234800C3AE8F /* StudyRecordApp */ = {
 			isa = PBXGroup;
 			children = (
+				AB3BD6EC272217010052CCA9 /* Utilities */,
 				AB3BD6E5272213600052CCA9 /* Data */,
 				AB3BD6E6272213700052CCA9 /* Domain */,
 				AB3BD6E7272213800052CCA9 /* Presentaion */,
@@ -2193,7 +2187,6 @@
 				AB93C2CB266C84CA00C3AE8F /* Extensions */,
 				AB3BD6E32722129B0052CCA9 /* Protocols */,
 				AB4539B1271D6E9000CF1C04 /* Constants */,
-				AB3BD6EA2722159C0052CCA9 /* Converter */,
 				AB05882D270D7EE400DC10C7 /* Generated */,
 				AB3BD6E8272213F50052CCA9 /* Application */,
 				AB3BD6E92722152C0052CCA9 /* Resources */,
