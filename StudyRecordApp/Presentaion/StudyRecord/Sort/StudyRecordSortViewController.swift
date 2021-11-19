@@ -129,6 +129,7 @@ extension StudyRecordSortViewController: SubCustomNavigationBarDelegate {
     func saveButtonDidTapped() {}
 
     func dismissButtonDidTapped() {
+        NotificationCenter.default.post(name: .recordAdded, object: nil)
         dismiss(animated: true)
     }
 
