@@ -569,6 +569,7 @@
 		ABBF36EA271ECD6E00CB3249 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB93C243266A234C00C3AE8F /* Assets.xcassets */; };
 		ABCE16C7270994210014F618 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ABCE16C9270994210014F618 /* InfoPlist.strings */; };
 		ABDF66BE26E79543000D9FD5 /* TabBarCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDF66BD26E79543000D9FD5 /* TabBarCollectionViewController.swift */; };
+		ABE056B72747420B009EBA30 /* AdditionalStudyRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE056B62747420B009EBA30 /* AdditionalStudyRecordViewModel.swift */; };
 		ABE8CF59271EA8D500705EE4 /* Reports.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABE8CF58271EA8D500705EE4 /* Reports.storyboard */; };
 		ABFAB15526DF802A0095EC20 /* PriorityStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAB15426DF802A0095EC20 /* PriorityStackView.swift */; };
 		ABFAB15826DF86920095EC20 /* GoalPhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFAB15626DF86920095EC20 /* GoalPhotoTableViewCell.swift */; };
@@ -1160,6 +1161,7 @@
 		ABCE16C8270994210014F618 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		ABCE16CA270994250014F618 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		ABDF66BD26E79543000D9FD5 /* TabBarCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCollectionViewController.swift; sourceTree = "<group>"; };
+		ABE056B62747420B009EBA30 /* AdditionalStudyRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalStudyRecordViewModel.swift; sourceTree = "<group>"; };
 		ABE8CF58271EA8D500705EE4 /* Reports.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Reports.storyboard; sourceTree = "<group>"; };
 		ABFAB15426DF802A0095EC20 /* PriorityStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityStackView.swift; sourceTree = "<group>"; };
 		ABFAB15626DF86920095EC20 /* GoalPhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPhotoTableViewCell.swift; sourceTree = "<group>"; };
@@ -2283,6 +2285,7 @@
 			isa = PBXGroup;
 			children = (
 				AB93C267266A7DFF00C3AE8F /* AdditionalStudyRecordViewController.swift */,
+				ABE056B62747420B009EBA30 /* AdditionalStudyRecordViewModel.swift */,
 				AB93C265266A7DEB00C3AE8F /* AdditionalStudyRecord.storyboard */,
 			);
 			path = Additional;
@@ -2932,6 +2935,7 @@
 				AB20F81226E7F3E100564B14 /* GraphKindSelectingViewController.swift in Sources */,
 				AB93C268266A7DFF00C3AE8F /* AdditionalStudyRecordViewController.swift in Sources */,
 				ABFAB20E26E638390095EC20 /* RealmGraphDataStore.swift in Sources */,
+				ABE056B72747420B009EBA30 /* AdditionalStudyRecordViewModel.swift in Sources */,
 				AB4539B9271D7D1500CF1C04 /* ReportThankYouView.swift in Sources */,
 				AB3BD6AB2721D4E40052CCA9 /* LocalLanguage.swift in Sources */,
 				AB2B5B9E26A2D1B7009BD3C7 /* NaturalConcept.swift in Sources */,

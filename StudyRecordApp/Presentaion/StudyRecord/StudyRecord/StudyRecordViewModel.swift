@@ -21,7 +21,7 @@ protocol StudyRecordViewModelInput {
 }
 
 protocol StudyRecordViewModelOutput: AnyObject {
-    var event: Driver<StudyRecordViewModel.Event> { get }
+    var event: Signal<StudyRecordViewModel.Event> { get }
     var items: Driver<[StudyRecordViewModel.Item]> { get }
     var isHiddenTableView: Driver<Bool> { get }
 }
@@ -43,13 +43,24 @@ final class StudyRecordViewModel {
     private let recordUseCase: RxRecordUseCase
     private let disposeBag = DisposeBag()
 
-    init(recordUseCase: RxRecordUseCase) {
+    init(recordUseCase: RxRecordUseCase,
+         registerButton: Signal<Void>) {
+        
         self.recordUseCase = recordUseCase
+        
+        registerButton
+            .emit(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.eventRelay.accept(.presentAdditionalStudyRecordVC)
+            })
+            .disposed(by: disposeBag)
+        
         readItems()
     }
 
     enum Event {
         case presentEditStudyRecordVC(Int)
+        case presentAdditionalStudyRecordVC
         case presentRecordDeleteAlert(Int)
         case notifyLongPress
         case notifyDelete(Bool)
@@ -131,8 +142,8 @@ extension StudyRecordViewModel: StudyRecordViewModelInput {
 // MARK: - Output
 extension StudyRecordViewModel: StudyRecordViewModelOutput {
 
-    var event: Driver<Event> {
-        eventRelay.asDriver(onErrorDriveWith: .empty())
+    var event: Signal<Event> {
+        eventRelay.asSignal()
     }
 
     var items: Driver<[Item]> {
