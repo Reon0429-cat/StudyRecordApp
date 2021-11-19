@@ -334,6 +334,7 @@ extension EditStudyRecordViewController: SubCustomNavigationBarDelegate {
 
     func saveButtonDidTapped() {
         recordUseCase.update(record: selectedRecord)
+        NotificationCenter.default.post(name: .recordAdded, object: nil)
         dismiss(animated: true)
     }
 

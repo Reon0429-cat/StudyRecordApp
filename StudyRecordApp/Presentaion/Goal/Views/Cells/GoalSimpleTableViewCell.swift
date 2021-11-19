@@ -16,6 +16,7 @@ final class GoalSimpleTableViewCell: UITableViewCell {
     @IBOutlet private weak var memoButton: UIButton!
     @IBOutlet private weak var deleteButton: UIButton!
     @IBOutlet private weak var memoTextView: UITextView!
+    @IBOutlet private weak var memoTextViewBaseView: UIView!
 
     weak var delegate: GoalTableViewCellDelegate?
     var indexPath: IndexPath?
@@ -113,6 +114,7 @@ private extension GoalSimpleTableViewCell {
         memoTextView.layer.cornerRadius = 10
         memoTextView.isEditable = false
         memoTextView.clipsToBounds = false
+        memoTextViewBaseView.isHidden = !goal.isExpanded
     }
 
     func setColor() {

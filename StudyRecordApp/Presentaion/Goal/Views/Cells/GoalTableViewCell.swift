@@ -53,6 +53,7 @@ final class GoalTableViewCell: UITableViewCell {
     @IBOutlet private weak var myImageView: UIImageView!
     @IBOutlet private weak var imageViewBaseView: UIView!
     @IBOutlet private weak var memoButton: UIButton!
+    @IBOutlet private weak var memoTextViewBaseView: UIView!
     @IBOutlet private weak var memoTextView: UITextView!
     @IBOutlet private weak var deleteButton: UIButton!
     @IBOutlet private weak var achievementButton: UIButton!
@@ -202,6 +203,7 @@ private extension GoalTableViewCell {
         memoTextView.layer.cornerRadius = 10
         memoTextView.isEditable = false
         memoTextView.clipsToBounds = false
+        memoTextViewBaseView.isHidden = !goal.isExpanded
     }
 
     func setColor() {
