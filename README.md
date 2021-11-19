@@ -34,8 +34,8 @@ MVVM
 clean　architecture  
 
 
-## アプリの操作動画  
-/Users/oonishireon/Dropbox/My Mac (MacBook Pro)/Downloads/ezgif.com-gif-maker.gif  
+## アプリ挙動動画
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/66917548/142624979-d5f555bb-823d-422f-8cbe-c876ddbd6cd5.gif)
 
 
 ## アプリの特徴・工夫した点  
