@@ -1374,63 +1374,15 @@
 		AB3BD6C627220E050052CCA9 /* StudyRecord */ = {
 			isa = PBXGroup;
 			children = (
-				AB3BD6C727220E370052CCA9 /* Views */,
-				AB3BD6CA27220ED60052CCA9 /* Controllers */,
-				AB87261D273C8E080094544E /* ViewModels */,
+				ABE056AF27473D99009EBA30 /* StudyRecord */,
+				ABE056B527473DDE009EBA30 /* Additional */,
+				ABE056B427473DD7009EBA30 /* Edit */,
+				ABE056B327473DD0009EBA30 /* GraphColor */,
+				ABE056B227473DC2009EBA30 /* Memo */,
+				ABE056B127473DBC009EBA30 /* TimeRecord */,
+				ABE056B027473DA8009EBA30 /* Sort */,
 			);
 			path = StudyRecord;
-			sourceTree = "<group>";
-		};
-		AB3BD6C727220E370052CCA9 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				AB3BD6C827220E420052CCA9 /* Storyboards */,
-				AB3BD6C927220E4F0052CCA9 /* Cells */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		AB3BD6C827220E420052CCA9 /* Storyboards */ = {
-			isa = PBXGroup;
-			children = (
-				AB93C250266A27B900C3AE8F /* StudyRecord.storyboard */,
-				AB93C265266A7DEB00C3AE8F /* AdditionalStudyRecord.storyboard */,
-				AB93C2C4266BC2D600C3AE8F /* EditStudyRecord.storyboard */,
-				ABA0570226B50F7100E3DF01 /* StudyRecordGraphColor.storyboard */,
-				AB13ED1526B8F5D0002F56FF /* StudyRecordMemo.storyboard */,
-				AB13EDD226C29DAF002F56FF /* StudyRecordTimeRecord.storyboard */,
-				AB13EDB026BFAA7D002F56FF /* StudyRecordSort.storyboard */,
-			);
-			path = Storyboards;
-			sourceTree = "<group>";
-		};
-		AB3BD6C927220E4F0052CCA9 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				AB16307926CE123A00111F55 /* RecordTableViewCell.swift */,
-				AB16307A26CE123A00111F55 /* RecordTableViewCell.xib */,
-				ABA056F426B4C7D800E3DF01 /* StudyRecordGraphColorTableViewCell.swift */,
-				ABA056F526B4C7D800E3DF01 /* StudyRecordGraphColorTableViewCell.xib */,
-				AB13ED7B26BE7061002F56FF /* StudyRecordHistoryTableViewCell.swift */,
-				AB13ED7C26BE7061002F56FF /* StudyRecordHistoryTableViewCell.xib */,
-				AB13EDB226BFAB8B002F56FF /* StudyRecordSortTableViewCell.swift */,
-				AB13EDB326BFAB8B002F56FF /* StudyRecordSortTableViewCell.xib */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		AB3BD6CA27220ED60052CCA9 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				AB93C24E266A271E00C3AE8F /* StudyRecordViewController.swift */,
-				AB93C267266A7DFF00C3AE8F /* AdditionalStudyRecordViewController.swift */,
-				AB93C2C2266BC28E00C3AE8F /* EditStudyRecordViewController.swift */,
-				ABA0570426B50F8100E3DF01 /* StudyRecordGraphColorViewController.swift */,
-				AB13ED1726B8F5EA002F56FF /* StudyRecordMemoViewController.swift */,
-				AB13EDD026C29D9E002F56FF /* StudyRecordTimeRecordViewController.swift */,
-				AB13EDAE26BFAA62002F56FF /* StudyRecordSortViewController.swift */,
-			);
-			path = Controllers;
 			sourceTree = "<group>";
 		};
 		AB3BD6CB27220F140052CCA9 /* Top */ = {
@@ -2136,14 +2088,6 @@
 			path = HalfModal;
 			sourceTree = "<group>";
 		};
-		AB87261D273C8E080094544E /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				AB87261E273C8E2F0094544E /* StudyRecordViewModel.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
 		AB872620273CBC6E0094544E /* Rx */ = {
 			isa = PBXGroup;
 			children = (
@@ -2270,6 +2214,78 @@
 				ABBA350A26F93026001BAEEF /* Date+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		ABE056AF27473D99009EBA30 /* StudyRecord */ = {
+			isa = PBXGroup;
+			children = (
+				AB93C24E266A271E00C3AE8F /* StudyRecordViewController.swift */,
+				AB87261E273C8E2F0094544E /* StudyRecordViewModel.swift */,
+				AB93C250266A27B900C3AE8F /* StudyRecord.storyboard */,
+				AB16307926CE123A00111F55 /* RecordTableViewCell.swift */,
+				AB16307A26CE123A00111F55 /* RecordTableViewCell.xib */,
+			);
+			path = StudyRecord;
+			sourceTree = "<group>";
+		};
+		ABE056B027473DA8009EBA30 /* Sort */ = {
+			isa = PBXGroup;
+			children = (
+				AB13EDAE26BFAA62002F56FF /* StudyRecordSortViewController.swift */,
+				AB13EDB026BFAA7D002F56FF /* StudyRecordSort.storyboard */,
+				AB13EDB226BFAB8B002F56FF /* StudyRecordSortTableViewCell.swift */,
+				AB13EDB326BFAB8B002F56FF /* StudyRecordSortTableViewCell.xib */,
+			);
+			path = Sort;
+			sourceTree = "<group>";
+		};
+		ABE056B127473DBC009EBA30 /* TimeRecord */ = {
+			isa = PBXGroup;
+			children = (
+				AB13EDD026C29D9E002F56FF /* StudyRecordTimeRecordViewController.swift */,
+				AB13EDD226C29DAF002F56FF /* StudyRecordTimeRecord.storyboard */,
+				AB13ED7B26BE7061002F56FF /* StudyRecordHistoryTableViewCell.swift */,
+				AB13ED7C26BE7061002F56FF /* StudyRecordHistoryTableViewCell.xib */,
+			);
+			path = TimeRecord;
+			sourceTree = "<group>";
+		};
+		ABE056B227473DC2009EBA30 /* Memo */ = {
+			isa = PBXGroup;
+			children = (
+				AB13ED1726B8F5EA002F56FF /* StudyRecordMemoViewController.swift */,
+				AB13ED1526B8F5D0002F56FF /* StudyRecordMemo.storyboard */,
+			);
+			path = Memo;
+			sourceTree = "<group>";
+		};
+		ABE056B327473DD0009EBA30 /* GraphColor */ = {
+			isa = PBXGroup;
+			children = (
+				ABA0570426B50F8100E3DF01 /* StudyRecordGraphColorViewController.swift */,
+				ABA0570226B50F7100E3DF01 /* StudyRecordGraphColor.storyboard */,
+				ABA056F426B4C7D800E3DF01 /* StudyRecordGraphColorTableViewCell.swift */,
+				ABA056F526B4C7D800E3DF01 /* StudyRecordGraphColorTableViewCell.xib */,
+			);
+			path = GraphColor;
+			sourceTree = "<group>";
+		};
+		ABE056B427473DD7009EBA30 /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				AB93C2C2266BC28E00C3AE8F /* EditStudyRecordViewController.swift */,
+				AB93C2C4266BC2D600C3AE8F /* EditStudyRecord.storyboard */,
+			);
+			path = Edit;
+			sourceTree = "<group>";
+		};
+		ABE056B527473DDE009EBA30 /* Additional */ = {
+			isa = PBXGroup;
+			children = (
+				AB93C267266A7DFF00C3AE8F /* AdditionalStudyRecordViewController.swift */,
+				AB93C265266A7DEB00C3AE8F /* AdditionalStudyRecord.storyboard */,
+			);
+			path = Additional;
 			sourceTree = "<group>";
 		};
 		ABFAB20A26E394B10095EC20 /* Cells */ = {

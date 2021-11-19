@@ -15,9 +15,9 @@ protocol ResetingPasswordViewModelInput {
 }
 
 protocol ResetingPasswordViewModelOutput: AnyObject {
-    var event: Driver<ResetingPasswordViewModel.Event> { get }
+    var event: Signal<ResetingPasswordViewModel.Event> { get }
     var isEnabledSendButton: Driver<Bool> { get }
-    var topConstantOfStackView: Driver<CGFloat> { get }
+    var topConstantOfStackView: Signal<CGFloat> { get }
 }
 
 protocol ResetingPasswordViewModelType {
@@ -102,16 +102,16 @@ extension ResetingPasswordViewModel: ResetingPasswordViewModelInput {
 // MARK: - Output
 extension ResetingPasswordViewModel: ResetingPasswordViewModelOutput {
 
-    var event: Driver<ResetingPasswordViewModel.Event> {
-        eventRelay.asDriver(onErrorDriveWith: .empty())
+    var event: Signal<ResetingPasswordViewModel.Event> {
+        eventRelay.asSignal()
     }
 
     var isEnabledSendButton: Driver<Bool> {
         isEnabledSendButtonRelay.asDriver()
     }
 
-    var topConstantOfStackView: Driver<CGFloat> {
-        topConstantOfStackViewRelay.asDriver(onErrorDriveWith: .empty())
+    var topConstantOfStackView: Signal<CGFloat> {
+        topConstantOfStackViewRelay.asSignal()
     }
 
 }

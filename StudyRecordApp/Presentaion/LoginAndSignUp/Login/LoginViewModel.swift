@@ -17,10 +17,10 @@ protocol LoginViewModelInput {
 
 protocol LoginViewModelOutput: AnyObject {
     var shouldPasswordTextFieldSecure: Driver<Bool> { get }
-    var stackViewTopConstant: Driver<CGFloat> { get }
+    var stackViewTopConstant: Signal<CGFloat> { get }
     var isLoginButtonEnabled: Driver<Bool> { get }
     var passwordSecureButtonImage: Driver<UIImage> { get }
-    var event: Driver<LoginViewModel.Event> { get }
+    var event: Signal<LoginViewModel.Event> { get }
 }
 
 protocol LoginViewModelType {
@@ -29,7 +29,7 @@ protocol LoginViewModelType {
 }
 
 final class LoginViewModel {
-
+    
     private var isPasswordHidden = true
     private var isKeyboardHidden = true
     private let indicator = Indicator(kinds: PKHUDIndicator())
@@ -40,20 +40,20 @@ final class LoginViewModel {
     private let eventRelay = PublishRelay<Event>()
     private let isLoginButtonEnabledRelay = BehaviorRelay<Bool>(value: false)
     private let disposeBag = DisposeBag()
-
+    
     enum Event {
         case dismiss
         case presentResetingPassword
         case showErrorAlert(title: String)
     }
-
+    
     init(userUseCase: UserUseCase,
          mailText: Driver<String>,
          passwordText: Driver<String>,
          loginButton: Signal<Void>,
          passwordSecureButton: Signal<Void>,
          passwordForgotButton: Signal<Void>) {
-
+        
         Observable
             .combineLatest(
                 mailText.asObservable(),
@@ -62,7 +62,7 @@ final class LoginViewModel {
             .map { !$0.isEmpty && !$1.isEmpty }
             .bind(to: isLoginButtonEnabledRelay)
             .disposed(by: disposeBag)
-
+        
         loginButton
             .withLatestFrom(
                 Signal.combineLatest(
@@ -88,7 +88,7 @@ final class LoginViewModel {
                     .disposed(by: self.disposeBag)
             })
             .disposed(by: disposeBag)
-
+        
         passwordSecureButton
             .emit(onNext: { [weak self] in
                 guard let self = self else { return }
@@ -97,7 +97,7 @@ final class LoginViewModel {
                 self.isPasswordHidden.toggle()
             })
             .disposed(by: disposeBag)
-
+        
         passwordForgotButton
             .emit(onNext: { [weak self] in
                 guard let self = self else { return }
@@ -105,44 +105,44 @@ final class LoginViewModel {
             })
             .disposed(by: disposeBag)
     }
-
+    
 }
 
 // MARK: - Input
 extension LoginViewModel: LoginViewModelInput {
-
+    
     func viewDidLoad() {
         isEyeFillImageRelay.accept(false)
         shouldPasswordTextFieldSecureRelay.accept(true)
     }
-
+    
     func keyboardWillShow() {
         if isKeyboardHidden {
             stackViewTopConstantRelay.accept(-100)
         }
         isKeyboardHidden = false
     }
-
+    
     func keyboardWillHide() {
         if !isKeyboardHidden {
             stackViewTopConstantRelay.accept(100)
         }
         isKeyboardHidden = true
     }
-
+    
 }
 
 // MARK: - Output
 extension LoginViewModel: LoginViewModelOutput {
-
+    
     var shouldPasswordTextFieldSecure: Driver<Bool> {
         shouldPasswordTextFieldSecureRelay.asDriver(onErrorDriveWith: .empty())
     }
-
-    var stackViewTopConstant: Driver<CGFloat> {
-        stackViewTopConstantRelay.asDriver(onErrorDriveWith: .empty())
+    
+    var stackViewTopConstant: Signal<CGFloat> {
+        stackViewTopConstantRelay.asSignal()
     }
-
+    
     var passwordSecureButtonImage: Driver<UIImage> {
         isEyeFillImageRelay
             .map { isSlash in
@@ -153,25 +153,25 @@ extension LoginViewModel: LoginViewModelOutput {
             }
             .asDriver(onErrorDriveWith: .empty())
     }
-
-    var event: Driver<Event> {
-        eventRelay.asDriver(onErrorDriveWith: .empty())
+    
+    var event: Signal<Event> {
+        eventRelay.asSignal()
     }
-
+    
     var isLoginButtonEnabled: Driver<Bool> {
         isLoginButtonEnabledRelay.asDriver()
     }
-
+    
 }
 
 extension LoginViewModel: LoginViewModelType {
-
+    
     var inputs: LoginViewModelInput {
         return self
     }
-
+    
     var outputs: LoginViewModelOutput {
         return self
     }
-
+    
 }

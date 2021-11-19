@@ -75,7 +75,7 @@ final class SignUpViewController: UIViewController {
 
         // Output
         viewModel.outputs.event
-            .drive(onNext: { [weak self] event in
+            .emit(onNext: { [weak self] event in
                 guard let self = self else { return }
                 switch event {
                 case .showErrorAlert(let title):

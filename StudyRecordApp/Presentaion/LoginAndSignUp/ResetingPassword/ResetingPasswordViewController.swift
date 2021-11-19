@@ -59,7 +59,7 @@ final class ResetingPasswordViewController: UIViewController {
 
         // Output
         viewModel.outputs.event
-            .drive(onNext: { [weak self] event in
+            .emit(onNext: { [weak self] event in
                 guard let self = self else { return }
                 switch event {
                 case .dismiss:
@@ -78,7 +78,7 @@ final class ResetingPasswordViewController: UIViewController {
             .disposed(by: disposeBag)
 
         viewModel.outputs.topConstantOfStackView
-            .drive(onNext: { [weak self] constant in
+            .emit(onNext: { [weak self] constant in
                 guard let self = self else { return }
                 UIView.animate(deadlineFromNow: 0, duration: 0.5) {
                     self.stackViewTopConstraint.constant += constant
