@@ -510,6 +510,7 @@ PODS:
   - ScrollableGraphView (4.0.6)
   - SwiftFormat/CLI (0.48.18)
   - SwiftGen (6.5.1)
+  - SwiftLint (0.45.0)
 
 DEPENDENCIES:
   - Firebase/Analytics
@@ -526,6 +527,7 @@ DEPENDENCIES:
   - ScrollableGraphView
   - SwiftFormat/CLI
   - SwiftGen
+  - SwiftLint
 
 SPEC REPOS:
   trunk:
@@ -560,6 +562,7 @@ SPEC REPOS:
     - ScrollableGraphView
     - SwiftFormat
     - SwiftGen
+    - SwiftLint
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
@@ -593,7 +596,8 @@ SPEC CHECKSUMS:
   ScrollableGraphView: 4af35d4ea9ecdec665d34a74da51da161ddff8ac
   SwiftFormat: 7dd2b33a0a3d61095b61c911b6d89ff962ae695c
   SwiftGen: a6d22010845f08fe18fbdf3a07a8e380fd22e0ea
+  SwiftLint: e5c7f1fba68eccfc51509d5b2ce1699f5502e0c7
 
-PODFILE CHECKSUM: bcc594d4432ae0c18957ff1908090d2563b446dc
+PODFILE CHECKSUM: ecd0498835fb2db70739860b379d69744ddcb952
 
 COCOAPODS: 1.10.2

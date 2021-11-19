@@ -149,6 +149,10 @@ body: MIT Licence
 Copyrig…
 version: 6.5.1
 
+name: SwiftLint, nameSpecified: 
+body: The MIT License (MIT…
+version: 0.45.0
+
 add-version-numbers: false
 
 LicensePlist Version: 3.14.4
