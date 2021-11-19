@@ -72,6 +72,7 @@ clean　architecture
 
 ## 今後の予定  
 音声入力  
+Wiget  
 課金処理  
 広告導入  
 CI/CD  
