@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class AdditionalStudyRecordViewController: UIViewController {
 
@@ -13,23 +15,10 @@ final class AdditionalStudyRecordViewController: UIViewController {
     @IBOutlet private weak var bottomWaveView: WaveView!
     @IBOutlet private weak var tableView: UITableView!
 
-    private enum CellType: Int, CaseIterable {
-        case title
-        case graphColor
-        case memo
-    }
-
-    private let cellTypes = CellType.allCases
-    private let recordUseCase = RecordUseCase(
-        repository: RecordRepository()
+    private lazy var viewModel: AdditionalStudyRecordViewModelType = AdditionalStudyRecordViewModel(
+        recordUseCase: RxRecordUseCase(repository: RxRecordRepository())
     )
-    private var inputtedTitle = ""
-    private var oldInputtedTitle = ""
-    private var selectedGraphColor: UIColor = .clear
-    private var inputtedMemo = ""
-    private var isMandatoryItemFilled: Bool {
-        !inputtedTitle.isEmpty && selectedGraphColor != .clear
-    }
+    private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +27,75 @@ final class AdditionalStudyRecordViewController: UIViewController {
         setupNavigationTopBar()
         setupTapGesture()
         setupWaveView()
+        setupBindings()
+        viewModel.inputs.viewDidLoad()
+
+    }
+
+    private func setupBindings() {
+        // Input
+        Observable
+            .zip(
+                tableView.rx.itemSelected,
+                tableView.rx.modelSelected(AdditionalStudyRecordViewModel.Item.self)
+            )
+            .bind { [weak self] indexPath, item in
+                guard let strongSelf = self else { return }
+                strongSelf.tableView.deselectRow(at: indexPath, animated: true)
+                strongSelf.viewModel.inputs.itemDidSelected(item: item)
+            }
+            .disposed(by: disposeBag)
+
+        // Output
+        viewModel.outputs.items
+            .drive(tableView.rx.items) { tableView, row, item in
+                switch item {
+                case .title(let title):
+                    let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
+                    cell.configure(titleText: L10n.largeTitle,
+                                   mandatoryIsHidden: false,
+                                   auxiliaryText: title,
+                                   isMemo: false)
+                    return cell
+                case .graphColor(let color):
+                    let cell = tableView.dequeueReusableCustomCell(with: StudyRecordGraphColorTableViewCell.self)
+                    cell.configure(color: color)
+                    return cell
+                case .memo(let memo):
+                    let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
+                    cell.configure(titleText: L10n.largeMemo,
+                                   mandatoryIsHidden: true,
+                                   auxiliaryText: memo,
+                                   isMemo: true)
+                    return cell
+                }
+            }
+            .disposed(by: disposeBag)
+
+        viewModel.outputs.event
+            .emit(onNext: { [weak self] event in
+                guard let strongSelf = self else { return }
+                switch event {
+                case .dismiss:
+                    strongSelf.dismiss(animated: true)
+                case .presentStudyRecordGraphColorVC:
+                    strongSelf.presentStudyRecordGraphColorVC()
+                case .presentStudyRecordMemoVC(let memo):
+                    strongSelf.presentStudyRecordMemoVC(memo: memo)
+                case .presentAlert:
+                    strongSelf.presentAlert()
+                case .presentAlertWithTextField(let text):
+                    strongSelf.showAlertWithTextField(inputtedTitle: text)
+                }
+            })
+            .disposed(by: disposeBag)
+
+        viewModel.outputs.isEnabledSaveButton
+            .drive(onNext: { [weak self] isEnabled in
+                guard let strongSelf = self else { return }
+                strongSelf.subCustomNavigationBar.saveButton(isEnabled: isEnabled)
+            })
+            .disposed(by: disposeBag)
 
     }
 
@@ -46,83 +104,56 @@ final class AdditionalStudyRecordViewController: UIViewController {
 // MARK: - func
 private extension AdditionalStudyRecordViewController {
 
-    func controlSaveButton() {
-        subCustomNavigationBar.saveButton(isEnabled: isMandatoryItemFilled)
-    }
-
-    func saveRecord() {
-        let record = Record(title: inputtedTitle,
-                            histories: nil,
-                            isExpanded: false,
-                            graphColor: GraphColor(color: selectedGraphColor),
-                            memo: inputtedMemo,
-                            yearID: UUID().uuidString,
-                            monthID: UUID().uuidString,
-                            order: recordUseCase.records.count,
-                            identifier: UUID().uuidString)
-        recordUseCase.save(record: record)
-    }
-
-    func showAlert() {
+    func presentAlert() {
         let alert = Alert.create(message: L10n.doYouWantToCloseWithoutSaving)
             .addAction(title: L10n.close) {
                 self.dismiss(animated: true)
             }
             .addAction(title: L10n.save) {
-                self.saveRecord()
+                self.viewModel.inputs.saveAlertSaveButtonDidTapped()
                 self.dismiss(animated: true)
             }
         present(alert, animated: true)
     }
 
-    func showAlertWithTextField() {
+    func showAlertWithTextField(inputtedTitle: String) {
         let alert = Alert.create(title: L10n.largeTitle)
             .setTextField { textField in
                 textField.tintColor = .dynamicColor(light: .black, dark: .white)
-                textField.text = self.inputtedTitle
+                textField.text = inputtedTitle
                 textField.delegate = self
             }
             .addAction(title: L10n.close) {
-                self.inputtedTitle = self.oldInputtedTitle
+                self.viewModel.inputs.textFieldAlertCloseButtonDidTapped()
             }
             .addAction(title: L10n.add) {
-                self.oldInputtedTitle = self.inputtedTitle
+                self.viewModel.inputs.textFieldAlertAddButtonDidTapped(title: inputtedTitle)
                 self.tableView.reloadData()
             }
         present(alert, animated: true)
     }
 
-    func notifyRecordAdded() {
-        NotificationCenter.default.post(name: .recordAdded, object: nil)
+    func presentStudyRecordGraphColorVC() {
+        present(StudyRecordGraphColorViewController.self,
+                modalPresentationStyle: .overCurrentContext,
+                modalTransitionStyle: .crossDissolve) { vc in
+            vc.delegate = self
+        }
+    }
+
+    func presentStudyRecordMemoVC(memo: String) {
+        present(StudyRecordMemoViewController.self,
+                modalPresentationStyle: .overCurrentContext,
+                modalTransitionStyle: .crossDissolve) { vc in
+            vc.inputtedMemo = memo
+            vc.delegate = self
+        }
     }
 
 }
 
 // MARK: - UITableViewDelegate
 extension AdditionalStudyRecordViewController: UITableViewDelegate {
-
-    func tableView(_ tableView: UITableView,
-                   didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        let cellType = CellType(rawValue: indexPath.row)!
-        switch cellType {
-        case .title:
-            showAlertWithTextField()
-        case .graphColor:
-            present(StudyRecordGraphColorViewController.self,
-                    modalPresentationStyle: .overCurrentContext,
-                    modalTransitionStyle: .crossDissolve) { vc in
-                vc.delegate = self
-            }
-        case .memo:
-            present(StudyRecordMemoViewController.self,
-                    modalPresentationStyle: .overCurrentContext,
-                    modalTransitionStyle: .crossDissolve) { vc in
-                vc.inputtedMemo = self.inputtedMemo
-                vc.delegate = self
-            }
-        }
-    }
 
     func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -143,48 +174,11 @@ extension AdditionalStudyRecordViewController: UITableViewDelegate {
 
 }
 
-// MARK: - UITableViewDataSource
-extension AdditionalStudyRecordViewController: UITableViewDataSource {
-
-    func tableView(_ tableView: UITableView,
-                   numberOfRowsInSection section: Int) -> Int {
-        return cellTypes.count
-    }
-
-    func tableView(_ tableView: UITableView,
-                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellType = CellType(rawValue: indexPath.row)!
-        switch cellType {
-        case .title:
-            let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
-            cell.configure(titleText: L10n.largeTitle,
-                           mandatoryIsHidden: false,
-                           auxiliaryText: inputtedTitle,
-                           isMemo: false)
-            return cell
-        case .graphColor:
-            let cell = tableView.dequeueReusableCustomCell(with: StudyRecordGraphColorTableViewCell.self)
-            cell.configure(color: selectedGraphColor)
-            return cell
-        case .memo:
-            let cell = tableView.dequeueReusableCustomCell(with: CustomTitleTableViewCell.self)
-            cell.configure(titleText: L10n.largeMemo,
-                           mandatoryIsHidden: true,
-                           auxiliaryText: inputtedMemo,
-                           isMemo: true)
-            return cell
-        }
-    }
-
-}
-
 // MARK: - StudyRecordGraphColorVCDelegate
 extension AdditionalStudyRecordViewController: StudyRecordGraphColorVCDelegate {
 
     func graphColorDidSelected(color: UIColor) {
-        selectedGraphColor = color
-        tableView.reloadData()
-        controlSaveButton()
+        viewModel.inputs.graphColorDidSelected(color: color)
     }
 
 }
@@ -193,8 +187,7 @@ extension AdditionalStudyRecordViewController: StudyRecordGraphColorVCDelegate {
 extension AdditionalStudyRecordViewController: StudyRecordMemoVCDelegate {
 
     func savedMemo(memo: String) {
-        inputtedMemo = memo
-        tableView.reloadData()
+        viewModel.inputs.savedMemo(memo: memo)
     }
 
 }
@@ -203,8 +196,7 @@ extension AdditionalStudyRecordViewController: StudyRecordMemoVCDelegate {
 extension AdditionalStudyRecordViewController: UITextFieldDelegate {
 
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        inputtedTitle = textField.text ?? ""
-        controlSaveButton()
+        viewModel.inputs.textFieldDidChangeSelection(text: textField.text)
     }
 
 }
@@ -213,17 +205,11 @@ extension AdditionalStudyRecordViewController: UITextFieldDelegate {
 extension AdditionalStudyRecordViewController: SubCustomNavigationBarDelegate {
 
     func saveButtonDidTapped() {
-        saveRecord()
-        notifyRecordAdded()
-        dismiss(animated: true)
+        viewModel.inputs.saveButtonDidTapped()
     }
 
     func dismissButtonDidTapped() {
-        if isMandatoryItemFilled {
-            showAlert()
-        } else {
-            dismiss(animated: true)
-        }
+        viewModel.inputs.dismissButtonDidTapped()
     }
 
     var navTitle: String {
@@ -236,8 +222,7 @@ extension AdditionalStudyRecordViewController: SubCustomNavigationBarDelegate {
 private extension AdditionalStudyRecordViewController {
 
     func setupTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
+        tableView.rx.setDelegate(self).disposed(by: disposeBag)
         tableView.registerCustomCell(CustomTitleTableViewCell.self)
         tableView.registerCustomCell(StudyRecordGraphColorTableViewCell.self)
         tableView.tableFooterView = UIView()
@@ -248,7 +233,6 @@ private extension AdditionalStudyRecordViewController {
 
     func setupNavigationTopBar() {
         subCustomNavigationBar.delegate = self
-        subCustomNavigationBar.saveButton(isEnabled: false)
     }
 
     func setupTapGesture() {

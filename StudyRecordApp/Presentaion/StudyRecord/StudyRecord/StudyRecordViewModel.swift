@@ -45,16 +45,16 @@ final class StudyRecordViewModel {
 
     init(recordUseCase: RxRecordUseCase,
          registerButton: Signal<Void>) {
-        
+
         self.recordUseCase = recordUseCase
-        
+
         registerButton
             .emit(onNext: { [weak self] in
                 guard let self = self else { return }
                 self.eventRelay.accept(.presentAdditionalStudyRecordVC)
             })
             .disposed(by: disposeBag)
-        
+
         readItems()
     }
 

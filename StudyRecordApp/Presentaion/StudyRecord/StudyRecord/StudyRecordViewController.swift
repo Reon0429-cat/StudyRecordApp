@@ -61,7 +61,7 @@ final class StudyRecordViewController: UIViewController {
                 self?.viewModel.inputs.recordAdded()
             })
             .disposed(by: disposeBag)
-        
+
         // Output
         viewModel.outputs.event
             .emit(onNext: { [weak self] event in

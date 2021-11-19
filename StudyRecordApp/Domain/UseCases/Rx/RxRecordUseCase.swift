@@ -18,6 +18,10 @@ final class RxRecordUseCase {
         self.repository = repository
     }
 
+    func createRecord(record: Record) -> Completable {
+        repository.create(record: record)
+    }
+
     func deleteRecord(record: Record) -> Completable {
         repository.delete(record: record)
     }
