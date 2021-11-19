@@ -66,6 +66,7 @@ final class LoginViewController: UIViewController {
                 switch event {
                 case .dismiss:
                     self.dismiss(animated: true)
+                    self.changeRootVC(TopViewController.self)
                 case .showErrorAlert(let title):
                     self.showErrorAlert(title: title)
                 case .presentResetingPassword:
