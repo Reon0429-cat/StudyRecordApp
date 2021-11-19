@@ -20,6 +20,6 @@ target 'StudyRecordApp' do
    pod 'RxSwift'
    pod 'RxCocoa'
    pod 'SwiftFormat/CLI'
+   pod 'SwiftLint'
    
 end
-
