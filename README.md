@@ -38,7 +38,7 @@ clean　architecture
 /Users/oonishireon/Dropbox/My Mac (MacBook Pro)/Downloads/ezgif.com-gif-maker.gif  
 
 
-## アプリの特徴、工夫した点  
+## アプリの特徴・工夫した点  
 ・直感的に操作できるUI   
 ・おしゃれなデザイン   
 ・バイブレーション、ウェーブ、フェードイン、フェードアウトなどのアニメーション   
