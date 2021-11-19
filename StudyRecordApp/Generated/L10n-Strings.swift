@@ -116,6 +116,8 @@ internal enum L10n {
     internal static let digital = L10n.tr("Localizable", "digital")
     /// discard
     internal static let discard = L10n.tr("Localizable", "discard")
+    /// done
+    internal static let done = L10n.tr("Localizable", "done")
     /// Dot
     internal static let dot = L10n.tr("Localizable", "Dot")
     /// Do you really want to delete this?

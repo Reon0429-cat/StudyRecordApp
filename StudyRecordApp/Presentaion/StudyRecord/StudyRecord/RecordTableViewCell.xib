@@ -23,16 +23,16 @@
                             <rect key="frame" x="0.0" y="0.0" width="443" height="100"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="OwJ-PD-2gb">
-                                    <rect key="frame" x="10" y="4" width="423" height="94"/>
+                                    <rect key="frame" x="10" y="4" width="418" height="94"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="プログラミングを勉強するプログラミングを勉強するプログラミングを勉強するプログラミングを勉強するプログラミングを勉強する" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="yWN-gs-jsp">
-                                            <rect key="frame" x="0.0" y="0.0" width="423" height="72"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="418" height="72"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ewv-Hv-yux">
-                                            <rect key="frame" x="0.0" y="72" width="423" height="22"/>
+                                            <rect key="frame" x="0.0" y="72" width="418" height="22"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lAr-yD-HXX">
                                                     <rect key="frame" x="0.0" y="0.0" width="70" height="22"/>
@@ -61,16 +61,16 @@
                                                     </constraints>
                                                 </view>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="M9A-M3-D65">
-                                                    <rect key="frame" x="80" y="0.0" width="343" height="22"/>
+                                                    <rect key="frame" x="80" y="0.0" width="338" height="22"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="今日: 30分" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="w5p-bu-Zak">
-                                                            <rect key="frame" x="0.0" y="0.0" width="246.5" height="22"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="241.5" height="22"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合計: 200分" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="Du5-l1-2IM">
-                                                            <rect key="frame" x="256.5" y="0.0" width="86.5" height="22"/>
+                                                            <rect key="frame" x="251.5" y="0.0" width="86.5" height="22"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -92,7 +92,7 @@
                             <constraints>
                                 <constraint firstItem="OwJ-PD-2gb" firstAttribute="leading" secondItem="XF1-Gs-Il9" secondAttribute="leading" constant="10" id="1uG-ph-P6n"/>
                                 <constraint firstItem="OwJ-PD-2gb" firstAttribute="top" secondItem="XF1-Gs-Il9" secondAttribute="top" constant="4" id="6Lw-Q0-0uP"/>
-                                <constraint firstAttribute="trailing" secondItem="OwJ-PD-2gb" secondAttribute="trailing" constant="10" id="DJ0-bp-cmy"/>
+                                <constraint firstAttribute="trailing" secondItem="OwJ-PD-2gb" secondAttribute="trailing" constant="15" id="DJ0-bp-cmy"/>
                                 <constraint firstAttribute="height" constant="100" id="NlF-YC-ZRR"/>
                                 <constraint firstAttribute="bottom" secondItem="OwJ-PD-2gb" secondAttribute="bottom" constant="2" id="Rla-dJ-UNk"/>
                             </constraints>

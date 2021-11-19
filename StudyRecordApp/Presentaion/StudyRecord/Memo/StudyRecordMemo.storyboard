@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,10 +21,7 @@
                                 <rect key="frame" x="20" y="124" width="374" height="358.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W1R-OW-vqt">
-                                        <rect key="frame" x="30" y="10" width="52" height="33"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="52" id="sr2-Dd-Gwc"/>
-                                        </constraints>
+                                        <rect key="frame" x="15" y="10" width="52" height="33"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="tintColor" systemColor="systemRedColor"/>
                                         <state key="normal" title="閉じる"/>
@@ -33,10 +30,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gvh-Br-hui">
-                                        <rect key="frame" x="309" y="10" width="35" height="33"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="35" id="r5N-mK-h1l"/>
-                                        </constraints>
+                                        <rect key="frame" x="324" y="10" width="35" height="33"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="決定"/>
                                         <connections>
@@ -77,10 +71,10 @@
                                     <constraint firstItem="qAN-ML-gdU" firstAttribute="top" secondItem="W1R-OW-vqt" secondAttribute="bottom" constant="5" id="JfW-to-BOM"/>
                                     <constraint firstAttribute="bottom" secondItem="qAN-ML-gdU" secondAttribute="bottom" constant="12" id="LxW-co-BZW"/>
                                     <constraint firstItem="Gvh-Br-hui" firstAttribute="top" secondItem="W1R-OW-vqt" secondAttribute="top" id="adU-g6-wun"/>
-                                    <constraint firstItem="W1R-OW-vqt" firstAttribute="leading" secondItem="Shj-RL-QBm" secondAttribute="leading" constant="30" id="d8j-40-gVC"/>
+                                    <constraint firstItem="W1R-OW-vqt" firstAttribute="leading" secondItem="Shj-RL-QBm" secondAttribute="leading" constant="15" id="d8j-40-gVC"/>
                                     <constraint firstItem="W1R-OW-vqt" firstAttribute="top" secondItem="Shj-RL-QBm" secondAttribute="top" constant="10" id="t7m-W4-pX4"/>
                                     <constraint firstItem="qAN-ML-gdU" firstAttribute="top" secondItem="WKY-Pj-XCM" secondAttribute="bottom" id="vWw-vK-Ffo"/>
-                                    <constraint firstAttribute="trailing" secondItem="Gvh-Br-hui" secondAttribute="trailing" constant="30" id="w32-Cy-pDL"/>
+                                    <constraint firstAttribute="trailing" secondItem="Gvh-Br-hui" secondAttribute="trailing" constant="15" id="w32-Cy-pDL"/>
                                     <constraint firstAttribute="trailing" secondItem="qAN-ML-gdU" secondAttribute="trailing" constant="12" id="xaZ-ou-MLC"/>
                                 </constraints>
                             </view>

@@ -252,7 +252,7 @@ Task Management App-TaskR";
 "license" = "License";
 "useAsAGuestUser" = "Use as a guest user";
 "onlyAvailableNotAnonymousUser" = "Only available to those who have logged in after creating an account.";
-"" = "";
+"done" = "done";
 "" = "";
 "" = "";
 "" = "";

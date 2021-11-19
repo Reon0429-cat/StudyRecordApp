@@ -17,6 +17,8 @@ final class StudyRecordTimeRecordViewController: UIViewController {
 
     @IBOutlet private weak var pickerView: UIPickerView!
     @IBOutlet private weak var deleteButton: UIButton!
+    @IBOutlet private weak var saveButton: UIButton!
+    @IBOutlet private weak var closeButton: UIButton!
     @IBOutlet private weak var contentView: UIView!
 
     var history: History?
@@ -29,6 +31,8 @@ final class StudyRecordTimeRecordViewController: UIViewController {
 
         setupPickerView()
         setupDeleteButton()
+        setupSaveButton()
+        setupCloseButton()
         setupContentView()
 
     }
@@ -167,6 +171,15 @@ private extension StudyRecordTimeRecordViewController {
 
     func setupDeleteButton() {
         deleteButton.isHidden = !isHistoryDidTapped
+        deleteButton.setTitle(L10n.delete)
+    }
+
+    func setupSaveButton() {
+        saveButton.setTitle(L10n.save)
+    }
+
+    func setupCloseButton() {
+        closeButton.setTitle(L10n.close)
     }
 
     func setupContentView() {

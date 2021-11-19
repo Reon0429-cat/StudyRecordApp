@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -31,7 +31,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="314"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="utG-N6-3fg" customClass="CustomButton" customModule="StudyRecordApp" customModuleProvider="target">
-                                                <rect key="frame" x="90" y="234" width="194" height="60"/>
+                                                <rect key="frame" x="90" y="244" width="194" height="60"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="Srm-FS-Ncp"/>
@@ -46,7 +46,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="FrO-OR-fmn">
-                                                <rect key="frame" x="10" y="51.5" width="349.5" height="95.5"/>
+                                                <rect key="frame" x="10" y="41.5" width="349.5" height="95.5"/>
                                                 <string key="text">記録データをテキストファイルに出力します。
 iCloud Driveのお好きな場所にファイルを保存してください。
 機種変更などをする際は、必ずバックアップを行うようにしてください。</string>
@@ -65,12 +65,12 @@ iCloud Driveのお好きな場所にファイルを保存してください。
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="utG-N6-3fg" secondAttribute="trailing" constant="90" id="88m-Wy-1Je"/>
                                             <constraint firstItem="FrO-OR-fmn" firstAttribute="leading" secondItem="9QH-tj-mhP" secondAttribute="leading" id="9lF-8N-FQ6"/>
-                                            <constraint firstItem="utG-N6-3fg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="FrO-OR-fmn" secondAttribute="bottom" constant="10" id="APd-cc-h7q"/>
+                                            <constraint firstItem="utG-N6-3fg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="FrO-OR-fmn" secondAttribute="bottom" id="APd-cc-h7q"/>
                                             <constraint firstItem="utG-N6-3fg" firstAttribute="centerX" secondItem="N6b-rp-9YS" secondAttribute="centerX" id="Cfv-XU-tvV"/>
                                             <constraint firstItem="9QH-tj-mhP" firstAttribute="leading" secondItem="N6b-rp-9YS" secondAttribute="leading" constant="10" id="LTr-Uw-3QN"/>
-                                            <constraint firstItem="FrO-OR-fmn" firstAttribute="top" secondItem="9QH-tj-mhP" secondAttribute="bottom" constant="20" id="k8E-pH-Mc3"/>
+                                            <constraint firstItem="FrO-OR-fmn" firstAttribute="top" secondItem="9QH-tj-mhP" secondAttribute="bottom" constant="10" id="k8E-pH-Mc3"/>
                                             <constraint firstItem="9QH-tj-mhP" firstAttribute="top" secondItem="N6b-rp-9YS" secondAttribute="top" constant="10" id="pAJ-Cd-92p"/>
-                                            <constraint firstAttribute="bottom" secondItem="utG-N6-3fg" secondAttribute="bottom" constant="20" id="txD-We-Rgx"/>
+                                            <constraint firstAttribute="bottom" secondItem="utG-N6-3fg" secondAttribute="bottom" constant="10" id="txD-We-Rgx"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="FrO-OR-fmn" secondAttribute="trailing" constant="10" id="w1W-KA-qHs"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="9QH-tj-mhP" secondAttribute="trailing" constant="10" id="xoN-dF-KtN"/>
                                         </constraints>
@@ -94,7 +94,7 @@ iCloud Driveのお好きな場所にファイルを保存してください。
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000001192092896" translatesAutoresizingMaskIntoConstraints="NO" id="DyR-Ws-IXU">
-                                                <rect key="frame" x="10" y="51.5" width="333" height="76.5"/>
+                                                <rect key="frame" x="10" y="41.5" width="333" height="76.5"/>
                                                 <string key="text">バックアップしたファイルを読み込み、記録データを復元することができます。
 iCloud Driveに保存したファイルを選択してください。</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -114,12 +114,12 @@ iCloud Driveに保存したファイルを選択してください。</string>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="krx-li-nB1" secondAttribute="trailing" constant="10" id="AF6-YX-LL3"/>
                                             <constraint firstAttribute="bottom" secondItem="c89-kE-oLN" secondAttribute="bottom" constant="20" id="Lwp-cX-fp3"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="DyR-Ws-IXU" secondAttribute="trailing" constant="10" id="T6A-Co-PtO"/>
-                                            <constraint firstItem="c89-kE-oLN" firstAttribute="top" relation="greaterThanOrEqual" secondItem="DyR-Ws-IXU" secondAttribute="bottom" constant="10" id="TIv-C6-8hq"/>
+                                            <constraint firstItem="c89-kE-oLN" firstAttribute="top" relation="greaterThanOrEqual" secondItem="DyR-Ws-IXU" secondAttribute="bottom" id="TIv-C6-8hq"/>
                                             <constraint firstAttribute="trailing" secondItem="c89-kE-oLN" secondAttribute="trailing" constant="90" id="X8q-Tn-Kh5"/>
                                             <constraint firstItem="DyR-Ws-IXU" firstAttribute="leading" secondItem="krx-li-nB1" secondAttribute="leading" id="a22-fx-zcd"/>
                                             <constraint firstItem="krx-li-nB1" firstAttribute="leading" secondItem="f1G-FQ-ZKr" secondAttribute="leading" constant="10" id="sbI-v8-PEV"/>
                                             <constraint firstItem="krx-li-nB1" firstAttribute="top" secondItem="f1G-FQ-ZKr" secondAttribute="top" constant="10" id="uAc-ke-m1I"/>
-                                            <constraint firstItem="DyR-Ws-IXU" firstAttribute="top" secondItem="krx-li-nB1" secondAttribute="bottom" constant="20" id="uP7-2d-Zev"/>
+                                            <constraint firstItem="DyR-Ws-IXU" firstAttribute="top" secondItem="krx-li-nB1" secondAttribute="bottom" constant="10" id="uP7-2d-Zev"/>
                                         </constraints>
                                     </view>
                                 </subviews>

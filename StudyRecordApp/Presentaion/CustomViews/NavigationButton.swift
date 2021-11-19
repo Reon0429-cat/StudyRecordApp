@@ -18,7 +18,7 @@ enum NavigationButtonType {
         case .save: return L10n.save
         case .dismiss: return L10n.close
         case .edit: return L10n.edit
-        case .completion: return L10n.completion
+        case .completion: return L10n.done
         }
     }
 }
