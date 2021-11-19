@@ -26,10 +26,8 @@ final class StudyRecordViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
 
     private lazy var viewModel: StudyRecordViewModelType = StudyRecordViewModel(
-        recordUseCase: recordUseCase
-    )
-    private let recordUseCase = RxRecordUseCase(
-        repository: RxRecordRepository()
+        recordUseCase: RxRecordUseCase(repository: RxRecordRepository()),
+        registerButton: registerButton.rx.tap.asSignal()
     )
     private let disposeBag = DisposeBag()
     weak var delegate: StudyRecordVCDelegate?
@@ -52,20 +50,28 @@ final class StudyRecordViewController: UIViewController {
     }
 
     private func setupBindings() {
-        registerButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                guard let strongSelf = self else { return }
-                strongSelf.present(AdditionalStudyRecordViewController.self,
-                                   modalPresentationStyle: .fullScreen)
+        // Input
+        NotificationCenter.default.rx.notification(.reloadLocalData)
+            .subscribe(onNext: { [weak self] _ in
+                self?.viewModel.inputs.reloadLocalData()
+            })
+            .disposed(by: disposeBag)
+        NotificationCenter.default.rx.notification(.recordAdded)
+            .subscribe(onNext: { [weak self] _ in
+                self?.viewModel.inputs.recordAdded()
             })
             .disposed(by: disposeBag)
 
+        // Output
         viewModel.outputs.event
-            .drive(onNext: { [weak self] event in
+            .emit(onNext: { [weak self] event in
                 guard let strongSelf = self else { return }
                 switch event {
                 case .presentEditStudyRecordVC(let row):
                     strongSelf.presentEditStudyRecordVC(row: row)
+                case .presentAdditionalStudyRecordVC:
+                    strongSelf.present(AdditionalStudyRecordViewController.self,
+                                       modalPresentationStyle: .fullScreen)
                 case .notifyLongPress:
                     strongSelf.delegate?.baseViewLongPressDidRecognized()
                 case .presentRecordDeleteAlert(let row):
@@ -102,17 +108,6 @@ final class StudyRecordViewController: UIViewController {
                 cell.tag = row
                 cell.delegate = self
             }
-            .disposed(by: disposeBag)
-
-        NotificationCenter.default.rx.notification(.reloadLocalData)
-            .subscribe(onNext: { [weak self] _ in
-                self?.viewModel.inputs.reloadLocalData()
-            })
-            .disposed(by: disposeBag)
-        NotificationCenter.default.rx.notification(.recordAdded)
-            .subscribe(onNext: { [weak self] _ in
-                self?.viewModel.inputs.recordAdded()
-            })
             .disposed(by: disposeBag)
     }
 

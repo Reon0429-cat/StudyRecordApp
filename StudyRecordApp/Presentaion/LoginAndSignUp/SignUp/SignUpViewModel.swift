@@ -15,7 +15,7 @@ protocol SignUpViewModelInput {
 }
 
 protocol SignUpViewModelOutput: AnyObject {
-    var event: Driver<SignUpViewModel.Event> { get }
+    var event: Signal<SignUpViewModel.Event> { get }
     var shouldPasswordTextSecured: Driver<SignUpViewModel.PasswordElement> { get }
     var shouldPasswordConfirmationTextSecured: Driver<SignUpViewModel.PasswordElement> { get }
     var animateOfStackView: Driver<(spacing: CGFloat, constant: CGFloat)> { get }
@@ -245,8 +245,8 @@ extension SignUpViewModel: SignUpViewModelInput {
 // MARK: - Output
 extension SignUpViewModel: SignUpViewModelOutput {
 
-    var event: Driver<Event> {
-        eventRelay.asDriver(onErrorDriveWith: .empty())
+    var event: Signal<Event> {
+        eventRelay.asSignal()
     }
 
     var shouldPasswordTextSecured: Driver<PasswordElement> {

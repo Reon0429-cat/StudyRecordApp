@@ -17,10 +17,10 @@ protocol LoginViewModelInput {
 
 protocol LoginViewModelOutput: AnyObject {
     var shouldPasswordTextFieldSecure: Driver<Bool> { get }
-    var stackViewTopConstant: Driver<CGFloat> { get }
+    var stackViewTopConstant: Signal<CGFloat> { get }
     var isLoginButtonEnabled: Driver<Bool> { get }
     var passwordSecureButtonImage: Driver<UIImage> { get }
-    var event: Driver<LoginViewModel.Event> { get }
+    var event: Signal<LoginViewModel.Event> { get }
 }
 
 protocol LoginViewModelType {
@@ -139,8 +139,8 @@ extension LoginViewModel: LoginViewModelOutput {
         shouldPasswordTextFieldSecureRelay.asDriver(onErrorDriveWith: .empty())
     }
 
-    var stackViewTopConstant: Driver<CGFloat> {
-        stackViewTopConstantRelay.asDriver(onErrorDriveWith: .empty())
+    var stackViewTopConstant: Signal<CGFloat> {
+        stackViewTopConstantRelay.asSignal()
     }
 
     var passwordSecureButtonImage: Driver<UIImage> {
@@ -154,8 +154,8 @@ extension LoginViewModel: LoginViewModelOutput {
             .asDriver(onErrorDriveWith: .empty())
     }
 
-    var event: Driver<Event> {
-        eventRelay.asDriver(onErrorDriveWith: .empty())
+    var event: Signal<Event> {
+        eventRelay.asSignal()
     }
 
     var isLoginButtonEnabled: Driver<Bool> {
