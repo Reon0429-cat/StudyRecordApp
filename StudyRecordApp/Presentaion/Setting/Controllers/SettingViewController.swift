@@ -211,7 +211,10 @@ private extension SettingViewController {
     }
 
     func requestReview() {
-        // MARK: - ToDo App Storeに遷移する
+        guard let url = URL(string: Constant.appShareURLString) else { return }
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: [:])
+        }
     }
 
     func presentPrivacyPolicyWebPage() {

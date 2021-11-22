@@ -12,8 +12,7 @@ struct Constant {
     static let appName = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as! String
     static let privacyPolicyJaWebPage = "https://Reon0429-cat.github.io/Reon0429.github.io/index.html"
     static let privacyPolicyEnWebPage = "https://Reon0429-cat.github.io/Reon0429.github.io/index_en.html"
-    // MARK: - ToDo store url 入れる
-    static let appShareURLString = ""
+    static let appShareURLString = "https://itunes.apple.com/jp/app/id1596528644?mt=8"
     static let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
 
 }
