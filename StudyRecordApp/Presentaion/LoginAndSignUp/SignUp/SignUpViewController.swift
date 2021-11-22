@@ -82,6 +82,7 @@ final class SignUpViewController: UIViewController {
                     self.showErrorAlert(title: title)
                 case .dismiss:
                     self.dismiss(animated: true)
+                    self.changeRootVC(TopViewController.self)
                 }
             })
             .disposed(by: disposeBag)
