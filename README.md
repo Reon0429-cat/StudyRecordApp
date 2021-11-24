@@ -1,7 +1,7 @@
 # StudyRecordApp
 
 ## App Store URL
-[TaskR]()  
+[TaskR](https://itunes.apple.com/jp/app/id1596528644?mt=8)  
 
 
 ## 技術・ライブラリ  
